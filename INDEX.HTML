@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SUM(−)LOK</title>
+
+  <style>
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #121213;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.app {
+  position: relative;
+  width: 100vw;
+  max-width: 375px;
+  height: 100svh;
+  padding: 6px 10px 6px;
+  display: grid;
+  grid-template-rows: 42px 50px 250px 28px 151px;
+  gap: 5px;
+}
+
+header {
+  height: 42px;
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  align-items: center;
+  border-bottom: 1px solid #3a3a3c;
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+  font-size: 24px;
+  line-height: 42px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.totals {
+  height: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+
+.totals div {
+  border: 1px solid #3a3a3c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+small {
+  font-size: 9px;
+  color: #d7dadc;
+  letter-spacing: 1.2px;
+  font-weight: 700;
+}
+
+strong {
+  font-size: 24px;
+  line-height: 25px;
+}
+
+#board {
+  height: 250px;
+  display: grid;
+  grid-template-rows: repeat(5, 46px);
+  gap: 5px;
+}
+
+.row {
+  height: 46px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.tile {
+  height: 46px;
+  min-width: 0;
+}
+
+.tileInner {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #3a3a3c;
+  background: #121213;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px;
+  line-height: 1;
+  font-weight: 800;
+}
+
+.tile.filled .tileInner {
+  border-color: #565758;
+}
+
+.tileInner.flip {
+  animation: flip 0.38s ease forwards;
+}
+
+@keyframes flip {
+  0% { transform: rotateX(0deg); }
+  50% { transform: rotateX(90deg); }
+  100% { transform: rotateX(0deg); }
+}
+
+.tile.correct .tileInner {
+  background: #538d4e;
+  border-color: #538d4e;
+}
+
+.tile.present .tileInner {
+  background: #b59f3b;
+  border-color: #b59f3b;
+}
+
+.tile.absent .tileInner {
+  background: #3a3a3c;
+  border-color: #3a3a3c;
+}
+
+.tile.winJump {
+  animation: winJump 0.52s ease;
+}
+
+@keyframes winJump {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-15px); }
+  55% { transform: translateY(5px); }
+  75% { transform: translateY(-6px); }
+}
+
+.bigFeedback {
+  position: absolute;
+  left: 50%;
+  top: 238px;
+  transform: translateX(-50%);
+  z-index: 5;
+  min-width: 260px;
+  padding: 14px 18px;
+  background: rgba(18, 18, 19, 0.82);
+  border: 1px solid #3a3a3c;
+  color: #fff;
+  text-align: center;
+  font-size: 34px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: 2px;
+  animation: feedbackPop 1.25s ease forwards;
+}
+
+@keyframes feedbackPop {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.85);
+  }
+  15% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.05);
+  }
+  25% {
+    transform: translateX(-50%) scale(1);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.98);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+#message {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#keys {
+  height: 151px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 34px);
+  gap: 5px;
+}
+
+#keys button {
+  height: 34px;
+  border: 0;
+  border-radius: 4px;
+  background: #818384;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+#keys button.used {
+  background: #3a3a3c;
+}
+
+#keys button.correct {
+  background: #538d4e;
+}
+
+#keys button.present {
+  background: #b59f3b;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 18, 19, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 10;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modalBox {
+  width: 100%;
+  max-width: 340px;
+  background: #121213;
+  border: 1px solid #3a3a3c;
+  padding: 18px;
+  position: relative;
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 28px;
+}
+
+.modalBox h2 {
+  margin: 8px 0 14px;
+  font-size: 17px;
+  letter-spacing: 1px;
+}
+
+.modalBox p {
+  margin: 9px 0;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.rules {
+  margin: 16px 0;
+  text-align: left;
+  font-size: 13px;
+  line-height: 34px;
+}
+
+.sample {
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  margin-right: 9px;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 900;
+}
+
+.correctSample {
+  background: #538d4e;
+}
+
+.presentSample {
+  background: #b59f3b;
+}
+
+.absentSample {
+  background: #3a3a3c;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.stats div {
+  display: flex;
+  flex-direction: column;
+}
+
+.stats b {
+  font-size: 27px;
+  line-height: 28px;
+}
+
+.stats span {
+  font-size: 10px;
+  color: #d7dadc;
+}
+
+pre {
+  margin: 0 auto 16px;
+  text-align: left;
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.35;
+  white-space: pre-wrap;
+}
+
+.share,
+.newGame {
+  width: 100%;
+  height: 42px;
+  border: 0;
+  border-radius: 4px;
+  margin-top: 8px;
+  color: white;
+  font-weight: 900;
+  font-size: 15px;
+}
+
+.share {
+  background: #538d4e;
+}
+
+.newGame {
+  background: #818384;
+}
+  </style>
+</head>
+
+<body>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<div class="app">
+  <header>
+    <button class="icon" id="helpBtn">?</button>
+    <h1>SUM<span>(−)</span>LOK</h1>
+    <button class="icon" id="statsBtn">☰</button>
+  </header>
+
+  <section class="totals">
+    <div><small>TARGET</small><strong id="target">--</strong></div>
+    <div><small>TOTAL</small><strong id="total">--</strong></div>
+  </section>
+
+  <main id="board"></main>
+
+  <div id="bigFeedback" class="bigFeedback hidden"></div>
+  <div id="message">Enter the code</div>
+
+  <section id="keys">
+    <button>1</button><button>2</button><button>3</button>
+    <button>4</button><button>5</button><button>6</button>
+    <button>7</button><button>8</button><button>9</button>
+    <button data-key="DEL">DEL</button>
+    <button>0</button>
+    <button data-key="ENTER">ENTER</button>
+  </section>
+</div>
+
+<div id="helpModal" class="modal hidden">
+  <div class="modalBox">
+    <button id="closeHelp" class="close">×</button>
+    <h2>HOW TO PLAY</h2>
+
+    <p>Guess the 7-digit code in 5 tries.</p>
+    <p>The middle digit is negative.</p>
+    <p>Example: <b>2 4 9 −5 8 8 8</b></p>
+    <p>Target total: <b>34</b></p>
+
+    <div class="rules">
+      <div><span class="sample correctSample">5</span> Right digit, right place</div>
+      <div><span class="sample presentSample">5</span> Right digit, wrong place</div>
+      <div><span class="sample absentSample">5</span> Not in the code</div>
+    </div>
+
+    <button id="playBtn" class="newGame">PLAY</button>
+  </div>
+</div>
+
+<div id="modal" class="modal hidden">
+  <div class="modalBox">
+    <button id="closeModal" class="close">×</button>
+
+    <h2>STATISTICS</h2>
+
+    <div class="stats">
+      <div><b id="played">0</b><span>Played</span></div>
+      <div><b id="winPct">0</b><span>Win %</span></div>
+      <div><b id="streak">0</b><span>Streak</span></div>
+      <div><b id="maxStreak">0</b><span>Max</span></div>
+    </div>
+
+    <h2>RESULT</h2>
+    <pre id="shareText"></pre>
+
+    <button id="shareBtn" class="share">SHARE</button>
+    <button id="newGameBtn" class="newGame">NEW GAME</button>
+  </div>
+</div>
+</body>
+
+<script>
+const board = document.getElementById("board");
+const targetEl = document.getElementById("target");
+const totalEl = document.getElementById("total");
+const messageEl = document.getElementById("message");
+const statsBtn = document.getElementById("statsBtn");
+const helpBtn = document.getElementById("helpBtn");
+const keyButtons = [...document.querySelectorAll("#keys button")];
+
+const modal = document.getElementById("modal");
+const helpModal = document.getElementById("helpModal");
+const closeModal = document.getElementById("closeModal");
+const closeHelp = document.getElementById("closeHelp");
+const playBtn = document.getElementById("playBtn");
+const shareBtn = document.getElementById("shareBtn");
+const newGameBtn = document.getElementById("newGameBtn");
+const shareTextEl = document.getElementById("shareText");
+const bigFeedback = document.getElementById("bigFeedback");
+
+const playedEl = document.getElementById("played");
+const winPctEl = document.getElementById("winPct");
+const streakEl = document.getElementById("streak");
+const maxStreakEl = document.getElementById("maxStreak");
+
+const ROWS = 5;
+const COLS = 7;
+const NEG = 3;
+const MAX_SAME_DIGIT = 4;
+
+let answer = [];
+let currentRow = 0;
+let currentCol = 0;
+let locked = false;
+let finished = false;
+let resultRows = [];
+let finalShareText = "";
+
+let stats = JSON.parse(localStorage.getItem("sumlokStats")) || {
+  played: 0,
+  wins: 0,
+  streak: 0,
+  maxStreak: 0
+};
+
+function seededRandom(seed) {
+  let x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+}
+
+function dateSeed() {
+  const now = new Date();
+  return Number(
+    `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, "0")}${String(now.getDate()).padStart(2, "0")}`
+  );
+}
+
+function validCode(code) {
+  const counts = {};
+
+  for (const digit of code) {
+    counts[digit] = (counts[digit] || 0) + 1;
+    if (counts[digit] > MAX_SAME_DIGIT) return false;
+  }
+
+  return true;
+}
+
+function generateDailyCode() {
+  let seed = dateSeed();
+  let code = [];
+
+  do {
+    code = [];
+
+    for (let i = 0; i < COLS; i++) {
+      code.push(Math.floor(seededRandom(seed + i * 97) * 10));
+    }
+
+    seed += 31;
+  } while (!validCode(code));
+
+  return code;
+}
+
+function startGame() {
+  answer = generateDailyCode();
+  currentRow = 0;
+  currentCol = 0;
+  locked = false;
+  finished = false;
+  resultRows = [];
+  finalShareText = "";
+
+  board.innerHTML = "";
+  targetEl.textContent = getTotal(answer);
+  totalEl.textContent = "--";
+  messageEl.textContent = "Enter the code";
+  modal.classList.add("hidden");
+  bigFeedback.classList.add("hidden");
+
+  keyButtons.forEach(btn => {
+    btn.className = "";
+  });
+
+  for (let r = 0; r < ROWS; r++) {
+    const row = document.createElement("div");
+    row.className = "row";
+
+    for (let c = 0; c < COLS; c++) {
+      const tile = document.createElement("div");
+      tile.className = "tile";
+      tile.dataset.r = r;
+      tile.dataset.c = c;
+
+      const inner = document.createElement("div");
+      inner.className = "tileInner";
+
+      tile.appendChild(inner);
+      row.appendChild(tile);
+    }
+
+    board.appendChild(row);
+  }
+
+  updateStatsDisplay();
+}
+
+function getTotal(nums) {
+  return nums.reduce((sum, n, i) => i === NEG ? sum - n : sum + n, 0);
+}
+
+function rowTiles(r) {
+  return [...document.querySelectorAll(`.tile[data-r="${r}"]`)];
+}
+
+function tileInner(tile) {
+  return tile.querySelector(".tileInner");
+}
+
+function updateTotal() {
+  const nums = rowTiles(currentRow)
+    .filter(t => t.dataset.v !== undefined)
+    .map(t => Number(t.dataset.v));
+
+  totalEl.textContent = nums.length ? getTotal(nums) : "--";
+}
+
+function handleInput(key) {
+  if (locked || finished) return;
+
+  if (/^[0-9]$/.test(key)) addDigit(key);
+  else if (key === "DEL" || key === "Backspace") deleteDigit();
+  else if (key === "ENTER" || key === "Enter") submitGuess();
+}
+
+function addDigit(n) {
+  if (currentCol >= COLS) return;
+
+  const tile = document.querySelector(
+    `.tile[data-r="${currentRow}"][data-c="${currentCol}"]`
+  );
+
+  tile.dataset.v = n;
+  tileInner(tile).textContent = currentCol === NEG ? `−${n}` : n;
+  tile.classList.add("filled");
+
+  currentCol++;
+  updateTotal();
+}
+
+function deleteDigit() {
+  if (currentCol <= 0) return;
+
+  currentCol--;
+
+  const tile = document.querySelector(
+    `.tile[data-r="${currentRow}"][data-c="${currentCol}"]`
+  );
+
+  delete tile.dataset.v;
+  tileInner(tile).textContent = "";
+  tile.className = "tile";
+
+  updateTotal();
+}
+
+function submitGuess() {
+  if (currentCol < COLS) {
+    messageEl.textContent = "Need 7 digits";
+    return;
+  }
+
+  locked = true;
+  revealRow();
+}
+
+function revealRow() {
+  const tiles = rowTiles(currentRow);
+  const guess = tiles.map(t => Number(t.dataset.v));
+  const answerCopy = [...answer];
+  const result = Array(COLS).fill("absent");
+
+  for (let i = 0; i < COLS; i++) {
+    if (guess[i] === answer[i]) {
+      result[i] = "correct";
+      answerCopy[i] = null;
+    }
+  }
+
+  for (let i = 0; i < COLS; i++) {
+    if (result[i] === "correct") continue;
+
+    const found = answerCopy.indexOf(guess[i]);
+
+    if (found !== -1) {
+      result[i] = "present";
+      answerCopy[found] = null;
+    }
+  }
+
+  resultRows.push(result);
+
+  tiles.forEach((tile, i) => {
+    setTimeout(() => {
+      tile.classList.add(result[i]);
+      tileInner(tile).classList.add("flip");
+      updateKeyboard(guess[i], result[i]);
+    }, i * 105);
+  });
+
+  setTimeout(() => {
+    const won = guess.every((n, i) => n === answer[i]);
+
+    if (won) {
+      win(tiles);
+      return;
+    }
+
+    if (currentRow === ROWS - 1) {
+      lose();
+      return;
+    }
+
+    currentRow++;
+    currentCol = 0;
+    locked = false;
+    totalEl.textContent = "--";
+    messageEl.textContent = "Try again";
+  }, COLS * 105 + 230);
+}
+
+function updateKeyboard(num, result) {
+  const btn = keyButtons.find(b => b.textContent.trim() === String(num));
+  if (!btn) return;
+
+  if (btn.classList.contains("correct")) return;
+  if (btn.classList.contains("present") && result === "absent") return;
+
+  btn.classList.remove("used", "present", "correct");
+
+  if (result === "correct") btn.classList.add("correct");
+  else if (result === "present") btn.classList.add("present");
+  else btn.classList.add("used");
+}
+
+function showBigFeedback(text) {
+  bigFeedback.textContent = text;
+  bigFeedback.classList.remove("hidden");
+
+  bigFeedback.style.animation = "none";
+  bigFeedback.offsetHeight;
+  bigFeedback.style.animation = "";
+
+  setTimeout(() => {
+    bigFeedback.classList.add("hidden");
+  }, 1250);
+}
+
+function win(tiles) {
+  finished = true;
+
+  const messages = [
+    "PERFECT",
+    "EXCELLENT",
+    "CRACKED",
+    "NICE WORK",
+    "FINALLY"
+  ];
+
+  const winWord = messages[currentRow];
+
+  messageEl.textContent = winWord;
+  showBigFeedback(winWord);
+
+  tiles.forEach((tile, i) => {
+    setTimeout(() => {
+      tile.classList.add("winJump");
+    }, i * 95);
+  });
+
+  stats.played++;
+  stats.wins++;
+  stats.streak++;
+  stats.maxStreak = Math.max(stats.maxStreak, stats.streak);
+  saveStats();
+
+  finalShareText = makeShareText(true);
+  updateStatsDisplay();
+
+  setTimeout(openModal, 1650);
+}
+
+function lose() {
+  finished = true;
+
+  const code = answer
+    .map((n, i) => i === NEG ? `−${n}` : n)
+    .join(" ");
+
+  messageEl.textContent = `ACCESS CODE ${code}`;
+
+  stats.played++;
+  stats.streak = 0;
+  saveStats();
+
+  finalShareText = makeShareText(false);
+  updateStatsDisplay();
+
+  setTimeout(openModal, 900);
+}
+
+function makeShareText(won) {
+  const score = won ? `${currentRow + 1}/5` : "X/5";
+
+  const grid = resultRows
+    .map(row => row.map(cell => {
+      if (cell === "correct") return "🟩";
+      if (cell === "present") return "🟨";
+      return "⬛";
+    }).join(""))
+    .join("\n");
+
+  return `SUM(−)LOK ${score}\n${grid}`;
+}
+
+function saveStats() {
+  localStorage.setItem("sumlokStats", JSON.stringify(stats));
+}
+
+function updateStatsDisplay() {
+  const winPct = stats.played
+    ? Math.round((stats.wins / stats.played) * 100)
+    : 0;
+
+  playedEl.textContent = stats.played;
+  winPctEl.textContent = winPct;
+  streakEl.textContent = stats.streak;
+  maxStreakEl.textContent = stats.maxStreak;
+
+  shareTextEl.textContent = finalShareText || "Finish a game to share your result.";
+}
+
+function openModal() {
+  updateStatsDisplay();
+  modal.classList.remove("hidden");
+}
+
+function closeStats() {
+  modal.classList.add("hidden");
+}
+
+function openHelp() {
+  helpModal.classList.remove("hidden");
+}
+
+function closeHelpModal() {
+  helpModal.classList.add("hidden");
+}
+
+async function shareResult() {
+  if (!finalShareText) return;
+
+  if (navigator.share) {
+    await navigator.share({ text: finalShareText });
+  } else if (navigator.clipboard) {
+    await navigator.clipboard.writeText(finalShareText);
+    shareBtn.textContent = "COPIED";
+    setTimeout(() => shareBtn.textContent = "SHARE", 1200);
+  }
+}
+
+keyButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    handleInput(btn.dataset.key || btn.textContent.trim());
+  });
+});
+
+document.addEventListener("keydown", e => {
+  handleInput(e.key);
+});
+
+statsBtn.addEventListener("click", openModal);
+helpBtn.addEventListener("click", openHelp);
+closeModal.addEventListener("click", closeStats);
+closeHelp.addEventListener("click", closeHelpModal);
+playBtn.addEventListener("click", closeHelpModal);
+shareBtn.addEventListener("click", shareResult);
+newGameBtn.addEventListener("click", startGame);
+
+startGame();
+</script>
+</html>
