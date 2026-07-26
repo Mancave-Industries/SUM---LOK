@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 72">
+  <defs>
+    <linearGradient id="btnConfirmGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f2dfa0"/>
+      <stop offset="1" stop-color="#c9a24b"/>
+    </linearGradient>
+  </defs>
+  <rect x="3" y="3" width="314" height="66" rx="33" fill="url(#btnConfirmGrad)" stroke="#3a2c10" stroke-width="2"/>
+  <rect x="7" y="7" width="306" height="58" rx="29" fill="none" stroke="#3a2c10" stroke-width="1" stroke-opacity="0.4"/>
+  <path d="M148 36 L156 44 L172 26" stroke="#3a2c10" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

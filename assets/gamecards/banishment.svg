@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280">
+  <defs>
+    <linearGradient id="baBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2c0d14"/>
+      <stop offset="1" stop-color="#08070a"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="192" height="272" rx="14" fill="url(#baBg)" stroke="#c9a24b" stroke-width="2"/>
+  <rect x="12" y="12" width="176" height="256" rx="10" fill="none" stroke="#7d1f2b" stroke-width="2"/>
+  <rect x="18" y="18" width="164" height="244" rx="7" fill="none" stroke="#c9a24b" stroke-width="1" stroke-opacity="0.6"/>
+  <g transform="translate(58,44) scale(1.75)" fill="none" stroke="#e6c877" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 21 L18 21 L18 6 L30 6 L30 21 L40 21"/>
+    <path d="M15 10 L19.5 14.5 L27 4.5"/>
+    <rect x="8" y="21" width="32" height="19" rx="2.5"/>
+    <path d="M8 27 L40 27"/>
+  </g>
+  <text x="100" y="222" text-anchor="middle" font-family="Georgia, serif" font-size="16" letter-spacing="2" fill="#e6c877">BANISHMENT</text>
+  <text x="100" y="243" text-anchor="middle" font-family="Georgia, serif" font-size="8" letter-spacing="0.4" fill="#a9895a">FATE CARD — THE CIRCLE VOTES</text>
+</svg>

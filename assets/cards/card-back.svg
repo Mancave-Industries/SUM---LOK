@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280">
+  <defs>
+    <linearGradient id="backBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3a0f18"/>
+      <stop offset="1" stop-color="#0c0b0e"/>
+    </linearGradient>
+    <pattern id="lattice" width="20" height="20" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="20" stroke="#c9a24b" stroke-opacity="0.16" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect x="4" y="4" width="192" height="272" rx="14" fill="url(#backBg)" stroke="#e6c877" stroke-width="3"/>
+  <rect x="14" y="14" width="172" height="252" rx="9" fill="url(#lattice)" stroke="#c9a24b" stroke-width="1.5"/>
+  <rect x="22" y="22" width="156" height="236" rx="6" fill="none" stroke="#8a6a2f" stroke-width="1"/>
+  <g transform="translate(100,140)" stroke="#e6c877" stroke-width="2" fill="none">
+    <circle r="34"/>
+    <circle r="24"/>
+    <path d="M0 -34 L0 -24 M0 34 L0 24 M-34 0 L-24 0 M34 0 L24 0"/>
+    <path d="M0 -12 L8 0 L0 12 L-8 0 Z" fill="#e6c877" stroke="none"/>
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280">
+  <defs>
+    <linearGradient id="loyalBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#141c30"/>
+      <stop offset="1" stop-color="#0c0b0e"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="192" height="272" rx="16" fill="url(#loyalBg)" stroke="#e6c877" stroke-width="3"/>
+  <rect x="14" y="14" width="172" height="252" rx="9" fill="none" stroke="#1f2a44" stroke-width="1.5"/>
+  <path d="M40 24 C60 14 140 14 160 24" fill="none" stroke="#e6c877" stroke-width="1.6"/>
+  <path d="M40 256 C60 266 140 266 160 256" fill="none" stroke="#e6c877" stroke-width="1.6"/>
+
+  <g transform="translate(65,42) scale(1.46)" fill="none" stroke="#e6c877" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 5 L40 11 L40 23 C40 33.5 33 40.5 24 44 C15 40.5 8 33.5 8 23 L8 11 Z"/>
+    <path d="M24 11 L24 37"/>
+  </g>
+
+  <rect x="26" y="150" width="148" height="94" rx="4" fill="#e9dcc0" fill-opacity="0.06" stroke="#1f2a44" stroke-width="1" stroke-opacity="0.7"/>
+  <text x="100" y="185" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="26" letter-spacing="3" fill="#e6c877">LOYAL</text>
+  <text x="100" y="212" text-anchor="middle" font-family="Georgia, serif" font-size="8" letter-spacing="0.4" fill="#d8c9a3">FIND THE DECEIVERS. TRUST NO ONE.</text>
+  <text x="100" y="230" text-anchor="middle" font-family="Georgia, serif" font-size="8" letter-spacing="0.4" fill="#a9895a">ROLE CARD — PRIVATE</text>
+</svg>

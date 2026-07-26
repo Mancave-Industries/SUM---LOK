@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280">
+  <defs>
+    <linearGradient id="dcBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a1420"/>
+      <stop offset="1" stop-color="#0c0b0e"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="192" height="272" rx="16" fill="url(#dcBg)" stroke="#e6c877" stroke-width="3"/>
+  <rect x="14" y="14" width="172" height="252" rx="9" fill="none" stroke="#7d1f2b" stroke-width="1.5"/>
+  <path d="M40 24 C60 14 140 14 160 24" fill="none" stroke="#e6c877" stroke-width="1.6"/>
+  <path d="M40 256 C60 266 140 266 160 256" fill="none" stroke="#e6c877" stroke-width="1.6"/>
+  <g transform="translate(66,40) scale(1.42)" fill="none" stroke="#e6c877" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="24" cy="15" r="7.5"/>
+    <path d="M11 42 C11 27 16 20 24 20 C32 20 37 27 37 42"/>
+    <path d="M18 27 C20 30 28 30 30 27"/>
+  </g>
+  <g transform="translate(148,50) scale(0.6)" fill="none" stroke="#c9a24b" stroke-width="2.4">
+    <circle cx="24" cy="24" r="18"/>
+    <path d="M24 6 L24 12 M24 36 L24 42 M6 24 L12 24 M36 24 L42 24"/>
+    <path d="M24 19 L27 24 L24 29 L21 24 Z" fill="#c9a24b" stroke="none"/>
+  </g>
+  <text x="100" y="196" text-anchor="middle" font-family="Georgia, serif" font-size="15" letter-spacing="1.6" fill="#e6c877">DECEIVER&#8217;S</text>
+  <text x="100" y="216" text-anchor="middle" font-family="Georgia, serif" font-size="15" letter-spacing="1.6" fill="#e6c877">CHOICE</text>
+  <text x="100" y="240" text-anchor="middle" font-family="Georgia, serif" font-size="8" letter-spacing="0.4" fill="#a9895a">CANCELS ONE SHIELD IN PLAY</text>
+</svg>

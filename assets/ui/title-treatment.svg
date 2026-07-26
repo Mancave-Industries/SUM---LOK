@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 170">
+  <g transform="translate(180,44)" fill="none" stroke="#c9a24b" stroke-width="2">
+    <circle r="26"/>
+    <circle r="18"/>
+    <path d="M0 -26 L0 -18 M0 26 L0 18 M-26 0 L-18 0 M26 0 L18 0"/>
+    <path d="M0 -8 L6 0 L0 8 L-6 0 Z" fill="#c9a24b" stroke="none"/>
+  </g>
+  <text x="180" y="112" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="40" letter-spacing="4" fill="#e6c877">THE DECEIVERS</text>
+  <path d="M40 128 C110 142 250 142 320 128" fill="none" stroke="#7d1f2b" stroke-width="1.6"/>
+  <text x="180" y="156" text-anchor="middle" font-family="Georgia, serif" font-size="12" letter-spacing="5" fill="#a9895a">A CEREMONY OF TRUST AND BETRAYAL</text>
+</svg>
