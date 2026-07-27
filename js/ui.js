@@ -52,6 +52,22 @@ function triggerFlip(cardId) {
   });
 }
 
+function meaningBlock(text) {
+  return `<div class="pass-overlay-eyebrow" style="margin-top:2px;">What This Means</div>
+    <p class="reveal-body" style="font-size:13px;">${text}</p>`;
+}
+
+function passPrompt({ icon, name, instruction, action, btnLabel, btnClass }) {
+  return `
+    <div class="reveal-stage fade-in">
+      ${iconUse(icon, 'icon icon-lg')}
+      <div class="pass-overlay-eyebrow">Pass the phone to</div>
+      <div class="pass-overlay-name">${escapeHtml(name)}</div>
+      <p class="pass-overlay-instruction">${instruction}</p>
+      <button class="btn ${btnClass || 'btn-primary'}" data-action="${action}">${btnLabel}</button>
+    </div>`;
+}
+
 /* ---------- Header ---------- */
 
 UI.updateHeader = function updateHeader(state) {
@@ -117,14 +133,13 @@ UI.renderReveal = function renderReveal(state, tapped) {
     : '';
 
   if (!tapped) {
-    screen('reveal').innerHTML = `
-      <div class="reveal-stage fade-in">
-        ${iconUse(ICONS.hoodedFigure, 'icon icon-lg')}
-        <div class="pass-overlay-eyebrow">Pass the device to</div>
-        <div class="pass-overlay-name">${escapeHtml(player.name)}</div>
-        <p class="pass-overlay-instruction">Make sure no one else can see the screen, then tap below to view your secret role.</p>
-        <button class="btn btn-primary" data-action="tap-reveal">Reveal My Role</button>
-      </div>`;
+    screen('reveal').innerHTML = passPrompt({
+      icon: ICONS.hoodedFigure,
+      name: player.name,
+      instruction: `Hand the phone to <strong>${escapeHtml(player.name)}</strong> now and look away — no one else should see this screen. Once it's in their hands, they tap below.`,
+      action: 'tap-reveal',
+      btnLabel: 'Reveal My Role',
+    });
     return;
   }
 
@@ -132,8 +147,8 @@ UI.renderReveal = function renderReveal(state, tapped) {
     <div class="reveal-stage">
       ${cardFlip(CARD_FRAMES.back, role.symbol, 'card-lg', 'revealCard')}
       <h2 class="reveal-headline">${role.label}</h2>
-      <p class="reveal-body">${role.description}${fellowText}</p>
-      <button class="btn btn-confirm btn-block" data-action="confirm-reveal">I've Seen It — Hide &amp; Continue</button>
+      ${meaningBlock(`${role.description}${fellowText}`)}
+      <button class="btn btn-confirm btn-block" data-action="confirm-reveal">Hide My Role &amp; Pass The Phone</button>
     </div>`;
   triggerFlip('revealCard');
 };
@@ -178,14 +193,13 @@ UI.renderDraw = function renderDraw(state, tapped) {
   if (!player) return;
 
   if (!tapped) {
-    screen('draw').innerHTML = `
-      <div class="reveal-stage fade-in">
-        ${iconUse(ICONS.hourglass, 'icon icon-lg')}
-        <div class="pass-overlay-eyebrow">Pass the device to</div>
-        <div class="pass-overlay-name">${escapeHtml(player.name)}</div>
-        <p class="pass-overlay-instruction">Draw your card for this round.</p>
-        <button class="btn btn-primary" data-action="tap-draw">Draw A Card</button>
-      </div>`;
+    screen('draw').innerHTML = passPrompt({
+      icon: ICONS.hourglass,
+      name: player.name,
+      instruction: `Hand the phone to <strong>${escapeHtml(player.name)}</strong> now, then they tap below to draw their card for this round.`,
+      action: 'tap-draw',
+      btnLabel: 'Draw A Card',
+    });
     return;
   }
 
@@ -197,7 +211,8 @@ UI.renderDraw = function renderDraw(state, tapped) {
       <p class="reveal-body">${result.wentToPot
         ? `<strong>${escapeHtml(player.name)}</strong> drew ${def.name} — <strong>${def.value} gold</strong> added to the Prize Pot!`
         : `<strong>${escapeHtml(player.name)}</strong> drew ${def.name} and keeps it.`}</p>
-      <button class="btn btn-confirm btn-block" data-action="confirm-draw">Continue</button>
+      ${result.wentToPot ? '' : meaningBlock(def.description)}
+      <button class="btn btn-confirm btn-block" data-action="confirm-draw">Continue To My Hand</button>
     </div>`;
   triggerFlip('drawCard');
 };
@@ -211,7 +226,7 @@ UI.renderHand = function renderHand(state) {
 
   screen('hand').innerHTML = `
     <div class="screen-title-row">${escapeHtml(player.name)}'s Hand</div>
-    <div class="screen-subtitle">${canShield ? 'Tap the Shield to raise it now, or continue.' : 'Your held cards.'}</div>
+    <div class="screen-subtitle">${canShield ? 'Tap the Shield to raise it now, or continue.' : 'Your held cards — what each one means:'}</div>
     <div class="hand-scroll">
       ${player.hand.length === 0 ? '<div class="hand-empty">No cards held.</div>' : player.hand.map((cardId, i) => {
         const def = cardDefById(cardId);
@@ -219,12 +234,13 @@ UI.renderHand = function renderHand(state) {
         return `<div class="hand-card-wrap">
           ${usable ? `<button class="card selectable" data-action="play-shield" style="border:none;padding:0;background:none;">${cardStatic(def.symbol)}</button>` : cardStatic(def.symbol)}
           <span class="hand-card-name">${def.name}${cardId === 'shield' && player.shieldedThisRound ? ' (raised)' : ''}</span>
+          <span class="hand-card-desc">${def.description}</span>
         </div>`;
       }).join('')}
     </div>
     ${player.shieldedThisRound ? `<p class="small-note">${escapeHtml(player.name)} is shielded this round.</p>` : ''}
     <div class="spacer"></div>
-    <button class="btn btn-primary btn-block" data-action="continue-from-hand">Continue</button>`;
+    <button class="btn btn-primary btn-block" data-action="continue-from-hand">Done — Pass The Phone</button>`;
 };
 
 /* ---------- 7. Night ---------- */
@@ -234,8 +250,8 @@ UI.renderNight = function renderNight() {
     <div class="reveal-stage fade-in">
       ${iconUse(ICONS.candle, 'icon icon-lg flicker')}
       <div class="pass-overlay-eyebrow">Night Falls</div>
-      <h2 class="reveal-headline">Pass the device to the Deceivers</h2>
-      <p class="reveal-body">Everyone else, close your eyes. The Deceivers alone will choose who does not see morning.</p>
+      <h2 class="reveal-headline">Pass the phone to the Deceivers now</h2>
+      <p class="reveal-body">Everyone else, look away or close your eyes — only the Deceivers should see the next screen. Once they have the phone, they tap below.</p>
       <button class="btn btn-danger btn-block" data-action="proceed-to-murder">The Deceivers Are Ready</button>
     </div>`;
 };
@@ -260,6 +276,7 @@ UI.renderMurder = function renderMurder(state, selectedId, useChoice) {
         <input type="checkbox" id="dcToggle" ${useChoice ? 'checked' : ''}>
         <span>Play Deceiver's Choice — cancel a Shield in play</span>
       </label>` : ''}
+    <p class="small-note" style="margin-top:14px;">Once confirmed, pass the phone back to the table — everyone can look again.</p>
     <div class="spacer"></div>
     <button class="btn btn-danger btn-block" data-action="confirm-murder" ${selectedId ? '' : 'disabled'}>Confirm Target</button>`;
 
@@ -279,14 +296,14 @@ UI.renderVote = function renderVote(state, tapped, selectedId, useDagger) {
   const container = isFinal ? screen('finalBanishment') : screen('vote');
 
   if (!tapped) {
-    container.innerHTML = `
-      <div class="reveal-stage fade-in">
-        ${iconUse(ICONS.vote, 'icon icon-lg')}
-        <div class="pass-overlay-eyebrow">Pass the device to</div>
-        <div class="pass-overlay-name">${escapeHtml(voter.name)}</div>
-        <p class="pass-overlay-instruction">${isFinal ? 'This is the final vote. Choose carefully.' : 'Cast your vote for who should be banished.'}</p>
-        <button class="btn ${isFinal ? 'btn-danger' : 'btn-primary'}" data-action="tap-vote">I'm Ready To Vote</button>
-      </div>`;
+    container.innerHTML = passPrompt({
+      icon: ICONS.vote,
+      name: voter.name,
+      instruction: `Hand the phone to <strong>${escapeHtml(voter.name)}</strong> now and look away — votes are private. ${isFinal ? 'This is the final vote; once ready, they tap below.' : 'Once ready, they tap below to vote.'}`,
+      action: 'tap-vote',
+      btnLabel: "I'm Ready To Vote",
+      btnClass: isFinal ? 'btn-danger' : 'btn-primary',
+    });
     return;
   }
 
@@ -307,6 +324,7 @@ UI.renderVote = function renderVote(state, tapped, selectedId, useDagger) {
         <input type="checkbox" id="daggerToggle" ${useDagger ? 'checked' : ''}>
         <span>Play Dagger — +1 vote weight</span>
       </label>` : ''}
+    <p class="small-note" style="margin-top:14px;">After casting, hide your choice and pass the phone to the next voter.</p>
     <div class="spacer"></div>
     <button class="btn ${isFinal ? 'btn-danger' : 'btn-confirm'} btn-block" data-action="confirm-vote" ${selectedId ? '' : 'disabled'}>Cast Vote</button>`;
 
@@ -321,11 +339,13 @@ UI.renderVote = function renderVote(state, tapped, selectedId, useDagger) {
 
 UI.renderElimination = function renderElimination(state) {
   const context = state.eliminationContext;
+  const passBackNote = '<p class="small-note" style="margin-bottom:2px;">Everyone can look now — pass the phone around so all can see.</p>';
   let body = '';
 
   if (context === 'quiet') {
     body = `
       <div class="reveal-stage">
+        ${passBackNote}
         ${iconUse(ICONS.candle, 'icon icon-lg flicker')}
         <h2 class="reveal-headline">A Quiet Night</h2>
         <p class="reveal-body">No blade was drawn. The circle wakes unharmed.</p>
@@ -336,6 +356,7 @@ UI.renderElimination = function renderElimination(state) {
     if (r.protected) {
       body = `
         <div class="reveal-stage">
+          ${passBackNote}
           ${iconUse(ICONS.shield, 'icon icon-lg')}
           <h2 class="reveal-headline">${escapeHtml(r.name)} Was Targeted</h2>
           <p class="reveal-body">A Shield protected them. They survive the night.</p>
@@ -346,6 +367,7 @@ UI.renderElimination = function renderElimination(state) {
       const role = victim.role === ROLES.DECEIVER.id ? ROLES.DECEIVER : ROLES.LOYAL;
       body = `
         <div class="reveal-stage">
+          ${passBackNote}
           ${iconUse(ICONS.skull, 'icon icon-lg')}
           <h2 class="reveal-headline">${escapeHtml(r.name)} Was Murdered</h2>
           ${cardFlip(CARD_FRAMES.back, role.symbol, '', 'elimCard')}
@@ -358,6 +380,7 @@ UI.renderElimination = function renderElimination(state) {
     if (v.tie || !v.banishedId) {
       body = `
         <div class="reveal-stage">
+          ${passBackNote}
           ${iconUse(ICONS.vote, 'icon icon-lg')}
           <h2 class="reveal-headline">The Vote Is Tied</h2>
           <p class="reveal-body">No one is banished this round.</p>
@@ -368,6 +391,7 @@ UI.renderElimination = function renderElimination(state) {
       const role = banished.role === ROLES.DECEIVER.id ? ROLES.DECEIVER : ROLES.LOYAL;
       body = `
         <div class="reveal-stage">
+          ${passBackNote}
           ${iconUse(ICONS.vote, 'icon icon-lg')}
           <h2 class="reveal-headline">${escapeHtml(banished.name)} Is Banished</h2>
           ${cardFlip(CARD_FRAMES.back, role.symbol, '', 'elimCard')}
