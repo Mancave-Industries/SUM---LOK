@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120">
+  <defs>
+    <linearGradient id="potGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a2110"/>
+      <stop offset="1" stop-color="#141119"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="312" height="112" rx="14" fill="url(#potGrad)" stroke="#e6c877" stroke-width="2"/>
+  <rect x="12" y="12" width="296" height="96" rx="9" fill="none" stroke="#8a6a2f" stroke-width="1.2"/>
+  <circle cx="34" cy="60" r="16" fill="none" stroke="#e6c877" stroke-width="2"/>
+  <circle cx="34" cy="60" r="10" fill="none" stroke="#e6c877" stroke-width="1.4"/>
+  <circle cx="286" cy="60" r="16" fill="none" stroke="#e6c877" stroke-width="2"/>
+  <circle cx="286" cy="60" r="10" fill="none" stroke="#e6c877" stroke-width="1.4"/>
+</svg>

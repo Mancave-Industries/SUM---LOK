@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 140">
+  <defs>
+    <linearGradient id="handGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c1922"/>
+      <stop offset="1" stop-color="#0c0b0e"/>
+    </linearGradient>
+  </defs>
+  <path d="M6 20 C6 12 12 6 20 6 L340 6 C348 6 354 12 354 20 L354 120 C354 130 348 136 340 136 L20 136 C12 136 6 130 6 120 Z" fill="url(#handGrad)" stroke="#8a6a2f" stroke-width="1.4"/>
+  <line x1="20" y1="14" x2="340" y2="14" stroke="#c9a24b" stroke-width="2"/>
+</svg>

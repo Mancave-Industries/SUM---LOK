@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280">
+  <defs>
+    <linearGradient id="roleBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a1420"/>
+      <stop offset="1" stop-color="#0c0b0e"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="192" height="272" rx="16" fill="url(#roleBg)" stroke="#e6c877" stroke-width="3"/>
+  <rect x="14" y="14" width="172" height="252" rx="9" fill="none" stroke="#c9a24b" stroke-width="1.5"/>
+  <path d="M40 24 C60 14 140 14 160 24" fill="none" stroke="#e6c877" stroke-width="1.6"/>
+  <path d="M40 256 C60 266 140 266 160 256" fill="none" stroke="#e6c877" stroke-width="1.6"/>
+  <rect x="26" y="150" width="148" height="86" rx="4" fill="#e9dcc0" fill-opacity="0.06" stroke="#d8c9a3" stroke-width="1" stroke-opacity="0.5"/>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 400">
+  <defs>
+    <linearGradient id="modalGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c1922"/>
+      <stop offset="1" stop-color="#0c0b0e"/>
+    </linearGradient>
+  </defs>
+  <rect x="6" y="6" width="308" height="388" rx="18" fill="url(#modalGrad)" stroke="#c9a24b" stroke-width="2.5"/>
+  <rect x="16" y="16" width="288" height="368" rx="12" fill="none" stroke="#8a6a2f" stroke-width="1.2"/>
+  <path d="M40 30 C90 16 230 16 280 30" fill="none" stroke="#e6c877" stroke-width="1.4"/>
+  <path d="M40 370 C90 384 230 384 280 370" fill="none" stroke="#e6c877" stroke-width="1.4"/>
+  <g stroke="#c9a24b" stroke-width="1.5">
+    <path d="M24 40 L24 26 L38 26"/>
+    <path d="M296 40 L296 26 L282 26"/>
+    <path d="M24 360 L24 374 L38 374"/>
+    <path d="M296 360 L296 374 L282 374"/>
+  </g>
+</svg>

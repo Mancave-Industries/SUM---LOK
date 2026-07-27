@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280">
+  <defs>
+    <linearGradient id="qnBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2c0d14"/>
+      <stop offset="1" stop-color="#08070a"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="192" height="272" rx="14" fill="url(#qnBg)" stroke="#c9a24b" stroke-width="2"/>
+  <rect x="12" y="12" width="176" height="256" rx="10" fill="none" stroke="#7d1f2b" stroke-width="2"/>
+  <rect x="18" y="18" width="164" height="244" rx="7" fill="none" stroke="#c9a24b" stroke-width="1" stroke-opacity="0.6"/>
+  <g transform="translate(60,44) scale(1.7)" fill="none" stroke="#e6c877" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 9 C21.5 13 21 16.5 24 19 C27 16.5 26.5 13 24 9 Z"/>
+    <line x1="24" y1="19" x2="24" y2="22"/>
+    <rect x="18" y="22" width="12" height="16" rx="1.5"/>
+    <ellipse cx="24" cy="41" rx="12" ry="3.2"/>
+  </g>
+  <text x="100" y="222" text-anchor="middle" font-family="Georgia, serif" font-size="16" letter-spacing="2" fill="#e6c877">QUIET NIGHT</text>
+  <text x="100" y="243" text-anchor="middle" font-family="Georgia, serif" font-size="8" letter-spacing="0.4" fill="#a9895a">FATE CARD — NO MURDER TONIGHT</text>
+</svg>
