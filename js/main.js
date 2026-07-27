@@ -12,6 +12,7 @@ let state = createInitialState();
 const uiStage = {
   revealTapped: false,
   drawTapped: false,
+  murderTapped: false,
   murderTarget: null,
   useChoice: false,
   voteTapped: false,
@@ -73,7 +74,7 @@ function render() {
       UI.renderNight();
       break;
     case PHASES.MURDER:
-      UI.renderMurder(state, uiStage.murderTarget, uiStage.useChoice);
+      UI.renderMurder(state, uiStage.murderTapped, uiStage.murderTarget, uiStage.useChoice);
       break;
     case PHASES.VOTE:
     case PHASES.FINAL_BANISHMENT:
@@ -179,21 +180,30 @@ const actions = {
     render();
   },
   'proceed-to-murder': () => {
-    state.phase = PHASES.MURDER;
+    beginMurderPhase(state);
+    uiStage.murderTapped = false;
     uiStage.murderTarget = null;
     uiStage.useChoice = false;
+    render();
+  },
+  'tap-murder-turn': () => {
+    uiStage.murderTapped = true;
     render();
   },
   'select-murder-target': (btn) => {
     uiStage.murderTarget = btn.dataset.id;
     render();
   },
-  'confirm-murder': () => {
-    if (!uiStage.murderTarget) return;
-    resolveMurder(state, uiStage.murderTarget, uiStage.useChoice);
+  'confirm-murder-turn': () => {
+    if (isActingDeceiverTurn(state)) {
+      if (!uiStage.murderTarget) return;
+      recordMurderChoice(state, uiStage.murderTarget, uiStage.useChoice);
+      playTone(220, 0.16);
+    }
+    uiStage.murderTapped = false;
     uiStage.murderTarget = null;
     uiStage.useChoice = false;
-    playTone(220, 0.16);
+    advanceMurderQueue(state);
     persist();
     render();
   },

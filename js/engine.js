@@ -168,22 +168,67 @@ function routeAfterDraw(state) {
   return PHASES.VOTE;
 }
 
-/* ---------- Night Phase / Murder Selection ---------- */
+/* ---------- Night Phase / Murder Selection ----------
+   Every living player takes a turn with the phone during Murder — not just
+   the Deceivers — so who holds the phone never gives away who they are.
+   Exactly one living Deceiver (the "acting" Deceiver, fixed for the whole
+   game once chosen) sees the real target-selection screen on their turn;
+   everyone else — Loyal and non-acting Deceivers alike — sees an identical,
+   content-free "nothing to do" screen. */
 
 function eligibleMurderTargets(state) {
   return livingPlayers(state).filter((p) => p.role !== ROLES.DECEIVER.id);
 }
 
-function deceiversHoldChoiceCard(state) {
-  return livingPlayers(state).some((p) => p.role === ROLES.DECEIVER.id && p.hand.includes('deceivers-choice'));
+function beginMurderPhase(state) {
+  state.pendingQueue = livingPlayers(state).map((p) => p.id);
+  if (!state.actingDeceiverId || !findPlayer(state, state.actingDeceiverId)?.alive) {
+    const deceiver = livingPlayers(state).find((p) => p.role === ROLES.DECEIVER.id);
+    state.actingDeceiverId = deceiver ? deceiver.id : null;
+  }
+  state.pendingMurderChoice = null;
+  state.phase = PHASES.MURDER;
+}
+
+function isActingDeceiverTurn(state) {
+  const player = currentQueuePlayer(state);
+  return !!player && player.id === state.actingDeceiverId;
+}
+
+function actingDeceiverHoldsChoiceCard(state) {
+  const actor = findPlayer(state, state.actingDeceiverId);
+  return !!actor && actor.hand.includes('deceivers-choice');
+}
+
+function recordMurderChoice(state, targetId, useDeceiversChoice) {
+  state.pendingMurderChoice = { targetId, useDeceiversChoice: !!useDeceiversChoice };
+}
+
+/** Advances the per-player murder queue. Returns true once everyone has had
+ *  a turn and the murder has been resolved; false if more turns remain. */
+function advanceMurderQueue(state) {
+  advanceQueue(state);
+  if (state.pendingQueue.length) return false;
+  const choice = state.pendingMurderChoice;
+  if (choice && choice.targetId) {
+    resolveMurder(state, choice.targetId, choice.useDeceiversChoice);
+  } else {
+    // Safety fallback: no valid pick was recorded (should not happen —
+    // the acting Deceiver's confirm button is disabled without a target).
+    state.nightResult = { quiet: true };
+    state.eliminationContext = 'quiet';
+    state.fateDiscard.push(state.currentFateCard);
+    state.phase = PHASES.ELIMINATION;
+  }
+  return true;
 }
 
 function resolveMurder(state, targetId, useDeceiversChoice) {
   const target = findPlayer(state, targetId);
 
   if (useDeceiversChoice) {
-    const holder = livingPlayers(state).find((p) => p.role === ROLES.DECEIVER.id && p.hand.includes('deceivers-choice'));
-    if (holder) {
+    const holder = findPlayer(state, state.actingDeceiverId);
+    if (holder && holder.hand.includes('deceivers-choice')) {
       holder.hand.splice(holder.hand.indexOf('deceivers-choice'), 1);
       state.fortuneDiscard.push('deceivers-choice');
     }
