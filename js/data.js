@@ -76,7 +76,7 @@ const FORTUNE_DECK_DEF = [
 
 /* Fate Deck — one card drawn per round; determines the round's shape. */
 const FATE_DECK_DEF = [
-  { id: 'quiet-night', name: 'Quiet Night', deck: 'fate', type: 'event', symbol: 'card-quiet-night', frame: CARD_FRAMES.event, icon: ICONS.candle, count: 3, effect: 'no-murder', description: 'No murder this round. Proceed to Banishment.' },
+  { id: 'quiet-night', name: 'Quiet Night', deck: 'fate', type: 'event', symbol: 'card-quiet-night', frame: CARD_FRAMES.event, icon: ICONS.candle, count: 3, effect: 'no-murder', description: 'No murder this round. The circle rests.' },
   { id: 'murder', name: 'Murder', deck: 'fate', type: 'event', symbol: 'card-murder', frame: CARD_FRAMES.event, icon: ICONS.skull, count: 5, effect: 'murder-night', description: 'The Deceivers choose a victim tonight.' },
   { id: 'banishment', name: 'Banishment', deck: 'fate', type: 'event', symbol: 'card-banishment', frame: CARD_FRAMES.event, icon: ICONS.vote, count: 4, effect: 'vote-only', description: 'Skip the night. Go straight to the Banishment Vote.' },
 ];

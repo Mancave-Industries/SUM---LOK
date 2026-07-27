@@ -334,22 +334,14 @@ function resolveBanishment(state) {
 
 /* ---------- Continuation after an Elimination Reveal ----------
    Centralizes "what happens after the ceremony" so ui.js only needs to call
-   this once the player taps Continue; it never has to know the round shape. */
+   this once the player taps Continue; it never has to know the round shape.
+   Every context — a Murder night, a Quiet Night, or a Banishment Vote —
+   ends the round the same way: check for a winner, otherwise advance to
+   the next round's own Draw Phase. A Murder is never followed straight by
+   a Banishment Vote (or vice versa) without a fresh round of card-drawing
+   in between; each round has exactly one event. */
 
 function continueAfterElimination(state) {
-  const context = state.eliminationContext;
-
-  if (context === 'night' || context === 'quiet') {
-    const winner = checkWinCondition(state);
-    if (winner) {
-      finalizeGame(state, winner);
-      return PHASES.RESULTS;
-    }
-    beginVotePhase(state, false);
-    return PHASES.VOTE;
-  }
-
-  // context is 'banishment' or 'final'
   const ended = advanceRoundOrEnd(state);
   return ended ? PHASES.RESULTS : PHASES.MAIN;
 }

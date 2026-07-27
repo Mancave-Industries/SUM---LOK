@@ -108,26 +108,35 @@ Two separate decks, both reshuffled from discard when exhausted:
   purpose as an endgame climax rather than a random event.
 
 ### Round Flow
+
+Each round has **exactly one event** — a Murder night, a Quiet Night, or a
+Banishment Vote — and every round starts with its own Draw Phase. A Murder
+is never immediately followed by a Banishment Vote (or vice versa) without a
+fresh round of card-drawing in between; the event that just happened always
+ends the round.
+
 1. **Draw Phase** — each living player (turn order) draws one Fortune card.
-2. **Fate card revealed** for the round: Quiet Night (skip night entirely),
-   Murder (proceed to Night → Murder Selection), or Banishment (skip night,
-   go straight to the vote).
-3. **Night Phase** (Murder rounds only) — ceremonial "pass the phone, close
-   your eyes" transition, then Deceivers privately choose one living,
-   non-Deceiver target via Murder Selection. A Shield card played by the
-   target that round cancels the murder; a Deceiver's Choice card played by
-   the Deceivers cancels one Shield in effect.
-4. **Elimination Reveal** — shows the night's outcome (murdered / protected /
-   quiet night) and the victim's role if applicable.
-5. **Banishment Vote** — every living player privately casts one vote (pass
-   device between voters) for who to banish. A held Dagger card can be played
-   to add +1 weight to that vote. Most votes banished; ties banish no one.
-6. **Elimination Reveal** — banishment outcome and role reveal.
-7. **Win check**: Loyal wins if all Deceivers are banished/murdered out;
-   Deceivers win if remaining Deceivers ≥ remaining Loyal. Otherwise the
-   round counter increments and play loops to step 1, substituting Final
-   Banishment for the normal vote once the living-player threshold is hit.
-8. **Results Screen** — winning side, full role reveal of every player, this
+2. **Fate card revealed** for the round, deciding that round's one event:
+   - **Quiet Night** — no murder. Proceeds straight to an Elimination Reveal
+     announcing nothing happened, then the round ends.
+   - **Murder** — ceremonial "pass the phone" Night transition, then
+     Deceivers privately choose one living, non-Deceiver target via Murder
+     Selection. A Shield card played by the target that round cancels the
+     murder; a Deceiver's Choice card played by the Deceivers cancels one
+     Shield in effect. An Elimination Reveal shows the outcome, then the
+     round ends.
+   - **Banishment** — skips the night entirely. Every living player
+     privately casts one vote (pass device between voters) for who to
+     banish. A held Dagger card can be played to add +1 weight to that
+     vote. Most votes banished; ties banish no one. An Elimination Reveal
+     shows the outcome, then the round ends.
+3. **Win check** (after every event's Elimination Reveal): Loyal wins if
+   all Deceivers are banished/murdered out; Deceivers win if remaining
+   Deceivers ≥ remaining Loyal. Otherwise the round counter increments and
+   play loops back to a fresh Draw Phase, substituting a forced Final
+   Banishment vote for the normal Fate-card draw once the living-player
+   threshold is hit.
+4. **Results Screen** — winning side, full role reveal of every player, this
    game's Prize Pot payout, series standings, and either "Next Game" or
    "New Series" depending on whether the series is complete.
 
