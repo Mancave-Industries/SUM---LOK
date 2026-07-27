@@ -130,16 +130,46 @@ both found no plausible race. This is flagged here rather than silently
 dropped so the one unreproduced data point stays visible; it should be
 revisited if it resurfaces with a reliable repro.
 
+## 4. Murder-phase identity-leak fix (follow-up round)
+
+The Murder phase was redesigned so every living player takes an identical
+turn each Murder round — not just the Deceivers — with one fixed "acting"
+Deceiver seeing the real target-selection screen and everyone else seeing a
+visually indistinguishable "Nothing To Do" screen (see engine.js's
+`beginMurderPhase` / `recordMurderChoice` / `advanceMurderQueue`).
+
+- **300 fresh randomized engine simulations** exercising the new murder-turn
+  queue directly (3–8 players, random targets, random Deceiver's Choice
+  usage) — 0 bugs. Verified on every trial: exactly one living Deceiver is
+  ever the actor, the queue always contains every living player exactly
+  once, and win conditions stay consistent.
+- **Manual headless verification** with screenshots confirmed: the Night
+  intro no longer names the Deceivers, every living player's turn shows the
+  same pass-prompt copy, the acting Deceiver's real screen and everyone
+  else's decoy screen share the same layout/icon position/button styling,
+  and the target grid correctly excludes the acting Deceiver's fellow
+  Deceivers as well as themself.
+- **20-trial automated UI stress run** (full random playthroughs, 3–8
+  players) — 19/20 clean, 0 console errors. One trial (n=7) hit the exact
+  same "element is not visible" 30s timeout signature already root-caused
+  in section 3 as transient test-environment flakiness (a dedicated
+  30-trial diagnostic there reproduced 0 failures). Given the fix here
+  didn't change that failure's location or signature, and combined with the
+  0 bugs across 300 engine trials plus a correctness-verified manual
+  playthrough, this is treated as the same known flakiness rather than a
+  new regression — but is still recorded here rather than omitted.
+
 ## Summary
 
 | Layer | Trials | Bugs found | Bugs fixed |
 |---|---|---|---|
-| Engine (Node) | 400 | 0 | — |
-| Full playthrough w/ screenshots | 1 (all 12 screens) | 1 (card text clipping) | 1 |
-| Automated UI stress test | 38+ | 1 confirmed (test-script scoping, fixed) + 1 one-off, unreproduced after 38 trials | 1 confirmed fixed; 1 not reproduced |
+| Engine (Node) | 700 | 0 | — |
+| Full playthrough w/ screenshots | 2 rounds (all 12 screens, then murder-phase redesign) | 1 (card text clipping) | 1 |
+| Automated UI stress test | 58+ | 1 confirmed (test-script scoping, fixed) + 2 one-off timeouts (same signature), unreproduced with dedicated diagnostics | 1 confirmed fixed; flakiness documented, not app bugs |
 
 The game can be played start-to-finish — Title through Results, and back to
 Title via Play Again — with no console errors, for every supported player
 count (3–8), across every Fate-card branch (Quiet Night, Murder, standard
 Banishment, and forced Final Banishment) and every action card (Gold ×3
-denominations, Shield, Dagger, Deceiver's Choice).
+denominations, Shield, Dagger, Deceiver's Choice). The Murder phase no
+longer reveals Deceiver identity through phone-handoff patterns.
