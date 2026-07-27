@@ -159,17 +159,44 @@ visually indistinguishable "Nothing To Do" screen (see engine.js's
   playthrough, this is treated as the same known flakiness rather than a
   new regression — but is still recorded here rather than omitted.
 
+## 5. Series play and Prize Pot payout (follow-up round)
+
+Added: hiding the Fate card preview on the Main hub, a configurable series
+length with cross-game points, and Prize Pot payout on every game win.
+
+- **100 fresh randomized engine simulations** of full series (1–4 games per
+  series, 3–8 players, random murder/vote/shield/dagger choices) — 0 bugs.
+  Verified on every game within every series: `seriesGame`/`seriesLength`
+  stay consistent, `seriesScores` has exactly one entry per roster name,
+  `prizePot` is exactly 0 immediately after every payout and at the start of
+  every subsequent game, and every payout recipient is confirmed to be an
+  alive player on the winning side (no eliminated player or off-side player
+  ever receives points).
+- **Manual headless verification** of a real 4-player, 3-game series end to
+  end: confirmed the Setup screen's series stepper renders and increments
+  correctly; the Main hub no longer displays any Fate card name or
+  description (verified by reading the rendered screen's full text content,
+  not just visually); a Loyal win correctly split the pot evenly among the
+  3 surviving Loyal players (6 ÷ 3 = 2 each); a Deceiver win correctly gave
+  the sole surviving Deceiver the entire pot (14); the series standings
+  leaderboard accumulated correctly across games; and the final game showed
+  "The series is complete" with a "New Series" button instead of
+  "Next Game". Zero console errors throughout.
+
 ## Summary
 
 | Layer | Trials | Bugs found | Bugs fixed |
 |---|---|---|---|
-| Engine (Node) | 700 | 0 | — |
-| Full playthrough w/ screenshots | 2 rounds (all 12 screens, then murder-phase redesign) | 1 (card text clipping) | 1 |
+| Engine (Node) | 800 | 0 | — |
+| Full playthrough w/ screenshots | 3 rounds (all 12 screens; murder-phase redesign; series/payout) | 1 (card text clipping) | 1 |
 | Automated UI stress test | 58+ | 1 confirmed (test-script scoping, fixed) + 2 one-off timeouts (same signature), unreproduced with dedicated diagnostics | 1 confirmed fixed; flakiness documented, not app bugs |
 
 The game can be played start-to-finish — Title through Results, and back to
-Title via Play Again — with no console errors, for every supported player
-count (3–8), across every Fate-card branch (Quiet Night, Murder, standard
-Banishment, and forced Final Banishment) and every action card (Gold ×3
-denominations, Shield, Dagger, Deceiver's Choice). The Murder phase no
-longer reveals Deceiver identity through phone-handoff patterns.
+Title via Play Again or Next Game — with no console errors, for every
+supported player count (3–8), across every Fate-card branch (Quiet Night,
+Murder, standard Banishment, and forced Final Banishment), every action card
+(Gold ×3 denominations, Shield, Dagger, Deceiver's Choice), and any series
+length from 1 to 20 games. The Murder phase no longer reveals Deceiver
+identity through phone-handoff patterns, the Fate card is no longer spoiled
+before it happens, and the Prize Pot is paid out to the winning side's
+survivors every game.

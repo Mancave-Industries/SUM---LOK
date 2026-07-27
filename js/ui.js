@@ -101,7 +101,7 @@ UI.renderTitle = function renderTitle(hasSaved) {
 
 /* ---------- 2. Setup ---------- */
 
-UI.renderSetup = function renderSetup(names) {
+UI.renderSetup = function renderSetup(names, seriesLength) {
   const allValid = names.every((n) => n.trim().length > 0);
   const deceivers = deceiverCountForPlayers(names.length);
   screen('setup').innerHTML = `
@@ -117,6 +117,18 @@ UI.renderSetup = function renderSetup(names) {
     </div>
     ${names.length < CONFIG.maxPlayers ? `<button class="add-player-btn" data-action="add-player">${iconUse(ICONS.hoodedFigure, 'icon-sm')} Add Player</button>` : ''}
     <p class="setup-hint">${names.length} players — ${deceivers} Deceiver${deceivers > 1 ? 's' : ''} will be chosen in secret.</p>
+    <div class="panel" style="margin-top:6px;">
+      <div class="panel-title">How Many Games?</div>
+      <div style="display:flex; align-items:center; justify-content:center; gap:20px;">
+        <button class="icon-btn" data-action="dec-series-length" aria-label="Fewer games" style="border:1.5px solid var(--gold-700); font-size:22px; color:var(--gold-400); line-height:1;">−</button>
+        <div style="text-align:center;">
+          <div class="prize-pot-value" style="font-size:26px;">${seriesLength}</div>
+          <div class="prize-pot-label">${seriesLength > 1 ? 'games in the series' : 'game'}</div>
+        </div>
+        <button class="icon-btn" data-action="inc-series-length" aria-label="More games" style="border:1.5px solid var(--gold-700); font-size:22px; color:var(--gold-400); line-height:1;">+</button>
+      </div>
+      ${seriesLength > 1 ? '<p class="small-note" style="margin-top:8px;">Points carry across every game — the Prize Pot is paid out to the winning side each game.</p>' : ''}
+    </div>
     <div class="spacer"></div>
     <button class="btn btn-primary btn-block" data-action="start-game" ${allValid ? '' : 'disabled'}>Seal The Roles &amp; Begin</button>`;
 };
@@ -157,10 +169,10 @@ UI.renderReveal = function renderReveal(state, tapped) {
 
 UI.renderMain = function renderMain(state) {
   const living = livingPlayers(state);
-  const fateDef = cardDefById(state.currentFateCard);
+  const seriesNote = state.seriesLength > 1 ? `Game ${state.seriesGame} of ${state.seriesLength} — ` : '';
   screen('main').innerHTML = `
     <div class="screen-title-row">Round ${state.round}</div>
-    <div class="screen-subtitle">${living.length} remain in the circle.</div>
+    <div class="screen-subtitle">${seriesNote}${living.length} remain in the circle.</div>
     <div class="prize-pot-panel">
       ${iconUse(ICONS.coin, 'icon icon-lg')}
       <div><div class="prize-pot-value">${state.prizePot}</div><div class="prize-pot-label">Prize Pot</div></div>
@@ -176,13 +188,11 @@ UI.renderMain = function renderMain(state) {
         </div>`).join('')}
     </div>
     <div class="spacer"></div>
-    <div class="panel">
-      <div class="panel-title">${state.finalBanishmentActive ? 'The Final Banishment Looms' : "This Round's Fate"}</div>
-      <div style="display:flex;align-items:center;gap:12px;">
-        ${iconUse(fateDef.icon, 'icon icon-lg')}
-        <div><strong>${fateDef.name}</strong><br><span class="small-note" style="text-align:left;display:block;">${fateDef.description}</span></div>
-      </div>
-    </div>
+    ${state.finalBanishmentActive ? `
+      <div class="panel">
+        <div class="panel-title">The Final Banishment Looms</div>
+        <p class="small-note" style="text-align:left;">Few enough remain that this round's Banishment Vote will decide the game.</p>
+      </div>` : ''}
     <button class="btn btn-primary btn-block" data-action="begin-draw" style="margin-top:14px;">Begin Draw Phase</button>`;
 };
 
@@ -435,6 +445,16 @@ UI.renderElimination = function renderElimination(state) {
 
 UI.renderResults = function renderResults(state) {
   const winnerRole = state.winner === ROLES.DECEIVER.id ? ROLES.DECEIVER : ROLES.LOYAL;
+  const payout = state.gamePayout || { pot: 0, share: 0, recipients: [] };
+  const isLastGame = state.seriesGame >= state.seriesLength;
+  const seriesActive = state.seriesLength > 1;
+
+  const payoutLine = payout.recipients.length
+    ? `<strong>${payout.recipients.map(escapeHtml).join(', ')}</strong> ${payout.recipients.length > 1 ? 'each get' : 'gets'} <strong>${payout.share} gold</strong>${winnerRole === ROLES.LOYAL ? ' — their share of the pot.' : ' — the whole pot, Deceivers take all.'}`
+    : 'No one survived to claim the pot.';
+
+  const leaderboard = Object.entries(state.seriesScores).sort((a, b) => b[1] - a[1]);
+
   screen('results').innerHTML = `
     <div class="winner-banner scale-in">
       <h2>${winnerRole === ROLES.DECEIVER ? 'The Deceivers Win' : 'The Loyal Prevail'}</h2>
@@ -444,9 +464,10 @@ UI.renderResults = function renderResults(state) {
     </div>
     <div class="prize-pot-panel">
       ${iconUse(ICONS.coin, 'icon icon-lg')}
-      <div><div class="prize-pot-value">${state.prizePot}</div><div class="prize-pot-label">Final Prize Pot</div></div>
+      <div><div class="prize-pot-value">${payout.pot}</div><div class="prize-pot-label">This Game's Prize Pot</div></div>
       ${iconUse(ICONS.coin, 'icon icon-lg')}
     </div>
+    <p class="small-note" style="margin-top:10px;">${payoutLine}</p>
     <div class="panel-title" style="margin-top:16px;">Every Role Revealed</div>
     <div class="role-reveal-list">
       ${state.players.map((p) => `
@@ -458,8 +479,20 @@ UI.renderResults = function renderResults(state) {
           </div>
         </div>`).join('')}
     </div>
+    ${seriesActive ? `
+      <div class="panel-title" style="margin-top:16px;">Series Standings — Game ${state.seriesGame} of ${state.seriesLength}</div>
+      <div class="role-reveal-list">
+        ${leaderboard.map(([name, score], i) => `
+          <div class="role-reveal-row" style="border-left-color:${i === 0 ? 'var(--gold-400)' : 'var(--gold-700)'};">
+            <div class="player-avatar">${initials(name)}</div>
+            <div style="flex:1;">${escapeHtml(name)}</div>
+            <strong style="color:var(--gold-300);">${score}</strong>
+          </div>`).join('')}
+      </div>` : ''}
     <div class="spacer"></div>
-    <button class="btn btn-primary btn-block" data-action="play-again">Play Again</button>`;
+    ${isLastGame
+      ? `${seriesActive ? '<p class="small-note" style="margin-bottom:10px;">The series is complete.</p>' : ''}<button class="btn btn-primary btn-block" data-action="play-again">${seriesActive ? 'New Series' : 'Play Again'}</button>`
+      : `<button class="btn btn-primary btn-block" data-action="next-game-in-series">Next Game (${state.seriesGame + 1} of ${state.seriesLength})</button>`}`;
 };
 
 /* ---------- Modal (Help / Settings) ---------- */
@@ -483,6 +516,8 @@ UI.helpContent = function helpContent() {
     <div class="rule-row">${iconUse(ICONS.skull, 'icon')}<span>On a Murder round, the Deceivers pick a victim in secret.</span></div>
     <div class="rule-row">${iconUse(ICONS.vote, 'icon')}<span>Every living player votes to banish a suspect.</span></div>
     <p>The Loyal win when every Deceiver is gone. The Deceivers win once they equal or outnumber the Loyal.</p>
+    <p>Whoever wins splits that game's Prize Pot among themselves — if the Loyal win, the surviving Loyal split it; if the Deceivers win, the surviving Deceivers take the whole thing. Anyone already eliminated gets nothing.</p>
+    <p>Play a series of several games back to back and points carry across every game — set how many on the setup screen.</p>
     <p>Pass the phone honestly and don't peek — the ceremony depends on trust.</p>`;
 };
 
