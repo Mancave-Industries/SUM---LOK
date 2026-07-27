@@ -13,6 +13,10 @@ function log(state, text) {
 
 function setupNewGame(state, playerNames) {
   state.players = playerNames.map((name, i) => createPlayer(`p${i + 1}_${Date.now()}_${i}`, name.trim()));
+  playerNames.forEach((name) => {
+    const key = name.trim();
+    if (!(key in state.seriesScores)) state.seriesScores[key] = 0;
+  });
 
   const deceiverCount = deceiverCountForPlayers(state.players.length);
   const shuffledIndexes = shuffle(state.players.map((_, i) => i)).slice(0, deceiverCount);
@@ -37,6 +41,21 @@ function setupNewGame(state, playerNames) {
   state.phase = PHASES.REVEAL;
   log(state, 'The circle gathers. Roles are sealed.');
   return state;
+}
+
+/* ---------- Series (several games back to back, points carried across) ---------- */
+
+function startNewSeries(state, playerNames, seriesLength) {
+  state.seriesLength = Math.max(1, Math.min(20, seriesLength | 0));
+  state.seriesGame = 1;
+  state.seriesScores = {};
+  state.rosterNames = playerNames.map((n) => n.trim());
+  setupNewGame(state, state.rosterNames);
+}
+
+function startNextGameInSeries(state) {
+  state.seriesGame += 1;
+  setupNewGame(state, state.rosterNames);
 }
 
 function fellowDeceivers(state, playerId) {
@@ -323,9 +342,7 @@ function continueAfterElimination(state) {
   if (context === 'night' || context === 'quiet') {
     const winner = checkWinCondition(state);
     if (winner) {
-      state.winner = winner;
-      state.phase = PHASES.RESULTS;
-      log(state, winner === ROLES.LOYAL.id ? 'Every Deceiver has fallen. The Loyal prevail.' : 'The Deceivers now rule the circle.');
+      finalizeGame(state, winner);
       return PHASES.RESULTS;
     }
     beginVotePhase(state, false);
@@ -348,12 +365,33 @@ function checkWinCondition(state) {
   return null;
 }
 
+/* Loyal winners split the pot among whoever is still standing; Deceiver
+   winners take the whole pot among whichever Deceivers are still standing.
+   Either way it's divided only among survivors on the winning side — no one
+   who was banished or murdered earlier shares in it. The pot is spent once
+   paid out and starts rebuilding from zero next game. */
+function payoutPrizePot(state, winner) {
+  const pot = state.prizePot;
+  const survivors = livingPlayers(state).filter((p) => p.role === winner);
+  const share = survivors.length ? Math.floor(pot / survivors.length) : 0;
+  survivors.forEach((p) => {
+    state.seriesScores[p.name] = (state.seriesScores[p.name] || 0) + share;
+  });
+  state.prizePot = 0;
+  return { winner, pot, share, recipients: survivors.map((p) => p.name) };
+}
+
+function finalizeGame(state, winner) {
+  state.winner = winner;
+  state.gamePayout = payoutPrizePot(state, winner);
+  state.phase = PHASES.RESULTS;
+  log(state, winner === ROLES.LOYAL.id ? 'Every Deceiver has fallen. The Loyal prevail.' : 'The Deceivers now rule the circle.');
+}
+
 function advanceRoundOrEnd(state) {
   const winner = checkWinCondition(state);
   if (winner) {
-    state.winner = winner;
-    state.phase = PHASES.RESULTS;
-    log(state, winner === ROLES.LOYAL.id ? 'Every Deceiver has fallen. The Loyal prevail.' : 'The Deceivers now rule the circle.');
+    finalizeGame(state, winner);
     return true;
   }
   state.round += 1;

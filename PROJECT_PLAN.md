@@ -127,8 +127,43 @@ Two separate decks, both reshuffled from discard when exhausted:
    Deceivers win if remaining Deceivers ≥ remaining Loyal. Otherwise the
    round counter increments and play loops to step 1, substituting Final
    Banishment for the normal vote once the living-player threshold is hit.
-8. **Results Screen** — winning side, full role reveal of every player, final
-   Prize Pot total, Play Again (full reset).
+8. **Results Screen** — winning side, full role reveal of every player, this
+   game's Prize Pot payout, series standings, and either "Next Game" or
+   "New Series" depending on whether the series is complete.
+
+### Fate is not revealed in advance
+
+The Main hub no longer previews which Fate card (Quiet Night / Murder /
+Banishment) is active for the round before the Draw Phase begins — only
+whether the round is a forced Final Banishment (a structural fact derived
+from the living-player count, not a hidden card, so naming it isn't a
+spoiler). The actual branch a round takes is revealed only as it happens,
+through the Night/Murder or Banishment Vote screens themselves, to keep
+every round suspenseful rather than telegraphed.
+
+### Series play and the Prize Pot economy
+
+Several games can be played back to back as a **series**, chosen as a count
+on the Setup screen (default 1). The same named roster plays every game in
+the series; roles are reshuffled fresh each game. `state.seriesScores`
+(keyed by player name) persists across games within a series and is never
+reset until a brand new series is started from the Title screen.
+
+The Prize Pot itself does **not** carry over between games — it resets to 0
+at the start of each game and builds fresh from that game's Gold draws. When
+a game ends, its pot is paid out immediately and split evenly among the
+survivors on the winning side only (anyone already eliminated, on either
+side, gets nothing that game):
+- **Loyal win** — the pot is split among whichever Loyal players are still
+  alive.
+- **Deceiver win** — the pot is split among whichever Deceivers are still
+  alive (framed as "the whole pot" since it isn't shared with Loyal at all,
+  unlike a Loyal win where it's necessarily divided among a larger group).
+
+This assumption — splitting evenly among winning-side survivors rather than,
+say, giving every survivor the full pot amount — was chosen as the simplest
+economy consistent with "share of pot" (Loyal) vs "whole pot" (Deceiver)
+that avoids uncapped point inflation.
 
 ### Why this shape
 It gives every required card a real mechanical purpose (gold → pot; dagger →

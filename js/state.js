@@ -45,6 +45,13 @@ function createInitialState() {
     finalBanishmentActive: false,
     history: [],
     winner: null,
+    gamePayout: null,
+    // Series: several games played back to back by the same roster, with
+    // points carried across games and the Prize Pot paid out each game.
+    seriesLength: 1,
+    seriesGame: 1,
+    seriesScores: {},
+    rosterNames: [],
     settings: { sound: false },
   };
 }

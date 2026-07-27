@@ -39,6 +39,7 @@ function playTone(freq, dur) {
 }
 
 let setupNames = Array(CONFIG.minPlayers).fill('');
+let seriesLength = 1;
 
 function showScreen(phaseName) {
   document.querySelectorAll('.screen').forEach((s) => s.classList.remove('active'));
@@ -55,7 +56,7 @@ function render() {
       UI.renderTitle(hasSavedGame());
       break;
     case PHASES.SETUP:
-      UI.renderSetup(setupNames);
+      UI.renderSetup(setupNames, seriesLength);
       break;
     case PHASES.REVEAL:
       UI.renderReveal(state, uiStage.revealTapped);
@@ -109,6 +110,7 @@ const actions = {
   'new-game': () => {
     state = createInitialState();
     setupNames = Array(CONFIG.minPlayers).fill('');
+    seriesLength = 1;
     state.phase = PHASES.SETUP;
     render();
   },
@@ -120,16 +122,24 @@ const actions = {
   'open-help': () => UI.showModal('How To Play', UI.helpContent()),
   'add-player': () => {
     if (setupNames.length < CONFIG.maxPlayers) setupNames.push('');
-    UI.renderSetup(setupNames);
+    UI.renderSetup(setupNames, seriesLength);
   },
   'remove-player': (btn) => {
     const i = Number(btn.dataset.index);
     setupNames.splice(i, 1);
-    UI.renderSetup(setupNames);
+    UI.renderSetup(setupNames, seriesLength);
+  },
+  'inc-series-length': () => {
+    seriesLength = Math.min(20, seriesLength + 1);
+    UI.renderSetup(setupNames, seriesLength);
+  },
+  'dec-series-length': () => {
+    seriesLength = Math.max(1, seriesLength - 1);
+    UI.renderSetup(setupNames, seriesLength);
   },
   'start-game': () => {
     if (!setupNames.every((n) => n.trim().length > 0)) return;
-    setupNewGame(state, setupNames);
+    startNewSeries(state, setupNames, seriesLength);
     uiStage.revealTapped = false;
     persist();
     render();
@@ -231,6 +241,12 @@ const actions = {
     uiStage.voteSelected = null;
     uiStage.useDagger = false;
     if (done) resolveBanishment(state);
+    persist();
+    render();
+  },
+  'next-game-in-series': () => {
+    startNextGameInSeries(state);
+    uiStage.revealTapped = false;
     persist();
     render();
   },
