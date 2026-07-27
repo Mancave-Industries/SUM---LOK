@@ -69,8 +69,8 @@ const FORTUNE_DECK_DEF = [
   { id: 'gold-one', name: 'One Gold', deck: 'fortune', type: 'gold', value: 1, symbol: 'card-gold-one', frame: CARD_FRAMES.gold, icon: ICONS.coin, count: 6, description: 'Adds 1 gold to the Prize Pot.' },
   { id: 'gold-three', name: 'Three Gold', deck: 'fortune', type: 'gold', value: 3, symbol: 'card-gold-three', frame: CARD_FRAMES.gold, icon: ICONS.coin, count: 4, description: 'Adds 3 gold to the Prize Pot.' },
   { id: 'gold-five', name: 'Five Gold', deck: 'fortune', type: 'gold', value: 5, symbol: 'card-gold-five', frame: CARD_FRAMES.gold, icon: ICONS.coin, count: 2, description: 'Adds 5 gold to the Prize Pot.' },
-  { id: 'dagger', name: 'Dagger', deck: 'fortune', type: 'action', symbol: 'card-dagger', frame: CARD_FRAMES.action, icon: ICONS.dagger, count: 4, effect: 'vote-weight', description: 'Play during Banishment to add +1 weight to your vote.' },
-  { id: 'shield', name: 'Shield', deck: 'fortune', type: 'action', symbol: 'card-shield', frame: CARD_FRAMES.protection, icon: ICONS.shield, count: 4, effect: 'protect', description: 'Play before Night to protect yourself from Murder this round.' },
+  { id: 'dagger', name: 'Dagger', deck: 'fortune', type: 'action', symbol: 'card-dagger', frame: CARD_FRAMES.action, icon: ICONS.dagger, count: 2, effect: 'vote-weight', description: 'Play during Banishment to add +1 weight to your vote.' },
+  { id: 'shield', name: 'Shield', deck: 'fortune', type: 'action', symbol: 'card-shield', frame: CARD_FRAMES.protection, icon: ICONS.shield, count: 2, effect: 'protect', description: 'Play before Night to protect yourself from Murder this round.' },
   { id: 'deceivers-choice', name: "Deceiver's Choice", deck: 'fortune', type: 'action', symbol: 'card-deceivers-choice', frame: CARD_FRAMES.role, icon: ICONS.hoodedFigure, count: 2, effect: 'counter-shield', description: 'Deceivers only: play at Night to cancel one Shield in effect.' },
 ];
 

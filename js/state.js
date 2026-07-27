@@ -40,6 +40,8 @@ function createInitialState() {
     nightResult: null,
     voteResult: null,
     eliminationContext: null,
+    actingDeceiverId: null,
+    pendingMurderChoice: null,
     finalBanishmentActive: false,
     history: [],
     winner: null,

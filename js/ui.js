@@ -250,17 +250,43 @@ UI.renderNight = function renderNight() {
     <div class="reveal-stage fade-in">
       ${iconUse(ICONS.candle, 'icon icon-lg flicker')}
       <div class="pass-overlay-eyebrow">Night Falls</div>
-      <h2 class="reveal-headline">Pass the phone to the Deceivers now</h2>
-      <p class="reveal-body">Everyone else, look away or close your eyes — only the Deceivers should see the next screen. Once they have the phone, they tap below.</p>
-      <button class="btn btn-danger btn-block" data-action="proceed-to-murder">The Deceivers Are Ready</button>
+      <h2 class="reveal-headline">The phone will now pass to every player</h2>
+      <p class="reveal-body">One at a time, in turn. Almost everyone will see an empty screen with nothing to do — that's normal, so it never gives anything away. Stay silent and don't react either way.</p>
+      <button class="btn btn-danger btn-block" data-action="proceed-to-murder">Begin</button>
     </div>`;
 };
 
-/* ---------- 8. Murder Selection ---------- */
+/* ---------- 8. Murder Selection (every player takes a turn) ---------- */
 
-UI.renderMurder = function renderMurder(state, selectedId, useChoice) {
+UI.renderMurder = function renderMurder(state, tapped, selectedId, useChoice) {
+  const player = currentQueuePlayer(state);
+  if (!player) return;
+
+  if (!tapped) {
+    screen('murder').innerHTML = passPrompt({
+      icon: ICONS.candle,
+      name: player.name,
+      instruction: `Hand the phone to <strong>${escapeHtml(player.name)}</strong> now. No talking. Once ready, they tap below.`,
+      action: 'tap-murder-turn',
+      btnLabel: 'My Turn',
+      btnClass: 'btn-danger',
+    });
+    return;
+  }
+
+  if (!isActingDeceiverTurn(state)) {
+    screen('murder').innerHTML = `
+      <div class="reveal-stage">
+        ${iconUse(ICONS.candle, 'icon icon-lg flicker')}
+        <h2 class="reveal-headline">Nothing To Do</h2>
+        <p class="reveal-body">There's no task for you this turn. Hide the screen and pass the phone to the next player.</p>
+        <button class="btn btn-confirm btn-block" data-action="confirm-murder-turn">Continue</button>
+      </div>`;
+    return;
+  }
+
   const targets = eligibleMurderTargets(state);
-  const canUseChoice = deceiversHoldChoiceCard(state);
+  const canUseChoice = actingDeceiverHoldsChoiceCard(state);
   screen('murder').innerHTML = `
     <div class="screen-title-row">Choose A Victim</div>
     <div class="screen-subtitle">Deceivers, select tonight's target in silence.</div>
@@ -276,9 +302,9 @@ UI.renderMurder = function renderMurder(state, selectedId, useChoice) {
         <input type="checkbox" id="dcToggle" ${useChoice ? 'checked' : ''}>
         <span>Play Deceiver's Choice — cancel a Shield in play</span>
       </label>` : ''}
-    <p class="small-note" style="margin-top:14px;">Once confirmed, pass the phone back to the table — everyone can look again.</p>
+    <p class="small-note" style="margin-top:14px;">Once confirmed, hide the screen and pass the phone to the next player like everyone else.</p>
     <div class="spacer"></div>
-    <button class="btn btn-danger btn-block" data-action="confirm-murder" ${selectedId ? '' : 'disabled'}>Confirm Target</button>`;
+    <button class="btn btn-danger btn-block" data-action="confirm-murder-turn" ${selectedId ? '' : 'disabled'}>Confirm Target</button>`;
 
   if (canUseChoice) {
     document.getElementById('dcToggle').addEventListener('change', (e) => {
@@ -339,7 +365,7 @@ UI.renderVote = function renderVote(state, tapped, selectedId, useDagger) {
 
 UI.renderElimination = function renderElimination(state) {
   const context = state.eliminationContext;
-  const passBackNote = '<p class="small-note" style="margin-bottom:2px;">Everyone can look now — pass the phone around so all can see.</p>';
+  const passBackNote = '<p class="small-note" style="margin-bottom:2px;">Gather around — time for everyone to see what happened.</p>';
   let body = '';
 
   if (context === 'quiet') {
