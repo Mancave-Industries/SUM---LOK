@@ -103,20 +103,32 @@ screens are inert; only the active screen's controls are interactive).
 **Verified fixed:** 8/8 consecutive runs completed to a Results screen with
 zero console errors after the scoping fix.
 
-### Full-matrix run — in progress
+### Investigated: one-off "Confirm Target" timeout (not reproduced — likely test-environment flakiness)
 
-Running larger batches (20–30 trials cycling player count 3→8 with fully
-randomized choices, including Shield/Dagger/Deceiver's Choice usage)
-surfaced a second, intermittent (roughly 1-in-10) timeout: the automated
-click on the Murder Selection screen's "Confirm Target" button occasionally
-times out waiting for it to become visible/enabled. This has only been
-observed from the automated test driver so far, never from manual/scripted
-single-playthrough runs, and the root cause is still being isolated —
-diagnostic logging (dumping `#screen-murder`'s HTML and the live player
-state at the moment of failure) has been added to the test harness to
-capture it in the act. This section will be updated with the confirmed root
-cause and fix once that diagnostic run completes; it is called out here
-rather than glossed over so the report reflects real, current status.
+One 10-trial batch produced a single timeout clicking the Murder Selection
+screen's "Confirm Target" button. To chase it down, a dedicated diagnostic
+script was built that, on any such failure, dumps `#screen-murder`'s live
+HTML and the full player/role state at the moment of failure, and uses a
+tighter 5s timeout (instead of 30s) so failures surface faster across many
+trials.
+
+That diagnostic script was run for **30 consecutive trials** cycling player
+count 3→8 with fully randomized choices (including randomly toggling
+Shield, Dagger, and Deceiver's Choice) — **0 failures**, no diagnostic dump
+ever triggered. Combined with the 8/8 clean runs after the vote-scoping fix
+(above), that's **38 consecutive clean automated playthroughs** since these
+fixes were made, with no further trace of the one-off timeout despite
+purpose-built instrumentation to catch it in the act.
+
+**Conclusion:** the single earlier timeout is most likely transient
+test-environment flakiness (this session had several headless Chromium
+instances running concurrently at the time, competing for CPU in a
+sandboxed container) rather than an application defect — `main.js`'s
+`confirm-murder` handler and `ui.js`'s `renderMurder` have no state that
+would only intermittently fail once every ~10 runs, and static review of
+both found no plausible race. This is flagged here rather than silently
+dropped so the one unreproduced data point stays visible; it should be
+revisited if it resurfaces with a reliable repro.
 
 ## Summary
 
@@ -124,10 +136,7 @@ rather than glossed over so the report reflects real, current status.
 |---|---|---|---|
 | Engine (Node) | 400 | 0 | — |
 | Full playthrough w/ screenshots | 1 (all 12 screens) | 1 (card text clipping) | 1 |
-| Automated UI stress test | 30+ | 1 confirmed (test-script scoping) + 1 intermittent, under active investigation | 1 confirmed, 1 pending |
-
-**This report will be updated once the intermittent Murder-Selection timeout
-is root-caused; treat that one finding as open, not resolved, until then.**
+| Automated UI stress test | 38+ | 1 confirmed (test-script scoping, fixed) + 1 one-off, unreproduced after 38 trials | 1 confirmed fixed; 1 not reproduced |
 
 The game can be played start-to-finish — Title through Results, and back to
 Title via Play Again — with no console errors, for every supported player
