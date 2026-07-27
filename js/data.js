@@ -59,9 +59,8 @@ const ROLES = {
  * Deceiver count scales with living-at-start player count.
  */
 function deceiverCountForPlayers(playerCount) {
-  if (playerCount <= 4) return 1;
-  if (playerCount <= 6) return 2;
-  return 3;
+  if (playerCount <= 6) return 1;
+  return 2;
 }
 
 /* Fortune Deck — drawn one per living player each Draw Phase.

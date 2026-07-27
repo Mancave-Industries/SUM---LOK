@@ -89,8 +89,8 @@ assumptions rather than pause for questions:
 
 ### Roles
 - 3–8 players (local pass-and-play, one shared phone).
-- Deceiver count scales with player count: 3–4 players → 1 Deceiver; 5–6 → 2;
-  7–8 → 3. Remaining players are Loyal.
+- Deceiver count scales with player count: 3–6 players → 1 Deceiver; 7–8 → 2.
+  Remaining players are Loyal.
 - During private role reveal, a Deceiver also privately sees who their fellow
   Deceivers are (if more than one); Loyal players see only their own role.
 
