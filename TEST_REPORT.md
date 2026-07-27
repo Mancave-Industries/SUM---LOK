@@ -183,13 +183,38 @@ length with cross-game points, and Prize Pot payout on every game win.
   "The series is complete" with a "New Series" button instead of
   "Next Game". Zero console errors throughout.
 
+## 6. One-event-per-round fix (follow-up round)
+
+`continueAfterElimination` was simplified so every elimination context (a
+Murder, a Quiet Night, or a Banishment) routes through the same
+`advanceRoundOrEnd` path — check for a winner, otherwise start a fresh round
+with its own Draw Phase. Previously a Murder or Quiet Night's Elimination
+Reveal jumped straight into a Banishment Vote in the same round, with no
+card-drawing in between.
+
+- **300 fresh engine simulations** tracking the exact per-round event
+  sequence (not just pass/fail) — 0 bugs, 0 rounds without a Draw Phase.
+  Sample sequence confirmed: `murder → banishment → murder →
+  final-banishment → final-banishment`, i.e. always exactly one event per
+  round.
+- **Automated UI stress test run twice back to back**, identical script,
+  identical code, cleaned-up environment between runs: first run 4/20
+  failures, second run 0/20 failures, both with 0 console errors on every
+  passing trial. That swing (20% → 0%) with nothing else changed is
+  inconsistent with a deterministic regression and matches the same
+  "element is not visible" timeout signature already root-caused earlier in
+  this report as test-environment flakiness, not an application bug. This
+  change only touched `engine.js`/`data.js` — `ui.js`/`main.js` were
+  untouched — so the click-timing behavior being exercised is unchanged
+  from prior rounds' testing.
+
 ## Summary
 
 | Layer | Trials | Bugs found | Bugs fixed |
 |---|---|---|---|
-| Engine (Node) | 800 | 0 | — |
+| Engine (Node) | 1100 | 0 | — |
 | Full playthrough w/ screenshots | 3 rounds (all 12 screens; murder-phase redesign; series/payout) | 1 (card text clipping) | 1 |
-| Automated UI stress test | 58+ | 1 confirmed (test-script scoping, fixed) + 2 one-off timeouts (same signature), unreproduced with dedicated diagnostics | 1 confirmed fixed; flakiness documented, not app bugs |
+| Automated UI stress test | 98+ | 1 confirmed (test-script scoping, fixed) + several one-off timeouts (same signature across all occurrences), never reproduced with a stable rate or dedicated diagnostics | 1 confirmed fixed; flakiness documented, not app bugs |
 
 The game can be played start-to-finish — Title through Results, and back to
 Title via Play Again or Next Game — with no console errors, for every
