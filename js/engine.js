@@ -26,7 +26,7 @@ function setupNewGame(state, playerNames) {
 
   state.fortuneDeck = buildDeck(FORTUNE_DECK_DEF);
   state.fortuneDiscard = [];
-  state.fateDeck = buildDeck(FATE_DECK_DEF);
+  state.fateDeck = keepBanishmentOffTop(buildDeck(FATE_DECK_DEF));
   state.fateDiscard = [];
   state.prizePot = 0;
   state.round = 1;
@@ -100,6 +100,37 @@ function drawFrom(state, deckKey, discardKey, fallbackDefs) {
   return state[deckKey].pop();
 }
 
+/* A Banishment must never be the first event drawn after a fresh shuffle —
+   a Quiet Night or Murder always has to happen first. Cards are drawn from
+   the end of the array (pop()), so "first drawn" is the last element; if
+   that's Banishment, swap it with any non-Banishment card elsewhere in the
+   same shuffle. This runs every time the Fate deck is freshly assembled —
+   at game start and every reshuffle-from-discard — so it holds after every
+   reshuffle cycle, not just round 1. */
+function keepBanishmentOffTop(deck) {
+  const topIndex = deck.length - 1;
+  if (topIndex > 0 && deck[topIndex] === 'banishment') {
+    const swapIndex = deck.findIndex((id) => id !== 'banishment');
+    if (swapIndex !== -1) {
+      [deck[topIndex], deck[swapIndex]] = [deck[swapIndex], deck[topIndex]];
+    }
+  }
+  return deck;
+}
+
+function drawFateCard(state) {
+  if (!state.fateDeck.length) {
+    if (state.fateDiscard.length) {
+      state.fateDeck = keepBanishmentOffTop(shuffle(state.fateDiscard));
+      state.fateDiscard = [];
+      log(state, 'The deck is spent and reshuffled.');
+    } else {
+      state.fateDeck = keepBanishmentOffTop(buildDeck(FATE_DECK_DEF));
+    }
+  }
+  return state.fateDeck.pop();
+}
+
 /* ---------- Round start: reveal this round's Fate card ---------- */
 
 function startRound(state) {
@@ -115,7 +146,7 @@ function startRound(state) {
     state.currentFateCard = FINAL_BANISHMENT_DEF.id;
   } else {
     state.finalBanishmentActive = false;
-    state.currentFateCard = drawFrom(state, 'fateDeck', 'fateDiscard', FATE_DECK_DEF);
+    state.currentFateCard = drawFateCard(state);
   }
   state.phase = PHASES.MAIN;
   return cardDefById(state.currentFateCard);
@@ -143,17 +174,6 @@ function drawFortuneCard(state, playerId) {
   player.hand.push(cardId);
   log(state, `${player.name} drew ${def.name} and kept it.`);
   return { cardId, def, wentToPot: false };
-}
-
-function playShieldNow(state, playerId) {
-  const player = findPlayer(state, playerId);
-  const idx = player.hand.indexOf('shield');
-  if (idx === -1) return false;
-  player.hand.splice(idx, 1);
-  player.shieldedThisRound = true;
-  state.fortuneDiscard.push('shield');
-  log(state, `${player.name} raises a Shield for the night ahead.`);
-  return true;
 }
 
 function finishDrawForCurrent(state) {
@@ -253,7 +273,16 @@ function resolveMurder(state, targetId, useDeceiversChoice) {
     }
   }
 
-  const wasShielded = target.shieldedThisRound && !useDeceiversChoice;
+  // A held Shield deploys automatically against a Murder attempt — no
+  // action required from the target — and is spent whether or not it ends
+  // up mattering (Deceiver's Choice can still override it).
+  const hadShield = target.hand.includes('shield');
+  if (hadShield) {
+    target.hand.splice(target.hand.indexOf('shield'), 1);
+    state.fortuneDiscard.push('shield');
+  }
+
+  const wasShielded = hadShield && !useDeceiversChoice;
   if (!wasShielded) target.alive = false;
 
   state.fateDiscard.push(state.currentFateCard);
@@ -387,9 +416,6 @@ function advanceRoundOrEnd(state) {
     return true;
   }
   state.round += 1;
-  state.players.forEach((p) => {
-    p.shieldedThisRound = false;
-  });
   state.currentFateCard = null;
   state.phase = PHASES.MAIN;
   return false;

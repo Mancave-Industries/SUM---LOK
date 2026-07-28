@@ -63,7 +63,6 @@ function createPlayer(id, name) {
     role: null,
     alive: true,
     hand: [],
-    shieldedThisRound: false,
     revealed: false,
     drawnThisRound: false,
   };

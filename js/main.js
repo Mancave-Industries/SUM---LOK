@@ -18,6 +18,7 @@ const uiStage = {
   voteTapped: false,
   voteSelected: null,
   useDagger: false,
+  eliminationRevealed: false,
 };
 
 let audioCtx = null;
@@ -82,7 +83,7 @@ function render() {
       UI.renderVote(state, uiStage.voteTapped, uiStage.voteSelected, uiStage.useDagger);
       break;
     case PHASES.ELIMINATION:
-      UI.renderElimination(state);
+      UI.renderElimination(state, uiStage.eliminationRevealed);
       break;
     case PHASES.RESULTS:
       UI.renderResults(state);
@@ -175,17 +176,14 @@ const actions = {
     state.phase = PHASES.HAND;
     render();
   },
-  'play-shield': () => {
-    const player = currentQueuePlayer(state);
-    playShieldNow(state, player.id);
-    persist();
-    render();
-  },
   'continue-from-hand': () => {
     state.phase = PHASES.DRAW;
     uiStage.drawTapped = false;
     const done = finishDrawForCurrent(state);
-    if (done) routeAfterDraw(state);
+    if (done) {
+      routeAfterDraw(state);
+      uiStage.eliminationRevealed = false;
+    }
     persist();
     render();
   },
@@ -214,7 +212,12 @@ const actions = {
     uiStage.murderTarget = null;
     uiStage.useChoice = false;
     advanceMurderQueue(state);
+    uiStage.eliminationRevealed = false;
     persist();
+    render();
+  },
+  'reveal-elimination': () => {
+    uiStage.eliminationRevealed = true;
     render();
   },
   'continue-elimination': () => {
@@ -222,6 +225,7 @@ const actions = {
     uiStage.voteTapped = false;
     uiStage.voteSelected = null;
     uiStage.useDagger = false;
+    uiStage.eliminationRevealed = false;
     persist();
     render();
   },
@@ -240,7 +244,10 @@ const actions = {
     uiStage.voteTapped = false;
     uiStage.voteSelected = null;
     uiStage.useDagger = false;
-    if (done) resolveBanishment(state);
+    if (done) {
+      resolveBanishment(state);
+      uiStage.eliminationRevealed = false;
+    }
     persist();
     render();
   },
