@@ -236,13 +236,47 @@ card-drawing in between.
   players) covering all of the above together — 0 bugs, pot always zeroed
   after payout, win conditions always consistent.
 
+## 8. Sound design (follow-up round)
+
+`js/sound.js` was built from scratch as a full synthesized WebAudio palette
+(~16 named cues) replacing the previous handful of bare `playTone` calls.
+
+- **Syntax/lint pass**: `node --check` on both `sound.js` and the rewritten
+  `main.js` — clean.
+- **Instrumented headless playthrough**: wrapped `AudioContext.
+  createOscillator`/`createBufferSource` before any app script ran, then
+  played a full game start-to-finish with sound turned on via the header
+  icon (a genuine user gesture, avoiding autoplay-policy blocks) — every
+  screen exercised, including the series stepper and both header modals.
+  **109 WebAudio node creations observed, 0 console errors, 0 exceptions**,
+  confirming the whole palette actually fires rather than silently
+  no-op'ing, and that the delayed cues (the outcome sting following the
+  Elimination Reveal's bell, and the win chord following the final
+  Elimination continue) both land correctly.
+- **Anonymity audit**: confirmed by code inspection that `tap-murder-turn`
+  and `confirm-murder-turn` — the two actions that fire during the Murder
+  phase's per-player turn queue — call `Sound.play('tap')` unconditionally
+  with no branching on `isActingDeceiverTurn(state)`, so the sound is
+  byte-for-byte identical whether that turn belongs to the real Deceiver or
+  a decoy. This matters specifically because the same physical phone plays
+  audio out loud for the whole table, not just whoever's holding it —
+  a distinct sound on the real actor's turn would have been an audible leak
+  even with the screen itself already anonymized.
+- **Regression check**: loading a saved game via "Continue" was found (and
+  fixed) to not sync the Sound module or header mute icon to that save's
+  stored sound preference — a real gap, not present in the original narrow
+  `playTone` implementation since it read `state.settings.sound` directly
+  on every call rather than caching an `enabled` flag. Verified fixed by
+  code inspection of the corrected `continue-game` handler.
+
 ## Summary
 
 | Layer | Trials | Bugs found | Bugs fixed |
 |---|---|---|---|
 | Engine (Node) | 2150 | 0 | — |
-| Full playthrough w/ screenshots | 4 rounds (all 12 screens; murder-phase redesign; series/payout; auto-shield & gather-everyone) | 1 (card text clipping) | 1 |
+| Full playthrough w/ screenshots | 5 rounds (all 12 screens; murder-phase redesign; series/payout; auto-shield & gather-everyone; sound) | 1 (card text clipping) | 1 |
 | Automated UI stress test | 98+ | 1 confirmed (test-script scoping, fixed) + several one-off timeouts (same signature across all occurrences), never reproduced with a stable rate or dedicated diagnostics | 1 confirmed fixed; flakiness documented, not app bugs |
+| Sound (instrumented WebAudio) | 1 full playthrough, 109 node creations | 1 (Continue-game didn't sync sound state) | 1 |
 
 The game can be played start-to-finish — Title through Results, and back to
 Title via Play Again or Next Game — with no console errors, for every
@@ -250,8 +284,9 @@ supported player count (3–8), across every Fate-card branch (Quiet Night,
 Murder, standard Banishment, and forced Final Banishment), every action card
 (Gold ×3 denominations, Shield, Dagger, Deceiver's Choice), and any series
 length from 1 to 20 games. The Murder phase no longer reveals Deceiver
-identity through phone-handoff patterns, the Fate card is no longer spoiled
-before it happens, the Prize Pot is paid out to the winning side's survivors
-every game, Shields deploy automatically, a Banishment can never open a
-fresh Fate-deck shuffle, and every event ends with an explicit
-gather-everyone checkpoint before its outcome is revealed.
+identity through phone-handoff patterns or sound, the Fate card is no longer
+spoiled before it happens, the Prize Pot is paid out to the winning side's
+survivors every game, Shields deploy automatically, a Banishment can never
+open a fresh Fate-deck shuffle, every event ends with an explicit
+gather-everyone checkpoint before its outcome is revealed, and a full
+synthesized sound design covers every meaningful moment in the game.

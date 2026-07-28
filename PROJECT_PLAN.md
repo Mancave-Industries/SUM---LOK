@@ -223,11 +223,36 @@ or via Settings → "Reset Game".
 7. TEST_REPORT.md
 8. CODEPEN_EXPORT.md
 
-## 7. Out of scope for this prototype
+## 7. Sound design
+
+`js/sound.js` is a self-contained WebAudio synthesis module (no audio
+files — everything is generated from oscillators, noise buffers, and
+filters at runtime, consistent with "no paid libraries / no external
+assets"). It exposes only `Sound.setEnabled(bool)` and `Sound.play(name,
+delay?)`; nothing else in the codebase touches `AudioContext` directly.
+Muted by default (shared-device etiquette), toggled from the header speaker
+icon or Settings.
+
+Roughly 16 named cues cover every meaningful moment: a mysterious rising
+interval for a private role reveal (and its mirror-image fall for hiding it
+again), a light tick for drawing a card, a bright ascending coin arpeggio
+when Gold hits the pot, a low swelling drone for Night falling, a recurring
+ceremonial bell (`gather`) reused for "Seal the Roles," "Next Game," and the
+Elimination Reveal's "Gather Everyone" checkpoint, distinct outcome stings
+for a Quiet Night / a Shield block / a Murder / a tied vote / a Banishment,
+and a dark minor chord vs. a bright major chord for the two endings.
+
+**Anonymity constraint carried over from the visual design**: because the
+phone is a *physical, audible* object passed hand to hand, a sound that only
+plays on the real Deceiver's turn would leak their identity to the room just
+as surely as a different-looking screen would. `tap-murder-turn` and
+`confirm-murder-turn` always play the same generic `tap` cue regardless of
+who's actually acting that turn — the distinctive "something happened"
+sounds are deferred until the Elimination Reveal, once everyone is already
+gathered and audibility is no longer a leak.
+
+## 8. Out of scope for this prototype
 
 - Networked/multi-device play (explicitly a shared-phone prototype per brief)
 - Accounts, server sync, anti-cheat for private-reveal honesty (trust-based,
   as physical card games are)
-- Audio assets beyond a mute/unmute icon toggle (no copyrighted audio; a
-  restrained WebAudio "tone" is used for feedback, togglable, defaulting to
-  off to avoid surprising sound on shared devices)

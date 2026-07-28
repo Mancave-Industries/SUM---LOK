@@ -45,8 +45,9 @@ another in the single JS panel (a blank line between each is fine):
 1. `js/data.js`
 2. `js/state.js`
 3. `js/engine.js`
-4. `js/ui.js`
-5. `js/main.js`
+4. `js/sound.js`
+5. `js/ui.js`
+6. `js/main.js`
 
 Order matters: each file defines plain global functions/constants that the
 next file calls directly (no modules, no bundler, no `import`/`export`).
