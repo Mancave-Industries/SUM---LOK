@@ -119,17 +119,20 @@ ends the round.
 2. **Fate card revealed** for the round, deciding that round's one event:
    - **Quiet Night** — no murder. Proceeds straight to an Elimination Reveal
      announcing nothing happened, then the round ends.
-   - **Murder** — ceremonial "pass the phone" Night transition, then
-     Deceivers privately choose one living, non-Deceiver target via Murder
-     Selection. A Shield card played by the target that round cancels the
-     murder; a Deceiver's Choice card played by the Deceivers cancels one
-     Shield in effect. An Elimination Reveal shows the outcome, then the
-     round ends.
+   - **Murder** — ceremonial "pass the phone" Night transition, then every
+     living player takes a turn (see below); the acting Deceiver privately
+     chooses one living, non-Deceiver target via Murder Selection. A Shield
+     card the target is holding deploys automatically and is spent the
+     instant it blocks a Murder — the target never has to act on it; a
+     Deceiver's Choice card played by the Deceivers overrides a Shield in
+     effect (and still spends the Shield). A "Gather Everyone" checkpoint,
+     then an Elimination Reveal shows the outcome, then the round ends.
    - **Banishment** — skips the night entirely. Every living player
      privately casts one vote (pass device between voters) for who to
      banish. A held Dagger card can be played to add +1 weight to that
-     vote. Most votes banished; ties banish no one. An Elimination Reveal
-     shows the outcome, then the round ends.
+     vote. Most votes banished; ties banish no one. A "Gather Everyone"
+     checkpoint, then an Elimination Reveal shows the outcome, then the
+     round ends.
 3. **Win check** (after every event's Elimination Reveal): Loyal wins if
    all Deceivers are banished/murdered out; Deceivers win if remaining
    Deceivers ≥ remaining Loyal. Otherwise the round counter increments and
@@ -139,6 +142,24 @@ ends the round.
 4. **Results Screen** — winning side, full role reveal of every player, this
    game's Prize Pot payout, series standings, and either "Next Game" or
    "New Series" depending on whether the series is complete.
+
+### A Banishment never opens a fresh shuffle
+
+The Fate deck is fixed so a Banishment card can never be the very first card
+drawn after a fresh shuffle — at game start, and again every time the deck
+is exhausted and reshuffled from its discard pile. A Quiet Night or Murder
+always happens before the next Banishment becomes possible (see
+`keepBanishmentOffTop` in `engine.js`), so the circle is never asked to vote
+someone out with zero information from a preceding night.
+
+### Every event ends with an obvious "gather everyone" checkpoint
+
+The private, sequential, pass-the-phone turns of a Murder or Banishment
+Vote are followed by a distinct, unmissable screen — "Gather Everyone: The
+Circle Must See This" — before the actual outcome is shown. This is a
+deliberate second step, not just a caption on the result screen, so there's
+no ambiguity about when the phone should stop being private and start being
+watched by the whole table.
 
 ### Fate is not revealed in advance
 

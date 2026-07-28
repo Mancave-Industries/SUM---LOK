@@ -208,12 +208,40 @@ card-drawing in between.
   untouched — so the click-timing behavior being exercised is unchanged
   from prior rounds' testing.
 
+## 7. Automatic Shield, gather-everyone checkpoint, and Fate-deck ordering (follow-up round)
+
+- **Automatic Shield**: `resolveMurder` was changed from checking a
+  manually-set `shieldedThisRound` flag to checking the target's hand
+  directly. Three targeted Node tests confirmed: (1) a held Shield blocks
+  the murder and is removed from hand into the discard automatically, with
+  `nightResult.protected` true and `murdered` false; (2) Deceiver's Choice
+  still overrides a held Shield — the target dies and the Shield is still
+  spent; (3) a target with no Shield dies normally with no phantom discard.
+  A full headless playthrough independently hit this path live (not
+  scripted) — "Alice Was Targeted — A Shield protected them" — with the old
+  manual "raise Shield" button confirmed never appearing in the DOM across
+  the whole game.
+- **Fate-deck ordering**: `keepBanishmentOffTop` was tested directly across
+  500 random shuffles (Banishment is never left on top, and deck
+  composition is provably unchanged, just reordered), across 200 fresh
+  `setupNewGame` calls (round 1's Fate card is never Banishment), and across
+  50 simulated 40-round games exhausting and reshuffling the Fate deck
+  repeatedly (a reshuffle's first draw is never Banishment either). 0
+  failures across all three.
+- **Gather-everyone checkpoint**: verified via headless playthrough that
+  every Elimination Reveal now shows a distinct "Gather Everyone — The
+  Circle Must See This" screen with its own explicit continue action before
+  the outcome is shown, for both Murder and Banishment contexts.
+- **300 further randomized series simulations** (1–3 games per series, 3–8
+  players) covering all of the above together — 0 bugs, pot always zeroed
+  after payout, win conditions always consistent.
+
 ## Summary
 
 | Layer | Trials | Bugs found | Bugs fixed |
 |---|---|---|---|
-| Engine (Node) | 1100 | 0 | — |
-| Full playthrough w/ screenshots | 3 rounds (all 12 screens; murder-phase redesign; series/payout) | 1 (card text clipping) | 1 |
+| Engine (Node) | 2150 | 0 | — |
+| Full playthrough w/ screenshots | 4 rounds (all 12 screens; murder-phase redesign; series/payout; auto-shield & gather-everyone) | 1 (card text clipping) | 1 |
 | Automated UI stress test | 98+ | 1 confirmed (test-script scoping, fixed) + several one-off timeouts (same signature across all occurrences), never reproduced with a stable rate or dedicated diagnostics | 1 confirmed fixed; flakiness documented, not app bugs |
 
 The game can be played start-to-finish — Title through Results, and back to
@@ -223,5 +251,7 @@ Murder, standard Banishment, and forced Final Banishment), every action card
 (Gold ×3 denominations, Shield, Dagger, Deceiver's Choice), and any series
 length from 1 to 20 games. The Murder phase no longer reveals Deceiver
 identity through phone-handoff patterns, the Fate card is no longer spoiled
-before it happens, and the Prize Pot is paid out to the winning side's
-survivors every game.
+before it happens, the Prize Pot is paid out to the winning side's survivors
+every game, Shields deploy automatically, a Banishment can never open a
+fresh Fate-deck shuffle, and every event ends with an explicit
+gather-everyone checkpoint before its outcome is revealed.
