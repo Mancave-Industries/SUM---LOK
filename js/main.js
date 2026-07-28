@@ -21,23 +21,7 @@ const uiStage = {
   eliminationRevealed: false,
 };
 
-let audioCtx = null;
-function playTone(freq, dur) {
-  if (!state.settings.sound) return;
-  try {
-    audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    osc.type = 'sine';
-    osc.frequency.value = freq;
-    gain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.16, audioCtx.currentTime + 0.01);
-    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + dur);
-    osc.connect(gain).connect(audioCtx.destination);
-    osc.start();
-    osc.stop(audioCtx.currentTime + dur + 0.02);
-  } catch (e) { /* WebAudio unsupported — silently skip */ }
-}
+Sound.setEnabled(state.settings.sound);
 
 let setupNames = Array(CONFIG.minPlayers).fill('');
 let seriesLength = 1;
@@ -109,6 +93,7 @@ function main_onToggleDagger(checked) {
 
 const actions = {
   'new-game': () => {
+    Sound.play('tap');
     state = createInitialState();
     setupNames = Array(CONFIG.minPlayers).fill('');
     seriesLength = 1;
@@ -116,30 +101,43 @@ const actions = {
     render();
   },
   'continue-game': () => {
+    Sound.play('tap');
     const saved = loadState();
-    if (saved) state = saved;
+    if (saved) {
+      state = saved;
+      Sound.setEnabled(state.settings.sound);
+      document.getElementById('soundBtn').classList.toggle('muted', !state.settings.sound);
+    }
     render();
   },
-  'open-help': () => UI.showModal('How To Play', UI.helpContent()),
+  'open-help': () => {
+    Sound.play('modalOpen');
+    UI.showModal('How To Play', UI.helpContent());
+  },
   'add-player': () => {
+    Sound.play('tap');
     if (setupNames.length < CONFIG.maxPlayers) setupNames.push('');
     UI.renderSetup(setupNames, seriesLength);
   },
   'remove-player': (btn) => {
+    Sound.play('tap');
     const i = Number(btn.dataset.index);
     setupNames.splice(i, 1);
     UI.renderSetup(setupNames, seriesLength);
   },
   'inc-series-length': () => {
+    Sound.play('tap');
     seriesLength = Math.min(20, seriesLength + 1);
     UI.renderSetup(setupNames, seriesLength);
   },
   'dec-series-length': () => {
+    Sound.play('tap');
     seriesLength = Math.max(1, seriesLength - 1);
     UI.renderSetup(setupNames, seriesLength);
   },
   'start-game': () => {
     if (!setupNames.every((n) => n.trim().length > 0)) return;
+    Sound.play('gather');
     startNewSeries(state, setupNames, seriesLength);
     uiStage.revealTapped = false;
     persist();
@@ -147,16 +145,18 @@ const actions = {
   },
   'tap-reveal': () => {
     uiStage.revealTapped = true;
-    playTone(520, 0.1);
+    Sound.play('reveal');
     render();
   },
   'confirm-reveal': () => {
+    Sound.play('hide');
     confirmRevealCurrent(state);
     uiStage.revealTapped = false;
     persist();
     render();
   },
   'begin-draw': () => {
+    Sound.play('tap');
     beginDrawPhase(state);
     uiStage.drawTapped = false;
     persist();
@@ -167,27 +167,32 @@ const actions = {
     const result = drawFortuneCard(state, player.id);
     state.lastDrawResult = result;
     uiStage.drawTapped = true;
-    playTone(480, 0.1);
+    Sound.play(result.wentToPot ? 'gold' : 'draw');
     persist();
     render();
     if (result.wentToPot) UI.showToast(`+${result.def.value} gold to the Prize Pot`);
   },
   'confirm-draw': () => {
+    Sound.play('tap');
     state.phase = PHASES.HAND;
     render();
   },
   'continue-from-hand': () => {
+    Sound.play('tap');
     state.phase = PHASES.DRAW;
     uiStage.drawTapped = false;
     const done = finishDrawForCurrent(state);
     if (done) {
       routeAfterDraw(state);
       uiStage.eliminationRevealed = false;
+      if (state.phase === PHASES.NIGHT) Sound.play('nightFalls');
+      else if (state.phase === PHASES.ELIMINATION) Sound.play('quietNight');
     }
     persist();
     render();
   },
   'proceed-to-murder': () => {
+    Sound.play('tap');
     beginMurderPhase(state);
     uiStage.murderTapped = false;
     uiStage.murderTarget = null;
@@ -195,10 +200,13 @@ const actions = {
     render();
   },
   'tap-murder-turn': () => {
+    // Same sound every turn regardless of role — see sound.js header note.
     uiStage.murderTapped = true;
+    Sound.play('tap');
     render();
   },
   'select-murder-target': (btn) => {
+    Sound.play('tap');
     uiStage.murderTarget = btn.dataset.id;
     render();
   },
@@ -206,8 +214,9 @@ const actions = {
     if (isActingDeceiverTurn(state)) {
       if (!uiStage.murderTarget) return;
       recordMurderChoice(state, uiStage.murderTarget, uiStage.useChoice);
-      playTone(220, 0.16);
     }
+    // Same sound every turn regardless of role — see sound.js header note.
+    Sound.play('tap');
     uiStage.murderTapped = false;
     uiStage.murderTarget = null;
     uiStage.useChoice = false;
@@ -218,27 +227,44 @@ const actions = {
   },
   'reveal-elimination': () => {
     uiStage.eliminationRevealed = true;
+    Sound.play('gather');
+    const context = state.eliminationContext;
+    if (context === 'quiet') {
+      Sound.play('quietNight', 0.5);
+    } else if (context === 'night') {
+      Sound.play(state.nightResult.protected ? 'shieldSaved' : 'murdered', 0.5);
+    } else {
+      const tied = state.voteResult.tie || !state.voteResult.banishedId;
+      Sound.play(tied ? 'tie' : 'banished', 0.5);
+    }
     render();
   },
   'continue-elimination': () => {
+    Sound.play('tap');
     continueAfterElimination(state);
     uiStage.voteTapped = false;
     uiStage.voteSelected = null;
     uiStage.useDagger = false;
     uiStage.eliminationRevealed = false;
+    if (state.phase === PHASES.RESULTS) {
+      Sound.play(state.winner === ROLES.DECEIVER.id ? 'deceiverWin' : 'loyalWin', 0.3);
+    }
     persist();
     render();
   },
   'tap-vote': () => {
     uiStage.voteTapped = true;
+    Sound.play('tap');
     render();
   },
   'select-vote-target': (btn) => {
+    Sound.play('tap');
     uiStage.voteSelected = btn.dataset.id;
     render();
   },
   'confirm-vote': () => {
     if (!uiStage.voteSelected) return;
+    Sound.play('tap');
     const voter = currentQueuePlayer(state);
     const done = castVote(state, voter.id, uiStage.voteSelected, uiStage.useDagger);
     uiStage.voteTapped = false;
@@ -252,17 +278,20 @@ const actions = {
     render();
   },
   'next-game-in-series': () => {
+    Sound.play('gather');
     startNextGameInSeries(state);
     uiStage.revealTapped = false;
     persist();
     render();
   },
   'play-again': () => {
+    Sound.play('tap');
     clearState();
     state = createInitialState();
     render();
   },
   'reset-game': () => {
+    Sound.play('tap');
     UI.hideModal();
     if (!window.confirm('Reset the current game? This cannot be undone.')) return;
     clearState();
@@ -276,6 +305,7 @@ const actions = {
 document.addEventListener('click', (e) => {
   const modalClose = e.target.closest('[data-close-modal]');
   if (modalClose) {
+    Sound.play('modalClose');
     UI.hideModal();
     return;
   }
@@ -294,23 +324,29 @@ document.addEventListener('input', (e) => {
 });
 
 document.getElementById('menuBtn').addEventListener('click', () => {
+  Sound.play('modalOpen');
   UI.showModal('Settings', UI.settingsContent(state));
   const toggle = document.getElementById('soundToggle');
   if (toggle) {
     toggle.addEventListener('change', (e) => {
       state.settings.sound = e.target.checked;
+      Sound.setEnabled(state.settings.sound);
+      if (state.settings.sound) Sound.play('tap');
       persist();
     });
   }
 });
 
 document.getElementById('helpBtn').addEventListener('click', () => {
+  Sound.play('modalOpen');
   UI.showModal('How To Play', UI.helpContent());
 });
 
 document.getElementById('soundBtn').addEventListener('click', () => {
   state.settings.sound = !state.settings.sound;
+  Sound.setEnabled(state.settings.sound);
   document.getElementById('soundBtn').classList.toggle('muted', !state.settings.sound);
+  if (state.settings.sound) Sound.play('tap');
   persist();
 });
 
