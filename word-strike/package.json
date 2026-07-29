@@ -1,0 +1,11 @@
+{
+  "name": "word-strike",
+  "private": true,
+  "type": "module",
+  "description": "WORD STRIKE — tactical word-deduction browser game. No build step; this manifest only enables ES module tests under Node.",
+  "scripts": {
+    "test:board": "node tests/board-generation.test.js",
+    "test:gameplay": "node tests/gameplay.test.js",
+    "test": "npm run test:gameplay && node tests/board-generation.test.js 2000"
+  }
+}
