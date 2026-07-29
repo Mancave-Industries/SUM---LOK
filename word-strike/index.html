@@ -80,7 +80,7 @@
     <div id="status-message" class="status-message" role="status" aria-live="assertive">SELECT A SQUARE TO BEGIN</div>
 
     <div id="eliminated-line" class="eliminated-line hidden" aria-live="polite"></div>
-    <div id="alphabet" class="alphabet alphabet--inactive" aria-label="Letter controls"></div>
+    <div id="alphabet" class="alphabet alphabet--inactive" aria-label="Letter rack"></div>
 
     <div class="bottom-controls">
       <button id="btn-radar-toggle" class="btn btn-secondary btn-small">RADAR</button>
@@ -131,6 +131,8 @@
         </dl>
         <p>Four hidden words are placed horizontally or vertically. Words never touch, even diagonally.</p>
         <p>Discover every letter of all four words before your strikes run out.</p>
+        <p>Instead of the full alphabet, each turn offers a rack of 12 letters — some are guaranteed to belong somewhere in the unsolved words, the rest are decoys. A fresh rack is drawn after every shot, so a letter you need may not always be available right now.</p>
+        <p>Every letter you fire stays visible on the board, right or wrong, so you can see at a glance what's already been tried where.</p>
       </div>
       <button class="btn btn-primary btn-close-overlay" data-close="overlay-help">GOT IT</button>
     </div>
@@ -184,7 +186,7 @@
     <div class="overlay-panel">
       <div class="overlay-header"><span>WELCOME, OPERATOR</span></div>
       <div class="overlay-body">
-        <p>Four hidden words are concealed on the grid. Select a square, then fire a letter from the alphabet panel below.</p>
+        <p>Four hidden words are concealed on the grid. Select a square, then fire a letter from your rack below.</p>
         <dl class="outcome-list">
           <dt class="outcome-tag outcome-tag--exact">EXACT</dt>
           <dd>Right square, right letter. Free — no strike used.</dd>
@@ -195,6 +197,7 @@
           <dt class="outcome-tag outcome-tag--dead">DEAD</dt>
           <dd>Empty square, nothing nearby. Costs one strike.</dd>
         </dl>
+        <p>Your rack holds 12 letters, refreshed every turn — only some of them belong in the unsolved words. Fired letters stay on the board so you always remember what you've tried.</p>
         <p>Run out of strikes before finding every word, and the operation fails.</p>
       </div>
       <button id="btn-tutorial-start" class="btn btn-primary btn-close-overlay">BEGIN</button>

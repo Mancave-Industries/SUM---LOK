@@ -49,12 +49,59 @@ export const SCORING = {
   victoryBonus: 1000,
 };
 
+// Each turn offers a 12-letter rack rather than the full alphabet. Some of
+// the rack is guaranteed to be letters still needed somewhere in the
+// unsolved words; the rest are random decoys. A fresh rack is drawn after
+// every valid shot.
+export const RACK_SIZE = 12;
+const RACK_HELPFUL_TARGET = 6;
+const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+function shuffleInPlace(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function getRemainingNeededLetters(game) {
+  const needed = new Set();
+  for (const word of game.words) {
+    if (word.completed) continue;
+    for (const c of word.cells) {
+      const cell = game.grid[c.row][c.col];
+      if (cell.state !== "exact") needed.add(cell.hiddenLetter);
+    }
+  }
+  return Array.from(needed);
+}
+
+/**
+ * Builds the next rack: a shuffled mix of letters that are actually still
+ * needed somewhere in the unsolved words, topped up with random decoys to
+ * reach RACK_SIZE. Not tied to the board's seed — this is a per-turn
+ * resource layer on top of the (seed-reproducible) board itself.
+ */
+export function generateRack(game) {
+  const needed = shuffleInPlace(getRemainingNeededLetters(game));
+  const helpfulCount = Math.min(needed.length, RACK_HELPFUL_TARGET);
+  const rack = needed.slice(0, helpfulCount);
+
+  const decoyPool = shuffleInPlace(ALPHABET.filter((l) => !rack.includes(l)));
+  while (rack.length < RACK_SIZE && decoyPool.length) {
+    rack.push(decoyPool.pop());
+  }
+
+  return shuffleInPlace(rack);
+}
+
 export function createGame({ difficulty = "standard", seed = null } = {}) {
   const config = DIFFICULTIES[difficulty] || DIFFICULTIES.standard;
   const rng = createRng(seed);
   const board = generateBoard({ rng, size: config.size });
 
-  return {
+  const game = {
     difficulty: config.id,
     seed: rng.seed,
     size: board.size,
@@ -82,7 +129,10 @@ export function createGame({ difficulty = "standard", seed = null } = {}) {
     // Per-word arrays of letters confirmed (via any fired shot, anywhere on
     // the board) to appear somewhere in that word — feeds the letter radar.
     radar: Object.fromEntries(board.words.map((w) => [w.id, []])),
+    rack: [],
   };
+  game.rack = generateRack(game);
+  return game;
 }
 
 export function getConfig(game) {
@@ -168,8 +218,9 @@ function endDefeat(game) {
 
 /**
  * Resolves a fired letter against a grid square, following the fixed
- * outcome order: invalid -> blocked duplicate -> exact -> live -> hot/dead,
- * then always checks victory before defeat.
+ * outcome order: invalid -> not in this turn's rack -> blocked duplicate ->
+ * exact -> live -> hot/dead, then always checks victory before defeat.
+ * Draws a fresh rack on the way out of every shot that actually resolves.
  */
 export function resolveShot(game, row, col, letter) {
   if (game.gameOver) return { type: "ignored" };
@@ -180,6 +231,10 @@ export function resolveShot(game, row, col, letter) {
   }
 
   letter = letter.toUpperCase();
+
+  if (!game.rack || !game.rack.includes(letter)) {
+    return { type: "not-in-rack", letter };
+  }
 
   if (cell.state === "live" && cell.attemptedLetters.includes(letter)) {
     game.stats.duplicatesBlocked += 1;
@@ -213,6 +268,7 @@ export function resolveShot(game, row, col, letter) {
     cell.state = "hot";
     cell.resolved = true;
     cell.resolvedAtTurn = game.turnCounter;
+    cell.attemptedLetters.push(letter);
     game.strikesRemaining -= 1;
     game.stats.hotSquares += 1;
     game.score += SCORING.hot;
@@ -221,6 +277,7 @@ export function resolveShot(game, row, col, letter) {
     cell.state = "dead";
     cell.resolved = true;
     cell.resolvedAtTurn = game.turnCounter;
+    cell.attemptedLetters.push(letter);
     game.strikesRemaining -= 1;
     game.stats.deadSquares += 1;
     game.score += SCORING.dead;
@@ -241,6 +298,8 @@ export function resolveShot(game, row, col, letter) {
   } else if (game.strikesRemaining <= 0) {
     endDefeat(game);
   }
+
+  game.rack = generateRack(game);
 
   return {
     type: result,

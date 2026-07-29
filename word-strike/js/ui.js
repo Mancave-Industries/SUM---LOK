@@ -4,14 +4,13 @@
 
 import { COLS, GRID_SIZE, rowColToLabel } from "./board.js";
 
-const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-
 const STATUS_MESSAGES = {
   exact: "EXACT STRIKE — LETTER CONFIRMED",
   live: "LIVE CONTACT — WRONG LETTER",
   hot: "HOT — A WORD IS CLOSE",
   dead: "DEAD — NOTHING NEARBY",
   "blocked-duplicate": "LETTER ALREADY ELIMINATED FOR THIS SQUARE",
+  "not-in-rack": "THAT LETTER ISN'T IN THIS TURN'S RACK",
   invalid: "SQUARE ALREADY RESOLVED",
   idle: "SELECT A SQUARE TO BEGIN",
   selected: "SELECT A LETTER TO FIRE",
@@ -123,7 +122,11 @@ export function buildGrid(dom, onCellActivate) {
   }
 }
 
-const CELL_GLYPH = { unknown: "", dead: "×", hot: "▲", live: "●" };
+// Fired letters stay visible on the board so the player can scan it and see
+// exactly what's been tried where — even on a wrong guess. The state icon
+// becomes a small corner badge instead of the cell's only content, so shape
+// (not just color) still distinguishes hot/live/dead at a glance.
+const CELL_BADGE = { unknown: "", dead: "×", hot: "▲", live: "●" };
 
 function cellAccessibleLabel(cell, coord, isSelected) {
   if (cell.state === "exact") {
@@ -133,9 +136,24 @@ function cellAccessibleLabel(cell, coord, isSelected) {
     const attempted = cell.attemptedLetters.join(", ");
     return `Square ${coord}, live contact${attempted ? `, attempted letters ${attempted}` : ""}`;
   }
-  if (cell.state === "hot") return `Square ${coord}, hot signal, word is nearby`;
-  if (cell.state === "dead") return `Square ${coord}, dead zone, nothing nearby`;
+  if (cell.state === "hot") {
+    const fired = cell.attemptedLetters[0];
+    return `Square ${coord}, hot signal, word is nearby${fired ? `, fired letter ${fired}` : ""}`;
+  }
+  if (cell.state === "dead") {
+    const fired = cell.attemptedLetters[0];
+    return `Square ${coord}, dead zone, nothing nearby${fired ? `, fired letter ${fired}` : ""}`;
+  }
   return `Square ${coord}, unresolved${isSelected ? ", selected" : ""}`;
+}
+
+function cellMainText(cell) {
+  if (cell.state === "exact") return cell.hiddenLetter;
+  if (cell.revealedAfterLoss) return cell.hiddenLetter;
+  if (cell.state === "live" || cell.state === "hot" || cell.state === "dead") {
+    return cell.attemptedLetters.join("");
+  }
+  return "";
 }
 
 export function updateGrid(dom, game) {
@@ -152,12 +170,21 @@ export function updateGrid(dom, game) {
       if (revealed) el.classList.add("cell--revealed-loss");
       el.disabled = cell.resolved && !isSelected;
 
-      if (cell.state === "exact") {
-        el.textContent = cell.hiddenLetter;
-      } else if (revealed) {
-        el.textContent = cell.hiddenLetter;
-      } else {
-        el.textContent = CELL_GLYPH[cell.state] || "";
+      const mainText = cellMainText(cell);
+      const badge = CELL_BADGE[cell.state] || "";
+      el.innerHTML = "";
+      if (mainText) {
+        const letterSpan = document.createElement("span");
+        letterSpan.className = "cell-letter" + (mainText.length > 1 ? " cell-letter--multi" : "");
+        letterSpan.textContent = mainText;
+        el.appendChild(letterSpan);
+      }
+      if (badge && cell.state !== "exact" && !revealed) {
+        const badgeSpan = document.createElement("span");
+        badgeSpan.className = "cell-badge";
+        badgeSpan.setAttribute("aria-hidden", "true");
+        badgeSpan.textContent = badge;
+        el.appendChild(badgeSpan);
       }
 
       const coord = rowColToLabel(row, col);
@@ -209,58 +236,57 @@ export function renderWordProgress(dom, game) {
   }
 }
 
-// ---------- Alphabet ----------
+// ---------- Letter rack ----------
+// Rather than the full A-Z, each turn offers a 12-letter rack (see
+// game.js generateRack) — some of it letters still needed somewhere in
+// the unsolved words, the rest decoys. The rack is rebuilt in place each
+// render since its contents change every turn; a single delegated click
+// listener (wired once in buildAlphabet) handles whichever buttons are
+// currently present.
 
 export function buildAlphabet(dom, onLetterActivate) {
+  dom.alphabet.addEventListener("click", (e) => {
+    const btn = e.target.closest(".letter-btn");
+    if (!btn || btn.disabled) return;
+    onLetterActivate(btn.dataset.letter);
+  });
+}
+
+export function renderRack(dom, game) {
+  const rack = (game.rack || []).slice().sort();
+  const selected = game.selected;
+  const cell = selected ? game.grid[selected.row][selected.col] : null;
+  const eliminated = new Set(cell ? cell.attemptedLetters : []);
+
+  dom.alphabet.classList.toggle("alphabet--inactive", !selected);
   dom.alphabet.innerHTML = "";
   dom.letterButtons = {};
-  LETTERS.forEach((letter) => {
+
+  rack.forEach((letter) => {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "letter-btn";
     btn.textContent = letter;
-    btn.disabled = true;
-    btn.addEventListener("click", () => onLetterActivate(letter));
+    btn.dataset.letter = letter;
+    const isEliminated = eliminated.has(letter);
+    btn.disabled = !selected || isEliminated;
+    btn.classList.toggle("letter-btn--eliminated", isEliminated);
+    btn.setAttribute(
+      "aria-label",
+      `Letter ${letter}${
+        isEliminated ? ", previously attempted, unavailable" : !selected ? ", select a square first" : ", available"
+      }`
+    );
     dom.alphabet.appendChild(btn);
     dom.letterButtons[letter] = btn;
   });
-}
 
-export function updateAlphabet(dom, game) {
-  const selected = game.selected;
-  if (!selected) {
-    dom.alphabet.classList.add("alphabet--inactive");
-    dom.eliminatedLine.classList.add("hidden");
-    LETTERS.forEach((l) => {
-      const btn = dom.letterButtons[l];
-      btn.disabled = true;
-      btn.classList.remove("letter-btn--eliminated");
-      btn.setAttribute("aria-label", `Letter ${l}, select a square first`);
-    });
-    return;
-  }
-
-  dom.alphabet.classList.remove("alphabet--inactive");
-  const cell = game.grid[selected.row][selected.col];
-  const eliminated = new Set(cell.attemptedLetters);
-
-  if (eliminated.size > 0) {
+  if (selected && eliminated.size > 0) {
     dom.eliminatedLine.classList.remove("hidden");
     dom.eliminatedLine.textContent = `ELIMINATED: ${cell.attemptedLetters.join(", ")}`;
   } else {
     dom.eliminatedLine.classList.add("hidden");
   }
-
-  LETTERS.forEach((l) => {
-    const btn = dom.letterButtons[l];
-    const isEliminated = eliminated.has(l);
-    btn.disabled = isEliminated;
-    btn.classList.toggle("letter-btn--eliminated", isEliminated);
-    btn.setAttribute(
-      "aria-label",
-      `Letter ${l}${isEliminated ? ", previously attempted, unavailable" : ", available"}`
-    );
-  });
 }
 
 // ---------- HUD ----------

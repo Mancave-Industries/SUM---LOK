@@ -74,12 +74,21 @@ of `ui.js`'s own rendering calls.
 
 - 8×8 grid, four hidden words (lengths 7, 6, 5, 4), placed horizontally or
   vertically, never touching — not even diagonally.
-- Select a square, then fire a letter from the on-screen A–Z panel.
+- Select a square, then fire a letter from your **rack** — 12 letters, not
+  the full alphabet. Some of the rack is guaranteed to be letters still
+  needed somewhere in the unsolved words; the rest are decoys. A fresh
+  rack is drawn after every valid shot, so the exact letter you want isn't
+  always available this turn.
 - **EXACT** (right square, right letter) and **LIVE** (right square, wrong
   letter) never cost a strike — a live square can be retried with a
   different letter, but a previously-eliminated letter is blocked.
 - **HOT** (empty square, adjacent to a word) and **DEAD** (empty, nothing
   adjacent in any of the 8 directions) each cost one strike.
+- Every letter you fire stays visibly displayed on the board — right or
+  wrong — so you can scan the grid and see exactly what's been tried
+  where, rather than just an abstract hot/live/dead icon. The icon is
+  still there too, as a small corner badge, so state stays distinguishable
+  by shape as well as color.
 - Win by revealing every letter of all four words; lose if strikes hit
   zero first. A final exact strike always wins, even if strikes already
   read zero.
