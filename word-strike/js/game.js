@@ -79,6 +79,9 @@ export function createGame({ difficulty = "standard", seed = null } = {}) {
       wordsCompleted: 0,
     },
     shotLog: [],
+    // Per-word arrays of letters confirmed (via any fired shot, anywhere on
+    // the board) to appear somewhere in that word — feeds the letter radar.
+    radar: Object.fromEntries(board.words.map((w) => [w.id, []])),
   };
 }
 
@@ -110,6 +113,21 @@ export function clearSelection(game) {
 
 function findWord(game, wordId) {
   return game.words.find((w) => w.id === wordId) || null;
+}
+
+/**
+ * Records a fired letter against every word that actually contains it,
+ * regardless of which square was targeted or what that square's own
+ * result was. This is the radar's data source: firing a letter always
+ * tells you which word(s) it belongs to, even on a hot/dead/live miss.
+ */
+function updateRadarForLetter(game, letter) {
+  if (!game.radar) game.radar = {};
+  for (const word of game.words) {
+    if (!word.word.includes(letter)) continue;
+    if (!game.radar[word.id]) game.radar[word.id] = [];
+    if (!game.radar[word.id].includes(letter)) game.radar[word.id].push(letter);
+  }
 }
 
 function checkWordCompletion(game, word) {
@@ -170,6 +188,7 @@ export function resolveShot(game, row, col, letter) {
 
   game.turnCounter += 1;
   game.stats.shotsTotal += 1;
+  updateRadarForLetter(game, letter);
 
   let result;
   let completedWord = null;

@@ -45,12 +45,17 @@ export function queryDom() {
     statusMessage: $("status-message"),
     eliminatedLine: $("eliminated-line"),
     alphabet: $("alphabet"),
+    btnRadarToggle: $("btn-radar-toggle"),
     btnLogToggle: $("btn-log-toggle"),
     btnHelp: $("btn-help"),
     btnRestart: $("btn-restart"),
     shotLogPanel: $("shot-log-panel"),
     btnLogClose: $("btn-log-close"),
     shotLogList: $("shot-log-list"),
+    radarPanel: $("radar-panel"),
+    btnRadarClose: $("btn-radar-close"),
+    radarSvg: $("radar-svg"),
+    radarLegend: $("radar-legend"),
 
     overlayHelp: $("overlay-help"),
     overlayStats: $("overlay-stats"),
@@ -71,6 +76,7 @@ export function queryDom() {
 
     cellEls: [],
     letterButtons: {},
+    radarRingGroups: [],
   };
 }
 
@@ -361,4 +367,101 @@ export function renderResult(dom, game, { won }) {
 export function showRegionHint(dom, durationMs = 3200) {
   dom.regionHintBanner.classList.remove("hidden");
   setTimeout(() => dom.regionHintBanner.classList.add("hidden"), durationMs);
+}
+
+// ---------- Letter radar ----------
+// One ring per hidden word, outermost = longest (7) down to innermost = shortest (4).
+// A word's unique letters get a fixed slot around its ring; a slot lights up once
+// that letter has been confirmed present in the word by any fired shot anywhere
+// on the board (see game.js updateRadarForLetter). A completed word lights every
+// slot, since solving it already reveals every letter it contains.
+
+const SVG_NS = "http://www.w3.org/2000/svg";
+const RADAR_CENTER = 110;
+const RADAR_RADII = [95, 72, 49, 26];
+const RADAR_RING_LABELS = ["7", "6", "5", "4"];
+
+function svgEl(name, attrs = {}) {
+  const el = document.createElementNS(SVG_NS, name);
+  for (const [key, value] of Object.entries(attrs)) el.setAttribute(key, value);
+  return el;
+}
+
+export function buildRadar(dom) {
+  dom.radarSvg.innerHTML = "";
+  dom.radarRingGroups = [];
+
+  const cross = svgEl("g", { class: "radar-crosshair" });
+  cross.appendChild(svgEl("line", { x1: RADAR_CENTER, y1: 8, x2: RADAR_CENTER, y2: 212 }));
+  cross.appendChild(svgEl("line", { x1: 8, y1: RADAR_CENTER, x2: 212, y2: RADAR_CENTER }));
+  dom.radarSvg.appendChild(cross);
+
+  RADAR_RADII.forEach((radius, i) => {
+    const ringGroup = svgEl("g", { class: "radar-ring" });
+    ringGroup.appendChild(svgEl("circle", { cx: RADAR_CENTER, cy: RADAR_CENTER, r: radius, class: "radar-ring-circle" }));
+    const label = svgEl("text", {
+      x: RADAR_CENTER,
+      y: RADAR_CENTER - radius - 4,
+      class: "radar-ring-label",
+      "text-anchor": "middle",
+    });
+    label.textContent = RADAR_RING_LABELS[i];
+    ringGroup.appendChild(label);
+    const marksGroup = svgEl("g", { class: "radar-marks" });
+    ringGroup.appendChild(marksGroup);
+    dom.radarSvg.appendChild(ringGroup);
+    dom.radarRingGroups.push({ ringGroup, marksGroup, radius });
+  });
+
+  dom.radarSvg.appendChild(svgEl("circle", { cx: RADAR_CENTER, cy: RADAR_CENTER, r: 3, class: "radar-center-dot" }));
+}
+
+function wordsByRing(game) {
+  return game.words.slice().sort((a, b) => b.length - a.length);
+}
+
+export function updateRadar(dom, game) {
+  const words = wordsByRing(game);
+
+  words.forEach((word, i) => {
+    const ring = dom.radarRingGroups[i];
+    if (!ring) return;
+    const unique = Array.from(new Set(word.word.split(""))).sort();
+    const discovered = new Set(game.radar?.[word.id] || []);
+    ring.ringGroup.classList.toggle("radar-ring--complete", !!word.completed);
+    ring.marksGroup.innerHTML = "";
+
+    const ringOffset = i * (Math.PI / 8); // stagger each ring's start so labels don't stack at 12 o'clock
+    unique.forEach((letter, idx) => {
+      const angle = (idx / unique.length) * Math.PI * 2 - Math.PI / 2 + ringOffset;
+      const x = RADAR_CENTER + ring.radius * Math.cos(angle);
+      const y = RADAR_CENTER + ring.radius * Math.sin(angle);
+      const lit = word.completed || discovered.has(letter);
+      const mark = svgEl("g", {
+        class: "radar-mark " + (lit ? "radar-mark--lit" : "radar-mark--dim"),
+        transform: `translate(${x.toFixed(2)},${y.toFixed(2)})`,
+      });
+      mark.appendChild(svgEl("circle", { r: lit ? 9 : 4, class: "radar-mark-dot" }));
+      if (lit) {
+        const text = svgEl("text", { class: "radar-mark-letter", "text-anchor": "middle", dy: "0.32em" });
+        text.textContent = letter;
+        mark.appendChild(text);
+      }
+      ring.marksGroup.appendChild(mark);
+    });
+  });
+
+  dom.radarLegend.innerHTML = words
+    .map((word) => {
+      const unique = Array.from(new Set(word.word.split(""))).sort();
+      const discovered = new Set(game.radar?.[word.id] || []);
+      const foundLetters = word.completed ? unique : unique.filter((l) => discovered.has(l));
+      return `<li class="radar-legend-item${word.completed ? " radar-legend-item--complete" : ""}">
+        <span class="radar-legend-length">${word.length} LETTERS</span>
+        <span class="radar-legend-detail">${foundLetters.length}/${unique.length} confirmed${
+        foundLetters.length ? `: ${foundLetters.join(", ")}` : ""
+      }</span>
+      </li>`;
+    })
+    .join("");
 }

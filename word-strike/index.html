@@ -83,7 +83,8 @@
     <div id="alphabet" class="alphabet alphabet--inactive" aria-label="Letter controls"></div>
 
     <div class="bottom-controls">
-      <button id="btn-log-toggle" class="btn btn-secondary btn-small">SHOT LOG</button>
+      <button id="btn-radar-toggle" class="btn btn-secondary btn-small">RADAR</button>
+      <button id="btn-log-toggle" class="btn btn-secondary btn-small">LOG</button>
       <button id="btn-help" class="btn btn-secondary btn-small">HELP</button>
       <button id="btn-restart" class="btn btn-danger btn-small">RESTART</button>
     </div>
@@ -94,6 +95,18 @@
         <button id="btn-log-close" class="icon-btn" aria-label="Close shot log">✕</button>
       </div>
       <ol id="shot-log-list" class="shot-log-list"></ol>
+    </div>
+
+    <div id="radar-panel" class="drawer hidden" aria-label="Letter radar">
+      <div class="drawer-header">
+        <span>LETTER RADAR</span>
+        <button id="btn-radar-close" class="icon-btn" aria-label="Close letter radar">✕</button>
+      </div>
+      <div class="radar-body">
+        <p class="radar-hint">Any letter you fire reveals which word(s) it belongs to — anywhere on the board, hit or miss.</p>
+        <svg id="radar-svg" viewBox="0 0 220 220" class="radar-svg" role="img" aria-label="Radar: one ring per hidden word, innermost is shortest"></svg>
+        <ul id="radar-legend" class="radar-legend"></ul>
+      </div>
     </div>
   </section>
 
