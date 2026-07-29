@@ -83,6 +83,11 @@ of `ui.js`'s own rendering calls.
 - Win by revealing every letter of all four words; lose if strikes hit
   zero first. A final exact strike always wins, even if strikes already
   read zero.
+- **Letter radar** (RADAR button): every letter you fire — hit or miss,
+  anywhere on the board — is checked against all four words. If it appears
+  in a word, it lights up on that word's ring (outermost = 7 letters,
+  innermost = 4), independent of whether the specific square you fired at
+  was actually part of that word.
 
 Difficulty modes (Standard/Recruit/Veteran/Blackout) vary the starting
 strike count; Recruit briefly highlights the four word regions at the

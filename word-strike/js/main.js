@@ -27,6 +27,7 @@ function init() {
   UI.buildGridLabels(dom);
   UI.buildGrid(dom, onCellActivate);
   UI.buildAlphabet(dom, onLetterActivate);
+  UI.buildRadar(dom);
 
   wireStartScreen();
   wireGameScreen();
@@ -84,6 +85,11 @@ function wireGameScreen() {
     dom.shotLogPanel.classList.toggle("hidden");
   });
   dom.btnLogClose.addEventListener("click", () => dom.shotLogPanel.classList.add("hidden"));
+  dom.btnRadarToggle.addEventListener("click", () => {
+    UI.updateRadar(dom, game);
+    dom.radarPanel.classList.toggle("hidden");
+  });
+  dom.btnRadarClose.addEventListener("click", () => dom.radarPanel.classList.add("hidden"));
 
   document.addEventListener("keydown", (e) => {
     if (!dom.screenGame.classList.contains("active")) return;
@@ -138,6 +144,7 @@ function startNewGame(difficulty) {
   refreshAll();
   UI.setStatus(dom, "idle");
   dom.shotLogPanel.classList.add("hidden");
+  dom.radarPanel.classList.add("hidden");
 
   const config = Game.getConfig(game);
   if (config.revealRegions) {
@@ -266,6 +273,7 @@ function refreshAll() {
   UI.updateScore(dom, game);
   UI.updateTargetLine(dom, game);
   if (!dom.shotLogPanel.classList.contains("hidden")) UI.renderShotLog(dom, game);
+  if (!dom.radarPanel.classList.contains("hidden")) UI.updateRadar(dom, game);
 }
 
 // ---------- Debug mode (?debug=true) ----------

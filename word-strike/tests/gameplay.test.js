@@ -186,5 +186,43 @@ function wrongLetterFor(correct) {
   );
 }
 
+// 11. Letter radar: firing a letter reveals which word(s) contain it,
+// regardless of which square was targeted or that square's own outcome.
+{
+  const game = freshGame();
+  const [w0, w1] = game.words;
+
+  // A miss elsewhere on the board (empty cell) still records the letter
+  // against any word that actually contains it.
+  const emptyCell = findEmptyCell(game, true) || findEmptyCell(game, false);
+  const sharedLetter = w0.word[0];
+  resolveShot(game, emptyCell.row, emptyCell.col, sharedLetter);
+  assert(
+    game.radar[w0.id].includes(sharedLetter),
+    "case 11: firing a letter anywhere should mark it on every word containing it"
+  );
+
+  // A live (wrong-letter) shot on a different word's square should also
+  // populate radar entries for whichever word(s) actually contain that letter.
+  const wrongLetterForW1 = w1.word[0] === "A" ? "B" : "A";
+  const targetCell = w1.cells[0];
+  resolveShot(game, targetCell.row, targetCell.col, wrongLetterForW1);
+  const containingWords = game.words.filter((w) => w.word.includes(wrongLetterForW1));
+  for (const w of containingWords) {
+    assert(
+      game.radar[w.id].includes(wrongLetterForW1),
+      `case 11: radar for ${w.id} should include ${wrongLetterForW1} once fired anywhere`
+    );
+  }
+
+  // Firing the same letter again must not duplicate the radar entry.
+  const beforeLen = game.radar[w0.id].length;
+  const anotherEmptyCell = findEmptyCell(game, true) || findEmptyCell(game, false);
+  if (anotherEmptyCell && !(anotherEmptyCell.row === emptyCell.row && anotherEmptyCell.col === emptyCell.col)) {
+    resolveShot(game, anotherEmptyCell.row, anotherEmptyCell.col, sharedLetter);
+    assert(game.radar[w0.id].length === beforeLen, "case 11: repeated letter must not duplicate a radar entry");
+  }
+}
+
 console.log(`Gameplay tests: ${passed} passed, ${failed} failed.`);
 process.exit(failed ? 1 : 0);
