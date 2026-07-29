@@ -213,17 +213,19 @@ const FLASH_CLASS = {
 };
 
 function handleResult(result, row, col) {
-  if (result.type === "blocked-duplicate") {
+  if (result.type === "blocked-duplicate" || result.type === "not-in-rack") {
     Audio.play("duplicate");
-    UI.setStatus(dom, "blocked-duplicate");
+    UI.setStatus(dom, result.type);
     return;
   }
   if (result.type === "invalid" || result.type === "ignored") return;
 
+  // Render the resolved state first, then layer the flash animation on top
+  // of it — flashing before rendering would have the very next render wipe
+  // the flash class before the browser ever paints it.
+  refreshAll();
   Audio.play(result.type);
   if (FLASH_CLASS[result.type]) UI.flashCell(dom, row, col, FLASH_CLASS[result.type]);
-
-  refreshAll();
   UI.setStatus(dom, result.type);
 
   if (result.wordCompleted) {
@@ -268,7 +270,7 @@ function finishGame() {
 function refreshAll() {
   UI.updateGrid(dom, game);
   UI.renderWordProgress(dom, game);
-  UI.updateAlphabet(dom, game);
+  UI.renderRack(dom, game);
   UI.updateStrikes(dom, game);
   UI.updateScore(dom, game);
   UI.updateTargetLine(dom, game);
@@ -289,6 +291,12 @@ function setupDebugPanel() {
     isGameOver: () => !!(game && game.gameOver),
     getOutcome: () => (game ? game.outcome : null),
     getWords: () => (game ? JSON.parse(JSON.stringify(game.words)) : []),
+    getRack: () => (game ? game.rack.slice() : []),
+    forceRackInclude: (letter) => {
+      if (!game) return;
+      if (!game.rack.includes(letter)) game.rack[0] = letter;
+      UI.renderRack(dom, game);
+    },
   };
 }
 
@@ -300,6 +308,7 @@ function refreshDebugPanel() {
   debugPanelEl.innerHTML = `
     <strong>DEBUG</strong> seed=${game.seed} difficulty=${game.difficulty}<br>
     ${wordLines}<br>
+    rack: ${(game.rack || []).slice().sort().join(" ")}<br>
     <button id="debug-regen">REGENERATE BOARD</button>
   `;
   document.getElementById("debug-regen").addEventListener("click", () => {
