@@ -226,9 +226,16 @@ function handleResult(result, row, col) {
   refreshAll();
   Audio.play(result.type);
   if (FLASH_CLASS[result.type]) UI.flashCell(dom, row, col, FLASH_CLASS[result.type]);
-  UI.setStatus(dom, result.type);
 
-  if (result.wordCompleted) {
+  const statusKey = result.type === "live" && result.strikeUsed ? "live-strike" : result.type;
+  UI.setStatus(dom, statusKey);
+
+  if (result.lastStand) {
+    Audio.play("lastStand", 0.15);
+    setTimeout(() => {
+      if (!game.gameOver) UI.setStatus(dom, "last-stand");
+    }, 260);
+  } else if (result.wordCompleted) {
     Audio.play("complete", 0.15);
     UI.flashWordComplete(dom, result.wordCompleted);
     setTimeout(() => {
@@ -296,6 +303,11 @@ function setupDebugPanel() {
       if (!game) return;
       if (!game.rack.includes(letter)) game.rack[0] = letter;
       UI.renderRack(dom, game);
+    },
+    setStrikes: (n) => {
+      if (!game) return;
+      game.strikesRemaining = n;
+      refreshAll();
     },
   };
 }

@@ -256,6 +256,19 @@ h1, h2, h3 { font-family: var(--font-heading); text-transform: uppercase; letter
   50% { opacity: 0.55; }
 }
 
+.strikes--last-stand {
+  border-color: var(--red);
+  box-shadow: 0 0 12px rgba(229, 72, 77, 0.45);
+}
+.strikes--last-stand .strikes-label {
+  color: var(--red);
+  animation: pulse-warning 0.5s ease-in-out infinite;
+}
+.strikes--last-stand .strikes-value {
+  color: var(--red);
+  animation: pulse-warning 0.5s ease-in-out infinite;
+}
+
 .score {
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -484,9 +497,17 @@ h1, h2, h3 { font-family: var(--font-heading); text-transform: uppercase; letter
 }
 .status-message--exact { color: var(--phosphor-bright); border-color: var(--phosphor); }
 .status-message--live { color: var(--red); border-color: var(--red-dim); }
+.status-message--live-strike { color: var(--amber); border-color: var(--amber-dim); }
 .status-message--hot { color: var(--amber); border-color: var(--amber-dim); }
 .status-message--dead { color: var(--paper-dim); }
 .status-message--blocked-duplicate { color: var(--amber); }
+.status-message--last-stand {
+  color: var(--red);
+  border-color: var(--red);
+  background: rgba(229, 72, 77, 0.12);
+  animation: pulse-warning 0.6s ease-in-out infinite;
+  font-weight: 700;
+}
 
 .eliminated-line {
   text-align: center;
