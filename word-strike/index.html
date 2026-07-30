@@ -55,7 +55,7 @@
       <div class="hud-row">
         <button id="btn-menu" class="icon-btn" aria-label="Back to start screen" title="Start screen">◄</button>
         <div class="strikes" id="strikes-display">
-          <span class="strikes-label">STRIKES</span>
+          <span class="strikes-label" id="strikes-label">STRIKES</span>
           <span class="strikes-value" id="strikes-value">20</span>
         </div>
         <div class="score" id="score-display">SCORE <span id="score-value">0</span></div>
@@ -123,7 +123,7 @@
           <dt class="outcome-tag outcome-tag--exact">EXACT</dt>
           <dd>Correct square and correct letter. No strike used.</dd>
           <dt class="outcome-tag outcome-tag--live">LIVE</dt>
-          <dd>A word is here, but the letter is wrong. No strike used. Try another letter.</dd>
+          <dd>A word is here, but the letter is wrong. The first wrong guess on a square is free — every guess after that on the same square costs a strike.</dd>
           <dt class="outcome-tag outcome-tag--hot">HOT</dt>
           <dd>The square is empty, but a word is adjacent. One strike used.</dd>
           <dt class="outcome-tag outcome-tag--dead">DEAD</dt>
@@ -133,6 +133,7 @@
         <p>Discover every letter of all four words before your strikes run out.</p>
         <p>Instead of the full alphabet, each turn offers a rack of 12 letters — some are guaranteed to belong somewhere in the unsolved words, the rest are decoys. A fresh rack is drawn after every shot, so a letter you need may not always be available right now.</p>
         <p>Every letter you fire stays visible on the board, right or wrong, so you can see at a glance what's already been tried where.</p>
+        <p><strong>LAST STAND:</strong> hitting zero strikes doesn't end the operation outright. Your very next shot is sudden death — an exact strike keeps you alive, anything else ends it. This reprieve happens once per game.</p>
       </div>
       <button class="btn btn-primary btn-close-overlay" data-close="overlay-help">GOT IT</button>
     </div>
@@ -191,14 +192,14 @@
           <dt class="outcome-tag outcome-tag--exact">EXACT</dt>
           <dd>Right square, right letter. Free — no strike used.</dd>
           <dt class="outcome-tag outcome-tag--live">LIVE</dt>
-          <dd>Right square, wrong letter. Free — try again.</dd>
+          <dd>Right square, wrong letter. First guess is free — after that, guessing again on the same square costs a strike.</dd>
           <dt class="outcome-tag outcome-tag--hot">HOT</dt>
           <dd>Empty square, word nearby. Costs one strike.</dd>
           <dt class="outcome-tag outcome-tag--dead">DEAD</dt>
           <dd>Empty square, nothing nearby. Costs one strike.</dd>
         </dl>
         <p>Your rack holds 12 letters, refreshed every turn — only some of them belong in the unsolved words. Fired letters stay on the board so you always remember what you've tried.</p>
-        <p>Run out of strikes before finding every word, and the operation fails.</p>
+        <p>Run out of strikes and it's LAST STAND: one final shot. An exact strike keeps you alive; anything else ends the operation. This happens once per game.</p>
       </div>
       <button id="btn-tutorial-start" class="btn btn-primary btn-close-overlay">BEGIN</button>
     </div>

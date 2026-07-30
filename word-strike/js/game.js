@@ -124,12 +124,16 @@ export function createGame({ difficulty = "standard", seed = null } = {}) {
       deadSquares: 0,
       duplicatesBlocked: 0,
       wordsCompleted: 0,
+      lastStandTriggered: false,
     },
     shotLog: [],
     // Per-word arrays of letters confirmed (via any fired shot, anywhere on
     // the board) to appear somewhere in that word — feeds the letter radar.
     radar: Object.fromEntries(board.words.map((w) => [w.id, []])),
     rack: [],
+    // One reprieve per game: the shot that would otherwise end the game at
+    // 0 strikes instead becomes sudden death — see resolveShot below.
+    lastStandUsed: false,
   };
   game.rack = generateRack(game);
   return game;
@@ -221,6 +225,12 @@ function endDefeat(game) {
  * outcome order: invalid -> not in this turn's rack -> blocked duplicate ->
  * exact -> live -> hot/dead, then always checks victory before defeat.
  * Draws a fresh rack on the way out of every shot that actually resolves.
+ *
+ * A live square's first wrong guess is free; repeat guesses on the same
+ * square cost a strike. The first time a strike-costing shot would drop
+ * strikes to zero, the game grants one Last Stand reprieve instead of
+ * ending: play continues, but the next strike-costing shot ends it for
+ * real (see `lastStandUsed` / the `lastStand` field on the return value).
  */
 export function resolveShot(game, row, col, letter) {
   if (game.gameOver) return { type: "ignored" };
@@ -247,6 +257,10 @@ export function resolveShot(game, row, col, letter) {
 
   let result;
   let completedWord = null;
+  // Whether *this* shot itself spent a strike — the win/loss check below
+  // must key off this, not just the ambient strike total, or a free shot
+  // fired after a Last Stand reprieve would wrongly end the game (see below).
+  let strikeConsumed = false;
 
   if (cell.hiddenLetter !== null) {
     if (cell.hiddenLetter === letter) {
@@ -258,10 +272,18 @@ export function resolveShot(game, row, col, letter) {
       if (word && checkWordCompletion(game, word)) completedWord = word;
       result = "exact";
     } else {
+      // The first wrong guess on a square is free — it's how you find out
+      // it's live at all. Every guess after that on the same square is now
+      // an informed gamble among remaining candidates, so it costs a strike.
+      const isRepeatGuess = cell.attemptedLetters.length > 0;
       cell.state = "live";
       cell.attemptedLetters.push(letter);
       game.stats.liveContacts += 1;
       game.score += SCORING.liveNewLetter;
+      if (isRepeatGuess) {
+        game.strikesRemaining -= 1;
+        strikeConsumed = true;
+      }
       result = "live";
     }
   } else if (isAdjacentToHiddenWord(game.grid, row, col)) {
@@ -270,6 +292,7 @@ export function resolveShot(game, row, col, letter) {
     cell.resolvedAtTurn = game.turnCounter;
     cell.attemptedLetters.push(letter);
     game.strikesRemaining -= 1;
+    strikeConsumed = true;
     game.stats.hotSquares += 1;
     game.score += SCORING.hot;
     result = "hot";
@@ -279,6 +302,7 @@ export function resolveShot(game, row, col, letter) {
     cell.resolvedAtTurn = game.turnCounter;
     cell.attemptedLetters.push(letter);
     game.strikesRemaining -= 1;
+    strikeConsumed = true;
     game.stats.deadSquares += 1;
     game.score += SCORING.dead;
     result = "dead";
@@ -293,10 +317,22 @@ export function resolveShot(game, row, col, letter) {
 
   game.selected = null;
 
+  let lastStand = false;
+
   if (allWordsComplete(game)) {
     endVictory(game);
-  } else if (game.strikesRemaining <= 0) {
-    endDefeat(game);
+  } else if (strikeConsumed && game.strikesRemaining <= 0) {
+    if (!game.lastStandUsed) {
+      // First time hitting zero this game: grant one reprieve instead of
+      // ending it. The player stays at 0 strikes; the *next* strike-costing
+      // shot (this one doesn't count) ends the game for real.
+      game.lastStandUsed = true;
+      game.stats.lastStandTriggered = true;
+      lastStand = true;
+    } else {
+      game.lastStandFailed = true;
+      endDefeat(game);
+    }
   }
 
   game.rack = generateRack(game);
@@ -306,6 +342,8 @@ export function resolveShot(game, row, col, letter) {
     cell,
     letter,
     wordCompleted: completedWord,
+    lastStand,
+    strikeUsed: strikeConsumed,
     gameOver: game.gameOver,
     outcome: game.outcome,
   };

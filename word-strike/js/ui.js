@@ -7,6 +7,7 @@ import { COLS, GRID_SIZE, rowColToLabel } from "./board.js";
 const STATUS_MESSAGES = {
   exact: "EXACT STRIKE — LETTER CONFIRMED",
   live: "LIVE CONTACT — WRONG LETTER",
+  "live-strike": "LIVE CONTACT — STRIKE USED",
   hot: "HOT — A WORD IS CLOSE",
   dead: "DEAD — NOTHING NEARBY",
   "blocked-duplicate": "LETTER ALREADY ELIMINATED FOR THIS SQUARE",
@@ -14,6 +15,7 @@ const STATUS_MESSAGES = {
   invalid: "SQUARE ALREADY RESOLVED",
   idle: "SELECT A SQUARE TO BEGIN",
   selected: "SELECT A LETTER TO FIRE",
+  "last-stand": "LAST STAND — ONE SHOT TO SURVIVE",
 };
 
 export function queryDom() {
@@ -33,6 +35,7 @@ export function queryDom() {
 
     btnMenu: $("btn-menu"),
     strikesValue: $("strikes-value"),
+    strikesLabel: $("strikes-label"),
     strikesDisplay: $("strikes-display"),
     scoreValue: $("score-value"),
     btnSound: $("btn-sound"),
@@ -292,9 +295,12 @@ export function renderRack(dom, game) {
 // ---------- HUD ----------
 
 export function updateStrikes(dom, game) {
+  const inLastStand = game.lastStandUsed && game.strikesRemaining <= 0 && !game.gameOver;
   dom.strikesValue.textContent = String(Math.max(0, game.strikesRemaining));
   dom.strikesDisplay.classList.toggle("strikes--warning", game.strikesRemaining <= 5 && game.strikesRemaining > 1);
   dom.strikesDisplay.classList.toggle("strikes--final", game.strikesRemaining === 1);
+  dom.strikesDisplay.classList.toggle("strikes--last-stand", inLastStand);
+  dom.strikesLabel.textContent = inLastStand ? "LAST STAND" : "STRIKES";
 }
 
 export function updateScore(dom, game) {
@@ -355,7 +361,7 @@ export function renderStats(dom, statsView) {
 }
 
 export function renderResult(dom, game, { won }) {
-  dom.resultTitle.textContent = won ? "ALL TARGETS ELIMINATED" : "OUT OF STRIKES";
+  dom.resultTitle.textContent = won ? "ALL TARGETS ELIMINATED" : game.lastStandFailed ? "LAST STAND FAILED" : "OUT OF STRIKES";
   dom.overlayResult.classList.toggle("overlay--victory", won);
   dom.overlayResult.classList.toggle("overlay--defeat", !won);
 
@@ -376,7 +382,7 @@ export function renderResult(dom, game, { won }) {
 
   const elapsed = Math.max(0, Math.floor(((game.endTime || Date.now()) - game.startTime) / 1000));
   const stats = [
-    ["Remaining Strikes", game.strikesRemaining],
+    ["Remaining Strikes", Math.max(0, game.strikesRemaining)],
     ["Total Shots", game.stats.shotsTotal],
     ["Exact Strikes", game.stats.exactStrikes],
     ["Live Contacts", game.stats.liveContacts],
@@ -385,6 +391,9 @@ export function renderResult(dom, game, { won }) {
     ["Elapsed Time", `${elapsed}s`],
     ["Score", game.score],
   ];
+  if (game.stats.lastStandTriggered) {
+    stats.push(["Last Stand", won ? "Survived" : "Failed"]);
+  }
   dom.resultStats.innerHTML = stats
     .map(([label, value]) => `<div class="stat-row"><span>${label}</span><strong>${value}</strong></div>`)
     .join("");

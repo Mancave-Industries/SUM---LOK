@@ -95,6 +95,11 @@ const EFFECTS = {
     tone(c, { freq: 300, duration: 0.1, type: "square", gain: 0.16 });
     tone(c, { freq: 300, duration: 0.1, type: "square", gain: 0.16, delay: 0.16 });
   },
+  lastStand(c) {
+    tone(c, { freq: 110, duration: 0.22, type: "sawtooth", gain: 0.2 });
+    tone(c, { freq: 98, duration: 0.32, type: "sawtooth", gain: 0.24, delay: 0.26 });
+    noiseBurst(c, { duration: 0.3, gain: 0.08, filterFreq: 250, delay: 0.26 });
+  },
   victory(c) {
     [523, 659, 784, 1046, 1318].forEach((freq, i) => {
       tone(c, { freq, duration: 0.3, type: "triangle", gain: 0.2, delay: i * 0.1 });

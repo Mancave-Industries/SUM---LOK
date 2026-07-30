@@ -23,7 +23,7 @@ function findEmptyCell(game, wantAdjacent) {
   for (let r = 0; r < game.size; r++) {
     for (let c = 0; c < game.size; c++) {
       const cell = game.grid[r][c];
-      if (cell.hiddenLetter !== null) continue;
+      if (cell.hiddenLetter !== null || cell.resolved) continue;
       if (isAdjacentToHiddenWord(game.grid, r, c) === wantAdjacent) return { row: r, col: c };
     }
   }
@@ -91,7 +91,10 @@ function ensureInRack(game, letter) {
   assert(game.stats.duplicatesBlocked === 1, "case 3: duplicatesBlocked should be 1");
 }
 
-// 4. A different incorrect letter on a live square: allowed, zero strikes.
+// 4. A different incorrect letter on a live square: allowed, but — since
+// the first free guess is already spent — costs a strike (case 13 covers
+// this rule directly; this case just confirms the guess itself is still
+// permitted and recorded, distinct from the blocked-duplicate case above).
 {
   const game = freshGame();
   const word = game.words[0];
@@ -104,7 +107,7 @@ function ensureInRack(game, letter) {
   ensureInRack(game, wrong2);
   const result = resolveShot(game, target.row, target.col, wrong2);
   assert(result.type === "live", "case 4: expected live result for a new wrong letter");
-  assert(game.strikesRemaining === before, "case 4: strikes must not be consumed");
+  assert(game.strikesRemaining === before - 1, "case 4: repeat wrong guess costs a strike");
   assert(
     game.grid[target.row][target.col].attemptedLetters.length === 2,
     "case 4: both wrong letters should be recorded"
@@ -166,10 +169,13 @@ function ensureInRack(game, letter) {
   assert(game.gameOver && game.outcome === "win", "case 7: victory must win over a zero-strike loss");
 }
 
-// 8. Final ammunition-consuming miss produces defeat if hidden letters remain.
+// 8. Final ammunition-consuming miss produces defeat if hidden letters
+// remain — with the Last Stand reprieve already spent (artificial test
+// state; case 14 covers the reprieve itself in detail).
 {
   const game = freshGame();
   game.strikesRemaining = 1;
+  game.lastStandUsed = true;
   const cell = findEmptyCell(game, false) || findEmptyCell(game, true);
   assert(!!cell, "case 8: an empty cell should exist to spend the final strike on");
   if (cell) {
@@ -282,6 +288,65 @@ function ensureInRack(game, letter) {
     game.rack.length === 12 && JSON.stringify(game.rack.slice().sort()) !== JSON.stringify(rackBefore.slice().sort()),
     "case 12: the rack should be redrawn after a valid shot"
   );
+}
+
+// 13. First wrong guess on a live square is free; a second, different
+// wrong guess on that same square costs a strike.
+{
+  const game = freshGame();
+  const word = game.words[0];
+  const target = word.cells[0];
+  const correct = word.word[0];
+  const wrong1 = correct === "A" ? "B" : "A";
+  const wrong2 = correct === "C" || wrong1 === "C" ? "D" : "C";
+
+  ensureInRack(game, wrong1);
+  const before1 = game.strikesRemaining;
+  const r1 = resolveShot(game, target.row, target.col, wrong1);
+  assert(r1.type === "live" && r1.strikeUsed === false, "case 13: first wrong guess should be free");
+  assert(game.strikesRemaining === before1, "case 13: strikes unchanged after first wrong guess");
+
+  ensureInRack(game, wrong2);
+  const before2 = game.strikesRemaining;
+  const r2 = resolveShot(game, target.row, target.col, wrong2);
+  assert(r2.type === "live" && r2.strikeUsed === true, "case 13: repeat wrong guess should cost a strike");
+  assert(game.strikesRemaining === before2 - 1, "case 13: exactly one strike consumed on repeat wrong guess");
+}
+
+// 14. Last Stand: the first strike-costing shot to reach zero grants one
+// reprieve (game continues); a later strike-costing miss then ends it for
+// real, but a surviving exact strike in between keeps the game alive.
+{
+  const game = freshGame();
+  game.strikesRemaining = 1; // artificial test state, mirrors case 7/8's approach
+
+  const cellA = findEmptyCell(game, false) || findEmptyCell(game, true);
+  ensureInRack(game, "Q");
+  const triggerResult = resolveShot(game, cellA.row, cellA.col, "Q");
+  assert(triggerResult.lastStand === true, "case 14: hitting zero for the first time should trigger Last Stand");
+  assert(!game.gameOver, "case 14: Last Stand should not end the game immediately");
+  assert(game.lastStandUsed === true, "case 14: lastStandUsed should now be set");
+  assert(game.strikesRemaining <= 0, "case 14: strikes should sit at zero during Last Stand");
+
+  // Surviving an exact strike during Last Stand should not end the game.
+  const word = game.words.find((w) => !w.completed);
+  const survivorCell = word.cells.find((c) => game.grid[c.row][c.col].state !== "exact");
+  const idx = word.cells.indexOf(survivorCell);
+  ensureInRack(game, word.word[idx]);
+  const surviveResult = resolveShot(game, survivorCell.row, survivorCell.col, word.word[idx]);
+  assert(surviveResult.type === "exact", "case 14: survival shot should be an exact strike");
+  assert(!game.gameOver, "case 14: an exact strike during Last Stand must not end the game");
+
+  // The next strike-costing miss, with the reprieve already spent, ends it for real.
+  const cellB = findEmptyCell(game, false) || findEmptyCell(game, true);
+  assert(!!cellB, "case 14: a second empty cell should exist to spend the failing shot on");
+  if (cellB) {
+    ensureInRack(game, "Z");
+    const failResult = resolveShot(game, cellB.row, cellB.col, "Z");
+    assert(failResult.lastStand === false, "case 14: this shot should not grant a second reprieve");
+    assert(game.gameOver && game.outcome === "loss", "case 14: the reprieve is spent, so this miss ends the game");
+    assert(game.lastStandFailed === true, "case 14: lastStandFailed should be recorded");
+  }
 }
 
 console.log(`Gameplay tests: ${passed} passed, ${failed} failed.`);

@@ -79,9 +79,10 @@ of `ui.js`'s own rendering calls.
   needed somewhere in the unsolved words; the rest are decoys. A fresh
   rack is drawn after every valid shot, so the exact letter you want isn't
   always available this turn.
-- **EXACT** (right square, right letter) and **LIVE** (right square, wrong
-  letter) never cost a strike — a live square can be retried with a
-  different letter, but a previously-eliminated letter is blocked.
+- **EXACT** (right square, right letter) never costs a strike. **LIVE**
+  (right square, wrong letter) — the *first* wrong guess on a square is
+  free, but every guess after that on the same square costs a strike; a
+  previously-eliminated letter is always blocked outright.
 - **HOT** (empty square, adjacent to a word) and **DEAD** (empty, nothing
   adjacent in any of the 8 directions) each cost one strike.
 - Every letter you fire stays visibly displayed on the board — right or
@@ -92,6 +93,10 @@ of `ui.js`'s own rendering calls.
 - Win by revealing every letter of all four words; lose if strikes hit
   zero first. A final exact strike always wins, even if strikes already
   read zero.
+- **Last Stand**: hitting zero strikes doesn't end the game outright — the
+  next shot is sudden death. An exact strike keeps you in it; anything
+  else ends the operation. One reprieve per game; the HUD switches to a
+  pulsing "LAST STAND" state for the rest of the game once it's spent.
 - **Letter radar** (RADAR button): every letter you fire — hit or miss,
   anywhere on the board — is checked against all four words. If it appears
   in a word, it lights up on that word's ring (outermost = 7 letters,
