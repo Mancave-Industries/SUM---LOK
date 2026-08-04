@@ -101,20 +101,28 @@ UI.renderTitle = function renderTitle(hasSaved) {
 
 /* ---------- 2. Setup ---------- */
 
-UI.renderSetup = function renderSetup(names, seriesLength) {
+UI.renderSetup = function renderSetup(names, seriesLength, isComputer) {
   const allValid = names.every((n) => n.trim().length > 0);
   const deceivers = deceiverCountForPlayers(names.length);
+  const computerCount = isComputer.filter(Boolean).length;
   screen('setup').innerHTML = `
     <div class="screen-title-row">Gather the Circle</div>
-    <div class="screen-subtitle">Enter each player's name. One shared phone, ${CONFIG.minPlayers}–${CONFIG.maxPlayers} players.</div>
+    <div class="screen-subtitle">Enter each player's name. One shared phone, ${CONFIG.minPlayers}–${CONFIG.maxPlayers} players. Mark a seat Computer to have it play itself with simple random logic.</div>
     <div class="setup-list">
       ${names.map((n, i) => `
-        <div class="setup-row">
-          <span class="seat-index">${i + 1}</span>
-          <input class="name-input" type="text" data-index="${i}" maxlength="18" placeholder="Player ${i + 1} name" value="${escapeHtml(n)}" autocomplete="off">
-          ${names.length > CONFIG.minPlayers ? `<button class="remove-player-btn" data-action="remove-player" data-index="${i}" aria-label="Remove player">&times;</button>` : ''}
+        <div class="setup-player-block">
+          <div class="setup-row">
+            <span class="seat-index">${i + 1}</span>
+            <input class="name-input" type="text" data-index="${i}" maxlength="18" placeholder="Player ${i + 1} name" value="${escapeHtml(n)}" autocomplete="off">
+            ${names.length > CONFIG.minPlayers ? `<button class="remove-player-btn" data-action="remove-player" data-index="${i}" aria-label="Remove player">&times;</button>` : ''}
+          </div>
+          <div class="seat-mode-row">
+            <button type="button" class="seat-mode-btn ${!isComputer[i] ? 'active' : ''}" data-action="set-seat-mode" data-index="${i}" data-mode="human">${iconUse(ICONS.hoodedFigure, 'icon-sm')} Human</button>
+            <button type="button" class="seat-mode-btn ${isComputer[i] ? 'active' : ''}" data-action="set-seat-mode" data-index="${i}" data-mode="computer">${iconUse(ICONS.settings, 'icon-sm')} Computer</button>
+          </div>
         </div>`).join('')}
     </div>
+    ${computerCount ? `<p class="setup-hint">${computerCount} computer seat${computerCount > 1 ? 's' : ''} — the phone skips straight past ${computerCount > 1 ? 'them' : 'it'} on ${computerCount > 1 ? 'their' : 'its'} turn.</p>` : ''}
     ${names.length < CONFIG.maxPlayers ? `<button class="add-player-btn" data-action="add-player">${iconUse(ICONS.hoodedFigure, 'icon-sm')} Add Player</button>` : ''}
     <p class="setup-hint">${names.length} players — ${deceivers} Deceiver${deceivers > 1 ? 's' : ''} will be chosen in secret.</p>
     <div class="panel" style="margin-top:6px;">
@@ -131,6 +139,22 @@ UI.renderSetup = function renderSetup(names, seriesLength) {
     </div>
     <div class="spacer"></div>
     <button class="btn btn-primary btn-block" data-action="start-game" ${allValid ? '' : 'disabled'}>Seal The Roles &amp; Begin</button>`;
+};
+
+/* ---------- Computer seat auto-turn ----------
+   One shared screen for every queue-based phase (Reveal/Draw/Murder/Vote)
+   when the current seat is a computer. Content depends only on the player's
+   name — never on their secret role or on what the bot decided — so it
+   looks identical for the acting Deceiver's computer turn as for any other
+   computer seat's turn, matching the human decoy-screen pattern. */
+UI.renderComputerTurn = function renderComputerTurn(state, player) {
+  screen(state.phase).innerHTML = `
+    <div class="reveal-stage fade-in">
+      ${iconUse(ICONS.settings, 'icon icon-lg')}
+      <div class="pass-overlay-eyebrow">Computer Seat</div>
+      <div class="pass-overlay-name">${escapeHtml(player.name)}</div>
+      <p class="reveal-body">Taking its turn — no phone needed.</p>
+    </div>`;
 };
 
 /* ---------- 3. Private Role Reveal ---------- */
@@ -182,7 +206,7 @@ UI.renderMain = function renderMain(state) {
       ${state.players.map((p) => `
         <div class="player-row ${p.alive ? '' : 'eliminated'}">
           <div class="player-avatar">${initials(p.name)}</div>
-          <div class="player-name">${escapeHtml(p.name)}</div>
+          <div class="player-name">${escapeHtml(p.name)}${p.isComputer ? ' <span class="small-note">(Computer)</span>' : ''}</div>
           <div class="player-meta">${p.alive ? (p.hand.length ? `${p.hand.length} card${p.hand.length > 1 ? 's' : ''}` : '') : 'Out'}</div>
           ${!p.alive ? iconUse(ICONS.skull, 'player-badge') : ''}
         </div>`).join('')}
@@ -482,7 +506,7 @@ UI.renderResults = function renderResults(state) {
         <div class="role-reveal-row ${p.role}">
           <div class="player-avatar">${initials(p.name)}</div>
           <div style="flex:1;">
-            <div>${escapeHtml(p.name)} ${!p.alive ? '<span class="small-note">(eliminated)</span>' : ''}</div>
+            <div>${escapeHtml(p.name)} ${p.isComputer ? '<span class="small-note">(Computer)</span>' : ''} ${!p.alive ? '<span class="small-note">(eliminated)</span>' : ''}</div>
             <div class="player-meta">${p.role === ROLES.DECEIVER.id ? ROLES.DECEIVER.label : ROLES.LOYAL.label}</div>
           </div>
         </div>`).join('')}

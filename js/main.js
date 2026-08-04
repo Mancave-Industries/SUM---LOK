@@ -24,7 +24,86 @@ const uiStage = {
 Sound.setEnabled(state.settings.sound);
 
 let setupNames = Array(CONFIG.minPlayers).fill('');
+let setupIsComputer = Array(CONFIG.minPlayers).fill(false);
 let seriesLength = 1;
+
+/* Computer seats never wait for a tap: this pauses briefly, then resolves
+   their turn with the same bot logic no matter which seat holds the secret
+   Deceiver role, and re-renders. Guarded so a phase change mid-render can't
+   schedule a second overlapping timer for the same turn. */
+const COMPUTER_TURN_DELAY_MS = 700;
+let computerTurnTimer = null;
+
+const QUEUE_PHASES = [PHASES.REVEAL, PHASES.DRAW, PHASES.MURDER, PHASES.VOTE, PHASES.FINAL_BANISHMENT];
+
+function cancelComputerTurnTimer() {
+  if (computerTurnTimer !== null) {
+    clearTimeout(computerTurnTimer);
+    computerTurnTimer = null;
+  }
+}
+
+function autoAdvanceComputerTurns() {
+  if (!QUEUE_PHASES.includes(state.phase)) return false;
+  const player = currentQueuePlayer(state);
+  if (!player || !player.isComputer) return false;
+
+  UI.renderComputerTurn(state, player);
+  if (computerTurnTimer !== null) return true;
+  computerTurnTimer = setTimeout(() => {
+    computerTurnTimer = null;
+    resolveComputerTurn();
+    persist();
+    render();
+  }, COMPUTER_TURN_DELAY_MS);
+  return true;
+}
+
+function resolveComputerTurn() {
+  switch (state.phase) {
+    case PHASES.REVEAL:
+      confirmRevealCurrent(state);
+      break;
+    case PHASES.DRAW: {
+      const player = currentQueuePlayer(state);
+      drawFortuneCard(state, player.id);
+      const done = finishDrawForCurrent(state);
+      if (done) {
+        routeAfterDraw(state);
+        uiStage.eliminationRevealed = false;
+        if (state.phase === PHASES.NIGHT) Sound.play('nightFalls');
+        else if (state.phase === PHASES.ELIMINATION) Sound.play('quietNight');
+      }
+      break;
+    }
+    case PHASES.MURDER: {
+      // Same two calls regardless of role — recordMurderChoice only runs on
+      // the acting Deceiver's own turn, exactly like confirm-murder-turn.
+      if (isActingDeceiverTurn(state)) {
+        const targetId = botPickMurderTarget(state);
+        const useChoice = botShouldUseDeceiversChoice(state);
+        if (targetId) recordMurderChoice(state, targetId, useChoice);
+      }
+      advanceMurderQueue(state);
+      uiStage.eliminationRevealed = false;
+      break;
+    }
+    case PHASES.VOTE:
+    case PHASES.FINAL_BANISHMENT: {
+      const voter = currentQueuePlayer(state);
+      const targetId = botPickVoteTarget(state, voter.id);
+      const useDagger = botShouldUseDagger(state, voter.id);
+      const done = castVote(state, voter.id, targetId, useDagger);
+      if (done) {
+        resolveBanishment(state);
+        uiStage.eliminationRevealed = false;
+      }
+      break;
+    }
+    default:
+      break;
+  }
+}
 
 function showScreen(phaseName) {
   document.querySelectorAll('.screen').forEach((s) => s.classList.remove('active'));
@@ -36,12 +115,14 @@ function render() {
   showScreen(state.phase);
   UI.updateHeader(state);
 
+  if (autoAdvanceComputerTurns()) return;
+
   switch (state.phase) {
     case PHASES.TITLE:
       UI.renderTitle(hasSavedGame());
       break;
     case PHASES.SETUP:
-      UI.renderSetup(setupNames, seriesLength);
+      UI.renderSetup(setupNames, seriesLength, setupIsComputer);
       break;
     case PHASES.REVEAL:
       UI.renderReveal(state, uiStage.revealTapped);
@@ -94,14 +175,17 @@ function main_onToggleDagger(checked) {
 const actions = {
   'new-game': () => {
     Sound.play('tap');
+    cancelComputerTurnTimer();
     state = createInitialState();
     setupNames = Array(CONFIG.minPlayers).fill('');
+    setupIsComputer = Array(CONFIG.minPlayers).fill(false);
     seriesLength = 1;
     state.phase = PHASES.SETUP;
     render();
   },
   'continue-game': () => {
     Sound.play('tap');
+    cancelComputerTurnTimer();
     const saved = loadState();
     if (saved) {
       state = saved;
@@ -116,29 +200,39 @@ const actions = {
   },
   'add-player': () => {
     Sound.play('tap');
-    if (setupNames.length < CONFIG.maxPlayers) setupNames.push('');
-    UI.renderSetup(setupNames, seriesLength);
+    if (setupNames.length < CONFIG.maxPlayers) {
+      setupNames.push('');
+      setupIsComputer.push(false);
+    }
+    UI.renderSetup(setupNames, seriesLength, setupIsComputer);
   },
   'remove-player': (btn) => {
     Sound.play('tap');
     const i = Number(btn.dataset.index);
     setupNames.splice(i, 1);
-    UI.renderSetup(setupNames, seriesLength);
+    setupIsComputer.splice(i, 1);
+    UI.renderSetup(setupNames, seriesLength, setupIsComputer);
+  },
+  'set-seat-mode': (btn) => {
+    Sound.play('tap');
+    const i = Number(btn.dataset.index);
+    setupIsComputer[i] = btn.dataset.mode === 'computer';
+    UI.renderSetup(setupNames, seriesLength, setupIsComputer);
   },
   'inc-series-length': () => {
     Sound.play('tap');
     seriesLength = Math.min(20, seriesLength + 1);
-    UI.renderSetup(setupNames, seriesLength);
+    UI.renderSetup(setupNames, seriesLength, setupIsComputer);
   },
   'dec-series-length': () => {
     Sound.play('tap');
     seriesLength = Math.max(1, seriesLength - 1);
-    UI.renderSetup(setupNames, seriesLength);
+    UI.renderSetup(setupNames, seriesLength, setupIsComputer);
   },
   'start-game': () => {
     if (!setupNames.every((n) => n.trim().length > 0)) return;
     Sound.play('gather');
-    startNewSeries(state, setupNames, seriesLength);
+    startNewSeries(state, setupNames, seriesLength, setupIsComputer);
     uiStage.revealTapped = false;
     persist();
     render();
@@ -286,6 +380,7 @@ const actions = {
   },
   'play-again': () => {
     Sound.play('tap');
+    cancelComputerTurnTimer();
     clearState();
     state = createInitialState();
     render();
@@ -294,6 +389,7 @@ const actions = {
     Sound.play('tap');
     UI.hideModal();
     if (!window.confirm('Reset the current game? This cannot be undone.')) return;
+    cancelComputerTurnTimer();
     clearState();
     state = createInitialState();
     render();

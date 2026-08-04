@@ -11,8 +11,9 @@ function log(state, text) {
 
 /* ---------- Setup ---------- */
 
-function setupNewGame(state, playerNames) {
-  state.players = playerNames.map((name, i) => createPlayer(`p${i + 1}_${Date.now()}_${i}`, name.trim()));
+function setupNewGame(state, playerNames, isComputerFlags) {
+  const computerFlags = isComputerFlags || playerNames.map(() => false);
+  state.players = playerNames.map((name, i) => createPlayer(`p${i + 1}_${Date.now()}_${i}`, name.trim(), computerFlags[i]));
   playerNames.forEach((name) => {
     const key = name.trim();
     if (!(key in state.seriesScores)) state.seriesScores[key] = 0;
@@ -45,17 +46,18 @@ function setupNewGame(state, playerNames) {
 
 /* ---------- Series (several games back to back, points carried across) ---------- */
 
-function startNewSeries(state, playerNames, seriesLength) {
+function startNewSeries(state, playerNames, seriesLength, isComputerFlags) {
   state.seriesLength = Math.max(1, Math.min(20, seriesLength | 0));
   state.seriesGame = 1;
   state.seriesScores = {};
   state.rosterNames = playerNames.map((n) => n.trim());
-  setupNewGame(state, state.rosterNames);
+  state.rosterIsComputer = playerNames.map((_, i) => !!(isComputerFlags && isComputerFlags[i]));
+  setupNewGame(state, state.rosterNames, state.rosterIsComputer);
 }
 
 function startNextGameInSeries(state) {
   state.seriesGame += 1;
-  setupNewGame(state, state.rosterNames);
+  setupNewGame(state, state.rosterNames, state.rosterIsComputer);
 }
 
 function fellowDeceivers(state, playerId) {
@@ -359,6 +361,40 @@ function resolveBanishment(state) {
   state.eliminationContext = state.finalBanishmentActive ? 'final' : 'banishment';
   state.phase = PHASES.ELIMINATION;
   return state.voteResult;
+}
+
+/* ---------- Computer players (bots) ----------
+   Deliberately simple, non-strategic, random-but-plausible choices — this is
+   a static client-side site with no AI backend. The important rule here
+   isn't intelligence, it's anonymity: every computer seat must decide and
+   behave identically to every other computer seat regardless of its own
+   secret role, exactly like the human decoy-screen pattern above. A bot's
+   Murder-turn function is only ever invoked on the acting Deceiver's turn
+   (mirroring the human confirm-murder-turn handler), so it never runs
+   differently for a non-acting-Deceiver computer seat versus a Loyal one —
+   both simply advance the queue with no action taken. */
+
+function botPickMurderTarget(state) {
+  const targets = eligibleMurderTargets(state);
+  if (!targets.length) return null;
+  return targets[Math.floor(Math.random() * targets.length)].id;
+}
+
+function botShouldUseDeceiversChoice(state) {
+  if (!actingDeceiverHoldsChoiceCard(state)) return false;
+  return Math.random() < 0.4;
+}
+
+function botPickVoteTarget(state, voterId) {
+  const targets = eligibleVoteTargets(state, voterId);
+  if (!targets.length) return null;
+  return targets[Math.floor(Math.random() * targets.length)].id;
+}
+
+function botShouldUseDagger(state, voterId) {
+  const voter = findPlayer(state, voterId);
+  if (!voter || !voter.hand.includes('dagger')) return false;
+  return Math.random() < 0.5;
 }
 
 /* ---------- Continuation after an Elimination Reveal ----------

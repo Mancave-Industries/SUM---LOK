@@ -307,6 +307,28 @@ body {
   outline: none;
 }
 .name-input::placeholder { color: var(--ink-dim); }
+.setup-player-block { display: flex; flex-direction: column; gap: 6px; }
+.seat-mode-row { display: flex; gap: 6px; padding-left: 30px; }
+.seat-mode-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px 8px;
+  border: 1px solid rgba(201,162,75,0.25);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--ink-dim);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.seat-mode-btn.active {
+  border-color: var(--gold-500);
+  color: var(--gold-300);
+  background: rgba(201,162,75,0.12);
+}
 .remove-player-btn {
   background: none;
   border: none;
