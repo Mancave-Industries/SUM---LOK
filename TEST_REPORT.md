@@ -269,14 +269,60 @@ card-drawing in between.
   on every call rather than caching an `enabled` flag. Verified fixed by
   code inspection of the corrected `continue-game` handler.
 
+## 9. Computer players (follow-up round)
+
+Added Human/Computer per-seat toggle on Setup, bot decision logic in
+`engine.js`, and `autoAdvanceComputerTurns()` in `main.js` to auto-resolve
+a computer seat's turn in every per-player queue phase (Reveal, Draw,
+Murder, Vote/Final Banishment).
+
+- **Engine-level simulation (Node, no DOM)**: bundled `data.js` + `state.js`
+  + `engine.js`, ran **500 randomized trials** with 3–8 players and randomly
+  assigned Human/Computer flags per seat — including dedicated all-human
+  (82 trials) and all-computer (68 trials) rosters, plus 350 mixed rosters —
+  driving every seat (human and computer alike, since this layer has no UI
+  to distinguish them) through a full game via the same
+  `botPickMurderTarget` / `botShouldUseDeceiversChoice` / `botPickVoteTarget`
+  / `botShouldUseDagger` functions the real UI calls, asserting the
+  `isComputer` flag lands on the correct seat in `state.players` and that
+  every trial reaches a winner. **500/500 passed, 0 errors.**
+- **Headless Chromium UI verification** (`chromium_headless_shell-1194`,
+  390×844): three full playthroughs driven through real clicks —
+  - a 6-seat mixed roster (3 computer, 3 human),
+  - a 4-seat all-computer roster (lone "host" only taps communal
+    gather/reveal/results screens, never sees any player's private info),
+  - a 3-seat all-human roster (regression check that human-only games are
+    unaffected).
+
+  Each run asserted: zero console errors, zero page errors, the game
+  reaches Results, and — the anonymity-critical check — every screen shown
+  during a computer seat's turn is the generic "Computer Seat" wait screen
+  with **zero** `data-action` elements on it (i.e., it's never possible for
+  a human to be prompted to act on a computer seat's behalf, and the wait
+  screen itself is provably identical regardless of which seat is the
+  actual Deceiver, since it's driven only by the player's name). All three
+  scenarios passed with 0 violations. Re-ran the full three-scenario suite
+  **4 times back to back** to rule out the intermittent-timeout flakiness
+  seen in earlier rounds — stable every time (step counts varied
+  naturally with the randomized bot choices and deck order, as expected).
+- **Anonymity audit (code inspection)**: `resolveComputerTurn`'s
+  `PHASES.MURDER` case calls `recordMurderChoice` only inside
+  `if (isActingDeceiverTurn(state))`, then unconditionally calls
+  `advanceMurderQueue` — the exact same two-call shape the human
+  `confirm-murder-turn` handler uses for its own decoy pattern, so a
+  non-acting-Deceiver computer seat's turn and the acting-Deceiver computer
+  seat's turn are indistinguishable in both duration (fixed
+  `COMPUTER_TURN_DELAY_MS` either way) and on-screen content (name only).
+
 ## Summary
 
 | Layer | Trials | Bugs found | Bugs fixed |
 |---|---|---|---|
-| Engine (Node) | 2150 | 0 | — |
+| Engine (Node) | 2650 | 0 | — |
 | Full playthrough w/ screenshots | 5 rounds (all 12 screens; murder-phase redesign; series/payout; auto-shield & gather-everyone; sound) | 1 (card text clipping) | 1 |
 | Automated UI stress test | 98+ | 1 confirmed (test-script scoping, fixed) + several one-off timeouts (same signature across all occurrences), never reproduced with a stable rate or dedicated diagnostics | 1 confirmed fixed; flakiness documented, not app bugs |
 | Sound (instrumented WebAudio) | 1 full playthrough, 109 node creations | 1 (Continue-game didn't sync sound state) | 1 |
+| Computer players (engine sim + headless UI) | 500 engine trials + 3 UI scenarios ×4 runs | 0 | — |
 
 The game can be played start-to-finish — Title through Results, and back to
 Title via Play Again or Next Game — with no console errors, for every
@@ -288,5 +334,8 @@ identity through phone-handoff patterns or sound, the Fate card is no longer
 spoiled before it happens, the Prize Pot is paid out to the winning side's
 survivors every game, Shields deploy automatically, a Banishment can never
 open a fresh Fate-deck shuffle, every event ends with an explicit
-gather-everyone checkpoint before its outcome is revealed, and a full
-synthesized sound design covers every meaningful moment in the game.
+gather-everyone checkpoint before its outcome is revealed, a full
+synthesized sound design covers every meaningful moment in the game, and any
+seat can be marked Computer — down to an all-computer roster — without ever
+exposing the secret Deceiver through a computer seat's turn timing or
+on-screen content.

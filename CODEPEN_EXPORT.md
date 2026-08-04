@@ -39,7 +39,7 @@ so nothing else needs to be attached in CodePen's Asset panel.
 
 ## JS panel
 
-Paste the contents of these five files **in this exact order**, one after
+Paste the contents of these six files **in this exact order**, one after
 another in the single JS panel (a blank line between each is fine):
 
 1. `js/data.js`

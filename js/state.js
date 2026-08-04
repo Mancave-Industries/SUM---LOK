@@ -52,11 +52,12 @@ function createInitialState() {
     seriesGame: 1,
     seriesScores: {},
     rosterNames: [],
+    rosterIsComputer: [],
     settings: { sound: false },
   };
 }
 
-function createPlayer(id, name) {
+function createPlayer(id, name, isComputer) {
   return {
     id,
     name,
@@ -65,6 +66,7 @@ function createPlayer(id, name) {
     hand: [],
     revealed: false,
     drawnThisRound: false,
+    isComputer: !!isComputer,
   };
 }
 

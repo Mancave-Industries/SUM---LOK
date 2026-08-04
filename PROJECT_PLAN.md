@@ -251,7 +251,57 @@ who's actually acting that turn — the distinctive "something happened"
 sounds are deferred until the Elimination Reveal, once everyone is already
 gathered and audibility is no longer a leak.
 
-## 8. Out of scope for this prototype
+## 8. Computer players
+
+Any seat on the Setup screen can be marked **Computer** instead of Human via
+a per-row segmented toggle (`js/ui.js` `UI.renderSetup`), so a table can play
+with fewer physical humans than the seat count requires — down to zero
+seated humans, with one person left to act as "host" tapping through the
+communal screens (see below). `state.players[i].isComputer` is set at game
+creation from the Setup screen's choice and carries through the whole game
+and, via `state.rosterIsComputer`, across every game in a series.
+
+Bot decisions are deliberately simple and non-strategic — random-but-
+plausible, not adaptive or "smart" — since this is a static client-side site
+with no AI backend (`engine.js`: `botPickMurderTarget`,
+`botShouldUseDeceiversChoice`, `botPickVoteTarget`, `botShouldUseDagger`).
+There's nothing to tune for difficulty; the point is filling an empty seat,
+not posing a challenge.
+
+**The anonymity constraint applies to computer seats exactly as it already
+applied to human ones.** Whether a seat is Human or Computer is public
+information (it's chosen openly on the Setup screen), but which seat holds
+the secret Deceiver role must never leak — and a computer seat behaving
+differently on its turn depending on whether it happens to be the acting
+Deceiver would leak that instantly, since there's no human at the table for
+the "nothing to do" decoy screen to fool. So instead of showing a decoy
+screen, a computer seat's turn is skipped entirely — but that skip has to be
+the same skip regardless of role:
+
+- `main.js`'s `render()` calls `autoAdvanceComputerTurns()` before doing any
+  phase-specific rendering. If the current turn (Reveal / Draw / Murder /
+  Vote / Final Banishment queue) belongs to a computer seat, it shows one
+  generic "Computer Seat — Taking its turn" screen (`UI.renderComputerTurn`,
+  content driven only by the player's name, never by their role or by what
+  the bot decided) and, after a short fixed pause
+  (`COMPUTER_TURN_DELAY_MS`), resolves the turn automatically and re-renders.
+- The Murder-phase resolution (`resolveComputerTurn`'s `PHASES.MURDER` case)
+  calls `recordMurderChoice` only when `isActingDeceiverTurn(state)` is
+  true, then *always* calls `advanceMurderQueue` — the identical two-call
+  shape the human `confirm-murder-turn` handler already used for its decoy
+  pattern. A non-acting-Deceiver computer seat and the acting-Deceiver
+  computer seat are visually and timing-wise indistinguishable turns.
+- Communal, non-identity-specific screens (Main hub, Night transition,
+  Elimination Reveal, Results) are unaffected — those already require just
+  one tap from whoever is holding the phone, human or not, and stay that
+  way even in an all-computer roster (the host taps through on the players'
+  behalf without ever seeing anyone's private information).
+
+Public UI surfaces that are allowed to show Human/Computer status — because
+it was never secret — mark it plainly: the Setup screen's per-seat toggle,
+the Main hub's player list, and the Results screen's full role reveal.
+
+## 9. Out of scope for this prototype
 
 - Networked/multi-device play (explicitly a shared-phone prototype per brief)
 - Accounts, server sync, anti-cheat for private-reveal honesty (trust-based,
