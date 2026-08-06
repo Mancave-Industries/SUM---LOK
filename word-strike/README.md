@@ -49,7 +49,7 @@ runtime; nothing in `index.html` loads them.
 ```
 word-strike/
 ├── index.html          Screens (start / game), overlays, structural markup only
-├── styles.css           All visual design — dark tactical-console theme, responsive layout, animation
+├── styles.css           All visual design — NYT Games–style light/dark theme, responsive layout, animation
 ├── js/
 │   ├── words.js          Word bank (40+ per length: 4/5/6/7 letters) + category-aware selection
 │   ├── board.js           Grid creation, word placement + spacing validation, adjacency, coordinates, seeded RNG
