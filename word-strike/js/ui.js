@@ -79,6 +79,8 @@ export function queryDom() {
     cellEls: [],
     letterButtons: {},
     radarRingGroups: [],
+    wordProgressBoxes: {},
+    wordProgressRows: {},
   };
 }
 
@@ -212,31 +214,71 @@ export function flashWordComplete(dom, word) {
 }
 
 // ---------- Word progress ----------
+// A word always has exactly one word of each length (7, 6, 5, 4; see
+// board.js), so the row/box structure is identical every game — only the
+// letters inside differ. Building it once (like the grid) lets a specific
+// box be targeted for a one-shot "just found this letter" animation
+// instead of losing its identity on every full re-render.
 
-export function renderWordProgress(dom, game) {
+const WORD_LENGTHS = [7, 6, 5, 4];
+
+export function buildWordProgress(dom) {
   dom.wordProgress.innerHTML = "";
-  const sorted = game.words.slice().sort((a, b) => b.length - a.length);
-  for (const word of sorted) {
+  dom.wordProgressBoxes = {};
+  dom.wordProgressRows = {};
+
+  WORD_LENGTHS.forEach((length) => {
+    const id = `w${length}`;
     const row = document.createElement("div");
-    row.className = "word-row" + (word.completed ? " word-row--complete" : "");
+    row.className = "word-row";
 
     const label = document.createElement("span");
     label.className = "word-row-label";
-    label.textContent = `${word.length} LETTERS`;
+    label.textContent = `${length} LETTERS`;
     row.appendChild(label);
 
     const lettersWrap = document.createElement("span");
     lettersWrap.className = "word-row-letters";
-    word.cells.forEach((c) => {
-      const cell = game.grid[c.row][c.col];
+    const boxes = [];
+    for (let i = 0; i < length; i++) {
       const box = document.createElement("span");
-      box.className = "letter-box" + (cell.state === "exact" ? " letter-box--filled" : "");
-      box.textContent = cell.state === "exact" ? cell.hiddenLetter : "_";
+      box.className = "letter-box";
+      box.textContent = "_";
       lettersWrap.appendChild(box);
-    });
+      boxes.push(box);
+    }
     row.appendChild(lettersWrap);
     dom.wordProgress.appendChild(row);
+    dom.wordProgressRows[id] = row;
+    dom.wordProgressBoxes[id] = boxes;
+  });
+}
+
+export function updateWordProgress(dom, game) {
+  for (const word of game.words) {
+    const row = dom.wordProgressRows?.[word.id];
+    const boxes = dom.wordProgressBoxes?.[word.id];
+    if (!row || !boxes) continue;
+    row.classList.toggle("word-row--complete", !!word.completed);
+    word.cells.forEach((c, idx) => {
+      const cell = game.grid[c.row][c.col];
+      const box = boxes[idx];
+      const filled = cell.state === "exact";
+      box.classList.toggle("letter-box--filled", filled);
+      box.textContent = filled ? cell.hiddenLetter : "_";
+    });
   }
+}
+
+/** One-shot "just found this letter" pop, triggered from main.js at the
+ * moment an exact strike lands — mirrors flashCell's approach for the grid. */
+export function flashWordProgressLetter(dom, wordId, wordIndex, effectClass = "letter-box--pop") {
+  const box = dom.wordProgressBoxes?.[wordId]?.[wordIndex];
+  if (!box) return;
+  box.classList.add(effectClass);
+  const clear = () => box.classList.remove(effectClass);
+  box.addEventListener("animationend", clear, { once: true });
+  setTimeout(clear, 700);
 }
 
 // ---------- Letter rack ----------
@@ -265,10 +307,11 @@ export function renderRack(dom, game) {
   dom.alphabet.innerHTML = "";
   dom.letterButtons = {};
 
-  rack.forEach((letter) => {
+  rack.forEach((letter, index) => {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "letter-btn";
+    btn.style.setProperty("--key-i", String(index));
     btn.textContent = letter;
     btn.dataset.letter = letter;
     const isEliminated = eliminated.has(letter);
@@ -319,6 +362,12 @@ export function setStatus(dom, resultTypeOrText, custom) {
   const text = custom || STATUS_MESSAGES[resultTypeOrText] || resultTypeOrText;
   dom.statusMessage.textContent = text;
   dom.statusMessage.className = "status-message status-message--" + (STATUS_MESSAGES[resultTypeOrText] ? resultTypeOrText : "info");
+  // Restart the pop-in animation on every call, even when the base class
+  // string is unchanged — without the reflow, re-assigning the same
+  // className wouldn't retrigger the CSS animation.
+  dom.statusMessage.style.animation = "none";
+  void dom.statusMessage.offsetWidth;
+  dom.statusMessage.style.animation = "";
 }
 
 // ---------- Shot log ----------

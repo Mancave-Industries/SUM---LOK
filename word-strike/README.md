@@ -73,7 +73,9 @@ of `ui.js`'s own rendering calls.
 ## Core rules recap
 
 - 8×8 grid, four hidden words (lengths 7, 6, 5, 4), placed horizontally or
-  vertically, never touching — not even diagonally.
+  vertically, never touching — not even diagonally. Each length draws from
+  a bank of 125–165 words (573 total, tagged by category to keep any one
+  game's four words thematically varied), so boards don't repeat often.
 - Select a square, then fire a letter from your **rack** — 12 letters, not
   the full alphabet. Some of the rack is guaranteed to be letters still
   needed somewhere in the unsolved words; the rest are decoys. A fresh
@@ -90,6 +92,10 @@ of `ui.js`'s own rendering calls.
   where, rather than just an abstract hot/live/dead icon. The icon is
   still there too, as a small corner badge, so state stays distinguishable
   by shape as well as color.
+- Every square flips like a tile revealing when it resolves, with a
+  distinct follow-through per outcome (a bounce on exact, a shake on
+  live, a pulse ring on hot) — a word's letter tiles pop as each one is
+  confirmed, and the status banner animates in on every update.
 - Win by revealing every letter of all four words; lose if strikes hit
   zero first. A final exact strike always wins, even if strikes already
   read zero.
