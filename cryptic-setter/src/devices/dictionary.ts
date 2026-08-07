@@ -9,12 +9,27 @@ import { readFileSync } from 'node:fs';
 import wordListPath from 'word-list';
 
 let cachedWords: string[] | null = null;
+let cachedWordSet: Set<string> | null = null;
 
 function loadWords(): string[] {
   if (!cachedWords) {
     cachedWords = readFileSync(wordListPath, 'utf8').split('\n').filter(Boolean);
   }
   return cachedWords;
+}
+
+// Exposed so devices with their own search patterns (hidden, alternates,
+// initials) can filter the raw list themselves rather than each needing a
+// bespoke exported search function here.
+export function getAllWords(): string[] {
+  return loadWords();
+}
+
+export function isDictionaryWord(word: string): boolean {
+  if (!cachedWordSet) {
+    cachedWordSet = new Set(loadWords().map((w) => w.toUpperCase()));
+  }
+  return cachedWordSet.has(word.toUpperCase());
 }
 
 function sortedLetters(word: string): string {

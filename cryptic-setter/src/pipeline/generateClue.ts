@@ -102,7 +102,18 @@ export async function generateClue(options: GenerateClueOptions): Promise<Genera
         : `✗ indicator "${construction.wordplay.indicator}" is missing from the wordplay text the model wrote`
     );
 
-    const allPassed = structuralCheck.passed && fodderPresent && indicatorPresent;
+    // Devices whose fairness claim is about the rendered surface itself
+    // (hidden, initials) get a second check here, against the actual text
+    // the model wrote rather than the seed words construct() picked.
+    let surfaceCheckPassed = true;
+    if (device.verifySurface) {
+      const surfaceCheck = device.verifySurface(answer, parts.wordplayText);
+      log.push(...surfaceCheck.log);
+      surfaceCheckPassed = surfaceCheck.passed;
+    }
+
+    const allPassed =
+      structuralCheck.passed && fodderPresent && indicatorPresent && surfaceCheckPassed;
 
     if (allPassed) {
       const clue: Clue = {

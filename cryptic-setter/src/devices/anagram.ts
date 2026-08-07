@@ -4,13 +4,10 @@
 
 import type { DeviceModule, VerificationResult, Wordplay } from '../types.js';
 import { findAnagramCandidates } from './dictionary.js';
+import { pickRandom } from './random.js';
 
 function sortedLetters(word: string): string {
   return word.toUpperCase().replace(/[^A-Z]/g, '').split('').sort().join('');
-}
-
-function pickRandom<T>(items: T[]): T {
-  return items[Math.floor(Math.random() * items.length)];
 }
 
 export const anagramDevice: DeviceModule = {

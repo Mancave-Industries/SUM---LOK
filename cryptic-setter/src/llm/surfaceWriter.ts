@@ -44,19 +44,46 @@ const SURFACE_TOOL = {
   },
 };
 
+// Fodder-based devices (anagram, reversal, alternates) hand the LLM a
+// single fixed string that must survive into the wordplay text near-
+// verbatim. Components-based devices (hidden, initials) describe a
+// structural property of the rendered text instead — the exact words are
+// negotiable as long as the property holds, because that property (not the
+// seed words) is what verifySurface actually checks.
+function describeWordplayRequirement(request: SurfaceRequest): string {
+  const { answer, device, wordplay } = request;
+  const indicator = wordplay.indicator;
+
+  if (wordplay.fodder) {
+    return `Wordplay fodder: "${wordplay.fodder}"
+
+The fodder "${wordplay.fodder}" and the indicator "${indicator}" must both appear in the wordplay part, close to verbatim (minor grammatical inflection like plural or tense is fine) so the mechanical parse still holds.`;
+  }
+
+  if (wordplay.components && device === 'hidden') {
+    const [before, after] = wordplay.components;
+    return `Somewhere in the wordplay part, place the words "${before}" and "${after}" immediately next to each other — only a single space between them, nothing else in between, neither word modified or inflected. The letters of "${answer}" run across the join between them. The indicator "${indicator}" must also appear in the wordplay part.`;
+  }
+
+  if (wordplay.components && device === 'initials') {
+    return `The wordplay part must contain a run of ${wordplay.components.length} consecutive words whose first letters, in order, spell "${answer}". You may use these exact words as a starting point: ${wordplay.components.join(', ')} — or substitute your own real words with the same starting letters, as long as they stay consecutive and in this order. The indicator "${indicator}" must also appear in the wordplay part.`;
+  }
+
+  throw new Error(`Don't know how to describe wordplay for device "${device}"`);
+}
+
 function buildPrompt(request: SurfaceRequest): string {
-  const { answer, definition, device, wordplay, enumeration } = request;
+  const { answer, definition, device, enumeration } = request;
   return `You are writing ONE cryptic crossword clue for the answer "${answer}" ${enumeration}.
 
 Definition to use (must be preserved, not paraphrased away): "${definition}"
 Device: ${device}
-Wordplay indicator: "${wordplay.indicator}"
-Wordplay fodder: "${wordplay.fodder}"
+
+${describeWordplayRequirement(request)}
 
 Rules:
 - The clue reads as a single natural, misleading English sentence (or short phrase) with no hint that it's a puzzle.
 - The definition must sit at the very start or the very end of the sentence — never in the middle.
-- The fodder "${wordplay.fodder}" and the indicator "${wordplay.indicator}" must both appear in the wordplay part, close to verbatim (minor grammatical inflection like plural or tense is fine) so the mechanical parse still holds.
 - Do not use the answer "${answer}" itself anywhere in the clue.
 - Call write_surface with the two labelled halves exactly as they will appear in the final sentence, so that joining them with a single space in the given order reproduces the full clue sentence.`;
 }

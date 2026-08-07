@@ -10,6 +10,10 @@ import { parseArgs } from 'node:util';
 import wordlist from './data/wordlist.seed.json' with { type: 'json' };
 import definitions from './data/definitions.seed.json' with { type: 'json' };
 import anagramIndicators from './data/indicators/anagram.json' with { type: 'json' };
+import hiddenIndicators from './data/indicators/hidden.json' with { type: 'json' };
+import reversalIndicators from './data/indicators/reversal.json' with { type: 'json' };
+import alternatesIndicators from './data/indicators/alternates.json' with { type: 'json' };
+import initialsIndicators from './data/indicators/initials.json' with { type: 'json' };
 import { generateClue } from './pipeline/generateClue.js';
 import type { Clue, DeviceType } from './types.js';
 
@@ -30,6 +34,10 @@ const device = values.device as DeviceType;
 
 const indicatorBanks: Partial<Record<DeviceType, string[]>> = {
   anagram: anagramIndicators as string[],
+  hidden: hiddenIndicators as string[],
+  reversal: reversalIndicators as string[],
+  alternates: alternatesIndicators as string[],
+  initials: initialsIndicators as string[],
 };
 
 async function main() {

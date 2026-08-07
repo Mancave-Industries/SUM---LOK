@@ -77,6 +77,12 @@ export interface DeviceModule {
     wordplay: Wordplay,
     indicatorBank: string[]
   ): { passed: boolean; log: string[] };
+  // Optional second check that runs against the LLM's actual rendered
+  // wordplay text rather than the constructed wordplay object. Needed by
+  // devices whose fairness claim is about the surface itself — a hidden
+  // word must really be findable in the rendered clue, not just in the
+  // seed words construct() picked as raw material.
+  verifySurface?(answer: string, wordplayText: string): VerificationResult;
 }
 
 export interface VerificationResult {
