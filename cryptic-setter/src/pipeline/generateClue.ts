@@ -1,0 +1,131 @@
+// The §5 generate -> verify loop. Code constructs and mechanically verifies
+// the wordplay; the LLM is asked only for a surface reading; every claim it
+// makes is re-derived and checked before anything is considered "verified".
+// No unverified clue is ever returned from here.
+
+import { randomUUID } from 'node:crypto';
+import type { Clue, DeviceType } from '../types.js';
+import { getDevice } from '../devices/index.js';
+import { writeSurface } from '../llm/surfaceWriter.js';
+import {
+  combineSurfaceParts,
+  verifyDefinitionAtEnd,
+  verifyEnumeration,
+} from '../verify/structural.js';
+
+export interface GenerateClueOptions {
+  answer: string;
+  device: DeviceType;
+  definition: string;
+  indicatorBank: string[];
+  maxRetries?: number;
+}
+
+export interface GenerateClueResult {
+  clue: Clue | null;
+  log: string[];
+}
+
+function enumerationFor(answer: string): string {
+  return `(${answer.replace(/[^A-Za-z]/g, '').length})`;
+}
+
+export async function generateClue(options: GenerateClueOptions): Promise<GenerateClueResult> {
+  const { answer, device: deviceType, definition, indicatorBank } = options;
+  const maxRetries = options.maxRetries ?? 3;
+  const device = getDevice(deviceType);
+  const enumeration = enumerationFor(answer);
+  const log: string[] = [];
+
+  // Step 1-3: construct the wordplay mechanically. If no legal construction
+  // exists for this answer (e.g. no dictionary anagram), skip it — no LLM
+  // call is even made.
+  const construction = device.construct(answer, indicatorBank);
+  if (!construction) {
+    log.push(
+      `✗ could not construct a ${deviceType} for "${answer}" — no legal fodder/indicator combination found`
+    );
+    return { clue: null, log };
+  }
+
+  const mechanicalCheck = device.verifyMechanics(answer, construction.wordplay, indicatorBank);
+  log.push(...mechanicalCheck.log);
+  if (!mechanicalCheck.passed) {
+    log.push(
+      `✗ constructed wordplay failed its own mechanical check — this indicates a bug in the ${deviceType} device, not a fair skip`
+    );
+    return { clue: null, log };
+  }
+
+  const enumerationCheck = verifyEnumeration(answer, enumeration);
+  log.push(...enumerationCheck.log);
+  if (!enumerationCheck.passed) {
+    log.push('✗ enumeration failed before any surface was even requested — aborting');
+    return { clue: null, log };
+  }
+
+  // Step 4: definition is attached (Phase 1: pre-trusted seed, passed in by
+  // the caller). Step 5-7: ask for a surface, verify it, retry on failure.
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    log.push(`--- surface attempt ${attempt}/${maxRetries} ---`);
+
+    const parts = await writeSurface({
+      answer,
+      definition,
+      device: deviceType,
+      wordplay: construction.wordplay,
+      enumeration,
+    });
+
+    const surfaceSentence = combineSurfaceParts(parts);
+    const fullSurface = `${surfaceSentence} ${enumeration}`;
+
+    const structuralCheck = verifyDefinitionAtEnd(fullSurface, parts, definition);
+    log.push(...structuralCheck.log);
+
+    const wordplayTextLower = parts.wordplayText.toLowerCase();
+    const fodderPresent = construction.wordplay.fodder
+      ? wordplayTextLower.includes(construction.wordplay.fodder.toLowerCase())
+      : true;
+    const indicatorPresent = construction.wordplay.indicator
+      ? wordplayTextLower.includes(construction.wordplay.indicator.toLowerCase())
+      : true;
+
+    log.push(
+      fodderPresent
+        ? `✓ fodder "${construction.wordplay.fodder}" is present verbatim in the wordplay text`
+        : `✗ fodder "${construction.wordplay.fodder}" is missing from the wordplay text the model wrote`
+    );
+    log.push(
+      indicatorPresent
+        ? `✓ indicator "${construction.wordplay.indicator}" is present verbatim in the wordplay text`
+        : `✗ indicator "${construction.wordplay.indicator}" is missing from the wordplay text the model wrote`
+    );
+
+    const allPassed = structuralCheck.passed && fodderPresent && indicatorPresent;
+
+    if (allPassed) {
+      const clue: Clue = {
+        id: randomUUID(),
+        answer: answer.toUpperCase(),
+        enumeration,
+        device: deviceType,
+        definition,
+        definitionPosition: parts.order === 'definition-first' ? 'start' : 'end',
+        wordplay: construction.wordplay,
+        surface: fullSurface,
+        verified: true,
+        verificationLog: log,
+        difficulty: 0, // wired up in Phase 4, §8
+        reviewRequired: device.tier === 3,
+        createdAt: new Date().toISOString(),
+      };
+      return { clue, log };
+    }
+
+    log.push(`✗ attempt ${attempt} failed verification, discarding surface and retrying`);
+  }
+
+  log.push(`✗ exhausted ${maxRetries} retries for "${answer}" — skipping`);
+  return { clue: null, log };
+}
