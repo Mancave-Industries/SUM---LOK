@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>SUM(−)LOK</title>
-<script>
- <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-T34XWM565E"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -131,6 +129,27 @@ strong {
 
 .tile.filled .tileInner {
   border-color: #565758;
+}
+
+.tileInner.pop {
+  animation: pop 0.1s ease-in-out;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.8); }
+  40% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.row.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX(2px); }
+  30%, 50%, 70% { transform: translateX(-4px); }
+  40%, 60% { transform: translateX(4px); }
 }
 
 .tileInner.flip {
@@ -622,8 +641,13 @@ function addDigit(n) {
   );
 
   tile.dataset.v = n;
-  tileInner(tile).textContent = currentCol === NEG ? `−${n}` : n;
+  const inner = tileInner(tile);
+  inner.textContent = currentCol === NEG ? `−${n}` : n;
   tile.classList.add("filled");
+
+  inner.classList.remove("pop");
+  void inner.offsetWidth;
+  inner.classList.add("pop");
 
   currentCol++;
   updateTotal();
@@ -648,11 +672,19 @@ function deleteDigit() {
 function submitGuess() {
   if (currentCol < COLS) {
     messageEl.textContent = "Need 7 digits";
+    shakeRow(currentRow);
     return;
   }
 
   locked = true;
   revealRow();
+}
+
+function shakeRow(r) {
+  const rowEl = document.querySelectorAll(".row")[r];
+  rowEl.classList.remove("shake");
+  void rowEl.offsetWidth;
+  rowEl.classList.add("shake");
 }
 
 function revealRow() {
@@ -683,9 +715,12 @@ function revealRow() {
 
   tiles.forEach((tile, i) => {
     setTimeout(() => {
-      tile.classList.add(result[i]);
       tileInner(tile).classList.add("flip");
-      updateKeyboard(guess[i], result[i]);
+
+      setTimeout(() => {
+        tile.classList.add(result[i]);
+        updateKeyboard(guess[i], result[i]);
+      }, 190);
     }, i * 105);
   });
 
