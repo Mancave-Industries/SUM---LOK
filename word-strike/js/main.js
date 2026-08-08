@@ -28,6 +28,7 @@ function init() {
   UI.buildGrid(dom, onCellActivate);
   UI.buildAlphabet(dom, onLetterActivate);
   UI.buildRadar(dom);
+  UI.buildWordProgress(dom);
 
   wireStartScreen();
   wireGameScreen();
@@ -226,6 +227,9 @@ function handleResult(result, row, col) {
   refreshAll();
   Audio.play(result.type);
   if (FLASH_CLASS[result.type]) UI.flashCell(dom, row, col, FLASH_CLASS[result.type]);
+  if (result.type === "exact") {
+    UI.flashWordProgressLetter(dom, result.cell.wordId, result.cell.wordIndex);
+  }
 
   const statusKey = result.type === "live" && result.strikeUsed ? "live-strike" : result.type;
   UI.setStatus(dom, statusKey);
@@ -276,7 +280,7 @@ function finishGame() {
 
 function refreshAll() {
   UI.updateGrid(dom, game);
-  UI.renderWordProgress(dom, game);
+  UI.updateWordProgress(dom, game);
   UI.renderRack(dom, game);
   UI.updateStrikes(dom, game);
   UI.updateScore(dom, game);
