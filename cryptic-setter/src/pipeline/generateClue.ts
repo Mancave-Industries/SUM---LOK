@@ -151,7 +151,7 @@ export async function generateClue(options: GenerateClueOptions): Promise<Genera
         surface: fullSurface,
         verified: true,
         verificationLog: log,
-        difficulty: 0, // wired up in Phase 4, §8
+        difficulty: 0, // §8 scoring not yet implemented — still a placeholder
         reviewRequired: device.tier === 3 || definitionReviewRequired,
         createdAt: new Date().toISOString(),
       };
