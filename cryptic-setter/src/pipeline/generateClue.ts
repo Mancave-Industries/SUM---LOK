@@ -7,16 +7,21 @@ import { randomUUID } from 'node:crypto';
 import type { Clue, DeviceType } from '../types.js';
 import { getDevice } from '../devices/index.js';
 import { writeSurface } from '../llm/surfaceWriter.js';
+import { proposeDefinition } from '../llm/proposeDefinition.js';
 import {
   combineSurfaceParts,
   verifyDefinitionAtEnd,
   verifyEnumeration,
 } from '../verify/structural.js';
+import { verifyDefinitionMeaning } from '../verify/definition.js';
 
 export interface GenerateClueOptions {
   answer: string;
   device: DeviceType;
-  definition: string;
+  // Phase 1/2: pass a hand-trusted seed definition. Phase 3+: omit it and
+  // the pipeline will propose one via the LLM and check it against
+  // WordNet itself — see verify/definition.ts.
+  definition?: string;
   indicatorBank: string[];
   maxRetries?: number;
 }
@@ -31,7 +36,7 @@ function enumerationFor(answer: string): string {
 }
 
 export async function generateClue(options: GenerateClueOptions): Promise<GenerateClueResult> {
-  const { answer, device: deviceType, definition, indicatorBank } = options;
+  const { answer, device: deviceType, indicatorBank } = options;
   const maxRetries = options.maxRetries ?? 3;
   const device = getDevice(deviceType);
   const enumeration = enumerationFor(answer);
@@ -64,8 +69,21 @@ export async function generateClue(options: GenerateClueOptions): Promise<Genera
     return { clue: null, log };
   }
 
-  // Step 4: definition is attached (Phase 1: pre-trusted seed, passed in by
-  // the caller). Step 5-7: ask for a surface, verify it, retry on failure.
+  // Step 4: attach a definition. A caller-supplied seed is trusted as-is
+  // (Phase 1/2). Otherwise the LLM proposes one and WordNet checks it —
+  // an exact synonym match clears automatically; anything else is still
+  // used, but flagged reviewRequired rather than silently accepted.
+  let definition = options.definition;
+  let definitionReviewRequired = false;
+  if (!definition) {
+    definition = await proposeDefinition(answer);
+    log.push(`--- LLM-proposed definition: "${definition}" ---`);
+    const definitionCheck = await verifyDefinitionMeaning(answer, definition);
+    log.push(...definitionCheck.log);
+    definitionReviewRequired = definitionCheck.reviewRequired;
+  }
+
+  // Step 5-7: ask for a surface, verify it, retry on failure.
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     log.push(`--- surface attempt ${attempt}/${maxRetries} ---`);
 
@@ -128,7 +146,7 @@ export async function generateClue(options: GenerateClueOptions): Promise<Genera
         verified: true,
         verificationLog: log,
         difficulty: 0, // wired up in Phase 4, §8
-        reviewRequired: device.tier === 3,
+        reviewRequired: device.tier === 3 || definitionReviewRequired,
         createdAt: new Date().toISOString(),
       };
       return { clue, log };

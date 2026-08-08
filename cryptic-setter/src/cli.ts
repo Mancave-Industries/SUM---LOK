@@ -1,14 +1,15 @@
 #!/usr/bin/env node
-// Phase 1 CLI: run the generate -> verify loop over the seed word list and
-// print every verified clue with its full mechanical parse and
-// verification log. Optionally writes the verified clues to a JSON file
-// with --out (a stand-in for the real bank, which lands in Phase 4).
+// CLI: run the generate -> verify loop over the seed word list and print
+// every verified clue with its full mechanical parse and verification log.
+// Optionally writes the verified clues to a JSON file with --out (a
+// stand-in for the real bank, which lands in Phase 4). As of Phase 3,
+// definitions are proposed by the LLM and checked against WordNet by the
+// pipeline itself — no seeded definition map needed.
 
 import { existsSync } from 'node:fs';
 import { writeFileSync } from 'node:fs';
 import { parseArgs } from 'node:util';
 import wordlist from './data/wordlist.seed.json' with { type: 'json' };
-import definitions from './data/definitions.seed.json' with { type: 'json' };
 import anagramIndicators from './data/indicators/anagram.json' with { type: 'json' };
 import hiddenIndicators from './data/indicators/hidden.json' with { type: 'json' };
 import reversalIndicators from './data/indicators/reversal.json' with { type: 'json' };
@@ -52,24 +53,17 @@ async function main() {
   let skipped = 0;
 
   for (const answer of answers) {
-    const definition = (definitions as Record<string, string>)[answer.toUpperCase()];
-
     console.log(`\n=== ${answer.toUpperCase()} ===`);
 
-    if (!definition) {
-      console.log('✗ skipped — no seeded definition for this answer');
-      skipped++;
-      continue;
-    }
-
-    const result = await generateClue({ answer, device, definition, indicatorBank });
+    const result = await generateClue({ answer, device, indicatorBank });
 
     if (result.clue) {
-      console.log(`Surface:     ${result.clue.surface}`);
-      console.log(`Definition:  "${result.clue.definition}" (${result.clue.definitionPosition})`);
-      console.log(`Wordplay:    ${result.clue.wordplay.operation}`);
-      console.log(`Indicator:   "${result.clue.wordplay.indicator}"`);
-      console.log(`Verified:    ${result.clue.verified}`);
+      console.log(`Surface:        ${result.clue.surface}`);
+      console.log(`Definition:     "${result.clue.definition}" (${result.clue.definitionPosition})`);
+      console.log(`Wordplay:       ${result.clue.wordplay.operation}`);
+      console.log(`Indicator:      "${result.clue.wordplay.indicator}"`);
+      console.log(`Verified:       ${result.clue.verified}`);
+      console.log(`ReviewRequired: ${result.clue.reviewRequired}`);
       console.log('Log:');
       for (const line of result.clue.verificationLog) console.log(`  ${line}`);
       verified.push(result.clue);

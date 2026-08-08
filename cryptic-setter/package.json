@@ -11,12 +11,13 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.115.0",
+    "natural": "^8.1.1",
     "word-list": "^4.1.0"
   },
   "devDependencies": {
-    "typescript": "^7.0.2",
+    "@types/node": "^22.10.0",
     "tsx": "^4.23.10",
-    "vitest": "^4.1.10",
-    "@types/node": "^22.10.0"
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
   }
 }
