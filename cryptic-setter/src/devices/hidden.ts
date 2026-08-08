@@ -8,6 +8,17 @@ import type { DeviceModule, VerificationResult, Wordplay } from '../types.js';
 import { getAllWords } from './dictionary.js';
 import { pickRandom } from './random.js';
 
+// Among all legal candidates, prefer shorter words — there's no real
+// word-frequency data available, but shorter words are a reasonable proxy
+// for "ordinary" (compare "arena" to "arthrodeses"), and picking from a
+// shortlist of the shortest matches instead of the first dictionary match
+// found meaningfully cuts down on obscure filler words in the surface.
+function preferShort(words: string[], shortlistSize = 30): string {
+  const sorted = [...words].sort((a, b) => a.length - b.length);
+  const shortlist = sorted.slice(0, Math.min(shortlistSize, sorted.length));
+  return pickRandom(shortlist).toUpperCase();
+}
+
 function findHiddenHost(answer: string): { before: string; after: string } | null {
   const target = answer.toUpperCase();
   const words = getAllWords();
@@ -27,8 +38,8 @@ function findHiddenHost(answer: string): { before: string; after: string } | nul
     if (afters.length === 0) continue;
 
     return {
-      before: pickRandom(befores).toUpperCase(),
-      after: pickRandom(afters).toUpperCase(),
+      before: preferShort(befores),
+      after: preferShort(afters),
     };
   }
 

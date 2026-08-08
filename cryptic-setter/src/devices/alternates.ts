@@ -21,12 +21,13 @@ function findAlternatingHost(answer: string): string | null {
   const expectedLength = target.length * 2 - 1;
   const candidates = getAllWords().filter((w) => w.length === expectedLength);
 
-  for (const word of candidates) {
-    if (extractAlternating(word) === target) {
-      return word.toUpperCase();
-    }
-  }
-  return null;
+  // All candidates are the same length (fixed by the device's own math), so
+  // there's no "shorter" to prefer — but collecting every match instead of
+  // returning the first one found avoids always landing on whichever
+  // matching word happens to sit first in the dictionary file.
+  const matches = candidates.filter((word) => extractAlternating(word) === target);
+  if (matches.length === 0) return null;
+  return pickRandom(matches).toUpperCase();
 }
 
 export const alternatesDevice: DeviceModule = {

@@ -50,23 +50,36 @@ const SURFACE_TOOL = {
 // structural property of the rendered text instead — the exact words are
 // negotiable as long as the property holds, because that property (not the
 // seed words) is what verifySurface actually checks.
+// Devices store their fodder/component words in uppercase internally (it's
+// the canonical form the case-insensitive verifiers compare against), but
+// showing that literal casing to the model in the prompt reads as an
+// instruction to keep it — producing garbled ALL-CAPS or mixed-case output
+// mid-sentence. Display words in ordinary lowercase instead; capitalization
+// (sentence-initial, proper nouns, etc.) is the model's call to make.
+function toDisplayCase(word: string): string {
+  return word.toLowerCase();
+}
+
 function describeWordplayRequirement(request: SurfaceRequest): string {
   const { answer, device, wordplay } = request;
   const indicator = wordplay.indicator;
 
   if (wordplay.fodder) {
-    return `Wordplay fodder: "${wordplay.fodder}"
+    const fodder = toDisplayCase(wordplay.fodder);
+    return `Wordplay fodder: "${fodder}"
 
-The fodder "${wordplay.fodder}" and the indicator "${indicator}" must both appear in the wordplay part, close to verbatim (minor grammatical inflection like plural or tense is fine) so the mechanical parse still holds.`;
+The fodder "${fodder}" and the indicator "${indicator}" must both appear in the wordplay part, close to verbatim (minor grammatical inflection like plural or tense is fine, and you may capitalize it however normal sentence casing requires) so the mechanical parse still holds.`;
   }
 
   if (wordplay.components && device === 'hidden') {
-    const [before, after] = wordplay.components;
-    return `Somewhere in the wordplay part, place the words "${before}" and "${after}" immediately next to each other — only a single space between them, nothing else in between, neither word modified or inflected. The letters of "${answer}" run across the join between them. The indicator "${indicator}" must also appear in the wordplay part.`;
+    const before = toDisplayCase(wordplay.components[0]);
+    const after = toDisplayCase(wordplay.components[1]);
+    return `Somewhere in the wordplay part, place the words "${before}" and "${after}" immediately next to each other — only a single space between them, nothing else in between, and no inflection (no added letters, no plural/tense changes). Capitalize them however normal sentence casing requires. The letters of "${answer}" run across the join between them. The indicator "${indicator}" must also appear in the wordplay part.`;
   }
 
   if (wordplay.components && device === 'initials') {
-    return `The wordplay part must contain a run of ${wordplay.components.length} consecutive words whose first letters, in order, spell "${answer}". You may use these exact words as a starting point: ${wordplay.components.join(', ')} — or substitute your own real words with the same starting letters, as long as they stay consecutive and in this order. The indicator "${indicator}" must also appear in the wordplay part.`;
+    const words = wordplay.components.map(toDisplayCase).join(', ');
+    return `The wordplay part must contain a run of ${wordplay.components.length} consecutive words whose first letters, in order, spell "${answer}". You may use these exact words as a starting point: ${words} — or substitute your own real words with the same starting letters, as long as they stay consecutive and in this order. Capitalize them however normal sentence casing requires. The indicator "${indicator}" must also appear in the wordplay part.`;
   }
 
   throw new Error(`Don't know how to describe wordplay for device "${device}"`);
