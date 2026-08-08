@@ -101,19 +101,25 @@ export async function generateClue(options: GenerateClueOptions): Promise<Genera
     const structuralCheck = verifyDefinitionAtEnd(fullSurface, parts, definition);
     log.push(...structuralCheck.log);
 
+    // Fodder-based devices need the literal fodder string checked here.
+    // Components-based devices (hidden, initials, charade, container) skip
+    // this — their surface fairness is a structural property checked by
+    // verifySurface below, not literal-string presence, so there's nothing
+    // meaningful to log for a field they don't use.
     const wordplayTextLower = parts.wordplayText.toLowerCase();
-    const fodderPresent = construction.wordplay.fodder
-      ? wordplayTextLower.includes(construction.wordplay.fodder.toLowerCase())
-      : true;
+    let fodderPresent = true;
+    if (construction.wordplay.fodder) {
+      fodderPresent = wordplayTextLower.includes(construction.wordplay.fodder.toLowerCase());
+      log.push(
+        fodderPresent
+          ? `✓ fodder "${construction.wordplay.fodder}" is present verbatim in the wordplay text`
+          : `✗ fodder "${construction.wordplay.fodder}" is missing from the wordplay text the model wrote`
+      );
+    }
+
     const indicatorPresent = construction.wordplay.indicator
       ? wordplayTextLower.includes(construction.wordplay.indicator.toLowerCase())
       : true;
-
-    log.push(
-      fodderPresent
-        ? `✓ fodder "${construction.wordplay.fodder}" is present verbatim in the wordplay text`
-        : `✗ fodder "${construction.wordplay.fodder}" is missing from the wordplay text the model wrote`
-    );
     log.push(
       indicatorPresent
         ? `✓ indicator "${construction.wordplay.indicator}" is present verbatim in the wordplay text`
