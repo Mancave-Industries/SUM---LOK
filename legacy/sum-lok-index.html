@@ -12,15 +12,60 @@
 
   gtag('config', 'G-T34XWM565E');
 </script>
-<style> 
+<style>
+:root {
+  --bg: #121213;
+  --fg: #ffffff;
+  --muted: #d7dadc;
+  --border: #3a3a3c;
+  --border-strong: #565758;
+  --tile-bg: #121213;
+  --correct: #538d4e;
+  --present: #b59f3b;
+  --absent: #3a3a3c;
+  --key-bg: #818384;
+  --key-fg: #ffffff;
+  --key-used-bg: #3a3a3c;
+  --modal-bg: #121213;
+  --scrim: rgba(18, 18, 19, 0.88);
+  --scrim-soft: rgba(18, 18, 19, 0.82);
+  --emboss-hi: rgba(255, 255, 255, 0.07);
+  --emboss-lo: rgba(0, 0, 0, 0.35);
+  --guide-high: #e0763a;
+  --guide-low: #6a9fd8;
+}
+
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --fg: #1a1a1b;
+  --muted: #565758;
+  --border: #d3d6da;
+  --border-strong: #878a8c;
+  --tile-bg: #ffffff;
+  --correct: #6aaa64;
+  --present: #c9b458;
+  --absent: #787c7e;
+  --key-bg: #d3d6da;
+  --key-fg: #1a1a1b;
+  --key-used-bg: #787c7e;
+  --modal-bg: #ffffff;
+  --scrim: rgba(255, 255, 255, 0.9);
+  --scrim-soft: rgba(255, 255, 255, 0.85);
+  --emboss-hi: rgba(255, 255, 255, 0.6);
+  --emboss-lo: rgba(0, 0, 0, 0.12);
+  --guide-high: #b2500f;
+  --guide-low: #1d5fa8;
+}
+
 body {
   margin: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: #121213;
-  color: #fff;
+  background: var(--bg);
+  color: var(--fg);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
 body {
@@ -43,9 +88,9 @@ body {
 header {
   height: 42px;
   display: grid;
-  grid-template-columns: 40px 1fr 40px;
+  grid-template-columns: 40px 1fr 40px 40px;
   align-items: center;
-  border-bottom: 1px solid #3a3a3c;
+  border-bottom: 1px solid var(--border);
 }
 
 h1 {
@@ -62,7 +107,7 @@ h1 {
   height: 40px;
   border: 0;
   background: transparent;
-  color: #fff;
+  color: var(--fg);
   font-size: 22px;
   font-weight: 900;
 }
@@ -75,7 +120,8 @@ h1 {
 }
 
 .totals div {
-  border: 1px solid #3a3a3c;
+  border: 1px solid var(--border);
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,7 +130,7 @@ h1 {
 
 small {
   font-size: 9px;
-  color: #d7dadc;
+  color: var(--muted);
   letter-spacing: 1.2px;
   font-weight: 700;
 }
@@ -92,7 +138,12 @@ small {
 strong {
   font-size: 24px;
   line-height: 25px;
+  transition: color 0.2s ease;
 }
+
+strong#total.guideHigh { color: var(--guide-high); }
+strong#total.guideLow { color: var(--guide-low); }
+strong#total.guideMatch { color: var(--correct); }
 
 #board {
   height: 250px;
@@ -116,9 +167,12 @@ strong {
 .tileInner {
   width: 100%;
   height: 100%;
-  border: 2px solid #3a3a3c;
-  background: #121213;
-  color: #fff;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  background: var(--tile-bg);
+  background-image: linear-gradient(180deg, var(--emboss-hi), transparent 40%);
+  box-shadow: inset 0 1px 0 var(--emboss-hi), inset 0 -2px 3px var(--emboss-lo), 0 1px 1px var(--emboss-lo);
+  color: var(--fg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -127,33 +181,39 @@ strong {
   font-weight: 800;
 }
 
+.tileInner.hint {
+  color: var(--muted);
+  opacity: 0.6;
+  font-weight: 700;
+}
+
 .tile.filled .tileInner {
-  border-color: #565758;
+  border-color: var(--border-strong);
 }
 
 .tileInner.pop {
-  animation: pop 0.1s ease-in-out;
+  animation: pop 0.16s ease-in-out;
 }
 
 @keyframes pop {
   0% { transform: scale(0.8); }
-  40% { transform: scale(1.1); }
+  40% { transform: scale(1.12); }
   100% { transform: scale(1); }
 }
 
 .row.shake {
-  animation: shake 0.5s ease-in-out;
+  animation: shake 0.6s ease-in-out;
 }
 
 @keyframes shake {
   10%, 90% { transform: translateX(-1px); }
   20%, 80% { transform: translateX(2px); }
-  30%, 50%, 70% { transform: translateX(-4px); }
-  40%, 60% { transform: translateX(4px); }
+  30%, 50%, 70% { transform: translateX(-5px); }
+  40%, 60% { transform: translateX(5px); }
 }
 
 .tileInner.flip {
-  animation: flip 0.38s ease forwards;
+  animation: flip 0.55s ease forwards;
 }
 
 @keyframes flip {
@@ -163,29 +223,32 @@ strong {
 }
 
 .tile.correct .tileInner {
-  background: #538d4e;
-  border-color: #538d4e;
+  background: var(--correct);
+  background-image: linear-gradient(180deg, var(--emboss-hi), transparent 40%);
+  border-color: var(--correct);
 }
 
 .tile.present .tileInner {
-  background: #b59f3b;
-  border-color: #b59f3b;
+  background: var(--present);
+  background-image: linear-gradient(180deg, var(--emboss-hi), transparent 40%);
+  border-color: var(--present);
 }
 
 .tile.absent .tileInner {
-  background: #3a3a3c;
-  border-color: #3a3a3c;
+  background: var(--absent);
+  background-image: linear-gradient(180deg, var(--emboss-hi), transparent 40%);
+  border-color: var(--absent);
 }
 
 .tile.winJump {
-  animation: winJump 0.52s ease;
+  animation: winJump 0.7s ease;
 }
 
 @keyframes winJump {
   0%, 100% { transform: translateY(0); }
-  25% { transform: translateY(-15px); }
-  55% { transform: translateY(5px); }
-  75% { transform: translateY(-6px); }
+  25% { transform: translateY(-16px); }
+  55% { transform: translateY(6px); }
+  75% { transform: translateY(-7px); }
 }
 
 .bigFeedback {
@@ -196,15 +259,16 @@ strong {
   z-index: 5;
   min-width: 260px;
   padding: 14px 18px;
-  background: rgba(18, 18, 19, 0.82);
-  border: 1px solid #3a3a3c;
-  color: #fff;
+  background: var(--scrim-soft);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--fg);
   text-align: center;
   font-size: 34px;
   line-height: 1;
   font-weight: 900;
   letter-spacing: 2px;
-  animation: feedbackPop 1.25s ease forwards;
+  animation: feedbackPop 1.6s ease forwards;
 }
 
 @keyframes feedbackPop {
@@ -240,7 +304,7 @@ strong {
   text-align: center;
   font-size: 13px;
   font-weight: 800;
-  color: #fff;
+  color: var(--fg);
   white-space: nowrap;
   overflow: hidden;
 }
@@ -256,29 +320,34 @@ strong {
 #keys button {
   height: 34px;
   border: 0;
-  border-radius: 4px;
-  background: #818384;
-  color: #fff;
+  border-radius: 6px;
+  background: var(--key-bg);
+  background-image: linear-gradient(180deg, var(--emboss-hi), transparent 45%);
+  box-shadow: inset 0 1px 0 var(--emboss-hi), inset 0 -2px 2px var(--emboss-lo);
+  color: var(--key-fg);
   font-size: 16px;
   font-weight: 800;
 }
 
 #keys button.used {
-  background: #3a3a3c;
+  background: var(--key-used-bg);
+  color: #ffffff;
 }
 
 #keys button.correct {
-  background: #538d4e;
+  background: var(--correct);
+  color: #ffffff;
 }
 
 #keys button.present {
-  background: #b59f3b;
+  background: var(--present);
+  color: #ffffff;
 }
 
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(18, 18, 19, 0.88);
+  background: var(--scrim);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -293,8 +362,11 @@ strong {
 .modalBox {
   width: 100%;
   max-width: 340px;
-  background: #121213;
-  border: 1px solid #3a3a3c;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--modal-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
   padding: 18px;
   position: relative;
   text-align: center;
@@ -306,7 +378,7 @@ strong {
   right: 10px;
   border: 0;
   background: transparent;
-  color: white;
+  color: var(--fg);
   font-size: 28px;
 }
 
@@ -334,6 +406,7 @@ strong {
   width: 30px;
   height: 30px;
   margin-right: 9px;
+  border-radius: 6px;
   align-items: center;
   justify-content: center;
   color: white;
@@ -341,15 +414,73 @@ strong {
 }
 
 .correctSample {
-  background: #538d4e;
+  background: var(--correct);
 }
 
 .presentSample {
-  background: #b59f3b;
+  background: var(--present);
 }
 
 .absentSample {
-  background: #3a3a3c;
+  background: var(--absent);
+}
+
+.settings {
+  margin: 18px 0 4px;
+  text-align: left;
+}
+
+.settingRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 24px;
+  flex: none;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switchTrack {
+  position: absolute;
+  inset: 0;
+  background: var(--border-strong);
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+
+.switchTrack::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  top: 3px;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.switch input:checked + .switchTrack {
+  background: var(--correct);
+}
+
+.switch input:checked + .switchTrack::before {
+  transform: translateX(18px);
 }
 
 .stats {
@@ -371,7 +502,7 @@ strong {
 
 .stats span {
   font-size: 10px;
-  color: #d7dadc;
+  color: var(--muted);
 }
 
 pre {
@@ -389,7 +520,7 @@ pre {
   width: 100%;
   height: 42px;
   border: 0;
-  border-radius: 4px;
+  border-radius: 6px;
   margin-top: 8px;
   color: white;
   font-weight: 900;
@@ -397,13 +528,14 @@ pre {
 }
 
 .share {
-  background: #538d4e;
+  background: var(--correct);
 }
 
 .newGame {
-  background: #818384;
+  background: var(--key-bg);
+  color: var(--key-fg);
 }
-  </style>
+</style>
 </head>
 
 <body>
@@ -413,6 +545,7 @@ pre {
   <header>
     <button class="icon" id="helpBtn">?</button>
     <h1>SUM<span>(−)</span>LOK</h1>
+    <button class="icon" id="themeBtn">☀</button>
     <button class="icon" id="statsBtn">☰</button>
   </header>
 
@@ -452,6 +585,23 @@ pre {
       <div><span class="sample absentSample">5</span> Not in the code</div>
     </div>
 
+    <div class="settings">
+      <div class="settingRow">
+        <span>Sound</span>
+        <label class="switch">
+          <input type="checkbox" id="soundToggle">
+          <span class="switchTrack"></span>
+        </label>
+      </div>
+      <div class="settingRow">
+        <span>On-screen guidance</span>
+        <label class="switch">
+          <input type="checkbox" id="guidanceToggle">
+          <span class="switchTrack"></span>
+        </label>
+      </div>
+    </div>
+
     <button id="playBtn" class="newGame">PLAY</button>
   </div>
 </div>
@@ -485,6 +635,9 @@ const totalEl = document.getElementById("total");
 const messageEl = document.getElementById("message");
 const statsBtn = document.getElementById("statsBtn");
 const helpBtn = document.getElementById("helpBtn");
+const themeBtn = document.getElementById("themeBtn");
+const soundToggle = document.getElementById("soundToggle");
+const guidanceToggle = document.getElementById("guidanceToggle");
 const keyButtons = [...document.querySelectorAll("#keys button")];
 
 const modal = document.getElementById("modal");
@@ -507,6 +660,9 @@ const COLS = 7;
 const NEG = 3;
 const MAX_SAME_DIGIT = 4;
 
+const REVEAL_STAGGER = 180;
+const REVEAL_MIDPOINT = 275;
+
 let answer = [];
 let currentRow = 0;
 let currentCol = 0;
@@ -521,6 +677,128 @@ let stats = JSON.parse(localStorage.getItem("sumlokStats")) || {
   streak: 0,
   maxStreak: 0
 };
+
+// --- Theme ---
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  themeBtn.textContent = theme === "light" ? "☾" : "☀";
+  themeBtn.setAttribute("aria-label", theme === "light" ? "Switch to dark mode" : "Switch to light mode");
+}
+
+function initTheme() {
+  const saved = localStorage.getItem("sumlokTheme");
+  applyTheme(saved === "light" ? "light" : "dark");
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+  const next = current === "light" ? "dark" : "light";
+  applyTheme(next);
+  localStorage.setItem("sumlokTheme", next);
+}
+
+// --- Sound (WebAudio, no audio files) ---
+
+let audioCtx = null;
+let soundOn = localStorage.getItem("sumlokSound") !== "off";
+
+function ensureAudioCtx() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (audioCtx.state === "suspended") audioCtx.resume();
+  return audioCtx;
+}
+
+function tone(freq, duration, type = "sine", startGain = 0.08, delay = 0) {
+  if (!soundOn) return;
+
+  const ctx = ensureAudioCtx();
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+
+  osc.type = type;
+  osc.frequency.value = freq;
+
+  const startTime = ctx.currentTime + delay;
+  gain.gain.setValueAtTime(startGain, startTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
+
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+
+  osc.start(startTime);
+  osc.stop(startTime + duration);
+}
+
+function playKeyTap() {
+  tone(420, 0.06, "square", 0.05);
+}
+
+function playDelete() {
+  tone(220, 0.08, "square", 0.05);
+}
+
+function playTileResult(result) {
+  if (result === "correct") tone(660, 0.14, "sine", 0.07);
+  else if (result === "present") tone(480, 0.12, "sine", 0.06);
+  else tone(180, 0.1, "sine", 0.04);
+}
+
+function playWin() {
+  [523, 659, 784, 1047].forEach((f, i) => tone(f, 0.28, "triangle", 0.08, i * 0.13));
+}
+
+function playLose() {
+  [392, 349, 294, 220].forEach((f, i) => tone(f, 0.35, "sawtooth", 0.05, i * 0.14));
+}
+
+function playShake() {
+  tone(140, 0.15, "square", 0.05);
+}
+
+function initSound() {
+  soundToggle.checked = soundOn;
+}
+
+function toggleSound() {
+  soundOn = soundToggle.checked;
+  localStorage.setItem("sumlokSound", soundOn ? "on" : "off");
+  if (soundOn) ensureAudioCtx();
+}
+
+// --- Guidance ---
+
+let guidanceOn = localStorage.getItem("sumlokGuidance") !== "off";
+
+function initGuidance() {
+  guidanceToggle.checked = guidanceOn;
+}
+
+function toggleGuidance() {
+  guidanceOn = guidanceToggle.checked;
+  localStorage.setItem("sumlokGuidance", guidanceOn ? "on" : "off");
+  refreshNegHints();
+  updateTotal();
+}
+
+function emptyGlyph(c) {
+  return guidanceOn && c === NEG ? "−" : "";
+}
+
+function refreshNegHints() {
+  rowTiles(currentRow).forEach(tile => {
+    const c = Number(tile.dataset.c);
+    if (tile.dataset.v !== undefined) return;
+
+    const inner = tileInner(tile);
+    inner.textContent = emptyGlyph(c);
+    inner.classList.toggle("hint", guidanceOn && c === NEG);
+  });
+}
+
+// --- Game ---
 
 function seededRandom(seed) {
   let x = Math.sin(seed) * 10000;
@@ -574,6 +852,7 @@ function startGame() {
   board.innerHTML = "";
   targetEl.textContent = getTotal(answer);
   totalEl.textContent = "--";
+  totalEl.classList.remove("guideHigh", "guideLow", "guideMatch");
   messageEl.textContent = "Enter the code";
   modal.classList.add("hidden");
   bigFeedback.classList.add("hidden");
@@ -594,6 +873,11 @@ function startGame() {
 
       const inner = document.createElement("div");
       inner.className = "tileInner";
+
+      if (r === 0) {
+        inner.textContent = emptyGlyph(c);
+        if (guidanceOn && c === NEG) inner.classList.add("hint");
+      }
 
       tile.appendChild(inner);
       row.appendChild(tile);
@@ -622,7 +906,23 @@ function updateTotal() {
     .filter(t => t.dataset.v !== undefined)
     .map(t => Number(t.dataset.v));
 
-  totalEl.textContent = nums.length ? getTotal(nums) : "--";
+  totalEl.classList.remove("guideHigh", "guideLow", "guideMatch");
+
+  if (!nums.length) {
+    totalEl.textContent = "--";
+    return;
+  }
+
+  const total = getTotal(nums);
+  totalEl.textContent = total;
+
+  if (!guidanceOn) return;
+
+  const target = getTotal(answer);
+
+  if (total === target) totalEl.classList.add("guideMatch");
+  else if (total > target) totalEl.classList.add("guideHigh");
+  else totalEl.classList.add("guideLow");
 }
 
 function handleInput(key) {
@@ -642,6 +942,7 @@ function addDigit(n) {
 
   tile.dataset.v = n;
   const inner = tileInner(tile);
+  inner.classList.remove("hint");
   inner.textContent = currentCol === NEG ? `−${n}` : n;
   tile.classList.add("filled");
 
@@ -649,8 +950,20 @@ function addDigit(n) {
   void inner.offsetWidth;
   inner.classList.add("pop");
 
+  playKeyTap();
+
   currentCol++;
   updateTotal();
+
+  const nextTile = document.querySelector(
+    `.tile[data-r="${currentRow}"][data-c="${currentCol}"]`
+  );
+
+  if (nextTile && nextTile.dataset.v === undefined) {
+    const nextInner = tileInner(nextTile);
+    nextInner.textContent = emptyGlyph(currentCol);
+    nextInner.classList.toggle("hint", guidanceOn && currentCol === NEG);
+  }
 }
 
 function deleteDigit() {
@@ -663,9 +976,12 @@ function deleteDigit() {
   );
 
   delete tile.dataset.v;
-  tileInner(tile).textContent = "";
+  const inner = tileInner(tile);
+  inner.textContent = emptyGlyph(currentCol);
+  inner.classList.toggle("hint", guidanceOn && currentCol === NEG);
   tile.className = "tile";
 
+  playDelete();
   updateTotal();
 }
 
@@ -673,6 +989,7 @@ function submitGuess() {
   if (currentCol < COLS) {
     messageEl.textContent = "Need 7 digits";
     shakeRow(currentRow);
+    playShake();
     return;
   }
 
@@ -720,9 +1037,12 @@ function revealRow() {
       setTimeout(() => {
         tile.classList.add(result[i]);
         updateKeyboard(guess[i], result[i]);
-      }, 190);
-    }, i * 105);
+        playTileResult(result[i]);
+      }, REVEAL_MIDPOINT);
+    }, i * REVEAL_STAGGER);
   });
+
+  const revealDuration = COLS * REVEAL_STAGGER + REVEAL_MIDPOINT + 300;
 
   setTimeout(() => {
     const won = guess.every((n, i) => n === answer[i]);
@@ -741,8 +1061,10 @@ function revealRow() {
     currentCol = 0;
     locked = false;
     totalEl.textContent = "--";
+    totalEl.classList.remove("guideHigh", "guideLow", "guideMatch");
     messageEl.textContent = "Try again";
-  }, COLS * 105 + 230);
+    refreshNegHints();
+  }, revealDuration);
 }
 
 function updateKeyboard(num, result) {
@@ -769,7 +1091,7 @@ function showBigFeedback(text) {
 
   setTimeout(() => {
     bigFeedback.classList.add("hidden");
-  }, 1250);
+  }, 1600);
 }
 
 function win(tiles) {
@@ -787,11 +1109,12 @@ function win(tiles) {
 
   messageEl.textContent = winWord;
   showBigFeedback(winWord);
+  playWin();
 
   tiles.forEach((tile, i) => {
     setTimeout(() => {
       tile.classList.add("winJump");
-    }, i * 95);
+    }, i * 110);
   });
 
   stats.played++;
@@ -803,7 +1126,7 @@ function win(tiles) {
   finalShareText = makeShareText(true);
   updateStatsDisplay();
 
-  setTimeout(openModal, 1650);
+  setTimeout(openModal, 2000);
 }
 
 function lose() {
@@ -814,6 +1137,7 @@ function lose() {
     .join(" ");
 
   messageEl.textContent = `ACCESS CODE ${code}`;
+  playLose();
 
   stats.played++;
   stats.streak = 0;
@@ -822,7 +1146,7 @@ function lose() {
   finalShareText = makeShareText(false);
   updateStatsDisplay();
 
-  setTimeout(openModal, 900);
+  setTimeout(openModal, 1100);
 }
 
 function makeShareText(won) {
@@ -897,12 +1221,18 @@ document.addEventListener("keydown", e => {
 
 statsBtn.addEventListener("click", openModal);
 helpBtn.addEventListener("click", openHelp);
+themeBtn.addEventListener("click", toggleTheme);
 closeModal.addEventListener("click", closeStats);
 closeHelp.addEventListener("click", closeHelpModal);
 playBtn.addEventListener("click", closeHelpModal);
 shareBtn.addEventListener("click", shareResult);
 newGameBtn.addEventListener("click", startGame);
+soundToggle.addEventListener("change", toggleSound);
+guidanceToggle.addEventListener("change", toggleGuidance);
 
+initTheme();
+initSound();
+initGuidance();
 startGame();
 </script>
 </html>
