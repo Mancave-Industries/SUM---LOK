@@ -125,7 +125,7 @@ export async function generateClue(options: GenerateClueOptions): Promise<Genera
     // the model wrote rather than the seed words construct() picked.
     let surfaceCheckPassed = true;
     if (device.verifySurface) {
-      const surfaceCheck = device.verifySurface(answer, parts.wordplayText);
+      const surfaceCheck = device.verifySurface(answer, construction.wordplay, parts.wordplayText);
       log.push(...surfaceCheck.log);
       surfaceCheckPassed = surfaceCheck.passed;
     }

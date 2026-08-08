@@ -78,11 +78,14 @@ export interface DeviceModule {
     indicatorBank: string[]
   ): { passed: boolean; log: string[] };
   // Optional second check that runs against the LLM's actual rendered
-  // wordplay text rather than the constructed wordplay object. Needed by
-  // devices whose fairness claim is about the surface itself — a hidden
+  // wordplay text rather than just the constructed wordplay object. Needed
+  // by devices whose fairness claim is about the surface itself — a hidden
   // word must really be findable in the rendered clue, not just in the
-  // seed words construct() picked as raw material.
-  verifySurface?(answer: string, wordplayText: string): VerificationResult;
+  // seed words construct() picked as raw material; a charade's parts must
+  // appear in the right order. wordplay is passed through so devices can
+  // check surface properties of their own specific parts, not just answer
+  // and raw text.
+  verifySurface?(answer: string, wordplay: Wordplay, wordplayText: string): VerificationResult;
 }
 
 export interface VerificationResult {

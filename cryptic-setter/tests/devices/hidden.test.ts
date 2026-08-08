@@ -59,18 +59,20 @@ describe('hiddenDevice.construct', () => {
 });
 
 describe('hiddenDevice.verifySurface', () => {
+  const dummyWordplay = { components: ['BEA', 'RDX'], indicator: 'found in', operation: '' };
+
   it('passes when the answer spans a real word boundary in the text', () => {
-    const result = hiddenDevice.verifySurface!('EARD', 'the bea rdx sat quietly');
+    const result = hiddenDevice.verifySurface!('EARD', dummyWordplay, 'the bea rdx sat quietly');
     expect(result.passed).toBe(true);
   });
 
   it('fails when the answer only appears inside a single word', () => {
-    const result = hiddenDevice.verifySurface!('BEA', 'the beard was long');
+    const result = hiddenDevice.verifySurface!('BEA', dummyWordplay, 'the beard was long');
     expect(result.passed).toBe(false);
   });
 
   it('fails when the answer does not appear at all', () => {
-    const result = hiddenDevice.verifySurface!('ZZZZ', 'the beard was long');
+    const result = hiddenDevice.verifySurface!('ZZZZ', dummyWordplay, 'the beard was long');
     expect(result.passed).toBe(false);
   });
 });

@@ -101,7 +101,7 @@ export const initialsDevice: DeviceModule = {
     return { passed: true, log };
   },
 
-  verifySurface(answer, wordplayText) {
+  verifySurface(answer, _wordplay, wordplayText) {
     return verifyInitialsInSurface(answer, wordplayText);
   },
 };

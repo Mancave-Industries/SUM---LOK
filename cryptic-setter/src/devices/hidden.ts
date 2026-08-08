@@ -140,7 +140,7 @@ export const hiddenDevice: DeviceModule = {
     return { passed: true, log };
   },
 
-  verifySurface(answer, wordplayText) {
+  verifySurface(answer, _wordplay, wordplayText) {
     return verifyHiddenInSurface(answer, wordplayText);
   },
 };

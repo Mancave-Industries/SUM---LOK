@@ -1,3 +1,8 @@
 node_modules/
 dist/
 .env
+
+# Generated runtime data — a placeholder JSON "database" until this moves
+# to Supabase (§9 Phase 4). Not meant to accumulate disposable demo/test
+# runs in source control; each environment builds its own bank locally.
+src/data/bank/*.json

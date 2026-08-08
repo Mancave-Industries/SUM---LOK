@@ -82,6 +82,18 @@ The fodder "${fodder}" and the indicator "${indicator}" must both appear in the 
     return `The wordplay part must contain a run of ${wordplay.components.length} consecutive words whose first letters, in order, spell "${answer}". You may use these exact words as a starting point: ${words} — or substitute your own real words with the same starting letters, as long as they stay consecutive and in this order. Capitalize them however normal sentence casing requires. The indicator "${indicator}" must also appear in the wordplay part.`;
   }
 
+  if (wordplay.components && device === 'charade') {
+    const part1 = toDisplayCase(wordplay.components[0]);
+    const part2 = toDisplayCase(wordplay.components[1]);
+    return `The wordplay part must contain the words "${part1}" and "${part2}", with "${part1}" appearing before "${part2}" — they read naturally as two parts placed one after another, like a charade. Both must appear close to verbatim (minor grammatical inflection is fine). The indicator "${indicator}" should also appear, connecting them naturally (e.g. "${part1} ${indicator} ${part2}").`;
+  }
+
+  if (wordplay.components && device === 'container') {
+    const outer = toDisplayCase(wordplay.components[0]);
+    const inner = toDisplayCase(wordplay.components[1]);
+    return `The wordplay part must contain both "${outer}" and "${inner}" somewhere (in either order, close to verbatim, minor grammatical inflection is fine), along with the indicator "${indicator}" signalling that one sits inside the other — e.g. "${inner} ${indicator} ${outer}" or "${outer} ${indicator} ${inner}".`;
+  }
+
   throw new Error(`Don't know how to describe wordplay for device "${device}"`);
 }
 

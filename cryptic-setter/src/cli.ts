@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 // CLI: run the generate -> verify loop over the seed word list and print
 // every verified clue with its full mechanical parse and verification log.
-// Optionally writes the verified clues to a JSON file with --out (a
-// stand-in for the real bank, which lands in Phase 4). As of Phase 3,
-// definitions are proposed by the LLM and checked against WordNet by the
-// pipeline itself — no seeded definition map needed.
+// Definitions are proposed by the LLM and checked against WordNet by the
+// pipeline itself (Phase 3) — no seeded definition map needed. As of
+// Phase 4, every verified clue is persisted into the clue bank or the
+// Tier 3 / unreviewed-definition review queue (see bank/clueBank.ts);
+// --no-bank skips persistence for a dry-run preview. --approve <id> moves
+// one queued clue into the live bank instead of running generation.
 
 import { existsSync } from 'node:fs';
 import { writeFileSync } from 'node:fs';
@@ -15,7 +17,11 @@ import hiddenIndicators from './data/indicators/hidden.json' with { type: 'json'
 import reversalIndicators from './data/indicators/reversal.json' with { type: 'json' };
 import alternatesIndicators from './data/indicators/alternates.json' with { type: 'json' };
 import initialsIndicators from './data/indicators/initials.json' with { type: 'json' };
+import charadeIndicators from './data/indicators/charade.json' with { type: 'json' };
+import containerIndicators from './data/indicators/container.json' with { type: 'json' };
+import deletionIndicators from './data/indicators/deletion.json' with { type: 'json' };
 import { generateClue } from './pipeline/generateClue.js';
+import { appendToBank, approveFromReviewQueue } from './bank/clueBank.js';
 import type { Clue, DeviceType } from './types.js';
 
 if (existsSync('.env')) {
@@ -27,8 +33,21 @@ const { values } = parseArgs({
     count: { type: 'string', default: '10' },
     device: { type: 'string', default: 'anagram' },
     out: { type: 'string' },
+    'no-bank': { type: 'boolean', default: false },
+    approve: { type: 'string' },
   },
 });
+
+if (values.approve) {
+  const approved = approveFromReviewQueue(values.approve);
+  if (!approved) {
+    console.error(`No queued clue found with id "${values.approve}"`);
+    process.exit(1);
+  }
+  console.log(`Approved "${approved.answer}" — moved from review queue into the live bank.`);
+  console.log(`Surface: ${approved.surface}`);
+  process.exit(0);
+}
 
 const count = Number(values.count);
 const device = values.device as DeviceType;
@@ -39,6 +58,9 @@ const indicatorBanks: Partial<Record<DeviceType, string[]>> = {
   reversal: reversalIndicators as string[],
   alternates: alternatesIndicators as string[],
   initials: initialsIndicators as string[],
+  charade: charadeIndicators as string[],
+  container: containerIndicators as string[],
+  deletion: (deletionIndicators as Array<{ word: string }>).map((entry) => entry.word),
 };
 
 async function main() {
@@ -64,9 +86,17 @@ async function main() {
       console.log(`Indicator:      "${result.clue.wordplay.indicator}"`);
       console.log(`Verified:       ${result.clue.verified}`);
       console.log(`ReviewRequired: ${result.clue.reviewRequired}`);
+      console.log(`Id:             ${result.clue.id}`);
       console.log('Log:');
       for (const line of result.clue.verificationLog) console.log(`  ${line}`);
       verified.push(result.clue);
+
+      if (!values['no-bank']) {
+        const appendResult = appendToBank(result.clue);
+        console.log(
+          `Persisted to ${appendResult.destination} (${appendResult.totalInDestination} total there)`
+        );
+      }
     } else {
       console.log('✗ not verified — discarded');
       console.log('Log:');

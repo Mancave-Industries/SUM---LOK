@@ -4,15 +4,22 @@ import { hiddenDevice } from './hidden.js';
 import { reversalDevice } from './reversal.js';
 import { alternatesDevice } from './alternates.js';
 import { initialsDevice } from './initials.js';
+import { charadeDevice } from './charade.js';
+import { containerDevice } from './container.js';
+import { deletionDevice } from './deletion.js';
 
-// Only devices proven in earlier phases are registered here. Tier 2 adds
-// charade/container/deletion once the definition layer exists.
+// Tier 3 devices (homophone, double definition, etc.) are never registered
+// here — they require human judgement and are out of scope for the
+// automated construct/verify loop entirely.
 const deviceRegistry: Partial<Record<DeviceType, DeviceModule>> = {
   anagram: anagramDevice,
   hidden: hiddenDevice,
   reversal: reversalDevice,
   alternates: alternatesDevice,
   initials: initialsDevice,
+  charade: charadeDevice,
+  container: containerDevice,
+  deletion: deletionDevice,
 };
 
 export function getDevice(type: DeviceType): DeviceModule {

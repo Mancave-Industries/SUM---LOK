@@ -70,13 +70,15 @@ describe('initialsDevice.construct', () => {
 });
 
 describe('initialsDevice.verifySurface', () => {
+  const dummyWordplay = { components: ['Cold', 'Angry', 'Tired'], indicator: 'initially', operation: '' };
+
   it('passes when a consecutive run of words has matching initials', () => {
-    const result = initialsDevice.verifySurface!('CAT', 'the cold angry tired dog barked');
+    const result = initialsDevice.verifySurface!('CAT', dummyWordplay, 'the cold angry tired dog barked');
     expect(result.passed).toBe(true);
   });
 
   it('fails when no consecutive run matches', () => {
-    const result = initialsDevice.verifySurface!('CAT', 'the tired angry cold dog barked');
+    const result = initialsDevice.verifySurface!('CAT', dummyWordplay, 'the tired angry cold dog barked');
     expect(result.passed).toBe(false);
   });
 });
