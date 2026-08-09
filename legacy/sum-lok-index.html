@@ -733,33 +733,40 @@ function tone(freq, duration, type = "sine", startGain = 0.08, delay = 0) {
 }
 
 function playKeyTap() {
-  tone(420, 0.06, "square", 0.05);
+  tone(480, 0.09, "square", 0.2);
 }
 
 function playDelete() {
-  tone(220, 0.08, "square", 0.05);
+  tone(220, 0.1, "square", 0.18);
 }
 
 function playTileResult(result) {
-  if (result === "correct") tone(660, 0.14, "sine", 0.07);
-  else if (result === "present") tone(480, 0.12, "sine", 0.06);
-  else tone(180, 0.1, "sine", 0.04);
+  if (result === "correct") tone(660, 0.2, "sine", 0.25);
+  else if (result === "present") tone(480, 0.18, "sine", 0.22);
+  else tone(180, 0.16, "sine", 0.16);
 }
 
 function playWin() {
-  [523, 659, 784, 1047].forEach((f, i) => tone(f, 0.28, "triangle", 0.08, i * 0.13));
+  [523, 659, 784, 1047].forEach((f, i) => tone(f, 0.3, "triangle", 0.25, i * 0.13));
 }
 
 function playLose() {
-  [392, 349, 294, 220].forEach((f, i) => tone(f, 0.35, "sawtooth", 0.05, i * 0.14));
+  [392, 349, 294, 220].forEach((f, i) => tone(f, 0.35, "triangle", 0.2, i * 0.14));
 }
 
 function playShake() {
-  tone(140, 0.15, "square", 0.05);
+  tone(140, 0.18, "square", 0.18);
 }
 
 function initSound() {
   soundToggle.checked = soundOn;
+
+  const unlockAudio = () => {
+    ensureAudioCtx();
+    document.removeEventListener("pointerdown", unlockAudio);
+  };
+
+  document.addEventListener("pointerdown", unlockAudio, { once: true });
 }
 
 function toggleSound() {
@@ -800,18 +807,6 @@ function refreshNegHints() {
 
 // --- Game ---
 
-function seededRandom(seed) {
-  let x = Math.sin(seed) * 10000;
-  return x - Math.floor(x);
-}
-
-function dateSeed() {
-  const now = new Date();
-  return Number(
-    `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, "0")}${String(now.getDate()).padStart(2, "0")}`
-  );
-}
-
 function validCode(code) {
   const counts = {};
 
@@ -823,25 +818,22 @@ function validCode(code) {
   return true;
 }
 
-function generateDailyCode() {
-  let seed = dateSeed();
+function generateCode() {
   let code = [];
 
   do {
     code = [];
 
     for (let i = 0; i < COLS; i++) {
-      code.push(Math.floor(seededRandom(seed + i * 97) * 10));
+      code.push(Math.floor(Math.random() * 10));
     }
-
-    seed += 31;
   } while (!validCode(code));
 
   return code;
 }
 
 function startGame() {
-  answer = generateDailyCode();
+  answer = generateCode();
   currentRow = 0;
   currentCol = 0;
   locked = false;
