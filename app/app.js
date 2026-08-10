@@ -16,7 +16,50 @@ const state = {
   bonusUnlocked: false,
   startTime: null,
   finishTime: null,
+  soundOn: true,
 };
+
+// Small synthesized sound effects via WebAudio — no audio files to fetch,
+// nothing to fail loading. AudioContext is created lazily on first use so
+// it starts inside a real user gesture (typing/clicking), satisfying
+// browser autoplay policies.
+let audioCtx = null;
+function getAudioCtx() {
+  if (!audioCtx) {
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    if (!Ctx) return null;
+    audioCtx = new Ctx();
+  }
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  return audioCtx;
+}
+
+function beep(freq, duration, type, gainPeak, startDelay) {
+  if (!state.soundOn) return;
+  const ctx = getAudioCtx();
+  if (!ctx) return;
+  const t0 = ctx.currentTime + (startDelay || 0);
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = type || 'sine';
+  osc.frequency.setValueAtTime(freq, t0);
+  gain.gain.setValueAtTime(0, t0);
+  gain.gain.linearRampToValueAtTime(gainPeak || 0.12, t0 + 0.01);
+  gain.gain.exponentialRampToValueAtTime(0.001, t0 + duration);
+  osc.connect(gain).connect(ctx.destination);
+  osc.start(t0);
+  osc.stop(t0 + duration + 0.02);
+}
+
+function playTick() { beep(700, 0.035, 'square', 0.045); }
+function playCorrect() {
+  beep(660, 0.09, 'sine', 0.12);
+  beep(880, 0.12, 'sine', 0.12, 0.09);
+}
+function playWrong() { beep(170, 0.18, 'sawtooth', 0.09); }
+function playComplete() {
+  [523, 659, 784, 1046].forEach((f, i) => beep(f, 0.16, 'sine', 0.14, i * 0.09));
+}
 
 function entryCells(entry) {
   const cells = [];
@@ -122,6 +165,7 @@ function typeLetter(letter) {
   if (state.cursor >= cells.length) return;
   const { r, c } = cells[state.cursor];
   state.letters[`${r},${c}`] = letter.toUpperCase();
+  playTick();
   const wasLastCell = state.cursor === cells.length - 1;
   state.cursor = Math.min(state.cursor + 1, cells.length - 1);
   render();
@@ -161,6 +205,9 @@ function maybeCheckEntry(idx) {
   const word = cells.map(({ r, c }) => state.letters[`${r},${c}`]).join('');
   if (word === entry.answer) {
     state.solved.add(idx);
+    const isLastEntry = state.puzzle.entries.every((_, i) => state.solved.has(i));
+    if (isLastEntry) playComplete();
+    else playCorrect();
     render();
     checkBonusUnlock();
     checkAllSolved();
@@ -168,6 +215,7 @@ function maybeCheckEntry(idx) {
     const next = remaining[0] ?? (state.bonusUnlocked ? bonusEntryIndex() : null);
     if (next !== null && next !== undefined) setActiveEntry(next);
   } else {
+    playWrong();
     showToast("That doesn't fit — check the crossings");
   }
 }
@@ -324,6 +372,7 @@ function renderKeyboard() {
 
 function showSolvedPanel() {
   document.getElementById('solved-panel').classList.add('show');
+  document.getElementById('keyboard').style.display = 'none';
   const elapsed = Math.max(0, Math.round((state.finishTime - state.startTime) / 1000));
   const mm = Math.floor(elapsed / 60);
   const ss = String(elapsed % 60).padStart(2, '0');
@@ -443,6 +492,19 @@ function setupTheme() {
   });
 }
 
+function setupSound() {
+  const stored = localStorage.getItem('3a2dle-sound');
+  state.soundOn = stored !== 'off';
+  const btn = document.getElementById('sound-toggle');
+  btn.textContent = state.soundOn ? '♪' : '✕';
+  btn.addEventListener('click', () => {
+    state.soundOn = !state.soundOn;
+    localStorage.setItem('3a2dle-sound', state.soundOn ? 'on' : 'off');
+    btn.textContent = state.soundOn ? '♪' : '✕';
+    if (state.soundOn) playTick();
+  });
+}
+
 function setupInput() {
   document.addEventListener('keydown', (e) => {
     if (e.metaKey || e.ctrlKey || e.altKey) return;
@@ -464,6 +526,7 @@ function setupInput() {
 
 async function main() {
   setupTheme();
+  setupSound();
   renderStreak();
   const puzzle = await loadPuzzle();
   state.puzzle = puzzle;
