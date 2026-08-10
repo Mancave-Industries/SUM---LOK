@@ -1,0 +1,511 @@
+<title>3A2Dle — daily mini cryptic</title>
+<style>
+  :root {
+    --page-bg: #F6F4EE;
+    --page-surface: #FFFFFF;
+    --page-text: #201F26;
+    --page-text-dim: #6B6874;
+    --page-accent: #8A6A24;
+    --page-border: #E4E0D5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --page-bg: #131319;
+      --page-surface: #1B1C24;
+      --page-text: #EEEAE0;
+      --page-text-dim: #938FA0;
+      --page-accent: #C9A24B;
+      --page-border: #2C2D38;
+    }
+  }
+  :root[data-theme="dark"] {
+    --page-bg: #131319;
+    --page-surface: #1B1C24;
+    --page-text: #EEEAE0;
+    --page-text-dim: #938FA0;
+    --page-accent: #C9A24B;
+    --page-border: #2C2D38;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--page-bg);
+    color: var(--page-text);
+    font-family: -apple-system, "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    margin: 0;
+    padding: 48px 24px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .wrap-header {
+    max-width: 680px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .eyebrow {
+    font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--page-accent);
+  }
+
+  .wrap-header h1 {
+    font-family: Iowan Old Style, "Palatino Linotype", Georgia, ui-serif, serif;
+    font-size: clamp(28px, 4vw, 40px);
+    margin: 0;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+
+  .wrap-header p {
+    color: var(--page-text-dim);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 58ch;
+    margin-inline: auto;
+  }
+
+  .screens {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 36px;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .screen-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    max-width: 340px;
+  }
+
+  .screen-label {
+    font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--page-text-dim);
+    text-align: center;
+  }
+
+  .phone {
+    width: 340px;
+    border-radius: 40px;
+    padding: 12px;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.12);
+    opacity: 0;
+    transform: translateY(14px);
+    animation: rise 0.6s ease-out forwards;
+  }
+  .screen-col:nth-child(2) .phone { animation-delay: 0.1s; }
+  .screen-col:nth-child(3) .phone { animation-delay: 0.2s; }
+  @media (prefers-reduced-motion: reduce) {
+    .phone { animation: none; opacity: 1; transform: none; }
+  }
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .phone-screen {
+    border-radius: 30px;
+    overflow: hidden;
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+    font-family: -apple-system, "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  }
+
+  /* ---- Night / ink theme (fixed product colors — the app's own dark mode) ---- */
+  .phone.night { background: #0E0F14; }
+  .night .phone-screen { background: #15161D; color: #ECE7DC; }
+  .night .topbar { border-bottom: 1px solid #2A2C38; }
+  .night .paper { background: #F4EFE2; }
+  .night .cell { color: #1B1A1F; border-color: #D8CFB8; }
+  .night .cell.filled { background: #FBF8EF; }
+  .night .cell.active-row { background: #FFF7DE; }
+  .night .cell.locked { background: #E6E0CE; color: #A79A6E; }
+  .night .cell .num { color: #8A7A4A; }
+  .night .clue-active { background: #1F212B; border: 1px solid #33364B; }
+  .night .clue-active .tag { color: #C9A24B; }
+  .night .clue-list li { border-bottom: 1px solid #262835; }
+  .night .clue-list li.on { background: #1F212B; }
+  .night .clue-list .num { color: #6F6C7C; }
+  .night .clue-list .txt { color: #D9D4C8; }
+  .night .clue-list li.locked-clue .txt { color: #5C5A65; font-style: italic; }
+  .night .kbd-key { background: #23252F; color: #ECE7DC; }
+  .night .kbd-key.used { background: #3A3320; color: #E8CC7C; }
+  .night .streak { color: #C9A24B; }
+
+  /* ---- Bonus-reveal theme (same ink base, warmer glow) ---- */
+  .phone.bonus { background: #14100C; }
+  .bonus .phone-screen { background: #1B1610; color: #F2E9D8; }
+  .bonus .topbar { border-bottom: 1px solid #362A18; }
+  .bonus .paper { background: #F4EFE2; }
+  .bonus .cell { color: #1B1A1F; border-color: #D8CFB8; background: #FBF8EF; }
+  .bonus .cell.bonus-col { background: #F6E3AE; border-color: #C9A24B; box-shadow: 0 0 0 2px rgba(201,162,75,0.35); }
+  .bonus .cell .num { color: #8A7A4A; }
+  .bonus .badge {
+    margin: 2px 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: #1B1610;
+    background: #E8C368;
+    border-radius: 999px;
+    padding: 6px 14px;
+    width: fit-content;
+    margin-inline: auto;
+    font-weight: 700;
+  }
+  .bonus .clue-active { background: #2A2013; border: 1px solid #4A381C; }
+  .bonus .clue-active .tag { color: #E8C368; }
+  .bonus .solved-clues .row { color: #C9BFA6; }
+  .bonus .solved-clues .row b { color: #F2E9D8; }
+  .bonus .solved-clues .row.bonus-row b { color: #E8C368; }
+  .bonus .solved-clues .row.bonus-row { color: #F0DBA0; }
+
+  /* ---- Day / paper theme (fixed product colors — the app's light mode) ---- */
+  .phone.day { background: #E7E0CC; }
+  .day .phone-screen { background: #F6F1E6; color: #1B1A1F; }
+  .day .topbar { border-bottom: 1px solid #E3DAC2; }
+  .day .paper { background: #FFFDF7; border: 1px solid #E9E1CB; }
+  .day .cell { color: #1B1A1F; border-color: #E3DAC2; }
+  .day .cell.solved { background: #E4EEE6; color: #2C4A38; }
+  .day .cell.bonus-col.solved { background: #F3E4B2; color: #5C4712; border-color: #C9A24B; }
+  .day .clue-list li { border-bottom: 1px solid #EDE6D2; }
+  .day .share-sq.g { background: #5B8C6E; }
+  .day .share-sq.y { background: #C9973E; }
+  .day .streak { color: #8A6A24; }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px 14px;
+  }
+  .logo {
+    font-family: Iowan Old Style, "Palatino Linotype", Georgia, ui-serif, serif;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .logo em { font-style: normal; color: #C9A24B; }
+  .day .logo em { color: #8A6A24; }
+  .bonus .logo em { color: #E8C368; }
+  .topbar-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+  }
+  .streak { font-weight: 600; }
+
+  .grid-area {
+    padding: 6px 20px 10px;
+    display: flex;
+    justify-content: center;
+  }
+  .grid3 {
+    width: 216px;
+    height: 216px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: 8px;
+    gap: 6px;
+  }
+  .cell {
+    position: relative;
+    border: 1.5px solid;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Iowan Old Style, "Palatino Linotype", Georgia, ui-serif, serif;
+    font-size: 26px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background 0.15s ease;
+  }
+  .cell .num {
+    position: absolute;
+    top: 3px;
+    left: 5px;
+    font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 9px;
+    font-weight: 600;
+  }
+  .cell.locked { font-size: 13px; }
+
+  .active-clue {
+    margin: 4px 20px 12px;
+    border-radius: 12px;
+    padding: 12px 14px;
+  }
+  .active-clue .tag {
+    font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .active-clue .clue-text { font-size: 15px; line-height: 1.4; }
+
+  .clue-list {
+    list-style: none;
+    margin: 0;
+    padding: 0 20px;
+    flex: 1;
+    overflow-y: auto;
+  }
+  .clue-list-heading {
+    font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--page-text-dim);
+    padding: 10px 0 4px;
+  }
+  .clue-list li {
+    display: flex;
+    gap: 8px;
+    padding: 8px 6px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    line-height: 1.4;
+    cursor: pointer;
+  }
+  .clue-list .num {
+    font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+    min-width: 14px;
+  }
+
+  .kbd { padding: 10px 8px 18px; display: flex; flex-direction: column; gap: 6px; }
+  .kbd-row { display: flex; justify-content: center; gap: 5px; }
+  .kbd-key {
+    flex: 1; max-width: 30px; height: 40px; border-radius: 6px; border: none;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 600; text-transform: uppercase;
+  }
+
+  /* ---- Solved screen specifics ---- */
+  .solved-hero { padding: 10px 20px 4px; text-align: center; }
+  .solved-hero h2 {
+    font-family: Iowan Old Style, "Palatino Linotype", Georgia, ui-serif, serif;
+    font-size: 24px; margin: 4px 0 2px;
+  }
+  .solved-hero .time { font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace; font-size: 13px; color: #6B6658; }
+  .bonus-line { font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; color: #8A6A24; margin-top: 2px; }
+  .share-row { display: flex; gap: 6px; justify-content: center; padding: 12px 20px; }
+  .share-sq { width: 22px; height: 22px; border-radius: 5px; }
+  .share-sq.bonus-sq { background: #C9A24B; }
+  .share-actions { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 4px 20px 20px; }
+  .share-btn {
+    background: #8A6A24; color: #FFF9EA; border: none; border-radius: 999px;
+    padding: 11px 26px; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer;
+  }
+  .next-in { font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; color: #857F6C; }
+  .solved-clues { padding: 2px 20px 16px; display: flex; flex-direction: column; gap: 6px; }
+  .solved-clues .row { display: flex; gap: 8px; font-size: 12px; color: #5A5548; }
+  .solved-clues .row b {
+    color: #1B1A1F; font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace; min-width: 16px;
+  }
+  .day .solved-clues .row.bonus-row { color: #6B4F0E; }
+  .day .solved-clues .row.bonus-row b { color: #8A6A24; }
+</style>
+
+<div class="wrap-header">
+  <div class="eyebrow">Product mockup</div>
+  <h1>3A2Dle</h1>
+  <p>A daily five-clue cryptic crossword — three across, two down, one puzzle a day. Solve all five and the unused middle column — quietly spelling a sixth word the whole time — unlocks as a bonus clue that closes off the grid.</p>
+</div>
+
+<div class="screens">
+
+  <div class="screen-col">
+    <div class="screen-label">Night mode · mid-solve</div>
+    <div class="phone night">
+      <div class="phone-screen">
+        <div class="topbar">
+          <div class="logo">3A2D<em>le</em></div>
+          <div class="topbar-meta"><span class="streak">🔥 12</span><span>Aug 10</span></div>
+        </div>
+
+        <div class="grid-area">
+          <div class="paper grid3">
+            <div class="cell active-row filled"><span class="num">1</span>B</div>
+            <div class="cell active-row filled"><span class="num">2</span>A</div>
+            <div class="cell active-row filled"><span class="num">3</span>T</div>
+            <div class="cell filled">A</div>
+            <div class="cell locked">•</div>
+            <div class="cell"></div>
+            <div class="cell"><span class="num">4</span></div>
+            <div class="cell locked">•</div>
+            <div class="cell"></div>
+          </div>
+        </div>
+
+        <div class="active-clue clue-active">
+          <span class="tag">1 ACROSS · (3)</span>
+          <span class="clue-text">Flying mammal hidden in combat readiness</span>
+        </div>
+
+        <ul class="clue-list">
+          <li class="clue-list-heading">ACROSS</li>
+          <li class="on"><span class="num">1</span><span class="txt">Flying mammal hidden in combat readiness (3)</span></li>
+          <li><span class="num">4</span><span class="txt">Past times noted in Chicago's history (3)</span></li>
+          <li><span class="num">5</span><span class="txt">Obtain what's in the budget (3)</span></li>
+          <li class="clue-list-heading">DOWN</li>
+          <li><span class="num">1</span><span class="txt">Sack spotted in a cabbage patch (3)</span></li>
+          <li><span class="num">3</span><span class="txt">Small child atop a totem pole (3)</span></li>
+          <li class="locked-clue"><span class="num">2</span><span class="txt">🔒 solve the other five to reveal</span></li>
+        </ul>
+
+        <div class="kbd">
+          <div class="kbd-row">
+            <div class="kbd-key">q</div><div class="kbd-key">w</div><div class="kbd-key used">e</div>
+            <div class="kbd-key used">r</div><div class="kbd-key used">t</div><div class="kbd-key">y</div>
+            <div class="kbd-key used">u</div><div class="kbd-key">i</div><div class="kbd-key used">o</div><div class="kbd-key">p</div>
+          </div>
+          <div class="kbd-row">
+            <div class="kbd-key used">a</div><div class="kbd-key">s</div><div class="kbd-key used">d</div>
+            <div class="kbd-key">f</div><div class="kbd-key used">g</div><div class="kbd-key">h</div>
+            <div class="kbd-key">j</div><div class="kbd-key">k</div><div class="kbd-key">l</div>
+          </div>
+          <div class="kbd-row">
+            <div class="kbd-key" style="max-width:44px;">⏎</div>
+            <div class="kbd-key">z</div><div class="kbd-key">x</div><div class="kbd-key">c</div>
+            <div class="kbd-key">v</div><div class="kbd-key used">b</div><div class="kbd-key">n</div><div class="kbd-key">m</div>
+            <div class="kbd-key" style="max-width:44px;">⌫</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen-col">
+    <div class="screen-label">Bonus unlocked · grid closes</div>
+    <div class="phone bonus">
+      <div class="phone-screen">
+        <div class="topbar">
+          <div class="logo">3A2D<em>le</em></div>
+          <div class="topbar-meta"><span class="streak">🔥 13</span><span>Aug 10</span></div>
+        </div>
+
+        <div class="badge">✦ bonus unlocked</div>
+
+        <div class="grid-area">
+          <div class="paper grid3">
+            <div class="cell"><span class="num">1</span>B</div>
+            <div class="cell bonus-col"><span class="num">2</span>A</div>
+            <div class="cell"><span class="num">3</span>T</div>
+            <div class="cell">A</div>
+            <div class="cell bonus-col">G</div>
+            <div class="cell">O</div>
+            <div class="cell"><span class="num">4</span>G</div>
+            <div class="cell bonus-col">E</div>
+            <div class="cell">T</div>
+          </div>
+        </div>
+
+        <div class="active-clue clue-active">
+          <span class="tag">2 DOWN · BONUS · (3)</span>
+          <span class="clue-text">Years spent on a stage performance</span>
+        </div>
+
+        <div class="solved-clues">
+          <div class="row"><b>1A</b> BAT — flying mammal hidden in combat readiness</div>
+          <div class="row"><b>4A</b> AGO — past times noted in Chicago's history</div>
+          <div class="row"><b>5A</b> GET — obtain what's in the budget</div>
+          <div class="row"><b>1D</b> BAG — sack spotted in a cabbage patch</div>
+          <div class="row"><b>3D</b> TOT — small child atop a totem pole</div>
+          <div class="row bonus-row"><b>2D</b> AGE — years spent on a stage performance ✦</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen-col">
+    <div class="screen-label">Day mode · solved &amp; shared</div>
+    <div class="phone day">
+      <div class="phone-screen">
+        <div class="topbar">
+          <div class="logo">3A2D<em>le</em></div>
+          <div class="topbar-meta"><span class="streak">🔥 13</span><span>Aug 10</span></div>
+        </div>
+
+        <div class="grid-area">
+          <div class="paper grid3">
+            <div class="cell solved"><span class="num">1</span>B</div>
+            <div class="cell solved bonus-col"><span class="num">2</span>A</div>
+            <div class="cell solved"><span class="num">3</span>T</div>
+            <div class="cell solved">A</div>
+            <div class="cell solved bonus-col">G</div>
+            <div class="cell solved">O</div>
+            <div class="cell solved"><span class="num">4</span>G</div>
+            <div class="cell solved bonus-col">E</div>
+            <div class="cell solved">T</div>
+          </div>
+        </div>
+
+        <div class="solved-hero">
+          <h2>Grid closed</h2>
+          <div class="time">2:47 · no reveals</div>
+          <div class="bonus-line">✦ bonus word found: AGE</div>
+        </div>
+
+        <div class="share-row">
+          <div class="share-sq g"></div>
+          <div class="share-sq g"></div>
+          <div class="share-sq y"></div>
+          <div class="share-sq g"></div>
+          <div class="share-sq g"></div>
+          <div class="share-sq bonus-sq"></div>
+        </div>
+
+        <div class="solved-clues">
+          <div class="row"><b>1A</b> BAT — hidden in combat readiness</div>
+          <div class="row"><b>1D</b> BAG — spotted in a cabbage patch</div>
+          <div class="row"><b>4A</b> AGO — noted in Chicago's history</div>
+          <div class="row"><b>3D</b> TOT — atop a totem pole</div>
+          <div class="row"><b>5A</b> GET — what's in the budget</div>
+          <div class="row bonus-row"><b>2D</b> AGE — spent on a stage performance ✦</div>
+        </div>
+
+        <div class="share-actions">
+          <button class="share-btn">Share result</button>
+          <span class="next-in">Next puzzle in 14h 32m</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  document.querySelectorAll('.clue-list li:not(.clue-list-heading)').forEach(function (li) {
+    li.addEventListener('click', function () {
+      var list = li.closest('.clue-list');
+      list.querySelectorAll('li').forEach(function (l) { l.classList.remove('on'); });
+      li.classList.add('on');
+    });
+  });
+</script>
