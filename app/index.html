@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3A2Dle — daily mini cryptic</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="topbar">
+      <div class="logo">3A2D<em>le</em></div>
+      <div class="topbar-meta">
+        <span class="streak" id="streak"></span>
+        <span id="format-tag"></span>
+        <span id="date-label"></span>
+        <button class="theme-toggle" id="theme-toggle" title="Toggle theme" type="button">◐</button>
+      </div>
+    </div>
+
+    <div class="badge" id="bonus-badge">✦ bonus unlocked</div>
+
+    <div class="grid-area">
+      <div id="grid" role="grid" aria-label="Crossword grid"></div>
+    </div>
+
+    <div class="active-clue" id="active-clue">
+      <span class="tag" id="active-clue-tag"></span>
+      <span class="clue-text" id="active-clue-text"></span>
+    </div>
+
+    <ul id="clue-list"></ul>
+
+    <div class="kbd" id="keyboard">
+      <div class="kbd-row">
+        <div class="kbd-key" data-key="q">q</div><div class="kbd-key" data-key="w">w</div><div class="kbd-key" data-key="e">e</div>
+        <div class="kbd-key" data-key="r">r</div><div class="kbd-key" data-key="t">t</div><div class="kbd-key" data-key="y">y</div>
+        <div class="kbd-key" data-key="u">u</div><div class="kbd-key" data-key="i">i</div><div class="kbd-key" data-key="o">o</div><div class="kbd-key" data-key="p">p</div>
+      </div>
+      <div class="kbd-row">
+        <div class="kbd-key" data-key="a">a</div><div class="kbd-key" data-key="s">s</div><div class="kbd-key" data-key="d">d</div>
+        <div class="kbd-key" data-key="f">f</div><div class="kbd-key" data-key="g">g</div><div class="kbd-key" data-key="h">h</div>
+        <div class="kbd-key" data-key="j">j</div><div class="kbd-key" data-key="k">k</div><div class="kbd-key" data-key="l">l</div>
+      </div>
+      <div class="kbd-row">
+        <div class="kbd-key wide" data-key="Enter">⏎</div>
+        <div class="kbd-key" data-key="z">z</div><div class="kbd-key" data-key="x">x</div><div class="kbd-key" data-key="c">c</div>
+        <div class="kbd-key" data-key="v">v</div><div class="kbd-key" data-key="b">b</div><div class="kbd-key" data-key="n">n</div><div class="kbd-key" data-key="m">m</div>
+        <div class="kbd-key wide" data-key="Backspace">⌫</div>
+      </div>
+    </div>
+
+    <div class="solved-panel" id="solved-panel">
+      <h2>Grid closed</h2>
+      <div class="time" id="solved-time"></div>
+      <div class="bonus-line" id="solved-bonus-line"></div>
+      <div class="share-row" id="share-row"></div>
+      <button class="share-btn" id="share-btn" type="button">Share result</button>
+      <span class="next-in" id="next-in"></span>
+    </div>
+  </div>
+
+  <p class="about">
+    A daily five-clue cryptic crossword with real, full-length answers and one bonus entry
+    that unlocks once the other five are solved. Clues are generated and mechanically
+    verified by the <a href="../cryptic-setter" target="_blank" rel="noopener">cryptic setter</a> —
+    the LLM only ever writes the surface reading; the wordplay itself is checked by code.
+  </p>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

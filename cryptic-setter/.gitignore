@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+
+# The clue bank (src/data/bank/*.json) is a placeholder JSON "database"
+# until this moves to Supabase (§9 Phase 4), but its content is real,
+# generated, verified clue data meant to ship with the app — so unlike
+# other generated artifacts it IS committed, not ignored here.

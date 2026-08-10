@@ -1,0 +1,15 @@
+[
+  { "word": "beheaded", "type": "behead" },
+  { "word": "topless", "type": "behead" },
+  { "word": "losing its head", "type": "behead" },
+  { "word": "without a head start", "type": "behead" },
+  { "word": "curtailed", "type": "curtail" },
+  { "word": "endless", "type": "curtail" },
+  { "word": "cut short", "type": "curtail" },
+  { "word": "tailless", "type": "curtail" },
+  { "word": "docked", "type": "curtail" },
+  { "word": "gutted", "type": "gut" },
+  { "word": "hollow", "type": "gut" },
+  { "word": "emptied", "type": "gut" },
+  { "word": "hollowed out", "type": "gut" }
+]

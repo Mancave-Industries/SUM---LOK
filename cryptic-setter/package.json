@@ -1,0 +1,23 @@
+{
+  "name": "cryptic-setter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Setter agent: generates fair, deterministically-verified cryptic crossword clues into a reusable clue bank. Decoupled from any game format or UI.",
+  "scripts": {
+    "cli": "tsx src/cli.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.115.0",
+    "natural": "^8.1.1",
+    "word-list": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.23.10",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  }
+}
