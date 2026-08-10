@@ -8,7 +8,7 @@
 // --no-bank skips persistence for a dry-run preview. --approve <id> moves
 // one queued clue into the live bank instead of running generation.
 
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { writeFileSync } from 'node:fs';
 import { parseArgs } from 'node:util';
 import wordlist from './data/wordlist.seed.json' with { type: 'json' };
@@ -22,7 +22,23 @@ import containerIndicators from './data/indicators/container.json' with { type: 
 import deletionIndicators from './data/indicators/deletion.json' with { type: 'json' };
 import { generateClue } from './pipeline/generateClue.js';
 import { appendToBank, approveFromReviewQueue } from './bank/clueBank.js';
+import { getDevice } from './devices/index.js';
 import type { Clue, DeviceType } from './types.js';
+
+// Devices worth trying automatically, best surface quality first. Initials
+// is deliberately last — spelling an 8+ letter answer from consecutive
+// word-initials rarely produces a natural surface, so it's a fallback
+// rather than a first choice.
+const AUTO_DEVICE_ORDER: DeviceType[] = [
+  'charade',
+  'container',
+  'hidden',
+  'anagram',
+  'reversal',
+  'alternates',
+  'deletion',
+  'initials',
+];
 
 if (existsSync('.env')) {
   process.loadEnvFile('.env');
@@ -32,6 +48,9 @@ const { values } = parseArgs({
   options: {
     count: { type: 'string', default: '10' },
     device: { type: 'string', default: 'anagram' },
+    words: { type: 'string' },
+    offset: { type: 'string', default: '0' },
+    'auto-device': { type: 'boolean', default: false },
     out: { type: 'string' },
     'no-bank': { type: 'boolean', default: false },
     approve: { type: 'string' },
@@ -50,7 +69,9 @@ if (values.approve) {
 }
 
 const count = Number(values.count);
+const offset = Number(values.offset);
 const device = values.device as DeviceType;
+const autoDevice = values['auto-device'] as boolean;
 
 const indicatorBanks: Partial<Record<DeviceType, string[]>> = {
   anagram: anagramIndicators as string[],
@@ -63,21 +84,44 @@ const indicatorBanks: Partial<Record<DeviceType, string[]>> = {
   deletion: (deletionIndicators as Array<{ word: string }>).map((entry) => entry.word),
 };
 
+// Try each device in AUTO_DEVICE_ORDER until one can mechanically construct
+// the answer at all (a local, zero-cost check) — the LLM is only ever
+// called for the device that actually wins.
+function pickAutoDevice(answer: string): DeviceType | null {
+  for (const candidate of AUTO_DEVICE_ORDER) {
+    const bank = indicatorBanks[candidate];
+    if (!bank) continue;
+    if (getDevice(candidate).construct(answer, bank)) return candidate;
+  }
+  return null;
+}
+
 async function main() {
-  const indicatorBank = indicatorBanks[device];
-  if (!indicatorBank) {
+  if (!autoDevice && !indicatorBanks[device]) {
     console.error(`No indicator bank registered for device "${device}"`);
     process.exit(1);
   }
 
-  const answers = (wordlist as string[]).slice(0, count);
+  const sourceWordlist: string[] = values.words
+    ? (JSON.parse(readFileSync(values.words, 'utf8')) as string[])
+    : (wordlist as string[]);
+  const answers = sourceWordlist.slice(offset, offset + count);
   const verified: Clue[] = [];
   let skipped = 0;
 
   for (const answer of answers) {
     console.log(`\n=== ${answer.toUpperCase()} ===`);
 
-    const result = await generateClue({ answer, device, indicatorBank });
+    const chosenDevice = autoDevice ? pickAutoDevice(answer) : device;
+    if (!chosenDevice) {
+      console.log('✗ no device could construct this answer at all — discarded');
+      skipped++;
+      continue;
+    }
+    const indicatorBank = indicatorBanks[chosenDevice]!;
+    if (autoDevice) console.log(`Device (auto): ${chosenDevice}`);
+
+    const result = await generateClue({ answer, device: chosenDevice, indicatorBank });
 
     if (result.clue) {
       console.log(`Surface:        ${result.clue.surface}`);
