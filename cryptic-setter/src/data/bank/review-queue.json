@@ -6805,5 +6805,105 @@
     "difficulty": 0,
     "reviewRequired": true,
     "createdAt": "2026-08-10T13:12:14.769Z"
+  },
+  {
+    "id": "8e38b820-1487-4cb9-9aa4-59841130a9b1",
+    "answer": "EASTWARD",
+    "enumeration": "(8)",
+    "device": "anagram",
+    "definition": "toward the east",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "strange",
+      "fodder": "RADWASTE",
+      "operation": "anagram(EASTWARD, fodder=RADWASTE)"
+    },
+    "surface": "where strange radwaste travels toward the east (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ fodder \"RADWASTE\" is a different word from the answer",
+      "✓ fodder letters (AADERSTW) match answer letters (AADERSTW) when sorted",
+      "✓ indicator \"strange\" found in anagram indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"toward the east\" ---",
+      "… \"toward the east\" is not an exact WordNet synonym of \"eastward\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"toward the east\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"toward the east\"",
+      "✓ fodder \"RADWASTE\" is present verbatim in the wordplay text",
+      "✓ indicator \"strange\" is present verbatim in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-10T15:55:55.775Z"
+  },
+  {
+    "id": "d1f9ef86-ed3f-4e5d-bc39-716278475b97",
+    "answer": "ELECTRIC",
+    "enumeration": "(8)",
+    "device": "deletion",
+    "definition": "powered by electricity",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "docked",
+      "fodder": "ELECTRICS",
+      "operation": "deletion(ELECTRIC, type=curtail, source=ELECTRICS)"
+    },
+    "surface": "when electrics are docked powered by electricity (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"ELECTRICS\" is a real dictionary word",
+      "✓ indicator \"docked\" identifies deletion type \"curtail\"",
+      "✓ curtail-ing \"ELECTRICS\" gives the answer \"electric\"",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"powered by electricity\" ---",
+      "… \"powered by electricity\" is not an exact WordNet synonym of \"electric\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"powered by electricity\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"powered by electricity\"",
+      "✓ fodder \"ELECTRICS\" is present verbatim in the wordplay text",
+      "✓ indicator \"docked\" is present verbatim in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-10T15:56:02.080Z"
+  },
+  {
+    "id": "25b1f229-1a42-42d2-8bb0-edf3ba278a25",
+    "answer": "DAYLIGHT",
+    "enumeration": "(8)",
+    "device": "charade",
+    "definition": "sunlight",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "plus",
+      "components": [
+        "DAY",
+        "LIGHT"
+      ],
+      "operation": "charade(DAYLIGHT, parts=[DAY, LIGHT])"
+    },
+    "surface": "sunlight is day plus light not delivered (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"DAY\" resolves to letters: DAY",
+      "✓ \"LIGHT\" resolves to letters: LIGHT",
+      "✓ \"DAY\" + \"LIGHT\" concatenates to the answer \"daylight\"",
+      "✓ indicator \"plus\" found in charade indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"sunlight\" ---",
+      "… \"sunlight\" is not an exact WordNet synonym of \"daylight\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"sunlight\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"sunlight\"",
+      "✓ indicator \"plus\" is present verbatim in the wordplay text",
+      "✓ \"DAY\" appears before \"LIGHT\" in the wordplay text, matching charade order"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-10T15:56:13.142Z"
   }
 ]

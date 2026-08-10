@@ -8,8 +8,8 @@
       "row": 0,
       "col": 0,
       "answer": "EASTWARD",
-      "clue": "toward the east is east next to ward (8)",
-      "device": "charade",
+      "clue": "where strange radwaste travels toward the east (8)",
+      "device": "anagram",
       "bonus": false
     },
     {
@@ -38,8 +38,8 @@
       "row": 0,
       "col": 0,
       "answer": "ELECTRIC",
-      "clue": "included in preselect ricing methods Powered by current (8)",
-      "device": "hidden",
+      "clue": "when electrics are docked powered by electricity (8)",
+      "device": "deletion",
       "bonus": false
     },
     {
@@ -48,8 +48,8 @@
       "row": 0,
       "col": 3,
       "answer": "TEENAGER",
-      "clue": "could emerge when broken generate is fixed adolescent (8)",
-      "device": "anagram",
+      "clue": "Adolescent found within nineteen ageratum plants (8)",
+      "device": "hidden",
       "bonus": false
     },
     {
@@ -58,8 +58,8 @@
       "row": 0,
       "col": 7,
       "answer": "DAYLIGHT",
-      "clue": "sunlight included in payday lightened workers' mood (8)",
-      "device": "hidden",
+      "clue": "sunlight is day plus light not delivered (8)",
+      "device": "charade",
       "bonus": true
     }
   ]

@@ -1535,5 +1535,39 @@
     "difficulty": 0,
     "reviewRequired": false,
     "createdAt": "2026-08-10T13:10:55.895Z"
+  },
+  {
+    "id": "2698c8ea-2cc8-4ae4-a85c-418bab2c5d11",
+    "answer": "TEENAGER",
+    "enumeration": "(8)",
+    "device": "hidden",
+    "definition": "adolescent",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "within",
+      "components": [
+        "NINETEEN",
+        "AGERATUM"
+      ],
+      "operation": "hidden(TEENAGER, in=\"NINETEEN AGERATUM\")"
+    },
+    "surface": "Adolescent found within nineteen ageratum plants (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"teenager\" spans the join between \"NINETEEN\" and \"AGERATUM\"",
+      "✓ indicator \"within\" found in hidden-word indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"adolescent\" ---",
+      "✓ \"adolescent\" is a WordNet-listed synonym of \"teenager\"",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"Adolescent\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"adolescent\"",
+      "✓ indicator \"within\" is present verbatim in the wordplay text",
+      "✓ \"teenager\" appears spanning a real word boundary in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": false,
+    "createdAt": "2026-08-10T15:56:07.833Z"
   }
 ]
