@@ -227,38 +227,38 @@
     display: flex;
     justify-content: center;
   }
-  .grid5 {
-    width: 250px;
-    height: 250px;
+  .grid8 {
+    width: 268px;
+    height: 268px;
     border-radius: 10px;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    padding: 8px;
-    gap: 4px;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    padding: 6px;
+    gap: 2px;
   }
   .cell {
     position: relative;
-    border: 1.5px solid;
-    border-radius: 4px;
+    border: 1px solid;
+    border-radius: 3px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: Iowan Old Style, "Palatino Linotype", Georgia, ui-serif, serif;
-    font-size: 18px;
+    font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
     transition: background 0.15s ease;
   }
   .cell .num {
     position: absolute;
-    top: 2px;
-    left: 4px;
+    top: 1px;
+    left: 2px;
     font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace;
-    font-size: 8px;
+    font-size: 6px;
     font-weight: 600;
   }
-  .cell.locked { font-size: 12px; }
+  .cell.locked { font-size: 9px; }
   .cell.black { background: #2B2A22; border-color: #2B2A22; }
 
   .active-clue {
@@ -342,8 +342,8 @@
 <div class="wrap-header">
   <div class="eyebrow">Product mockup</div>
   <h1>3A2Dle</h1>
-  <p>A daily five-clue cryptic crossword, built from real, full-length answer words — never the two- and three-letter fill of an ordinary mini. Most days it's three across clues and two down; some days it flips to two across and three down. Either way, a sixth entry runs through the grid without ever getting its own clue — filled in as a side effect of solving the other five, then revealed as a bonus the moment the grid closes.</p>
-  <p class="note">This screen shows a 3-across / 2-down day: CHESS, ANGLE and REEFS across; CHAIR and EAGLE down; SEEDS is the bonus.</p>
+  <p>A daily five-clue cryptic crossword, built from real, full-length answer words — eight letters and up, never the two- and three-letter fill of an ordinary mini. Most days it's three across clues and two down; some days it flips to two across and three down. Either way, a sixth entry runs through the grid without ever getting its own clue — filled in as a side effect of solving the other five, then revealed as a bonus the moment the grid closes.</p>
+  <p class="note">This screen shows a 3-across / 2-down day: EASTWARD, CARNIVAL and CLARINET across; ELECTRIC and TEENAGER down; DAYLIGHT is the bonus.</p>
 </div>
 
 <div class="screens">
@@ -358,32 +358,74 @@
         </div>
 
         <div class="grid-area">
-          <div class="paper grid5">
-            <div class="cell active-row filled"><span class="num">1</span>C</div>
-            <div class="cell active-row filled">H</div>
-            <div class="cell active-row filled"><span class="num">2</span>E</div>
+          <div class="paper grid8">
+            <div class="cell active-row filled"><span class="num">1</span>E</div>
+            <div class="cell active-row filled">A</div>
             <div class="cell active-row filled">S</div>
-            <div class="cell active-row filled"><span class="num">3</span>S</div>
+            <div class="cell active-row filled"><span class="num">2</span>T</div>
+            <div class="cell active-row filled">W</div>
+            <div class="cell active-row filled">A</div>
+            <div class="cell active-row filled">R</div>
+            <div class="cell active-row filled"><span class="num">3</span>D</div>
 
-            <div class="cell filled">H</div>
+            <div class="cell filled">L</div>
+            <div class="cell black"></div>
             <div class="cell black"></div>
             <div class="cell"></div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
             <div class="cell black"></div>
             <div class="cell locked">•</div>
 
-            <div class="cell filled"><span class="num">4</span>A</div>
+            <div class="cell filled">E</div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell"></div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell locked">•</div>
+
+            <div class="cell filled"><span class="num">4</span>C</div>
             <div class="cell"></div>
             <div class="cell"></div>
             <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell locked">•</div>
+
+            <div class="cell filled">T</div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell"></div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell locked">•</div>
+
+            <div class="cell filled">R</div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell"></div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
             <div class="cell locked">•</div>
 
             <div class="cell filled">I</div>
             <div class="cell black"></div>
+            <div class="cell black"></div>
             <div class="cell"></div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
             <div class="cell black"></div>
             <div class="cell locked">•</div>
 
-            <div class="cell filled"><span class="num">5</span>R</div>
+            <div class="cell filled"><span class="num">5</span>C</div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
             <div class="cell"></div>
             <div class="cell"></div>
             <div class="cell"></div>
@@ -392,18 +434,18 @@
         </div>
 
         <div class="active-clue clue-active">
-          <span class="tag">1 ACROSS · (5)</span>
-          <span class="clue-text">Board game hidden in beach essay</span>
+          <span class="tag">1 ACROSS · (8)</span>
+          <span class="clue-text">Direction made from compass point plus hospital section</span>
         </div>
 
         <ul class="clue-list">
           <li class="clue-list-heading">ACROSS</li>
-          <li class="on"><span class="num">1</span><span class="txt">Board game hidden in beach essay (5)</span></li>
-          <li><span class="num">4</span><span class="txt">Angel, oddly, gives a slant (5)</span></li>
-          <li><span class="num">5</span><span class="txt">Coral formations as referees take in energy (5)</span></li>
+          <li class="on"><span class="num">1</span><span class="txt">Direction made from compass point plus hospital section (8)</span></li>
+          <li><span class="num">4</span><span class="txt">Carnal instinct takes in four, becoming a festival (8)</span></li>
+          <li><span class="num">5</span><span class="txt">Instrument: wine holding in (8)</span></li>
           <li class="clue-list-heading">DOWN</li>
-          <li><span class="num">1</span><span class="txt">Switzerland plus air, for a seat (5)</span></li>
-          <li><span class="num">2</span><span class="txt">Bird of prey seen as tea gleaned (5)</span></li>
+          <li><span class="num">1</span><span class="txt">Powered by current, hidden in hotel electrician (8)</span></li>
+          <li><span class="num">2</span><span class="txt">Generate, chaotically — a youth (8)</span></li>
           <li class="locked-clue"><span class="num">3</span><span class="txt">🔒 solve the other five to reveal</span></li>
         </ul>
 
@@ -441,51 +483,93 @@
         <div class="badge">✦ bonus unlocked</div>
 
         <div class="grid-area">
-          <div class="paper grid5">
-            <div class="cell"><span class="num">1</span>C</div>
-            <div class="cell">H</div>
-            <div class="cell"><span class="num">2</span>E</div>
+          <div class="paper grid8">
+            <div class="cell"><span class="num">1</span>E</div>
+            <div class="cell">A</div>
             <div class="cell">S</div>
-            <div class="cell bonus-col"><span class="num">3</span>S</div>
+            <div class="cell"><span class="num">2</span>T</div>
+            <div class="cell">W</div>
+            <div class="cell">A</div>
+            <div class="cell">R</div>
+            <div class="cell bonus-col"><span class="num">3</span>D</div>
 
-            <div class="cell">H</div>
+            <div class="cell">L</div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell">E</div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell bonus-col">A</div>
+
+            <div class="cell">E</div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell">E</div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell bonus-col">Y</div>
+
+            <div class="cell"><span class="num">4</span>C</div>
+            <div class="cell">A</div>
+            <div class="cell">R</div>
+            <div class="cell">N</div>
+            <div class="cell">I</div>
+            <div class="cell">V</div>
+            <div class="cell">A</div>
+            <div class="cell bonus-col">L</div>
+
+            <div class="cell">T</div>
+            <div class="cell black"></div>
             <div class="cell black"></div>
             <div class="cell">A</div>
             <div class="cell black"></div>
-            <div class="cell bonus-col">E</div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell bonus-col">I</div>
 
-            <div class="cell"><span class="num">4</span>A</div>
-            <div class="cell">N</div>
+            <div class="cell">R</div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
             <div class="cell">G</div>
-            <div class="cell">L</div>
-            <div class="cell bonus-col">E</div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell bonus-col">G</div>
 
             <div class="cell">I</div>
             <div class="cell black"></div>
-            <div class="cell">L</div>
             <div class="cell black"></div>
-            <div class="cell bonus-col">D</div>
+            <div class="cell">E</div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell bonus-col">H</div>
 
-            <div class="cell"><span class="num">5</span>R</div>
+            <div class="cell"><span class="num">5</span>C</div>
+            <div class="cell">L</div>
+            <div class="cell">A</div>
+            <div class="cell">R</div>
+            <div class="cell">I</div>
+            <div class="cell">N</div>
             <div class="cell">E</div>
-            <div class="cell">E</div>
-            <div class="cell">F</div>
-            <div class="cell bonus-col">S</div>
+            <div class="cell bonus-col">T</div>
           </div>
         </div>
 
         <div class="active-clue clue-active">
-          <span class="tag">3 DOWN · BONUS · (5)</span>
-          <span class="clue-text">Plantings hidden in aniseeds</span>
+          <span class="tag">3 DOWN · BONUS · (8)</span>
+          <span class="clue-text">Sunshine hours found in today's lighthouse</span>
         </div>
 
         <div class="solved-clues">
-          <div class="row"><b>1A</b> CHESS — board game hidden in beach essay</div>
-          <div class="row"><b>4A</b> ANGLE — angel, oddly, gives a slant</div>
-          <div class="row"><b>5A</b> REEFS — coral formations as referees take in energy</div>
-          <div class="row"><b>1D</b> CHAIR — Switzerland plus air, for a seat</div>
-          <div class="row"><b>2D</b> EAGLE — bird of prey seen as tea gleaned</div>
-          <div class="row bonus-row"><b>3D</b> SEEDS — plantings hidden in aniseeds ✦</div>
+          <div class="row"><b>1A</b> EASTWARD — compass point plus hospital section</div>
+          <div class="row"><b>4A</b> CARNIVAL — carnal instinct takes in four</div>
+          <div class="row"><b>5A</b> CLARINET — wine holding in</div>
+          <div class="row"><b>1D</b> ELECTRIC — hidden in hotel electrician</div>
+          <div class="row"><b>2D</b> TEENAGER — generate, chaotically</div>
+          <div class="row bonus-row"><b>3D</b> DAYLIGHT — found in today's lighthouse ✦</div>
         </div>
       </div>
     </div>
@@ -501,43 +585,85 @@
         </div>
 
         <div class="grid-area">
-          <div class="paper grid5">
-            <div class="cell solved"><span class="num">1</span>C</div>
-            <div class="cell solved">H</div>
-            <div class="cell solved"><span class="num">2</span>E</div>
+          <div class="paper grid8">
+            <div class="cell solved"><span class="num">1</span>E</div>
+            <div class="cell solved">A</div>
             <div class="cell solved">S</div>
-            <div class="cell solved bonus-col"><span class="num">3</span>S</div>
+            <div class="cell solved"><span class="num">2</span>T</div>
+            <div class="cell solved">W</div>
+            <div class="cell solved">A</div>
+            <div class="cell solved">R</div>
+            <div class="cell solved bonus-col"><span class="num">3</span>D</div>
 
-            <div class="cell solved">H</div>
+            <div class="cell solved">L</div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell solved">E</div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell solved bonus-col">A</div>
+
+            <div class="cell solved">E</div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell solved">E</div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell solved bonus-col">Y</div>
+
+            <div class="cell solved"><span class="num">4</span>C</div>
+            <div class="cell solved">A</div>
+            <div class="cell solved">R</div>
+            <div class="cell solved">N</div>
+            <div class="cell solved">I</div>
+            <div class="cell solved">V</div>
+            <div class="cell solved">A</div>
+            <div class="cell solved bonus-col">L</div>
+
+            <div class="cell solved">T</div>
+            <div class="cell black"></div>
             <div class="cell black"></div>
             <div class="cell solved">A</div>
             <div class="cell black"></div>
-            <div class="cell solved bonus-col">E</div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell solved bonus-col">I</div>
 
-            <div class="cell solved"><span class="num">4</span>A</div>
-            <div class="cell solved">N</div>
+            <div class="cell solved">R</div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
             <div class="cell solved">G</div>
-            <div class="cell solved">L</div>
-            <div class="cell solved bonus-col">E</div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell solved bonus-col">G</div>
 
             <div class="cell solved">I</div>
             <div class="cell black"></div>
-            <div class="cell solved">L</div>
             <div class="cell black"></div>
-            <div class="cell solved bonus-col">D</div>
+            <div class="cell solved">E</div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell black"></div>
+            <div class="cell solved bonus-col">H</div>
 
-            <div class="cell solved"><span class="num">5</span>R</div>
+            <div class="cell solved"><span class="num">5</span>C</div>
+            <div class="cell solved">L</div>
+            <div class="cell solved">A</div>
+            <div class="cell solved">R</div>
+            <div class="cell solved">I</div>
+            <div class="cell solved">N</div>
             <div class="cell solved">E</div>
-            <div class="cell solved">E</div>
-            <div class="cell solved">F</div>
-            <div class="cell solved bonus-col">S</div>
+            <div class="cell solved bonus-col">T</div>
           </div>
         </div>
 
         <div class="solved-hero">
           <h2>Grid closed</h2>
           <div class="time">3:12 · no reveals</div>
-          <div class="bonus-line">✦ bonus word found: SEEDS</div>
+          <div class="bonus-line">✦ bonus word found: DAYLIGHT</div>
         </div>
 
         <div class="share-row">
@@ -550,12 +676,12 @@
         </div>
 
         <div class="solved-clues">
-          <div class="row"><b>1A</b> CHESS — hidden in beach essay</div>
-          <div class="row"><b>1D</b> CHAIR — Switzerland plus air</div>
-          <div class="row"><b>4A</b> ANGLE — angel, oddly</div>
-          <div class="row"><b>2D</b> EAGLE — seen as tea gleaned</div>
-          <div class="row"><b>5A</b> REEFS — referees take in energy</div>
-          <div class="row bonus-row"><b>3D</b> SEEDS — hidden in aniseeds ✦</div>
+          <div class="row"><b>1A</b> EASTWARD — compass point plus hospital</div>
+          <div class="row"><b>1D</b> ELECTRIC — hidden in hotel electrician</div>
+          <div class="row"><b>4A</b> CARNIVAL — carnal instinct takes in four</div>
+          <div class="row"><b>2D</b> TEENAGER — generate, chaotically</div>
+          <div class="row"><b>5A</b> CLARINET — wine holding in</div>
+          <div class="row bonus-row"><b>3D</b> DAYLIGHT — found in today's lighthouse ✦</div>
         </div>
 
         <div class="share-actions">
