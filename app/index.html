@@ -3,19 +3,62 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>3A2Dle — daily mini cryptic</title>
+  <title>QUYPTICK — daily mini cryptic</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="menu-overlay" id="menu-overlay">
+    <div class="menu-panel" id="menu-panel">
+      <div class="menu-header">
+        <div class="logo">QUYP<em>TICK</em></div>
+        <button class="theme-toggle" id="menu-close" title="Close menu" type="button">✕</button>
+      </div>
+
+      <div class="menu-section">
+        <div class="menu-row">
+          <span>Sound</span>
+          <button class="theme-toggle" id="sound-toggle" title="Toggle sound" type="button">♪</button>
+        </div>
+        <div class="menu-row">
+          <span>Theme</span>
+          <button class="theme-toggle" id="theme-toggle" title="Toggle theme" type="button">◐</button>
+        </div>
+      </div>
+
+      <div class="menu-section">
+        <div class="menu-heading">Jump to a puzzle</div>
+        <div class="menu-puzzle-list" id="menu-puzzle-list"></div>
+      </div>
+
+      <div class="menu-section">
+        <div class="menu-heading">How to play</div>
+        <p class="menu-text">
+          Fill in the grid from the clues below. Type a full answer and press
+          <strong>Enter</strong> — correct letters turn green, right-letter-wrong-spot
+          turns yellow, and letters not in the answer turn gray, same as Wordle.
+          Solve all five visible clues to unlock a sixth bonus entry that closes off the grid.
+        </p>
+      </div>
+
+      <div class="menu-section">
+        <p class="menu-text">
+          Real, full-length answers with one bonus entry that unlocks once the other
+          five are solved. Clues are generated and mechanically verified by the
+          <a href="../cryptic-setter" target="_blank" rel="noopener">cryptic setter</a> —
+          the LLM only ever writes the surface reading; the wordplay itself is checked by code.
+        </p>
+      </div>
+    </div>
+  </div>
+
   <div class="app">
     <div class="scroll-area">
       <div class="topbar">
-        <div class="logo">3A2D<em>le</em></div>
+        <button class="theme-toggle" id="menu-toggle" title="Menu" type="button">☰</button>
+        <div class="logo">QUYP<em>TICK</em></div>
         <div class="topbar-meta">
           <span class="streak" id="streak"></span>
           <span id="format-tag"></span>
-          <button class="theme-toggle" id="sound-toggle" title="Toggle sound" type="button">♪</button>
-          <button class="theme-toggle" id="theme-toggle" title="Toggle theme" type="button">◐</button>
         </div>
       </div>
 
@@ -67,13 +110,6 @@
       </div>
     </div>
   </div>
-
-  <p class="about">
-    A daily five-clue cryptic crossword with real, full-length answers and one bonus entry
-    that unlocks once the other five are solved. Clues are generated and mechanically
-    verified by the <a href="../cryptic-setter" target="_blank" rel="noopener">cryptic setter</a> —
-    the LLM only ever writes the surface reading; the wordplay itself is checked by code.
-  </p>
 
   <div class="toast" id="toast"></div>
 
