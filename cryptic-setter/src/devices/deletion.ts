@@ -37,6 +37,16 @@ interface DeletionCandidate {
   type: DeletionType;
 }
 
+// A source word that's just the answer with a bare "S" stuck on the front
+// or back (CATS -> CAT, SCAT -> CAT) is the answer's plural or near-plural
+// spelled out verbatim in the fodder — the surface ends up showing the
+// whole answer as a readable substring, so the clue can be solved by
+// pattern-matching alone rather than working out the wordplay.
+function isTrivialSuffix(source: string, target: string, type: 'behead' | 'curtail'): boolean {
+  if (type === 'curtail') return source === target + 'S';
+  return source === 'S' + target;
+}
+
 function findDeletionSource(answer: string): DeletionCandidate | null {
   const target = answer.toUpperCase();
   const words = getAllWords();
@@ -45,8 +55,12 @@ function findDeletionSource(answer: string): DeletionCandidate | null {
   for (const word of words) {
     const upper = word.toUpperCase();
     if (upper.length === target.length + 1) {
-      if (upper.endsWith(target)) candidates.push({ source: upper, type: 'behead' });
-      if (upper.startsWith(target)) candidates.push({ source: upper, type: 'curtail' });
+      if (upper.endsWith(target) && !isTrivialSuffix(upper, target, 'behead')) {
+        candidates.push({ source: upper, type: 'behead' });
+      }
+      if (upper.startsWith(target) && !isTrivialSuffix(upper, target, 'curtail')) {
+        candidates.push({ source: upper, type: 'curtail' });
+      }
     }
     if (target.length === 2 && upper.length >= 3) {
       if (upper[0] === target[0] && upper[upper.length - 1] === target[1]) {

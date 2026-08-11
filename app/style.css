@@ -1,14 +1,22 @@
 :root {
-  --page-bg: #E7E0CC;
-  --ink: #F6F1E6;
-  --ink-border: #E3DAC2;
-  --paper: #FFFDF7;
-  --paper-border: #E9E1CB;
-  --text: #1B1A1F;
-  --text-dim: #6B6658;
-  --accent: #8A6A24;
-  --accent-strong: #6B4F0E;
-  --cell-black: #2B2A22;
+  /* Wordle's own light-mode canvas: white surfaces, near-black ink, no
+     brand hue — the accent role that used to be a cryptic-crossword gold
+     is now the same near-black Wordle itself uses for its UI chrome. */
+  --page-bg: #FFFFFF;
+  --ink: #FFFFFF;
+  --ink-border: #D3D6DA;
+  --paper: #FFFFFF;
+  --paper-border: #D3D6DA;
+  --text: #1A1A1B;
+  --text-dim: #787C7E;
+  --accent: #46474A;
+  --accent-strong: #1A1A1B;
+  --cell-black: #121213;
+  /* Fixed mid-gray fill (doesn't flip with theme) for anything filled
+     solid with white text on top — the active cell, badges, buttons.
+     Deliberately lighter than --cell-black so the one interactive,
+     currently-typed cell never reads as a blocked grid square. */
+  --active-fill: #54565A;
   /* Wordle's actual palette — correct/present/absent — used for tile fills
      and keyboard-key status, same green/yellow/gray as the real game. */
   --wordle-green: #6AAA64;
@@ -17,73 +25,76 @@
   --wordle-tile-text: #FFFFFF;
   --solved-bg: var(--wordle-green);
   --solved-text: var(--wordle-tile-text);
-  --bonus-bg: #F3E4B2;
-  --bonus-text: #5C4712;
-  --bonus-border: #C9A24B;
+  /* Bonus cells solve to the same green as everything else, like Wordle's
+     single "correct" color — a monochrome ring is the only thing marking
+     them as bonus, not a separate hue. */
+  --bonus-bg: var(--wordle-green);
+  --bonus-text: var(--wordle-tile-text);
+  --bonus-border: #1A1A1B;
   --kbd-bg: #D3D6DA;
-  --kbd-text: #1B1A1F;
-  --kbd-used: #D8CDA3;
-  --active-bg: #FFF7DE;
-  --locked-text: #A79A6E;
-  --error: #B54848;
+  --kbd-text: #1A1A1B;
+  --active-bg: #F4F4F5;
+  --locked-text: #B7B7B7;
+  --error: #D3455B;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --page-bg: #0E0F14;
-    --ink: #15161D;
-    --ink-border: #2A2C38;
-    --paper: #F4EFE2;
-    --paper-border: #D8CFB8;
-    --text: #ECE7DC;
-    --text-dim: #938FA0;
-    --accent: #C9A24B;
-    --accent-strong: #E8CC7C;
-    --cell-black: #2B2A22;
+    /* Wordle's own dark-mode canvas. */
+    --page-bg: #121213;
+    --ink: #121213;
+    --ink-border: #3A3A3C;
+    --paper: #121213;
+    --paper-border: #3A3A3C;
+    --text: #D7DADC;
+    --text-dim: #818384;
+    --accent: #A6A6AA;
+    --accent-strong: #FFFFFF;
+    --cell-black: #000000;
+    --active-fill: #54565A;
     --wordle-green: #538D4E;
     --wordle-yellow: #B59F3B;
     --wordle-gray: #3A3A3C;
     --wordle-tile-text: #FFFFFF;
     --solved-bg: var(--wordle-green);
     --solved-text: var(--wordle-tile-text);
-    --bonus-bg: #F6E3AE;
-    --bonus-text: #1B1610;
-    --bonus-border: #C9A24B;
+    --bonus-bg: var(--wordle-green);
+    --bonus-text: var(--wordle-tile-text);
+    --bonus-border: #D7DADC;
     --kbd-bg: #818384;
-    --kbd-text: #ECE7DC;
-    --kbd-used: #3A3320;
-    --active-bg: #1F212B;
-    --locked-text: #6F6C7C;
-    --error: #E07C7C;
+    --kbd-text: #D7DADC;
+    --active-bg: #1F1F21;
+    --locked-text: #565758;
+    --error: #E86B85;
   }
 }
 
 :root[data-theme="dark"] {
-  --page-bg: #0E0F14;
-  --ink: #15161D;
-  --ink-border: #2A2C38;
-  --paper: #F4EFE2;
-  --paper-border: #D8CFB8;
-  --text: #ECE7DC;
-  --text-dim: #938FA0;
-  --accent: #C9A24B;
-  --accent-strong: #E8CC7C;
-  --cell-black: #2B2A22;
+  --page-bg: #121213;
+  --ink: #121213;
+  --ink-border: #3A3A3C;
+  --paper: #121213;
+  --paper-border: #3A3A3C;
+  --text: #D7DADC;
+  --text-dim: #818384;
+  --accent: #A6A6AA;
+  --accent-strong: #FFFFFF;
+  --cell-black: #000000;
+  --active-fill: #54565A;
   --wordle-green: #538D4E;
   --wordle-yellow: #B59F3B;
   --wordle-gray: #3A3A3C;
   --wordle-tile-text: #FFFFFF;
   --solved-bg: var(--wordle-green);
   --solved-text: var(--wordle-tile-text);
-  --bonus-bg: #F6E3AE;
-  --bonus-text: #1B1610;
-  --bonus-border: #C9A24B;
+  --bonus-bg: var(--wordle-green);
+  --bonus-text: var(--wordle-tile-text);
+  --bonus-border: #D7DADC;
   --kbd-bg: #818384;
-  --kbd-text: #ECE7DC;
-  --kbd-used: #3A3320;
-  --active-bg: #1F212B;
-  --locked-text: #6F6C7C;
-  --error: #E07C7C;
+  --kbd-text: #D7DADC;
+  --active-bg: #1F1F21;
+  --locked-text: #565758;
+  --error: #E86B85;
 }
 
 * { box-sizing: border-box; }
@@ -188,8 +199,8 @@ body {
   font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace;
   font-size: 11px;
   letter-spacing: 0.1em;
-  color: var(--bonus-text);
-  background: var(--accent);
+  color: var(--wordle-tile-text);
+  background: var(--active-fill);
   border-radius: 999px;
   padding: 6px 14px;
   width: fit-content;
@@ -235,11 +246,11 @@ body {
 .cell.active-entry { background: var(--active-bg); box-shadow: inset 0 0 0 1px var(--accent); }
 /* The exact next cell to type into: fully inverted, not just a thin ring —
    a 1-2px outline disappears at this cell size, a solid fill doesn't. */
-.cell.active-cell { background: var(--accent); color: var(--ink); box-shadow: inset 0 0 0 2px var(--accent-strong); }
+.cell.active-cell { background: var(--active-fill); color: var(--wordle-tile-text); box-shadow: inset 0 0 0 2px var(--accent-strong); }
 .cell.solved { background: var(--solved-bg); color: var(--solved-text); }
 .cell.bonus { box-shadow: inset 0 0 0 1.5px var(--bonus-border); }
 .cell.bonus.solved { background: var(--bonus-bg); color: var(--bonus-text); }
-.cell.bonus.active-cell { background: var(--accent); color: var(--ink); }
+.cell.bonus.active-cell { background: var(--active-fill); color: var(--wordle-tile-text); }
 .cell.locked-hint { color: var(--locked-text); font-size: 12px; }
 
 /* Wordle-style per-letter feedback, shown briefly on a wrong guess before
@@ -276,7 +287,7 @@ body {
   color: var(--accent);
 }
 .cell.solved .num { color: var(--solved-text); opacity: 0.8; }
-.cell.active-cell .num { color: var(--ink); opacity: 0.85; }
+.cell.active-cell .num { color: var(--wordle-tile-text); opacity: 0.85; }
 
 .active-clue {
   margin: 12px 18px 10px;
@@ -369,11 +380,11 @@ body {
 .bonus-line { font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; color: var(--accent); margin-top: 4px; }
 .share-row { display: flex; gap: 6px; justify-content: center; padding: 12px 20px; }
 .share-sq { width: 20px; height: 20px; border-radius: 5px; background: var(--kbd-bg); }
-.share-sq.g { background: #5B8C6E; }
-.share-sq.y { background: #C9973E; }
-.share-sq.bonus-sq { background: var(--accent); }
+.share-sq.g { background: var(--wordle-green); }
+.share-sq.y { background: var(--wordle-yellow); }
+.share-sq.bonus-sq { background: var(--active-fill); }
 .share-btn {
-  background: var(--accent); color: var(--ink); border: none; border-radius: 999px;
+  background: var(--active-fill); color: var(--wordle-tile-text); border: none; border-radius: 999px;
   padding: 11px 26px; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer;
   display: block; margin: 4px auto 6px;
 }
@@ -475,6 +486,6 @@ body {
   font-weight: 600;
   cursor: pointer;
 }
-.menu-puzzle-list button.current { background: var(--accent); color: var(--ink); border-color: var(--accent); }
+.menu-puzzle-list button.current { background: var(--active-fill); color: var(--wordle-tile-text); border-color: var(--active-fill); }
 .menu-puzzle-list button.done { border-color: var(--wordle-green); color: var(--wordle-green); }
-.menu-puzzle-list button.current.done { color: var(--ink); }
+.menu-puzzle-list button.current.done { color: var(--wordle-tile-text); }
