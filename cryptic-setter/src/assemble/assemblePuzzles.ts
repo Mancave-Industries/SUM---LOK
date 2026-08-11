@@ -35,6 +35,11 @@ const indicatorBanks: Partial<Record<DeviceType, string[]>> = {
   container: containerIndicators as string[],
   deletion: (deletionIndicatorData as Array<{ word: string }>).map((e) => e.word),
 };
+// Kept in sync with cli.ts's AUTO_DEVICE_ORDER: deletion is excluded here
+// too. For behead/curtail the fodder is only one letter longer than the
+// answer, so the surface ends up spelling the whole answer out as a
+// literal substring (almost always the answer's own plural), which makes
+// the clue solvable by pattern-matching rather than working out wordplay.
 const DEVICE_ORDER: DeviceType[] = [
   'charade',
   'container',
@@ -42,7 +47,6 @@ const DEVICE_ORDER: DeviceType[] = [
   'anagram',
   'reversal',
   'alternates',
-  'deletion',
 ];
 
 interface PuzzleEntry {

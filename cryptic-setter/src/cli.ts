@@ -25,12 +25,17 @@ import { appendToBank, approveFromReviewQueue } from './bank/clueBank.js';
 import { getDevice } from './devices/index.js';
 import type { Clue, DeviceType } from './types.js';
 
-// Devices worth trying automatically. Initials is excluded outright, not
-// just deprioritized — spelling an 8+ letter answer means stringing
-// together 8 short filler words by their first letters, which reads as
-// word salad ("Ibis, tau, ikat, noh, erf...") rather than a fair, natural
-// surface. It stays a real, selectable device via --device for shorter
-// answers; it just isn't a good default for this word length.
+// Devices worth trying automatically. Initials and deletion are both
+// excluded outright, not just deprioritized. Initials strings an 8+ letter
+// answer together from 8 short filler words by their first letters, which
+// reads as word salad ("Ibis, tau, ikat, noh, erf..."). Deletion has a
+// quieter version of the same problem: for behead/curtail, the fodder word
+// is only ever one letter longer than the answer, so the surface has to
+// spell the whole answer out as a literal, readable substring (almost
+// always the answer's own plural — "vacations" -> "vacation") and the clue
+// can be solved by pattern-matching alone without working out the
+// wordplay. Both stay real, selectable devices via --device where they're
+// still fair (e.g. short answers); neither is a good default here.
 const AUTO_DEVICE_ORDER: DeviceType[] = [
   'charade',
   'container',
@@ -38,7 +43,6 @@ const AUTO_DEVICE_ORDER: DeviceType[] = [
   'anagram',
   'reversal',
   'alternates',
-  'deletion',
 ];
 
 if (existsSync('.env')) {
