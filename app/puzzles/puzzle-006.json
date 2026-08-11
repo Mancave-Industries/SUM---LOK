@@ -8,8 +8,8 @@
       "row": 0,
       "col": 0,
       "answer": "CHILDREN",
-      "clue": "Kids found within \"Moonchild render\" mysteriously (8)",
-      "device": "hidden",
+      "clue": "seated with child beside Ren at the shelter Kids (8)",
+      "device": "charade",
       "bonus": false
     },
     {
@@ -18,7 +18,7 @@
       "row": 3,
       "col": 0,
       "answer": "DISGUISE",
-      "clue": "costume worn to dis and guise one's identity (8)",
+      "clue": "rapper Dis followed by guise of a nobleman costume (8)",
       "device": "charade",
       "bonus": false
     },
@@ -28,7 +28,7 @@
       "row": 7,
       "col": 0,
       "answer": "SIDEWALK",
-      "clue": "is part of outside walks, oddly enough pavement (8)",
+      "clue": "shown by some of \"beside walks\" the tourists take pavement (8)",
       "device": "hidden",
       "bonus": true
     },
@@ -38,7 +38,7 @@
       "row": 0,
       "col": 0,
       "answer": "COLDNESS",
-      "clue": "concealed in old pic oldnesses fade over time chilliness (8)",
+      "clue": "found in mac oldnesses become apparent as fabric fades Chilliness (8)",
       "device": "hidden",
       "bonus": false
     },
@@ -48,7 +48,7 @@
       "row": 0,
       "col": 3,
       "answer": "LANGUAGE",
-      "clue": "tongue is ag surrounding langue, farmers say (8)",
+      "clue": "French \"langue\" holding ag, oddly, in old farming lesson tongue (8)",
       "device": "container",
       "bonus": false
     },
@@ -58,7 +58,7 @@
       "row": 0,
       "col": 7,
       "answer": "NOTEBOOK",
-      "clue": "laptop note followed by book someone reserved (8)",
+      "clue": "is not before ebook in sales rankings Small laptop (8)",
       "device": "charade",
       "bonus": false
     }
