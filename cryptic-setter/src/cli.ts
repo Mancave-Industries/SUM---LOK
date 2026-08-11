@@ -25,10 +25,12 @@ import { appendToBank, approveFromReviewQueue } from './bank/clueBank.js';
 import { getDevice } from './devices/index.js';
 import type { Clue, DeviceType } from './types.js';
 
-// Devices worth trying automatically, best surface quality first. Initials
-// is deliberately last — spelling an 8+ letter answer from consecutive
-// word-initials rarely produces a natural surface, so it's a fallback
-// rather than a first choice.
+// Devices worth trying automatically. Initials is excluded outright, not
+// just deprioritized — spelling an 8+ letter answer means stringing
+// together 8 short filler words by their first letters, which reads as
+// word salad ("Ibis, tau, ikat, noh, erf...") rather than a fair, natural
+// surface. It stays a real, selectable device via --device for shorter
+// answers; it just isn't a good default for this word length.
 const AUTO_DEVICE_ORDER: DeviceType[] = [
   'charade',
   'container',
@@ -37,7 +39,6 @@ const AUTO_DEVICE_ORDER: DeviceType[] = [
   'reversal',
   'alternates',
   'deletion',
-  'initials',
 ];
 
 if (existsSync('.env')) {
@@ -84,16 +85,30 @@ const indicatorBanks: Partial<Record<DeviceType, string[]>> = {
   deletion: (deletionIndicators as Array<{ word: string }>).map((entry) => entry.word),
 };
 
-// Try each device in AUTO_DEVICE_ORDER until one can mechanically construct
-// the answer at all (a local, zero-cost check) — the LLM is only ever
-// called for the device that actually wins.
+// Picks the LEAST-used device (so far this run) among whichever can
+// mechanically construct this particular answer — a local, zero-cost
+// check, since the LLM is only ever called for the device that wins.
+// A fixed try-in-order preference (charade, then container, then...)
+// looks reasonable per-word but skews the whole run hard toward whichever
+// device happens to construct most often for long words — in practice
+// charade, since splitting an 8+ letter word into two abbreviation-
+// resolvable parts succeeds far more often than e.g. reversal needing the
+// reversed letters to themselves be a real word. Balancing by running
+// count instead spreads real batches across the device range instead of
+// mostly generating one device with everything else as backfill.
+const deviceUsageCount: Partial<Record<DeviceType, number>> = {};
+for (const d of AUTO_DEVICE_ORDER) deviceUsageCount[d] = 0;
+
 function pickAutoDevice(answer: string): DeviceType | null {
-  for (const candidate of AUTO_DEVICE_ORDER) {
+  const constructible = AUTO_DEVICE_ORDER.filter((candidate) => {
     const bank = indicatorBanks[candidate];
-    if (!bank) continue;
-    if (getDevice(candidate).construct(answer, bank)) return candidate;
-  }
-  return null;
+    return bank && getDevice(candidate).construct(answer, bank);
+  });
+  if (constructible.length === 0) return null;
+  constructible.sort((a, b) => deviceUsageCount[a]! - deviceUsageCount[b]!);
+  const chosen = constructible[0];
+  deviceUsageCount[chosen]!++;
+  return chosen;
 }
 
 async function main() {

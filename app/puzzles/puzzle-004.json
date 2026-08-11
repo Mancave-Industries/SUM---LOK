@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-004",
+  "format": "2A3D",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "LEMONADE",
+      "clue": "citrus drink is monad around Lee, philosopher's concept (8)",
+      "device": "container",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 3,
+      "col": 0,
+      "answer": "DOORSTEP",
+      "clue": "where confused torpedos land entrance step (8)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 7,
+      "col": 0,
+      "answer": "DOUGHNUT",
+      "clue": "is donut enclosing ugh, oddly spelled ring-shaped cake (8)",
+      "device": "container",
+      "bonus": true
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "LANDLORD",
+      "clue": "could be found where you land then lord it over tenants property owner (8)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 3,
+      "answer": "OVERHANG",
+      "clue": "when hangover randomly strikes jut out (8)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 0,
+      "col": 7,
+      "answer": "ELEPHANT",
+      "clue": "held within priest's anele phantom limb still aches large tusked mammal (8)",
+      "device": "hidden",
+      "bonus": false
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "date": "2026-08-10",
+  "id": "puzzle-005",
   "format": "3A2D",
   "entries": [
     {
@@ -7,9 +7,9 @@
       "direction": "across",
       "row": 0,
       "col": 0,
-      "answer": "EASTWARD",
-      "clue": "where strange radwaste travels toward the east (8)",
-      "device": "anagram",
+      "answer": "MUDSLIDE",
+      "clue": "put mud before slide down the slope landslide of mud (8)",
+      "device": "charade",
       "bonus": false
     },
     {
@@ -17,8 +17,8 @@
       "direction": "across",
       "row": 3,
       "col": 0,
-      "answer": "CARNIVAL",
-      "clue": "festival with car before nival (8)",
+      "answer": "ISLANDER",
+      "clue": "Isle dweller hears one before slander spreads (8)",
       "device": "charade",
       "bonus": false
     },
@@ -27,8 +27,8 @@
       "direction": "across",
       "row": 7,
       "col": 0,
-      "answer": "CLARINET",
-      "clue": "made from claret, in a net, oddly woodwind instrument (8)",
+      "answer": "EXERCISE",
+      "clue": "Workout involves er within excise tax cut (8)",
       "device": "container",
       "bonus": false
     },
@@ -37,9 +37,9 @@
       "direction": "down",
       "row": 0,
       "col": 0,
-      "answer": "ELECTRIC",
-      "clue": "when electrics are docked powered by electricity (8)",
-      "device": "deletion",
+      "answer": "MARINADE",
+      "clue": "is marina plus de rigueur harbour additions soaking sauce (8)",
+      "device": "charade",
       "bonus": false
     },
     {
@@ -47,9 +47,9 @@
       "direction": "down",
       "row": 0,
       "col": 3,
-      "answer": "TEENAGER",
-      "clue": "Adolescent found within nineteen ageratum plants (8)",
-      "device": "hidden",
+      "answer": "STRANGER",
+      "clue": "could be reworked regrants unfamiliar person (8)",
+      "device": "anagram",
       "bonus": false
     },
     {
@@ -57,9 +57,9 @@
       "direction": "down",
       "row": 0,
       "col": 7,
-      "answer": "DAYLIGHT",
-      "clue": "sunlight is day plus light not delivered (8)",
-      "device": "charade",
+      "answer": "ENTRANCE",
+      "clue": "housed by sen trancey music, dancers found the doorway doorway (8)",
+      "device": "hidden",
       "bonus": true
     }
   ]

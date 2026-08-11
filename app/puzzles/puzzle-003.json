@@ -1,5 +1,5 @@
 {
-  "date": "2026-08-10",
+  "id": "puzzle-003",
   "format": "3A2D",
   "entries": [
     {
@@ -7,9 +7,9 @@
       "direction": "across",
       "row": 0,
       "col": 0,
-      "answer": "EASTWARD",
-      "clue": "where strange radwaste travels toward the east (8)",
-      "device": "anagram",
+      "answer": "PASSPORT",
+      "clue": "is part of spas sports facility everyone uses travel document (8)",
+      "device": "hidden",
       "bonus": false
     },
     {
@@ -17,8 +17,8 @@
       "direction": "across",
       "row": 3,
       "col": 0,
-      "answer": "CARNIVAL",
-      "clue": "festival with car before nival (8)",
+      "answer": "CARDIGAN",
+      "clue": "is Cardi before Gan appears on stage buttoned sweater (8)",
       "device": "charade",
       "bonus": false
     },
@@ -27,8 +27,8 @@
       "direction": "across",
       "row": 7,
       "col": 0,
-      "answer": "CLARINET",
-      "clue": "made from claret, in a net, oddly woodwind instrument (8)",
+      "answer": "SUNSHINE",
+      "clue": "sunlight brings shine around UNs delegates gathered (8)",
       "device": "container",
       "bonus": false
     },
@@ -37,9 +37,9 @@
       "direction": "down",
       "row": 0,
       "col": 0,
-      "answer": "ELECTRIC",
-      "clue": "when electrics are docked powered by electricity (8)",
-      "device": "deletion",
+      "answer": "PANCAKES",
+      "clue": "Flat griddle cakes made with pan then cakes of batter (8)",
+      "device": "charade",
       "bonus": false
     },
     {
@@ -47,9 +47,9 @@
       "direction": "down",
       "row": 0,
       "col": 3,
-      "answer": "TEENAGER",
-      "clue": "Adolescent found within nineteen ageratum plants (8)",
-      "device": "hidden",
+      "answer": "STADIUMS",
+      "clue": "arenas built from twisted Dumaists (8)",
+      "device": "anagram",
       "bonus": false
     },
     {
@@ -57,9 +57,9 @@
       "direction": "down",
       "row": 0,
       "col": 7,
-      "answer": "DAYLIGHT",
-      "clue": "sunlight is day plus light not delivered (8)",
-      "device": "charade",
+      "answer": "TURNPIKE",
+      "clue": "toll road included in return pikeperches' habitat (8)",
+      "device": "hidden",
       "bonus": true
     }
   ]

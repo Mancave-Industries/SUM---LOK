@@ -7,21 +7,29 @@
 import type { DeviceModule, VerificationResult, Wordplay } from '../types.js';
 import { getAllWords } from './dictionary.js';
 import { pickRandom } from './random.js';
+import { isCommonWord, preferCommon } from './commonWords.js';
 
-// Among all legal candidates, prefer shorter words — there's no real
-// word-frequency data available, but shorter words are a reasonable proxy
-// for "ordinary" (compare "arena" to "arthrodeses"), and picking from a
-// shortlist of the shortest matches instead of the first dictionary match
-// found meaningfully cuts down on obscure filler words in the surface.
+// Among all legal candidates, prefer real common words first (real
+// word-frequency data, not just "in the dictionary" — the word-list
+// package includes plenty of real but obscure vocabulary like "arthrodeses"
+// that's technically fair but unreadable). Within whichever pool that
+// leaves, shorter is still a reasonable secondary proxy for "ordinary".
 function preferShort(words: string[], shortlistSize = 30): string {
-  const sorted = [...words].sort((a, b) => a.length - b.length);
+  const pool = preferCommon(words);
+  const sorted = [...pool].sort((a, b) => a.length - b.length);
   const shortlist = sorted.slice(0, Math.min(shortlistSize, sorted.length));
   return pickRandom(shortlist).toUpperCase();
 }
 
+// Scans every split point rather than stopping at the first one with any
+// legal host pair — otherwise a split whose only hosts are obscure
+// ("METAPHYSIC IANTHINE") wins by default over a later split point that
+// would have had common-word hosts available, just because it happened to
+// come first.
 function findHiddenHost(answer: string): { before: string; after: string } | null {
   const target = answer.toUpperCase();
   const words = getAllWords();
+  let fallback: { before: string; after: string } | null = null;
 
   for (let split = 1; split < target.length; split++) {
     const left = target.slice(0, split);
@@ -37,13 +45,15 @@ function findHiddenHost(answer: string): { before: string; after: string } | nul
     );
     if (afters.length === 0) continue;
 
-    return {
-      before: preferShort(befores),
-      after: preferShort(afters),
-    };
+    const hasCommonBefore = befores.some(isCommonWord);
+    const hasCommonAfter = afters.some(isCommonWord);
+    if (hasCommonBefore && hasCommonAfter) {
+      return { before: preferShort(befores), after: preferShort(afters) };
+    }
+    if (!fallback) fallback = { before: preferShort(befores), after: preferShort(afters) };
   }
 
-  return null;
+  return fallback;
 }
 
 // Splits the surface text into words, then checks whether the answer

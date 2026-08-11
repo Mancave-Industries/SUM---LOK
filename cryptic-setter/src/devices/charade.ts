@@ -6,15 +6,21 @@
 import type { DeviceModule, VerificationResult, Wordplay } from '../types.js';
 import { findDisplayCandidates, resolveDisplayWord } from './wordResolution.js';
 import { pickRandom } from './random.js';
+import { preferCommon } from './commonWords.js';
 
 interface CharadeSplit {
   part1Display: string;
   part2Display: string;
 }
 
+// Splits where both parts have a recognizable-word option are preferred
+// over splits that only work via obscure dictionary words — otherwise a
+// perfectly readable "CAR + PET" split loses out on a coin flip to
+// something like "CARP + ET" just because more splits exist that way.
 function findCharadeSplit(answer: string): CharadeSplit | null {
   const target = answer.toUpperCase();
-  const splits: CharadeSplit[] = [];
+  const goodSplits: CharadeSplit[] = [];
+  const fallbackSplits: CharadeSplit[] = [];
 
   for (let k = 1; k < target.length; k++) {
     const candidates1 = findDisplayCandidates(target.slice(0, k));
@@ -22,12 +28,17 @@ function findCharadeSplit(answer: string): CharadeSplit | null {
     const candidates2 = findDisplayCandidates(target.slice(k));
     if (candidates2.length === 0) continue;
 
-    splits.push({
-      part1Display: pickRandom(candidates1),
-      part2Display: pickRandom(candidates2),
+    const common1 = preferCommon(candidates1);
+    const common2 = preferCommon(candidates2);
+    const isGood = common1.length < candidates1.length && common2.length < candidates2.length;
+    const pool = isGood ? goodSplits : fallbackSplits;
+    pool.push({
+      part1Display: pickRandom(isGood ? common1 : candidates1),
+      part2Display: pickRandom(isGood ? common2 : candidates2),
     });
   }
 
+  const splits = goodSplits.length > 0 ? goodSplits : fallbackSplits;
   if (splits.length === 0) return null;
   return pickRandom(splits);
 }

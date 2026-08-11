@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-006",
+  "format": "2A3D",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "CHILDREN",
+      "clue": "seen as child then ren, running wild kids (8)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 3,
+      "col": 0,
+      "answer": "DISGUISE",
+      "clue": "costume worn after Dis then Guise appear (8)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 7,
+      "col": 0,
+      "answer": "SIDEWALK",
+      "clue": "is part of outside walks, oddly enough pavement (8)",
+      "device": "hidden",
+      "bonus": true
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "COLDNESS",
+      "clue": "concealed in old pic oldnesses fade over time chilliness (8)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 3,
+      "answer": "LANGUAGE",
+      "clue": "tongue is ag surrounding langue, farmers say (8)",
+      "device": "container",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 0,
+      "col": 7,
+      "answer": "NOTEBOOK",
+      "clue": "laptop note followed by book someone reserved (8)",
+      "device": "charade",
+      "bonus": false
+    }
+  ]
+}

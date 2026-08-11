@@ -8,15 +8,20 @@
 import type { DeviceModule, VerificationResult, Wordplay } from '../types.js';
 import { findDisplayCandidates, resolveDisplayWord } from './wordResolution.js';
 import { pickRandom } from './random.js';
+import { preferCommon } from './commonWords.js';
 
 interface ContainerSplit {
   outerDisplay: string;
   innerDisplay: string;
 }
 
+// As with charade: prefer splits where both the outer and inner parts have
+// a recognizable-word option, only falling back to obscure dictionary
+// words when no split offers a common-word choice on both sides.
 function findContainerSplit(answer: string): ContainerSplit | null {
   const target = answer.toUpperCase();
-  const options: ContainerSplit[] = [];
+  const goodOptions: ContainerSplit[] = [];
+  const fallbackOptions: ContainerSplit[] = [];
 
   for (let i = 1; i < target.length; i++) {
     for (let j = i + 1; j < target.length; j++) {
@@ -29,13 +34,18 @@ function findContainerSplit(answer: string): ContainerSplit | null {
       const innerCandidates = findDisplayCandidates(innerLetters);
       if (innerCandidates.length === 0) continue;
 
-      options.push({
-        outerDisplay: pickRandom(outerCandidates),
-        innerDisplay: pickRandom(innerCandidates),
+      const commonOuter = preferCommon(outerCandidates);
+      const commonInner = preferCommon(innerCandidates);
+      const isGood = commonOuter.length < outerCandidates.length && commonInner.length < innerCandidates.length;
+      const pool = isGood ? goodOptions : fallbackOptions;
+      pool.push({
+        outerDisplay: pickRandom(isGood ? commonOuter : outerCandidates),
+        innerDisplay: pickRandom(isGood ? commonInner : innerCandidates),
       });
     }
   }
 
+  const options = goodOptions.length > 0 ? goodOptions : fallbackOptions;
   if (options.length === 0) return null;
   return pickRandom(options);
 }

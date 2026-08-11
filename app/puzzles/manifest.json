@@ -1,3 +1,10 @@
 {
-  "dates": ["2026-08-10"]
+  "puzzles": [
+    "2026-08-10",
+    "puzzle-002",
+    "puzzle-003",
+    "puzzle-004",
+    "puzzle-005",
+    "puzzle-006"
+  ]
 }
