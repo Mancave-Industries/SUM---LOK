@@ -70,74 +70,6 @@
     "createdAt": "2026-08-11T08:16:57.678Z"
   },
   {
-    "id": "839a2acf-18ce-4324-9bb4-53a836f2024d",
-    "answer": "CHILDREN",
-    "enumeration": "(8)",
-    "device": "charade",
-    "definition": "kids",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "then",
-      "components": [
-        "CHILD",
-        "REN"
-      ],
-      "operation": "charade(CHILDREN, parts=[CHILD, REN])"
-    },
-    "surface": "seen as child then ren, running wild kids (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"CHILD\" resolves to letters: CHILD",
-      "✓ \"REN\" resolves to letters: REN",
-      "✓ \"CHILD\" + \"REN\" concatenates to the answer \"children\"",
-      "✓ indicator \"then\" found in charade indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"kids\" ---",
-      "… \"children\" has no WordNet entry — definition can't be auto-verified, routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"kids\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"kids\"",
-      "✓ indicator \"then\" is present verbatim in the wordplay text",
-      "✓ \"CHILD\" appears before \"REN\" in the wordplay text, matching charade order"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T08:17:04.134Z"
-  },
-  {
-    "id": "8155c7a5-acd4-4062-b983-7ec470b17c28",
-    "answer": "MOUNTAIN",
-    "enumeration": "(8)",
-    "device": "anagram",
-    "definition": "peak",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "awry",
-      "fodder": "ANTIMUON",
-      "operation": "anagram(MOUNTAIN, fodder=ANTIMUON)"
-    },
-    "surface": "formed from antimuon particle spinning awry peak (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ fodder \"ANTIMUON\" is a different word from the answer",
-      "✓ fodder letters (AIMNNOTU) match answer letters (AIMNNOTU) when sorted",
-      "✓ indicator \"awry\" found in anagram indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"peak\" ---",
-      "… \"peak\" is not an exact WordNet synonym of \"mountain\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"peak\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"peak\"",
-      "✓ fodder \"ANTIMUON\" is present verbatim in the wordplay text",
-      "✓ indicator \"awry\" is present verbatim in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T08:17:11.037Z"
-  },
-  {
     "id": "fd424bce-e0d9-4c9d-a830-272f6fa55904",
     "answer": "HOSPITAL",
     "enumeration": "(8)",
@@ -170,42 +102,6 @@
     "difficulty": 0,
     "reviewRequired": true,
     "createdAt": "2026-08-11T08:17:28.808Z"
-  },
-  {
-    "id": "fe41af5b-5c18-46dc-a536-f258b8e7da35",
-    "answer": "SANDWICH",
-    "enumeration": "(8)",
-    "device": "charade",
-    "definition": "insert between",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "before",
-      "components": [
-        "SAND",
-        "WICH"
-      ],
-      "operation": "charade(SANDWICH, parts=[SAND, WICH])"
-    },
-    "surface": "sand before Wich, on this beach village map insert between (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"SAND\" resolves to letters: SAND",
-      "✓ \"WICH\" resolves to letters: WICH",
-      "✓ \"SAND\" + \"WICH\" concatenates to the answer \"sandwich\"",
-      "✓ indicator \"before\" found in charade indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"insert between\" ---",
-      "… \"insert between\" is not an exact WordNet synonym of \"sandwich\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"insert between\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"insert between\"",
-      "✓ indicator \"before\" is present verbatim in the wordplay text",
-      "✓ \"SAND\" appears before \"WICH\" in the wordplay text, matching charade order"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T08:17:41.389Z"
   },
   {
     "id": "8f0ca9d6-caee-4d3f-8e1e-5987db50ea5f",
@@ -312,110 +208,6 @@
     "createdAt": "2026-08-11T08:18:04.941Z"
   },
   {
-    "id": "5088c186-a0b7-4b35-9b17-c59c8eaba0d8",
-    "answer": "LANGUAGE",
-    "enumeration": "(8)",
-    "device": "container",
-    "definition": "tongue",
-    "definitionPosition": "start",
-    "wordplay": {
-      "indicator": "surrounding",
-      "components": [
-        "LANGUE",
-        "AG"
-      ],
-      "operation": "container(LANGUAGE, outer=LANGUE, inner=AG)"
-    },
-    "surface": "tongue is ag surrounding langue, farmers say (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"LANGUE\" resolves to letters: LANGUE",
-      "✓ \"AG\" resolves to letters: AG",
-      "✓ inserting \"AG\" into \"LANGUE\" reproduces the answer \"language\"",
-      "✓ indicator \"surrounding\" found in container indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"tongue\" ---",
-      "… \"tongue\" is not an exact WordNet synonym of \"language\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"tongue\") sits at the start of the clue, per §2",
-      "✓ definition part contains the seeded definition \"tongue\"",
-      "✓ indicator \"surrounding\" is present verbatim in the wordplay text",
-      "✓ both \"LANGUE\" and \"AG\" are present in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T08:18:10.267Z"
-  },
-  {
-    "id": "35604925-6c45-476e-83d4-03160c04d3fa",
-    "answer": "CALENDAR",
-    "enumeration": "(8)",
-    "device": "anagram",
-    "definition": "schedule of dates",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "confused",
-      "fodder": "LANDRACE",
-      "operation": "anagram(CALENDAR, fodder=LANDRACE)"
-    },
-    "surface": "confused landrace pigs breeding wild schedule of dates (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ fodder \"LANDRACE\" is a different word from the answer",
-      "✓ fodder letters (AACDELNR) match answer letters (AACDELNR) when sorted",
-      "✓ indicator \"confused\" found in anagram indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"schedule of dates\" ---",
-      "… \"schedule of dates\" is not an exact WordNet synonym of \"calendar\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"schedule of dates\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"schedule of dates\"",
-      "✓ fodder \"LANDRACE\" is present verbatim in the wordplay text",
-      "✓ indicator \"confused\" is present verbatim in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T08:18:16.900Z"
-  },
-  {
-    "id": "33dfcd1e-842c-4b84-8802-704858864ec7",
-    "answer": "DAUGHTER",
-    "enumeration": "(8)",
-    "device": "container",
-    "definition": "female child",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "within",
-      "components": [
-        "DATER",
-        "UGH"
-      ],
-      "operation": "container(DAUGHTER, outer=DATER, inner=UGH)"
-    },
-    "surface": "upset dater expressing disgust, ugh, within female child (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"DATER\" resolves to letters: DATER",
-      "✓ \"UGH\" resolves to letters: UGH",
-      "✓ inserting \"UGH\" into \"DATER\" reproduces the answer \"daughter\"",
-      "✓ indicator \"within\" found in container indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"female child\" ---",
-      "… \"female child\" is not an exact WordNet synonym of \"daughter\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"female child\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"female child\"",
-      "✓ indicator \"within\" is present verbatim in the wordplay text",
-      "✓ both \"DATER\" and \"UGH\" are present in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T08:18:22.614Z"
-  },
-  {
     "id": "947eae69-6a15-4881-9820-9cd02237171c",
     "answer": "FOOTBALL",
     "enumeration": "(8)",
@@ -452,42 +244,6 @@
     "createdAt": "2026-08-11T08:18:37.098Z"
   },
   {
-    "id": "918cac61-f123-4581-aead-ed81977281e5",
-    "answer": "PAINTING",
-    "enumeration": "(8)",
-    "device": "container",
-    "definition": "canvas artwork",
-    "definitionPosition": "start",
-    "wordplay": {
-      "indicator": "enclosing",
-      "components": [
-        "PAINING",
-        "TIME"
-      ],
-      "operation": "container(PAINTING, outer=PAINING, inner=TIME)"
-    },
-    "surface": "canvas artwork is paining enclosing time (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"PAINING\" resolves to letters: PAINING",
-      "✓ \"TIME\" resolves to letters: TIME, T",
-      "✓ inserting \"TIME\" into \"PAINING\" reproduces the answer \"painting\"",
-      "✓ indicator \"enclosing\" found in container indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"canvas artwork\" ---",
-      "… \"canvas artwork\" is not an exact WordNet synonym of \"painting\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"canvas artwork\") sits at the start of the clue, per §2",
-      "✓ definition part contains the seeded definition \"canvas artwork\"",
-      "✓ indicator \"enclosing\" is present verbatim in the wordplay text",
-      "✓ both \"PAINING\" and \"TIME\" are present in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T08:18:45.776Z"
-  },
-  {
     "id": "3412e45c-1ad7-4c7a-9c01-d1e93480e6c6",
     "answer": "MEDICINE",
     "enumeration": "(8)",
@@ -520,106 +276,6 @@
     "difficulty": 0,
     "reviewRequired": true,
     "createdAt": "2026-08-11T08:18:53.816Z"
-  },
-  {
-    "id": "6988037e-d450-4fe9-8950-f1c1dabc0bc1",
-    "answer": "STANDARD",
-    "enumeration": "(8)",
-    "device": "charade",
-    "definition": "norm",
-    "definitionPosition": "start",
-    "wordplay": {
-      "indicator": "next to",
-      "components": [
-        "STAND",
-        "ARD"
-      ],
-      "operation": "charade(STANDARD, parts=[STAND, ARD])"
-    },
-    "surface": "norm is to stand next to Ard, a hilltop village (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"STAND\" resolves to letters: STAND",
-      "✓ \"ARD\" resolves to letters: ARD",
-      "✓ \"STAND\" + \"ARD\" concatenates to the answer \"standard\"",
-      "✓ indicator \"next to\" found in charade indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"norm\" ---",
-      "… \"norm\" is not an exact WordNet synonym of \"standard\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"norm\") sits at the start of the clue, per §2",
-      "✓ definition part contains the seeded definition \"norm\"",
-      "✓ indicator \"next to\" is present verbatim in the wordplay text",
-      "✓ \"STAND\" appears before \"ARD\" in the wordplay text, matching charade order"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T08:19:11.436Z"
-  },
-  {
-    "id": "44b44ed3-07d9-4928-be0c-68c4a9db3270",
-    "answer": "INTERNET",
-    "enumeration": "(8)",
-    "device": "anagram",
-    "definition": "the Web",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "out of order",
-      "fodder": "RENITENT",
-      "operation": "anagram(INTERNET, fodder=RENITENT)"
-    },
-    "surface": "Renitent, out of order, describes it the Web (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ fodder \"RENITENT\" is a different word from the answer",
-      "✓ fodder letters (EEINNRTT) match answer letters (EEINNRTT) when sorted",
-      "✓ indicator \"out of order\" found in anagram indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"the Web\" ---",
-      "… \"the Web\" is not an exact WordNet synonym of \"internet\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"the Web\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"the Web\"",
-      "✓ fodder \"RENITENT\" is present verbatim in the wordplay text",
-      "✓ indicator \"out of order\" is present verbatim in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T08:19:23.238Z"
-  },
-  {
-    "id": "f4944b10-cabd-4362-b74f-2470f6976d84",
-    "answer": "STRANGER",
-    "enumeration": "(8)",
-    "device": "anagram",
-    "definition": "unfamiliar person",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "reworked",
-      "fodder": "REGRANTS",
-      "operation": "anagram(STRANGER, fodder=REGRANTS)"
-    },
-    "surface": "could be reworked regrants unfamiliar person (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ fodder \"REGRANTS\" is a different word from the answer",
-      "✓ fodder letters (AEGNRRST) match answer letters (AEGNRRST) when sorted",
-      "✓ indicator \"reworked\" found in anagram indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"unfamiliar person\" ---",
-      "… \"unfamiliar person\" is not an exact WordNet synonym of \"stranger\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"unfamiliar person\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"unfamiliar person\"",
-      "✓ fodder \"REGRANTS\" is present verbatim in the wordplay text",
-      "✓ indicator \"reworked\" is present verbatim in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T08:19:44.113Z"
   },
   {
     "id": "5cb97065-14c7-43b1-971f-2bbe43be33e6",
@@ -656,81 +312,6 @@
     "createdAt": "2026-08-11T08:19:57.414Z"
   },
   {
-    "id": "2f5d9f94-3192-4a94-8ae6-38250f32467e",
-    "answer": "SOFTWARE",
-    "enumeration": "(8)",
-    "device": "container",
-    "definition": "computer programs",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "enclosing",
-      "components": [
-        "SWARE",
-        "OFT"
-      ],
-      "operation": "container(SOFTWARE, outer=SWARE, inner=OFT)"
-    },
-    "surface": "oft enclosing sware, oddly computer programs (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"SWARE\" resolves to letters: SWARE",
-      "✓ \"OFT\" resolves to letters: OFT",
-      "✓ inserting \"OFT\" into \"SWARE\" reproduces the answer \"software\"",
-      "✓ indicator \"enclosing\" found in container indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"computer programs\" ---",
-      "… \"computer programs\" is not an exact WordNet synonym of \"software\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"computer programs\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"computer programs\"",
-      "✓ indicator \"enclosing\" is present verbatim in the wordplay text",
-      "✗ could not find both container parts (\"SWARE\", \"OFT\") in the wordplay text",
-      "✗ attempt 1 failed verification, discarding surface and retrying",
-      "--- surface attempt 2/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"computer programs\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"computer programs\"",
-      "✓ indicator \"enclosing\" is present verbatim in the wordplay text",
-      "✓ both \"SWARE\" and \"OFT\" are present in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T08:20:06.044Z"
-  },
-  {
-    "id": "09774291-ca52-42b1-9873-398c71276438",
-    "answer": "PRESSURE",
-    "enumeration": "(8)",
-    "device": "anagram",
-    "definition": "stress",
-    "definitionPosition": "start",
-    "wordplay": {
-      "indicator": "crazy",
-      "fodder": "PERUSERS",
-      "operation": "anagram(PRESSURE, fodder=PERUSERS)"
-    },
-    "surface": "stress felt by crazy perusers (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ fodder \"PERUSERS\" is a different word from the answer",
-      "✓ fodder letters (EEPRRSSU) match answer letters (EEPRRSSU) when sorted",
-      "✓ indicator \"crazy\" found in anagram indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"stress\" ---",
-      "… \"stress\" is not an exact WordNet synonym of \"pressure\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"stress\") sits at the start of the clue, per §2",
-      "✓ definition part contains the seeded definition \"stress\"",
-      "✓ fodder \"PERUSERS\" is present verbatim in the wordplay text",
-      "✓ indicator \"crazy\" is present verbatim in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T08:20:12.121Z"
-  },
-  {
     "id": "420e229d-013a-44dc-b78a-df11ba7db5f3",
     "answer": "CUPBOARD",
     "enumeration": "(8)",
@@ -763,38 +344,6 @@
     "difficulty": 0,
     "reviewRequired": true,
     "createdAt": "2026-08-11T08:20:23.914Z"
-  },
-  {
-    "id": "5f0044a9-77a4-4ba2-82b9-b5e00f2d54a1",
-    "answer": "DOORSTEP",
-    "enumeration": "(8)",
-    "device": "anagram",
-    "definition": "entrance step",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "confused",
-      "fodder": "TORPEDOS",
-      "operation": "anagram(DOORSTEP, fodder=TORPEDOS)"
-    },
-    "surface": "where confused torpedos land entrance step (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ fodder \"TORPEDOS\" is a different word from the answer",
-      "✓ fodder letters (DEOOPRST) match answer letters (DEOOPRST) when sorted",
-      "✓ indicator \"confused\" found in anagram indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"entrance step\" ---",
-      "… \"entrance step\" is not an exact WordNet synonym of \"doorstep\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"entrance step\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"entrance step\"",
-      "✓ fodder \"TORPEDOS\" is present verbatim in the wordplay text",
-      "✓ indicator \"confused\" is present verbatim in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T08:20:29.710Z"
   },
   {
     "id": "8559fef5-c07d-4bb8-9121-55277a8d6385",
@@ -833,38 +382,6 @@
     "createdAt": "2026-08-11T08:20:45.180Z"
   },
   {
-    "id": "f36bcb4c-380a-4898-b207-053b2764af30",
-    "answer": "BEDROOMS",
-    "enumeration": "(8)",
-    "device": "anagram",
-    "definition": "sleeping quarters",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "disordered",
-      "fodder": "BOREDOMS",
-      "operation": "anagram(BEDROOMS, fodder=BOREDOMS)"
-    },
-    "surface": "could be disordered boredoms sleeping quarters (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ fodder \"BOREDOMS\" is a different word from the answer",
-      "✓ fodder letters (BDEMOORS) match answer letters (BDEMOORS) when sorted",
-      "✓ indicator \"disordered\" found in anagram indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"sleeping quarters\" ---",
-      "… \"bedrooms\" has no WordNet entry — definition can't be auto-verified, routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"sleeping quarters\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"sleeping quarters\"",
-      "✓ fodder \"BOREDOMS\" is present verbatim in the wordplay text",
-      "✓ indicator \"disordered\" is present verbatim in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T08:21:09.769Z"
-  },
-  {
     "id": "156d3658-2ffb-4f92-baa8-ae32f7fbe2b8",
     "answer": "KITCHENS",
     "enumeration": "(8)",
@@ -901,42 +418,6 @@
     "createdAt": "2026-08-11T08:21:15.327Z"
   },
   {
-    "id": "f07b9aa8-f763-4ba0-a936-5d573fda8c6f",
-    "answer": "GARDENER",
-    "enumeration": "(8)",
-    "device": "container",
-    "definition": "plant grower",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "holding",
-      "components": [
-        "GARNER",
-        "DE"
-      ],
-      "operation": "container(GARDENER, outer=GARNER, inner=DE)"
-    },
-    "surface": "is garner holding Germany's capital, \"de\" plant grower (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"GARNER\" resolves to letters: GARNER",
-      "✓ \"DE\" resolves to letters: DE",
-      "✓ inserting \"DE\" into \"GARNER\" reproduces the answer \"gardener\"",
-      "✓ indicator \"holding\" found in container indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"plant grower\" ---",
-      "… \"plant grower\" is not an exact WordNet synonym of \"gardener\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"plant grower\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"plant grower\"",
-      "✓ indicator \"holding\" is present verbatim in the wordplay text",
-      "✓ both \"GARNER\" and \"DE\" are present in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T08:21:21.452Z"
-  },
-  {
     "id": "4175da70-943e-4e19-a5d9-766dfe30d7ae",
     "answer": "FARMLAND",
     "enumeration": "(8)",
@@ -969,140 +450,6 @@
     "difficulty": 0,
     "reviewRequired": true,
     "createdAt": "2026-08-11T08:21:28.124Z"
-  },
-  {
-    "id": "e64977eb-796c-40fe-ba02-3f97f289f50d",
-    "answer": "ISLANDER",
-    "enumeration": "(8)",
-    "device": "charade",
-    "definition": "Isle dweller",
-    "definitionPosition": "start",
-    "wordplay": {
-      "indicator": "before",
-      "components": [
-        "ONE",
-        "SLANDER"
-      ],
-      "operation": "charade(ISLANDER, parts=[ONE, SLANDER])"
-    },
-    "surface": "Isle dweller hears one before slander spreads (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"ONE\" resolves to letters: ONE, I",
-      "✓ \"SLANDER\" resolves to letters: SLANDER",
-      "✓ \"ONE\" + \"SLANDER\" concatenates to the answer \"islander\"",
-      "✓ indicator \"before\" found in charade indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"Isle dweller\" ---",
-      "… \"Isle dweller\" is not an exact WordNet synonym of \"islander\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"Isle dweller\") sits at the start of the clue, per §2",
-      "✓ definition part contains the seeded definition \"Isle dweller\"",
-      "✓ indicator \"before\" is present verbatim in the wordplay text",
-      "✓ \"ONE\" appears before \"SLANDER\" in the wordplay text, matching charade order"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T08:21:39.138Z"
-  },
-  {
-    "id": "4e1088a0-4780-442a-8dc4-d2637a30a26f",
-    "answer": "NORTHERN",
-    "enumeration": "(8)",
-    "device": "anagram",
-    "definition": "boreal",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "crazy",
-      "fodder": "THRONNER",
-      "operation": "anagram(NORTHERN, fodder=THRONNER)"
-    },
-    "surface": "is how crazy thronner behaves boreal (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ fodder \"THRONNER\" is a different word from the answer",
-      "✓ fodder letters (EHNNORRT) match answer letters (EHNNORRT) when sorted",
-      "✓ indicator \"crazy\" found in anagram indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"boreal\" ---",
-      "… \"boreal\" is not an exact WordNet synonym of \"northern\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"boreal\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"boreal\"",
-      "✓ fodder \"THRONNER\" is present verbatim in the wordplay text",
-      "✓ indicator \"crazy\" is present verbatim in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T08:21:45.166Z"
-  },
-  {
-    "id": "3c7298d9-1928-4574-ae02-abbbdee6b8ee",
-    "answer": "SOUTHERN",
-    "enumeration": "(8)",
-    "device": "hidden",
-    "definition": "from the south",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "held within",
-      "components": [
-        "PASSOUT",
-        "HERNIORRHAPHY"
-      ],
-      "operation": "hidden(SOUTHERN, in=\"PASSOUT HERNIORRHAPHY\")"
-    },
-    "surface": "held within passout herniorrhaphy from the south (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"southern\" spans the join between \"PASSOUT\" and \"HERNIORRHAPHY\"",
-      "✓ indicator \"held within\" found in hidden-word indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"from the south\" ---",
-      "… \"from the south\" is not an exact WordNet synonym of \"southern\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"from the south\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"from the south\"",
-      "✓ indicator \"held within\" is present verbatim in the wordplay text",
-      "✓ \"southern\" appears spanning a real word boundary in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T08:21:51.564Z"
-  },
-  {
-    "id": "017022f3-fe5a-4500-9fe6-9958cf597e23",
-    "answer": "STADIUMS",
-    "enumeration": "(8)",
-    "device": "anagram",
-    "definition": "arenas",
-    "definitionPosition": "start",
-    "wordplay": {
-      "indicator": "twisted",
-      "fodder": "DUMAISTS",
-      "operation": "anagram(STADIUMS, fodder=DUMAISTS)"
-    },
-    "surface": "arenas built from twisted Dumaists (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ fodder \"DUMAISTS\" is a different word from the answer",
-      "✓ fodder letters (ADIMSSTU) match answer letters (ADIMSSTU) when sorted",
-      "✓ indicator \"twisted\" found in anagram indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"arenas\" ---",
-      "… \"stadiums\" has no WordNet entry — definition can't be auto-verified, routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"arenas\") sits at the start of the clue, per §2",
-      "✓ definition part contains the seeded definition \"arenas\"",
-      "✓ fodder \"DUMAISTS\" is present verbatim in the wordplay text",
-      "✓ indicator \"twisted\" is present verbatim in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T08:22:22.280Z"
   },
   {
     "id": "28ef65fb-31a8-4aff-b630-48f277ccf85b",
@@ -1207,74 +554,6 @@
     "difficulty": 0,
     "reviewRequired": true,
     "createdAt": "2026-08-11T08:22:55.391Z"
-  },
-  {
-    "id": "3f6dfc48-17de-4103-a629-e52cd8fc922c",
-    "answer": "OVERHANG",
-    "enumeration": "(8)",
-    "device": "anagram",
-    "definition": "jut out",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "randomly",
-      "fodder": "HANGOVER",
-      "operation": "anagram(OVERHANG, fodder=HANGOVER)"
-    },
-    "surface": "when hangover randomly strikes jut out (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ fodder \"HANGOVER\" is a different word from the answer",
-      "✓ fodder letters (AEGHNORV) match answer letters (AEGHNORV) when sorted",
-      "✓ indicator \"randomly\" found in anagram indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"jut out\" ---",
-      "… \"jut out\" is not an exact WordNet synonym of \"overhang\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"jut out\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"jut out\"",
-      "✓ fodder \"HANGOVER\" is present verbatim in the wordplay text",
-      "✓ indicator \"randomly\" is present verbatim in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T08:23:06.700Z"
-  },
-  {
-    "id": "b5bf4f50-eb8e-4ad9-a7d6-bb53ef13851e",
-    "answer": "UMBRELLA",
-    "enumeration": "(8)",
-    "device": "container",
-    "definition": "rain shield",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "surrounding",
-      "components": [
-        "UMBRA",
-        "ELL"
-      ],
-      "operation": "container(UMBRELLA, outer=UMBRA, inner=ELL)"
-    },
-    "surface": "is ell surrounding umbra, oddly rain shield (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"UMBRA\" resolves to letters: UMBRA",
-      "✓ \"ELL\" resolves to letters: ELL",
-      "✓ inserting \"ELL\" into \"UMBRA\" reproduces the answer \"umbrella\"",
-      "✓ indicator \"surrounding\" found in container indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"rain shield\" ---",
-      "… \"rain shield\" is not an exact WordNet synonym of \"umbrella\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"rain shield\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"rain shield\"",
-      "✓ indicator \"surrounding\" is present verbatim in the wordplay text",
-      "✓ both \"UMBRA\" and \"ELL\" are present in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T08:23:14.057Z"
   },
   {
     "id": "00cbae64-de51-46eb-9a3e-e3176faf43c3",
@@ -1385,42 +664,6 @@
     "createdAt": "2026-08-11T09:07:12.612Z"
   },
   {
-    "id": "51e8146e-9a96-4781-8be0-c8a79fe7a2e1",
-    "answer": "SUNBURNT",
-    "enumeration": "(8)",
-    "device": "charade",
-    "definition": "tanned red by sun",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "and",
-      "components": [
-        "SUNBURN",
-        "TIME"
-      ],
-      "operation": "charade(SUNBURNT, parts=[SUNBURN, TIME])"
-    },
-    "surface": "after sunburn and time at the beach tanned red by sun (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"SUNBURN\" resolves to letters: SUNBURN",
-      "✓ \"TIME\" resolves to letters: TIME, T",
-      "✓ \"SUNBURN\" + \"TIME\" concatenates to the answer \"sunburnt\"",
-      "✓ indicator \"and\" found in charade indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"tanned red by sun\" ---",
-      "… \"tanned red by sun\" is not an exact WordNet synonym of \"sunburnt\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"tanned red by sun\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"tanned red by sun\"",
-      "✓ indicator \"and\" is present verbatim in the wordplay text",
-      "✓ \"SUNBURN\" appears before \"TIME\" in the wordplay text, matching charade order"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:07:19.100Z"
-  },
-  {
     "id": "c98b39d6-91c5-41f9-88f6-e723e6c0420a",
     "answer": "SEABOARD",
     "enumeration": "(8)",
@@ -1453,112 +696,6 @@
     "difficulty": 0,
     "reviewRequired": true,
     "createdAt": "2026-08-11T09:07:42.424Z"
-  },
-  {
-    "id": "02d83d31-d606-4273-a3b6-6878bf34e437",
-    "answer": "BROCCOLI",
-    "enumeration": "(8)",
-    "device": "container",
-    "definition": "green vegetable",
-    "definitionPosition": "start",
-    "wordplay": {
-      "indicator": "inside",
-      "components": [
-        "BROCOLI",
-        "ABOUT"
-      ],
-      "operation": "container(BROCCOLI, outer=BROCOLI, inner=ABOUT)"
-    },
-    "surface": "green vegetable is about inside brocoli, roughly (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"BROCOLI\" resolves to letters: BROCOLI",
-      "✓ \"ABOUT\" resolves to letters: ABOUT, C",
-      "✓ inserting \"ABOUT\" into \"BROCOLI\" reproduces the answer \"broccoli\"",
-      "✓ indicator \"inside\" found in container indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"green vegetable\" ---",
-      "… \"green vegetable\" is not an exact WordNet synonym of \"broccoli\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"green vegetable\") sits at the start of the clue, per §2",
-      "✓ definition part contains the seeded definition \"green vegetable\"",
-      "✓ indicator \"inside\" is present verbatim in the wordplay text",
-      "✓ both \"BROCOLI\" and \"ABOUT\" are present in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:07:55.186Z"
-  },
-  {
-    "id": "9b3a7ddb-39af-4f2b-9656-89c377c15014",
-    "answer": "COCKTAIL",
-    "enumeration": "(8)",
-    "device": "hidden",
-    "definition": "mixed drink",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "included in",
-      "components": [
-        "STOPCOCK",
-        "TAILFIN"
-      ],
-      "operation": "hidden(COCKTAIL, in=\"STOPCOCK TAILFIN\")"
-    },
-    "surface": "included in stopcock tailfin design mixed drink (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"cocktail\" spans the join between \"STOPCOCK\" and \"TAILFIN\"",
-      "✓ indicator \"included in\" found in hidden-word indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"mixed drink\" ---",
-      "… \"mixed drink\" is not an exact WordNet synonym of \"cocktail\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"mixed drink\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"mixed drink\"",
-      "✓ indicator \"included in\" is present verbatim in the wordplay text",
-      "✓ \"cocktail\" appears spanning a real word boundary in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:08:00.632Z"
-  },
-  {
-    "id": "110febc0-ae67-419b-b6d0-b111b0d01c47",
-    "answer": "LEMONADE",
-    "enumeration": "(8)",
-    "device": "container",
-    "definition": "citrus drink",
-    "definitionPosition": "start",
-    "wordplay": {
-      "indicator": "around",
-      "components": [
-        "LEE",
-        "MONAD"
-      ],
-      "operation": "container(LEMONADE, outer=LEE, inner=MONAD)"
-    },
-    "surface": "citrus drink is monad around Lee, philosopher's concept (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"LEE\" resolves to letters: LEE",
-      "✓ \"MONAD\" resolves to letters: MONAD",
-      "✓ inserting \"MONAD\" into \"LEE\" reproduces the answer \"lemonade\"",
-      "✓ indicator \"around\" found in container indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"citrus drink\" ---",
-      "… \"citrus drink\" is not an exact WordNet synonym of \"lemonade\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"citrus drink\") sits at the start of the clue, per §2",
-      "✓ definition part contains the seeded definition \"citrus drink\"",
-      "✓ indicator \"around\" is present verbatim in the wordplay text",
-      "✓ both \"LEE\" and \"MONAD\" are present in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:08:07.066Z"
   },
   {
     "id": "22120c3b-b5a9-45f8-80f4-90b31764269e",
@@ -1597,74 +734,6 @@
     "createdAt": "2026-08-11T09:08:14.953Z"
   },
   {
-    "id": "00a5c554-d288-4597-997e-29cad94ee84f",
-    "answer": "DOUGHNUT",
-    "enumeration": "(8)",
-    "device": "container",
-    "definition": "ring-shaped cake",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "enclosing",
-      "components": [
-        "DONUT",
-        "UGH"
-      ],
-      "operation": "container(DOUGHNUT, outer=DONUT, inner=UGH)"
-    },
-    "surface": "is donut enclosing ugh, oddly spelled ring-shaped cake (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"DONUT\" resolves to letters: DONUT",
-      "✓ \"UGH\" resolves to letters: UGH",
-      "✓ inserting \"UGH\" into \"DONUT\" reproduces the answer \"doughnut\"",
-      "✓ indicator \"enclosing\" found in container indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"ring-shaped cake\" ---",
-      "… \"ring-shaped cake\" is not an exact WordNet synonym of \"doughnut\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"ring-shaped cake\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"ring-shaped cake\"",
-      "✓ indicator \"enclosing\" is present verbatim in the wordplay text",
-      "✓ both \"DONUT\" and \"UGH\" are present in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:08:20.277Z"
-  },
-  {
-    "id": "7f5a06d2-ddc0-4556-8f63-72939ba2a4e5",
-    "answer": "CASSEROLE",
-    "enumeration": "(9)",
-    "device": "anagram",
-    "definition": "baked stew dish",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "chaotic",
-      "fodder": "ESCAROLES",
-      "operation": "anagram(CASSEROLE, fodder=ESCAROLES)"
-    },
-    "surface": "made from chaotic escaroles baked stew dish (9)",
-    "verified": true,
-    "verificationLog": [
-      "✓ fodder \"ESCAROLES\" is a different word from the answer",
-      "✓ fodder letters (ACEELORSS) match answer letters (ACEELORSS) when sorted",
-      "✓ indicator \"chaotic\" found in anagram indicator bank",
-      "✓ enumeration \"(9)\" matches answer letter count (9)",
-      "--- LLM-proposed definition: \"baked stew dish\" ---",
-      "… \"baked stew dish\" is not an exact WordNet synonym of \"casserole\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"baked stew dish\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"baked stew dish\"",
-      "✓ fodder \"ESCAROLES\" is present verbatim in the wordplay text",
-      "✓ indicator \"chaotic\" is present verbatim in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:08:31.593Z"
-  },
-  {
     "id": "765f1f1d-f35f-46cc-8ddf-71d004872a6c",
     "answer": "MARINADE",
     "enumeration": "(8)",
@@ -1701,42 +770,6 @@
     "createdAt": "2026-08-11T09:08:37.819Z"
   },
   {
-    "id": "70320e3f-4827-4793-b1d2-2371789463bf",
-    "answer": "BARBECUE",
-    "enumeration": "(8)",
-    "device": "container",
-    "definition": "outdoor grill",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "enclosing",
-      "components": [
-        "BARBE",
-        "ECU"
-      ],
-      "operation": "container(BARBECUE, outer=BARBE, inner=ECU)"
-    },
-    "surface": "Barbe enclosing European currency, ecu outdoor grill (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"BARBE\" resolves to letters: BARBE",
-      "✓ \"ECU\" resolves to letters: ECU",
-      "✓ inserting \"ECU\" into \"BARBE\" reproduces the answer \"barbecue\"",
-      "✓ indicator \"enclosing\" found in container indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"outdoor grill\" ---",
-      "… \"outdoor grill\" is not an exact WordNet synonym of \"barbecue\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"outdoor grill\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"outdoor grill\"",
-      "✓ indicator \"enclosing\" is present verbatim in the wordplay text",
-      "✓ both \"BARBE\" and \"ECU\" are present in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:08:43.760Z"
-  },
-  {
     "id": "a2f68354-f27c-459b-941d-5dcbd5f3ca6d",
     "answer": "FIREWOOD",
     "enumeration": "(8)",
@@ -1769,49 +802,6 @@
     "difficulty": 0,
     "reviewRequired": true,
     "createdAt": "2026-08-11T09:08:50.559Z"
-  },
-  {
-    "id": "ff76c463-1e61-4d82-8512-9ae972be18f3",
-    "answer": "STOPWATCH",
-    "enumeration": "(9)",
-    "device": "container",
-    "definition": "timer",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "enclosing",
-      "components": [
-        "SWATCH",
-        "TOP"
-      ],
-      "operation": "container(STOPWATCH, outer=SWATCH, inner=TOP)"
-    },
-    "surface": "for best fabric swatch enclosing top brand timer (9)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"SWATCH\" resolves to letters: SWATCH",
-      "✓ \"TOP\" resolves to letters: TOP",
-      "✓ inserting \"TOP\" into \"SWATCH\" reproduces the answer \"stopwatch\"",
-      "✓ indicator \"enclosing\" found in container indicator bank",
-      "✓ enumeration \"(9)\" matches answer letter count (9)",
-      "--- LLM-proposed definition: \"timer\" ---",
-      "… \"timer\" is not an exact WordNet synonym of \"stopwatch\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"timer\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"timer\"",
-      "✓ indicator \"enclosing\" is present verbatim in the wordplay text",
-      "✗ could not find both container parts (\"SWATCH\", \"TOP\") in the wordplay text",
-      "✗ attempt 1 failed verification, discarding surface and retrying",
-      "--- surface attempt 2/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"timer\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"timer\"",
-      "✓ indicator \"enclosing\" is present verbatim in the wordplay text",
-      "✓ both \"SWATCH\" and \"TOP\" are present in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:09:12.605Z"
   },
   {
     "id": "08ed5a4a-f075-4f97-a774-9eadda4ee649",
@@ -1918,74 +908,6 @@
     "createdAt": "2026-08-11T09:09:37.543Z"
   },
   {
-    "id": "3ec3672b-3798-4f62-99e8-a3e1d75416be",
-    "answer": "CROSSWALK",
-    "enumeration": "(9)",
-    "device": "anagram",
-    "definition": "pedestrian crossing",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "crazy",
-      "fodder": "CLASSWORK",
-      "operation": "anagram(CROSSWALK, fodder=CLASSWORK)"
-    },
-    "surface": "where crazy classwork leads pedestrian crossing (9)",
-    "verified": true,
-    "verificationLog": [
-      "✓ fodder \"CLASSWORK\" is a different word from the answer",
-      "✓ fodder letters (ACKLORSSW) match answer letters (ACKLORSSW) when sorted",
-      "✓ indicator \"crazy\" found in anagram indicator bank",
-      "✓ enumeration \"(9)\" matches answer letter count (9)",
-      "--- LLM-proposed definition: \"pedestrian crossing\" ---",
-      "… \"pedestrian crossing\" is not an exact WordNet synonym of \"crosswalk\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"pedestrian crossing\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"pedestrian crossing\"",
-      "✓ fodder \"CLASSWORK\" is present verbatim in the wordplay text",
-      "✓ indicator \"crazy\" is present verbatim in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:09:49.394Z"
-  },
-  {
-    "id": "7832e98e-2404-4c00-96f8-32b268e05a2a",
-    "answer": "SPEEDWAY",
-    "enumeration": "(8)",
-    "device": "container",
-    "definition": "racetrack",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "holding",
-      "components": [
-        "SWAY",
-        "PEED"
-      ],
-      "operation": "container(SPEEDWAY, outer=SWAY, inner=PEED)"
-    },
-    "surface": "where influence, sway, holding drunk who peed, is found racetrack (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"SWAY\" resolves to letters: SWAY",
-      "✓ \"PEED\" resolves to letters: PEED",
-      "✓ inserting \"PEED\" into \"SWAY\" reproduces the answer \"speedway\"",
-      "✓ indicator \"holding\" found in container indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"racetrack\" ---",
-      "… \"racetrack\" is not an exact WordNet synonym of \"speedway\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"racetrack\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"racetrack\"",
-      "✓ indicator \"holding\" is present verbatim in the wordplay text",
-      "✓ both \"SWAY\" and \"PEED\" are present in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:09:54.971Z"
-  },
-  {
     "id": "d1d2aad5-79e3-4d8e-81ea-c0eae46e18ad",
     "answer": "MOTORWAY",
     "enumeration": "(8)",
@@ -2029,42 +951,6 @@
     "createdAt": "2026-08-11T09:10:04.382Z"
   },
   {
-    "id": "c884f732-ce55-4704-89d9-a2891c211d29",
-    "answer": "PLATFORM",
-    "enumeration": "(8)",
-    "device": "charade",
-    "definition": "raised stage",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "before",
-      "components": [
-        "PLAT",
-        "FORM"
-      ],
-      "operation": "charade(PLATFORM, parts=[PLAT, FORM])"
-    },
-    "surface": "built with plat before form takes shape raised stage (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"PLAT\" resolves to letters: PLAT",
-      "✓ \"FORM\" resolves to letters: FORM",
-      "✓ \"PLAT\" + \"FORM\" concatenates to the answer \"platform\"",
-      "✓ indicator \"before\" found in charade indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"raised stage\" ---",
-      "… \"raised stage\" is not an exact WordNet synonym of \"platform\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"raised stage\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"raised stage\"",
-      "✓ indicator \"before\" is present verbatim in the wordplay text",
-      "✓ \"PLAT\" appears before \"FORM\" in the wordplay text, matching charade order"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:10:23.941Z"
-  },
-  {
     "id": "29cf948e-37e2-4332-b089-3715101b2bfa",
     "answer": "PASSPORT",
     "enumeration": "(8)",
@@ -2097,38 +983,6 @@
     "difficulty": 0,
     "reviewRequired": true,
     "createdAt": "2026-08-11T09:10:31.183Z"
-  },
-  {
-    "id": "ea39348d-ce04-4f51-841c-413dcd1ab2a8",
-    "answer": "SUITCASE",
-    "enumeration": "(8)",
-    "device": "anagram",
-    "definition": "travel bag",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "awry",
-      "fodder": "SAUCIEST",
-      "operation": "anagram(SUITCASE, fodder=SAUCIEST)"
-    },
-    "surface": "holding sauciest outfit awry travel bag (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ fodder \"SAUCIEST\" is a different word from the answer",
-      "✓ fodder letters (ACEISSTU) match answer letters (ACEISSTU) when sorted",
-      "✓ indicator \"awry\" found in anagram indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"travel bag\" ---",
-      "… \"travel bag\" is not an exact WordNet synonym of \"suitcase\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"travel bag\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"travel bag\"",
-      "✓ fodder \"SAUCIEST\" is present verbatim in the wordplay text",
-      "✓ indicator \"awry\" is present verbatim in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:10:37.325Z"
   },
   {
     "id": "3f7544bc-1a2a-4488-b2c1-bfd01b609e72",
@@ -2233,388 +1087,6 @@
     "difficulty": 0,
     "reviewRequired": true,
     "createdAt": "2026-08-11T09:11:21.200Z"
-  },
-  {
-    "id": "f9a2e7eb-f4fc-4aad-bcc0-43fe71b3478e",
-    "answer": "PRESCHOOL",
-    "enumeration": "(9)",
-    "device": "charade",
-    "definition": "nursery school",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "and",
-      "components": [
-        "QUIET",
-        "RESCHOOL"
-      ],
-      "operation": "charade(PRESCHOOL, parts=[QUIET, RESCHOOL])"
-    },
-    "surface": "is what you'd get if you quiet and reschool troublesome pupils nursery school (9)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"QUIET\" resolves to letters: QUIET, P",
-      "✓ \"RESCHOOL\" resolves to letters: RESCHOOL",
-      "✓ \"QUIET\" + \"RESCHOOL\" concatenates to the answer \"preschool\"",
-      "✓ indicator \"and\" found in charade indicator bank",
-      "✓ enumeration \"(9)\" matches answer letter count (9)",
-      "--- LLM-proposed definition: \"nursery school\" ---",
-      "… \"nursery school\" is not an exact WordNet synonym of \"preschool\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"nursery school\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"nursery school\"",
-      "✓ indicator \"and\" is present verbatim in the wordplay text",
-      "✓ \"QUIET\" appears before \"RESCHOOL\" in the wordplay text, matching charade order"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:11:33.064Z"
-  },
-  {
-    "id": "fdeb25ef-97f9-4349-9022-efdf960ebc74",
-    "answer": "GRANDSONS",
-    "enumeration": "(9)",
-    "device": "container",
-    "definition": "son's sons",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "within",
-      "components": [
-        "GONS",
-        "RANDS"
-      ],
-      "operation": "container(GRANDSONS, outer=GONS, inner=RANDS)"
-    },
-    "surface": "South African rands within gons of gold, oddly split son's sons (9)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"GONS\" resolves to letters: GONS",
-      "✓ \"RANDS\" resolves to letters: RANDS",
-      "✓ inserting \"RANDS\" into \"GONS\" reproduces the answer \"grandsons\"",
-      "✓ indicator \"within\" found in container indicator bank",
-      "✓ enumeration \"(9)\" matches answer letter count (9)",
-      "--- LLM-proposed definition: \"son's sons\" ---",
-      "… \"grandsons\" has no WordNet entry — definition can't be auto-verified, routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"son's sons\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"son's sons\"",
-      "✓ indicator \"within\" is present verbatim in the wordplay text",
-      "✓ both \"GONS\" and \"RANDS\" are present in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:11:38.735Z"
-  },
-  {
-    "id": "badb7815-8440-496a-975e-6c8bd7882ecc",
-    "answer": "DAUGHTERS",
-    "enumeration": "(9)",
-    "device": "container",
-    "definition": "female children",
-    "definitionPosition": "start",
-    "wordplay": {
-      "indicator": "enclosing",
-      "components": [
-        "DATERS",
-        "UGH"
-      ],
-      "operation": "container(DAUGHTERS, outer=DATERS, inner=UGH)"
-    },
-    "surface": "female children are daters enclosing ugh, disgusted by online matches (9)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"DATERS\" resolves to letters: DATERS",
-      "✓ \"UGH\" resolves to letters: UGH",
-      "✓ inserting \"UGH\" into \"DATERS\" reproduces the answer \"daughters\"",
-      "✓ indicator \"enclosing\" found in container indicator bank",
-      "✓ enumeration \"(9)\" matches answer letter count (9)",
-      "--- LLM-proposed definition: \"female children\" ---",
-      "… \"daughters\" has no WordNet entry — definition can't be auto-verified, routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"female children\") sits at the start of the clue, per §2",
-      "✓ definition part contains the seeded definition \"female children\"",
-      "✓ indicator \"enclosing\" is present verbatim in the wordplay text",
-      "✓ both \"DATERS\" and \"UGH\" are present in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:11:44.796Z"
-  },
-  {
-    "id": "b97f55fd-9dd7-4d0b-ad6b-94d3a97042d4",
-    "answer": "RELATIVES",
-    "enumeration": "(9)",
-    "device": "anagram",
-    "definition": "family members",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "unstable",
-      "fodder": "LEVIRATES",
-      "operation": "anagram(RELATIVES, fodder=LEVIRATES)"
-    },
-    "surface": "from unstable levirates family members (9)",
-    "verified": true,
-    "verificationLog": [
-      "✓ fodder \"LEVIRATES\" is a different word from the answer",
-      "✓ fodder letters (AEEILRSTV) match answer letters (AEEILRSTV) when sorted",
-      "✓ indicator \"unstable\" found in anagram indicator bank",
-      "✓ enumeration \"(9)\" matches answer letter count (9)",
-      "--- LLM-proposed definition: \"family members\" ---",
-      "… \"relatives\" has no WordNet entry — definition can't be auto-verified, routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"family members\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"family members\"",
-      "✓ fodder \"LEVIRATES\" is present verbatim in the wordplay text",
-      "✓ indicator \"unstable\" is present verbatim in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:11:50.897Z"
-  },
-  {
-    "id": "3c49fc37-36b2-4c30-a95a-79705c0ab2dd",
-    "answer": "ANCESTORS",
-    "enumeration": "(9)",
-    "device": "anagram",
-    "definition": "forebears",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "confused",
-      "fodder": "SORTANCES",
-      "operation": "anagram(ANCESTORS, fodder=SORTANCES)"
-    },
-    "surface": "were confused sortances forebears (9)",
-    "verified": true,
-    "verificationLog": [
-      "✓ fodder \"SORTANCES\" is a different word from the answer",
-      "✓ fodder letters (ACENORSST) match answer letters (ACENORSST) when sorted",
-      "✓ indicator \"confused\" found in anagram indicator bank",
-      "✓ enumeration \"(9)\" matches answer letter count (9)",
-      "--- LLM-proposed definition: \"forebears\" ---",
-      "… \"ancestors\" has no WordNet entry — definition can't be auto-verified, routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"forebears\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"forebears\"",
-      "✓ fodder \"SORTANCES\" is present verbatim in the wordplay text",
-      "✓ indicator \"confused\" is present verbatim in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:11:58.167Z"
-  },
-  {
-    "id": "71fc95d9-91cb-405a-a599-80a35acdb5e3",
-    "answer": "ORPHANAGE",
-    "enumeration": "(9)",
-    "device": "hidden",
-    "definition": "children's home",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "partly",
-      "components": [
-        "DIMORPH",
-        "ANAGENESIS"
-      ],
-      "operation": "hidden(ORPHANAGE, in=\"DIMORPH ANAGENESIS\")"
-    },
-    "surface": "found partly in dimorph anagenesis studies children's home (9)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"orphanage\" spans the join between \"DIMORPH\" and \"ANAGENESIS\"",
-      "✓ indicator \"partly\" found in hidden-word indicator bank",
-      "✓ enumeration \"(9)\" matches answer letter count (9)",
-      "--- LLM-proposed definition: \"children's home\" ---",
-      "… \"children's home\" is not an exact WordNet synonym of \"orphanage\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"children's home\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"children's home\"",
-      "✓ indicator \"partly\" is present verbatim in the wordplay text",
-      "✓ \"orphanage\" appears spanning a real word boundary in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:12:10.981Z"
-  },
-  {
-    "id": "c037f6a2-89a0-43a2-aef5-c86ee5098c8d",
-    "answer": "FOUNDLING",
-    "enumeration": "(9)",
-    "device": "anagram",
-    "definition": "abandoned child",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "scrambled",
-      "fodder": "UNFOLDING",
-      "operation": "anagram(FOUNDLING, fodder=UNFOLDING)"
-    },
-    "surface": "seen after unfolding scrambled abandoned child (9)",
-    "verified": true,
-    "verificationLog": [
-      "✓ fodder \"UNFOLDING\" is a different word from the answer",
-      "✓ fodder letters (DFGILNNOU) match answer letters (DFGILNNOU) when sorted",
-      "✓ indicator \"scrambled\" found in anagram indicator bank",
-      "✓ enumeration \"(9)\" matches answer letter count (9)",
-      "--- LLM-proposed definition: \"abandoned child\" ---",
-      "… \"abandoned child\" is not an exact WordNet synonym of \"foundling\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"abandoned child\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"abandoned child\"",
-      "✓ fodder \"UNFOLDING\" is present verbatim in the wordplay text",
-      "✓ indicator \"scrambled\" is present verbatim in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:12:17.855Z"
-  },
-  {
-    "id": "111f685c-9ae0-4396-81ab-47de9c8af810",
-    "answer": "TROUSERS",
-    "enumeration": "(8)",
-    "device": "charade",
-    "definition": "pants",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "followed by",
-      "components": [
-        "TROUSER",
-        "SECOND"
-      ],
-      "operation": "charade(TROUSERS, parts=[TROUSER, SECOND])"
-    },
-    "surface": "pocket a watch, trouser followed by second pants (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"TROUSER\" resolves to letters: TROUSER",
-      "✓ \"SECOND\" resolves to letters: SECOND, S",
-      "✓ \"TROUSER\" + \"SECOND\" concatenates to the answer \"TROUSERS\"",
-      "✓ indicator \"followed by\" found in charade indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"pants\" ---",
-      "… \"pants\" is not an exact WordNet synonym of \"TROUSERS\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"pants\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"pants\"",
-      "✓ indicator \"followed by\" is present verbatim in the wordplay text",
-      "✓ \"TROUSER\" appears before \"SECOND\" in the wordplay text, matching charade order"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:35:42.446Z"
-  },
-  {
-    "id": "5e45e418-9432-4275-b3cd-0d34a269dc19",
-    "answer": "EARRINGS",
-    "enumeration": "(8)",
-    "device": "container",
-    "definition": "Ear jewelry",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "holding",
-      "components": [
-        "EARINGS",
-        "REGINA"
-      ],
-      "operation": "container(EARRINGS, outer=EARINGS, inner=REGINA)"
-    },
-    "surface": "Regina holding earings, oddly Ear jewelry (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"EARINGS\" resolves to letters: EARINGS",
-      "✓ \"REGINA\" resolves to letters: REGINA, R",
-      "✓ inserting \"REGINA\" into \"EARINGS\" reproduces the answer \"EARRINGS\"",
-      "✓ indicator \"holding\" found in container indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"Ear jewelry\" ---",
-      "… \"EARRINGS\" has no WordNet entry — definition can't be auto-verified, routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"Ear jewelry\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"Ear jewelry\"",
-      "✓ indicator \"holding\" is present verbatim in the wordplay text",
-      "✓ both \"EARINGS\" and \"REGINA\" are present in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:35:48.204Z"
-  },
-  {
-    "id": "6b4e898d-276e-4516-8599-d3ad1753d8c3",
-    "answer": "TORTILLA",
-    "enumeration": "(8)",
-    "device": "container",
-    "definition": "flatbread wrap",
-    "definitionPosition": "start",
-    "wordplay": {
-      "indicator": "surrounding",
-      "components": [
-        "TORA",
-        "TILL"
-      ],
-      "operation": "container(TORTILLA, outer=TORA, inner=TILL)"
-    },
-    "surface": "flatbread wrap made from till surrounding Tora scroll (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"TORA\" resolves to letters: TORA",
-      "✓ \"TILL\" resolves to letters: TILL",
-      "✓ inserting \"TILL\" into \"TORA\" reproduces the answer \"TORTILLA\"",
-      "✓ indicator \"surrounding\" found in container indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"flatbread wrap\" ---",
-      "… \"flatbread wrap\" is not an exact WordNet synonym of \"TORTILLA\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"flatbread wrap\") sits at the start of the clue, per §2",
-      "✓ definition part contains the seeded definition \"flatbread wrap\"",
-      "✓ indicator \"surrounding\" is present verbatim in the wordplay text",
-      "✓ both \"TORA\" and \"TILL\" are present in the wordplay text"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:35:55.157Z"
-  },
-  {
-    "id": "a07b3057-1bbe-495d-bd20-34c52059418a",
-    "answer": "CARDIGAN",
-    "enumeration": "(8)",
-    "device": "charade",
-    "definition": "buttoned sweater",
-    "definitionPosition": "end",
-    "wordplay": {
-      "indicator": "before",
-      "components": [
-        "CARDI",
-        "GAN"
-      ],
-      "operation": "charade(CARDIGAN, parts=[CARDI, GAN])"
-    },
-    "surface": "is Cardi before Gan appears on stage buttoned sweater (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"CARDI\" resolves to letters: CARDI",
-      "✓ \"GAN\" resolves to letters: GAN",
-      "✓ \"CARDI\" + \"GAN\" concatenates to the answer \"CARDIGAN\"",
-      "✓ indicator \"before\" found in charade indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"buttoned sweater\" ---",
-      "… \"buttoned sweater\" is not an exact WordNet synonym of \"CARDIGAN\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"buttoned sweater\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"buttoned sweater\"",
-      "✓ indicator \"before\" is present verbatim in the wordplay text",
-      "✓ \"CARDI\" appears before \"GAN\" in the wordplay text, matching charade order"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:37:52.907Z"
   },
   {
     "id": "8f9f7ebe-db28-425c-97d9-4f4eddc3f09a",
@@ -2723,42 +1195,6 @@
     "createdAt": "2026-08-11T09:38:21.242Z"
   },
   {
-    "id": "8d7cbf6b-9dc5-4d16-813c-0e9ad843feb7",
-    "answer": "DISGUISE",
-    "enumeration": "(8)",
-    "device": "charade",
-    "definition": "costume",
-    "definitionPosition": "start",
-    "wordplay": {
-      "indicator": "then",
-      "components": [
-        "DIS",
-        "GUISE"
-      ],
-      "operation": "charade(DISGUISE, parts=[DIS, GUISE])"
-    },
-    "surface": "costume worn after Dis then Guise appear (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"DIS\" resolves to letters: DIS",
-      "✓ \"GUISE\" resolves to letters: GUISE",
-      "✓ \"DIS\" + \"GUISE\" concatenates to the answer \"DISGUISE\"",
-      "✓ indicator \"then\" found in charade indicator bank",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- LLM-proposed definition: \"costume\" ---",
-      "… \"costume\" is not an exact WordNet synonym of \"DISGUISE\" — routing to review",
-      "--- surface attempt 1/3 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"costume\") sits at the start of the clue, per §2",
-      "✓ definition part contains the seeded definition \"costume\"",
-      "✓ indicator \"then\" is present verbatim in the wordplay text",
-      "✓ \"DIS\" appears before \"GUISE\" in the wordplay text, matching charade order"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-11T09:38:28.041Z"
-  },
-  {
     "id": "e4cc6e35-2827-4b45-99c1-ed695b53ec37",
     "answer": "ELECTRIC",
     "enumeration": "(8)",
@@ -2793,12 +1229,488 @@
     "createdAt": "2026-08-11T10:23:44.847Z"
   },
   {
-    "id": "5e61ab3e-ba0f-46c9-a67c-d55f48169c87",
+    "id": "2a97d5eb-5f80-4d55-bb4f-807b5166d598",
+    "answer": "SUNSHINE",
+    "enumeration": "(8)",
+    "device": "charade",
+    "definition": "daylight",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "before",
+      "components": [
+        "SUN",
+        "SHINE"
+      ],
+      "operation": "charade(SUNSHINE, parts=[SUN, SHINE])"
+    },
+    "surface": "is sun before shine polished up daylight (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"SUN\" resolves to letters: SUN",
+      "✓ \"SHINE\" resolves to letters: SHINE",
+      "✓ \"SUN\" + \"SHINE\" concatenates to the answer \"SUNSHINE\"",
+      "✓ indicator \"before\" found in charade indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"daylight\" ---",
+      "… \"daylight\" is not an exact WordNet synonym of \"SUNSHINE\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"daylight\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"daylight\"",
+      "✓ indicator \"before\" is present verbatim in the wordplay text",
+      "✓ \"SUN\" appears before \"SHINE\" in the wordplay text, matching charade order"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T12:55:21.410Z"
+  },
+  {
+    "id": "112b80ca-771a-4e0c-859f-a10c9f401792",
+    "answer": "CHILDREN",
+    "enumeration": "(8)",
+    "device": "hidden",
+    "definition": "Kids",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "within",
+      "components": [
+        "MOONCHILD",
+        "RENDER"
+      ],
+      "operation": "hidden(CHILDREN, in=\"MOONCHILD RENDER\")"
+    },
+    "surface": "Kids found within \"Moonchild render\" mysteriously (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"CHILDREN\" spans the join between \"MOONCHILD\" and \"RENDER\"",
+      "✓ indicator \"within\" found in hidden-word indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"Kids\" ---",
+      "… \"CHILDREN\" has no WordNet entry — definition can't be auto-verified, routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"Kids\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"Kids\"",
+      "✓ indicator \"within\" is present verbatim in the wordplay text",
+      "✓ \"CHILDREN\" appears spanning a real word boundary in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T12:55:35.447Z"
+  },
+  {
+    "id": "f7d13447-671f-46ac-bb3a-1fa4df39800a",
+    "answer": "STRANGER",
+    "enumeration": "(8)",
+    "device": "anagram",
+    "definition": "unfamiliar person",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "curious",
+      "fodder": "REGRANTS",
+      "operation": "anagram(STRANGER, fodder=REGRANTS)"
+    },
+    "surface": "curious how landlord regrants leases unfamiliar person (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ fodder \"REGRANTS\" is a different word from the answer",
+      "✓ fodder letters (AEGNRRST) match answer letters (AEGNRRST) when sorted",
+      "✓ indicator \"curious\" found in anagram indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"unfamiliar person\" ---",
+      "… \"unfamiliar person\" is not an exact WordNet synonym of \"STRANGER\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"unfamiliar person\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"unfamiliar person\"",
+      "✓ fodder \"REGRANTS\" is present verbatim in the wordplay text",
+      "✓ indicator \"curious\" is present verbatim in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T12:55:43.208Z"
+  },
+  {
+    "id": "a49ffcda-b16e-4122-b91f-f83056ddbcf4",
+    "answer": "DOORSTEP",
+    "enumeration": "(8)",
+    "device": "charade",
+    "definition": "entrance step",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "before",
+      "components": [
+        "DOOR",
+        "STEP"
+      ],
+      "operation": "charade(DOORSTEP, parts=[DOOR, STEP])"
+    },
+    "surface": "where you'd find door before step entrance step (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"DOOR\" resolves to letters: DOOR",
+      "✓ \"STEP\" resolves to letters: STEP",
+      "✓ \"DOOR\" + \"STEP\" concatenates to the answer \"DOORSTEP\"",
+      "✓ indicator \"before\" found in charade indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"entrance step\" ---",
+      "… \"entrance step\" is not an exact WordNet synonym of \"DOORSTEP\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"entrance step\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"entrance step\"",
+      "✓ indicator \"before\" is present verbatim in the wordplay text",
+      "✓ \"DOOR\" appears before \"STEP\" in the wordplay text, matching charade order"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T12:55:51.178Z"
+  },
+  {
+    "id": "72226dfb-e23a-4fd7-93c4-b78878e4ce35",
+    "answer": "ISLANDER",
+    "enumeration": "(8)",
+    "device": "charade",
+    "definition": "one living on an island",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "then",
+      "components": [
+        "ISLAND",
+        "ER"
+      ],
+      "operation": "charade(ISLANDER, parts=[ISLAND, ER])"
+    },
+    "surface": "island then er, hesitating oddly one living on an island (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"ISLAND\" resolves to letters: ISLAND",
+      "✓ \"ER\" resolves to letters: ER",
+      "✓ \"ISLAND\" + \"ER\" concatenates to the answer \"ISLANDER\"",
+      "✓ indicator \"then\" found in charade indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"one living on an island\" ---",
+      "… \"one living on an island\" is not an exact WordNet synonym of \"ISLANDER\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"one living on an island\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"one living on an island\"",
+      "✓ indicator \"then\" is present verbatim in the wordplay text",
+      "✓ \"ISLAND\" appears before \"ER\" in the wordplay text, matching charade order"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T12:55:57.782Z"
+  },
+  {
+    "id": "4bdf71a3-3d39-4ca9-a850-de06c86866dd",
+    "answer": "STADIUMS",
+    "enumeration": "(8)",
+    "device": "anagram",
+    "definition": "Arenas",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "wrecked",
+      "fodder": "DUMAISTS",
+      "operation": "anagram(STADIUMS, fodder=DUMAISTS)"
+    },
+    "surface": "Arenas built where wrecked Dumaists gathered (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ fodder \"DUMAISTS\" is a different word from the answer",
+      "✓ fodder letters (ADIMSSTU) match answer letters (ADIMSSTU) when sorted",
+      "✓ indicator \"wrecked\" found in anagram indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"Arenas\" ---",
+      "… \"STADIUMS\" has no WordNet entry — definition can't be auto-verified, routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"Arenas\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"Arenas\"",
+      "✓ fodder \"DUMAISTS\" is present verbatim in the wordplay text",
+      "✓ indicator \"wrecked\" is present verbatim in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T12:56:06.765Z"
+  },
+  {
+    "id": "cfd693d8-e4f7-4637-944f-2a697af3de12",
+    "answer": "OVERHANG",
+    "enumeration": "(8)",
+    "device": "hidden",
+    "definition": "Projecting ledge",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "within",
+      "components": [
+        "DOVER",
+        "HANGING"
+      ],
+      "operation": "hidden(OVERHANG, in=\"DOVER HANGING\")"
+    },
+    "surface": "found within Dover hanging cliffs Projecting ledge (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"OVERHANG\" spans the join between \"DOVER\" and \"HANGING\"",
+      "✓ indicator \"within\" found in hidden-word indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"Projecting ledge\" ---",
+      "… \"Projecting ledge\" is not an exact WordNet synonym of \"OVERHANG\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"Projecting ledge\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"Projecting ledge\"",
+      "✓ indicator \"within\" is present verbatim in the wordplay text",
+      "✓ \"OVERHANG\" appears spanning a real word boundary in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T12:56:12.616Z"
+  },
+  {
+    "id": "160870c9-07d1-4b62-bbcd-baf566ab6ef2",
+    "answer": "UMBRELLA",
+    "enumeration": "(8)",
+    "device": "anagram",
+    "definition": "rain shade",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "muddled",
+      "fodder": "UMBELLAR",
+      "operation": "anagram(UMBRELLA, fodder=UMBELLAR)"
+    },
+    "surface": "from umbellar muddled botanical notes rain shade (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ fodder \"UMBELLAR\" is a different word from the answer",
+      "✓ fodder letters (ABELLMRU) match answer letters (ABELLMRU) when sorted",
+      "✓ indicator \"muddled\" found in anagram indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"rain shade\" ---",
+      "… \"rain shade\" is not an exact WordNet synonym of \"UMBRELLA\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"rain shade\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"rain shade\"",
+      "✓ fodder \"UMBELLAR\" is present verbatim in the wordplay text",
+      "✓ indicator \"muddled\" is present verbatim in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T12:56:20.975Z"
+  },
+  {
+    "id": "8474714d-710a-48e0-9414-3f0bcddd8308",
+    "answer": "LEMONADE",
+    "enumeration": "(8)",
+    "device": "hidden",
+    "definition": "Citrus drink",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "hidden in",
+      "components": [
+        "SOLE",
+        "MONADES"
+      ],
+      "operation": "hidden(LEMONADE, in=\"SOLE MONADES\")"
+    },
+    "surface": "Citrus drink hidden in sole monades collected from the shore (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"LEMONADE\" spans the join between \"SOLE\" and \"MONADES\"",
+      "✓ indicator \"hidden in\" found in hidden-word indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"Citrus drink\" ---",
+      "… \"Citrus drink\" is not an exact WordNet synonym of \"LEMONADE\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"Citrus drink\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"Citrus drink\"",
+      "✓ indicator \"hidden in\" is present verbatim in the wordplay text",
+      "✓ \"LEMONADE\" appears spanning a real word boundary in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T12:56:28.355Z"
+  },
+  {
+    "id": "22362b67-0554-4467-9b3c-3d54b618164d",
+    "answer": "DOUGHNUT",
+    "enumeration": "(8)",
+    "device": "hidden",
+    "definition": "ring-shaped pastry",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "held by",
+      "components": [
+        "SOURDOUGH",
+        "NUTS"
+      ],
+      "operation": "hidden(DOUGHNUT, in=\"SOURDOUGH NUTS\")"
+    },
+    "surface": "held by sourdough nuts ring-shaped pastry (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"DOUGHNUT\" spans the join between \"SOURDOUGH\" and \"NUTS\"",
+      "✓ indicator \"held by\" found in hidden-word indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"ring-shaped pastry\" ---",
+      "… \"ring-shaped pastry\" is not an exact WordNet synonym of \"DOUGHNUT\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"ring-shaped pastry\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"ring-shaped pastry\"",
+      "✓ indicator \"held by\" is present verbatim in the wordplay text",
+      "✓ \"DOUGHNUT\" appears spanning a real word boundary in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T12:56:36.162Z"
+  },
+  {
+    "id": "3747e65b-1db2-4507-baf6-61c5aa3b47ac",
+    "answer": "TROUSERS",
+    "enumeration": "(8)",
+    "device": "anagram",
+    "definition": "pants",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "scrambled",
+      "fodder": "TRESSOUR",
+      "operation": "anagram(TROUSERS, fodder=TRESSOUR)"
+    },
+    "surface": "pants made from scrambled tressour (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ fodder \"TRESSOUR\" is a different word from the answer",
+      "✓ fodder letters (EORRSSTU) match answer letters (EORRSSTU) when sorted",
+      "✓ indicator \"scrambled\" found in anagram indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"pants\" ---",
+      "… \"pants\" is not an exact WordNet synonym of \"TROUSERS\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"pants\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"pants\"",
+      "✓ fodder \"TRESSOUR\" is present verbatim in the wordplay text",
+      "✓ indicator \"scrambled\" is present verbatim in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T12:56:43.206Z"
+  },
+  {
+    "id": "48dc0cb6-d937-4fd9-9242-d3dd1a234247",
+    "answer": "EARRINGS",
+    "enumeration": "(8)",
+    "device": "container",
+    "definition": "Ear jewelry",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "holding",
+      "components": [
+        "EARS",
+        "RING"
+      ],
+      "operation": "container(EARRINGS, outer=EARS, inner=RING)"
+    },
+    "surface": "Ear jewelry is ring holding ears of corn (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"EARS\" resolves to letters: EARS",
+      "✓ \"RING\" resolves to letters: RING",
+      "✓ inserting \"RING\" into \"EARS\" reproduces the answer \"EARRINGS\"",
+      "✓ indicator \"holding\" found in container indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"Ear jewelry\" ---",
+      "… \"EARRINGS\" has no WordNet entry — definition can't be auto-verified, routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"Ear jewelry\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"Ear jewelry\"",
+      "✓ indicator \"holding\" is present verbatim in the wordplay text",
+      "✓ both \"EARS\" and \"RING\" are present in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T12:56:49.419Z"
+  },
+  {
+    "id": "ccae408f-2434-48d9-b0f8-e9a297b8bbcd",
+    "answer": "CARDIGAN",
+    "enumeration": "(8)",
+    "device": "anagram",
+    "definition": "Button-up sweater",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "adapted",
+      "fodder": "CARANGID",
+      "operation": "anagram(CARDIGAN, fodder=CARANGID)"
+    },
+    "surface": "worn by fisherman, adapted carangid Button-up sweater (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ fodder \"CARANGID\" is a different word from the answer",
+      "✓ fodder letters (AACDGINR) match answer letters (AACDGINR) when sorted",
+      "✓ indicator \"adapted\" found in anagram indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"Button-up sweater\" ---",
+      "… \"Button-up sweater\" is not an exact WordNet synonym of \"CARDIGAN\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"Button-up sweater\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"Button-up sweater\"",
+      "✓ fodder \"CARANGID\" is present verbatim in the wordplay text",
+      "✓ indicator \"adapted\" is present verbatim in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T12:56:57.295Z"
+  },
+  {
+    "id": "be3ecdb3-0051-4860-8b18-ee52048e557c",
+    "answer": "DISGUISE",
+    "enumeration": "(8)",
+    "device": "charade",
+    "definition": "costume",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "and",
+      "components": [
+        "DIS",
+        "GUISE"
+      ],
+      "operation": "charade(DISGUISE, parts=[DIS, GUISE])"
+    },
+    "surface": "costume worn to dis and guise one's identity (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"DIS\" resolves to letters: DIS",
+      "✓ \"GUISE\" resolves to letters: GUISE",
+      "✓ \"DIS\" + \"GUISE\" concatenates to the answer \"DISGUISE\"",
+      "✓ indicator \"and\" found in charade indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"costume\" ---",
+      "… \"costume\" is not an exact WordNet synonym of \"DISGUISE\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"costume\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"costume\"",
+      "✓ indicator \"and\" is present verbatim in the wordplay text",
+      "✓ \"DIS\" appears before \"GUISE\" in the wordplay text, matching charade order"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T13:00:48.127Z"
+  },
+  {
+    "id": "76b7e9b4-8f24-4f75-949f-1d39c78cf808",
     "answer": "MAGAZINE",
     "enumeration": "(8)",
     "device": "charade",
     "definition": "periodical",
-    "definitionPosition": "start",
+    "definitionPosition": "end",
     "wordplay": {
       "indicator": "and",
       "components": [
@@ -2807,7 +1719,7 @@
       ],
       "operation": "charade(MAGAZINE, parts=[MAG, AZINE])"
     },
-    "surface": "periodical containing mag and azine, oddly stored in rifle (8)",
+    "surface": "containing mag and azine, oddly periodical (8)",
     "verified": true,
     "verificationLog": [
       "✓ \"MAG\" resolves to letters: MAG",
@@ -2819,13 +1731,49 @@
       "… \"periodical\" is not an exact WordNet synonym of \"MAGAZINE\" — routing to review",
       "--- surface attempt 1/3 ---",
       "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"periodical\") sits at the start of the clue, per §2",
+      "✓ definition (\"periodical\") sits at the end of the clue, per §2",
       "✓ definition part contains the seeded definition \"periodical\"",
       "✓ indicator \"and\" is present verbatim in the wordplay text",
       "✓ \"MAG\" appears before \"AZINE\" in the wordplay text, matching charade order"
     ],
     "difficulty": 0,
     "reviewRequired": true,
-    "createdAt": "2026-08-11T10:24:18.460Z"
+    "createdAt": "2026-08-11T13:00:53.626Z"
+  },
+  {
+    "id": "5088c186-a0b7-4b35-9b17-c59c8eaba0d8",
+    "answer": "LANGUAGE",
+    "enumeration": "(8)",
+    "device": "container",
+    "definition": "tongue",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "surrounding",
+      "components": [
+        "LANGUE",
+        "AG"
+      ],
+      "operation": "container(LANGUAGE, outer=LANGUE, inner=AG)"
+    },
+    "surface": "tongue is ag surrounding langue, farmers say (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"LANGUE\" resolves to letters: LANGUE",
+      "✓ \"AG\" resolves to letters: AG",
+      "✓ inserting \"AG\" into \"LANGUE\" reproduces the answer \"language\"",
+      "✓ indicator \"surrounding\" found in container indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"tongue\" ---",
+      "… \"tongue\" is not an exact WordNet synonym of \"language\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"tongue\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"tongue\"",
+      "✓ indicator \"surrounding\" is present verbatim in the wordplay text",
+      "✓ both \"LANGUE\" and \"AG\" are present in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T08:18:10.267Z"
   }
 ]
