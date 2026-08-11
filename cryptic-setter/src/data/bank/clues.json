@@ -1,1 +1,552 @@
-[]
+[
+  {
+    "id": "f1799750-7693-4534-9a98-f97c6c6370d4",
+    "answer": "VACATION",
+    "enumeration": "(8)",
+    "device": "deletion",
+    "definition": "holiday",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "endless",
+      "fodder": "VACATIONS",
+      "operation": "deletion(VACATION, type=curtail, source=VACATIONS)"
+    },
+    "surface": "holiday is what endless vacations give you (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"VACATIONS\" is a real dictionary word",
+      "✓ indicator \"endless\" identifies deletion type \"curtail\"",
+      "✓ curtail-ing \"VACATIONS\" gives the answer \"vacation\"",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"holiday\" ---",
+      "✓ \"holiday\" is a WordNet-listed synonym of \"vacation\"",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"holiday\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"holiday\"",
+      "✓ fodder \"VACATIONS\" is present verbatim in the wordplay text",
+      "✓ indicator \"endless\" is present verbatim in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": false,
+    "createdAt": "2026-08-11T08:19:00.159Z"
+  },
+  {
+    "id": "8a89e866-68b2-411c-a8b2-e7bc0e23f902",
+    "answer": "DIRECTOR",
+    "enumeration": "(8)",
+    "device": "anagram",
+    "definition": "manager",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "muddled",
+      "fodder": "CREDITOR",
+      "operation": "anagram(DIRECTOR, fodder=CREDITOR)"
+    },
+    "surface": "manager is a muddled creditor (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ fodder \"CREDITOR\" is a different word from the answer",
+      "✓ fodder letters (CDEIORRT) match answer letters (CDEIORRT) when sorted",
+      "✓ indicator \"muddled\" found in anagram indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"manager\" ---",
+      "✓ \"manager\" is a WordNet-listed synonym of \"director\"",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"manager\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"manager\"",
+      "✓ fodder \"CREDITOR\" is present verbatim in the wordplay text",
+      "✓ indicator \"muddled\" is present verbatim in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": false,
+    "createdAt": "2026-08-11T08:19:06.034Z"
+  },
+  {
+    "id": "07adada6-70b5-4013-974d-ae57c8868aef",
+    "answer": "CONTINUE",
+    "enumeration": "(8)",
+    "device": "deletion",
+    "definition": "carry on",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "curtailed",
+      "fodder": "CONTINUER",
+      "operation": "deletion(CONTINUE, type=curtail, source=CONTINUER)"
+    },
+    "surface": "carry on as continuer curtailed (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"CONTINUER\" is a real dictionary word",
+      "✓ indicator \"curtailed\" identifies deletion type \"curtail\"",
+      "✓ curtail-ing \"CONTINUER\" gives the answer \"continue\"",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"carry on\" ---",
+      "✓ \"carry on\" is a WordNet-listed synonym of \"continue\"",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"carry on\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"carry on\"",
+      "✓ fodder \"CONTINUER\" is present verbatim in the wordplay text",
+      "✓ indicator \"curtailed\" is present verbatim in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": false,
+    "createdAt": "2026-08-11T08:19:17.346Z"
+  },
+  {
+    "id": "53dca83c-4e3b-4a08-9368-4a39053ea2d1",
+    "answer": "SUNSHINE",
+    "enumeration": "(8)",
+    "device": "container",
+    "definition": "sunlight",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "around",
+      "components": [
+        "SHINE",
+        "UNS"
+      ],
+      "operation": "container(SUNSHINE, outer=SHINE, inner=UNS)"
+    },
+    "surface": "sunlight brings shine around UNs delegates gathered (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"SHINE\" resolves to letters: SHINE",
+      "✓ \"UNS\" resolves to letters: UNS",
+      "✓ inserting \"UNS\" into \"SHINE\" reproduces the answer \"sunshine\"",
+      "✓ indicator \"around\" found in container indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"sunlight\" ---",
+      "✓ \"sunlight\" is a WordNet-listed synonym of \"sunshine\"",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"sunlight\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"sunlight\"",
+      "✓ indicator \"around\" is present verbatim in the wordplay text",
+      "✓ both \"SHINE\" and \"UNS\" are present in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": false,
+    "createdAt": "2026-08-11T08:19:30.583Z"
+  },
+  {
+    "id": "84b35ac1-b17f-4d14-9fe1-d4b95bb8a23c",
+    "answer": "HANDSOME",
+    "enumeration": "(8)",
+    "device": "container",
+    "definition": "good-looking",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "enclosing",
+      "components": [
+        "HOME",
+        "ANDS"
+      ],
+      "operation": "container(HANDSOME, outer=HOME, inner=ANDS)"
+    },
+    "surface": "with home enclosing ands, oddly good-looking (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"HOME\" resolves to letters: HOME",
+      "✓ \"ANDS\" resolves to letters: ANDS",
+      "✓ inserting \"ANDS\" into \"HOME\" reproduces the answer \"handsome\"",
+      "✓ indicator \"enclosing\" found in container indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"good-looking\" ---",
+      "✓ \"good-looking\" is a WordNet-listed synonym of \"handsome\"",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"good-looking\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"good-looking\"",
+      "✓ indicator \"enclosing\" is present verbatim in the wordplay text",
+      "✓ both \"HOME\" and \"ANDS\" are present in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": false,
+    "createdAt": "2026-08-11T08:19:36.722Z"
+  },
+  {
+    "id": "c8a257de-041c-46cf-9553-ea76f836b573",
+    "answer": "BACKPACK",
+    "enumeration": "(8)",
+    "device": "charade",
+    "definition": "knapsack",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "followed by",
+      "components": [
+        "BACK",
+        "PACK"
+      ],
+      "operation": "charade(BACKPACK, parts=[BACK, PACK])"
+    },
+    "surface": "knapsack is back followed by pack of wolves returning (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"BACK\" resolves to letters: BACK",
+      "✓ \"PACK\" resolves to letters: PACK",
+      "✓ \"BACK\" + \"PACK\" concatenates to the answer \"backpack\"",
+      "✓ indicator \"followed by\" found in charade indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"knapsack\" ---",
+      "✓ \"knapsack\" is a WordNet-listed synonym of \"backpack\"",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"knapsack\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"knapsack\"",
+      "✓ indicator \"followed by\" is present verbatim in the wordplay text",
+      "✓ \"BACK\" appears before \"PACK\" in the wordplay text, matching charade order"
+    ],
+    "difficulty": 0,
+    "reviewRequired": false,
+    "createdAt": "2026-08-11T08:20:17.759Z"
+  },
+  {
+    "id": "c24e6856-40d7-47ad-be7a-5495565cae8a",
+    "answer": "STAIRWAY",
+    "enumeration": "(8)",
+    "device": "charade",
+    "definition": "staircase",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "then",
+      "components": [
+        "ST",
+        "AIRWAY"
+      ],
+      "operation": "charade(STAIRWAY, parts=[ST, AIRWAY])"
+    },
+    "surface": "staircase is St then airway for flight crew (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"ST\" resolves to letters: ST",
+      "✓ \"AIRWAY\" resolves to letters: AIRWAY",
+      "✓ \"ST\" + \"AIRWAY\" concatenates to the answer \"stairway\"",
+      "✓ indicator \"then\" found in charade indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"staircase\" ---",
+      "✓ \"staircase\" is a WordNet-listed synonym of \"stairway\"",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"staircase\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"staircase\"",
+      "✓ indicator \"then\" is present verbatim in the wordplay text",
+      "✓ \"ST\" appears before \"AIRWAY\" in the wordplay text, matching charade order"
+    ],
+    "difficulty": 0,
+    "reviewRequired": false,
+    "createdAt": "2026-08-11T08:20:38.288Z"
+  },
+  {
+    "id": "9dd745a4-ed83-4ec2-9e58-dd7ab3501377",
+    "answer": "SIDEWALK",
+    "enumeration": "(8)",
+    "device": "hidden",
+    "definition": "pavement",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "part of",
+      "components": [
+        "OUTSIDE",
+        "WALKS"
+      ],
+      "operation": "hidden(SIDEWALK, in=\"OUTSIDE WALKS\")"
+    },
+    "surface": "is part of outside walks, oddly enough pavement (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"sidewalk\" spans the join between \"OUTSIDE\" and \"WALKS\"",
+      "✓ indicator \"part of\" found in hidden-word indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"pavement\" ---",
+      "✓ \"pavement\" is a WordNet-listed synonym of \"sidewalk\"",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"pavement\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"pavement\"",
+      "✓ indicator \"part of\" is present verbatim in the wordplay text",
+      "✓ \"sidewalk\" appears spanning a real word boundary in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": false,
+    "createdAt": "2026-08-11T08:20:52.257Z"
+  },
+  {
+    "id": "365a176d-5b82-4c8c-9c83-541f705c3fcb",
+    "answer": "DRIVEWAY",
+    "enumeration": "(8)",
+    "device": "deletion",
+    "definition": "private road",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "tailless",
+      "fodder": "DRIVEWAYS",
+      "operation": "deletion(DRIVEWAY, type=curtail, source=DRIVEWAYS)"
+    },
+    "surface": "seen where tailless driveways run private road (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"DRIVEWAYS\" is a real dictionary word",
+      "✓ indicator \"tailless\" identifies deletion type \"curtail\"",
+      "✓ curtail-ing \"DRIVEWAYS\" gives the answer \"driveway\"",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"private road\" ---",
+      "✓ \"private road\" is a WordNet-listed synonym of \"driveway\"",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"private road\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"private road\"",
+      "✓ fodder \"DRIVEWAYS\" is present verbatim in the wordplay text",
+      "✓ indicator \"tailless\" is present verbatim in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": false,
+    "createdAt": "2026-08-11T08:20:58.598Z"
+  },
+  {
+    "id": "0d43e270-f5e8-41b0-bc5c-432e504dba4c",
+    "answer": "BASEMENT",
+    "enumeration": "(8)",
+    "device": "container",
+    "definition": "cellar",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "surrounding",
+      "components": [
+        "BANT",
+        "SEME"
+      ],
+      "operation": "container(BASEMENT, outer=BANT, inner=SEME)"
+    },
+    "surface": "Seme surrounding Bant, oddly, for storage cellar (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"BANT\" resolves to letters: BANT",
+      "✓ \"SEME\" resolves to letters: SEME",
+      "✓ inserting \"SEME\" into \"BANT\" reproduces the answer \"basement\"",
+      "✓ indicator \"surrounding\" found in container indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"cellar\" ---",
+      "✓ \"cellar\" is a WordNet-listed synonym of \"basement\"",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"cellar\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"cellar\"",
+      "✓ indicator \"surrounding\" is present verbatim in the wordplay text",
+      "✓ both \"BANT\" and \"SEME\" are present in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": false,
+    "createdAt": "2026-08-11T08:21:03.564Z"
+  },
+  {
+    "id": "0dfeaa5d-cff5-41a9-8bb1-a6bfcfdd4244",
+    "answer": "HOMELAND",
+    "enumeration": "(8)",
+    "device": "deletion",
+    "definition": "native land",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "endless",
+      "fodder": "HOMELANDS",
+      "operation": "deletion(HOMELAND, type=curtail, source=HOMELANDS)"
+    },
+    "surface": "where endless homelands stretch out native land (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"HOMELANDS\" is a real dictionary word",
+      "✓ indicator \"endless\" identifies deletion type \"curtail\"",
+      "✓ curtail-ing \"HOMELANDS\" gives the answer \"homeland\"",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"native land\" ---",
+      "✓ \"native land\" is a WordNet-listed synonym of \"homeland\"",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"native land\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"native land\"",
+      "✓ fodder \"HOMELANDS\" is present verbatim in the wordplay text",
+      "✓ indicator \"endless\" is present verbatim in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": false,
+    "createdAt": "2026-08-11T08:21:34.119Z"
+  },
+  {
+    "id": "24827d4b-dba0-4d39-8c46-574a9321a2fe",
+    "answer": "CROSSING",
+    "enumeration": "(8)",
+    "device": "anagram",
+    "definition": "intersection",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "in disarray",
+      "fodder": "SCORSING",
+      "operation": "anagram(CROSSING, fodder=SCORSING)"
+    },
+    "surface": "formed by Scorsing in disarray intersection (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ fodder \"SCORSING\" is a different word from the answer",
+      "✓ fodder letters (CGINORSS) match answer letters (CGINORSS) when sorted",
+      "✓ indicator \"in disarray\" found in anagram indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"intersection\" ---",
+      "✓ \"intersection\" is a WordNet-listed synonym of \"crossing\"",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"intersection\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"intersection\"",
+      "✓ fodder \"SCORSING\" is present verbatim in the wordplay text",
+      "✓ indicator \"in disarray\" is present verbatim in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": false,
+    "createdAt": "2026-08-11T08:22:03.631Z"
+  },
+  {
+    "id": "5b832872-4b1a-454f-83f7-f91ac4ec6474",
+    "answer": "ELEVATOR",
+    "enumeration": "(8)",
+    "device": "charade",
+    "definition": "Lift",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "plus",
+      "components": [
+        "EAST",
+        "LEVATOR"
+      ],
+      "operation": "charade(ELEVATOR, parts=[EAST, LEVATOR])"
+    },
+    "surface": "Lift from east plus levator muscle rebuilt (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"EAST\" resolves to letters: EAST, E",
+      "✓ \"LEVATOR\" resolves to letters: LEVATOR",
+      "✓ \"EAST\" + \"LEVATOR\" concatenates to the answer \"elevator\"",
+      "✓ indicator \"plus\" found in charade indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"Lift\" ---",
+      "✓ \"Lift\" is a WordNet-listed synonym of \"elevator\"",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"Lift\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"Lift\"",
+      "✓ indicator \"plus\" is present verbatim in the wordplay text",
+      "✓ \"EAST\" appears before \"LEVATOR\" in the wordplay text, matching charade order"
+    ],
+    "difficulty": 0,
+    "reviewRequired": false,
+    "createdAt": "2026-08-11T08:22:15.297Z"
+  },
+  {
+    "id": "7aea98b6-d4e4-491b-8d60-ffae3aecb734",
+    "answer": "SEASHORE",
+    "enumeration": "(8)",
+    "device": "container",
+    "definition": "coast",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "around",
+      "components": [
+        "SHORE",
+        "EAS"
+      ],
+      "operation": "container(SEASHORE, outer=SHORE, inner=EAS)"
+    },
+    "surface": "eas around shore coast (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"SHORE\" resolves to letters: SHORE",
+      "✓ \"EAS\" resolves to letters: EAS",
+      "✓ inserting \"EAS\" into \"SHORE\" reproduces the answer \"seashore\"",
+      "✓ indicator \"around\" found in container indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"coast\" ---",
+      "✓ \"coast\" is a WordNet-listed synonym of \"seashore\"",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"coast\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"coast\"",
+      "✓ indicator \"around\" is present verbatim in the wordplay text",
+      "✓ both \"SHORE\" and \"EAS\" are present in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": false,
+    "createdAt": "2026-08-11T08:22:35.038Z"
+  },
+  {
+    "id": "91f6ec18-355f-4763-942d-25d94778520e",
+    "answer": "SEAWATER",
+    "enumeration": "(8)",
+    "device": "container",
+    "definition": "brine",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "surrounding",
+      "components": [
+        "SEATER",
+        "AW"
+      ],
+      "operation": "container(SEAWATER, outer=SEATER, inner=AW)"
+    },
+    "surface": "brine from four-seater surrounding awful crash (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"SEATER\" resolves to letters: SEATER",
+      "✓ \"AW\" resolves to letters: AW",
+      "✓ inserting \"AW\" into \"SEATER\" reproduces the answer \"seawater\"",
+      "✓ indicator \"surrounding\" found in container indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"brine\" ---",
+      "✓ \"brine\" is a WordNet-listed synonym of \"seawater\"",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"brine\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"brine\"",
+      "✓ indicator \"surrounding\" is present verbatim in the wordplay text",
+      "✓ both \"SEATER\" and \"AW\" are present in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": false,
+    "createdAt": "2026-08-11T08:22:40.692Z"
+  },
+  {
+    "id": "db48d074-55d0-4d45-9446-d5092caba47d",
+    "answer": "OVERCOAT",
+    "enumeration": "(8)",
+    "device": "charade",
+    "definition": "topcoat",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "next to",
+      "components": [
+        "OVER",
+        "COAT"
+      ],
+      "operation": "charade(OVERCOAT, parts=[OVER, COAT])"
+    },
+    "surface": "topcoat is over next to coat (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"OVER\" resolves to letters: OVER",
+      "✓ \"COAT\" resolves to letters: COAT",
+      "✓ \"OVER\" + \"COAT\" concatenates to the answer \"overcoat\"",
+      "✓ indicator \"next to\" found in charade indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"topcoat\" ---",
+      "✓ \"topcoat\" is a WordNet-listed synonym of \"overcoat\"",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"topcoat\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"topcoat\"",
+      "✓ indicator \"next to\" is present verbatim in the wordplay text",
+      "✓ \"OVER\" appears before \"COAT\" in the wordplay text, matching charade order"
+    ],
+    "difficulty": 0,
+    "reviewRequired": false,
+    "createdAt": "2026-08-11T08:23:19.832Z"
+  }
+]
