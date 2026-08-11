@@ -327,6 +327,18 @@ function render() {
   renderActiveClue();
   renderClueList();
   renderKeyboard();
+  syncKbdHeight();
+}
+
+// The fixed keyboard pane now includes the active clue bar, whose height
+// varies with clue length (it can wrap to two or three lines) — the
+// scrollable area above needs to reserve exactly that much space so its
+// own content never ends up hidden underneath the pane. Measuring the
+// real rendered height beats guessing a constant.
+function syncKbdHeight() {
+  const kbd = document.getElementById('keyboard');
+  const height = kbd.style.display === 'none' ? 0 : kbd.offsetHeight;
+  document.documentElement.style.setProperty('--kbd-height', `${height}px`);
 }
 
 function renderGrid() {
@@ -485,6 +497,7 @@ function renderKeyboard() {
 function showSolvedPanel() {
   document.getElementById('solved-panel').classList.add('show');
   document.getElementById('keyboard').style.display = 'none';
+  syncKbdHeight();
   const elapsed = Math.max(0, Math.round((state.finishTime - state.startTime) / 1000));
   const mm = Math.floor(elapsed / 60);
   const ss = String(elapsed % 60).padStart(2, '0');
