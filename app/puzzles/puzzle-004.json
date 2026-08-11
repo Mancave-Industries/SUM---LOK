@@ -8,8 +8,8 @@
       "row": 0,
       "col": 0,
       "answer": "LEMONADE",
-      "clue": "Citrus drink hidden in sole monades collected from the shore (8)",
-      "device": "hidden",
+      "clue": "Philosopher's monad containing Lee's spirit citrus drink (8)",
+      "device": "container",
       "bonus": false
     },
     {
@@ -18,7 +18,7 @@
       "row": 3,
       "col": 0,
       "answer": "DOORSTEP",
-      "clue": "where crazy torpedos might land, at the sub's entrance threshold (8)",
+      "clue": "where damaged torpedos ended up washed ashore entrance threshold (8)",
       "device": "anagram",
       "bonus": false
     },
@@ -28,8 +28,8 @@
       "row": 7,
       "col": 0,
       "answer": "DOUGHNUT",
-      "clue": "held by sourdough nuts ring-shaped pastry (8)",
-      "device": "hidden",
+      "clue": "baker's dough followed by nut, squirrel finds ring-shaped fried cake (8)",
+      "device": "charade",
       "bonus": true
     },
     {
@@ -38,8 +38,8 @@
       "row": 0,
       "col": 0,
       "answer": "LANDLORD",
-      "clue": "could be found where you land then lord it over tenants property owner (8)",
-      "device": "charade",
+      "clue": "Property owner who rents is concealed in Portland lording it over renters (8)",
+      "device": "hidden",
       "bonus": false
     },
     {
@@ -48,8 +48,8 @@
       "row": 0,
       "col": 3,
       "answer": "OVERHANG",
-      "clue": "found within Dover hanging cliffs Projecting ledge (8)",
-      "device": "hidden",
+      "clue": "forms above damaged hangover projecting ledge (8)",
+      "device": "anagram",
       "bonus": false
     },
     {
@@ -58,7 +58,7 @@
       "row": 0,
       "col": 7,
       "answer": "ELEPHANT",
-      "clue": "held within priest's anele phantom limb still aches large tusked mammal (8)",
+      "clue": "Large tusked mammal buried in Estonia's ekuele phantom currency trade resurfaces (8)",
       "device": "hidden",
       "bonus": false
     }

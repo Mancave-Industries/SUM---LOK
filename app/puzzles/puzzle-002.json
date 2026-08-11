@@ -8,7 +8,7 @@
       "row": 0,
       "col": 0,
       "answer": "TELEGRAM",
-      "clue": "found part of eustele grammar oddly confused botanist's plant textbook wired message (8)",
+      "clue": "buried in loyal clientele grams of gold went missing wired message (8)",
       "device": "hidden",
       "bonus": false
     },
@@ -18,7 +18,7 @@
       "row": 3,
       "col": 0,
       "answer": "UMBRELLA",
-      "clue": "from umbellar muddled botanical notes rain shade (8)",
+      "clue": "botanist's umbellar specimens arranged randomly make a rain shield (8)",
       "device": "anagram",
       "bonus": false
     },
@@ -28,8 +28,8 @@
       "row": 7,
       "col": 0,
       "answer": "SEASHORE",
-      "clue": "coast concealed in overseas horehounds, gathered for remedies (8)",
-      "device": "hidden",
+      "clue": "where eas holding shore leave get drunk Coast (8)",
+      "device": "container",
       "bonus": true
     },
     {
@@ -38,8 +38,8 @@
       "row": 0,
       "col": 0,
       "answer": "TROUSERS",
-      "clue": "pants made from scrambled tressour (8)",
-      "device": "anagram",
+      "clue": "need to trouser before second thoughts pants (8)",
+      "device": "charade",
       "bonus": false
     },
     {
@@ -48,7 +48,7 @@
       "row": 0,
       "col": 3,
       "answer": "EARRINGS",
-      "clue": "Ear jewelry is ring holding ears of corn (8)",
+      "clue": "Ear jewelry is ears containing ring during piercing session (8)",
       "device": "container",
       "bonus": false
     },
@@ -58,7 +58,7 @@
       "row": 0,
       "col": 7,
       "answer": "MAGAZINE",
-      "clue": "containing mag and azine, oddly periodical (8)",
+      "clue": "old mag and azine section revamped into periodical (8)",
       "device": "charade",
       "bonus": false
     }

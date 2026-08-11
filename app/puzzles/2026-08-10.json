@@ -8,8 +8,8 @@
       "row": 0,
       "col": 0,
       "answer": "EASTWARD",
-      "clue": "where strange radwaste travels toward the east (8)",
-      "device": "anagram",
+      "clue": "is east before ward, the nurse said, pointing toward the sunrise (8)",
+      "device": "charade",
       "bonus": false
     },
     {
@@ -18,7 +18,7 @@
       "row": 3,
       "col": 0,
       "answer": "CARNIVAL",
-      "clue": "festival with car before nival (8)",
+      "clue": "gets nosy neighbours parking the car beside nival heaps of snow left by the plough festival (8)",
       "device": "charade",
       "bonus": false
     },
@@ -28,7 +28,7 @@
       "row": 7,
       "col": 0,
       "answer": "CLARINET",
-      "clue": "made from claret, in a net, oddly woodwind instrument (8)",
+      "clue": "holding claret in, waiter spills the vintage cabinet's secret woodwind instrument (8)",
       "device": "container",
       "bonus": false
     },
@@ -38,7 +38,7 @@
       "row": 0,
       "col": 0,
       "answer": "ELECTRIC",
-      "clue": "Powered by electricity concealed in select rice grain mix (8)",
+      "clue": "manager's brief to select rich clients partly explains it Powered by current (8)",
       "device": "hidden",
       "bonus": false
     },
@@ -48,8 +48,8 @@
       "row": 0,
       "col": 3,
       "answer": "TEENAGER",
-      "clue": "Adolescent found within nineteen ageratum plants (8)",
-      "device": "hidden",
+      "clue": "Adolescent is what adapted power plants generate (8)",
+      "device": "anagram",
       "bonus": false
     },
     {
@@ -58,8 +58,8 @@
       "row": 0,
       "col": 7,
       "answer": "DAYLIGHT",
-      "clue": "sunlight is day plus light not delivered (8)",
-      "device": "charade",
+      "clue": "was housed by yesterday lightning storms before dawn sunlight (8)",
+      "device": "hidden",
       "bonus": true
     }
   ]

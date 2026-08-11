@@ -12,6 +12,7 @@ import {
   combineSurfaceParts,
   verifyDefinitionAtEnd,
   verifyDefinitionDoesNotEchoWordplay,
+  verifyWordplayDoesNotRepeatDefinition,
   verifyEnumeration,
 } from '../verify/structural.js';
 import { verifyDefinitionMeaning } from '../verify/definition.js';
@@ -116,6 +117,9 @@ export async function generateClue(options: GenerateClueOptions): Promise<Genera
     const echoCheck = verifyDefinitionDoesNotEchoWordplay(parts.definitionText, construction.wordplay);
     log.push(...echoCheck.log);
 
+    const repeatCheck = verifyWordplayDoesNotRepeatDefinition(parts.wordplayText, definition);
+    log.push(...repeatCheck.log);
+
     // Fodder-based devices need the literal fodder string checked here.
     // Components-based devices (hidden, initials, charade, container) skip
     // this — their surface fairness is a structural property checked by
@@ -154,6 +158,7 @@ export async function generateClue(options: GenerateClueOptions): Promise<Genera
     const allPassed =
       structuralCheck.passed &&
       echoCheck.passed &&
+      repeatCheck.passed &&
       fodderPresent &&
       indicatorPresent &&
       surfaceCheckPassed;
