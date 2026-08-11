@@ -1599,5 +1599,109 @@
     "difficulty": 0,
     "reviewRequired": true,
     "createdAt": "2026-08-11T09:06:42.777Z"
+  },
+  {
+    "id": "81e4a38d-6c20-4b77-a38d-5b1e51dfc8d0",
+    "answer": "HEIRLOOM",
+    "enumeration": "(8)",
+    "device": "deletion",
+    "definition": "family treasure",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "tailless",
+      "fodder": "HEIRLOOMS",
+      "operation": "deletion(HEIRLOOM, type=curtail, source=HEIRLOOMS)"
+    },
+    "surface": "is tailless heirlooms, oddly family treasure (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"HEIRLOOMS\" is a real dictionary word",
+      "✓ indicator \"tailless\" identifies deletion type \"curtail\"",
+      "✓ curtail-ing \"HEIRLOOMS\" gives the answer \"heirloom\"",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"family treasure\" ---",
+      "… \"family treasure\" is not an exact WordNet synonym of \"heirloom\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"family treasure\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"family treasure\"",
+      "✓ fodder \"HEIRLOOMS\" is present verbatim in the wordplay text",
+      "✓ indicator \"tailless\" is present verbatim in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T09:06:54.808Z"
+  },
+  {
+    "id": "207961db-d85a-42e2-9981-77cc7ebb0142",
+    "answer": "SUNLIGHT",
+    "enumeration": "(8)",
+    "device": "container",
+    "definition": "daylight",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "inside",
+      "components": [
+        "SLIGHT",
+        "UN"
+      ],
+      "operation": "container(SUNLIGHT, outer=SLIGHT, inner=UN)"
+    },
+    "surface": "seen with Un inside slight insult daylight (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"SLIGHT\" resolves to letters: SLIGHT",
+      "✓ \"UN\" resolves to letters: UN",
+      "✓ inserting \"UN\" into \"SLIGHT\" reproduces the answer \"sunlight\"",
+      "✓ indicator \"inside\" found in container indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"daylight\" ---",
+      "… \"daylight\" is not an exact WordNet synonym of \"sunlight\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"daylight\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"daylight\"",
+      "✓ indicator \"inside\" is present verbatim in the wordplay text",
+      "✓ both \"SLIGHT\" and \"UN\" are present in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T09:07:06.242Z"
+  },
+  {
+    "id": "39be75ca-f4ad-4ec3-9c7c-79277f2a4bce",
+    "answer": "RAINCOAT",
+    "enumeration": "(8)",
+    "device": "charade",
+    "definition": "Waterproof jacket",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "plus",
+      "components": [
+        "RAIN",
+        "COAT"
+      ],
+      "operation": "charade(RAINCOAT, parts=[RAIN, COAT])"
+    },
+    "surface": "Waterproof jacket is rain plus coat of paint applied outside (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"RAIN\" resolves to letters: RAIN",
+      "✓ \"COAT\" resolves to letters: COAT",
+      "✓ \"RAIN\" + \"COAT\" concatenates to the answer \"raincoat\"",
+      "✓ indicator \"plus\" found in charade indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"Waterproof jacket\" ---",
+      "… \"Waterproof jacket\" is not an exact WordNet synonym of \"raincoat\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"Waterproof jacket\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"Waterproof jacket\"",
+      "✓ indicator \"plus\" is present verbatim in the wordplay text",
+      "✓ \"RAIN\" appears before \"COAT\" in the wordplay text, matching charade order"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T09:07:12.612Z"
   }
 ]
