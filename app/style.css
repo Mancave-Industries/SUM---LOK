@@ -369,6 +369,18 @@ body {
 .kbd-key.yellow { background: var(--wordle-yellow); color: var(--wordle-tile-text); }
 .kbd-key.green { background: var(--wordle-green); color: var(--wordle-tile-text); }
 .kbd-key.wide { max-width: 46px; font-size: 14px; }
+/* The word is fully typed (often because crossing letters from other
+   solved entries filled most of it in) but not yet checked — Enter pulses
+   so it's obvious there's still a step left, instead of a complete-looking
+   word just sitting there uncolored. */
+.kbd-key.ready { background: var(--accent-strong); color: var(--wordle-tile-text); animation: ready-pulse 1s ease-in-out infinite; }
+@keyframes ready-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kbd-key.ready { animation: none; }
+}
 
 .solved-panel { display: none; text-align: center; padding: 8px 20px 4px; }
 .solved-panel.show { display: block; }

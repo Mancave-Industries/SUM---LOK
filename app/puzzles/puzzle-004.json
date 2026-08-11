@@ -8,8 +8,8 @@
       "row": 0,
       "col": 0,
       "answer": "LEMONADE",
-      "clue": "citrus drink is monad around Lee, philosopher's concept (8)",
-      "device": "container",
+      "clue": "Citrus drink hidden in sole monades collected from the shore (8)",
+      "device": "hidden",
       "bonus": false
     },
     {
@@ -18,8 +18,8 @@
       "row": 3,
       "col": 0,
       "answer": "DOORSTEP",
-      "clue": "where confused torpedos land entrance step (8)",
-      "device": "anagram",
+      "clue": "where you'd find door before step entrance step (8)",
+      "device": "charade",
       "bonus": false
     },
     {
@@ -28,8 +28,8 @@
       "row": 7,
       "col": 0,
       "answer": "DOUGHNUT",
-      "clue": "is donut enclosing ugh, oddly spelled ring-shaped cake (8)",
-      "device": "container",
+      "clue": "held by sourdough nuts ring-shaped pastry (8)",
+      "device": "hidden",
       "bonus": true
     },
     {
@@ -48,8 +48,8 @@
       "row": 0,
       "col": 3,
       "answer": "OVERHANG",
-      "clue": "when hangover randomly strikes jut out (8)",
-      "device": "anagram",
+      "clue": "found within Dover hanging cliffs Projecting ledge (8)",
+      "device": "hidden",
       "bonus": false
     },
     {

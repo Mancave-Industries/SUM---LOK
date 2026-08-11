@@ -469,6 +469,17 @@ function renderKeyboard() {
     btn.classList.remove('green', 'yellow', 'gray');
     if (status) btn.classList.add(status);
   });
+
+  // Crossing letters from other solved entries can fill in most (or all)
+  // of an entry before the player has typed anything themselves — so a
+  // fully-filled word can sit there looking "done" when it's actually just
+  // waiting on Enter. Light up Enter to make that explicit instead of
+  // leaving it to be discovered.
+  const entry = state.puzzle.entries[state.activeEntry];
+  const cells = entryCells(entry);
+  const isFull = !state.submitting && cells.every(({ r, c }) => state.letters[`${r},${c}`]);
+  const readyToSubmit = isFull && !isEntrySolved(state.activeEntry);
+  document.querySelector('.kbd-key[data-key="Enter"]')?.classList.toggle('ready', readyToSubmit);
 }
 
 function showSolvedPanel() {

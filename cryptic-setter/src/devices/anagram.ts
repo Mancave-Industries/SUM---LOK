@@ -5,6 +5,7 @@
 import type { DeviceModule, VerificationResult, Wordplay } from '../types.js';
 import { findAnagramCandidates } from './dictionary.js';
 import { pickRandom } from './random.js';
+import { preferCommon } from './commonWords.js';
 
 function sortedLetters(word: string): string {
   return word.toUpperCase().replace(/[^A-Z]/g, '').split('').sort().join('');
@@ -20,7 +21,10 @@ export const anagramDevice: DeviceModule = {
     const candidates = findAnagramCandidates(answer);
     if (candidates.length === 0) return null;
 
-    const fodder = pickRandom(candidates);
+    // Prefer a fodder word a solver would actually recognize ("radwaste")
+    // over an obscure-but-valid one ("dumaists") whenever a common option
+    // exists among this answer's anagrams.
+    const fodder = pickRandom(preferCommon(candidates));
     const indicator = pickRandom(indicatorBank);
 
     const wordplay: Wordplay = {

@@ -21,15 +21,18 @@ function preferShort(words: string[], shortlistSize = 30): string {
   return pickRandom(shortlist).toUpperCase();
 }
 
-// Scans every split point rather than stopping at the first one with any
-// legal host pair — otherwise a split whose only hosts are obscure
-// ("METAPHYSIC IANTHINE") wins by default over a later split point that
-// would have had common-word hosts available, just because it happened to
-// come first.
+// Scans every split point and ranks what it finds — both hosts common is
+// best, one host common is a fallback, neither common is discarded rather
+// than used, since that's how "METAPHYSIC IANTHINE"-style unreadable
+// surfaces got through before. Scanning the whole answer (not stopping at
+// the first split point with any legal host pair) also means a later split
+// with better hosts isn't skipped just because an earlier, worse one
+// happened to come first.
 function findHiddenHost(answer: string): { before: string; after: string } | null {
   const target = answer.toUpperCase();
   const words = getAllWords();
-  let fallback: { before: string; after: string } | null = null;
+  const bothCommon: { before: string; after: string }[] = [];
+  const oneCommon: { before: string; after: string }[] = [];
 
   for (let split = 1; split < target.length; split++) {
     const left = target.slice(0, split);
@@ -47,13 +50,14 @@ function findHiddenHost(answer: string): { before: string; after: string } | nul
 
     const hasCommonBefore = befores.some(isCommonWord);
     const hasCommonAfter = afters.some(isCommonWord);
-    if (hasCommonBefore && hasCommonAfter) {
-      return { before: preferShort(befores), after: preferShort(afters) };
-    }
-    if (!fallback) fallback = { before: preferShort(befores), after: preferShort(afters) };
+    const host = { before: preferShort(befores), after: preferShort(afters) };
+    if (hasCommonBefore && hasCommonAfter) bothCommon.push(host);
+    else if (hasCommonBefore || hasCommonAfter) oneCommon.push(host);
   }
 
-  return fallback;
+  if (bothCommon.length > 0) return pickRandom(bothCommon);
+  if (oneCommon.length > 0) return pickRandom(oneCommon);
+  return null;
 }
 
 // Splits the surface text into words, then checks whether the answer

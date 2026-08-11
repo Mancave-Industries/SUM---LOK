@@ -18,8 +18,8 @@
       "row": 3,
       "col": 0,
       "answer": "CARDIGAN",
-      "clue": "is Cardi before Gan appears on stage buttoned sweater (8)",
-      "device": "charade",
+      "clue": "worn by fisherman, adapted carangid Button-up sweater (8)",
+      "device": "anagram",
       "bonus": false
     },
     {
@@ -28,8 +28,8 @@
       "row": 7,
       "col": 0,
       "answer": "SUNSHINE",
-      "clue": "sunlight brings shine around UNs delegates gathered (8)",
-      "device": "container",
+      "clue": "is sun before shine polished up daylight (8)",
+      "device": "charade",
       "bonus": false
     },
     {
@@ -48,7 +48,7 @@
       "row": 0,
       "col": 3,
       "answer": "STADIUMS",
-      "clue": "arenas built from twisted Dumaists (8)",
+      "clue": "Arenas built where wrecked Dumaists gathered (8)",
       "device": "anagram",
       "bonus": false
     },

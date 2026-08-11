@@ -8,20 +8,21 @@
 import type { DeviceModule, VerificationResult, Wordplay } from '../types.js';
 import { findDisplayCandidates, resolveDisplayWord } from './wordResolution.js';
 import { pickRandom } from './random.js';
-import { preferCommon } from './commonWords.js';
+import { isCommonWord, preferCommon } from './commonWords.js';
 
 interface ContainerSplit {
   outerDisplay: string;
   innerDisplay: string;
 }
 
-// As with charade: prefer splits where both the outer and inner parts have
-// a recognizable-word option, only falling back to obscure dictionary
-// words when no split offers a common-word choice on both sides.
+// As with charade: a split where both the outer and inner parts are
+// recognizable words is best; one common side is a fallback; neither side
+// common is rejected outright rather than accepted as a last resort — that
+// unreadable-or-giveaway case is what let obscure pairs through before.
 function findContainerSplit(answer: string): ContainerSplit | null {
   const target = answer.toUpperCase();
-  const goodOptions: ContainerSplit[] = [];
-  const fallbackOptions: ContainerSplit[] = [];
+  const bothCommon: ContainerSplit[] = [];
+  const oneCommon: ContainerSplit[] = [];
 
   for (let i = 1; i < target.length; i++) {
     for (let j = i + 1; j < target.length; j++) {
@@ -34,20 +35,21 @@ function findContainerSplit(answer: string): ContainerSplit | null {
       const innerCandidates = findDisplayCandidates(innerLetters);
       if (innerCandidates.length === 0) continue;
 
-      const commonOuter = preferCommon(outerCandidates);
-      const commonInner = preferCommon(innerCandidates);
-      const isGood = commonOuter.length < outerCandidates.length && commonInner.length < innerCandidates.length;
-      const pool = isGood ? goodOptions : fallbackOptions;
-      pool.push({
-        outerDisplay: pickRandom(isGood ? commonOuter : outerCandidates),
-        innerDisplay: pickRandom(isGood ? commonInner : innerCandidates),
-      });
+      const commonOuter = outerCandidates.some(isCommonWord);
+      const commonInner = innerCandidates.some(isCommonWord);
+      if (!commonOuter && !commonInner) continue;
+      const split = {
+        outerDisplay: pickRandom(preferCommon(outerCandidates)),
+        innerDisplay: pickRandom(preferCommon(innerCandidates)),
+      };
+      if (commonOuter && commonInner) bothCommon.push(split);
+      else oneCommon.push(split);
     }
   }
 
-  const options = goodOptions.length > 0 ? goodOptions : fallbackOptions;
-  if (options.length === 0) return null;
-  return pickRandom(options);
+  if (bothCommon.length > 0) return pickRandom(bothCommon);
+  if (oneCommon.length > 0) return pickRandom(oneCommon);
+  return null;
 }
 
 export const containerDevice: DeviceModule = {

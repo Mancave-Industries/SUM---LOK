@@ -6,21 +6,24 @@
 import type { DeviceModule, VerificationResult, Wordplay } from '../types.js';
 import { findDisplayCandidates, resolveDisplayWord } from './wordResolution.js';
 import { pickRandom } from './random.js';
-import { preferCommon } from './commonWords.js';
+import { isCommonWord, preferCommon } from './commonWords.js';
 
 interface CharadeSplit {
   part1Display: string;
   part2Display: string;
 }
 
-// Splits where both parts have a recognizable-word option are preferred
-// over splits that only work via obscure dictionary words — otherwise a
-// perfectly readable "CAR + PET" split loses out on a coin flip to
-// something like "CARP + ET" just because more splits exist that way.
+// Splits where both parts are recognizable words are best (a "CAR + PET"
+// style pairing); a split with only one common side is a fallback; a split
+// where NEITHER side is common enough to recognize is rejected outright —
+// that's the case that let "CARDI + GAN" through for CARDIGAN, where
+// "cardi" is itself just an informal synonym of the answer. Better to let
+// the word fail this device and try another than accept a pairing nobody
+// would read as two real, separate words.
 function findCharadeSplit(answer: string): CharadeSplit | null {
   const target = answer.toUpperCase();
-  const goodSplits: CharadeSplit[] = [];
-  const fallbackSplits: CharadeSplit[] = [];
+  const bothCommon: CharadeSplit[] = [];
+  const oneCommon: CharadeSplit[] = [];
 
   for (let k = 1; k < target.length; k++) {
     const candidates1 = findDisplayCandidates(target.slice(0, k));
@@ -28,19 +31,20 @@ function findCharadeSplit(answer: string): CharadeSplit | null {
     const candidates2 = findDisplayCandidates(target.slice(k));
     if (candidates2.length === 0) continue;
 
-    const common1 = preferCommon(candidates1);
-    const common2 = preferCommon(candidates2);
-    const isGood = common1.length < candidates1.length && common2.length < candidates2.length;
-    const pool = isGood ? goodSplits : fallbackSplits;
-    pool.push({
-      part1Display: pickRandom(isGood ? common1 : candidates1),
-      part2Display: pickRandom(isGood ? common2 : candidates2),
-    });
+    const common1 = candidates1.some(isCommonWord);
+    const common2 = candidates2.some(isCommonWord);
+    if (!common1 && !common2) continue;
+    const split = {
+      part1Display: pickRandom(preferCommon(candidates1)),
+      part2Display: pickRandom(preferCommon(candidates2)),
+    };
+    if (common1 && common2) bothCommon.push(split);
+    else oneCommon.push(split);
   }
 
-  const splits = goodSplits.length > 0 ? goodSplits : fallbackSplits;
-  if (splits.length === 0) return null;
-  return pickRandom(splits);
+  if (bothCommon.length > 0) return pickRandom(bothCommon);
+  if (oneCommon.length > 0) return pickRandom(oneCommon);
+  return null;
 }
 
 export const charadeDevice: DeviceModule = {
