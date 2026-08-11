@@ -143,10 +143,14 @@ function currentPuzzleIndex(total) {
 // today's real date — there's no daily lock while this is still being
 // iterated on. goToPuzzle() below moves through the list and reloads.
 async function loadPuzzle() {
-  const manifest = await (await fetch('puzzles/manifest.json')).json();
+  // Puzzle content changes on every content update but the URL never
+  // does, so a plain fetch is exactly the case browsers (mobile Safari
+  // especially) cache indefinitely — cache: 'no-store' forces a fresh
+  // request instead of silently serving yesterday's clues.
+  const manifest = await (await fetch('puzzles/manifest.json', { cache: 'no-store' })).json();
   const index = currentPuzzleIndex(manifest.puzzles.length);
   const id = manifest.puzzles[index];
-  const puzzle = await (await fetch(`puzzles/${id}.json`)).json();
+  const puzzle = await (await fetch(`puzzles/${id}.json`, { cache: 'no-store' })).json();
   puzzle._id = id;
   puzzle._index = index;
   puzzle._total = manifest.puzzles.length;
