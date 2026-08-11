@@ -15,14 +15,14 @@ interface ContainerSplit {
   innerDisplay: string;
 }
 
-// As with charade: a split where both the outer and inner parts are
-// recognizable words is best; one common side is a fallback; neither side
-// common is rejected outright rather than accepted as a last resort — that
-// unreadable-or-giveaway case is what let obscure pairs through before.
+// As with charade: only a split where both the outer and inner parts are
+// common, recognizable words is used. A one-common-side fallback used to
+// exist here too, but an obscure required word is unwritable no matter how
+// the surface prompt is phrased — better to fail this device and try
+// another than force a word nobody would ever say into the sentence.
 function findContainerSplit(answer: string): ContainerSplit | null {
   const target = answer.toUpperCase();
   const bothCommon: ContainerSplit[] = [];
-  const oneCommon: ContainerSplit[] = [];
 
   for (let i = 1; i < target.length; i++) {
     for (let j = i + 1; j < target.length; j++) {
@@ -35,21 +35,16 @@ function findContainerSplit(answer: string): ContainerSplit | null {
       const innerCandidates = findDisplayCandidates(innerLetters);
       if (innerCandidates.length === 0) continue;
 
-      const commonOuter = outerCandidates.some(isCommonWord);
-      const commonInner = innerCandidates.some(isCommonWord);
-      if (!commonOuter && !commonInner) continue;
-      const split = {
+      if (!outerCandidates.some(isCommonWord) || !innerCandidates.some(isCommonWord)) continue;
+      bothCommon.push({
         outerDisplay: pickRandom(preferCommon(outerCandidates)),
         innerDisplay: pickRandom(preferCommon(innerCandidates)),
-      };
-      if (commonOuter && commonInner) bothCommon.push(split);
-      else oneCommon.push(split);
+      });
     }
   }
 
-  if (bothCommon.length > 0) return pickRandom(bothCommon);
-  if (oneCommon.length > 0) return pickRandom(oneCommon);
-  return null;
+  if (bothCommon.length === 0) return null;
+  return pickRandom(bothCommon);
 }
 
 export const containerDevice: DeviceModule = {

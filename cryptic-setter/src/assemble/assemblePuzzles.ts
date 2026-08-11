@@ -40,6 +40,11 @@ const indicatorBanks: Partial<Record<DeviceType, string[]>> = {
 // answer, so the surface ends up spelling the whole answer out as a
 // literal substring (almost always the answer's own plural), which makes
 // the clue solvable by pattern-matching rather than working out wordplay.
+// charade/container start deviceUsage with a handicap (see cli.ts for the
+// full rationale): their two-labelled-parts-plus-indicator wordplay is
+// structurally harder to fold into fluent English than hidden/anagram's
+// single flowing description, so they fail the fluency check more often.
+const DEVICE_HANDICAP: Partial<Record<DeviceType, number>> = { charade: 2, container: 2 };
 const DEVICE_ORDER: DeviceType[] = [
   'charade',
   'container',
@@ -138,7 +143,7 @@ async function assembleOne(puzzleNumber: number, exclude: Set<string>): Promise<
   const { across, down } = solution;
   console.log(`\nGrid ${puzzleNumber}: across=${across.join(',')} down=${down.join(',')}`);
 
-  const deviceUsage: Partial<Record<DeviceType, number>> = {};
+  const deviceUsage: Partial<Record<DeviceType, number>> = { ...DEVICE_HANDICAP };
   const clueFor: Record<string, { clue: string; device: string }> = {};
   for (const answer of [...across, ...down]) {
     const result = await getOrGenerateClue(answer, deviceUsage);
