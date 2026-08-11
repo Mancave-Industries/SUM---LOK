@@ -1,4 +1,4 @@
-// 3A2Dle game engine. Loads a puzzle definition (grid entries with real,
+// QUYPTICK game engine. Loads a puzzle definition (grid entries with real,
 // mechanically-verified cryptic clues from the cryptic-setter's clue bank)
 // and renders a playable crossword: type letters, entries lock in green
 // once correct, and the bonus entry stays hidden until the other five are
@@ -131,7 +131,7 @@ function buildCellMap(entries) {
   return { map, rows, cols };
 }
 
-const PUZZLE_INDEX_KEY = '3a2dle-puzzle-index';
+const PUZZLE_INDEX_KEY = 'quyptick-puzzle-index';
 
 function currentPuzzleIndex(total) {
   const saved = parseInt(localStorage.getItem(PUZZLE_INDEX_KEY) || '0', 10);
@@ -499,7 +499,7 @@ function showSolvedPanel() {
 function shareResult() {
   const bonusEntry = state.puzzle.entries[bonusEntryIndex()];
   const squares = state.puzzle.entries.map((e) => (e.bonus ? '🟨' : '🟩')).join('');
-  const text = `3A2Dle ${state.puzzle._id}\n${squares}\nBonus word: ${bonusEntry ? bonusEntry.answer : ''}`;
+  const text = `QUYPTICK ${state.puzzle._id}\n${squares}\nBonus word: ${bonusEntry ? bonusEntry.answer : ''}`;
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text).then(() => showToast('Copied result to clipboard'));
   } else {
@@ -508,7 +508,7 @@ function shareResult() {
 }
 
 function progressKey() {
-  return `3a2dle-progress-${state.puzzle._id}`;
+  return `quyptick-progress-${state.puzzle._id}`;
 }
 
 function saveProgress() {
@@ -546,7 +546,7 @@ function loadProgress() {
 // played — there's no calendar-day adjacency check while puzzles are
 // picked from a manifest list rather than published one per real day.
 function saveStreak() {
-  const raw = localStorage.getItem('3a2dle-streak');
+  const raw = localStorage.getItem('quyptick-streak');
   let streak = { count: 0, completedIds: [] };
   try {
     if (raw) streak = JSON.parse(raw);
@@ -557,12 +557,12 @@ function saveStreak() {
   if (streak.completedIds.includes(id)) return; // already counted
   streak.completedIds.push(id);
   streak.count = streak.completedIds.length;
-  localStorage.setItem('3a2dle-streak', JSON.stringify(streak));
+  localStorage.setItem('quyptick-streak', JSON.stringify(streak));
   renderStreak();
 }
 
 function renderStreak() {
-  const raw = localStorage.getItem('3a2dle-streak');
+  const raw = localStorage.getItem('quyptick-streak');
   let streak = { count: 0 };
   try {
     if (raw) streak = JSON.parse(raw);
@@ -573,36 +573,36 @@ function renderStreak() {
 }
 
 function setupTheme() {
-  const stored = localStorage.getItem('3a2dle-theme');
+  const stored = localStorage.getItem('quyptick-theme');
   if (stored) document.documentElement.setAttribute('data-theme', stored);
   document.getElementById('theme-toggle').addEventListener('click', () => {
     const current = document.documentElement.getAttribute('data-theme');
     const next = current === 'dark' ? 'light' : current === 'light' ? null : 'dark';
     if (next) {
       document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('3a2dle-theme', next);
+      localStorage.setItem('quyptick-theme', next);
     } else {
       document.documentElement.removeAttribute('data-theme');
-      localStorage.removeItem('3a2dle-theme');
+      localStorage.removeItem('quyptick-theme');
     }
   });
 }
 
 function setupSound() {
-  const stored = localStorage.getItem('3a2dle-sound');
+  const stored = localStorage.getItem('quyptick-sound');
   state.soundOn = stored !== 'off';
   const btn = document.getElementById('sound-toggle');
   btn.textContent = state.soundOn ? '♪' : '✕';
   btn.addEventListener('click', () => {
     state.soundOn = !state.soundOn;
-    localStorage.setItem('3a2dle-sound', state.soundOn ? 'on' : 'off');
+    localStorage.setItem('quyptick-sound', state.soundOn ? 'on' : 'off');
     btn.textContent = state.soundOn ? '♪' : '✕';
     if (state.soundOn) playTick();
   });
 }
 
 function completedPuzzleIds() {
-  const raw = localStorage.getItem('3a2dle-streak');
+  const raw = localStorage.getItem('quyptick-streak');
   try {
     return new Set(raw ? JSON.parse(raw).completedIds || [] : []);
   } catch {
