@@ -9,12 +9,19 @@
   --accent: #8A6A24;
   --accent-strong: #6B4F0E;
   --cell-black: #2B2A22;
-  --solved-bg: #E4EEE6;
-  --solved-text: #2C4A38;
+  /* Wordle's actual palette — correct/present/absent — used for tile fills
+     and keyboard-key status, same green/yellow/gray as the real game. */
+  --wordle-green: #6AAA64;
+  --wordle-yellow: #C9B458;
+  --wordle-gray: #787C7E;
+  --wordle-tile-text: #FFFFFF;
+  --solved-bg: var(--wordle-green);
+  --solved-text: var(--wordle-tile-text);
   --bonus-bg: #F3E4B2;
   --bonus-text: #5C4712;
   --bonus-border: #C9A24B;
-  --kbd-bg: #E3DAC2;
+  --kbd-bg: #D3D6DA;
+  --kbd-text: #1B1A1F;
   --kbd-used: #D8CDA3;
   --active-bg: #FFF7DE;
   --locked-text: #A79A6E;
@@ -33,12 +40,17 @@
     --accent: #C9A24B;
     --accent-strong: #E8CC7C;
     --cell-black: #2B2A22;
-    --solved-bg: #24361F;
-    --solved-text: #B7E0B0;
+    --wordle-green: #538D4E;
+    --wordle-yellow: #B59F3B;
+    --wordle-gray: #3A3A3C;
+    --wordle-tile-text: #FFFFFF;
+    --solved-bg: var(--wordle-green);
+    --solved-text: var(--wordle-tile-text);
     --bonus-bg: #F6E3AE;
     --bonus-text: #1B1610;
     --bonus-border: #C9A24B;
-    --kbd-bg: #23252F;
+    --kbd-bg: #818384;
+    --kbd-text: #ECE7DC;
     --kbd-used: #3A3320;
     --active-bg: #1F212B;
     --locked-text: #6F6C7C;
@@ -57,12 +69,17 @@
   --accent: #C9A24B;
   --accent-strong: #E8CC7C;
   --cell-black: #2B2A22;
-  --solved-bg: #24361F;
-  --solved-text: #B7E0B0;
+  --wordle-green: #538D4E;
+  --wordle-yellow: #B59F3B;
+  --wordle-gray: #3A3A3C;
+  --wordle-tile-text: #FFFFFF;
+  --solved-bg: var(--wordle-green);
+  --solved-text: var(--wordle-tile-text);
   --bonus-bg: #F6E3AE;
   --bonus-text: #1B1610;
   --bonus-border: #C9A24B;
-  --kbd-bg: #23252F;
+  --kbd-bg: #818384;
+  --kbd-text: #ECE7DC;
   --kbd-used: #3A3320;
   --active-bg: #1F212B;
   --locked-text: #6F6C7C;
@@ -109,6 +126,9 @@ body {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  /* Reserve space for the fixed keyboard so its own content never ends up
+     scrolled underneath it — matches .kbd's own height (3 rows + padding). */
+  padding-bottom: 176px;
 }
 
 .topbar {
@@ -221,6 +241,31 @@ body {
 .cell.bonus.solved { background: var(--bonus-bg); color: var(--bonus-text); }
 .cell.bonus.active-cell { background: var(--accent); color: var(--ink); }
 .cell.locked-hint { color: var(--locked-text); font-size: 12px; }
+
+/* Wordle-style per-letter feedback, shown briefly on a wrong guess before
+   the entry clears for another attempt. Green here (a correct letter in
+   a wrong overall guess) intentionally looks identical to .solved. */
+.cell.fb-green { background: var(--wordle-green); color: var(--wordle-tile-text); }
+.cell.fb-yellow { background: var(--wordle-yellow); color: var(--wordle-tile-text); }
+.cell.fb-gray { background: var(--wordle-gray); color: var(--wordle-tile-text); }
+.cell.flip {
+  animation: flip 0.5s ease;
+}
+@keyframes flip {
+  0% { transform: rotateX(0); }
+  50% { transform: rotateX(90deg); }
+  100% { transform: rotateX(0); }
+}
+.entry-shake { animation: shake 0.35s ease; }
+@keyframes shake {
+  10%, 90% { transform: translateX(-2px); }
+  20%, 80% { transform: translateX(3px); }
+  30%, 50%, 70% { transform: translateX(-5px); }
+  40%, 60% { transform: translateX(5px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cell.flip, .entry-shake { animation: none; }
+}
 .cell .num {
   position: absolute;
   top: 2px;
@@ -278,15 +323,40 @@ body {
 #clue-list li.locked .txt { color: var(--locked-text); font-style: italic; }
 #clue-list .num { font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; min-width: 14px; color: var(--text-dim); }
 
-.kbd { padding: 12px 8px 16px; display: flex; flex-direction: column; gap: 6px; }
+/* Truly pinned to the viewport, not just "last flex child" — that was
+   reliable in a plain layout but not against mobile browsers whose chrome
+   (URL bar, home indicator) resizes the viewport out from under a normal
+   flex-flow element. Fixed positioning can't be pushed around by any of
+   that. */
+.kbd {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 400px;
+  z-index: 20;
+  background: var(--ink);
+  border-top: 1px solid var(--ink-border);
+  box-sizing: border-box;
+  padding: 12px 8px calc(16px + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
 .kbd-row { display: flex; justify-content: center; gap: 5px; }
 .kbd-key {
   flex: 1; max-width: 32px; height: 40px; border-radius: 6px; border: none;
-  background: var(--kbd-bg); color: var(--text);
+  background: var(--kbd-bg); color: var(--kbd-text);
   display: flex; align-items: center; justify-content: center;
   font-size: 12px; font-weight: 600; text-transform: uppercase; cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
 }
-.kbd-key.used { background: var(--kbd-used); }
+/* Wordle-style key status: best-known result across every guess so far,
+   green beats yellow beats gray and none of them ever downgrade. */
+.kbd-key.gray { background: var(--wordle-gray); color: var(--wordle-tile-text); }
+.kbd-key.yellow { background: var(--wordle-yellow); color: var(--wordle-tile-text); }
+.kbd-key.green { background: var(--wordle-green); color: var(--wordle-tile-text); }
 .kbd-key.wide { max-width: 46px; font-size: 14px; }
 
 .solved-panel { display: none; text-align: center; padding: 8px 20px 4px; }
@@ -338,13 +408,73 @@ body {
 }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-.about {
-  max-width: 400px;
-  margin: 14px auto 0;
-  text-align: center;
-  font-size: 12px;
-  color: var(--text-dim);
-  line-height: 1.5;
-  padding: 0 12px;
+.menu-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 50;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0;
 }
-.about a { color: var(--accent); }
+.menu-overlay.show { display: flex; }
+.menu-panel {
+  width: 100%;
+  max-width: 400px;
+  max-height: 100dvh;
+  overflow-y: auto;
+  background: var(--ink);
+  color: var(--text);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.45);
+  padding: 18px 18px 28px;
+  box-sizing: border-box;
+}
+.menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.menu-section {
+  padding: 14px 0;
+  border-top: 1px solid var(--ink-border);
+}
+.menu-section:first-of-type { border-top: none; padding-top: 0; }
+.menu-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 14px;
+}
+.menu-heading {
+  font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+.menu-text { font-size: 13px; line-height: 1.55; color: var(--text-dim); margin: 0; }
+.menu-text a { color: var(--accent); }
+.menu-text strong { color: var(--text); }
+.menu-puzzle-list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+.menu-puzzle-list button {
+  border: 1px solid var(--ink-border);
+  background: none;
+  color: var(--text);
+  border-radius: 8px;
+  padding: 8px 0;
+  font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.menu-puzzle-list button.current { background: var(--accent); color: var(--ink); border-color: var(--accent); }
+.menu-puzzle-list button.done { border-color: var(--wordle-green); color: var(--wordle-green); }
+.menu-puzzle-list button.current.done { color: var(--ink); }

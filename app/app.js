@@ -17,7 +17,49 @@ const state = {
   startTime: null,
   finishTime: null,
   soundOn: true,
+  letterStatus: {}, // "A".."Z" -> 'green'|'yellow'|'gray', best result seen so far
+  feedback: null, // { entryIndex, cells: {"r,c": 'green'|'yellow'|'gray'} } while a wrong guess is flashing
+  submitting: false, // true during the flash window — input is paused
+  justSolvedEntry: null, // entry index to flip-animate for one render, then cleared
 };
+
+const FEEDBACK_RANK = { gray: 0, yellow: 1, green: 2 };
+
+// Standard Wordle two-pass scoring: greens first (consuming those answer
+// letters), then yellows against whatever's left, so a repeated letter in
+// the guess only lights up as many times as it actually appears unmatched
+// in the answer.
+function computeWordleFeedback(guess, answer) {
+  const g = guess.split('');
+  const a = answer.split('');
+  const result = new Array(g.length).fill('gray');
+  const consumed = new Array(a.length).fill(false);
+  for (let i = 0; i < g.length; i++) {
+    if (g[i] === a[i]) {
+      result[i] = 'green';
+      consumed[i] = true;
+    }
+  }
+  for (let i = 0; i < g.length; i++) {
+    if (result[i] === 'green') continue;
+    const idx = a.findIndex((ch, j) => !consumed[j] && ch === g[i]);
+    if (idx !== -1) {
+      result[i] = 'yellow';
+      consumed[idx] = true;
+    }
+  }
+  return result;
+}
+
+function updateLetterStatus(letters, statuses) {
+  for (let i = 0; i < letters.length; i++) {
+    const letter = letters[i];
+    const current = state.letterStatus[letter];
+    if (!current || FEEDBACK_RANK[statuses[i]] > FEEDBACK_RANK[current]) {
+      state.letterStatus[letter] = statuses[i];
+    }
+  }
+}
 
 // Small synthesized sound effects via WebAudio — no audio files to fetch,
 // nothing to fail loading. AudioContext is created lazily on first use so
@@ -108,6 +150,7 @@ async function loadPuzzle() {
   puzzle._id = id;
   puzzle._index = index;
   puzzle._total = manifest.puzzles.length;
+  puzzle._manifest = manifest.puzzles;
   return puzzle;
 }
 
@@ -160,8 +203,12 @@ function setActiveEntry(idx) {
 // whatever's there — including a letter a crossing entry already placed.
 // Correct play reproduces the same letter at shared cells, so this is a
 // no-op visually; it also keeps keystroke count and cursor position in
-// exact lockstep, which matters for maybeCheckEntry below.
+// exact lockstep with the answer. Filling the last cell no longer
+// auto-submits — Wordle mechanics call for an explicit Enter, which is
+// also what makes per-letter green/yellow/gray feedback meaningful (you
+// see it, then act on it, rather than it flashing past mid-keystroke).
 function typeLetter(letter) {
+  if (state.submitting) return;
   const entry = state.puzzle.entries[state.activeEntry];
   if (isEntrySolved(state.activeEntry)) return;
   const cells = entryCells(entry);
@@ -169,19 +216,13 @@ function typeLetter(letter) {
   const { r, c } = cells[state.cursor];
   state.letters[`${r},${c}`] = letter.toUpperCase();
   playTick();
-  const wasLastCell = state.cursor === cells.length - 1;
   state.cursor = Math.min(state.cursor + 1, cells.length - 1);
   render();
-  // Only validate once the cursor has traversed the whole entry — checking
-  // "are all cells full" after every keystroke fires early whenever enough
-  // crossing letters are already in place, which steals trailing keystrokes
-  // meant for this entry and sends them to whatever entry auto-advance
-  // switches to next.
-  if (wasLastCell) maybeCheckEntry(state.activeEntry);
   saveProgress();
 }
 
 function backspace() {
+  if (state.submitting) return;
   const entry = state.puzzle.entries[state.activeEntry];
   if (isEntrySolved(state.activeEntry)) return;
   const cells = entryCells(entry);
@@ -197,17 +238,27 @@ function backspace() {
   saveProgress();
 }
 
-function maybeCheckEntry(idx) {
+function submitEntry() {
+  if (state.submitting) return;
+  const idx = state.activeEntry;
+  if (isEntrySolved(idx)) return;
   const entry = state.puzzle.entries[idx];
   const cells = entryCells(entry);
   const full = cells.every(({ r, c }) => state.letters[`${r},${c}`]);
   if (!full) {
-    showToast('Keep going — not all cells are filled yet');
+    flashShake();
+    showToast('Not enough letters');
     return;
   }
-  const word = cells.map(({ r, c }) => state.letters[`${r},${c}`]).join('');
-  if (word === entry.answer) {
+
+  const guess = cells.map(({ r, c }) => state.letters[`${r},${c}`]).join('');
+  if (guess === entry.answer) {
+    updateLetterStatus(guess.split(''), guess.split('').map(() => 'green'));
     state.solved.add(idx);
+    state.justSolvedEntry = idx;
+    setTimeout(() => {
+      state.justSolvedEntry = null;
+    }, 550);
     const isLastEntry = state.puzzle.entries.every((_, i) => state.solved.has(i));
     if (isLastEntry) playComplete();
     else playCorrect();
@@ -217,10 +268,50 @@ function maybeCheckEntry(idx) {
     const remaining = nonBonusEntries().filter((i) => !state.solved.has(i));
     const next = remaining[0] ?? (state.bonusUnlocked ? bonusEntryIndex() : null);
     if (next !== null && next !== undefined) setActiveEntry(next);
-  } else {
-    playWrong();
-    showToast("That doesn't fit — check the crossings");
+    return;
   }
+
+  // Wrong guess: show Wordle-style per-letter feedback, then clear the
+  // cells this entry actually controls (not ones a solved crossing entry
+  // already locked in) so the player can try again.
+  const statuses = computeWordleFeedback(guess, entry.answer);
+  updateLetterStatus(guess.split(''), statuses);
+  const feedbackCells = {};
+  cells.forEach(({ r, c }, i) => {
+    feedbackCells[`${r},${c}`] = statuses[i];
+  });
+  state.feedback = { entryIndex: idx, cells: feedbackCells };
+  state.submitting = true;
+  playWrong();
+  render();
+  flashShake();
+
+  setTimeout(() => {
+    for (const { r, c } of cells) {
+      if (!isCellLocked(r, c)) delete state.letters[`${r},${c}`];
+    }
+    state.feedback = null;
+    state.submitting = false;
+    state.cursor = 0;
+    render();
+    saveProgress();
+  }, 1100);
+}
+
+// A cell is "locked" once some OTHER, already-solved entry owns its
+// correct letter — those stay put across a failed retry since they're
+// not this entry's mistake to begin with.
+function isCellLocked(r, c) {
+  const cellInfo = state.cellMap.get(`${r},${c}`);
+  return cellInfo.entries.some((e) => e.entryIndex !== state.activeEntry && state.solved.has(e.entryIndex));
+}
+
+function flashShake() {
+  const grid = document.getElementById('grid');
+  grid.classList.remove('entry-shake');
+  // eslint-disable-next-line no-unused-expressions
+  void grid.offsetWidth; // restart the animation if it's still mid-shake
+  grid.classList.add('entry-shake');
 }
 
 function showToast(msg) {
@@ -271,9 +362,19 @@ function renderGrid() {
 
       div.classList.add('fillable');
       if (belongsToBonus) div.classList.add('bonus');
-      if (activeCellKeys.has(key) && !isEntrySolved(state.activeEntry)) div.classList.add('active-entry');
-      if (key === cursorKey && !isEntrySolved(state.activeEntry)) div.classList.add('active-cell');
+      const showingFeedback = state.feedback && key in state.feedback.cells;
+      if (activeCellKeys.has(key) && !isEntrySolved(state.activeEntry) && !showingFeedback) {
+        div.classList.add('active-entry');
+      }
+      if (key === cursorKey && !isEntrySolved(state.activeEntry) && !showingFeedback) {
+        div.classList.add('active-cell');
+      }
       if (anySolved) div.classList.add('solved');
+      if (state.justSolvedEntry !== null && cellInfo.entries.some((e) => e.entryIndex === state.justSolvedEntry)) {
+        div.classList.add('flip');
+      }
+      const feedbackStatus = state.feedback && state.feedback.cells[key];
+      if (feedbackStatus) div.classList.add(`fb-${feedbackStatus}`);
 
       if (cellInfo.number) {
         const num = document.createElement('span');
@@ -361,15 +462,12 @@ function renderClueList() {
 }
 
 function renderKeyboard() {
-  const entry = state.puzzle.entries[state.activeEntry];
-  const usedLetters = new Set();
-  entryCells(entry).forEach(({ r, c }) => {
-    const l = state.letters[`${r},${c}`];
-    if (l) usedLetters.add(l.toLowerCase());
-  });
   document.querySelectorAll('.kbd-key[data-key]').forEach((btn) => {
     const key = btn.dataset.key;
-    if (key.length === 1) btn.classList.toggle('used', usedLetters.has(key));
+    if (key.length !== 1) return;
+    const status = state.letterStatus[key.toUpperCase()];
+    btn.classList.remove('green', 'yellow', 'gray');
+    if (status) btn.classList.add(status);
   });
 }
 
@@ -421,6 +519,7 @@ function saveProgress() {
       solved: [...state.solved],
       bonusUnlocked: state.bonusUnlocked,
       startTime: state.startTime,
+      letterStatus: state.letterStatus,
     })
   );
 }
@@ -437,6 +536,7 @@ function loadProgress() {
     state.solved = new Set(saved.solved || []);
     state.bonusUnlocked = !!saved.bonusUnlocked;
     state.startTime = saved.startTime || Date.now();
+    state.letterStatus = saved.letterStatus || {};
   } catch {
     state.startTime = Date.now();
   }
@@ -501,6 +601,44 @@ function setupSound() {
   });
 }
 
+function completedPuzzleIds() {
+  const raw = localStorage.getItem('3a2dle-streak');
+  try {
+    return new Set(raw ? JSON.parse(raw).completedIds || [] : []);
+  } catch {
+    return new Set();
+  }
+}
+
+function renderMenuPuzzleList() {
+  const list = document.getElementById('menu-puzzle-list');
+  list.innerHTML = '';
+  const done = completedPuzzleIds();
+  state.puzzle._manifest.forEach((id, index) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.textContent = String(index + 1);
+    if (index === state.puzzle._index) btn.classList.add('current');
+    if (done.has(id)) btn.classList.add('done');
+    btn.addEventListener('click', () => goToPuzzle(index));
+    list.appendChild(btn);
+  });
+}
+
+function setupMenu() {
+  const overlay = document.getElementById('menu-overlay');
+  const open = () => {
+    renderMenuPuzzleList();
+    overlay.classList.add('show');
+  };
+  const close = () => overlay.classList.remove('show');
+  document.getElementById('menu-toggle').addEventListener('click', open);
+  document.getElementById('menu-close').addEventListener('click', close);
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) close();
+  });
+}
+
 function setupInput() {
   document.addEventListener('keydown', (e) => {
     if (e.metaKey || e.ctrlKey || e.altKey) return;
@@ -508,6 +646,8 @@ function setupInput() {
       typeLetter(e.key);
     } else if (e.key === 'Backspace') {
       backspace();
+    } else if (e.key === 'Enter') {
+      submitEntry();
     }
   });
   document.getElementById('keyboard').addEventListener('click', (e) => {
@@ -515,6 +655,7 @@ function setupInput() {
     if (!btn) return;
     const key = btn.dataset.key;
     if (key === 'Backspace') backspace();
+    else if (key === 'Enter') submitEntry();
     else if (key.length === 1) typeLetter(key);
   });
   document.getElementById('share-btn').addEventListener('click', shareResult);
@@ -544,6 +685,7 @@ async function main() {
   if (state.bonusUnlocked) document.getElementById('bonus-badge').classList.add('show');
 
   setupInput();
+  setupMenu();
   document.getElementById('prev-puzzle').addEventListener('click', () => goToPuzzle(puzzle._index - 1));
   document.getElementById('next-puzzle').addEventListener('click', () => goToPuzzle(puzzle._index + 1));
   document.getElementById('next-puzzle-btn').addEventListener('click', () => goToPuzzle(puzzle._index + 1));
