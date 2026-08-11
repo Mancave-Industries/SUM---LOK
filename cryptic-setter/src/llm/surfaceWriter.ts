@@ -99,12 +99,43 @@ The fodder "${fodder}" and the indicator "${indicator}" must both appear in the 
 
 function buildPrompt(request: SurfaceRequest): string {
   const { answer, definition, device, enumeration } = request;
-  return `You are writing ONE cryptic crossword clue for the answer "${answer}" ${enumeration}.
+  return `You are a cryptic crossword setter writing ONE clue for the answer "${answer}" ${enumeration}.
 
 Definition to use (must be preserved, not paraphrased away): "${definition}"
 Device: ${device}
 
 ${describeWordplayRequirement(request)}
+
+THE ONE THING THAT SEPARATES A GOOD CLUE FROM A BAD ONE:
+A bad surface just narrates the mechanism — it names the parts and glues them
+with the indicator and nothing else, so a reader can see the puzzle's
+skeleton through the sentence. A good surface reads as an entirely ordinary
+piece of English — a headline, an overheard remark, a plausible fact — about
+some OTHER scene, and the wordplay only becomes visible once you already
+know the answer. The words doing the wordplay's job should also be doing a
+different, ordinary job in that surface sentence.
+
+  BAD  (mechanism showing through): "mud before slide down the slope" for MUDSLIDE
+       — this is just "part1 [indicator] part2" with a few connective words
+       stapled on; there's no scene, nothing a reader would picture.
+  BAD  (mechanism showing through): "put er inside excise, hesitantly" for EXERCISE
+       — same problem: it reads as a description of the puzzle's own
+       construction, not a sentence about anything.
+  GOOD: "Endless workout leaves fitness fanatics up and down the block" —
+       an ordinary sentence about a real scene (a neighborhood, a jogger),
+       where the wordplay words are doing double duty as normal vocabulary
+       in that scene, not standing there labelled as puzzle parts.
+  GOOD: "Queen finally accepts rejected earring for royal jewelry box" —
+       reads as an actual event; the wordplay only reveals itself in
+       hindsight.
+
+Before answering, picture a real scene, headline, or remark that has nothing
+to do with the answer's meaning, and fold the required words into it as
+ordinary vocabulary doing ordinary grammatical work — not appositives listing
+"X, then Y" with no narrative behind them. Favor natural clauses over bare
+juxtaposition. It's fine (expected, even) for the clue to be witty, odd, or
+a little surreal, as long as it parses as one real sentence a person could
+plausibly write or say.
 
 Rules:
 - The clue reads as a single natural, misleading English sentence (or short phrase) with no hint that it's a puzzle.
