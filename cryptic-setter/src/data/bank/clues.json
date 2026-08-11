@@ -822,5 +822,48 @@
     "difficulty": 0,
     "reviewRequired": false,
     "createdAt": "2026-08-11T09:11:14.710Z"
+  },
+  {
+    "id": "9109b6f5-302d-4b31-a073-7ae26bee8746",
+    "answer": "EXERCISE",
+    "enumeration": "(8)",
+    "device": "container",
+    "definition": "Workout",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "within",
+      "components": [
+        "EXCISE",
+        "ER"
+      ],
+      "operation": "container(EXERCISE, outer=EXCISE, inner=ER)"
+    },
+    "surface": "Workout involves er within excise tax cut (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"EXCISE\" resolves to letters: EXCISE",
+      "✓ \"ER\" resolves to letters: ER",
+      "✓ inserting \"ER\" into \"EXCISE\" reproduces the answer \"EXERCISE\"",
+      "✓ indicator \"within\" found in container indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"Workout\" ---",
+      "✓ \"Workout\" is a WordNet-listed synonym of \"EXERCISE\"",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"Workout\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"Workout\"",
+      "✓ indicator \"within\" is present verbatim in the wordplay text",
+      "✗ could not find both container parts (\"EXCISE\", \"ER\") in the wordplay text",
+      "✗ attempt 1 failed verification, discarding surface and retrying",
+      "--- surface attempt 2/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"Workout\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"Workout\"",
+      "✓ indicator \"within\" is present verbatim in the wordplay text",
+      "✓ both \"EXCISE\" and \"ER\" are present in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": false,
+    "createdAt": "2026-08-11T09:38:14.658Z"
   }
 ]

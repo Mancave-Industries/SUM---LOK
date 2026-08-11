@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-003",
+  "format": "3A2D",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "PASSPORT",
+      "clue": "is part of spas sports facility everyone uses travel document (8)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 3,
+      "col": 0,
+      "answer": "CARDIGAN",
+      "clue": "is Cardi before Gan appears on stage buttoned sweater (8)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 7,
+      "col": 0,
+      "answer": "SUNSHINE",
+      "clue": "sunlight brings shine around UNs delegates gathered (8)",
+      "device": "container",
+      "bonus": false
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "PANCAKES",
+      "clue": "Flat griddle cakes made with pan then cakes of batter (8)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 3,
+      "answer": "STADIUMS",
+      "clue": "arenas built from twisted Dumaists (8)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 0,
+      "col": 7,
+      "answer": "TURNPIKE",
+      "clue": "toll road included in return pikeperches' habitat (8)",
+      "device": "hidden",
+      "bonus": true
+    }
+  ]
+}

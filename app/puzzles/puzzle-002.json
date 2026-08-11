@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-002",
+  "format": "2A3D",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "TELEGRAM",
+      "clue": "found part of eustele grammar oddly confused botanist's plant textbook wired message (8)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 3,
+      "col": 0,
+      "answer": "UMBRELLA",
+      "clue": "is ell surrounding umbra, oddly rain shield (8)",
+      "device": "container",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 7,
+      "col": 0,
+      "answer": "SEASHORE",
+      "clue": "eas around shore coast (8)",
+      "device": "container",
+      "bonus": true
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "TROUSERS",
+      "clue": "pocket a watch, trouser followed by second pants (8)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 3,
+      "answer": "EARRINGS",
+      "clue": "Regina holding earings, oddly Ear jewelry (8)",
+      "device": "container",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 0,
+      "col": 7,
+      "answer": "MAGAZINE",
+      "clue": "is tailless magazines, storage units for ammo periodical (8)",
+      "device": "deletion",
+      "bonus": false
+    }
+  ]
+}

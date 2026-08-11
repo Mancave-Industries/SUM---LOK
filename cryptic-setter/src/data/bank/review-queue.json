@@ -3143,5 +3143,291 @@
     "difficulty": 0,
     "reviewRequired": true,
     "createdAt": "2026-08-11T09:12:23.111Z"
+  },
+  {
+    "id": "111f685c-9ae0-4396-81ab-47de9c8af810",
+    "answer": "TROUSERS",
+    "enumeration": "(8)",
+    "device": "charade",
+    "definition": "pants",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "followed by",
+      "components": [
+        "TROUSER",
+        "SECOND"
+      ],
+      "operation": "charade(TROUSERS, parts=[TROUSER, SECOND])"
+    },
+    "surface": "pocket a watch, trouser followed by second pants (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"TROUSER\" resolves to letters: TROUSER",
+      "✓ \"SECOND\" resolves to letters: SECOND, S",
+      "✓ \"TROUSER\" + \"SECOND\" concatenates to the answer \"TROUSERS\"",
+      "✓ indicator \"followed by\" found in charade indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"pants\" ---",
+      "… \"pants\" is not an exact WordNet synonym of \"TROUSERS\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"pants\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"pants\"",
+      "✓ indicator \"followed by\" is present verbatim in the wordplay text",
+      "✓ \"TROUSER\" appears before \"SECOND\" in the wordplay text, matching charade order"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T09:35:42.446Z"
+  },
+  {
+    "id": "5e45e418-9432-4275-b3cd-0d34a269dc19",
+    "answer": "EARRINGS",
+    "enumeration": "(8)",
+    "device": "container",
+    "definition": "Ear jewelry",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "holding",
+      "components": [
+        "EARINGS",
+        "REGINA"
+      ],
+      "operation": "container(EARRINGS, outer=EARINGS, inner=REGINA)"
+    },
+    "surface": "Regina holding earings, oddly Ear jewelry (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"EARINGS\" resolves to letters: EARINGS",
+      "✓ \"REGINA\" resolves to letters: REGINA, R",
+      "✓ inserting \"REGINA\" into \"EARINGS\" reproduces the answer \"EARRINGS\"",
+      "✓ indicator \"holding\" found in container indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"Ear jewelry\" ---",
+      "… \"EARRINGS\" has no WordNet entry — definition can't be auto-verified, routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"Ear jewelry\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"Ear jewelry\"",
+      "✓ indicator \"holding\" is present verbatim in the wordplay text",
+      "✓ both \"EARINGS\" and \"REGINA\" are present in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T09:35:48.204Z"
+  },
+  {
+    "id": "6b4e898d-276e-4516-8599-d3ad1753d8c3",
+    "answer": "TORTILLA",
+    "enumeration": "(8)",
+    "device": "container",
+    "definition": "flatbread wrap",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "surrounding",
+      "components": [
+        "TORA",
+        "TILL"
+      ],
+      "operation": "container(TORTILLA, outer=TORA, inner=TILL)"
+    },
+    "surface": "flatbread wrap made from till surrounding Tora scroll (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"TORA\" resolves to letters: TORA",
+      "✓ \"TILL\" resolves to letters: TILL",
+      "✓ inserting \"TILL\" into \"TORA\" reproduces the answer \"TORTILLA\"",
+      "✓ indicator \"surrounding\" found in container indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"flatbread wrap\" ---",
+      "… \"flatbread wrap\" is not an exact WordNet synonym of \"TORTILLA\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"flatbread wrap\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"flatbread wrap\"",
+      "✓ indicator \"surrounding\" is present verbatim in the wordplay text",
+      "✓ both \"TORA\" and \"TILL\" are present in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T09:35:55.157Z"
+  },
+  {
+    "id": "a07b3057-1bbe-495d-bd20-34c52059418a",
+    "answer": "CARDIGAN",
+    "enumeration": "(8)",
+    "device": "charade",
+    "definition": "buttoned sweater",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "before",
+      "components": [
+        "CARDI",
+        "GAN"
+      ],
+      "operation": "charade(CARDIGAN, parts=[CARDI, GAN])"
+    },
+    "surface": "is Cardi before Gan appears on stage buttoned sweater (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"CARDI\" resolves to letters: CARDI",
+      "✓ \"GAN\" resolves to letters: GAN",
+      "✓ \"CARDI\" + \"GAN\" concatenates to the answer \"CARDIGAN\"",
+      "✓ indicator \"before\" found in charade indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"buttoned sweater\" ---",
+      "… \"buttoned sweater\" is not an exact WordNet synonym of \"CARDIGAN\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"buttoned sweater\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"buttoned sweater\"",
+      "✓ indicator \"before\" is present verbatim in the wordplay text",
+      "✓ \"CARDI\" appears before \"GAN\" in the wordplay text, matching charade order"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T09:37:52.907Z"
+  },
+  {
+    "id": "8f9f7ebe-db28-425c-97d9-4f4eddc3f09a",
+    "answer": "LANDLORD",
+    "enumeration": "(8)",
+    "device": "charade",
+    "definition": "property owner",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "then",
+      "components": [
+        "LAND",
+        "LORD"
+      ],
+      "operation": "charade(LANDLORD, parts=[LAND, LORD])"
+    },
+    "surface": "could be found where you land then lord it over tenants property owner (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"LAND\" resolves to letters: LAND",
+      "✓ \"LORD\" resolves to letters: LORD",
+      "✓ \"LAND\" + \"LORD\" concatenates to the answer \"LANDLORD\"",
+      "✓ indicator \"then\" found in charade indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"property owner\" ---",
+      "… \"property owner\" is not an exact WordNet synonym of \"LANDLORD\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"property owner\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"property owner\"",
+      "✓ indicator \"then\" is present verbatim in the wordplay text",
+      "✓ \"LAND\" appears before \"LORD\" in the wordplay text, matching charade order"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T09:37:59.340Z"
+  },
+  {
+    "id": "63ad28d0-8bc6-45d4-9b1b-3d5680bf98d5",
+    "answer": "MUDSLIDE",
+    "enumeration": "(8)",
+    "device": "charade",
+    "definition": "landslide of mud",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "before",
+      "components": [
+        "MUD",
+        "SLIDE"
+      ],
+      "operation": "charade(MUDSLIDE, parts=[MUD, SLIDE])"
+    },
+    "surface": "put mud before slide down the slope landslide of mud (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"MUD\" resolves to letters: MUD",
+      "✓ \"SLIDE\" resolves to letters: SLIDE",
+      "✓ \"MUD\" + \"SLIDE\" concatenates to the answer \"MUDSLIDE\"",
+      "✓ indicator \"before\" found in charade indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"landslide of mud\" ---",
+      "… \"landslide of mud\" is not an exact WordNet synonym of \"MUDSLIDE\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"landslide of mud\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"landslide of mud\"",
+      "✓ indicator \"before\" is present verbatim in the wordplay text",
+      "✓ \"MUD\" appears before \"SLIDE\" in the wordplay text, matching charade order"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T09:38:05.775Z"
+  },
+  {
+    "id": "c5129749-86e9-4a26-a0d2-d97e7c907d1b",
+    "answer": "ENTRANCE",
+    "enumeration": "(8)",
+    "device": "hidden",
+    "definition": "doorway",
+    "definitionPosition": "end",
+    "wordplay": {
+      "indicator": "housed by",
+      "components": [
+        "SEN",
+        "TRANCEY"
+      ],
+      "operation": "hidden(ENTRANCE, in=\"SEN TRANCEY\")"
+    },
+    "surface": "housed by sen trancey music, dancers found the doorway doorway (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"ENTRANCE\" spans the join between \"SEN\" and \"TRANCEY\"",
+      "✓ indicator \"housed by\" found in hidden-word indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"doorway\" ---",
+      "… \"doorway\" is not an exact WordNet synonym of \"ENTRANCE\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"doorway\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"doorway\"",
+      "✓ indicator \"housed by\" is present verbatim in the wordplay text",
+      "✓ \"ENTRANCE\" appears spanning a real word boundary in the wordplay text"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T09:38:21.242Z"
+  },
+  {
+    "id": "8d7cbf6b-9dc5-4d16-813c-0e9ad843feb7",
+    "answer": "DISGUISE",
+    "enumeration": "(8)",
+    "device": "charade",
+    "definition": "costume",
+    "definitionPosition": "start",
+    "wordplay": {
+      "indicator": "then",
+      "components": [
+        "DIS",
+        "GUISE"
+      ],
+      "operation": "charade(DISGUISE, parts=[DIS, GUISE])"
+    },
+    "surface": "costume worn after Dis then Guise appear (8)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"DIS\" resolves to letters: DIS",
+      "✓ \"GUISE\" resolves to letters: GUISE",
+      "✓ \"DIS\" + \"GUISE\" concatenates to the answer \"DISGUISE\"",
+      "✓ indicator \"then\" found in charade indicator bank",
+      "✓ enumeration \"(8)\" matches answer letter count (8)",
+      "--- LLM-proposed definition: \"costume\" ---",
+      "… \"costume\" is not an exact WordNet synonym of \"DISGUISE\" — routing to review",
+      "--- surface attempt 1/3 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"costume\") sits at the start of the clue, per §2",
+      "✓ definition part contains the seeded definition \"costume\"",
+      "✓ indicator \"then\" is present verbatim in the wordplay text",
+      "✓ \"DIS\" appears before \"GUISE\" in the wordplay text, matching charade order"
+    ],
+    "difficulty": 0,
+    "reviewRequired": true,
+    "createdAt": "2026-08-11T09:38:28.041Z"
   }
 ]

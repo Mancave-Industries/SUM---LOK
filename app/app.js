@@ -89,30 +89,33 @@ function buildCellMap(entries) {
   return { map, rows, cols };
 }
 
-function todayISO() {
-  const d = new Date();
-  return d.toISOString().slice(0, 10);
+const PUZZLE_INDEX_KEY = '3a2dle-puzzle-index';
+
+function currentPuzzleIndex(total) {
+  const saved = parseInt(localStorage.getItem(PUZZLE_INDEX_KEY) || '0', 10);
+  if (Number.isNaN(saved)) return 0;
+  return Math.min(Math.max(saved, 0), total - 1);
 }
 
+// Puzzles are picked from the manifest list by position, not by matching
+// today's real date — there's no daily lock while this is still being
+// iterated on. goToPuzzle() below moves through the list and reloads.
 async function loadPuzzle() {
-  const date = todayISO();
-  let res = await fetch(`puzzles/${date}.json`).catch(() => null);
-  let usedDate = date;
-  if (!res || !res.ok) {
-    // No puzzle published for today yet — fall back to the manifest's
-    // most recent entry so the app is never just blank.
-    const manifestRes = await fetch('puzzles/manifest.json').catch(() => null);
-    if (manifestRes && manifestRes.ok) {
-      const manifest = await manifestRes.json();
-      const latest = manifest.dates[manifest.dates.length - 1];
-      usedDate = latest;
-      res = await fetch(`puzzles/${latest}.json`);
-    }
-  }
-  const puzzle = await res.json();
-  puzzle._loadedDate = usedDate;
-  puzzle._isToday = usedDate === date;
+  const manifest = await (await fetch('puzzles/manifest.json')).json();
+  const index = currentPuzzleIndex(manifest.puzzles.length);
+  const id = manifest.puzzles[index];
+  const puzzle = await (await fetch(`puzzles/${id}.json`)).json();
+  puzzle._id = id;
+  puzzle._index = index;
+  puzzle._total = manifest.puzzles.length;
   return puzzle;
+}
+
+function goToPuzzle(index) {
+  const total = state.puzzle._total;
+  const wrapped = ((index % total) + total) % total;
+  localStorage.setItem(PUZZLE_INDEX_KEY, String(wrapped));
+  location.reload();
 }
 
 function nonBonusEntries() {
@@ -390,22 +393,15 @@ function showSolvedPanel() {
     shareRow.appendChild(sq);
   });
 
-  document.getElementById('next-in').textContent = nextPuzzleCountdown();
-}
-
-function nextPuzzleCountdown() {
-  const now = new Date();
-  const nextMidnightUTC = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1));
-  const ms = nextMidnightUTC - now;
-  const h = Math.floor(ms / 3600000);
-  const m = Math.floor((ms % 3600000) / 60000);
-  return `Next puzzle in ${h}h ${m}m`;
+  const nextBtn = document.getElementById('next-puzzle-btn');
+  nextBtn.textContent = state.puzzle._total > 1 ? 'Next puzzle →' : 'No more puzzles yet';
+  nextBtn.disabled = state.puzzle._total <= 1;
 }
 
 function shareResult() {
   const bonusEntry = state.puzzle.entries[bonusEntryIndex()];
   const squares = state.puzzle.entries.map((e) => (e.bonus ? '🟨' : '🟩')).join('');
-  const text = `3A2Dle ${state.puzzle._loadedDate}\n${squares}\nBonus word: ${bonusEntry ? bonusEntry.answer : ''}`;
+  const text = `3A2Dle ${state.puzzle._id}\n${squares}\nBonus word: ${bonusEntry ? bonusEntry.answer : ''}`;
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text).then(() => showToast('Copied result to clipboard'));
   } else {
@@ -414,7 +410,7 @@ function shareResult() {
 }
 
 function progressKey() {
-  return `3a2dle-progress-${state.puzzle._loadedDate}`;
+  return `3a2dle-progress-${state.puzzle._id}`;
 }
 
 function saveProgress() {
@@ -446,21 +442,21 @@ function loadProgress() {
   }
 }
 
+// Streak counts distinct puzzles completed, in whatever order they were
+// played — there's no calendar-day adjacency check while puzzles are
+// picked from a manifest list rather than published one per real day.
 function saveStreak() {
   const raw = localStorage.getItem('3a2dle-streak');
-  let streak = { count: 0, lastDate: null };
+  let streak = { count: 0, completedIds: [] };
   try {
     if (raw) streak = JSON.parse(raw);
   } catch {
     /* ignore corrupt streak data */
   }
-  const today = state.puzzle._loadedDate;
-  if (streak.lastDate === today) return; // already counted
-  const y = new Date(today);
-  y.setUTCDate(y.getUTCDate() - 1);
-  const yesterday = y.toISOString().slice(0, 10);
-  streak.count = streak.lastDate === yesterday ? streak.count + 1 : 1;
-  streak.lastDate = today;
+  const id = state.puzzle._id;
+  if (streak.completedIds.includes(id)) return; // already counted
+  streak.completedIds.push(id);
+  streak.count = streak.completedIds.length;
   localStorage.setItem('3a2dle-streak', JSON.stringify(streak));
   renderStreak();
 }
@@ -538,7 +534,9 @@ async function main() {
   loadProgress();
 
   document.getElementById('format-tag').textContent = puzzle.format || '';
-  document.getElementById('date-label').textContent = puzzle._loadedDate;
+  document.getElementById('date-label').textContent = `${puzzle._index + 1} / ${puzzle._total}`;
+  document.getElementById('prev-puzzle').disabled = puzzle._total <= 1;
+  document.getElementById('next-puzzle').disabled = puzzle._total <= 1;
 
   const firstUnsolved = nonBonusEntries().find((i) => !state.solved.has(i));
   state.activeEntry = firstUnsolved !== undefined ? firstUnsolved : bonusEntryIndex();
@@ -546,6 +544,9 @@ async function main() {
   if (state.bonusUnlocked) document.getElementById('bonus-badge').classList.add('show');
 
   setupInput();
+  document.getElementById('prev-puzzle').addEventListener('click', () => goToPuzzle(puzzle._index - 1));
+  document.getElementById('next-puzzle').addEventListener('click', () => goToPuzzle(puzzle._index + 1));
+  document.getElementById('next-puzzle-btn').addEventListener('click', () => goToPuzzle(puzzle._index + 1));
   render();
 
   if (puzzle.entries.every((_, i) => state.solved.has(i))) {

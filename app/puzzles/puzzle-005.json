@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-005",
+  "format": "3A2D",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "MUDSLIDE",
+      "clue": "put mud before slide down the slope landslide of mud (8)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 3,
+      "col": 0,
+      "answer": "ISLANDER",
+      "clue": "Isle dweller hears one before slander spreads (8)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 7,
+      "col": 0,
+      "answer": "EXERCISE",
+      "clue": "Workout involves er within excise tax cut (8)",
+      "device": "container",
+      "bonus": false
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "MARINADE",
+      "clue": "is marina plus de rigueur harbour additions soaking sauce (8)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 3,
+      "answer": "STRANGER",
+      "clue": "could be reworked regrants unfamiliar person (8)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 0,
+      "col": 7,
+      "answer": "ENTRANCE",
+      "clue": "housed by sen trancey music, dancers found the doorway doorway (8)",
+      "device": "hidden",
+      "bonus": true
+    }
+  ]
+}

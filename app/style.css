@@ -147,6 +147,18 @@ body {
   justify-content: center;
 }
 
+.puzzle-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px 18px 0;
+  font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.puzzle-nav button:disabled { opacity: 0.35; cursor: default; }
+
 .badge {
   margin: 10px 18px 0;
   display: none;
@@ -295,7 +307,20 @@ body {
   padding: 11px 26px; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer;
   display: block; margin: 4px auto 6px;
 }
-.next-in { display: block; text-align: center; font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; color: var(--text-dim); padding-bottom: 18px; }
+.next-puzzle-btn {
+  display: block;
+  margin: 4px auto 18px;
+  background: none;
+  border: 1px solid var(--ink-border);
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 9px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+}
+.next-puzzle-btn:disabled { color: var(--text-dim); cursor: default; }
 
 .toast {
   position: fixed;
