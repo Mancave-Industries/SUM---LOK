@@ -16,6 +16,34 @@ function normalize(text: string): string {
     .trim();
 }
 
+// A charade/container split of a genuine compound word (MUD+SLIDE for
+// MUDSLIDE) is mechanically fair but nearly worthless as a clue if the
+// definition then also spells out one of those same parts ("landslide of
+// mud") — the solver reads "mud" in the definition, "mud" in the
+// wordplay, and never has to do anything except notice the repeat. This
+// checks the definition text for a literal whole-word echo of any
+// wordplay component or fodder word, regardless of device.
+export function verifyDefinitionDoesNotEchoWordplay(
+  definitionText: string,
+  wordplay: { fodder?: string; components?: string[] }
+): VerificationResult {
+  const wordplayWords = [...(wordplay.components ?? []), ...(wordplay.fodder ? [wordplay.fodder] : [])].map(
+    (w) => w.toLowerCase()
+  );
+  const defTokens = normalize(definitionText)
+    .split(' ')
+    .filter(Boolean);
+
+  const echoed = wordplayWords.find((w) => defTokens.includes(w));
+  if (echoed) {
+    return {
+      passed: false,
+      log: [`✗ definition "${definitionText}" echoes wordplay word "${echoed}" verbatim — too easy`],
+    };
+  }
+  return { passed: true, log: ['✓ definition does not echo any wordplay word verbatim'] };
+}
+
 // Glue the LLM's labelled parts into the sentence the solver actually reads.
 export function combineSurfaceParts(parts: SurfaceParts): string {
   return parts.order === 'definition-first'

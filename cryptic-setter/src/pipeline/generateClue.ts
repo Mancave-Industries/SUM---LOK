@@ -11,6 +11,7 @@ import { proposeDefinition } from '../llm/proposeDefinition.js';
 import {
   combineSurfaceParts,
   verifyDefinitionAtEnd,
+  verifyDefinitionDoesNotEchoWordplay,
   verifyEnumeration,
 } from '../verify/structural.js';
 import { verifyDefinitionMeaning } from '../verify/definition.js';
@@ -83,6 +84,17 @@ export async function generateClue(options: GenerateClueOptions): Promise<Genera
     definitionReviewRequired = definitionCheck.reviewRequired;
   }
 
+  // The definition text must literally contain this seed (verifyDefinitionAtEnd
+  // enforces that below) — so if the seed itself already echoes a wordplay
+  // word, every retry will fail identically. No point spending 3 LLM calls
+  // finding that out the slow way.
+  const seedEchoCheck = verifyDefinitionDoesNotEchoWordplay(definition, construction.wordplay);
+  if (!seedEchoCheck.passed) {
+    log.push(...seedEchoCheck.log);
+    log.push(`✗ seed definition unavoidably echoes the wordplay — skipping without a surface attempt`);
+    return { clue: null, log };
+  }
+
   // Step 5-7: ask for a surface, verify it, retry on failure.
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     log.push(`--- surface attempt ${attempt}/${maxRetries} ---`);
@@ -100,6 +112,9 @@ export async function generateClue(options: GenerateClueOptions): Promise<Genera
 
     const structuralCheck = verifyDefinitionAtEnd(fullSurface, parts, definition);
     log.push(...structuralCheck.log);
+
+    const echoCheck = verifyDefinitionDoesNotEchoWordplay(parts.definitionText, construction.wordplay);
+    log.push(...echoCheck.log);
 
     // Fodder-based devices need the literal fodder string checked here.
     // Components-based devices (hidden, initials, charade, container) skip
@@ -137,7 +152,11 @@ export async function generateClue(options: GenerateClueOptions): Promise<Genera
     }
 
     const allPassed =
-      structuralCheck.passed && fodderPresent && indicatorPresent && surfaceCheckPassed;
+      structuralCheck.passed &&
+      echoCheck.passed &&
+      fodderPresent &&
+      indicatorPresent &&
+      surfaceCheckPassed;
 
     if (allPassed) {
       const clue: Clue = {
