@@ -25,10 +25,12 @@ import { appendToBank, approveFromReviewQueue } from './bank/clueBank.js';
 import { getDevice } from './devices/index.js';
 import type { Clue, DeviceType } from './types.js';
 
-// Devices worth trying automatically, best surface quality first. Initials
-// is deliberately last — spelling an 8+ letter answer from consecutive
-// word-initials rarely produces a natural surface, so it's a fallback
-// rather than a first choice.
+// Devices worth trying automatically. Initials is excluded outright, not
+// just deprioritized — spelling an 8+ letter answer means stringing
+// together 8 short filler words by their first letters, which reads as
+// word salad ("Ibis, tau, ikat, noh, erf...") rather than a fair, natural
+// surface. It stays a real, selectable device via --device for shorter
+// answers; it just isn't a good default for this word length.
 const AUTO_DEVICE_ORDER: DeviceType[] = [
   'charade',
   'container',
@@ -37,7 +39,6 @@ const AUTO_DEVICE_ORDER: DeviceType[] = [
   'reversal',
   'alternates',
   'deletion',
-  'initials',
 ];
 
 if (existsSync('.env')) {
