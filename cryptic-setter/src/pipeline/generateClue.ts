@@ -40,7 +40,11 @@ function enumerationFor(answer: string): string {
 
 export async function generateClue(options: GenerateClueOptions): Promise<GenerateClueResult> {
   const { answer, device: deviceType, indicatorBank } = options;
-  const maxRetries = options.maxRetries ?? 3;
+  // 3 wasn't enough headroom for the fluency gate + retry-feedback to
+  // reliably converge — many words that eventually produce a good surface
+  // needed a 4th or 5th attempt once feedback narrowed in on the actual
+  // problem.
+  const maxRetries = options.maxRetries ?? 5;
   const device = getDevice(deviceType);
   const enumeration = enumerationFor(answer);
   const log: string[] = [];
@@ -105,14 +109,27 @@ export async function generateClue(options: GenerateClueOptions): Promise<Genera
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     log.push(`--- surface attempt ${attempt}/${maxRetries} ---`);
 
-    const parts = await writeSurface({
-      answer,
-      definition,
-      device: deviceType,
-      wordplay: construction.wordplay,
-      enumeration,
-      previousFailures,
-    });
+    let parts;
+    try {
+      parts = await writeSurface({
+        answer,
+        definition,
+        device: deviceType,
+        wordplay: construction.wordplay,
+        enumeration,
+        previousFailures,
+      });
+    } catch (err) {
+      // A single malformed tool-call response shouldn't burn the whole
+      // retry budget — treat it the same as any other failed attempt and
+      // let the next iteration try again, instead of the exception
+      // propagating up and discarding every remaining attempt at once.
+      log.push(`✗ attempt ${attempt} threw (${(err as Error).message}), retrying`);
+      previousFailures.push(
+        `Your last response wasn't a valid tool call (${(err as Error).message}) — make sure sentence, definitionText, and order are all present and definitionText is an exact substring of sentence.`
+      );
+      continue;
+    }
 
     const surfaceSentence = combineSurfaceParts(parts);
     const fullSurface = `${surfaceSentence} ${enumeration}`;

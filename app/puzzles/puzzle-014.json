@@ -1,5 +1,5 @@
 {
-  "id": "puzzle-006",
+  "id": "puzzle-014",
   "format": "2A3D",
   "entries": [
     {
@@ -7,8 +7,8 @@
       "direction": "across",
       "row": 0,
       "col": 0,
-      "answer": "AUCTIONS",
-      "clue": "Confused cautions from investors point to bidding sales (8)",
+      "answer": "WEDDINGS",
+      "clue": "Reworked, swindged goods turn out to be marriage ceremonies (8)",
       "device": "anagram",
       "bonus": false
     },
@@ -17,8 +17,8 @@
       "direction": "across",
       "row": 3,
       "col": 0,
-      "answer": "INDICATE",
-      "clue": "Bhindi catering within the festival menu will show off regional cuisine (8)",
+      "answer": "GREATEST",
+      "clue": "Greedy heirs, dreaming of overgreat estates concealed in a will, are best of all (8)",
       "device": "hidden",
       "bonus": false
     },
@@ -27,9 +27,9 @@
       "direction": "across",
       "row": 7,
       "col": 0,
-      "answer": "CHARMING",
-      "clue": "Grandma's old spell to becharm ingredients partly explains why her cooking seems delightful (8)",
-      "device": "hidden",
+      "answer": "DISEASES",
+      "clue": "Disordered seasides bring illnesses (8)",
+      "device": "anagram",
       "bonus": true
     },
     {
@@ -37,8 +37,8 @@
       "direction": "down",
       "row": 0,
       "col": 0,
-      "answer": "ARTISTIC",
-      "clue": "Old-time chartist icons concealed in the union museum are creative (8)",
+      "answer": "WEIGHTED",
+      "clue": "Some of the lightweight educated crowd seem biased toward one factor (8)",
       "device": "hidden",
       "bonus": false
     },
@@ -47,8 +47,8 @@
       "direction": "down",
       "row": 0,
       "col": 3,
-      "answer": "THRILLER",
-      "clue": "Fans felt athrill; Eric partly wrote a new suspense novel (8)",
+      "answer": "DISAGREE",
+      "clue": "Traders within bidis agreements often differ in opinion (8)",
       "device": "hidden",
       "bonus": false
     },
@@ -57,8 +57,8 @@
       "direction": "down",
       "row": 0,
       "col": 7,
-      "answer": "SLEEPING",
-      "clue": "Antisleep ingredients, hidden in the label, keep truckers from being dormant (8)",
+      "answer": "STATIONS",
+      "clue": "Depots for staff refreshments are housed by workstation sip stations everywhere in the office (8)",
       "device": "hidden",
       "bonus": false
     }

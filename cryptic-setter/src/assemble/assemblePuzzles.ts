@@ -81,6 +81,22 @@ function loadUsedAnswers(): Set<string> {
   return used;
 }
 
+// Every answer that already has a verified, banked clue — passed to
+// solveHashGrid as a search preference so grid attempts try to reuse
+// already-proven words first, rather than each attempt being an
+// independent gamble on 6 fresh words all succeeding at once. Read fresh
+// on every call since the bank grows as this run's own attempts succeed.
+function loadBankAnswers(): Set<string> {
+  const answers = new Set<string>();
+  for (const file of ['clues.json', 'review-queue.json']) {
+    const path = join(process.cwd(), 'src', 'data', 'bank', file);
+    if (!existsSync(path)) continue;
+    const list: Clue[] = JSON.parse(readFileSync(path, 'utf8'));
+    for (const clue of list) answers.add(clue.answer.toUpperCase());
+  }
+  return answers;
+}
+
 function loadBankClue(answer: string): Clue | null {
   for (const file of ['clues.json', 'review-queue.json']) {
     const path = join(process.cwd(), 'src', 'data', 'bank', file);
@@ -135,7 +151,7 @@ async function getOrGenerateClue(
 type AssembleResult = { id: string } | { failedAnswer: string } | { noGridFound: true };
 
 async function assembleOne(puzzleNumber: number, exclude: Set<string>): Promise<AssembleResult> {
-  const solution = solveHashGrid(wordlist as string[], exclude);
+  const solution = solveHashGrid(wordlist as string[], exclude, loadBankAnswers());
   if (!solution) {
     console.log('No more valid grids can be assembled from the current word pool.');
     return { noGridFound: true };
@@ -182,9 +198,27 @@ async function main() {
 
   let nextNumber = manifest.puzzles.length + 1;
   let built = 0;
-  const maxAttemptsPerSlot = 5;
+  // Each attempt that fails still grows the bank with whichever words in
+  // it succeeded before the one that didn't — and solveHashGrid now biases
+  // toward reusing those, so later attempts should complete much faster
+  // than earlier ones. 25 gives that convergence room to actually happen
+  // instead of giving up while the bank is still thin.
+  const maxAttemptsPerSlot = 25;
 
-  while (built < count) {
+  // A slot that exhausts its attempts isn't a sign the run is stuck — the
+  // bank only grows from here (every attempt, successful or not, banks
+  // whichever words in it succeeded before the one that didn't), and
+  // solveHashGrid biases toward reusing banked words, so a later slot can
+  // very plausibly succeed even after an earlier one gave up. Skip and
+  // move on instead of aborting the whole run; the numbering gap this
+  // leaves (e.g. puzzle-002 missing) is cosmetic. slotsAttempted caps the
+  // total work so an exhausted word pool still terminates instead of
+  // spinning forever.
+  let slotsAttempted = 0;
+  const maxSlotsAttempted = count * 4;
+
+  while (built < count && slotsAttempted < maxSlotsAttempted) {
+    slotsAttempted++;
     let result: AssembleResult | null = null;
     for (let attempt = 0; attempt < maxAttemptsPerSlot; attempt++) {
       result = await assembleOne(nextNumber, exclude);
@@ -196,9 +230,14 @@ async function main() {
       console.log(`  blacklisting "${result.failedAnswer}" and retrying this slot`);
       exclude.add(result.failedAnswer.toUpperCase());
     }
-    if (!result || !('id' in result)) {
-      console.log(`Giving up on puzzle ${nextNumber} after ${maxAttemptsPerSlot} attempts.`);
+    if (result && 'noGridFound' in result) {
+      console.log('Word pool exhausted — stopping.');
       break;
+    }
+    if (!result || !('id' in result)) {
+      console.log(`Giving up on puzzle ${nextNumber} after ${maxAttemptsPerSlot} attempts, moving on.`);
+      nextNumber++;
+      continue;
     }
     manifest.puzzles.push(result.id);
     // Save after every successful puzzle, not just at the end — a crash or

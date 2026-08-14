@@ -7,8 +7,8 @@
       "direction": "across",
       "row": 0,
       "col": 0,
-      "answer": "TELEGRAM",
-      "clue": "buried in loyal clientele grams of gold went missing wired message (8)",
+      "answer": "SEMINARS",
+      "clue": "His proseminar sighed, hidden in dread of workshops (8)",
       "device": "hidden",
       "bonus": false
     },
@@ -17,9 +17,9 @@
       "direction": "across",
       "row": 3,
       "col": 0,
-      "answer": "UMBRELLA",
-      "clue": "botanist's umbellar specimens arranged randomly make a rain shield (8)",
-      "device": "anagram",
+      "answer": "INFECTED",
+      "clue": "Analysts warn a superinfect editing flaw, buried in outdated antivirus code, leaves the network contaminated (8)",
+      "device": "hidden",
       "bonus": false
     },
     {
@@ -27,9 +27,9 @@
       "direction": "across",
       "row": 7,
       "col": 0,
-      "answer": "SEASHORE",
-      "clue": "where eas holding shore leave get drunk Coast (8)",
-      "device": "container",
+      "answer": "READINGS",
+      "clue": "Confusing deraigns produced by court clerks give meter measurements (8)",
+      "device": "anagram",
       "bonus": true
     },
     {
@@ -37,9 +37,9 @@
       "direction": "down",
       "row": 0,
       "col": 0,
-      "answer": "TROUSERS",
-      "clue": "need to trouser before second thoughts pants (8)",
-      "device": "charade",
+      "answer": "SPRINGER",
+      "clue": "Analysts spotted upspring errors within the market data, though the dog show judges preferred that spaniel (8)",
+      "device": "hidden",
       "bonus": false
     },
     {
@@ -47,9 +47,9 @@
       "direction": "down",
       "row": 0,
       "col": 3,
-      "answer": "EARRINGS",
-      "clue": "Ear jewelry is ears containing ring during piercing session (8)",
-      "device": "container",
+      "answer": "INTENDED",
+      "clue": "Indented awry, the design was planned (8)",
+      "device": "anagram",
       "bonus": false
     },
     {
@@ -57,8 +57,8 @@
       "direction": "down",
       "row": 0,
       "col": 7,
-      "answer": "MAGAZINE",
-      "clue": "old mag and azine section revamped into periodical (8)",
+      "answer": "STUDENTS",
+      "clue": "Student beside south dorm entrance greets new pupils (8)",
       "device": "charade",
       "bonus": false
     }
