@@ -8,6 +8,7 @@ import type { Clue, DeviceType } from '../types.js';
 import { getDevice } from '../devices/index.js';
 import { writeSurface } from '../llm/surfaceWriter.js';
 import { proposeDefinition } from '../llm/proposeDefinition.js';
+import { judgeFluency } from '../llm/judgeFluency.js';
 import {
   combineSurfaceParts,
   verifyDefinitionAtEnd,
@@ -39,7 +40,11 @@ function enumerationFor(answer: string): string {
 
 export async function generateClue(options: GenerateClueOptions): Promise<GenerateClueResult> {
   const { answer, device: deviceType, indicatorBank } = options;
-  const maxRetries = options.maxRetries ?? 3;
+  // 3 wasn't enough headroom for the fluency gate + retry-feedback to
+  // reliably converge — many words that eventually produce a good surface
+  // needed a 4th or 5th attempt once feedback narrowed in on the actual
+  // problem.
+  const maxRetries = options.maxRetries ?? 5;
   const device = getDevice(deviceType);
   const enumeration = enumerationFor(answer);
   const log: string[] = [];
@@ -96,17 +101,35 @@ export async function generateClue(options: GenerateClueOptions): Promise<Genera
     return { clue: null, log };
   }
 
-  // Step 5-7: ask for a surface, verify it, retry on failure.
+  // Step 5-7: ask for a surface, verify it, retry on failure. Each retry
+  // gets told exactly why the previous one was rejected, so it can fix
+  // that specific problem instead of blindly writing a new sentence that
+  // might fail the same way.
+  const previousFailures: string[] = [];
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     log.push(`--- surface attempt ${attempt}/${maxRetries} ---`);
 
-    const parts = await writeSurface({
-      answer,
-      definition,
-      device: deviceType,
-      wordplay: construction.wordplay,
-      enumeration,
-    });
+    let parts;
+    try {
+      parts = await writeSurface({
+        answer,
+        definition,
+        device: deviceType,
+        wordplay: construction.wordplay,
+        enumeration,
+        previousFailures,
+      });
+    } catch (err) {
+      // A single malformed tool-call response shouldn't burn the whole
+      // retry budget — treat it the same as any other failed attempt and
+      // let the next iteration try again, instead of the exception
+      // propagating up and discarding every remaining attempt at once.
+      log.push(`✗ attempt ${attempt} threw (${(err as Error).message}), retrying`);
+      previousFailures.push(
+        `Your last response wasn't a valid tool call (${(err as Error).message}) — make sure sentence, definitionText, and order are all present and definitionText is an exact substring of sentence.`
+      );
+      continue;
+    }
 
     const surfaceSentence = combineSurfaceParts(parts);
     const fullSurface = `${surfaceSentence} ${enumeration}`;
@@ -155,13 +178,33 @@ export async function generateClue(options: GenerateClueOptions): Promise<Genera
       surfaceCheckPassed = surfaceCheck.passed;
     }
 
-    const allPassed =
+    const structurallyPassed =
       structuralCheck.passed &&
       echoCheck.passed &&
       repeatCheck.passed &&
       fodderPresent &&
       indicatorPresent &&
       surfaceCheckPassed;
+
+    // The structural checks above only verify that the required words
+    // land in the required places — a grammatically broken sentence
+    // ("was housed by yesterday lightning storms before dawn sunlight")
+    // satisfies all of them just as easily as a real sentence does. Only
+    // spend this extra call once the surface has already cleared every
+    // other gate, since there's no point judging the fluency of a surface
+    // that's about to be discarded anyway.
+    let fluencyPassed = true;
+    if (structurallyPassed) {
+      const verdict = await judgeFluency(surfaceSentence);
+      fluencyPassed = verdict.fluent;
+      log.push(
+        fluencyPassed
+          ? `✓ fluency check passed: ${verdict.reason}`
+          : `✗ fluency check failed: ${verdict.reason}`
+      );
+    }
+
+    const allPassed = structurallyPassed && fluencyPassed;
 
     if (allPassed) {
       const clue: Clue = {
@@ -180,6 +223,27 @@ export async function generateClue(options: GenerateClueOptions): Promise<Genera
         createdAt: new Date().toISOString(),
       };
       return { clue, log };
+    }
+
+    // Surface the single most useful reason for the next attempt — fluency
+    // failures carry the richest, most actionable explanation; structural
+    // failures are more mechanical but still tell the model exactly what
+    // broke, rather than leaving it to guess why a plausible-looking
+    // sentence got rejected.
+    if (structurallyPassed && !fluencyPassed) {
+      previousFailures.push(`"${surfaceSentence}" was rejected: it didn't read as fluent, natural English.`);
+    } else if (!structuralCheck.passed) {
+      previousFailures.push(`"${surfaceSentence}" was rejected: ${structuralCheck.log[structuralCheck.log.length - 1]}`);
+    } else if (!echoCheck.passed || !repeatCheck.passed) {
+      previousFailures.push(
+        `"${surfaceSentence}" was rejected: the definition and wordplay repeated the same word — pick genuinely different wording for each.`
+      );
+    } else if (!fodderPresent || !indicatorPresent) {
+      previousFailures.push(
+        `"${surfaceSentence}" was rejected: it dropped a required word (the fodder or indicator) somewhere along the way — make sure every required word actually appears verbatim.`
+      );
+    } else if (!surfaceCheckPassed) {
+      previousFailures.push(`"${surfaceSentence}" was rejected: ${device.verifySurface ? 'the wordplay parts were not arranged correctly (wrong order, or split across a word boundary incorrectly)' : 'a structural check failed'}.`);
     }
 
     log.push(`✗ attempt ${attempt} failed verification, discarding surface and retrying`);

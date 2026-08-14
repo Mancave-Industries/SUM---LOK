@@ -7,9 +7,9 @@
       "direction": "across",
       "row": 0,
       "col": 0,
-      "answer": "MUDSLIDE",
-      "clue": "could follow mud beside slide at the playground landslide of wet earth (8)",
-      "device": "charade",
+      "answer": "VISITORS",
+      "clue": "Scrambled ivorists welcomed the guests (8)",
+      "device": "anagram",
       "bonus": false
     },
     {
@@ -17,9 +17,9 @@
       "direction": "across",
       "row": 3,
       "col": 0,
-      "answer": "ISLANDER",
-      "clue": "put island beside er, hesitating over the map one living on an isle (8)",
-      "device": "charade",
+      "answer": "EQUIPPED",
+      "clue": "Hospitals plan to reequip pediatric units within their budgets, staying fully furnished (8)",
+      "device": "hidden",
       "bonus": false
     },
     {
@@ -27,9 +27,9 @@
       "direction": "across",
       "row": 7,
       "col": 0,
-      "answer": "EXERCISE",
-      "clue": "that's excise surrounding er, hesitant chancellor admits Workout (8)",
-      "device": "container",
+      "answer": "STATUTES",
+      "clue": "Astutest advisers, mixed up on policy, still end up drafting laws (8)",
+      "device": "anagram",
       "bonus": false
     },
     {
@@ -37,9 +37,9 @@
       "direction": "down",
       "row": 0,
       "col": 0,
-      "answer": "MARINADE",
-      "clue": "flavoring soak for ad enclosing marine, discharged into the recruitment brine (8)",
-      "device": "container",
+      "answer": "VETERANS",
+      "clue": "Part of nonveteran sim actually goes to old hands (8)",
+      "device": "hidden",
       "bonus": false
     },
     {
@@ -47,9 +47,9 @@
       "direction": "down",
       "row": 0,
       "col": 3,
-      "answer": "STRANGER",
-      "clue": "Loan granters gone crazy is an unfamiliar person (8)",
-      "device": "anagram",
+      "answer": "INCIDENT",
+      "clue": "Forger's zinc identity partly explains this odd event (8)",
+      "device": "hidden",
       "bonus": false
     },
     {
@@ -57,9 +57,9 @@
       "direction": "down",
       "row": 0,
       "col": 7,
-      "answer": "ENTRANCE",
-      "clue": "for double agent rancels partly cancelled meeting doorway (8)",
-      "device": "hidden",
+      "answer": "SOLDIERS",
+      "clue": "A soldier next to south camp trains troops (8)",
+      "device": "charade",
       "bonus": true
     }
   ]

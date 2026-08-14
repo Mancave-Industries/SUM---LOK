@@ -14,35 +14,64 @@ export interface SurfaceRequest {
   device: string;
   wordplay: Wordplay;
   enumeration: string;
+  // Why the previous attempt(s) got rejected, if any — feeding this back
+  // lets a retry fix the actual reported problem instead of guessing blind
+  // at a brand-new sentence that might fail the exact same way.
+  previousFailures?: string[];
 }
 
 const SURFACE_TOOL = {
   name: 'write_surface',
-  description:
-    'Return the two labelled halves of a single natural English cryptic-crossword clue sentence.',
+  description: 'Return one natural English cryptic-crossword clue sentence, plus where its definition sits.',
   input_schema: {
     type: 'object' as const,
     properties: {
+      sentence: {
+        type: 'string' as const,
+        description:
+          'The complete clue as ONE natural sentence — write this first, as a real sentence with a single subject and verb running through it, before thinking about where the definition falls within it.',
+      },
       definitionText: {
         type: 'string' as const,
         description:
-          'The words that stand in for the plain dictionary definition of the answer. Must read naturally as its own phrase.',
-      },
-      wordplayText: {
-        type: 'string' as const,
-        description:
-          'The words that carry the wordplay mechanism (indicator + fodder), reading naturally.',
+          'The exact words, copied verbatim from `sentence`, that serve as the plain dictionary definition. Must be either the literal opening words of `sentence` or its literal closing words — never a chunk from the middle.',
       },
       order: {
         type: 'string' as const,
         enum: ['definition-first', 'wordplay-first'],
-        description:
-          'Whether definitionText or wordplayText comes first when the clue is read left to right.',
+        description: 'Whether definitionText is the start of `sentence` or the end of it.',
       },
     },
-    required: ['definitionText', 'wordplayText', 'order'],
+    required: ['sentence', 'definitionText', 'order'],
   },
 };
+
+// definitionText is asked for as a literal excerpt of `sentence`, not a
+// separately-composed field — this finds where it actually sits (matching
+// case-insensitively, since the model may adjust capitalization) and
+// returns whatever's left, so wordplayText is always derived from the one
+// real sentence the model wrote rather than risking a second, independently
+// drifted composition.
+function splitSentence(
+  sentence: string,
+  definitionText: string,
+  order: 'definition-first' | 'wordplay-first'
+): { definitionText: string; wordplayText: string } | null {
+  const lower = sentence.toLowerCase();
+  const defLower = definitionText.toLowerCase().trim();
+  if (order === 'definition-first') {
+    if (!lower.startsWith(defLower)) return null;
+    return {
+      definitionText: sentence.slice(0, definitionText.length),
+      wordplayText: sentence.slice(definitionText.length).trim(),
+    };
+  }
+  if (!lower.endsWith(defLower)) return null;
+  return {
+    definitionText: sentence.slice(sentence.length - definitionText.length),
+    wordplayText: sentence.slice(0, sentence.length - definitionText.length).trim(),
+  };
+}
 
 // Fodder-based devices (anagram, reversal, alternates) hand the LLM a
 // single fixed string that must survive into the wordplay text near-
@@ -97,6 +126,12 @@ The fodder "${fodder}" and the indicator "${indicator}" must both appear in the 
   throw new Error(`Don't know how to describe wordplay for device "${device}"`);
 }
 
+function describeFeedback(previousFailures?: string[]): string {
+  if (!previousFailures || previousFailures.length === 0) return '';
+  const list = previousFailures.map((reason) => `  - ${reason}`).join('\n');
+  return `\nYour previous attempt(s) at this same clue were rejected for a specific, concrete reason — fix that reason, don't just write a different sentence that might fail the same way:\n${list}\n`;
+}
+
 function buildPrompt(request: SurfaceRequest): string {
   const { answer, definition, device, enumeration } = request;
   return `You are a cryptic crossword setter writing ONE clue for the answer "${answer}" ${enumeration}.
@@ -105,6 +140,7 @@ Definition to use (must be preserved, not paraphrased away): "${definition}"
 Device: ${device}
 
 ${describeWordplayRequirement(request)}
+${describeFeedback(request.previousFailures)}
 
 THE ONE THING THAT SEPARATES A GOOD CLUE FROM A BAD ONE:
 A bad surface just narrates the mechanism — it names the parts and glues them
@@ -137,11 +173,24 @@ juxtaposition. It's fine (expected, even) for the clue to be witty, odd, or
 a little surreal, as long as it parses as one real sentence a person could
 plausibly write or say.
 
+HOW TO ANSWER:
+Write "sentence" first, as ONE real sentence — a single subject and verb
+carrying all the way through, exactly what you'd say if you weren't
+thinking about the definition/wordplay split at all yet. A sentence that
+would make a fluent English speaker stumble reading it aloud is broken, no
+matter how neatly its two halves individually describe the wordplay — a
+bare "is ..." or "was ..." opener with nothing before it, or two clauses
+just parked next to each other with no real grammatical link, are both
+broken this way. Only once "sentence" reads cleanly as real English do you
+go back and mark: which literal words at the very start or very end of it
+are the definition? That's "definitionText" — copy it verbatim from
+"sentence", don't rephrase it.
+
 Rules:
 - The clue reads as a single natural, misleading English sentence (or short phrase) with no hint that it's a puzzle.
 - The definition must sit at the very start or the very end of the sentence — never in the middle.
 - Do not use the answer "${answer}" itself anywhere in the clue.
-- Call write_surface with the two labelled halves exactly as they will appear in the final sentence, so that joining them with a single space in the given order reproduces the full clue sentence.`;
+- Call write_surface with "sentence", "definitionText" (a verbatim excerpt of it), and "order".`;
 }
 
 export async function writeSurface(request: SurfaceRequest): Promise<SurfaceParts> {
@@ -160,18 +209,23 @@ export async function writeSurface(request: SurfaceRequest): Promise<SurfacePart
     throw new Error('Model did not return a write_surface tool call');
   }
 
-  const input = toolUse.input as Partial<SurfaceParts>;
+  const input = toolUse.input as { sentence?: unknown; definitionText?: unknown; order?: unknown };
   if (
+    typeof input.sentence !== 'string' ||
     typeof input.definitionText !== 'string' ||
-    typeof input.wordplayText !== 'string' ||
     (input.order !== 'definition-first' && input.order !== 'wordplay-first')
   ) {
     throw new Error('Model returned malformed surface parts');
   }
 
-  return {
-    definitionText: input.definitionText,
-    wordplayText: input.wordplayText,
-    order: input.order,
-  };
+  const split = splitSentence(input.sentence, input.definitionText, input.order);
+  if (!split) {
+    // The model claimed definitionText was the start/end of sentence but it
+    // literally isn't — return something that will fail verifyDefinitionAtEnd's
+    // reconstruction check downstream (a normal, expected retry) rather than
+    // silently guessing at a split point.
+    return { definitionText: input.definitionText, wordplayText: input.sentence, order: input.order };
+  }
+
+  return { ...split, order: input.order };
 }

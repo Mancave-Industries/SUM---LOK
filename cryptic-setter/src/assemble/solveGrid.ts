@@ -30,10 +30,24 @@ function shuffle<T>(items: T[]): T[] {
 // interlock validly at the checkpoint positions. Word order is shuffled
 // each call so repeated calls against the same pool don't always return
 // the same solution.
-export function solveHashGrid(wordPool: string[], exclude: Set<string>): GridSolution | null {
+//
+// `preferred` (answers that already have a verified, banked clue) sorts
+// first in the search order. The search below is greedy — it returns the
+// first valid combination it finds while scanning `words` in order — so
+// this makes it try to build a grid entirely out of already-proven words
+// before reaching for an unproven one that would need a fresh (and, under
+// the current fluency gate, far-from-guaranteed) generation. Without this,
+// every attempt is an independent roll of the dice on 6 words landing all
+// at once, discarding whichever ones happened to succeed the moment a
+// single other word in that combination fails.
+export function solveHashGrid(
+  wordPool: string[],
+  exclude: Set<string>,
+  preferred: Set<string> = new Set()
+): GridSolution | null {
   const words = shuffle(
     wordPool.map((w) => w.toUpperCase()).filter((w) => w.length === 8 && !exclude.has(w))
-  );
+  ).sort((a, b) => Number(preferred.has(b)) - Number(preferred.has(a)));
   if (words.length < 6) return null;
 
   const bySkeleton = new Map<string, string[]>();

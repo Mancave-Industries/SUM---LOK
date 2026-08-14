@@ -100,8 +100,18 @@ const indicatorBanks: Partial<Record<DeviceType, string[]>> = {
 // reversed letters to themselves be a real word. Balancing by running
 // count instead spreads real batches across the device range instead of
 // mostly generating one device with everything else as backfill.
+//
+// charade/container start with a handicap rather than an even 0: their
+// wordplay is two separately-labelled parts an indicator has to visibly
+// glue together, which is structurally harder to fold into one fluent
+// sentence than hidden/anagram's single flowing description with the
+// fodder embedded in it — in practice they fail the fluency check far
+// more often. The handicap fades once hidden/anagram have been used a
+// couple more times than they have, so charade/container still get used
+// when hidden/anagram genuinely can't construct a given word.
+const DEVICE_HANDICAP: Partial<Record<DeviceType, number>> = { charade: 2, container: 2 };
 const deviceUsageCount: Partial<Record<DeviceType, number>> = {};
-for (const d of AUTO_DEVICE_ORDER) deviceUsageCount[d] = 0;
+for (const d of AUTO_DEVICE_ORDER) deviceUsageCount[d] = DEVICE_HANDICAP[d] ?? 0;
 
 function pickAutoDevice(answer: string): DeviceType | null {
   const constructible = AUTO_DEVICE_ORDER.filter((candidate) => {
