@@ -7,9 +7,9 @@
       "direction": "across",
       "row": 0,
       "col": 0,
-      "answer": "SECURITIES",
-      "clue": "After being broken, \"securitise\" would oddly describe stocks and bonds (10)",
-      "device": "anagram",
+      "answer": "REGRESSION",
+      "clue": "Some of the far egressions from the burning theatre show reversion to an earlier state (10)",
+      "device": "hidden",
       "bonus": false
     },
     {
@@ -17,9 +17,9 @@
       "direction": "across",
       "row": 3,
       "col": 2,
-      "answer": "STEERING",
-      "clue": "Trustee rings concealed in scandal reveal the ship's guiding direction (8)",
-      "device": "hidden",
+      "answer": "TEXTBOOK",
+      "clue": "Send a text then book the course manual (8)",
+      "device": "charade",
       "bonus": false
     },
     {
@@ -27,9 +27,9 @@
       "direction": "across",
       "row": 7,
       "col": 0,
-      "answer": "GENERATES",
-      "clue": "Scientist hides heart rate inside genes and produces surprising data (9)",
-      "device": "container",
+      "answer": "REASONABLE",
+      "clue": "Reason followed by able leadership makes for a sensible outcome (10)",
+      "device": "charade",
       "bonus": false
     },
     {
@@ -37,9 +37,9 @@
       "direction": "down",
       "row": 0,
       "col": 0,
-      "answer": "SPEAKING",
-      "clue": "Geeks review leetspeak ingredients partly for a course on talking (8)",
-      "device": "hidden",
+      "answer": "RECORDER",
+      "clue": "Curious how they rerecord tunes on this flute-like instrument (8)",
+      "device": "anagram",
       "bonus": false
     },
     {
@@ -47,9 +47,9 @@
       "direction": "down",
       "row": 0,
       "col": 5,
-      "answer": "INTERSTATE",
-      "clue": "Gangsters inter their boss, then state their loyalty, all along the highway (10)",
-      "device": "charade",
+      "answer": "STATEMENTS",
+      "clue": "A moment around unstable states yields official declarations (10)",
+      "device": "container",
       "bonus": false
     },
     {
@@ -57,9 +57,9 @@
       "direction": "down",
       "row": 0,
       "col": 9,
-      "answer": "SURGEONS",
-      "clue": "Sons around town feel the urge to become operating doctors (8)",
-      "device": "container",
+      "answer": "NICKNAME",
+      "clue": "Old dornick names buried in surveyor's rock catalogue reveal a pet name (8)",
+      "device": "hidden",
       "bonus": true
     }
   ]

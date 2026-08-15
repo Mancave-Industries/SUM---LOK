@@ -7,18 +7,18 @@
       "direction": "across",
       "row": 0,
       "col": 0,
-      "answer": "STICKERS",
-      "clue": "Some of geologists' characteristic kersantites are found to be adhesive labels (8)",
-      "device": "hidden",
+      "answer": "SEARCHED",
+      "clue": "Every seed enclosing an arch of vines was looked through (8)",
+      "device": "container",
       "bonus": false
     },
     {
       "number": 4,
       "direction": "across",
       "row": 4,
-      "col": 1,
-      "answer": "HOUSEHOLD",
-      "clue": "Old warehouse holdings, examined partly, are recorded for tax purposes by the family living together (9)",
+      "col": 0,
+      "answer": "RECREATION",
+      "clue": "Spare creations held by the sculptor make an unusual leisure activity (10)",
       "device": "hidden",
       "bonus": false
     },
@@ -27,9 +27,9 @@
       "direction": "across",
       "row": 9,
       "col": 0,
-      "answer": "TELECOM",
-      "clue": "Every startup name buried in Hotel eCommerce plans conceals a phone company (7)",
-      "device": "hidden",
+      "answer": "NUMERIC",
+      "clue": "Her wrecked minceur regime is expressed in numbers (7)",
+      "device": "anagram",
       "bonus": false
     },
     {
@@ -37,9 +37,9 @@
       "direction": "down",
       "row": 0,
       "col": 0,
-      "answer": "SCREENSHOT",
-      "clue": "Old widescreen shots held by the museum yield a fine screen capture (10)",
-      "device": "hidden",
+      "answer": "SEPARATION",
+      "clue": "Twisted anatropies in the garden signal division apart (10)",
+      "device": "anagram",
       "bonus": false
     },
     {
@@ -47,9 +47,9 @@
       "direction": "down",
       "row": 0,
       "col": 4,
-      "answer": "KINASE",
-      "clue": "Traditional remedy found in old kinakina serum makes for a phosphorylating enzyme (6)",
-      "device": "hidden",
+      "answer": "CLOSES",
+      "clue": "Callousness evenly spread among staff shuts down the office party (6)",
+      "device": "alternates",
       "bonus": false
     },
     {
@@ -57,8 +57,8 @@
       "direction": "down",
       "row": 0,
       "col": 9,
-      "answer": "AMENDMENTS",
-      "clue": "Held within a reamendment, sir's fresh clause gave revisions (10)",
+      "answer": "DEFINITELY",
+      "clue": "Indefinite lying housed by border guards means guilt without doubt (10)",
       "device": "hidden",
       "bonus": true
     }

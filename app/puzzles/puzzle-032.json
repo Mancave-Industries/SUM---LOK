@@ -7,8 +7,8 @@
       "direction": "across",
       "row": 0,
       "col": 0,
-      "answer": "REASONABLE",
-      "clue": "Reason followed by able leadership makes for a sensible outcome (10)",
+      "answer": "BACKGROUND",
+      "clue": "Retreat back before ground troops advance: that's personal history (10)",
       "device": "charade",
       "bonus": false
     },
@@ -17,9 +17,9 @@
       "direction": "across",
       "row": 4,
       "col": 0,
-      "answer": "REWARD",
-      "clue": "Carpenter finally brought back the stuck drawer for a prize (6)",
-      "device": "reversal",
+      "answer": "GRADES",
+      "clue": "Garlandless regularly describes flowerless brides who still earn top Marks (6)",
+      "device": "alternates",
       "bonus": false
     },
     {
@@ -27,8 +27,8 @@
       "direction": "across",
       "row": 9,
       "col": 0,
-      "answer": "RECREATION",
-      "clue": "Spare creations held by the sculptor make an unusual leisure activity (10)",
+      "answer": "COUNSELING",
+      "clue": "Grandma's tendency to miscounsel ingredients included in family recipes finally pushed us toward therapy (10)",
       "device": "hidden",
       "bonus": true
     },
@@ -37,28 +37,28 @@
       "direction": "down",
       "row": 0,
       "col": 0,
-      "answer": "RECORDER",
-      "clue": "Curious how they rerecord tunes on this flute-like instrument (8)",
+      "answer": "BLOGGERS",
+      "clue": "Upset bogglers turn out to be online diarists (8)",
       "device": "anagram",
-      "bonus": false
-    },
-    {
-      "number": 3,
-      "direction": "down",
-      "row": 1,
-      "col": 4,
-      "answer": "CHARLOTTE",
-      "clue": "Every wounded feldschar lottery ticket, hidden in his knapsack, names a North Carolina city (9)",
-      "device": "hidden",
       "bonus": false
     },
     {
       "number": 2,
       "direction": "down",
       "row": 0,
+      "col": 4,
+      "answer": "GUIDELINES",
+      "clue": "Fishing guides enclosing a line for tourists are really just rules of thumb (10)",
+      "device": "container",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 0,
       "col": 9,
-      "answer": "ETHICAL",
-      "clue": "Under an alias, isoplethic alias maps were partly redrawn by the mapmaker, though the final release was still morally right (7)",
+      "answer": "DECLINE",
+      "clue": "Rock samples hide clines hidden in glacier surveys, but locals still refuse (7)",
       "device": "hidden",
       "bonus": false
     }

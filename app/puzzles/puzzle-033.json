@@ -7,18 +7,18 @@
       "direction": "across",
       "row": 0,
       "col": 0,
-      "answer": "DEPOSITS",
-      "clue": "Broken topsides could hide a sailor's bank savings (8)",
-      "device": "anagram",
+      "answer": "RELIGION",
+      "clue": "Li, enclosing a region torn by conflict, still clings to faith (8)",
+      "device": "container",
       "bonus": false
     },
     {
       "number": 4,
       "direction": "across",
       "row": 4,
-      "col": 1,
-      "answer": "BOOKSTORE",
-      "clue": "Chef's cookbook stores partly ruined recipes, according to the shop selling books (9)",
+      "col": 0,
+      "answer": "SCREENSHOT",
+      "clue": "Old widescreen shots held by the museum yield a fine screen capture (10)",
       "device": "hidden",
       "bonus": false
     },
@@ -27,9 +27,9 @@
       "direction": "across",
       "row": 9,
       "col": 0,
-      "answer": "SAILING",
-      "clue": "New topsail ingredients, concealed in the ship's hold, were perfect for boating (7)",
-      "device": "hidden",
+      "answer": "EDITORS",
+      "clue": "Storied mixed accounts finally need copy revisers (7)",
+      "device": "anagram",
       "bonus": false
     },
     {
@@ -37,9 +37,9 @@
       "direction": "down",
       "row": 0,
       "col": 0,
-      "answer": "DEVELOPERS",
-      "clue": "Software house president somehow develops ER staff into builders (10)",
-      "device": "container",
+      "answer": "RESISTANCE",
+      "clue": "Genealogists shuffled ancestries randomly, revealing opposition (10)",
+      "device": "anagram",
       "bonus": false
     },
     {
@@ -47,9 +47,9 @@
       "direction": "down",
       "row": 0,
       "col": 4,
-      "answer": "STICKY",
-      "clue": "Held within a less realistic Kyle subplot, the show's romance still feels adhesive (6)",
-      "device": "hidden",
+      "answer": "GENRES",
+      "clue": "Greenbriers, at regular intervals, overrun the nursery's plant categories (6)",
+      "device": "alternates",
       "bonus": false
     },
     {
@@ -57,8 +57,8 @@
       "direction": "down",
       "row": 0,
       "col": 9,
-      "answer": "COLLECTING",
-      "clue": "I recollect ingredients as part of this gathering together (10)",
+      "answer": "EXCITEMENT",
+      "clue": "Coach's plan to overexcite mental patients partly explains the thrill (10)",
       "device": "hidden",
       "bonus": true
     }

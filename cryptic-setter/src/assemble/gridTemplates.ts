@@ -106,6 +106,68 @@ function assertNoSameDirectionCollisions(slots: SlotSpec[]): void {
   }
 }
 
+// Standard crossword construction rule: two entries may only ever be
+// adjacent through a single shared cell (a real crossing). If two DIFFERENT
+// cells that are orthogonally next to each other are both covered by slots,
+// there's no black square rendered between them — the grid visually (and
+// functionally, since the game reads a straight run of filled cells as one
+// word) merges two unrelated entries into what looks like a single longer
+// word. Concretely: every maximal horizontal run of filled cells (length
+// >= 2) must equal some across slot's exact span, and every maximal
+// vertical run must equal some down slot's exact span.
+function assertNoOrphanAdjacency(slots: SlotSpec[], rows: number, cols: number): void {
+  const filled = new Map<string, string[]>();
+  for (const slot of slots) {
+    for (const cell of cellsOf(slot)) {
+      const key = `${cell.row},${cell.col}`;
+      if (!filled.has(key)) filled.set(key, []);
+      filled.get(key)!.push(slot.id);
+    }
+  }
+  const acrossSpan = new Map<string, number>();
+  const downSpan = new Map<string, number>();
+  for (const s of slots) {
+    if (s.direction === 'across') acrossSpan.set(`${s.row},${s.col}`, s.length);
+    else downSpan.set(`${s.row},${s.col}`, s.length);
+  }
+
+  for (let r = 0; r < rows; r++) {
+    let c = 0;
+    while (c < cols) {
+      if (!filled.has(`${r},${c}`)) { c++; continue; }
+      const start = c;
+      while (c < cols && filled.has(`${r},${c}`)) c++;
+      const runLength = c - start;
+      if (runLength >= 2 && acrossSpan.get(`${r},${start}`) !== runLength) {
+        const owners = Array.from({ length: runLength }, (_, i) => filled.get(`${r},${start + i}`)!.join('+'));
+        throw new Error(
+          `Orphan adjacency at row ${r}, cols ${start}-${c - 1}: filled cells from unrelated slots touch with ` +
+          `no black square between them (${owners.join(' | ')}) — extend or reposition a slot so this becomes ` +
+          `a real crossing, or open a gap so it isn't adjacent at all.`
+        );
+      }
+    }
+  }
+
+  for (let c = 0; c < cols; c++) {
+    let r = 0;
+    while (r < rows) {
+      if (!filled.has(`${r},${c}`)) { r++; continue; }
+      const start = r;
+      while (r < rows && filled.has(`${r},${c}`)) r++;
+      const runLength = r - start;
+      if (runLength >= 2 && downSpan.get(`${start},${c}`) !== runLength) {
+        const owners = Array.from({ length: runLength }, (_, i) => filled.get(`${start + i},${c}`)!.join('+'));
+        throw new Error(
+          `Orphan adjacency at col ${c}, rows ${start}-${r - 1}: filled cells from unrelated slots touch with ` +
+          `no black square between them (${owners.join(' | ')}) — extend or reposition a slot so this becomes ` +
+          `a real crossing, or open a gap so it isn't adjacent at all.`
+        );
+      }
+    }
+  }
+}
+
 function assertConnected(slots: SlotSpec[], crossings: Crossing[]): void {
   const adjacency = new Map<string, Set<string>>();
   for (const s of slots) adjacency.set(s.id, new Set());
@@ -160,6 +222,7 @@ export function buildTemplate(id: string, rows: number, cols: number, slots: Slo
   const crossings = computeCrossings(slots);
   assertConnected(slots, crossings);
   assertFootprint(slots, rows, cols);
+  assertNoOrphanAdjacency(slots, rows, cols);
 
   const numbers = computeNumbering(slots);
   const numberedSlots: NumberedSlot[] = slots.map((s) => ({ ...s, number: numbers.get(s.id)! }));
@@ -179,7 +242,7 @@ const RAW_TEMPLATES: Array<{ id: string; rows: number; cols: number; slots: Slot
     cols: 10,
     slots: [
       { id: 'A1', direction: 'across', row: 0, col: 0, length: 8 },
-      { id: 'A2', direction: 'across', row: 4, col: 1, length: 9 },
+      { id: 'A2', direction: 'across', row: 4, col: 0, length: 10 },
       { id: 'A3', direction: 'across', row: 9, col: 0, length: 7 },
       { id: 'D1', direction: 'down', row: 0, col: 0, length: 10 },
       { id: 'D2', direction: 'down', row: 0, col: 4, length: 6 },
@@ -195,7 +258,7 @@ const RAW_TEMPLATES: Array<{ id: string; rows: number; cols: number; slots: Slot
       { id: 'A2', direction: 'across', row: 5, col: 0, length: 6 },
       { id: 'A3', direction: 'across', row: 9, col: 3, length: 7 },
       { id: 'D1', direction: 'down', row: 0, col: 1, length: 10 },
-      { id: 'D2', direction: 'down', row: 0, col: 5, length: 9 },
+      { id: 'D2', direction: 'down', row: 0, col: 5, length: 10 },
       { id: 'D3', direction: 'down', row: 0, col: 9, length: 10 },
     ],
   },
@@ -206,7 +269,7 @@ const RAW_TEMPLATES: Array<{ id: string; rows: number; cols: number; slots: Slot
     slots: [
       { id: 'A1', direction: 'across', row: 0, col: 0, length: 10 },
       { id: 'A2', direction: 'across', row: 3, col: 2, length: 8 },
-      { id: 'A3', direction: 'across', row: 7, col: 0, length: 9 },
+      { id: 'A3', direction: 'across', row: 7, col: 0, length: 10 },
       { id: 'D1', direction: 'down', row: 0, col: 0, length: 8 },
       { id: 'D2', direction: 'down', row: 0, col: 5, length: 10 },
       { id: 'D3', direction: 'down', row: 0, col: 9, length: 8 },
@@ -221,7 +284,7 @@ const RAW_TEMPLATES: Array<{ id: string; rows: number; cols: number; slots: Slot
       { id: 'A2', direction: 'across', row: 4, col: 0, length: 6 },
       { id: 'A3', direction: 'across', row: 9, col: 0, length: 10 },
       { id: 'D1', direction: 'down', row: 0, col: 0, length: 8 },
-      { id: 'D2', direction: 'down', row: 1, col: 4, length: 9 },
+      { id: 'D2', direction: 'down', row: 0, col: 4, length: 10 },
       { id: 'D3', direction: 'down', row: 0, col: 9, length: 7 },
     ],
   },
