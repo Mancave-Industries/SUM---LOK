@@ -7,6 +7,9 @@
 import type { DeviceModule, VerificationResult, Wordplay } from '../types.js';
 import { getAllWords } from './dictionary.js';
 import { pickRandom } from './random.js';
+import alternatesPool from '../data/alternates-pool.json' with { type: 'json' };
+
+const pool = alternatesPool as Record<string, Record<string, string[]>>;
 
 function extractAlternating(word: string): string {
   return word
@@ -16,8 +19,18 @@ function extractAlternating(word: string): string {
     .join('');
 }
 
+// findAlternatingHost does a full pass over the ~275k-word dictionary on
+// every call — expensive, and mostly wasted since a match is rare. For
+// answer lengths the precomputed pool covers (see
+// scripts/buildDevicePools.ts), this is an instant lookup instead; the live
+// scan stays as a fallback for lengths/answers the pool doesn't cover
+// (e.g. short test-fixture answers outside the puzzle grid's 6-10 range).
 function findAlternatingHost(answer: string): string | null {
   const target = answer.toUpperCase();
+
+  const pooled = pool[String(target.length)]?.[target];
+  if (pooled && pooled.length > 0) return pickRandom(pooled).toUpperCase();
+
   const expectedLength = target.length * 2 - 1;
   const candidates = getAllWords().filter((w) => w.length === expectedLength);
 

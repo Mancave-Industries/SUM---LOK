@@ -7,7 +7,8 @@
 
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { solveHashGrid, checkpointsFor } from './solveGrid.js';
+import { fillTemplate } from './fillTemplate.js';
+import { GRID_TEMPLATES, type GridTemplate } from './gridTemplates.js';
 import { generateClue } from '../pipeline/generateClue.js';
 import { appendToBank } from '../bank/clueBank.js';
 import { getDevice } from '../devices/index.js';
@@ -19,18 +20,19 @@ import charadeIndicators from '../data/indicators/charade.json' with { type: 'js
 import containerIndicators from '../data/indicators/container.json' with { type: 'json' };
 import deletionIndicatorData from '../data/indicators/deletion.json' with { type: 'json' };
 import wordlistsByLength from '../data/wordlistsByLength.json' with { type: 'json' };
+import reversalPairs from '../data/reversal-pairs.json' with { type: 'json' };
+import alternatesPool from '../data/alternates-pool.json' with { type: 'json' };
 import type { Clue, DeviceType } from '../types.js';
 
-// Every grid used to be 8 letters, hardcoded. Now a puzzle's word length is
-// picked from this set — round-robin by puzzle number so a run gets real
-// variety instead of clustering on whichever length has the biggest pool,
-// with the other lengths as fallback if the assigned one can't produce a
-// solvable grid from the current (post-exclusion) pool.
-const SUPPORTED_LENGTHS = [6, 7, 8, 9, 10];
-
-function lengthOrderFor(puzzleNumber: number): number[] {
-  const primaryIndex = (puzzleNumber - 1) % SUPPORTED_LENGTHS.length;
-  return [SUPPORTED_LENGTHS[primaryIndex], ...SUPPORTED_LENGTHS.filter((_, i) => i !== primaryIndex)];
+// Every grid used to be 8 letters, hardcoded, all 6 answers sharing that
+// one length. Now a puzzle's shape is picked from a fixed set of 10x10
+// templates — round-robin by puzzle number so a run gets real variety —
+// each with its own mix of slot lengths, with the other templates as
+// fallback if the assigned one can't produce a solvable grid from the
+// current (post-exclusion) pool.
+function templateOrderFor(puzzleNumber: number): GridTemplate[] {
+  const primaryIndex = (puzzleNumber - 1) % GRID_TEMPLATES.length;
+  return [GRID_TEMPLATES[primaryIndex], ...GRID_TEMPLATES.filter((_, i) => i !== primaryIndex)];
 }
 
 if (existsSync('.env')) process.loadEnvFile('.env');
@@ -65,6 +67,65 @@ const DEVICE_ORDER: DeviceType[] = [
   'reversal',
   'alternates',
 ];
+
+// Reversal/alternates can mechanically construct for well under 1% of
+// words (measured: 0.8%/0.5% at length 6) — real words whose reverse (or
+// every-other-letter) is ALSO a real word are just rare, and these
+// precomputed pools (scripts/buildDevicePools.ts) are correspondingly
+// thin: 17 total usable answers across every supported length combined,
+// covering only lengths 6-7. A puzzle can't be relied on to include one —
+// this only makes it possible to deliberately try, instead of never
+// happening at all.
+const reversalAnswersByLength: Record<string, string[]> = Object.fromEntries(
+  Object.entries(reversalPairs as unknown as Record<string, [string, string][]>).map(([len, pairs]) => [
+    len,
+    pairs.map(([answer]) => answer),
+  ])
+);
+const alternatesAnswersByLength: Record<string, string[]> = Object.fromEntries(
+  Object.entries(alternatesPool as Record<string, Record<string, string[]>>).map(([len, byAnswer]) => [
+    len,
+    Object.keys(byAnswer),
+  ])
+);
+const SEEDABLE_DEVICES = ['reversal', 'alternates'] as const;
+type SeedableDevice = (typeof SEEDABLE_DEVICES)[number];
+
+function answerPoolFor(device: SeedableDevice): Record<string, string[]> {
+  return device === 'reversal' ? reversalAnswersByLength : alternatesAnswersByLength;
+}
+
+// Whenever the batch's persistent device counter shows reversal or
+// alternates sitting at (or below) every other device's usage, worth
+// trying to seed one slot of the current template with a word only that
+// device can clue — this is what actually gives them a chance to appear,
+// instead of assembling a normal 6-word grid and discovering after the
+// fact that none of the 6 happen to support either device.
+function pickSeedTarget(deviceUsage: Partial<Record<DeviceType, number>>): SeedableDevice | null {
+  const minOverall = Math.min(...DEVICE_ORDER.map((d) => deviceUsage[d] ?? 0));
+  for (const device of SEEDABLE_DEVICES) {
+    if ((deviceUsage[device] ?? 0) === minOverall) return device;
+  }
+  return null;
+}
+
+// Finds the first slot in this template whose length has at least one
+// still-available word in the target device's pool, and restricts that
+// slot's candidates to just those words. Returns null if no slot in this
+// template has any eligible word left (common, given how thin these pools
+// are) — the caller falls back to a normal, unrestricted fill in that case.
+function buildSeedSlotPools(
+  template: GridTemplate,
+  device: SeedableDevice,
+  exclude: Set<string>
+): Partial<Record<string, string[]>> | null {
+  const answersByLength = answerPoolFor(device);
+  for (const slot of template.slots) {
+    const candidates = (answersByLength[String(slot.length)] ?? []).filter((w) => !exclude.has(w));
+    if (candidates.length > 0) return { [slot.id]: candidates };
+  }
+  return null;
+}
 
 interface PuzzleEntry {
   number: number;
@@ -142,6 +203,11 @@ async function getOrGenerateClue(
   const existing = loadBankClue(answer);
   if (existing) {
     console.log(`  ${answer}: reusing bank clue (${existing.device})`);
+    // A cache hit still counts toward this batch's actual device
+    // distribution — leaving it uncounted would let the balancer's view of
+    // "usage so far" drift further from reality the more word-reuse kicks
+    // in, exactly when it most needs to be accurate.
+    deviceUsage[existing.device] = (deviceUsage[existing.device] ?? 0) + 1;
     return { clue: existing.surface, device: existing.device };
   }
 
@@ -177,7 +243,11 @@ async function getOrGenerateClue(
 
 type AssembleResult = { id: string } | { failedAnswer: string } | { noGridFound: true };
 
-async function assembleOne(puzzleNumber: number, exclude: Set<string>): Promise<AssembleResult> {
+async function assembleOne(
+  puzzleNumber: number,
+  exclude: Set<string>,
+  deviceUsage: Partial<Record<DeviceType, number>>
+): Promise<AssembleResult> {
   const id = `puzzle-${String(puzzleNumber).padStart(3, '0')}`;
   // Defense in depth against a nextPuzzleNumber() regression: check before
   // any LLM calls happen, not after — never silently clobber an existing
@@ -188,25 +258,46 @@ async function assembleOne(puzzleNumber: number, exclude: Set<string>): Promise<
 
   const preferred = loadBankAnswers();
   const pools = wordlistsByLength as Record<string, string[]>;
+  const seedTarget = pickSeedTarget(deviceUsage);
 
   let solution = null;
-  for (const length of lengthOrderFor(puzzleNumber)) {
-    const pool = pools[String(length)] ?? [];
-    solution = solveHashGrid(pool, exclude, length, preferred);
-    if (solution) break;
+  let template: GridTemplate | null = null;
+  for (const candidate of templateOrderFor(puzzleNumber)) {
+    // Try seeding a reversal/alternates word into this template first;
+    // fall back to a normal unrestricted fill of the SAME template before
+    // moving on to the next one, rather than sacrificing the whole
+    // template attempt just because seeding didn't pan out this time.
+    if (seedTarget) {
+      const slotPools = buildSeedSlotPools(candidate, seedTarget, exclude);
+      if (slotPools) {
+        const seeded = fillTemplate(candidate, pools, exclude, preferred, slotPools);
+        if (seeded) {
+          solution = seeded;
+          template = candidate;
+          break;
+        }
+      }
+    }
+    const attempt = fillTemplate(candidate, pools, exclude, preferred);
+    if (attempt) {
+      solution = attempt;
+      template = candidate;
+      break;
+    }
   }
-  if (!solution) {
-    console.log('No more valid grids can be assembled from the current word pool at any supported length.');
+  if (!solution || !template) {
+    console.log('No more valid grids can be assembled from the current word pool with any template.');
     return { noGridFound: true };
   }
-  const { across, down, wordLength } = solution;
+  const words = template.slots.map((slot) => solution!.bySlotId[slot.id]);
   console.log(
-    `\nGrid ${puzzleNumber} (${wordLength}-letter): across=${across.join(',')} down=${down.join(',')}`
+    `\nGrid ${puzzleNumber} (template ${template.id}): ${template.slots
+      .map((slot) => `${slot.id}=${solution!.bySlotId[slot.id]}(${slot.length})`)
+      .join(', ')}`
   );
 
-  const deviceUsage: Partial<Record<DeviceType, number>> = { ...DEVICE_HANDICAP };
   const clueFor: Record<string, { clue: string; device: string }> = {};
-  for (const answer of [...across, ...down]) {
+  for (const answer of words) {
     const result = await getOrGenerateClue(answer, deviceUsage);
     if (!result) return { failedAnswer: answer }; // caller blacklists this word and retries
     clueFor[answer] = result;
@@ -218,26 +309,29 @@ async function assembleOne(puzzleNumber: number, exclude: Set<string>): Promise<
   const format = puzzleNumber % 2 === 1 ? '3A2D' : '2A3D';
   const bonusIsDown = format === '3A2D';
 
-  // The corner-cell numbering (1,4,5 across / 1,2,3 down, in reading order)
-  // is a property of this grid's topology — three across rows and three
-  // down columns sharing checkpoint 0 at the top-left corner — not of the
-  // specific checkpoint positions, so it stays the same at every length;
-  // only the actual row/col values move to match this puzzle's checkpoints.
-  const cp = checkpointsFor(wordLength);
-  const entries: PuzzleEntry[] = [
-    { number: 1, direction: 'across', row: cp[0], col: 0, answer: across[0], ...clueFor[across[0]], bonus: false },
-    { number: 4, direction: 'across', row: cp[1], col: 0, answer: across[1], ...clueFor[across[1]], bonus: false },
-    { number: 5, direction: 'across', row: cp[2], col: 0, answer: across[2], ...clueFor[across[2]], bonus: !bonusIsDown },
-    { number: 1, direction: 'down', row: 0, col: cp[0], answer: down[0], ...clueFor[down[0]], bonus: false },
-    { number: 2, direction: 'down', row: 0, col: cp[1], answer: down[1], ...clueFor[down[1]], bonus: false },
-    { number: 3, direction: 'down', row: 0, col: cp[2], answer: down[2], ...clueFor[down[2]], bonus: bonusIsDown },
-  ];
+  // Bonus eligibility follows the slot id, not any row/col math — 'A3'/'D3'
+  // are the third across/down slot in every template, matching the
+  // original across[2]/down[2] convention.
+  const entries: PuzzleEntry[] = template.slots.map((slot) => {
+    const answer = solution!.bySlotId[slot.id];
+    const isBonusEligible = slot.id === 'A3' || slot.id === 'D3';
+    const bonus = isBonusEligible && (slot.direction === 'down' ? bonusIsDown : !bonusIsDown);
+    return {
+      number: slot.number,
+      direction: slot.direction,
+      row: slot.row,
+      col: slot.col,
+      answer,
+      ...clueFor[answer],
+      bonus,
+    };
+  });
 
   const puzzle = { id, format, entries };
   writeFileSync(join(PUZZLES_DIR, `${id}.json`), JSON.stringify(puzzle, null, 2) + '\n');
   console.log(`Wrote ${id}.json (${format}, bonus=${entries.find((e) => e.bonus)?.answer})`);
 
-  for (const answer of [...across, ...down]) exclude.add(answer.toUpperCase());
+  for (const answer of words) exclude.add(answer.toUpperCase());
   return { id };
 }
 
@@ -248,6 +342,11 @@ async function main() {
 
   let nextNumber = nextPuzzleNumber();
   let built = 0;
+  // Seeded once and mutated in place for the whole run — previously this
+  // was reset fresh inside assembleOne() on every single puzzle, so it
+  // never accumulated enough history to actually balance anything across a
+  // multi-puzzle batch.
+  const deviceUsage: Partial<Record<DeviceType, number>> = { ...DEVICE_HANDICAP };
   // Each attempt that fails still grows the bank with whichever words in
   // it succeeded before the one that didn't — and solveHashGrid now biases
   // toward reusing those, so later attempts should complete much faster
@@ -271,7 +370,7 @@ async function main() {
     slotsAttempted++;
     let result: AssembleResult | null = null;
     for (let attempt = 0; attempt < maxAttemptsPerSlot; attempt++) {
-      result = await assembleOne(nextNumber, exclude);
+      result = await assembleOne(nextNumber, exclude, deviceUsage);
       if ('id' in result) break;
       if ('noGridFound' in result) break; // pool exhausted, no point retrying
       // A specific word failed generation — blacklist it so future grid
