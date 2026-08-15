@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-031",
+  "format": "3A2D",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "SECURITIES",
+      "clue": "After being broken, \"securitise\" would oddly describe stocks and bonds (10)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 3,
+      "col": 2,
+      "answer": "STEERING",
+      "clue": "Trustee rings concealed in scandal reveal the ship's guiding direction (8)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 7,
+      "col": 0,
+      "answer": "GENERATES",
+      "clue": "Scientist hides heart rate inside genes and produces surprising data (9)",
+      "device": "container",
+      "bonus": false
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "SPEAKING",
+      "clue": "Geeks review leetspeak ingredients partly for a course on talking (8)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 5,
+      "answer": "INTERSTATE",
+      "clue": "Gangsters inter their boss, then state their loyalty, all along the highway (10)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 0,
+      "col": 9,
+      "answer": "SURGEONS",
+      "clue": "Sons around town feel the urge to become operating doctors (8)",
+      "device": "container",
+      "bonus": true
+    }
+  ]
+}
