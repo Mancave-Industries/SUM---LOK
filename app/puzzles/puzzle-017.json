@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-017",
+  "format": "3A2D",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "ENTERED",
+      "clue": "Reviewer's town center edit partly describes how the burglar went in (7)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 3,
+      "col": 0,
+      "answer": "INTENSE",
+      "clue": "Splatter paint ensemble partly captures a mood that's extreme (7)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 6,
+      "col": 0,
+      "answer": "DOCTORS",
+      "clue": "Every stray paradoctor sandal held by the base commander alters records (7)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "EXCITED",
+      "clue": "Startup pitch decks preexcite devs partly because their code looks thrilled (7)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 3,
+      "answer": "EXCERPT",
+      "clue": "Except for track runs in training, all we get is a passage quoted (7)",
+      "device": "container",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 0,
+      "col": 6,
+      "answer": "DEFECTS",
+      "clue": "A double agent might redefect so part of an old case file still lists his flaws (7)",
+      "device": "hidden",
+      "bonus": true
+    }
+  ]
+}

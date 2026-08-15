@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-027",
+  "format": "2A3D",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "PROSPECTS",
+      "clue": "Miner's prospect beside south camp reveals promising future outlooks (9)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 4,
+      "col": 0,
+      "answer": "IMPRESSED",
+      "clue": "Errors concealed in overimpress editions left the whole panel of critics awed (9)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 8,
+      "col": 0,
+      "answer": "DANGEROUS",
+      "clue": "Distorted noseguard makes tackling unsafe (9)",
+      "device": "anagram",
+      "bonus": true
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "PREDICTED",
+      "clue": "How radicals unpredict editorials, concealed in leaked drafts, is what our paper's spin doctors forecast (9)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 4,
+      "answer": "PROCEDURE",
+      "clue": "Shaken, animals reproduce by an odd method (9)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 0,
+      "col": 8,
+      "answer": "STANDINGS",
+      "clue": "Concealed in outstanding San Francisco protest banners, league rankings appear to voters. (9)",
+      "device": "hidden",
+      "bonus": false
+    }
+  ]
+}
