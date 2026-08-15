@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-025",
+  "format": "3A2D",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "REPRESENTS",
+      "clue": "Editors misrepresent sergeants found in fake news reports, which is what a rank badge stands for (10)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 4,
+      "col": 0,
+      "answer": "MICROPHONE",
+      "clue": "Miniature spy gear like ultramicro phones concealed in agents' luggage is really just a sound input device. (10)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 9,
+      "col": 0,
+      "answer": "DISPLAYING",
+      "clue": "Disrespect followed by playing truant is what the report is showing (10)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "REMEMBERED",
+      "clue": "Editors misremember editorials held within, though critics say it's recalled (10)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 4,
+      "answer": "ECOLOGICAL",
+      "clue": "New synecologic alloys included in a course description sound strictly environmental (10)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 0,
+      "col": 9,
+      "answer": "SUGGESTING",
+      "clue": "Software glitches aside, autosuggest ingredients within a search bar are merely hinting at what you meant to type (10)",
+      "device": "hidden",
+      "bonus": true
+    }
+  ]
+}

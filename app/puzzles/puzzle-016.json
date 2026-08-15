@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-016",
+  "format": "2A3D",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "LEAGUE",
+      "clue": "Monks translated their talea guestbook, partly restored, to honor an old alliance (6)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 2,
+      "col": 0,
+      "answer": "STATIC",
+      "clue": "Some of the Costa tickets remain unchanging (6)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 5,
+      "col": 0,
+      "answer": "GRANDE",
+      "clue": "Chaotic danger creates something large (6)",
+      "device": "anagram",
+      "bonus": true
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "LOSING",
+      "clue": "A hello singer within the choir loft is not winning any awards this year (6)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 2,
+      "answer": "ALASKA",
+      "clue": "Good balas karma, hidden in gemstone folklore, brings luck to a US Arctic state (6)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 0,
+      "col": 5,
+      "answer": "ESCAPE",
+      "clue": "Held within her binoculars, one goat sees capering fish as the herd's chance to get away (6)",
+      "device": "hidden",
+      "bonus": false
+    }
+  ]
+}

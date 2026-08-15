@@ -1,20 +1,28 @@
-// Solves a 3-across/3-down "hash" grid for 8-letter answers: across words
-// sit at rows 0/3/7, down words at columns 0/3/7, and every across/down
-// pair shares exactly one letter at their intersection (checkpoint
-// positions 0, 3, 7 within each 8-letter word). This is the same shape
-// every 3A2Dle puzzle has used since day one — see design/3a2dle/mockup.html
-// and app/puzzles/2026-08-10.json for the worked example (EASTWARD /
+// Solves a 3-across/3-down "hash" grid for equal-length answers: across
+// words and down words interlock at three checkpoint positions, evenly
+// spaced across the word (first letter, middle letter, last letter) —
+// the same shape every 3A2Dle puzzle has used since day one, generalized
+// from the original hardcoded 8-letter version (checkpoints [0,3,7], which
+// this formula reproduces exactly) to work for any answer length so grids
+// no longer have to be all-8-letter. See design/3a2dle/mockup.html and
+// app/puzzles/2026-08-10.json for the original worked example (EASTWARD /
 // CARNIVAL / CLARINET across, ELECTRIC / TEENAGER / DAYLIGHT down).
-
-const CP = [0, 3, 7] as const;
 
 export interface GridSolution {
   across: [string, string, string];
   down: [string, string, string];
+  wordLength: number;
 }
 
-function checkpoint(word: string): string[] {
-  return CP.map((i) => word[i]);
+// [0, 3, 7] for length 8 — first letter, middle letter, last letter, evenly
+// spread rather than clustered at one end. Reproduces the original grid
+// exactly at length 8: floor((8-1)/2) = 3.
+export function checkpointsFor(length: number): [number, number, number] {
+  return [0, Math.floor((length - 1) / 2), length - 1];
+}
+
+function checkpoint(word: string, cp: readonly number[]): string[] {
+  return cp.map((i) => word[i]);
 }
 
 function shuffle<T>(items: T[]): T[] {
@@ -26,10 +34,10 @@ function shuffle<T>(items: T[]): T[] {
   return copy;
 }
 
-// Finds a set of 3 down words + 3 across words, all distinct, that
-// interlock validly at the checkpoint positions. Word order is shuffled
-// each call so repeated calls against the same pool don't always return
-// the same solution.
+// Finds a set of 3 down words + 3 across words, all distinct and all
+// `wordLength` letters long, that interlock validly at the checkpoint
+// positions. Word order is shuffled each call so repeated calls against
+// the same pool don't always return the same solution.
 //
 // `preferred` (answers that already have a verified, banked clue) sorts
 // first in the search order. The search below is greedy — it returns the
@@ -43,16 +51,18 @@ function shuffle<T>(items: T[]): T[] {
 export function solveHashGrid(
   wordPool: string[],
   exclude: Set<string>,
+  wordLength: number,
   preferred: Set<string> = new Set()
 ): GridSolution | null {
+  const cp = checkpointsFor(wordLength);
   const words = shuffle(
-    wordPool.map((w) => w.toUpperCase()).filter((w) => w.length === 8 && !exclude.has(w))
+    wordPool.map((w) => w.toUpperCase()).filter((w) => w.length === wordLength && !exclude.has(w))
   ).sort((a, b) => Number(preferred.has(b)) - Number(preferred.has(a)));
   if (words.length < 6) return null;
 
   const bySkeleton = new Map<string, string[]>();
   for (const w of words) {
-    const sk = checkpoint(w).join('');
+    const sk = checkpoint(w, cp).join('');
     if (!bySkeleton.has(sk)) bySkeleton.set(sk, []);
     bySkeleton.get(sk)!.push(w);
   }
@@ -60,10 +70,10 @@ export function solveHashGrid(
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
   for (const d1 of words) {
-    const c1 = checkpoint(d1);
+    const c1 = checkpoint(d1, cp);
     for (const d2 of words) {
       if (d2 === d1) continue;
-      const c2 = checkpoint(d2);
+      const c2 = checkpoint(d2, cp);
 
       const validSets = [0, 1, 2].map((i) => {
         const set: string[] = [];
@@ -88,7 +98,7 @@ export function solveHashGrid(
               ?.find((w) => !used.has(w) && w !== a1 && w !== a2);
             if (!a1 || !a2 || !a3) continue;
 
-            return { down: [d1, d2, d3], across: [a1, a2, a3] };
+            return { down: [d1, d2, d3], across: [a1, a2, a3], wordLength };
           }
         }
       }

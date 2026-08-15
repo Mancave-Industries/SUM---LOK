@@ -46,6 +46,21 @@ const SURFACE_TOOL = {
   },
 };
 
+// The model occasionally slips in an invisible Unicode character mid-word
+// — a soft hyphen has shown up inside an otherwise-ordinary word ("ser­geants")
+// — presumably a tokenization artifact. It's invisible in most renderers so
+// it wouldn't get caught by any of the readability checks, but it's not
+// what was actually meant. Strip the categories of invisible character that
+// have no legitimate reason to appear in a crossword clue.
+// Soft hyphen, zero-width space/non-joiner/joiner, left/right-to-right
+// marks, word joiner, and the byte-order mark — written as escapes rather
+// than literal characters since the whole point is that they're invisible
+// in a normal editor.
+const INVISIBLE_CHARS = /[\u00AD\u200B-\u200F\uFEFF\u2060]/g;
+function stripInvisibleChars(text: string): string {
+  return text.replace(INVISIBLE_CHARS, '');
+}
+
 // definitionText is asked for as a literal excerpt of `sentence`, not a
 // separately-composed field — this finds where it actually sits (matching
 // case-insensitively, since the model may adjust capitalization) and
@@ -218,13 +233,16 @@ export async function writeSurface(request: SurfaceRequest): Promise<SurfacePart
     throw new Error('Model returned malformed surface parts');
   }
 
-  const split = splitSentence(input.sentence, input.definitionText, input.order);
+  const sentence = stripInvisibleChars(input.sentence);
+  const definitionText = stripInvisibleChars(input.definitionText);
+
+  const split = splitSentence(sentence, definitionText, input.order);
   if (!split) {
     // The model claimed definitionText was the start/end of sentence but it
     // literally isn't — return something that will fail verifyDefinitionAtEnd's
     // reconstruction check downstream (a normal, expected retry) rather than
     // silently guessing at a split point.
-    return { definitionText: input.definitionText, wordplayText: input.sentence, order: input.order };
+    return { definitionText, wordplayText: sentence, order: input.order };
   }
 
   return { ...split, order: input.order };

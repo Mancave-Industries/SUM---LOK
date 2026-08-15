@@ -7,7 +7,7 @@
 
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { solveHashGrid } from './solveGrid.js';
+import { solveHashGrid, checkpointsFor } from './solveGrid.js';
 import { generateClue } from '../pipeline/generateClue.js';
 import { appendToBank } from '../bank/clueBank.js';
 import { getDevice } from '../devices/index.js';
@@ -18,8 +18,20 @@ import alternatesIndicators from '../data/indicators/alternates.json' with { typ
 import charadeIndicators from '../data/indicators/charade.json' with { type: 'json' };
 import containerIndicators from '../data/indicators/container.json' with { type: 'json' };
 import deletionIndicatorData from '../data/indicators/deletion.json' with { type: 'json' };
-import wordlist from '../data/wordlist.8plus.json' with { type: 'json' };
+import wordlistsByLength from '../data/wordlistsByLength.json' with { type: 'json' };
 import type { Clue, DeviceType } from '../types.js';
+
+// Every grid used to be 8 letters, hardcoded. Now a puzzle's word length is
+// picked from this set — round-robin by puzzle number so a run gets real
+// variety instead of clustering on whichever length has the biggest pool,
+// with the other lengths as fallback if the assigned one can't produce a
+// solvable grid from the current (post-exclusion) pool.
+const SUPPORTED_LENGTHS = [6, 7, 8, 9, 10];
+
+function lengthOrderFor(puzzleNumber: number): number[] {
+  const primaryIndex = (puzzleNumber - 1) % SUPPORTED_LENGTHS.length;
+  return [SUPPORTED_LENGTHS[primaryIndex], ...SUPPORTED_LENGTHS.filter((_, i) => i !== primaryIndex)];
+}
 
 if (existsSync('.env')) process.loadEnvFile('.env');
 
@@ -68,6 +80,21 @@ interface PuzzleEntry {
 function loadManifest(): { puzzles: string[] } {
   if (!existsSync(MANIFEST_PATH)) return { puzzles: [] };
   return JSON.parse(readFileSync(MANIFEST_PATH, 'utf8'));
+}
+
+// manifest.puzzles.length is NOT the next free puzzle number — a run that
+// skips failed slots (see the main loop below) leaves gaps, so the
+// manifest can have 10 entries while the highest actual id on disk is
+// puzzle-015. Starting from length+1 collides with and silently overwrites
+// an existing file. Scan the real filenames instead.
+function nextPuzzleNumber(): number {
+  if (!existsSync(PUZZLES_DIR)) return 1;
+  let max = 0;
+  for (const file of readdirSync(PUZZLES_DIR)) {
+    const match = file.match(/^puzzle-(\d+)\.json$/);
+    if (match) max = Math.max(max, Number(match[1]));
+  }
+  return max + 1;
 }
 
 function loadUsedAnswers(): Set<string> {
@@ -151,13 +178,31 @@ async function getOrGenerateClue(
 type AssembleResult = { id: string } | { failedAnswer: string } | { noGridFound: true };
 
 async function assembleOne(puzzleNumber: number, exclude: Set<string>): Promise<AssembleResult> {
-  const solution = solveHashGrid(wordlist as string[], exclude, loadBankAnswers());
+  const id = `puzzle-${String(puzzleNumber).padStart(3, '0')}`;
+  // Defense in depth against a nextPuzzleNumber() regression: check before
+  // any LLM calls happen, not after — never silently clobber an existing
+  // puzzle file, and never waste real generation work discovering that.
+  if (existsSync(join(PUZZLES_DIR, `${id}.json`))) {
+    throw new Error(`Refusing to overwrite existing puzzle file ${id}.json`);
+  }
+
+  const preferred = loadBankAnswers();
+  const pools = wordlistsByLength as Record<string, string[]>;
+
+  let solution = null;
+  for (const length of lengthOrderFor(puzzleNumber)) {
+    const pool = pools[String(length)] ?? [];
+    solution = solveHashGrid(pool, exclude, length, preferred);
+    if (solution) break;
+  }
   if (!solution) {
-    console.log('No more valid grids can be assembled from the current word pool.');
+    console.log('No more valid grids can be assembled from the current word pool at any supported length.');
     return { noGridFound: true };
   }
-  const { across, down } = solution;
-  console.log(`\nGrid ${puzzleNumber}: across=${across.join(',')} down=${down.join(',')}`);
+  const { across, down, wordLength } = solution;
+  console.log(
+    `\nGrid ${puzzleNumber} (${wordLength}-letter): across=${across.join(',')} down=${down.join(',')}`
+  );
 
   const deviceUsage: Partial<Record<DeviceType, number>> = { ...DEVICE_HANDICAP };
   const clueFor: Record<string, { clue: string; device: string }> = {};
@@ -173,16 +218,21 @@ async function assembleOne(puzzleNumber: number, exclude: Set<string>): Promise<
   const format = puzzleNumber % 2 === 1 ? '3A2D' : '2A3D';
   const bonusIsDown = format === '3A2D';
 
+  // The corner-cell numbering (1,4,5 across / 1,2,3 down, in reading order)
+  // is a property of this grid's topology — three across rows and three
+  // down columns sharing checkpoint 0 at the top-left corner — not of the
+  // specific checkpoint positions, so it stays the same at every length;
+  // only the actual row/col values move to match this puzzle's checkpoints.
+  const cp = checkpointsFor(wordLength);
   const entries: PuzzleEntry[] = [
-    { number: 1, direction: 'across', row: 0, col: 0, answer: across[0], ...clueFor[across[0]], bonus: false },
-    { number: 4, direction: 'across', row: 3, col: 0, answer: across[1], ...clueFor[across[1]], bonus: false },
-    { number: 5, direction: 'across', row: 7, col: 0, answer: across[2], ...clueFor[across[2]], bonus: !bonusIsDown },
-    { number: 1, direction: 'down', row: 0, col: 0, answer: down[0], ...clueFor[down[0]], bonus: false },
-    { number: 2, direction: 'down', row: 0, col: 3, answer: down[1], ...clueFor[down[1]], bonus: false },
-    { number: 3, direction: 'down', row: 0, col: 7, answer: down[2], ...clueFor[down[2]], bonus: bonusIsDown },
+    { number: 1, direction: 'across', row: cp[0], col: 0, answer: across[0], ...clueFor[across[0]], bonus: false },
+    { number: 4, direction: 'across', row: cp[1], col: 0, answer: across[1], ...clueFor[across[1]], bonus: false },
+    { number: 5, direction: 'across', row: cp[2], col: 0, answer: across[2], ...clueFor[across[2]], bonus: !bonusIsDown },
+    { number: 1, direction: 'down', row: 0, col: cp[0], answer: down[0], ...clueFor[down[0]], bonus: false },
+    { number: 2, direction: 'down', row: 0, col: cp[1], answer: down[1], ...clueFor[down[1]], bonus: false },
+    { number: 3, direction: 'down', row: 0, col: cp[2], answer: down[2], ...clueFor[down[2]], bonus: bonusIsDown },
   ];
 
-  const id = `puzzle-${String(puzzleNumber).padStart(3, '0')}`;
   const puzzle = { id, format, entries };
   writeFileSync(join(PUZZLES_DIR, `${id}.json`), JSON.stringify(puzzle, null, 2) + '\n');
   console.log(`Wrote ${id}.json (${format}, bonus=${entries.find((e) => e.bonus)?.answer})`);
@@ -196,7 +246,7 @@ async function main() {
   const manifest = loadManifest();
   const exclude = loadUsedAnswers();
 
-  let nextNumber = manifest.puzzles.length + 1;
+  let nextNumber = nextPuzzleNumber();
   let built = 0;
   // Each attempt that fails still grows the bank with whichever words in
   // it succeeded before the one that didn't — and solveHashGrid now biases
@@ -238,6 +288,9 @@ async function main() {
       console.log(`Giving up on puzzle ${nextNumber} after ${maxAttemptsPerSlot} attempts, moving on.`);
       nextNumber++;
       continue;
+    }
+    if (manifest.puzzles.includes(result.id)) {
+      throw new Error(`Refusing to add duplicate manifest entry for ${result.id}`);
     }
     manifest.puzzles.push(result.id);
     // Save after every successful puzzle, not just at the end — a crash or
