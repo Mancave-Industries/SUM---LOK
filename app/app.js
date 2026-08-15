@@ -539,10 +539,22 @@ function progressKey() {
   return `quyptick-progress-${state.puzzle._id}`;
 }
 
+// A puzzle's id (e.g. "puzzle-002") can end up pointing at different answers
+// over time if that puzzle file is ever regenerated or replaced — the id is
+// stable but the content isn't. Saved progress keyed only by id would then
+// get replayed onto a grid it doesn't match (stale letters from the old
+// answers landing on the new one). This fingerprint ties saved progress to
+// the actual answers it was solved against, so a content change invalidates
+// old progress instead of silently corrupting the new grid.
+function puzzleFingerprint(puzzle) {
+  return puzzle.entries.map((e) => e.answer).join(',');
+}
+
 function saveProgress() {
   localStorage.setItem(
     progressKey(),
     JSON.stringify({
+      fingerprint: puzzleFingerprint(state.puzzle),
       letters: state.letters,
       solved: [...state.solved],
       bonusUnlocked: state.bonusUnlocked,
@@ -560,6 +572,14 @@ function loadProgress() {
   }
   try {
     const saved = JSON.parse(raw);
+    if (saved.fingerprint !== puzzleFingerprint(state.puzzle)) {
+      // Stale save from a since-replaced version of this puzzle id — discard
+      // it rather than filling the current grid with answers from a
+      // different puzzle.
+      localStorage.removeItem(progressKey());
+      state.startTime = Date.now();
+      return;
+    }
     state.letters = saved.letters || {};
     state.solved = new Set(saved.solved || []);
     state.bonusUnlocked = !!saved.bonusUnlocked;
