@@ -39,3 +39,18 @@ export function resolveDisplayWord(display: string): string[] {
   }
   return resolutions;
 }
+
+// Charade/container parts are drawn from the answer's own letters, so a
+// split can accidentally hand back the answer's own singular/tense/etc as
+// one "part" (e.g. SOLDIER + S for SOLDIERS) — mechanically valid, but it
+// gives the answer away outright rather than requiring any real wordplay.
+// This checks whether `component` is nothing more than `answer` with a
+// common English inflectional suffix added or removed.
+const TRIVIAL_SUFFIXES = ['s', 'es', 'ed', 'd', 'ing', 'er', 'est', 'ly'];
+
+export function isTrivialInflectionOfAnswer(component: string, answer: string): boolean {
+  const c = component.toLowerCase();
+  const a = answer.toLowerCase();
+  if (c === a) return true;
+  return TRIVIAL_SUFFIXES.some((suffix) => c + suffix === a || a + suffix === c);
+}
