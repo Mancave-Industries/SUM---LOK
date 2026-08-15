@@ -4,7 +4,7 @@
 // parts must appear in the surface in the same order they concatenate in.
 
 import type { DeviceModule, VerificationResult, Wordplay } from '../types.js';
-import { findDisplayCandidates, resolveDisplayWord } from './wordResolution.js';
+import { findDisplayCandidates, isTrivialInflectionOfAnswer, resolveDisplayWord } from './wordResolution.js';
 import { pickRandom } from './random.js';
 import { isCommonWord, preferCommon } from './commonWords.js';
 
@@ -26,9 +26,13 @@ function findCharadeSplit(answer: string): CharadeSplit | null {
   const bothCommon: CharadeSplit[] = [];
 
   for (let k = 1; k < target.length; k++) {
-    const candidates1 = findDisplayCandidates(target.slice(0, k));
+    const candidates1 = findDisplayCandidates(target.slice(0, k)).filter(
+      (w) => !isTrivialInflectionOfAnswer(w, target)
+    );
     if (candidates1.length === 0) continue;
-    const candidates2 = findDisplayCandidates(target.slice(k));
+    const candidates2 = findDisplayCandidates(target.slice(k)).filter(
+      (w) => !isTrivialInflectionOfAnswer(w, target)
+    );
     if (candidates2.length === 0) continue;
 
     if (!candidates1.some(isCommonWord) || !candidates2.some(isCommonWord)) continue;

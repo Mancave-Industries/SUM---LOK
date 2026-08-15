@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-032",
+  "format": "2A3D",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "BACKGROUND",
+      "clue": "Retreat back before ground troops advance: that's personal history (10)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 4,
+      "col": 0,
+      "answer": "GRADES",
+      "clue": "Garlandless regularly describes flowerless brides who still earn top Marks (6)",
+      "device": "alternates",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 9,
+      "col": 0,
+      "answer": "COUNSELING",
+      "clue": "Grandma's tendency to miscounsel ingredients included in family recipes finally pushed us toward therapy (10)",
+      "device": "hidden",
+      "bonus": true
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "BLOGGERS",
+      "clue": "Upset bogglers turn out to be online diarists (8)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 4,
+      "answer": "GUIDELINES",
+      "clue": "Fishing guides enclosing a line for tourists are really just rules of thumb (10)",
+      "device": "container",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 0,
+      "col": 9,
+      "answer": "DECLINE",
+      "clue": "Rock samples hide clines hidden in glacier surveys, but locals still refuse (7)",
+      "device": "hidden",
+      "bonus": false
+    }
+  ]
+}

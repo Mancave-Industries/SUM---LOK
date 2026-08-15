@@ -64,6 +64,19 @@ describe('charadeDevice.construct', () => {
     const construction = charadeDevice.construct('CARPET', []);
     expect(construction).toBeNull();
   });
+
+  it('never splits a plural answer into its own singular plus "s"', () => {
+    // SOLDIER + S mechanically concatenates to SOLDIERS, but "soldier" is
+    // just the answer's singular — using it as a wordplay part gives the
+    // answer away outright rather than requiring any real wordplay.
+    for (let i = 0; i < 50; i++) {
+      const construction = charadeDevice.construct('SOLDIERS', indicatorBank);
+      if (!construction) continue;
+      const [part1, part2] = construction.wordplay.components ?? [];
+      expect(part1.toLowerCase()).not.toBe('soldier');
+      expect(part2.toLowerCase()).not.toBe('soldier');
+    }
+  });
 });
 
 describe('charadeDevice.verifySurface', () => {

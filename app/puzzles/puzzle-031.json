@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-031",
+  "format": "3A2D",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "REGRESSION",
+      "clue": "Some of the far egressions from the burning theatre show reversion to an earlier state (10)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 3,
+      "col": 2,
+      "answer": "TEXTBOOK",
+      "clue": "Send a text then book the course manual (8)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 7,
+      "col": 0,
+      "answer": "REASONABLE",
+      "clue": "Reason followed by able leadership makes for a sensible outcome (10)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "RECORDER",
+      "clue": "Curious how they rerecord tunes on this flute-like instrument (8)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 5,
+      "answer": "STATEMENTS",
+      "clue": "A moment around unstable states yields official declarations (10)",
+      "device": "container",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 0,
+      "col": 9,
+      "answer": "NICKNAME",
+      "clue": "Old dornick names buried in surveyor's rock catalogue reveal a pet name (8)",
+      "device": "hidden",
+      "bonus": true
+    }
+  ]
+}

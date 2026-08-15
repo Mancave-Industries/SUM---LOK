@@ -6,7 +6,7 @@
 // that meaning instead.
 
 import type { DeviceModule, VerificationResult, Wordplay } from '../types.js';
-import { findDisplayCandidates, resolveDisplayWord } from './wordResolution.js';
+import { findDisplayCandidates, isTrivialInflectionOfAnswer, resolveDisplayWord } from './wordResolution.js';
 import { pickRandom } from './random.js';
 import { isCommonWord, preferCommon } from './commonWords.js';
 
@@ -30,9 +30,13 @@ function findContainerSplit(answer: string): ContainerSplit | null {
       const innerLetters = target.slice(i, j);
       if (outerLetters.length < 2) continue;
 
-      const outerCandidates = findDisplayCandidates(outerLetters);
+      const outerCandidates = findDisplayCandidates(outerLetters).filter(
+        (w) => !isTrivialInflectionOfAnswer(w, target)
+      );
       if (outerCandidates.length === 0) continue;
-      const innerCandidates = findDisplayCandidates(innerLetters);
+      const innerCandidates = findDisplayCandidates(innerLetters).filter(
+        (w) => !isTrivialInflectionOfAnswer(w, target)
+      );
       if (innerCandidates.length === 0) continue;
 
       if (!outerCandidates.some(isCommonWord) || !innerCandidates.some(isCommonWord)) continue;

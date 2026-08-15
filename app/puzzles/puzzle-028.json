@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-028",
+  "format": "2A3D",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "STRUCTURED",
+      "clue": "Every vital infrastructure den included in the plan looks organized (10)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 4,
+      "col": 0,
+      "answer": "SOCCER",
+      "clue": "Escroc, shaken by exposure, gave up football (6)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 9,
+      "col": 0,
+      "answer": "RECOGNIZED",
+      "clue": "Banks moved to derecognize debt included in restructuring plans, and losses were finally acknowledged (10)",
+      "device": "hidden",
+      "bonus": true
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "SEMESTER",
+      "clue": "An antique teleseme sterling within Grandma's cabinet defines the school term (8)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 4,
+      "answer": "COLLECTING",
+      "clue": "I recollect ingredients as part of this gathering together (10)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 0,
+      "col": 9,
+      "answer": "DEALING",
+      "clue": "Leading mixed teams control the trading (7)",
+      "device": "anagram",
+      "bonus": false
+    }
+  ]
+}
