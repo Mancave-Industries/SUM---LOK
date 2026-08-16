@@ -7,29 +7,29 @@
       "direction": "across",
       "row": 0,
       "col": 0,
-      "answer": "SEARCHED",
-      "clue": "Every seed enclosing an arch of vines was looked through (8)",
-      "device": "container",
+      "answer": "TEXTBOOK",
+      "clue": "Send a text then book the course manual (8)",
+      "device": "charade",
       "bonus": false
     },
     {
       "number": 4,
       "direction": "across",
-      "row": 4,
-      "col": 0,
-      "answer": "RECREATION",
-      "clue": "Spare creations held by the sculptor make an unusual leisure activity (10)",
-      "device": "hidden",
+      "row": 6,
+      "col": 4,
+      "answer": "SCORES",
+      "clue": "Abandoned by every other one, succourless orphans still ran up the tallies (6)",
+      "device": "alternates",
       "bonus": false
     },
     {
       "number": 5,
       "direction": "across",
       "row": 9,
-      "col": 0,
-      "answer": "NUMERIC",
-      "clue": "Her wrecked minceur regime is expressed in numbers (7)",
-      "device": "anagram",
+      "col": 3,
+      "answer": "ISLANDS",
+      "clue": "He is beside lands he inherited, landmasses surrounded by water (7)",
+      "device": "charade",
       "bonus": false
     },
     {
@@ -37,9 +37,9 @@
       "direction": "down",
       "row": 0,
       "col": 0,
-      "answer": "SEPARATION",
-      "clue": "Twisted anatropies in the garden signal division apart (10)",
-      "device": "anagram",
+      "answer": "THUMBNAIL",
+      "clue": "Small preview image shows a hitchhiker's thumb beside nail polish on the same hand (9)",
+      "device": "charade",
       "bonus": false
     },
     {
@@ -47,19 +47,19 @@
       "direction": "down",
       "row": 0,
       "col": 4,
-      "answer": "CLOSES",
-      "clue": "Callousness evenly spread among staff shuts down the office party (6)",
-      "device": "alternates",
+      "answer": "BUSINESSES",
+      "clue": "Farm subsidy fraud lay concealed in agrobusiness establishment audits, so regulators shut down the companies (10)",
+      "device": "hidden",
       "bonus": false
     },
     {
       "number": 3,
       "direction": "down",
-      "row": 0,
+      "row": 3,
       "col": 9,
-      "answer": "DEFINITELY",
-      "clue": "Indefinite lying housed by border guards means guilt without doubt (10)",
-      "device": "hidden",
+      "answer": "REASONS",
+      "clue": "Confusing senoras at the dance gave the alcalde grounds for complaint (7)",
+      "device": "anagram",
       "bonus": true
     }
   ]

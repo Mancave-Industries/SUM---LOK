@@ -21,9 +21,21 @@ const state = {
   feedback: null, // { entryIndex, cells: {"r,c": 'green'|'yellow'|'gray'} } while a wrong guess is flashing
   submitting: false, // true during the flash window — input is paused
   justSolvedEntry: null, // entry index to flip-animate for one render, then cleared
+  guessHistory: {}, // entryIndex -> [{ letters: 'ABCDEFGH', statuses: [...] }, ...], every submitted attempt
 };
 
 const FEEDBACK_RANK = { gray: 0, yellow: 1, green: 2 };
+
+// Real Wordle reveals one tile at a time, left to right, instead of every
+// letter flipping and coloring at once — REVEAL_STAGGER_MS is the delay
+// between each tile's flip starting, REVEAL_FLIP_MS how long one tile's
+// flip takes. cascadeDuration() is how long the whole row takes to finish
+// revealing, used to size the timeouts that follow a submitted guess.
+const REVEAL_STAGGER_MS = 120;
+const REVEAL_FLIP_MS = 450;
+function cascadeDuration(letterCount) {
+  return (letterCount - 1) * REVEAL_STAGGER_MS + REVEAL_FLIP_MS;
+}
 
 // Standard Wordle two-pass scoring: greens first (consuming those answer
 // letters), then yellows against whatever's left, so a repeated letter in
@@ -49,6 +61,14 @@ function computeWordleFeedback(guess, answer) {
     }
   }
   return result;
+}
+
+// Keeps every submitted attempt at an entry, not just the live one —
+// same idea as Wordle keeping every past guess row on screen instead of
+// only ever showing the most recent try.
+function recordGuess(entryIndex, letters, statuses) {
+  if (!state.guessHistory[entryIndex]) state.guessHistory[entryIndex] = [];
+  state.guessHistory[entryIndex].push({ letters, statuses });
 }
 
 function updateLetterStatus(letters, statuses) {
@@ -257,18 +277,25 @@ function submitEntry() {
 
   const guess = cells.map(({ r, c }) => state.letters[`${r},${c}`]).join('');
   if (guess === entry.answer) {
-    updateLetterStatus(guess.split(''), guess.split('').map(() => 'green'));
+    const statuses = guess.split('').map(() => 'green');
+    updateLetterStatus(guess.split(''), statuses);
+    recordGuess(idx, guess, statuses);
     state.solved.add(idx);
     state.justSolvedEntry = idx;
     setTimeout(() => {
       state.justSolvedEntry = null;
-    }, 550);
+    }, cascadeDuration(cells.length));
     const isLastEntry = state.puzzle.entries.every((_, i) => state.solved.has(i));
     if (isLastEntry) playComplete();
     else playCorrect();
     render();
     checkBonusUnlock();
     checkAllSolved();
+    // Solving an entry that neither unlocks the bonus nor finishes the
+    // puzzle previously fell through without ever calling saveProgress() —
+    // that entry's solved state (and now its guess history) would vanish
+    // on reload even though it was genuinely solved.
+    saveProgress();
     const remaining = nonBonusEntries().filter((i) => !state.solved.has(i));
     const next = remaining[0] ?? (state.bonusUnlocked ? bonusEntryIndex() : null);
     if (next !== null && next !== undefined) setActiveEntry(next);
@@ -280,6 +307,7 @@ function submitEntry() {
   // already locked in) so the player can try again.
   const statuses = computeWordleFeedback(guess, entry.answer);
   updateLetterStatus(guess.split(''), statuses);
+  recordGuess(idx, guess, statuses);
   const feedbackCells = {};
   cells.forEach(({ r, c }, i) => {
     feedbackCells[`${r},${c}`] = statuses[i];
@@ -290,6 +318,10 @@ function submitEntry() {
   render();
   flashShake();
 
+  // Give the reveal cascade time to actually play out — a 10-letter word's
+  // last tile doesn't even start flipping until (length-1) * REVEAL_STAGGER_MS
+  // in — plus a beat afterward so the fully-revealed colors are actually
+  // readable before the entry clears for another attempt.
   setTimeout(() => {
     for (const { r, c } of cells) {
       if (!isCellLocked(r, c)) delete state.letters[`${r},${c}`];
@@ -299,7 +331,7 @@ function submitEntry() {
     state.cursor = 0;
     render();
     saveProgress();
-  }, 1100);
+  }, cascadeDuration(cells.length) + 700);
 }
 
 // A cell is "locked" once some OTHER, already-solved entry owns its
@@ -329,6 +361,7 @@ function showToast(msg) {
 function render() {
   renderGrid();
   renderActiveClue();
+  renderGuessHistory();
   renderClueList();
   renderKeyboard();
   syncKbdHeight();
@@ -385,12 +418,30 @@ function renderGrid() {
       if (key === cursorKey && !isEntrySolved(state.activeEntry) && !showingFeedback) {
         div.classList.add('active-cell');
       }
-      if (anySolved) div.classList.add('solved');
-      if (state.justSolvedEntry !== null && cellInfo.entries.some((e) => e.entryIndex === state.justSolvedEntry)) {
-        div.classList.add('flip');
+      // A cell mid-reveal skips the flat .solved background — the .reveal
+      // animation below owns showing color for it instead, staggered to
+      // this cell's position in the word, so the flip cascades left to
+      // right instead of every letter changing color at once.
+      const justSolvedMatch =
+        state.justSolvedEntry !== null
+          ? cellInfo.entries.find((e) => e.entryIndex === state.justSolvedEntry)
+          : undefined;
+      if (anySolved && !justSolvedMatch) div.classList.add('solved');
+      if (justSolvedMatch) {
+        div.classList.add('reveal');
+        div.style.setProperty('--reveal-bg', belongsToBonus ? 'var(--bonus-bg)' : 'var(--solved-bg)');
+        div.style.setProperty('--reveal-text', belongsToBonus ? 'var(--bonus-text)' : 'var(--solved-text)');
+        div.style.animationDelay = `${justSolvedMatch.posInEntry * REVEAL_STAGGER_MS}ms`;
       }
+
       const feedbackStatus = state.feedback && state.feedback.cells[key];
-      if (feedbackStatus) div.classList.add(`fb-${feedbackStatus}`);
+      if (feedbackStatus) {
+        div.classList.add('reveal');
+        div.style.setProperty('--reveal-bg', `var(--wordle-${feedbackStatus})`);
+        div.style.setProperty('--reveal-text', 'var(--wordle-tile-text)');
+        const feedbackMatch = cellInfo.entries.find((e) => e.entryIndex === state.feedback.entryIndex);
+        if (feedbackMatch) div.style.animationDelay = `${feedbackMatch.posInEntry * REVEAL_STAGGER_MS}ms`;
+      }
 
       if (cellInfo.number) {
         const num = document.createElement('span');
@@ -436,6 +487,25 @@ function renderActiveClue() {
   const label = `${entry.number} ${entry.direction.toUpperCase()}${entry.bonus ? ' · BONUS' : ''} · (${entry.answer.length})`;
   tag.textContent = label;
   text.textContent = entry.clue.replace(/\s*\(\d+\)\s*$/, '');
+}
+
+function renderGuessHistory() {
+  const container = document.getElementById('guess-history');
+  const history = state.guessHistory[state.activeEntry] || [];
+  container.classList.toggle('show', history.length > 0);
+  container.innerHTML = '';
+  for (const { letters, statuses } of history) {
+    const row = document.createElement('div');
+    row.className = 'history-row';
+    for (let i = 0; i < letters.length; i++) {
+      const tile = document.createElement('span');
+      tile.className = `history-tile ${statuses[i]}`;
+      tile.textContent = letters[i];
+      row.appendChild(tile);
+    }
+    container.appendChild(row);
+  }
+  container.scrollTop = container.scrollHeight;
 }
 
 function renderClueList() {
@@ -560,6 +630,7 @@ function saveProgress() {
       bonusUnlocked: state.bonusUnlocked,
       startTime: state.startTime,
       letterStatus: state.letterStatus,
+      guessHistory: state.guessHistory,
     })
   );
 }
@@ -585,6 +656,7 @@ function loadProgress() {
     state.bonusUnlocked = !!saved.bonusUnlocked;
     state.startTime = saved.startTime || Date.now();
     state.letterStatus = saved.letterStatus || {};
+    state.guessHistory = saved.guessHistory || {};
   } catch {
     state.startTime = Date.now();
   }

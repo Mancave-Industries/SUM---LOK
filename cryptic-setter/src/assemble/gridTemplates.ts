@@ -235,6 +235,16 @@ export function buildTemplate(id: string, rows: number, cols: number, slots: Slo
 // per-length word pools). Geometry chosen so every template reaches all
 // four edges (keeping the rendered footprint exactly 10x10 every time)
 // and every slot has at least one crossing (no isolated words).
+//
+// Reaching an edge does NOT require a slot to actually be 10 letters long:
+// an across slot's row is fixed regardless of its length, so an across
+// slot sitting at row 9 satisfies the footprint no matter how short it
+// is (same for a down slot sitting at col 9). Every template below keeps
+// A3 pinned at row 9 and D3 pinned at col 9 for exactly that reason, so
+// at most one slot per template needs to actually span an edge along its
+// own length — instead of the three 10-letter slots each of the original
+// hand-authored templates leaned on, which made every single puzzle
+// demand three 10-letter answers regardless of template.
 const RAW_TEMPLATES: Array<{ id: string; rows: number; cols: number; slots: SlotSpec[] }> = [
   {
     id: 'cascade-10',
@@ -242,11 +252,11 @@ const RAW_TEMPLATES: Array<{ id: string; rows: number; cols: number; slots: Slot
     cols: 10,
     slots: [
       { id: 'A1', direction: 'across', row: 0, col: 0, length: 8 },
-      { id: 'A2', direction: 'across', row: 4, col: 0, length: 10 },
-      { id: 'A3', direction: 'across', row: 9, col: 0, length: 7 },
-      { id: 'D1', direction: 'down', row: 0, col: 0, length: 10 },
-      { id: 'D2', direction: 'down', row: 0, col: 4, length: 6 },
-      { id: 'D3', direction: 'down', row: 0, col: 9, length: 10 },
+      { id: 'A2', direction: 'across', row: 6, col: 4, length: 6 },
+      { id: 'A3', direction: 'across', row: 9, col: 3, length: 7 },
+      { id: 'D1', direction: 'down', row: 0, col: 0, length: 9 },
+      { id: 'D2', direction: 'down', row: 0, col: 4, length: 10 },
+      { id: 'D3', direction: 'down', row: 3, col: 9, length: 7 },
     ],
   },
   {
@@ -254,12 +264,12 @@ const RAW_TEMPLATES: Array<{ id: string; rows: number; cols: number; slots: Slot
     rows: 10,
     cols: 10,
     slots: [
-      { id: 'A1', direction: 'across', row: 0, col: 1, length: 9 },
-      { id: 'A2', direction: 'across', row: 5, col: 0, length: 6 },
-      { id: 'A3', direction: 'across', row: 9, col: 3, length: 7 },
-      { id: 'D1', direction: 'down', row: 0, col: 1, length: 10 },
-      { id: 'D2', direction: 'down', row: 0, col: 5, length: 10 },
-      { id: 'D3', direction: 'down', row: 0, col: 9, length: 10 },
+      { id: 'A1', direction: 'across', row: 0, col: 0, length: 7 },
+      { id: 'A2', direction: 'across', row: 6, col: 0, length: 10 },
+      { id: 'A3', direction: 'across', row: 9, col: 1, length: 9 },
+      { id: 'D1', direction: 'down', row: 0, col: 0, length: 7 },
+      { id: 'D2', direction: 'down', row: 0, col: 5, length: 8 },
+      { id: 'D3', direction: 'down', row: 3, col: 9, length: 7 },
     ],
   },
   {
@@ -267,11 +277,11 @@ const RAW_TEMPLATES: Array<{ id: string; rows: number; cols: number; slots: Slot
     rows: 10,
     cols: 10,
     slots: [
-      { id: 'A1', direction: 'across', row: 0, col: 0, length: 10 },
-      { id: 'A2', direction: 'across', row: 3, col: 2, length: 8 },
-      { id: 'A3', direction: 'across', row: 7, col: 0, length: 10 },
-      { id: 'D1', direction: 'down', row: 0, col: 0, length: 8 },
-      { id: 'D2', direction: 'down', row: 0, col: 5, length: 10 },
+      { id: 'A1', direction: 'across', row: 0, col: 4, length: 6 },
+      { id: 'A2', direction: 'across', row: 4, col: 0, length: 10 },
+      { id: 'A3', direction: 'across', row: 9, col: 1, length: 9 },
+      { id: 'D1', direction: 'down', row: 1, col: 0, length: 8 },
+      { id: 'D2', direction: 'down', row: 3, col: 6, length: 7 },
       { id: 'D3', direction: 'down', row: 0, col: 9, length: 8 },
     ],
   },
@@ -280,12 +290,12 @@ const RAW_TEMPLATES: Array<{ id: string; rows: number; cols: number; slots: Slot
     rows: 10,
     cols: 10,
     slots: [
-      { id: 'A1', direction: 'across', row: 0, col: 0, length: 10 },
-      { id: 'A2', direction: 'across', row: 4, col: 0, length: 6 },
-      { id: 'A3', direction: 'across', row: 9, col: 0, length: 10 },
-      { id: 'D1', direction: 'down', row: 0, col: 0, length: 8 },
+      { id: 'A1', direction: 'across', row: 0, col: 3, length: 7 },
+      { id: 'A2', direction: 'across', row: 3, col: 0, length: 8 },
+      { id: 'A3', direction: 'across', row: 9, col: 3, length: 6 },
+      { id: 'D1', direction: 'down', row: 2, col: 0, length: 6 },
       { id: 'D2', direction: 'down', row: 0, col: 4, length: 10 },
-      { id: 'D3', direction: 'down', row: 0, col: 9, length: 7 },
+      { id: 'D3', direction: 'down', row: 0, col: 9, length: 9 },
     ],
   },
 ];

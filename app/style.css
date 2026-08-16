@@ -255,19 +255,30 @@ body {
 .cell.bonus.active-cell { background: var(--active-fill); color: var(--wordle-tile-text); }
 .cell.locked-hint { color: var(--locked-text); font-size: 12px; }
 
-/* Wordle-style per-letter feedback, shown briefly on a wrong guess before
-   the entry clears for another attempt. Green here (a correct letter in
-   a wrong overall guess) intentionally looks identical to .solved. */
-.cell.fb-green { background: var(--wordle-green); color: var(--wordle-tile-text); }
-.cell.fb-yellow { background: var(--wordle-yellow); color: var(--wordle-tile-text); }
-.cell.fb-gray { background: var(--wordle-gray); color: var(--wordle-tile-text); }
-.cell.flip {
-  animation: flip 0.5s ease;
+/* Wordle-style per-letter reveal: on both a correct entry and a wrong
+   guess's feedback, tiles flip and color one at a time, left to right,
+   instead of every letter changing at once. --reveal-bg/--reveal-text are
+   set inline per cell (green/yellow/gray for a wrong guess, the solved/
+   bonus color for a correct one); animation-delay is set inline too, at
+   REVEAL_STAGGER_MS * this cell's position in the word (app.js), so each
+   tile's flip starts a beat after the one before it. The color itself only
+   switches at the flip's edge-on midpoint, same as the real thing — a tile
+   mid-delay still looks like a plain typed cell, not yet "revealed". */
+.cell.reveal {
+  animation: reveal-flip 0.45s ease both;
 }
-@keyframes flip {
-  0% { transform: rotateX(0); }
-  50% { transform: rotateX(90deg); }
-  100% { transform: rotateX(0); }
+/* Without an explicit value at every early keyframe, a browser treats a
+   property's first mention (here, at 50%) as the END of an interpolation
+   that silently starts from 0% — the tile would visibly start blending
+   toward its revealed color from the very first frame instead of staying
+   blank until it's edge-on. Repeating the pre-reveal colors through 49.999%
+   pins them flat for the whole first half, so the switch at 50% reads as
+   the intended instant flip-reveal, not an early leak. */
+@keyframes reveal-flip {
+  0% { transform: rotateX(0deg); background: var(--paper); color: var(--text); }
+  49.999% { transform: rotateX(89.9deg); background: var(--paper); color: var(--text); }
+  50% { transform: rotateX(90deg); background: var(--reveal-bg); color: var(--reveal-text); }
+  100% { transform: rotateX(0deg); background: var(--reveal-bg); color: var(--reveal-text); }
 }
 .entry-shake { animation: shake 0.35s ease; }
 @keyframes shake {
@@ -277,7 +288,8 @@ body {
   40%, 60% { transform: translateX(5px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .cell.flip, .entry-shake { animation: none; }
+  .cell.reveal { animation: none; background: var(--reveal-bg); color: var(--reveal-text); }
+  .entry-shake { animation: none; }
 }
 .cell .num {
   position: absolute;
@@ -288,7 +300,7 @@ body {
   font-weight: 700;
   color: var(--accent);
 }
-.cell.solved .num { color: var(--solved-text); opacity: 0.8; }
+.cell.solved .num, .cell.reveal .num { color: var(--solved-text); opacity: 0.8; }
 .cell.active-cell .num { color: var(--wordle-tile-text); opacity: 0.85; }
 
 /* Lives inside the fixed .kbd pane now (pinned above the keys, same as the
@@ -308,6 +320,42 @@ body {
   margin-bottom: 4px;
 }
 .active-clue .clue-text { font-size: 14.5px; line-height: 1.4; }
+
+/* Past attempts at the currently active entry, kept visible instead of
+   vanishing after their flash — same idea as Wordle's stacked guess rows,
+   just sized down to fit the pinned pane above the keyboard. Empty (no
+   attempts yet) collapses to nothing via max-height so it costs no space
+   until there's something to show. */
+.guess-history {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 104px;
+  overflow-y: auto;
+}
+.guess-history.show {
+  display: flex;
+  padding: 8px 0 2px;
+  border-bottom: 1px solid var(--ink-border);
+}
+.history-row { display: flex; gap: 4px; justify-content: center; flex-shrink: 0; }
+.history-tile {
+  flex: 1;
+  max-width: 26px;
+  aspect-ratio: 1;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Iowan Old Style, "Palatino Linotype", Georgia, ui-serif, serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--wordle-tile-text);
+}
+.history-tile.green { background: var(--wordle-green); }
+.history-tile.yellow { background: var(--wordle-yellow); }
+.history-tile.gray { background: var(--wordle-gray); }
 
 #clue-list {
   list-style: none;
