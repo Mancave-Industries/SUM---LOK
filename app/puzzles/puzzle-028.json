@@ -6,40 +6,40 @@
       "number": 1,
       "direction": "across",
       "row": 0,
-      "col": 0,
-      "answer": "STRUCTURED",
-      "clue": "Every vital infrastructure den included in the plan looks organized (10)",
-      "device": "hidden",
-      "bonus": false
-    },
-    {
-      "number": 4,
-      "direction": "across",
-      "row": 4,
-      "col": 0,
-      "answer": "SOCCER",
-      "clue": "Escroc, shaken by exposure, gave up football (6)",
+      "col": 3,
+      "answer": "PRECISE",
+      "clue": "Distorted recipes need to be exact (7)",
       "device": "anagram",
       "bonus": false
     },
     {
       "number": 5,
       "direction": "across",
-      "row": 9,
+      "row": 3,
       "col": 0,
-      "answer": "RECOGNIZED",
-      "clue": "Banks moved to derecognize debt included in restructuring plans, and losses were finally acknowledged (10)",
-      "device": "hidden",
+      "answer": "TOMORROW",
+      "clue": "Scrambled moorwort makes a fine soup for the next day (8)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 6,
+      "direction": "across",
+      "row": 9,
+      "col": 3,
+      "answer": "ANIMAL",
+      "clue": "Under the microscope, a lamina brought back odd symmetry, like some creature (6)",
+      "device": "reversal",
       "bonus": true
     },
     {
-      "number": 1,
+      "number": 4,
       "direction": "down",
-      "row": 0,
+      "row": 2,
       "col": 0,
-      "answer": "SEMESTER",
-      "clue": "An antique teleseme sterling within Grandma's cabinet defines the school term (8)",
-      "device": "hidden",
+      "answer": "STRAIN",
+      "clue": "Saturnalian orgies, taken evenly, might produce a breed variety (6)",
+      "device": "alternates",
       "bonus": false
     },
     {
@@ -47,8 +47,8 @@
       "direction": "down",
       "row": 0,
       "col": 4,
-      "answer": "COLLECTING",
-      "clue": "I recollect ingredients as part of this gathering together (10)",
+      "answer": "REGRESSION",
+      "clue": "Some of the far egressions from the burning theatre show reversion to an earlier state (10)",
       "device": "hidden",
       "bonus": false
     },
@@ -57,9 +57,9 @@
       "direction": "down",
       "row": 0,
       "col": 9,
-      "answer": "DEALING",
-      "clue": "Leading mixed teams control the trading (7)",
-      "device": "anagram",
+      "answer": "EXPENSIVE",
+      "clue": "Latex pensivenesses within a rubber factory's mood board prove costly (9)",
+      "device": "hidden",
       "bonus": false
     }
   ]

@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-030",
+  "format": "2A3D",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "ILLEGAL",
+      "clue": "Auditors say every detail legally recorded is concealed in an offshore account, which is unlawful (7)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 6,
+      "col": 0,
+      "answer": "STRUCTURED",
+      "clue": "Every vital infrastructure den included in the plan looks organized (10)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 9,
+      "col": 1,
+      "answer": "MARKETING",
+      "clue": "Analysts note fresh trends found in Euromarket ingredients labelling amount to pure promotion (9)",
+      "device": "hidden",
+      "bonus": true
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "INSECTS",
+      "clue": "Old forinsec tsunami manuscripts, some of which survive, still describe bugs (7)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 5,
+      "answer": "ACCOUNTS",
+      "clue": "Cardiac countships partly determine financial records (8)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 3,
+      "col": 9,
+      "answer": "READING",
+      "clue": "Widespread ingredients buried in soup point to a hasty perusal (7)",
+      "device": "hidden",
+      "bonus": false
+    }
+  ]
+}
