@@ -321,6 +321,42 @@ body {
 }
 .active-clue .clue-text { font-size: 14.5px; line-height: 1.4; }
 
+/* Past attempts at the currently active entry, kept visible instead of
+   vanishing after their flash — same idea as Wordle's stacked guess rows,
+   just sized down to fit the pinned pane above the keyboard. Empty (no
+   attempts yet) collapses to nothing via max-height so it costs no space
+   until there's something to show. */
+.guess-history {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 104px;
+  overflow-y: auto;
+}
+.guess-history.show {
+  display: flex;
+  padding: 8px 0 2px;
+  border-bottom: 1px solid var(--ink-border);
+}
+.history-row { display: flex; gap: 4px; justify-content: center; flex-shrink: 0; }
+.history-tile {
+  flex: 1;
+  max-width: 26px;
+  aspect-ratio: 1;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Iowan Old Style, "Palatino Linotype", Georgia, ui-serif, serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--wordle-tile-text);
+}
+.history-tile.green { background: var(--wordle-green); }
+.history-tile.yellow { background: var(--wordle-yellow); }
+.history-tile.gray { background: var(--wordle-gray); }
+
 #clue-list {
   list-style: none;
   margin: 0;

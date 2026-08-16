@@ -21,6 +21,7 @@ const state = {
   feedback: null, // { entryIndex, cells: {"r,c": 'green'|'yellow'|'gray'} } while a wrong guess is flashing
   submitting: false, // true during the flash window — input is paused
   justSolvedEntry: null, // entry index to flip-animate for one render, then cleared
+  guessHistory: {}, // entryIndex -> [{ letters: 'ABCDEFGH', statuses: [...] }, ...], every submitted attempt
 };
 
 const FEEDBACK_RANK = { gray: 0, yellow: 1, green: 2 };
@@ -60,6 +61,14 @@ function computeWordleFeedback(guess, answer) {
     }
   }
   return result;
+}
+
+// Keeps every submitted attempt at an entry, not just the live one —
+// same idea as Wordle keeping every past guess row on screen instead of
+// only ever showing the most recent try.
+function recordGuess(entryIndex, letters, statuses) {
+  if (!state.guessHistory[entryIndex]) state.guessHistory[entryIndex] = [];
+  state.guessHistory[entryIndex].push({ letters, statuses });
 }
 
 function updateLetterStatus(letters, statuses) {
@@ -268,7 +277,9 @@ function submitEntry() {
 
   const guess = cells.map(({ r, c }) => state.letters[`${r},${c}`]).join('');
   if (guess === entry.answer) {
-    updateLetterStatus(guess.split(''), guess.split('').map(() => 'green'));
+    const statuses = guess.split('').map(() => 'green');
+    updateLetterStatus(guess.split(''), statuses);
+    recordGuess(idx, guess, statuses);
     state.solved.add(idx);
     state.justSolvedEntry = idx;
     setTimeout(() => {
@@ -280,6 +291,11 @@ function submitEntry() {
     render();
     checkBonusUnlock();
     checkAllSolved();
+    // Solving an entry that neither unlocks the bonus nor finishes the
+    // puzzle previously fell through without ever calling saveProgress() —
+    // that entry's solved state (and now its guess history) would vanish
+    // on reload even though it was genuinely solved.
+    saveProgress();
     const remaining = nonBonusEntries().filter((i) => !state.solved.has(i));
     const next = remaining[0] ?? (state.bonusUnlocked ? bonusEntryIndex() : null);
     if (next !== null && next !== undefined) setActiveEntry(next);
@@ -291,6 +307,7 @@ function submitEntry() {
   // already locked in) so the player can try again.
   const statuses = computeWordleFeedback(guess, entry.answer);
   updateLetterStatus(guess.split(''), statuses);
+  recordGuess(idx, guess, statuses);
   const feedbackCells = {};
   cells.forEach(({ r, c }, i) => {
     feedbackCells[`${r},${c}`] = statuses[i];
@@ -344,6 +361,7 @@ function showToast(msg) {
 function render() {
   renderGrid();
   renderActiveClue();
+  renderGuessHistory();
   renderClueList();
   renderKeyboard();
   syncKbdHeight();
@@ -471,6 +489,25 @@ function renderActiveClue() {
   text.textContent = entry.clue.replace(/\s*\(\d+\)\s*$/, '');
 }
 
+function renderGuessHistory() {
+  const container = document.getElementById('guess-history');
+  const history = state.guessHistory[state.activeEntry] || [];
+  container.classList.toggle('show', history.length > 0);
+  container.innerHTML = '';
+  for (const { letters, statuses } of history) {
+    const row = document.createElement('div');
+    row.className = 'history-row';
+    for (let i = 0; i < letters.length; i++) {
+      const tile = document.createElement('span');
+      tile.className = `history-tile ${statuses[i]}`;
+      tile.textContent = letters[i];
+      row.appendChild(tile);
+    }
+    container.appendChild(row);
+  }
+  container.scrollTop = container.scrollHeight;
+}
+
 function renderClueList() {
   const list = document.getElementById('clue-list');
   list.innerHTML = '';
@@ -593,6 +630,7 @@ function saveProgress() {
       bonusUnlocked: state.bonusUnlocked,
       startTime: state.startTime,
       letterStatus: state.letterStatus,
+      guessHistory: state.guessHistory,
     })
   );
 }
@@ -618,6 +656,7 @@ function loadProgress() {
     state.bonusUnlocked = !!saved.bonusUnlocked;
     state.startTime = saved.startTime || Date.now();
     state.letterStatus = saved.letterStatus || {};
+    state.guessHistory = saved.guessHistory || {};
   } catch {
     state.startTime = Date.now();
   }
