@@ -1,1 +1,7492 @@
-{}
+{
+  "6": [
+    {
+      "answer": "ABROAD",
+      "defA": "overseas",
+      "defB": "afield"
+    },
+    {
+      "answer": "ABSENT",
+      "defA": "remove",
+      "defB": "lacking"
+    },
+    {
+      "answer": "ACCENT",
+      "defA": "emphasis",
+      "defB": "dialect"
+    },
+    {
+      "answer": "ACCEPT",
+      "defA": "take",
+      "defB": "consent"
+    },
+    {
+      "answer": "ACCESS",
+      "defA": "entree",
+      "defB": "approach"
+    },
+    {
+      "answer": "ACTION",
+      "defA": "activity",
+      "defB": "sue"
+    },
+    {
+      "answer": "ACTIVE",
+      "defA": "combat-ready",
+      "defB": "participating"
+    },
+    {
+      "answer": "ACTUAL",
+      "defA": "existent",
+      "defB": "genuine"
+    },
+    {
+      "answer": "ADJUST",
+      "defA": "set",
+      "defB": "align"
+    },
+    {
+      "answer": "ADVERT",
+      "defA": "ad",
+      "defB": "attend"
+    },
+    {
+      "answer": "ADVISE",
+      "defA": "rede",
+      "defB": "notify"
+    },
+    {
+      "answer": "AERIAL",
+      "defA": "antenna",
+      "defB": "aeriform"
+    },
+    {
+      "answer": "AFFAIR",
+      "defA": "matter",
+      "defB": "affaire"
+    },
+    {
+      "answer": "AFFECT",
+      "defA": "impact",
+      "defB": "involve"
+    },
+    {
+      "answer": "AGENCY",
+      "defA": "bureau",
+      "defB": "representation"
+    },
+    {
+      "answer": "AGENDA",
+      "defA": "docket",
+      "defB": "agendum"
+    },
+    {
+      "answer": "ALWAYS",
+      "defA": "ever",
+      "defB": "constantly"
+    },
+    {
+      "answer": "AMOUNT",
+      "defA": "sum",
+      "defB": "measure"
+    },
+    {
+      "answer": "ANCHOR",
+      "defA": "mainstay",
+      "defB": "anchorman"
+    },
+    {
+      "answer": "ANIMAL",
+      "defA": "beast",
+      "defB": "carnal"
+    },
+    {
+      "answer": "ANNUAL",
+      "defA": "yearly",
+      "defB": "one-year"
+    },
+    {
+      "answer": "ANSWER",
+      "defA": "reply",
+      "defB": "solution"
+    },
+    {
+      "answer": "APPEAL",
+      "defA": "entreaty",
+      "defB": "appealingness"
+    },
+    {
+      "answer": "ARCTIC",
+      "defA": "galosh",
+      "defB": "north-polar"
+    },
+    {
+      "answer": "AROUND",
+      "defA": "about",
+      "defB": "round"
+    },
+    {
+      "answer": "ARREST",
+      "defA": "apprehension",
+      "defB": "check"
+    },
+    {
+      "answer": "ASPECT",
+      "defA": "facet",
+      "defB": "view"
+    },
+    {
+      "answer": "ASSESS",
+      "defA": "measure",
+      "defB": "tax"
+    },
+    {
+      "answer": "ASSIGN",
+      "defA": "delegate",
+      "defB": "allot"
+    },
+    {
+      "answer": "ASSIST",
+      "defA": "aid",
+      "defB": "serve"
+    },
+    {
+      "answer": "ASSUME",
+      "defA": "presume",
+      "defB": "adopt"
+    },
+    {
+      "answer": "ASSURE",
+      "defA": "guarantee",
+      "defB": "tell"
+    },
+    {
+      "answer": "ASYLUM",
+      "defA": "refuge",
+      "defB": "institution"
+    },
+    {
+      "answer": "ATTACH",
+      "defA": "bind",
+      "defB": "impound"
+    },
+    {
+      "answer": "ATTACK",
+      "defA": "onslaught",
+      "defB": "fire"
+    },
+    {
+      "answer": "ATTEND",
+      "defA": "look",
+      "defB": "serve"
+    },
+    {
+      "answer": "AUGUST",
+      "defA": "aug",
+      "defB": "grand"
+    },
+    {
+      "answer": "AUTHOR",
+      "defA": "writer",
+      "defB": "generator"
+    },
+    {
+      "answer": "BACKUP",
+      "defA": "stand-in",
+      "defB": "accompaniment"
+    },
+    {
+      "answer": "BANNER",
+      "defA": "streamer",
+      "defB": "standard"
+    },
+    {
+      "answer": "BARELY",
+      "defA": "hardly",
+      "defB": "just"
+    },
+    {
+      "answer": "BARREL",
+      "defA": "cask",
+      "defB": "drum"
+    },
+    {
+      "answer": "BASICS",
+      "defA": "rudiments",
+      "defB": "fundamentals"
+    },
+    {
+      "answer": "BASKET",
+      "defA": "handbasket",
+      "defB": "basketful"
+    },
+    {
+      "answer": "BATTLE",
+      "defA": "conflict",
+      "defB": "struggle"
+    },
+    {
+      "answer": "BEAUTY",
+      "defA": "smasher",
+      "defB": "beaut"
+    },
+    {
+      "answer": "BEAVER",
+      "defA": "oregonian",
+      "defB": "stovepipe"
+    },
+    {
+      "answer": "BECOME",
+      "defA": "go",
+      "defB": "turn"
+    },
+    {
+      "answer": "BEFORE",
+      "defA": "earlier",
+      "defB": "ahead"
+    },
+    {
+      "answer": "BEHIND",
+      "defA": "buttocks",
+      "defB": "slow"
+    },
+    {
+      "answer": "BETTER",
+      "defA": "bettor",
+      "defB": "break"
+    },
+    {
+      "answer": "BORDER",
+      "defA": "borderline",
+      "defB": "margin"
+    },
+    {
+      "answer": "BORING",
+      "defA": "drilling",
+      "defB": "deadening"
+    },
+    {
+      "answer": "BOTHER",
+      "defA": "fuss",
+      "defB": "annoyance"
+    },
+    {
+      "answer": "BOTTOM",
+      "defA": "underside",
+      "defB": "buttocks"
+    },
+    {
+      "answer": "BOXING",
+      "defA": "pugilism",
+      "defB": "packing"
+    },
+    {
+      "answer": "BRANCH",
+      "defA": "subdivision",
+      "defB": "leg"
+    },
+    {
+      "answer": "BREACH",
+      "defA": "rupture",
+      "defB": "gap"
+    },
+    {
+      "answer": "BREAST",
+      "defA": "chest",
+      "defB": "bosom"
+    },
+    {
+      "answer": "BREATH",
+      "defA": "breather",
+      "defB": "hint"
+    },
+    {
+      "answer": "BRIDAL",
+      "defA": "espousal",
+      "defB": "nuptial"
+    },
+    {
+      "answer": "BRIDGE",
+      "defA": "span",
+      "defB": "bridgework"
+    },
+    {
+      "answer": "BRIGHT",
+      "defA": "brilliant",
+      "defB": "smart"
+    },
+    {
+      "answer": "BROKEN",
+      "defA": "crushed",
+      "defB": "unkept"
+    },
+    {
+      "answer": "BRONZE",
+      "defA": "tan",
+      "defB": "bronzy"
+    },
+    {
+      "answer": "BROWSE",
+      "defA": "browsing",
+      "defB": "shop"
+    },
+    {
+      "answer": "BRUTAL",
+      "defA": "barbarous",
+      "defB": "unrelenting"
+    },
+    {
+      "answer": "BUBBLE",
+      "defA": "ripple",
+      "defB": "burp"
+    },
+    {
+      "answer": "BUFFER",
+      "defA": "fender",
+      "defB": "polisher"
+    },
+    {
+      "answer": "BULLET",
+      "defA": "slug",
+      "defB": "fastball"
+    },
+    {
+      "answer": "BUNDLE",
+      "defA": "package",
+      "defB": "sheaf"
+    },
+    {
+      "answer": "BURDEN",
+      "defA": "load",
+      "defB": "effect"
+    },
+    {
+      "answer": "BUREAU",
+      "defA": "agency",
+      "defB": "chest"
+    },
+    {
+      "answer": "BUTTON",
+      "defA": "push",
+      "defB": "clitoris"
+    },
+    {
+      "answer": "CANCEL",
+      "defA": "natural",
+      "defB": "scratch"
+    },
+    {
+      "answer": "CANDLE",
+      "defA": "taper",
+      "defB": "candela"
+    },
+    {
+      "answer": "CANNON",
+      "defA": "shank",
+      "defB": "carom"
+    },
+    {
+      "answer": "CASTLE",
+      "defA": "palace",
+      "defB": "rook"
+    },
+    {
+      "answer": "CASUAL",
+      "defA": "insouciant",
+      "defB": "everyday"
+    },
+    {
+      "answer": "CENTER",
+      "defA": "centre",
+      "defB": "centerfield"
+    },
+    {
+      "answer": "CHANCE",
+      "defA": "opportunity",
+      "defB": "luck"
+    },
+    {
+      "answer": "CHANGE",
+      "defA": "alteration",
+      "defB": "variety"
+    },
+    {
+      "answer": "CHARGE",
+      "defA": "complaint",
+      "defB": "care"
+    },
+    {
+      "answer": "CHOICE",
+      "defA": "pick",
+      "defB": "option"
+    },
+    {
+      "answer": "CHOOSE",
+      "defA": "take",
+      "defB": "prefer"
+    },
+    {
+      "answer": "CHORUS",
+      "defA": "refrain",
+      "defB": "choir"
+    },
+    {
+      "answer": "CIRCLE",
+      "defA": "set",
+      "defB": "lap"
+    },
+    {
+      "answer": "CLIENT",
+      "defA": "customer",
+      "defB": "node"
+    },
+    {
+      "answer": "CLOSED",
+      "defA": "shut",
+      "defB": "unsympathetic"
+    },
+    {
+      "answer": "CLOSER",
+      "defA": "finisher",
+      "defB": "nearer"
+    },
+    {
+      "answer": "CLOUDY",
+      "defA": "nebulose",
+      "defB": "muddy"
+    },
+    {
+      "answer": "COFFEE",
+      "defA": "java",
+      "defB": "chocolate"
+    },
+    {
+      "answer": "COLLAR",
+      "defA": "neckband",
+      "defB": "leash"
+    },
+    {
+      "answer": "COLONY",
+      "defA": "settlement",
+      "defB": "dependency"
+    },
+    {
+      "answer": "COLUMN",
+      "defA": "tower",
+      "defB": "editorial"
+    },
+    {
+      "answer": "COMBAT",
+      "defA": "fight",
+      "defB": "battle"
+    },
+    {
+      "answer": "COMING",
+      "defA": "approach",
+      "defB": "advent"
+    },
+    {
+      "answer": "COMMIT",
+      "defA": "perpetrate",
+      "defB": "give"
+    },
+    {
+      "answer": "COMMON",
+      "defA": "park",
+      "defB": "mutual"
+    },
+    {
+      "answer": "COPPER",
+      "defA": "cu",
+      "defB": "bull"
+    },
+    {
+      "answer": "CORNER",
+      "defA": "nook",
+      "defB": "recess"
+    },
+    {
+      "answer": "COUPLE",
+      "defA": "twosome",
+      "defB": "mates"
+    },
+    {
+      "answer": "COURSE",
+      "defA": "class",
+      "defB": "line"
+    },
+    {
+      "answer": "CRADLE",
+      "defA": "birthplace",
+      "defB": "rocker"
+    },
+    {
+      "answer": "CREDIT",
+      "defA": "recognition",
+      "defB": "citation"
+    },
+    {
+      "answer": "CUSTOM",
+      "defA": "usage",
+      "defB": "tradition"
+    },
+    {
+      "answer": "DAMAGE",
+      "defA": "harm",
+      "defB": "price"
+    },
+    {
+      "answer": "DEADLY",
+      "defA": "deathly",
+      "defB": "lethal"
+    },
+    {
+      "answer": "DEALER",
+      "defA": "trader",
+      "defB": "principal"
+    },
+    {
+      "answer": "DEBATE",
+      "defA": "argument",
+      "defB": "disputation"
+    },
+    {
+      "answer": "DECADE",
+      "defA": "decennary",
+      "defB": "ten"
+    },
+    {
+      "answer": "DECENT",
+      "defA": "nice",
+      "defB": "fitting"
+    },
+    {
+      "answer": "DECIDE",
+      "defA": "determine",
+      "defB": "settle"
+    },
+    {
+      "answer": "DEEPLY",
+      "defA": "profoundly",
+      "defB": "deep"
+    },
+    {
+      "answer": "DEFEAT",
+      "defA": "licking",
+      "defB": "frustration"
+    },
+    {
+      "answer": "DEFEND",
+      "defA": "support",
+      "defB": "guard"
+    },
+    {
+      "answer": "DEFINE",
+      "defA": "delineate",
+      "defB": "specify"
+    },
+    {
+      "answer": "DEGREE",
+      "defA": "grade",
+      "defB": "arcdegree"
+    },
+    {
+      "answer": "DELETE",
+      "defA": "cancel",
+      "defB": "erase"
+    },
+    {
+      "answer": "DELUXE",
+      "defA": "gilded",
+      "defB": "luxe"
+    },
+    {
+      "answer": "DEMAND",
+      "defA": "requirement",
+      "defB": "need"
+    },
+    {
+      "answer": "DENIAL",
+      "defA": "disaffirmation",
+      "defB": "abnegation"
+    },
+    {
+      "answer": "DEPUTY",
+      "defA": "lieutenant",
+      "defB": "surrogate"
+    },
+    {
+      "answer": "DESERT",
+      "defA": "abandon",
+      "defB": "defect"
+    },
+    {
+      "answer": "DESIGN",
+      "defA": "designing",
+      "defB": "plan"
+    },
+    {
+      "answer": "DESIRE",
+      "defA": "want",
+      "defB": "hope"
+    },
+    {
+      "answer": "DETAIL",
+      "defA": "item",
+      "defB": "contingent"
+    },
+    {
+      "answer": "DIGEST",
+      "defA": "compilation",
+      "defB": "endure"
+    },
+    {
+      "answer": "DIRECT",
+      "defA": "target",
+      "defB": "lead"
+    },
+    {
+      "answer": "DIVIDE",
+      "defA": "watershed",
+      "defB": "split"
+    },
+    {
+      "answer": "DIVINE",
+      "defA": "godhead",
+      "defB": "cleric"
+    },
+    {
+      "answer": "DOCTOR",
+      "defA": "doc",
+      "defB": "sophisticate"
+    },
+    {
+      "answer": "DOMAIN",
+      "defA": "sphere",
+      "defB": "demesne"
+    },
+    {
+      "answer": "DOUBLE",
+      "defA": "two-bagger",
+      "defB": "image"
+    },
+    {
+      "answer": "DRAGON",
+      "defA": "firedrake",
+      "defB": "tartar"
+    },
+    {
+      "answer": "DRIVEN",
+      "defA": "goaded",
+      "defB": "impelled"
+    },
+    {
+      "answer": "EASILY",
+      "defA": "easy",
+      "defB": "well"
+    },
+    {
+      "answer": "EFFECT",
+      "defA": "consequence",
+      "defB": "impression"
+    },
+    {
+      "answer": "EFFORT",
+      "defA": "attempt",
+      "defB": "exertion"
+    },
+    {
+      "answer": "EMPIRE",
+      "defA": "imperium",
+      "defB": "conglomerate"
+    },
+    {
+      "answer": "EMPLOY",
+      "defA": "employment",
+      "defB": "use"
+    },
+    {
+      "answer": "ENDING",
+      "defA": "termination",
+      "defB": "end"
+    },
+    {
+      "answer": "ENERGY",
+      "defA": "vigor",
+      "defB": "push"
+    },
+    {
+      "answer": "ENGAGE",
+      "defA": "prosecute",
+      "defB": "absorb"
+    },
+    {
+      "answer": "ENOUGH",
+      "defA": "sufficiency",
+      "defB": "adequate"
+    },
+    {
+      "answer": "ENTIRE",
+      "defA": "stallion",
+      "defB": "full"
+    },
+    {
+      "answer": "ESCAPE",
+      "defA": "flight",
+      "defB": "escapism"
+    },
+    {
+      "answer": "ETHNIC",
+      "defA": "cultural",
+      "defB": "heathen"
+    },
+    {
+      "answer": "EXCEED",
+      "defA": "transcend",
+      "defB": "surpass"
+    },
+    {
+      "answer": "EXCEPT",
+      "defA": "demur",
+      "defB": "exclude"
+    },
+    {
+      "answer": "EXCESS",
+      "defA": "surplus",
+      "defB": "excessiveness"
+    },
+    {
+      "answer": "EXCUSE",
+      "defA": "alibi",
+      "defB": "apology"
+    },
+    {
+      "answer": "EXEMPT",
+      "defA": "relieve",
+      "defB": "nontaxable"
+    },
+    {
+      "answer": "EXPAND",
+      "defA": "boom",
+      "defB": "inflate"
+    },
+    {
+      "answer": "EXPECT",
+      "defA": "anticipate",
+      "defB": "ask"
+    },
+    {
+      "answer": "EXPERT",
+      "defA": "adept",
+      "defB": "technical"
+    },
+    {
+      "answer": "EXTEND",
+      "defA": "widen",
+      "defB": "run"
+    },
+    {
+      "answer": "FABRIC",
+      "defA": "cloth",
+      "defB": "framework"
+    },
+    {
+      "answer": "FACING",
+      "defA": "veneer",
+      "defB": "cladding"
+    },
+    {
+      "answer": "FACTOR",
+      "defA": "component",
+      "defB": "divisor"
+    },
+    {
+      "answer": "FAIRLY",
+      "defA": "reasonably",
+      "defB": "fair"
+    },
+    {
+      "answer": "FAMILY",
+      "defA": "household",
+      "defB": "class"
+    },
+    {
+      "answer": "FATHER",
+      "defA": "begetter",
+      "defB": "forefather"
+    },
+    {
+      "answer": "FELLOW",
+      "defA": "chap",
+      "defB": "companion"
+    },
+    {
+      "answer": "FIGURE",
+      "defA": "fig",
+      "defB": "soma"
+    },
+    {
+      "answer": "FILTER",
+      "defA": "filtrate",
+      "defB": "percolate"
+    },
+    {
+      "answer": "FINDER",
+      "defA": "discoverer",
+      "defB": "viewfinder"
+    },
+    {
+      "answer": "FINGER",
+      "defA": "fingerbreadth",
+      "defB": "thumb"
+    },
+    {
+      "answer": "FINISH",
+      "defA": "coating",
+      "defB": "finale"
+    },
+    {
+      "answer": "FISHER",
+      "defA": "fisherman",
+      "defB": "pekan"
+    },
+    {
+      "answer": "FLEECE",
+      "defA": "sheepskin",
+      "defB": "wool"
+    },
+    {
+      "answer": "FLIGHT",
+      "defA": "flying",
+      "defB": "escape"
+    },
+    {
+      "answer": "FLYING",
+      "defA": "flight",
+      "defB": "fast-flying"
+    },
+    {
+      "answer": "FOLLOW",
+      "defA": "postdate",
+      "defB": "comply"
+    },
+    {
+      "answer": "FOREST",
+      "defA": "wood",
+      "defB": "woodland"
+    },
+    {
+      "answer": "FORGET",
+      "defA": "bury",
+      "defB": "block"
+    },
+    {
+      "answer": "FORMAL",
+      "defA": "ball",
+      "defB": "conventional"
+    },
+    {
+      "answer": "FORMAT",
+      "defA": "formatting",
+      "defB": "arrange"
+    },
+    {
+      "answer": "FORMER",
+      "defA": "erstwhile",
+      "defB": "late"
+    },
+    {
+      "answer": "FOSTER",
+      "defA": "further",
+      "defB": "nurture"
+    },
+    {
+      "answer": "FOURTH",
+      "defA": "one-fourth",
+      "defB": "4th"
+    },
+    {
+      "answer": "FREEZE",
+      "defA": "freezing",
+      "defB": "frost"
+    },
+    {
+      "answer": "FRIEND",
+      "defA": "ally",
+      "defB": "acquaintance"
+    },
+    {
+      "answer": "FROZEN",
+      "defA": "rooted",
+      "defB": "frigid"
+    },
+    {
+      "answer": "FUSION",
+      "defA": "merger",
+      "defB": "coalition"
+    },
+    {
+      "answer": "FUTURE",
+      "defA": "hereafter",
+      "defB": "next"
+    },
+    {
+      "answer": "GATHER",
+      "defA": "gathering",
+      "defB": "garner"
+    },
+    {
+      "answer": "GENEVA",
+      "defA": "geneve",
+      "defB": "hollands"
+    },
+    {
+      "answer": "GENIUS",
+      "defA": "mastermind",
+      "defB": "brilliance"
+    },
+    {
+      "answer": "GENTLE",
+      "defA": "pacify",
+      "defB": "ennoble"
+    },
+    {
+      "answer": "GENTLY",
+      "defA": "mildly",
+      "defB": "lightly"
+    },
+    {
+      "answer": "GIVING",
+      "defA": "gift",
+      "defB": "big"
+    },
+    {
+      "answer": "GLANCE",
+      "defA": "glimpse",
+      "defB": "peek"
+    },
+    {
+      "answer": "GLOBAL",
+      "defA": "planetary",
+      "defB": "ball-shaped"
+    },
+    {
+      "answer": "GOLDEN",
+      "defA": "aureate",
+      "defB": "halcyon"
+    },
+    {
+      "answer": "GOSPEL",
+      "defA": "gospels",
+      "defB": "creed"
+    },
+    {
+      "answer": "GOSSIP",
+      "defA": "chitchat",
+      "defB": "comment"
+    },
+    {
+      "answer": "GROOVE",
+      "defA": "channel",
+      "defB": "rut"
+    },
+    {
+      "answer": "GROUND",
+      "defA": "land",
+      "defB": "reason"
+    },
+    {
+      "answer": "GROWTH",
+      "defA": "growing",
+      "defB": "increase"
+    },
+    {
+      "answer": "HAMMER",
+      "defA": "cock",
+      "defB": "malleus"
+    },
+    {
+      "answer": "HANDLE",
+      "defA": "grip",
+      "defB": "manage"
+    },
+    {
+      "answer": "HAPPEN",
+      "defA": "hap",
+      "defB": "befall"
+    },
+    {
+      "answer": "HARDLY",
+      "defA": "barely",
+      "defB": "hard"
+    },
+    {
+      "answer": "HAZARD",
+      "defA": "jeopardy",
+      "defB": "luck"
+    },
+    {
+      "answer": "HEADER",
+      "defA": "heading",
+      "defB": "lintel"
+    },
+    {
+      "answer": "HEATER",
+      "defA": "warmer",
+      "defB": "fastball"
+    },
+    {
+      "answer": "HEIGHT",
+      "defA": "tallness",
+      "defB": "acme"
+    },
+    {
+      "answer": "HERALD",
+      "defA": "trumpeter",
+      "defB": "harbinger"
+    },
+    {
+      "answer": "HIDDEN",
+      "defA": "concealed",
+      "defB": "secret"
+    },
+    {
+      "answer": "HOLLOW",
+      "defA": "holler",
+      "defB": "hole"
+    },
+    {
+      "answer": "HONEST",
+      "defA": "honorable",
+      "defB": "dependable"
+    },
+    {
+      "answer": "HUNGER",
+      "defA": "hungriness",
+      "defB": "crave"
+    },
+    {
+      "answer": "HUNTER",
+      "defA": "huntsman",
+      "defB": "orion"
+    },
+    {
+      "answer": "HYBRID",
+      "defA": "loanblend",
+      "defB": "crossbreed"
+    },
+    {
+      "answer": "IMPACT",
+      "defA": "wallop",
+      "defB": "impingement"
+    },
+    {
+      "answer": "IMPORT",
+      "defA": "importation",
+      "defB": "importee"
+    },
+    {
+      "answer": "IMPOSE",
+      "defA": "enforce",
+      "defB": "inflict"
+    },
+    {
+      "answer": "INJURY",
+      "defA": "hurt",
+      "defB": "wound"
+    },
+    {
+      "answer": "INSERT",
+      "defA": "inset",
+      "defB": "cut-in"
+    },
+    {
+      "answer": "INSIDE",
+      "defA": "interior",
+      "defB": "inner"
+    },
+    {
+      "answer": "INTAKE",
+      "defA": "consumption",
+      "defB": "inlet"
+    },
+    {
+      "answer": "INTEND",
+      "defA": "mean",
+      "defB": "destine"
+    },
+    {
+      "answer": "INTENT",
+      "defA": "purpose",
+      "defB": "purport"
+    },
+    {
+      "answer": "INVEST",
+      "defA": "put",
+      "defB": "endow"
+    },
+    {
+      "answer": "INVITE",
+      "defA": "tempt",
+      "defB": "bid"
+    },
+    {
+      "answer": "JERSEY",
+      "defA": "nj",
+      "defB": "t-shirt"
+    },
+    {
+      "answer": "JOINED",
+      "defA": "united",
+      "defB": "coupled"
+    },
+    {
+      "answer": "JUNIOR",
+      "defA": "jr",
+      "defB": "third-year"
+    },
+    {
+      "answer": "KILLER",
+      "defA": "slayer",
+      "defB": "orca"
+    },
+    {
+      "answer": "KNIGHT",
+      "defA": "horse",
+      "defB": "dub"
+    },
+    {
+      "answer": "LATEST",
+      "defA": "up-to-the-minute",
+      "defB": "modish"
+    },
+    {
+      "answer": "LAUNCH",
+      "defA": "launching",
+      "defB": "establish"
+    },
+    {
+      "answer": "LEGEND",
+      "defA": "fable",
+      "defB": "caption"
+    },
+    {
+      "answer": "LENGTH",
+      "defA": "duration",
+      "defB": "distance"
+    },
+    {
+      "answer": "LESSON",
+      "defA": "example",
+      "defB": "moral"
+    },
+    {
+      "answer": "LIABLE",
+      "defA": "apt",
+      "defB": "nonimmune"
+    },
+    {
+      "answer": "LIKELY",
+      "defA": "probable",
+      "defB": "potential"
+    },
+    {
+      "answer": "LINEAR",
+      "defA": "additive",
+      "defB": "one-dimensional"
+    },
+    {
+      "answer": "LIQUID",
+      "defA": "liquidness",
+      "defB": "swimming"
+    },
+    {
+      "answer": "LISTEN",
+      "defA": "hear",
+      "defB": "heed"
+    },
+    {
+      "answer": "LITTLE",
+      "defA": "small",
+      "defB": "slight"
+    },
+    {
+      "answer": "LIVING",
+      "defA": "life",
+      "defB": "support"
+    },
+    {
+      "answer": "LOADED",
+      "defA": "laden",
+      "defB": "affluent"
+    },
+    {
+      "answer": "LOCATE",
+      "defA": "situate",
+      "defB": "place"
+    },
+    {
+      "answer": "LONELY",
+      "defA": "alone",
+      "defB": "lonesome"
+    },
+    {
+      "answer": "LOUNGE",
+      "defA": "sofa",
+      "defB": "loiter"
+    },
+    {
+      "answer": "LOVELY",
+      "defA": "pin-up",
+      "defB": "adorable"
+    },
+    {
+      "answer": "MAIDEN",
+      "defA": "maid",
+      "defB": "inaugural"
+    },
+    {
+      "answer": "MAKING",
+      "defA": "devising",
+      "defB": "qualification"
+    },
+    {
+      "answer": "MANAGE",
+      "defA": "negociate",
+      "defB": "deal"
+    },
+    {
+      "answer": "MARGIN",
+      "defA": "border",
+      "defB": "allowance"
+    },
+    {
+      "answer": "MARINE",
+      "defA": "leatherneck",
+      "defB": "nautical"
+    },
+    {
+      "answer": "MARKET",
+      "defA": "marketplace",
+      "defB": "grocery"
+    },
+    {
+      "answer": "MASTER",
+      "defA": "maestro",
+      "defB": "overlord"
+    },
+    {
+      "answer": "MATTER",
+      "defA": "affair",
+      "defB": "topic"
+    },
+    {
+      "answer": "MATURE",
+      "defA": "maturate",
+      "defB": "ripen"
+    },
+    {
+      "answer": "MEDIAN",
+      "defA": "average",
+      "defB": "medial"
+    },
+    {
+      "answer": "MEDIUM",
+      "defA": "spiritualist",
+      "defB": "metier"
+    },
+    {
+      "answer": "MEMBER",
+      "defA": "extremity",
+      "defB": "penis"
+    },
+    {
+      "answer": "MEMORY",
+      "defA": "remembering",
+      "defB": "retention"
+    },
+    {
+      "answer": "MERGER",
+      "defA": "amalgamation",
+      "defB": "fusion"
+    },
+    {
+      "answer": "MIDDLE",
+      "defA": "center",
+      "defB": "midriff"
+    },
+    {
+      "answer": "MINING",
+      "defA": "excavation",
+      "defB": "minelaying"
+    },
+    {
+      "answer": "MINUTE",
+      "defA": "min",
+      "defB": "moment"
+    },
+    {
+      "answer": "MOBILE",
+      "defA": "nomadic",
+      "defB": "fluid"
+    },
+    {
+      "answer": "MODERN",
+      "defA": "bodoni",
+      "defB": "mod"
+    },
+    {
+      "answer": "MODIFY",
+      "defA": "qualify",
+      "defB": "change"
+    },
+    {
+      "answer": "MOMENT",
+      "defA": "minute",
+      "defB": "consequence"
+    },
+    {
+      "answer": "MONKEY",
+      "defA": "imp",
+      "defB": "tamper"
+    },
+    {
+      "answer": "MOSTLY",
+      "defA": "largely",
+      "defB": "generally"
+    },
+    {
+      "answer": "MOTHER",
+      "defA": "fuss",
+      "defB": "beget"
+    },
+    {
+      "answer": "MOTION",
+      "defA": "gesture",
+      "defB": "movement"
+    },
+    {
+      "answer": "MURDER",
+      "defA": "slaying",
+      "defB": "slay"
+    },
+    {
+      "answer": "MUSCLE",
+      "defA": "musculus",
+      "defB": "muscleman"
+    },
+    {
+      "answer": "MUTUAL",
+      "defA": "common",
+      "defB": "reciprocal"
+    },
+    {
+      "answer": "NARROW",
+      "defA": "contract",
+      "defB": "specify"
+    },
+    {
+      "answer": "NEARLY",
+      "defA": "about",
+      "defB": "closely"
+    },
+    {
+      "answer": "NEURAL",
+      "defA": "nervous",
+      "defB": "neuronal"
+    },
+    {
+      "answer": "NOTICE",
+      "defA": "observation",
+      "defB": "notification"
+    },
+    {
+      "answer": "NOTION",
+      "defA": "impression",
+      "defB": "whim"
+    },
+    {
+      "answer": "NUMBER",
+      "defA": "figure",
+      "defB": "act"
+    },
+    {
+      "answer": "OBTAIN",
+      "defA": "receive",
+      "defB": "prevail"
+    },
+    {
+      "answer": "OFFICE",
+      "defA": "agency",
+      "defB": "function"
+    },
+    {
+      "answer": "OFFSET",
+      "defA": "beginning",
+      "defB": "counterbalance"
+    },
+    {
+      "answer": "ORANGE",
+      "defA": "orangeness",
+      "defB": "orangish"
+    },
+    {
+      "answer": "ORIGIN",
+      "defA": "beginning",
+      "defB": "descent"
+    },
+    {
+      "answer": "OUTLET",
+      "defA": "exit",
+      "defB": "release"
+    },
+    {
+      "answer": "OUTPUT",
+      "defA": "yield",
+      "defB": "outturn"
+    },
+    {
+      "answer": "PACKET",
+      "defA": "package",
+      "defB": "mailboat"
+    },
+    {
+      "answer": "PARADE",
+      "defA": "exhibit",
+      "defB": "troop"
+    },
+    {
+      "answer": "PARCEL",
+      "defA": "package",
+      "defB": "portion"
+    },
+    {
+      "answer": "PAYING",
+      "defA": "gainful",
+      "defB": "compensable"
+    },
+    {
+      "answer": "PEOPLE",
+      "defA": "citizenry",
+      "defB": "multitude"
+    },
+    {
+      "answer": "PEPPER",
+      "defA": "capsicum",
+      "defB": "peppercorn"
+    },
+    {
+      "answer": "PERIOD",
+      "defA": "menstruation",
+      "defB": "point"
+    },
+    {
+      "answer": "PERMIT",
+      "defA": "license",
+      "defB": "allow"
+    },
+    {
+      "answer": "PHRASE",
+      "defA": "idiom",
+      "defB": "formulate"
+    },
+    {
+      "answer": "PICKUP",
+      "defA": "pick-me-up",
+      "defB": "getaway"
+    },
+    {
+      "answer": "PICNIC",
+      "defA": "outing",
+      "defB": "cinch"
+    },
+    {
+      "answer": "PLAYER",
+      "defA": "participant",
+      "defB": "musician"
+    },
+    {
+      "answer": "PLEDGE",
+      "defA": "toast",
+      "defB": "assurance"
+    },
+    {
+      "answer": "PLENTY",
+      "defA": "plentifulness",
+      "defB": "batch"
+    },
+    {
+      "answer": "POCKET",
+      "defA": "pouch",
+      "defB": "scoop"
+    },
+    {
+      "answer": "POISON",
+      "defA": "toxicant",
+      "defB": "envenom"
+    },
+    {
+      "answer": "POLICE",
+      "defA": "constabulary",
+      "defB": "patrol"
+    },
+    {
+      "answer": "POLISH",
+      "defA": "gloss",
+      "defB": "refinement"
+    },
+    {
+      "answer": "POSTER",
+      "defA": "posting",
+      "defB": "post-horse"
+    },
+    {
+      "answer": "POTTER",
+      "defA": "thrower",
+      "defB": "putter"
+    },
+    {
+      "answer": "POWDER",
+      "defA": "pulverization",
+      "defB": "gunpowder"
+    },
+    {
+      "answer": "PRAYER",
+      "defA": "supplication",
+      "defB": "petition"
+    },
+    {
+      "answer": "PREFER",
+      "defA": "choose",
+      "defB": "favor"
+    },
+    {
+      "answer": "PROFIT",
+      "defA": "net",
+      "defB": "gain"
+    },
+    {
+      "answer": "PROMPT",
+      "defA": "prompting",
+      "defB": "motivate"
+    },
+    {
+      "answer": "PURPLE",
+      "defA": "purpleness",
+      "defB": "empurple"
+    },
+    {
+      "answer": "PURSUE",
+      "defA": "prosecute",
+      "defB": "follow"
+    },
+    {
+      "answer": "PUZZLE",
+      "defA": "puzzler",
+      "defB": "perplex"
+    },
+    {
+      "answer": "RABBIT",
+      "defA": "coney",
+      "defB": "lapin"
+    },
+    {
+      "answer": "RADIUS",
+      "defA": "r",
+      "defB": "spoke"
+    },
+    {
+      "answer": "RAISED",
+      "defA": "brocaded",
+      "defB": "elevated"
+    },
+    {
+      "answer": "RATHER",
+      "defA": "instead",
+      "defB": "kinda"
+    },
+    {
+      "answer": "RATING",
+      "defA": "evaluation",
+      "defB": "paygrade"
+    },
+    {
+      "answer": "READER",
+      "defA": "subscriber",
+      "defB": "reviewer"
+    },
+    {
+      "answer": "REALLY",
+      "defA": "truly",
+      "defB": "actually"
+    },
+    {
+      "answer": "REASON",
+      "defA": "ground",
+      "defB": "understanding"
+    },
+    {
+      "answer": "REBATE",
+      "defA": "discount",
+      "defB": "rabbet"
+    },
+    {
+      "answer": "RECALL",
+      "defA": "callback",
+      "defB": "recollection"
+    },
+    {
+      "answer": "RECENT",
+      "defA": "holocene",
+      "defB": "late"
+    },
+    {
+      "answer": "RECORD",
+      "defA": "disk",
+      "defB": "book"
+    },
+    {
+      "answer": "REDEEM",
+      "defA": "deliver",
+      "defB": "ransom"
+    },
+    {
+      "answer": "REDUCE",
+      "defA": "trim",
+      "defB": "shrink"
+    },
+    {
+      "answer": "REFINE",
+      "defA": "polish",
+      "defB": "complicate"
+    },
+    {
+      "answer": "REFUND",
+      "defA": "repayment",
+      "defB": "return"
+    },
+    {
+      "answer": "REFUSE",
+      "defA": "garbage",
+      "defB": "decline"
+    },
+    {
+      "answer": "REGARD",
+      "defA": "respect",
+      "defB": "attentiveness"
+    },
+    {
+      "answer": "REGIME",
+      "defA": "government",
+      "defB": "regimen"
+    },
+    {
+      "answer": "REGION",
+      "defA": "part",
+      "defB": "area"
+    },
+    {
+      "answer": "REJECT",
+      "defA": "cull",
+      "defB": "refuse"
+    },
+    {
+      "answer": "RELATE",
+      "defA": "associate",
+      "defB": "refer"
+    },
+    {
+      "answer": "RELIEF",
+      "defA": "alleviation",
+      "defB": "ease"
+    },
+    {
+      "answer": "REMARK",
+      "defA": "comment",
+      "defB": "note"
+    },
+    {
+      "answer": "REMEDY",
+      "defA": "redress",
+      "defB": "curative"
+    },
+    {
+      "answer": "REMOTE",
+      "defA": "distant",
+      "defB": "outside"
+    },
+    {
+      "answer": "REMOVE",
+      "defA": "take",
+      "defB": "transfer"
+    },
+    {
+      "answer": "RENDER",
+      "defA": "supply",
+      "defB": "interpret"
+    },
+    {
+      "answer": "RENTAL",
+      "defA": "lease",
+      "defB": "renting"
+    },
+    {
+      "answer": "REPAIR",
+      "defA": "fix",
+      "defB": "haunt"
+    },
+    {
+      "answer": "REPEAT",
+      "defA": "repetition",
+      "defB": "reiterate"
+    },
+    {
+      "answer": "REPORT",
+      "defA": "study",
+      "defB": "account"
+    },
+    {
+      "answer": "RESCUE",
+      "defA": "deliverance",
+      "defB": "deliver"
+    },
+    {
+      "answer": "RESIST",
+      "defA": "defy",
+      "defB": "withstand"
+    },
+    {
+      "answer": "RESORT",
+      "defA": "haunt",
+      "defB": "recourse"
+    },
+    {
+      "answer": "RESULT",
+      "defA": "consequence",
+      "defB": "solution"
+    },
+    {
+      "answer": "RESUME",
+      "defA": "sketch",
+      "defB": "cv"
+    },
+    {
+      "answer": "RETAIN",
+      "defA": "continue",
+      "defB": "hold"
+    },
+    {
+      "answer": "RETURN",
+      "defA": "homecoming",
+      "defB": "restitution"
+    },
+    {
+      "answer": "REVIEW",
+      "defA": "reappraisal",
+      "defB": "critique"
+    },
+    {
+      "answer": "REWARD",
+      "defA": "wages",
+      "defB": "reinforcement"
+    },
+    {
+      "answer": "RHYTHM",
+      "defA": "beat",
+      "defB": "cycle"
+    },
+    {
+      "answer": "RIBBON",
+      "defA": "thread",
+      "defB": "decoration"
+    },
+    {
+      "answer": "RISING",
+      "defA": "rise",
+      "defB": "rebellion"
+    },
+    {
+      "answer": "ROCKET",
+      "defA": "projectile",
+      "defB": "roquette"
+    },
+    {
+      "answer": "ROLLED",
+      "defA": "involute",
+      "defB": "rolling"
+    },
+    {
+      "answer": "ROLLER",
+      "defA": "roll",
+      "defB": "curler"
+    },
+    {
+      "answer": "ROTARY",
+      "defA": "circle",
+      "defB": "circular"
+    },
+    {
+      "answer": "RUBBER",
+      "defA": "caoutchouc",
+      "defB": "condom"
+    },
+    {
+      "answer": "RULING",
+      "defA": "opinion",
+      "defB": "regnant"
+    },
+    {
+      "answer": "RUNNER",
+      "defA": "smuggler",
+      "defB": "stolon"
+    },
+    {
+      "answer": "SACRED",
+      "defA": "consecrated",
+      "defB": "hallowed"
+    },
+    {
+      "answer": "SAFETY",
+      "defA": "refuge",
+      "defB": "guard"
+    },
+    {
+      "answer": "SAMPLE",
+      "defA": "sampling",
+      "defB": "try"
+    },
+    {
+      "answer": "SAVAGE",
+      "defA": "barbarian",
+      "defB": "beast"
+    },
+    {
+      "answer": "SAVING",
+      "defA": "economy",
+      "defB": "rescue"
+    },
+    {
+      "answer": "SCHEME",
+      "defA": "strategy",
+      "defB": "dodge"
+    },
+    {
+      "answer": "SCHOOL",
+      "defA": "schoolhouse",
+      "defB": "schooling"
+    },
+    {
+      "answer": "SCREEN",
+      "defA": "blind",
+      "defB": "cover"
+    },
+    {
+      "answer": "SCRIPT",
+      "defA": "book",
+      "defB": "handwriting"
+    },
+    {
+      "answer": "SEALED",
+      "defA": "certain",
+      "defB": "plastered"
+    },
+    {
+      "answer": "SEARCH",
+      "defA": "hunt",
+      "defB": "lookup"
+    },
+    {
+      "answer": "SEASON",
+      "defA": "flavor",
+      "defB": "harden"
+    },
+    {
+      "answer": "SECOND",
+      "defA": "sec",
+      "defB": "moment"
+    },
+    {
+      "answer": "SECRET",
+      "defA": "arcanum",
+      "defB": "mystery"
+    },
+    {
+      "answer": "SECURE",
+      "defA": "procure",
+      "defB": "fasten"
+    },
+    {
+      "answer": "SEEING",
+      "defA": "beholding",
+      "defB": "eyesight"
+    },
+    {
+      "answer": "SELECT",
+      "defA": "choose",
+      "defB": "choice"
+    },
+    {
+      "answer": "SENIOR",
+      "defA": "elder",
+      "defB": "fourth-year"
+    },
+    {
+      "answer": "SERIAL",
+      "defA": "series",
+      "defB": "consecutive"
+    },
+    {
+      "answer": "SERVER",
+      "defA": "waiter",
+      "defB": "host"
+    },
+    {
+      "answer": "SETTLE",
+      "defA": "settee",
+      "defB": "decide"
+    },
+    {
+      "answer": "SEVERE",
+      "defA": "terrible",
+      "defB": "hard"
+    },
+    {
+      "answer": "SEWING",
+      "defA": "stitching",
+      "defB": "stitchery"
+    },
+    {
+      "answer": "SHADOW",
+      "defA": "darkness",
+      "defB": "apparition"
+    },
+    {
+      "answer": "SHIELD",
+      "defA": "buckler",
+      "defB": "carapace"
+    },
+    {
+      "answer": "SHORTS",
+      "defA": "trunks",
+      "defB": "drawers"
+    },
+    {
+      "answer": "SHOWER",
+      "defA": "cascade",
+      "defB": "exhibitor"
+    },
+    {
+      "answer": "SIGNAL",
+      "defA": "signaling",
+      "defB": "bespeak"
+    },
+    {
+      "answer": "SILENT",
+      "defA": "soundless",
+      "defB": "mum"
+    },
+    {
+      "answer": "SILVER",
+      "defA": "ag",
+      "defB": "flatware"
+    },
+    {
+      "answer": "SIMPLE",
+      "defA": "simpleton",
+      "defB": "elementary"
+    },
+    {
+      "answer": "SIMPLY",
+      "defA": "merely",
+      "defB": "plainly"
+    },
+    {
+      "answer": "SINGLE",
+      "defA": "bingle",
+      "defB": "one"
+    },
+    {
+      "answer": "SLIGHT",
+      "defA": "rebuff",
+      "defB": "cold-shoulder"
+    },
+    {
+      "answer": "SLOWLY",
+      "defA": "slow",
+      "defB": "lento"
+    },
+    {
+      "answer": "SMOOTH",
+      "defA": "smoothen",
+      "defB": "politic"
+    },
+    {
+      "answer": "SOCIAL",
+      "defA": "sociable",
+      "defB": "societal"
+    },
+    {
+      "answer": "SOURCE",
+      "defA": "beginning",
+      "defB": "seed"
+    },
+    {
+      "answer": "SPEECH",
+      "defA": "address",
+      "defB": "language"
+    },
+    {
+      "answer": "SPHERE",
+      "defA": "domain",
+      "defB": "sector"
+    },
+    {
+      "answer": "SPIRIT",
+      "defA": "tone",
+      "defB": "intent"
+    },
+    {
+      "answer": "SPREAD",
+      "defA": "spreading",
+      "defB": "gap"
+    },
+    {
+      "answer": "SPRING",
+      "defA": "springtime",
+      "defB": "fountain"
+    },
+    {
+      "answer": "SQUARE",
+      "defA": "foursquare",
+      "defB": "lame"
+    },
+    {
+      "answer": "SQUIRT",
+      "defA": "pip-squeak",
+      "defB": "jet"
+    },
+    {
+      "answer": "STABLE",
+      "defA": "stalls",
+      "defB": "static"
+    },
+    {
+      "answer": "STATIC",
+      "defA": "atmospherics",
+      "defB": "inactive"
+    },
+    {
+      "answer": "STATUS",
+      "defA": "position",
+      "defB": "condition"
+    },
+    {
+      "answer": "STEADY",
+      "defA": "sweetheart",
+      "defB": "calm"
+    },
+    {
+      "answer": "STEREO",
+      "defA": "stereophony",
+      "defB": "stereophonic"
+    },
+    {
+      "answer": "STICKY",
+      "defA": "gluey",
+      "defB": "muggy"
+    },
+    {
+      "answer": "STRAIN",
+      "defA": "stress",
+      "defB": "tune"
+    },
+    {
+      "answer": "STRAND",
+      "defA": "chain",
+      "defB": "fibril"
+    },
+    {
+      "answer": "STREAM",
+      "defA": "watercourse",
+      "defB": "flow"
+    },
+    {
+      "answer": "STRESS",
+      "defA": "emphasis",
+      "defB": "tension"
+    },
+    {
+      "answer": "STRICT",
+      "defA": "rigorous",
+      "defB": "hard-and-fast"
+    },
+    {
+      "answer": "STRIKE",
+      "defA": "rap",
+      "defB": "ten-strike"
+    },
+    {
+      "answer": "STRING",
+      "defA": "twine",
+      "defB": "train"
+    },
+    {
+      "answer": "STROKE",
+      "defA": "shot",
+      "defB": "throw"
+    },
+    {
+      "answer": "STRONG",
+      "defA": "potent",
+      "defB": "impregnable"
+    },
+    {
+      "answer": "STUPID",
+      "defA": "stupe",
+      "defB": "dazed"
+    },
+    {
+      "answer": "SUBMIT",
+      "defA": "state",
+      "defB": "present"
+    },
+    {
+      "answer": "SUBTLE",
+      "defA": "elusive",
+      "defB": "insidious"
+    },
+    {
+      "answer": "SUFFER",
+      "defA": "endure",
+      "defB": "sustain"
+    },
+    {
+      "answer": "SUMMIT",
+      "defA": "acme",
+      "defB": "breast"
+    },
+    {
+      "answer": "SUPPLY",
+      "defA": "provision",
+      "defB": "provide"
+    },
+    {
+      "answer": "SURVEY",
+      "defA": "study",
+      "defB": "sketch"
+    },
+    {
+      "answer": "SWITCH",
+      "defA": "substitution",
+      "defB": "switching"
+    },
+    {
+      "answer": "SYSTEM",
+      "defA": "scheme",
+      "defB": "arrangement"
+    },
+    {
+      "answer": "TABLET",
+      "defA": "pad",
+      "defB": "pill"
+    },
+    {
+      "answer": "TACKLE",
+      "defA": "rigging",
+      "defB": "rig"
+    },
+    {
+      "answer": "TAKING",
+      "defA": "pickings",
+      "defB": "fetching"
+    },
+    {
+      "answer": "TARGET",
+      "defA": "mark",
+      "defB": "prey"
+    },
+    {
+      "answer": "TENDER",
+      "defA": "stamp",
+      "defB": "attendant"
+    },
+    {
+      "answer": "TERROR",
+      "defA": "panic",
+      "defB": "scourge"
+    },
+    {
+      "answer": "THREAD",
+      "defA": "yarn",
+      "defB": "ribbon"
+    },
+    {
+      "answer": "THREAT",
+      "defA": "menace",
+      "defB": "terror"
+    },
+    {
+      "answer": "TICKET",
+      "defA": "tag",
+      "defB": "slate"
+    },
+    {
+      "answer": "TIMBER",
+      "defA": "lumber",
+      "defB": "forest"
+    },
+    {
+      "answer": "TOILET",
+      "defA": "lavatory",
+      "defB": "gutter"
+    },
+    {
+      "answer": "TONGUE",
+      "defA": "lingua",
+      "defB": "knife"
+    },
+    {
+      "answer": "TRANCE",
+      "defA": "enchantment",
+      "defB": "capture"
+    },
+    {
+      "answer": "TRAVEL",
+      "defA": "traveling",
+      "defB": "locomotion"
+    },
+    {
+      "answer": "TRIPLE",
+      "defA": "three-bagger",
+      "defB": "trio"
+    },
+    {
+      "answer": "TURKEY",
+      "defA": "joker",
+      "defB": "bomb"
+    },
+    {
+      "answer": "TURTLE",
+      "defA": "turtleneck",
+      "defB": "capsize"
+    },
+    {
+      "answer": "UNIQUE",
+      "defA": "alone",
+      "defB": "singular"
+    },
+    {
+      "answer": "UNWRAP",
+      "defA": "undo",
+      "defB": "disclose"
+    },
+    {
+      "answer": "USEFUL",
+      "defA": "utile",
+      "defB": "utilitarian"
+    },
+    {
+      "answer": "VACUUM",
+      "defA": "vacuity",
+      "defB": "void"
+    },
+    {
+      "answer": "VERIFY",
+      "defA": "control",
+      "defB": "affirm"
+    },
+    {
+      "answer": "VESSEL",
+      "defA": "vas",
+      "defB": "watercraft"
+    },
+    {
+      "answer": "VICTOR",
+      "defA": "master",
+      "defB": "winner"
+    },
+    {
+      "answer": "VIRGIN",
+      "defA": "virgo",
+      "defB": "pure"
+    },
+    {
+      "answer": "VIRTUE",
+      "defA": "virtuousness",
+      "defB": "merit"
+    },
+    {
+      "answer": "VISION",
+      "defA": "sight",
+      "defB": "imagination"
+    },
+    {
+      "answer": "VOLUME",
+      "defA": "bulk",
+      "defB": "book"
+    },
+    {
+      "answer": "WALKER",
+      "defA": "pedestrian",
+      "defB": "zimmer"
+    },
+    {
+      "answer": "WEALTH",
+      "defA": "wealthiness",
+      "defB": "riches"
+    },
+    {
+      "answer": "WEAPON",
+      "defA": "arm",
+      "defB": "artillery"
+    },
+    {
+      "answer": "WEEKLY",
+      "defA": "hebdomadal",
+      "defB": "hebdomadally"
+    },
+    {
+      "answer": "WEIGHT",
+      "defA": "weightiness",
+      "defB": "weighting"
+    },
+    {
+      "answer": "WICKED",
+      "defA": "sinful",
+      "defB": "severe"
+    },
+    {
+      "answer": "WINNER",
+      "defA": "victor",
+      "defB": "achiever"
+    },
+    {
+      "answer": "WINTER",
+      "defA": "wintertime",
+      "defB": "overwinter"
+    },
+    {
+      "answer": "WISDOM",
+      "defA": "wiseness",
+      "defB": "sapience"
+    },
+    {
+      "answer": "WIZARD",
+      "defA": "ace",
+      "defB": "sorcerer"
+    },
+    {
+      "answer": "WONDER",
+      "defA": "wonderment",
+      "defB": "marvel"
+    },
+    {
+      "answer": "WORKER",
+      "defA": "proletarian",
+      "defB": "actor"
+    },
+    {
+      "answer": "YEARLY",
+      "defA": "annual",
+      "defB": "annually"
+    },
+    {
+      "answer": "YELLOW",
+      "defA": "yellowness",
+      "defB": "yellowish"
+    }
+  ],
+  "7": [
+    {
+      "answer": "ACCOUNT",
+      "defA": "history",
+      "defB": "explanation"
+    },
+    {
+      "answer": "ACQUIRE",
+      "defA": "get",
+      "defB": "assume"
+    },
+    {
+      "answer": "ADAPTER",
+      "defA": "arranger",
+      "defB": "adaptor"
+    },
+    {
+      "answer": "ADDRESS",
+      "defA": "reference",
+      "defB": "speech"
+    },
+    {
+      "answer": "ADVANCE",
+      "defA": "progress",
+      "defB": "improvement"
+    },
+    {
+      "answer": "ADVERSE",
+      "defA": "inauspicious",
+      "defB": "contrary"
+    },
+    {
+      "answer": "ALTERED",
+      "defA": "neutered",
+      "defB": "adapted"
+    },
+    {
+      "answer": "AMATEUR",
+      "defA": "recreational",
+      "defB": "amateurish"
+    },
+    {
+      "answer": "AMAZING",
+      "defA": "astonishing",
+      "defB": "awe-inspiring"
+    },
+    {
+      "answer": "ANTENNA",
+      "defA": "aerial",
+      "defB": "feeler"
+    },
+    {
+      "answer": "ANTIQUE",
+      "defA": "old-timer",
+      "defB": "antiquate"
+    },
+    {
+      "answer": "ARRANGE",
+      "defA": "stage",
+      "defB": "format"
+    },
+    {
+      "answer": "ARRIVAL",
+      "defA": "reaching",
+      "defB": "arriver"
+    },
+    {
+      "answer": "ASSAULT",
+      "defA": "rape",
+      "defB": "assail"
+    },
+    {
+      "answer": "ATTEMPT",
+      "defA": "effort",
+      "defB": "attack"
+    },
+    {
+      "answer": "ATTRACT",
+      "defA": "pull",
+      "defB": "appeal"
+    },
+    {
+      "answer": "AUCTION",
+      "defA": "vendue",
+      "defB": "auctioneer"
+    },
+    {
+      "answer": "AVERAGE",
+      "defA": "norm",
+      "defB": "mean"
+    },
+    {
+      "answer": "BACKING",
+      "defA": "backup",
+      "defB": "mount"
+    },
+    {
+      "answer": "BALANCE",
+      "defA": "proportion",
+      "defB": "equilibrium"
+    },
+    {
+      "answer": "BARGAIN",
+      "defA": "deal",
+      "defB": "buy"
+    },
+    {
+      "answer": "BEARING",
+      "defA": "heading",
+      "defB": "comportment"
+    },
+    {
+      "answer": "BEDDING",
+      "defA": "bedclothes",
+      "defB": "litter"
+    },
+    {
+      "answer": "BELIEVE",
+      "defA": "think",
+      "defB": "trust"
+    },
+    {
+      "answer": "BENEFIT",
+      "defA": "welfare",
+      "defB": "profit"
+    },
+    {
+      "answer": "BETWEEN",
+      "defA": "betwixt",
+      "defB": "'tween"
+    },
+    {
+      "answer": "BIDDING",
+      "defA": "command",
+      "defB": "summons"
+    },
+    {
+      "answer": "BILLION",
+      "defA": "1000000000000",
+      "defB": "million"
+    },
+    {
+      "answer": "BINDING",
+      "defA": "dressing",
+      "defB": "cover"
+    },
+    {
+      "answer": "BLANKET",
+      "defA": "cover",
+      "defB": "mantle"
+    },
+    {
+      "answer": "BLESSED",
+      "defA": "blest",
+      "defB": "blasted"
+    },
+    {
+      "answer": "BOOKING",
+      "defA": "engagement",
+      "defB": "reservation"
+    },
+    {
+      "answer": "BOUQUET",
+      "defA": "corsage",
+      "defB": "fragrance"
+    },
+    {
+      "answer": "BROTHER",
+      "defA": "buddy",
+      "defB": "comrade"
+    },
+    {
+      "answer": "BURNING",
+      "defA": "combustion",
+      "defB": "burn"
+    },
+    {
+      "answer": "CABINET",
+      "defA": "locker",
+      "defB": "console"
+    },
+    {
+      "answer": "CAPABLE",
+      "defA": "open",
+      "defB": "able"
+    },
+    {
+      "answer": "CAPITAL",
+      "defA": "uppercase",
+      "defB": "washington"
+    },
+    {
+      "answer": "CAPTAIN",
+      "defA": "skipper",
+      "defB": "chieftain"
+    },
+    {
+      "answer": "CAPTURE",
+      "defA": "seizure",
+      "defB": "enamour"
+    },
+    {
+      "answer": "CAREFUL",
+      "defA": "heedful",
+      "defB": "deliberate"
+    },
+    {
+      "answer": "CARRIER",
+      "defA": "bearer",
+      "defB": "flattop"
+    },
+    {
+      "answer": "CARTOON",
+      "defA": "sketch",
+      "defB": "toon"
+    },
+    {
+      "answer": "CASTING",
+      "defA": "cast",
+      "defB": "molding"
+    },
+    {
+      "answer": "CAUTION",
+      "defA": "cautiousness",
+      "defB": "caveat"
+    },
+    {
+      "answer": "CENTRAL",
+      "defA": "exchange",
+      "defB": "cardinal"
+    },
+    {
+      "answer": "CERTAIN",
+      "defA": "sure",
+      "defB": "sealed"
+    },
+    {
+      "answer": "CHANNEL",
+      "defA": "groove",
+      "defB": "line"
+    },
+    {
+      "answer": "CHARGED",
+      "defA": "supercharged",
+      "defB": "aerated"
+    },
+    {
+      "answer": "CHICKEN",
+      "defA": "poulet",
+      "defB": "wimp"
+    },
+    {
+      "answer": "CHRONIC",
+      "defA": "continuing",
+      "defB": "inveterate"
+    },
+    {
+      "answer": "CIRCUIT",
+      "defA": "tour",
+      "defB": "circumference"
+    },
+    {
+      "answer": "CLEANUP",
+      "defA": "killing",
+      "defB": "cleaning"
+    },
+    {
+      "answer": "CLEARLY",
+      "defA": "intelligibly",
+      "defB": "distinctly"
+    },
+    {
+      "answer": "CLIMATE",
+      "defA": "clime",
+      "defB": "mood"
+    },
+    {
+      "answer": "CLOSELY",
+      "defA": "close",
+      "defB": "intimately"
+    },
+    {
+      "answer": "CLOSING",
+      "defA": "shutting",
+      "defB": "conclusion"
+    },
+    {
+      "answer": "CLOSURE",
+      "defA": "closing",
+      "defB": "cloture"
+    },
+    {
+      "answer": "COATING",
+      "defA": "coat",
+      "defB": "finish"
+    },
+    {
+      "answer": "COLLECT",
+      "defA": "accumulate",
+      "defB": "gather"
+    },
+    {
+      "answer": "COMBINE",
+      "defA": "trust",
+      "defB": "combining"
+    },
+    {
+      "answer": "COMFORT",
+      "defA": "comfortableness",
+      "defB": "consolation"
+    },
+    {
+      "answer": "COMMAND",
+      "defA": "bid",
+      "defB": "control"
+    },
+    {
+      "answer": "COMMENT",
+      "defA": "remark",
+      "defB": "commentary"
+    },
+    {
+      "answer": "COMMONS",
+      "defA": "park",
+      "defB": "commonalty"
+    },
+    {
+      "answer": "COMPACT",
+      "defA": "covenant",
+      "defB": "pack"
+    },
+    {
+      "answer": "COMPANY",
+      "defA": "companionship",
+      "defB": "troupe"
+    },
+    {
+      "answer": "COMPARE",
+      "defA": "comparison",
+      "defB": "liken"
+    },
+    {
+      "answer": "COMPILE",
+      "defA": "collect",
+      "defB": "compose"
+    },
+    {
+      "answer": "COMPLEX",
+      "defA": "composite",
+      "defB": "complicated"
+    },
+    {
+      "answer": "CONCERN",
+      "defA": "care",
+      "defB": "worry"
+    },
+    {
+      "answer": "CONCORD",
+      "defA": "harmony",
+      "defB": "agreement"
+    },
+    {
+      "answer": "CONDUCT",
+      "defA": "behavior",
+      "defB": "deal"
+    },
+    {
+      "answer": "CONFIRM",
+      "defA": "corroborate",
+      "defB": "reassert"
+    },
+    {
+      "answer": "CONSIST",
+      "defA": "dwell",
+      "defB": "comprise"
+    },
+    {
+      "answer": "CONSOLE",
+      "defA": "cabinet",
+      "defB": "comfort"
+    },
+    {
+      "answer": "CONSULT",
+      "defA": "refer",
+      "defB": "confer"
+    },
+    {
+      "answer": "CONTACT",
+      "defA": "impinging",
+      "defB": "middleman"
+    },
+    {
+      "answer": "CONTAIN",
+      "defA": "incorporate",
+      "defB": "hold"
+    },
+    {
+      "answer": "CONTENT",
+      "defA": "contents",
+      "defB": "message"
+    },
+    {
+      "answer": "CONTEST",
+      "defA": "competition",
+      "defB": "contend"
+    },
+    {
+      "answer": "CONTROL",
+      "defA": "dominance",
+      "defB": "restraint"
+    },
+    {
+      "answer": "CONVERT",
+      "defA": "change",
+      "defB": "convince"
+    },
+    {
+      "answer": "CORRECT",
+      "defA": "rectify",
+      "defB": "chastise"
+    },
+    {
+      "answer": "COUNSEL",
+      "defA": "advocate",
+      "defB": "guidance"
+    },
+    {
+      "answer": "COUNTER",
+      "defA": "tabulator",
+      "defB": "buffet"
+    },
+    {
+      "answer": "COUNTRY",
+      "defA": "state",
+      "defB": "area"
+    },
+    {
+      "answer": "COUPLED",
+      "defA": "conjugate",
+      "defB": "joined"
+    },
+    {
+      "answer": "CRUCIAL",
+      "defA": "important",
+      "defB": "all-important"
+    },
+    {
+      "answer": "CRYSTAL",
+      "defA": "crystallization",
+      "defB": "quartz"
+    },
+    {
+      "answer": "CULTURE",
+      "defA": "civilization",
+      "defB": "acculturation"
+    },
+    {
+      "answer": "CUSTODY",
+      "defA": "detention",
+      "defB": "hands"
+    },
+    {
+      "answer": "CUTTING",
+      "defA": "slip",
+      "defB": "cut"
+    },
+    {
+      "answer": "DECLARE",
+      "defA": "announce",
+      "defB": "adjudge"
+    },
+    {
+      "answer": "DECLINE",
+      "defA": "diminution",
+      "defB": "declination"
+    },
+    {
+      "answer": "DEFENSE",
+      "defA": "defence",
+      "defB": "dod"
+    },
+    {
+      "answer": "DELIGHT",
+      "defA": "delectation",
+      "defB": "joy"
+    },
+    {
+      "answer": "DELIVER",
+      "defA": "present",
+      "defB": "render"
+    },
+    {
+      "answer": "DEPOSIT",
+      "defA": "sedimentation",
+      "defB": "sediment"
+    },
+    {
+      "answer": "DESTROY",
+      "defA": "destruct",
+      "defB": "ruin"
+    },
+    {
+      "answer": "DEVELOP",
+      "defA": "evolve",
+      "defB": "grow"
+    },
+    {
+      "answer": "DIAMOND",
+      "defA": "adamant",
+      "defB": "rhombus"
+    },
+    {
+      "answer": "DISPLAY",
+      "defA": "show",
+      "defB": "exhibit"
+    },
+    {
+      "answer": "DISPUTE",
+      "defA": "difference",
+      "defB": "contravention"
+    },
+    {
+      "answer": "DISTANT",
+      "defA": "remote",
+      "defB": "aloof"
+    },
+    {
+      "answer": "DIVERSE",
+      "defA": "divers",
+      "defB": "various"
+    },
+    {
+      "answer": "DIVIDED",
+      "defA": "dual-lane",
+      "defB": "shared"
+    },
+    {
+      "answer": "DIVORCE",
+      "defA": "divorcement",
+      "defB": "disassociate"
+    },
+    {
+      "answer": "DRAWING",
+      "defA": "draftsmanship",
+      "defB": "lottery"
+    },
+    {
+      "answer": "DRESSED",
+      "defA": "appareled",
+      "defB": "polished"
+    },
+    {
+      "answer": "DRIVING",
+      "defA": "drive",
+      "defB": "impulsive"
+    },
+    {
+      "answer": "DURABLE",
+      "defA": "lasting",
+      "defB": "long-wearing"
+    },
+    {
+      "answer": "DYNAMIC",
+      "defA": "dynamical",
+      "defB": "active"
+    },
+    {
+      "answer": "EARLIER",
+      "defA": "earliest",
+      "defB": "before"
+    },
+    {
+      "answer": "ECLIPSE",
+      "defA": "occultation",
+      "defB": "overshadow"
+    },
+    {
+      "answer": "ECONOMY",
+      "defA": "thriftiness",
+      "defB": "saving"
+    },
+    {
+      "answer": "ENDLESS",
+      "defA": "eternal",
+      "defB": "dateless"
+    },
+    {
+      "answer": "ENGAGED",
+      "defA": "occupied",
+      "defB": "booked"
+    },
+    {
+      "answer": "ENLARGE",
+      "defA": "magnify",
+      "defB": "elaborate"
+    },
+    {
+      "answer": "EPISODE",
+      "defA": "installment",
+      "defB": "sequence"
+    },
+    {
+      "answer": "EQUALLY",
+      "defA": "as",
+      "defB": "evenly"
+    },
+    {
+      "answer": "ESSENCE",
+      "defA": "kernel",
+      "defB": "perfume"
+    },
+    {
+      "answer": "ETERNAL",
+      "defA": "ageless",
+      "defB": "endless"
+    },
+    {
+      "answer": "EVIDENT",
+      "defA": "apparent",
+      "defB": "discernible"
+    },
+    {
+      "answer": "EXAMINE",
+      "defA": "analyze",
+      "defB": "see"
+    },
+    {
+      "answer": "EXAMPLE",
+      "defA": "illustration",
+      "defB": "model"
+    },
+    {
+      "answer": "EXCITED",
+      "defA": "aroused",
+      "defB": "delirious"
+    },
+    {
+      "answer": "EXCLUDE",
+      "defA": "except",
+      "defB": "shut"
+    },
+    {
+      "answer": "EXECUTE",
+      "defA": "accomplish",
+      "defB": "run"
+    },
+    {
+      "answer": "EXHAUST",
+      "defA": "fumes",
+      "defB": "beat"
+    },
+    {
+      "answer": "EXHIBIT",
+      "defA": "display",
+      "defB": "show"
+    },
+    {
+      "answer": "EXPLAIN",
+      "defA": "explicate",
+      "defB": "excuse"
+    },
+    {
+      "answer": "EXPOSED",
+      "defA": "open",
+      "defB": "uncovered"
+    },
+    {
+      "answer": "EXPRESS",
+      "defA": "limited",
+      "defB": "expressage"
+    },
+    {
+      "answer": "EXTRACT",
+      "defA": "infusion",
+      "defB": "excerpt"
+    },
+    {
+      "answer": "EXTREME",
+      "defA": "extremum",
+      "defB": "utmost"
+    },
+    {
+      "answer": "FACULTY",
+      "defA": "module",
+      "defB": "staff"
+    },
+    {
+      "answer": "FAILING",
+      "defA": "weakness",
+      "defB": "flunk"
+    },
+    {
+      "answer": "FAILURE",
+      "defA": "loser",
+      "defB": "bankruptcy"
+    },
+    {
+      "answer": "FANTASY",
+      "defA": "phantasy",
+      "defB": "fantasize"
+    },
+    {
+      "answer": "FARMING",
+      "defA": "agriculture",
+      "defB": "land"
+    },
+    {
+      "answer": "FASHION",
+      "defA": "manner",
+      "defB": "forge"
+    },
+    {
+      "answer": "FEATURE",
+      "defA": "characteristic",
+      "defB": "lineament"
+    },
+    {
+      "answer": "FEDERAL",
+      "defA": "fed",
+      "defB": "union"
+    },
+    {
+      "answer": "FEEDING",
+      "defA": "eating",
+      "defB": "alimentation"
+    },
+    {
+      "answer": "FEELING",
+      "defA": "impression",
+      "defB": "spirit"
+    },
+    {
+      "answer": "FIGHTER",
+      "defA": "combatant",
+      "defB": "champion"
+    },
+    {
+      "answer": "FILLING",
+      "defA": "fill",
+      "defB": "woof"
+    },
+    {
+      "answer": "FINALLY",
+      "defA": "eventually",
+      "defB": "ultimately"
+    },
+    {
+      "answer": "FITTING",
+      "defA": "adjustment",
+      "defB": "appointment"
+    },
+    {
+      "answer": "FOLDING",
+      "defA": "fold",
+      "defB": "foldable"
+    },
+    {
+      "answer": "FOREIGN",
+      "defA": "strange",
+      "defB": "alien"
+    },
+    {
+      "answer": "FOREVER",
+      "defA": "everlastingly",
+      "defB": "constantly"
+    },
+    {
+      "answer": "FORMULA",
+      "defA": "expression",
+      "defB": "recipe"
+    },
+    {
+      "answer": "FORWARD",
+      "defA": "advancing",
+      "defB": "forwards"
+    },
+    {
+      "answer": "FOUNDER",
+      "defA": "laminitis",
+      "defB": "beginner"
+    },
+    {
+      "answer": "FREIGHT",
+      "defA": "cargo",
+      "defB": "freightage"
+    },
+    {
+      "answer": "FUNDING",
+      "defA": "support",
+      "defB": "financing"
+    },
+    {
+      "answer": "FURTHER",
+      "defA": "foster",
+      "defB": "promote"
+    },
+    {
+      "answer": "GALLERY",
+      "defA": "veranda",
+      "defB": "drift"
+    },
+    {
+      "answer": "GARBAGE",
+      "defA": "refuse",
+      "defB": "drivel"
+    },
+    {
+      "answer": "GENETIC",
+      "defA": "familial",
+      "defB": "genic"
+    },
+    {
+      "answer": "GENUINE",
+      "defA": "echt",
+      "defB": "true"
+    },
+    {
+      "answer": "GRAPHIC",
+      "defA": "graphical",
+      "defB": "lifelike"
+    },
+    {
+      "answer": "GRAVITY",
+      "defA": "gravitation",
+      "defB": "graveness"
+    },
+    {
+      "answer": "GROCERY",
+      "defA": "market",
+      "defB": "foodstuff"
+    },
+    {
+      "answer": "GROUNDS",
+      "defA": "evidence",
+      "defB": "yard"
+    },
+    {
+      "answer": "HARMONY",
+      "defA": "harmoniousness",
+      "defB": "concord"
+    },
+    {
+      "answer": "HARVEST",
+      "defA": "crop",
+      "defB": "harvesting"
+    },
+    {
+      "answer": "HEADING",
+      "defA": "header",
+      "defB": "bearing"
+    },
+    {
+      "answer": "HEALTHY",
+      "defA": "salubrious",
+      "defB": "intelligent"
+    },
+    {
+      "answer": "HEARING",
+      "defA": "audience",
+      "defB": "earshot"
+    },
+    {
+      "answer": "HEATING",
+      "defA": "warming",
+      "defB": "heat"
+    },
+    {
+      "answer": "HEAVILY",
+      "defA": "heavy",
+      "defB": "intemperately"
+    },
+    {
+      "answer": "HOLDING",
+      "defA": "retention",
+      "defB": "property"
+    },
+    {
+      "answer": "HORIZON",
+      "defA": "skyline",
+      "defB": "view"
+    },
+    {
+      "answer": "HOUSING",
+      "defA": "lodging",
+      "defB": "caparison"
+    },
+    {
+      "answer": "HUSBAND",
+      "defA": "hubby",
+      "defB": "conserve"
+    },
+    {
+      "answer": "IMAGINE",
+      "defA": "ideate",
+      "defB": "think"
+    },
+    {
+      "answer": "IMAGING",
+      "defA": "imagination",
+      "defB": "tomography"
+    },
+    {
+      "answer": "INSIGHT",
+      "defA": "penetration",
+      "defB": "perceptiveness"
+    },
+    {
+      "answer": "INSTANT",
+      "defA": "flash",
+      "defB": "moment"
+    },
+    {
+      "answer": "INSTEAD",
+      "defA": "alternatively",
+      "defB": "rather"
+    },
+    {
+      "answer": "INTENSE",
+      "defA": "acute",
+      "defB": "vivid"
+    },
+    {
+      "answer": "INVALID",
+      "defA": "shut-in",
+      "defB": "disable"
+    },
+    {
+      "answer": "INVOLVE",
+      "defA": "affect",
+      "defB": "imply"
+    },
+    {
+      "answer": "JOURNAL",
+      "defA": "diary",
+      "defB": "daybook"
+    },
+    {
+      "answer": "JOURNEY",
+      "defA": "journeying",
+      "defB": "travel"
+    },
+    {
+      "answer": "JUSTICE",
+      "defA": "justness",
+      "defB": "judge"
+    },
+    {
+      "answer": "KEEPING",
+      "defA": "guardianship",
+      "defB": "retention"
+    },
+    {
+      "answer": "KILLING",
+      "defA": "kill",
+      "defB": "cleanup"
+    },
+    {
+      "answer": "KNOWING",
+      "defA": "wise",
+      "defB": "intentional"
+    },
+    {
+      "answer": "LASTING",
+      "defA": "permanent",
+      "defB": "durable"
+    },
+    {
+      "answer": "LEADING",
+      "defA": "lead",
+      "defB": "leadership"
+    },
+    {
+      "answer": "LEARNED",
+      "defA": "erudite",
+      "defB": "knowing"
+    },
+    {
+      "answer": "LECTURE",
+      "defA": "talk",
+      "defB": "speech"
+    },
+    {
+      "answer": "LESBIAN",
+      "defA": "tribade",
+      "defB": "sapphic"
+    },
+    {
+      "answer": "LIBERAL",
+      "defA": "liberalist",
+      "defB": "broad"
+    },
+    {
+      "answer": "LIBERTY",
+      "defA": "autonomy",
+      "defB": "familiarity"
+    },
+    {
+      "answer": "LICENSE",
+      "defA": "licence",
+      "defB": "permission"
+    },
+    {
+      "answer": "LICKING",
+      "defA": "defeat",
+      "defB": "beating"
+    },
+    {
+      "answer": "LIGHTER",
+      "defA": "igniter",
+      "defB": "barge"
+    },
+    {
+      "answer": "LIMITED",
+      "defA": "express",
+      "defB": "circumscribed"
+    },
+    {
+      "answer": "LISTING",
+      "defA": "list",
+      "defB": "itemization"
+    },
+    {
+      "answer": "LODGING",
+      "defA": "housing",
+      "defB": "lodgment"
+    },
+    {
+      "answer": "LOGICAL",
+      "defA": "legitimate",
+      "defB": "coherent"
+    },
+    {
+      "answer": "LOOKING",
+      "defA": "look",
+      "defB": "sounding"
+    },
+    {
+      "answer": "MADNESS",
+      "defA": "lunacy",
+      "defB": "rabies"
+    },
+    {
+      "answer": "MANAGER",
+      "defA": "director",
+      "defB": "coach"
+    },
+    {
+      "answer": "MANDATE",
+      "defA": "authorization",
+      "defB": "mandatory"
+    },
+    {
+      "answer": "MARKING",
+      "defA": "marker",
+      "defB": "grading"
+    },
+    {
+      "answer": "MARTIAL",
+      "defA": "soldierly",
+      "defB": "warlike"
+    },
+    {
+      "answer": "MAXIMUM",
+      "defA": "utmost",
+      "defB": "maximal"
+    },
+    {
+      "answer": "MEANING",
+      "defA": "significance",
+      "defB": "substance"
+    },
+    {
+      "answer": "MEASURE",
+      "defA": "step",
+      "defB": "quantity"
+    },
+    {
+      "answer": "MEDICAL",
+      "defA": "checkup",
+      "defB": "aesculapian"
+    },
+    {
+      "answer": "MEETING",
+      "defA": "encounter",
+      "defB": "congress"
+    },
+    {
+      "answer": "MENTION",
+      "defA": "reference",
+      "defB": "advert"
+    },
+    {
+      "answer": "MILLION",
+      "defA": "1000000",
+      "defB": "billion"
+    },
+    {
+      "answer": "MISTAKE",
+      "defA": "error",
+      "defB": "misunderstanding"
+    },
+    {
+      "answer": "MIXTURE",
+      "defA": "concoction",
+      "defB": "assortment"
+    },
+    {
+      "answer": "MONITOR",
+      "defA": "proctor",
+      "defB": "admonisher"
+    },
+    {
+      "answer": "MONSTER",
+      "defA": "giant",
+      "defB": "freak"
+    },
+    {
+      "answer": "MORNING",
+      "defA": "morn",
+      "defB": "dawn"
+    },
+    {
+      "answer": "MYSTERY",
+      "defA": "enigma",
+      "defB": "whodunit"
+    },
+    {
+      "answer": "NATURAL",
+      "defA": "cancel",
+      "defB": "biological"
+    },
+    {
+      "answer": "NERVOUS",
+      "defA": "anxious",
+      "defB": "neural"
+    },
+    {
+      "answer": "NETWORK",
+      "defA": "web",
+      "defB": "net"
+    },
+    {
+      "answer": "NEUTRAL",
+      "defA": "impersonal",
+      "defB": "inert"
+    },
+    {
+      "answer": "NIRVANA",
+      "defA": "enlightenment",
+      "defB": "eden"
+    },
+    {
+      "answer": "NOVELTY",
+      "defA": "freshness",
+      "defB": "knickknack"
+    },
+    {
+      "answer": "OBSERVE",
+      "defA": "detect",
+      "defB": "note"
+    },
+    {
+      "answer": "OFFICER",
+      "defA": "officeholder",
+      "defB": "policeman"
+    },
+    {
+      "answer": "OPENING",
+      "defA": "gap",
+      "defB": "possibility"
+    },
+    {
+      "answer": "OPERATE",
+      "defA": "run",
+      "defB": "control"
+    },
+    {
+      "answer": "OPINION",
+      "defA": "sentiment",
+      "defB": "judgment"
+    },
+    {
+      "answer": "ORDERED",
+      "defA": "arranged",
+      "defB": "coherent"
+    },
+    {
+      "answer": "OUTLINE",
+      "defA": "lineation",
+      "defB": "synopsis"
+    },
+    {
+      "answer": "OUTLOOK",
+      "defA": "mentality",
+      "defB": "expectation"
+    },
+    {
+      "answer": "OUTSIDE",
+      "defA": "exterior",
+      "defB": "external"
+    },
+    {
+      "answer": "PACKAGE",
+      "defA": "bundle",
+      "defB": "software"
+    },
+    {
+      "answer": "PACKING",
+      "defA": "wadding",
+      "defB": "boxing"
+    },
+    {
+      "answer": "PAINFUL",
+      "defA": "afflictive",
+      "defB": "atrocious"
+    },
+    {
+      "answer": "PARTIAL",
+      "defA": "overtone",
+      "defB": "fond"
+    },
+    {
+      "answer": "PARTNER",
+      "defA": "spouse",
+      "defB": "collaborator"
+    },
+    {
+      "answer": "PASSAGE",
+      "defA": "transition",
+      "defB": "enactment"
+    },
+    {
+      "answer": "PASSING",
+      "defA": "pass",
+      "defB": "loss"
+    },
+    {
+      "answer": "PASSION",
+      "defA": "passionateness",
+      "defB": "heat"
+    },
+    {
+      "answer": "PASSIVE",
+      "defA": "inactive",
+      "defB": "peaceful"
+    },
+    {
+      "answer": "PATTERN",
+      "defA": "form",
+      "defB": "practice"
+    },
+    {
+      "answer": "PAYMENT",
+      "defA": "defrayal",
+      "defB": "requital"
+    },
+    {
+      "answer": "PERFECT",
+      "defA": "perfective",
+      "defB": "hone"
+    },
+    {
+      "answer": "PERFUME",
+      "defA": "aroma",
+      "defB": "essence"
+    },
+    {
+      "answer": "PICTURE",
+      "defA": "image",
+      "defB": "painting"
+    },
+    {
+      "answer": "PIONEER",
+      "defA": "innovator",
+      "defB": "initiate"
+    },
+    {
+      "answer": "PLASTIC",
+      "defA": "fictile",
+      "defB": "pliant"
+    },
+    {
+      "answer": "POINTER",
+      "defA": "arrow",
+      "defB": "cursor"
+    },
+    {
+      "answer": "POPULAR",
+      "defA": "democratic",
+      "defB": "pop"
+    },
+    {
+      "answer": "PORTION",
+      "defA": "part",
+      "defB": "parcel"
+    },
+    {
+      "answer": "POSTING",
+      "defA": "poster",
+      "defB": "mailing"
+    },
+    {
+      "answer": "PREMIER",
+      "defA": "pm",
+      "defB": "premiere"
+    },
+    {
+      "answer": "PREMIUM",
+      "defA": "agio",
+      "defB": "bounty"
+    },
+    {
+      "answer": "PREPARE",
+      "defA": "fix",
+      "defB": "organize"
+    },
+    {
+      "answer": "PRESENT",
+      "defA": "nowadays",
+      "defB": "show"
+    },
+    {
+      "answer": "PREVENT",
+      "defA": "forestall",
+      "defB": "keep"
+    },
+    {
+      "answer": "PRIMARY",
+      "defA": "chief",
+      "defB": "elementary"
+    },
+    {
+      "answer": "PRIVATE",
+      "defA": "intimate",
+      "defB": "individual"
+    },
+    {
+      "answer": "PROBLEM",
+      "defA": "job",
+      "defB": "trouble"
+    },
+    {
+      "answer": "PROCEED",
+      "defA": "continue",
+      "defB": "go"
+    },
+    {
+      "answer": "PROCESS",
+      "defA": "procedure",
+      "defB": "operation"
+    },
+    {
+      "answer": "PRODUCE",
+      "defA": "make",
+      "defB": "grow"
+    },
+    {
+      "answer": "PRODUCT",
+      "defA": "merchandise",
+      "defB": "production"
+    },
+    {
+      "answer": "PROFITS",
+      "defA": "net",
+      "defB": "winnings"
+    },
+    {
+      "answer": "PROGRAM",
+      "defA": "plan",
+      "defB": "platform"
+    },
+    {
+      "answer": "PROJECT",
+      "defA": "undertaking",
+      "defB": "projection"
+    },
+    {
+      "answer": "PROMISE",
+      "defA": "hope",
+      "defB": "assure"
+    },
+    {
+      "answer": "PROMOTE",
+      "defA": "advance",
+      "defB": "advertise"
+    },
+    {
+      "answer": "PROPOSE",
+      "defA": "suggest",
+      "defB": "project"
+    },
+    {
+      "answer": "PROTEST",
+      "defA": "protestation",
+      "defB": "objection"
+    },
+    {
+      "answer": "PROVIDE",
+      "defA": "supply",
+      "defB": "offer"
+    },
+    {
+      "answer": "PUBLISH",
+      "defA": "print",
+      "defB": "issue"
+    },
+    {
+      "answer": "PURPOSE",
+      "defA": "intent",
+      "defB": "function"
+    },
+    {
+      "answer": "PURSUIT",
+      "defA": "chase",
+      "defB": "pursuance"
+    },
+    {
+      "answer": "QUALIFY",
+      "defA": "dispose",
+      "defB": "stipulate"
+    },
+    {
+      "answer": "QUALITY",
+      "defA": "caliber",
+      "defB": "character"
+    },
+    {
+      "answer": "QUARTER",
+      "defA": "one-fourth",
+      "defB": "stern"
+    },
+    {
+      "answer": "QUICKLY",
+      "defA": "rapidly",
+      "defB": "promptly"
+    },
+    {
+      "answer": "RADICAL",
+      "defA": "group",
+      "defB": "root"
+    },
+    {
+      "answer": "RAISING",
+      "defA": "elevation",
+      "defB": "rearing"
+    },
+    {
+      "answer": "READING",
+      "defA": "indication",
+      "defB": "interpretation"
+    },
+    {
+      "answer": "REALITY",
+      "defA": "world",
+      "defB": "realness"
+    },
+    {
+      "answer": "REBOUND",
+      "defA": "recoil",
+      "defB": "rally"
+    },
+    {
+      "answer": "RECEIPT",
+      "defA": "reception",
+      "defB": "acknowledge"
+    },
+    {
+      "answer": "RECEIVE",
+      "defA": "have",
+      "defB": "get"
+    },
+    {
+      "answer": "RECOVER",
+      "defA": "retrieve",
+      "defB": "recuperate"
+    },
+    {
+      "answer": "REDUCED",
+      "defA": "decreased",
+      "defB": "rock-bottom"
+    },
+    {
+      "answer": "REFINED",
+      "defA": "processed",
+      "defB": "polished"
+    },
+    {
+      "answer": "REFLECT",
+      "defA": "meditate",
+      "defB": "reverberate"
+    },
+    {
+      "answer": "REFRESH",
+      "defA": "review",
+      "defB": "freshen"
+    },
+    {
+      "answer": "REGULAR",
+      "defA": "habitue",
+      "defB": "veritable"
+    },
+    {
+      "answer": "RELEASE",
+      "defA": "liberation",
+      "defB": "handout"
+    },
+    {
+      "answer": "RENEWAL",
+      "defA": "reclamation",
+      "defB": "refilling"
+    },
+    {
+      "answer": "REPLACE",
+      "defA": "supplant",
+      "defB": "substitute"
+    },
+    {
+      "answer": "REPRINT",
+      "defA": "reissue",
+      "defB": "offprint"
+    },
+    {
+      "answer": "REQUEST",
+      "defA": "petition",
+      "defB": "asking"
+    },
+    {
+      "answer": "REQUIRE",
+      "defA": "necessitate",
+      "defB": "command"
+    },
+    {
+      "answer": "RESERVE",
+      "defA": "modesty",
+      "defB": "backlog"
+    },
+    {
+      "answer": "RESOLVE",
+      "defA": "resoluteness",
+      "defB": "decide"
+    },
+    {
+      "answer": "RESPECT",
+      "defA": "regard",
+      "defB": "deference"
+    },
+    {
+      "answer": "RESPOND",
+      "defA": "react",
+      "defB": "answer"
+    },
+    {
+      "answer": "RESTORE",
+      "defA": "reconstruct",
+      "defB": "regenerate"
+    },
+    {
+      "answer": "RETREAT",
+      "defA": "hideaway",
+      "defB": "retirement"
+    },
+    {
+      "answer": "REVENGE",
+      "defA": "retaliation",
+      "defB": "avenge"
+    },
+    {
+      "answer": "REVENUE",
+      "defA": "gross",
+      "defB": "taxation"
+    },
+    {
+      "answer": "REVERSE",
+      "defA": "contrary",
+      "defB": "reversal"
+    },
+    {
+      "answer": "ROLLING",
+      "defA": "peal",
+      "defB": "wheeling"
+    },
+    {
+      "answer": "ROMANCE",
+      "defA": "romanticism",
+      "defB": "woo"
+    },
+    {
+      "answer": "ROUGHLY",
+      "defA": "approximately",
+      "defB": "rough"
+    },
+    {
+      "answer": "ROUTINE",
+      "defA": "act",
+      "defB": "subroutine"
+    },
+    {
+      "answer": "RUNNING",
+      "defA": "run",
+      "defB": "track"
+    },
+    {
+      "answer": "SAILING",
+      "defA": "seafaring",
+      "defB": "glide"
+    },
+    {
+      "answer": "SATISFY",
+      "defA": "fulfill",
+      "defB": "gratify"
+    },
+    {
+      "answer": "SCHOLAR",
+      "defA": "bookman",
+      "defB": "learner"
+    },
+    {
+      "answer": "SCRATCH",
+      "defA": "abrasion",
+      "defB": "incision"
+    },
+    {
+      "answer": "SECTION",
+      "defA": "subdivision",
+      "defB": "segment"
+    },
+    {
+      "answer": "SERIOUS",
+      "defA": "dangerous",
+      "defB": "good"
+    },
+    {
+      "answer": "SERVICE",
+      "defA": "avail",
+      "defB": "servicing"
+    },
+    {
+      "answer": "SERVING",
+      "defA": "helping",
+      "defB": "service"
+    },
+    {
+      "answer": "SETTING",
+      "defA": "scene",
+      "defB": "background"
+    },
+    {
+      "answer": "SEVENTH",
+      "defA": "one-seventh",
+      "defB": "7th"
+    },
+    {
+      "answer": "SHARING",
+      "defA": "communion",
+      "defB": "share-out"
+    },
+    {
+      "answer": "SHORTLY",
+      "defA": "soon",
+      "defB": "curtly"
+    },
+    {
+      "answer": "SHOWING",
+      "defA": "screening",
+      "defB": "display"
+    },
+    {
+      "answer": "SILENCE",
+      "defA": "quiet",
+      "defB": "muteness"
+    },
+    {
+      "answer": "SIMILAR",
+      "defA": "alike",
+      "defB": "exchangeable"
+    },
+    {
+      "answer": "SINGING",
+      "defA": "vocalizing",
+      "defB": "tattle"
+    },
+    {
+      "answer": "SITTING",
+      "defA": "posing",
+      "defB": "seance"
+    },
+    {
+      "answer": "SOCIETY",
+      "defA": "club",
+      "defB": "company"
+    },
+    {
+      "answer": "SPEAKER",
+      "defA": "talker",
+      "defB": "loudspeaker"
+    },
+    {
+      "answer": "SPECIAL",
+      "defA": "particular",
+      "defB": "limited"
+    },
+    {
+      "answer": "SPECIFY",
+      "defA": "stipulate",
+      "defB": "set"
+    },
+    {
+      "answer": "SPONSOR",
+      "defA": "patron",
+      "defB": "presenter"
+    },
+    {
+      "answer": "STARTER",
+      "defA": "dispatcher",
+      "defB": "newcomer"
+    },
+    {
+      "answer": "STATION",
+      "defA": "place",
+      "defB": "post"
+    },
+    {
+      "answer": "STICKER",
+      "defA": "spine",
+      "defB": "paster"
+    },
+    {
+      "answer": "STOMACH",
+      "defA": "tummy",
+      "defB": "abdomen"
+    },
+    {
+      "answer": "STORAGE",
+      "defA": "storehouse",
+      "defB": "repositing"
+    },
+    {
+      "answer": "STRANGE",
+      "defA": "unusual",
+      "defB": "unknown"
+    },
+    {
+      "answer": "STRETCH",
+      "defA": "reach",
+      "defB": "stretching"
+    },
+    {
+      "answer": "STUDENT",
+      "defA": "pupil",
+      "defB": "scholar"
+    },
+    {
+      "answer": "SUBJECT",
+      "defA": "topic",
+      "defB": "content"
+    },
+    {
+      "answer": "SUBLIME",
+      "defA": "sublimate",
+      "defB": "empyreal"
+    },
+    {
+      "answer": "SUCCEED",
+      "defA": "win",
+      "defB": "follow"
+    },
+    {
+      "answer": "SUGGEST",
+      "defA": "propose",
+      "defB": "hint"
+    },
+    {
+      "answer": "SUICIDE",
+      "defA": "self-destruction",
+      "defB": "felo-de-se"
+    },
+    {
+      "answer": "SUMMARY",
+      "defA": "sum-up",
+      "defB": "drumhead"
+    },
+    {
+      "answer": "SUPPORT",
+      "defA": "reinforcement",
+      "defB": "documentation"
+    },
+    {
+      "answer": "SUPPOSE",
+      "defA": "say",
+      "defB": "think"
+    },
+    {
+      "answer": "SUPREME",
+      "defA": "sovereign",
+      "defB": "sublime"
+    },
+    {
+      "answer": "SURFACE",
+      "defA": "open",
+      "defB": "airfoil"
+    },
+    {
+      "answer": "SURGERY",
+      "defA": "or",
+      "defB": "operation"
+    },
+    {
+      "answer": "SURVIVE",
+      "defA": "last",
+      "defB": "outlive"
+    },
+    {
+      "answer": "SUSPECT",
+      "defA": "defendant",
+      "defB": "surmise"
+    },
+    {
+      "answer": "TELLING",
+      "defA": "relation",
+      "defB": "apprisal"
+    },
+    {
+      "answer": "TERRACE",
+      "defA": "patio",
+      "defB": "bench"
+    },
+    {
+      "answer": "THOUGHT",
+      "defA": "idea",
+      "defB": "thinking"
+    },
+    {
+      "answer": "THUNDER",
+      "defA": "boom",
+      "defB": "smack"
+    },
+    {
+      "answer": "TORTURE",
+      "defA": "anguish",
+      "defB": "distortion"
+    },
+    {
+      "answer": "TOUCHED",
+      "defA": "moved",
+      "defB": "fey"
+    },
+    {
+      "answer": "TRAILER",
+      "defA": "dawdler",
+      "defB": "preview"
+    },
+    {
+      "answer": "TRANSIT",
+      "defA": "theodolite",
+      "defB": "transportation"
+    },
+    {
+      "answer": "TRIBUTE",
+      "defA": "testimonial",
+      "defB": "protection"
+    },
+    {
+      "answer": "TRIGGER",
+      "defA": "induction",
+      "defB": "trip"
+    },
+    {
+      "answer": "TRIUMPH",
+      "defA": "victory",
+      "defB": "prevail"
+    },
+    {
+      "answer": "TROUBLE",
+      "defA": "problem",
+      "defB": "fuss"
+    },
+    {
+      "answer": "UNIFIED",
+      "defA": "incorporate",
+      "defB": "coordinated"
+    },
+    {
+      "answer": "UNIFORM",
+      "defA": "unvarying",
+      "defB": "consistent"
+    },
+    {
+      "answer": "UNKNOWN",
+      "defA": "stranger",
+      "defB": "nameless"
+    },
+    {
+      "answer": "UPGRADE",
+      "defA": "rise",
+      "defB": "promote"
+    },
+    {
+      "answer": "UTILITY",
+      "defA": "usefulness",
+      "defB": "utility-grade"
+    },
+    {
+      "answer": "VARIETY",
+      "defA": "assortment",
+      "defB": "diverseness"
+    },
+    {
+      "answer": "VARIOUS",
+      "defA": "assorted",
+      "defB": "respective"
+    },
+    {
+      "answer": "VENTURE",
+      "defA": "speculation",
+      "defB": "embark"
+    },
+    {
+      "answer": "VERSION",
+      "defA": "variant",
+      "defB": "adaptation"
+    },
+    {
+      "answer": "VETERAN",
+      "defA": "vet",
+      "defB": "old-timer"
+    },
+    {
+      "answer": "VIEWING",
+      "defA": "screening",
+      "defB": "wake"
+    },
+    {
+      "answer": "VILLAGE",
+      "defA": "settlement",
+      "defB": "hamlet"
+    },
+    {
+      "answer": "VIOLENT",
+      "defA": "wild",
+      "defB": "fierce"
+    },
+    {
+      "answer": "VOLTAGE",
+      "defA": "emf",
+      "defB": "potential"
+    },
+    {
+      "answer": "WALKING",
+      "defA": "walk",
+      "defB": "walk-to"
+    },
+    {
+      "answer": "WARMING",
+      "defA": "heating",
+      "defB": "thaw"
+    },
+    {
+      "answer": "WARNING",
+      "defA": "admonition",
+      "defB": "admonitory"
+    },
+    {
+      "answer": "WARRANT",
+      "defA": "sanction",
+      "defB": "guarantee"
+    },
+    {
+      "answer": "WEARING",
+      "defA": "erosion",
+      "defB": "wear"
+    },
+    {
+      "answer": "WEATHER",
+      "defA": "conditions",
+      "defB": "endure"
+    },
+    {
+      "answer": "WEDDING",
+      "defA": "nuptials",
+      "defB": "marriage"
+    },
+    {
+      "answer": "WELFARE",
+      "defA": "benefit",
+      "defB": "wellbeing"
+    },
+    {
+      "answer": "WILLING",
+      "defA": "volition",
+      "defB": "uncoerced"
+    },
+    {
+      "answer": "WINNING",
+      "defA": "victorious",
+      "defB": "fetching"
+    },
+    {
+      "answer": "WITNESS",
+      "defA": "witnesser",
+      "defB": "spectator"
+    },
+    {
+      "answer": "WORKING",
+      "defA": "workings",
+      "defB": "running"
+    },
+    {
+      "answer": "WORRIED",
+      "defA": "disquieted",
+      "defB": "apprehensive"
+    },
+    {
+      "answer": "WORSHIP",
+      "defA": "adoration",
+      "defB": "idolize"
+    },
+    {
+      "answer": "WRAPPED",
+      "defA": "cloaked",
+      "defB": "captive"
+    }
+  ],
+  "8": [
+    {
+      "answer": "ABSOLUTE",
+      "defA": "downright",
+      "defB": "infrangible"
+    },
+    {
+      "answer": "ABSTRACT",
+      "defA": "abstraction",
+      "defB": "outline"
+    },
+    {
+      "answer": "ACADEMIC",
+      "defA": "academician",
+      "defB": "donnish"
+    },
+    {
+      "answer": "ACTIVITY",
+      "defA": "action",
+      "defB": "activeness"
+    },
+    {
+      "answer": "ADDITION",
+      "defA": "add-on",
+      "defB": "increase"
+    },
+    {
+      "answer": "ADEQUATE",
+      "defA": "equal",
+      "defB": "enough"
+    },
+    {
+      "answer": "ADJACENT",
+      "defA": "next",
+      "defB": "conterminous"
+    },
+    {
+      "answer": "ADOPTION",
+      "defA": "acceptance",
+      "defB": "borrowing"
+    },
+    {
+      "answer": "ADVANCED",
+      "defA": "forward-looking",
+      "defB": "sophisticated"
+    },
+    {
+      "answer": "ADVOCATE",
+      "defA": "advocator",
+      "defB": "counsel"
+    },
+    {
+      "answer": "AFFECTED",
+      "defA": "unnatural",
+      "defB": "moved"
+    },
+    {
+      "answer": "ALLIANCE",
+      "defA": "confederation",
+      "defB": "bond"
+    },
+    {
+      "answer": "ANNOUNCE",
+      "defA": "denote",
+      "defB": "declare"
+    },
+    {
+      "answer": "ANNOYING",
+      "defA": "annoyance",
+      "defB": "bothersome"
+    },
+    {
+      "answer": "APPARENT",
+      "defA": "evident",
+      "defB": "ostensible"
+    },
+    {
+      "answer": "APPROACH",
+      "defA": "attack",
+      "defB": "approaching"
+    },
+    {
+      "answer": "APPROVAL",
+      "defA": "blessing",
+      "defB": "commendation"
+    },
+    {
+      "answer": "ARGUMENT",
+      "defA": "statement",
+      "defB": "controversy"
+    },
+    {
+      "answer": "ARRANGED",
+      "defA": "ordered",
+      "defB": "staged"
+    },
+    {
+      "answer": "ASSEMBLY",
+      "defA": "fabrication",
+      "defB": "forum"
+    },
+    {
+      "answer": "ATTACHED",
+      "defA": "affiliated",
+      "defB": "committed"
+    },
+    {
+      "answer": "AUDIENCE",
+      "defA": "hearing",
+      "defB": "consultation"
+    },
+    {
+      "answer": "AVIATION",
+      "defA": "airmanship",
+      "defB": "air"
+    },
+    {
+      "answer": "BACHELOR",
+      "defA": "bachelor-at-arms",
+      "defB": "bach"
+    },
+    {
+      "answer": "BEGINNER",
+      "defA": "novice",
+      "defB": "founder"
+    },
+    {
+      "answer": "BRACELET",
+      "defA": "watchband",
+      "defB": "bangle"
+    },
+    {
+      "answer": "BREEDING",
+      "defA": "genteelness",
+      "defB": "education"
+    },
+    {
+      "answer": "BUILDING",
+      "defA": "edifice",
+      "defB": "construction"
+    },
+    {
+      "answer": "BUSINESS",
+      "defA": "concern",
+      "defB": "occupation"
+    },
+    {
+      "answer": "CAMPAIGN",
+      "defA": "run",
+      "defB": "cause"
+    },
+    {
+      "answer": "CAPACITY",
+      "defA": "capability",
+      "defB": "content"
+    },
+    {
+      "answer": "CARNIVAL",
+      "defA": "circus",
+      "defB": "fair"
+    },
+    {
+      "answer": "CHAMPION",
+      "defA": "champ",
+      "defB": "fighter"
+    },
+    {
+      "answer": "CIRCULAR",
+      "defA": "handbill",
+      "defB": "round"
+    },
+    {
+      "answer": "CITATION",
+      "defA": "commendation",
+      "defB": "cite"
+    },
+    {
+      "answer": "CLEARING",
+      "defA": "glade",
+      "defB": "clarification"
+    },
+    {
+      "answer": "COLLAPSE",
+      "defA": "prostration",
+      "defB": "flop"
+    },
+    {
+      "answer": "COMMERCE",
+      "defA": "commercialism",
+      "defB": "doc"
+    },
+    {
+      "answer": "COMPLETE",
+      "defA": "finish",
+      "defB": "dispatch"
+    },
+    {
+      "answer": "COMPOUND",
+      "defA": "intensify",
+      "defB": "combine"
+    },
+    {
+      "answer": "CONCLUDE",
+      "defA": "reason",
+      "defB": "resolve"
+    },
+    {
+      "answer": "CONFLICT",
+      "defA": "struggle",
+      "defB": "dispute"
+    },
+    {
+      "answer": "CONFUSED",
+      "defA": "baffled",
+      "defB": "disconnected"
+    },
+    {
+      "answer": "CONSIDER",
+      "defA": "see",
+      "defB": "study"
+    },
+    {
+      "answer": "CONSTANT",
+      "defA": "invariable",
+      "defB": "changeless"
+    },
+    {
+      "answer": "CONTINUE",
+      "defA": "proceed",
+      "defB": "uphold"
+    },
+    {
+      "answer": "CONTRACT",
+      "defA": "declaration",
+      "defB": "undertake"
+    },
+    {
+      "answer": "CONTRARY",
+      "defA": "reverse",
+      "defB": "obstinate"
+    },
+    {
+      "answer": "CONTRAST",
+      "defA": "line",
+      "defB": "counterpoint"
+    },
+    {
+      "answer": "COSMETIC",
+      "defA": "decorative",
+      "defB": "enhancive"
+    },
+    {
+      "answer": "COVERING",
+      "defA": "cover",
+      "defB": "application"
+    },
+    {
+      "answer": "CREATION",
+      "defA": "conception",
+      "defB": "initiation"
+    },
+    {
+      "answer": "CREATURE",
+      "defA": "animal",
+      "defB": "wight"
+    },
+    {
+      "answer": "CRIMINAL",
+      "defA": "felon",
+      "defB": "condemnable"
+    },
+    {
+      "answer": "CRITICAL",
+      "defA": "vital",
+      "defB": "decisive"
+    },
+    {
+      "answer": "CROSSING",
+      "defA": "ford",
+      "defB": "intersection"
+    },
+    {
+      "answer": "DARKNESS",
+      "defA": "dark",
+      "defB": "duskiness"
+    },
+    {
+      "answer": "DECISION",
+      "defA": "determination",
+      "defB": "decisiveness"
+    },
+    {
+      "answer": "DECREASE",
+      "defA": "lessening",
+      "defB": "decrement"
+    },
+    {
+      "answer": "DELIVERY",
+      "defA": "bringing",
+      "defB": "speech"
+    },
+    {
+      "answer": "DESCRIBE",
+      "defA": "depict",
+      "defB": "report"
+    },
+    {
+      "answer": "DESIGNER",
+      "defA": "architect",
+      "defB": "intriguer"
+    },
+    {
+      "answer": "DETECTOR",
+      "defA": "sensor",
+      "defB": "demodulator"
+    },
+    {
+      "answer": "DIALOGUE",
+      "defA": "dialog",
+      "defB": "negotiation"
+    },
+    {
+      "answer": "DIRECTLY",
+      "defA": "straight",
+      "defB": "immediately"
+    },
+    {
+      "answer": "DIRECTOR",
+      "defA": "manager",
+      "defB": "conductor"
+    },
+    {
+      "answer": "DISAGREE",
+      "defA": "differ",
+      "defB": "disaccord"
+    },
+    {
+      "answer": "DISCOUNT",
+      "defA": "deduction",
+      "defB": "rebate"
+    },
+    {
+      "answer": "DISCOVER",
+      "defA": "detect",
+      "defB": "learn"
+    },
+    {
+      "answer": "DISORDER",
+      "defA": "upset",
+      "defB": "disorderliness"
+    },
+    {
+      "answer": "DISPATCH",
+      "defA": "despatch",
+      "defB": "discharge"
+    },
+    {
+      "answer": "DISPOSAL",
+      "defA": "administration",
+      "defB": "disposition"
+    },
+    {
+      "answer": "DISTANCE",
+      "defA": "length",
+      "defB": "aloofness"
+    },
+    {
+      "answer": "DISTINCT",
+      "defA": "distinguishable",
+      "defB": "discrete"
+    },
+    {
+      "answer": "DISTRICT",
+      "defA": "territory",
+      "defB": "zone"
+    },
+    {
+      "answer": "DIVISION",
+      "defA": "part",
+      "defB": "variance"
+    },
+    {
+      "answer": "DRESSING",
+      "defA": "stuffing",
+      "defB": "fertilization"
+    },
+    {
+      "answer": "DRINKING",
+      "defA": "imbibing",
+      "defB": "drink"
+    },
+    {
+      "answer": "DURATION",
+      "defA": "continuance",
+      "defB": "length"
+    },
+    {
+      "answer": "EARLIEST",
+      "defA": "earlier",
+      "defB": "soonest"
+    },
+    {
+      "answer": "EARNINGS",
+      "defA": "net",
+      "defB": "wage"
+    },
+    {
+      "answer": "ELECTRIC",
+      "defA": "electrical",
+      "defB": "galvanic"
+    },
+    {
+      "answer": "EMERGING",
+      "defA": "rising",
+      "defB": "emergent"
+    },
+    {
+      "answer": "EMISSION",
+      "defA": "emanation",
+      "defB": "discharge"
+    },
+    {
+      "answer": "EMPHASIS",
+      "defA": "accent",
+      "defB": "vehemence"
+    },
+    {
+      "answer": "ENGINEER",
+      "defA": "technologist",
+      "defB": "mastermind"
+    },
+    {
+      "answer": "ENTIRELY",
+      "defA": "wholly",
+      "defB": "exclusively"
+    },
+    {
+      "answer": "ENTRANCE",
+      "defA": "entranceway",
+      "defB": "entering"
+    },
+    {
+      "answer": "EQUATION",
+      "defA": "equality",
+      "defB": "equating"
+    },
+    {
+      "answer": "EQUIPPED",
+      "defA": "equipt",
+      "defB": "furnished"
+    },
+    {
+      "answer": "ESTIMATE",
+      "defA": "estimation",
+      "defB": "gauge"
+    },
+    {
+      "answer": "EVALUATE",
+      "defA": "measure",
+      "defB": "judge"
+    },
+    {
+      "answer": "EVERYDAY",
+      "defA": "mundane",
+      "defB": "casual"
+    },
+    {
+      "answer": "EVIDENCE",
+      "defA": "grounds",
+      "defB": "attest"
+    },
+    {
+      "answer": "EXCHANGE",
+      "defA": "interchange",
+      "defB": "central"
+    },
+    {
+      "answer": "EXERCISE",
+      "defA": "exercising",
+      "defB": "use"
+    },
+    {
+      "answer": "EXPLICIT",
+      "defA": "expressed",
+      "defB": "denotative"
+    },
+    {
+      "answer": "EXPLORER",
+      "defA": "adventurer",
+      "defB": "ie"
+    },
+    {
+      "answer": "EXPOSURE",
+      "defA": "vulnerability",
+      "defB": "photograph"
+    },
+    {
+      "answer": "EXTENDED",
+      "defA": "drawn-out",
+      "defB": "extensive"
+    },
+    {
+      "answer": "FABULOUS",
+      "defA": "fab",
+      "defB": "mythic"
+    },
+    {
+      "answer": "FACILITY",
+      "defA": "installation",
+      "defB": "adeptness"
+    },
+    {
+      "answer": "FAMILIAR",
+      "defA": "companion",
+      "defB": "conversant"
+    },
+    {
+      "answer": "FIGHTING",
+      "defA": "fight",
+      "defB": "active"
+    },
+    {
+      "answer": "FLEXIBLE",
+      "defA": "flexile",
+      "defB": "elastic"
+    },
+    {
+      "answer": "FLOATING",
+      "defA": "natation",
+      "defB": "aimless"
+    },
+    {
+      "answer": "FOCUSING",
+      "defA": "focus",
+      "defB": "focalization"
+    },
+    {
+      "answer": "FORECAST",
+      "defA": "prognosis",
+      "defB": "calculate"
+    },
+    {
+      "answer": "FOUNTAIN",
+      "defA": "spring",
+      "defB": "jet"
+    },
+    {
+      "answer": "FREQUENT",
+      "defA": "patronize",
+      "defB": "haunt"
+    },
+    {
+      "answer": "FUNCTION",
+      "defA": "map",
+      "defB": "purpose"
+    },
+    {
+      "answer": "GENERATE",
+      "defA": "render",
+      "defB": "beget"
+    },
+    {
+      "answer": "GRADUATE",
+      "defA": "alumnus",
+      "defB": "calibrate"
+    },
+    {
+      "answer": "GUIDANCE",
+      "defA": "counsel",
+      "defB": "steering"
+    },
+    {
+      "answer": "HANDLING",
+      "defA": "manipulation",
+      "defB": "treatment"
+    },
+    {
+      "answer": "HOMELESS",
+      "defA": "stateless",
+      "defB": "dispossessed"
+    },
+    {
+      "answer": "HUMANITY",
+      "defA": "humanness",
+      "defB": "world"
+    },
+    {
+      "answer": "IDENTIFY",
+      "defA": "place",
+      "defB": "name"
+    },
+    {
+      "answer": "IDENTITY",
+      "defA": "individuality",
+      "defB": "identicalness"
+    },
+    {
+      "answer": "INCREASE",
+      "defA": "addition",
+      "defB": "increment"
+    },
+    {
+      "answer": "INDICATE",
+      "defA": "bespeak",
+      "defB": "argue"
+    },
+    {
+      "answer": "INDUSTRY",
+      "defA": "manufacture",
+      "defB": "diligence"
+    },
+    {
+      "answer": "INFINITE",
+      "defA": "space",
+      "defB": "non-finite"
+    },
+    {
+      "answer": "INFORMAL",
+      "defA": "loose",
+      "defB": "cozy"
+    },
+    {
+      "answer": "INNOCENT",
+      "defA": "guiltless",
+      "defB": "innocuous"
+    },
+    {
+      "answer": "INSTANCE",
+      "defA": "case",
+      "defB": "exemplify"
+    },
+    {
+      "answer": "INTEGRAL",
+      "defA": "built-in",
+      "defB": "entire"
+    },
+    {
+      "answer": "INTEREST",
+      "defA": "involvement",
+      "defB": "sake"
+    },
+    {
+      "answer": "INTERIOR",
+      "defA": "inside",
+      "defB": "doi"
+    },
+    {
+      "answer": "INTERNAL",
+      "defA": "intragroup",
+      "defB": "home"
+    },
+    {
+      "answer": "INTIMATE",
+      "defA": "confidant",
+      "defB": "adumbrate"
+    },
+    {
+      "answer": "INVOLVED",
+      "defA": "mired",
+      "defB": "byzantine"
+    },
+    {
+      "answer": "ISOLATED",
+      "defA": "stray",
+      "defB": "detached"
+    },
+    {
+      "answer": "JUDICIAL",
+      "defA": "juridical",
+      "defB": "discriminative"
+    },
+    {
+      "answer": "JUNCTION",
+      "defA": "conjunction",
+      "defB": "articulation"
+    },
+    {
+      "answer": "LANGUAGE",
+      "defA": "speech",
+      "defB": "lyric"
+    },
+    {
+      "answer": "LEARNING",
+      "defA": "acquisition",
+      "defB": "eruditeness"
+    },
+    {
+      "answer": "LIGHTING",
+      "defA": "light",
+      "defB": "ignition"
+    },
+    {
+      "answer": "LIKEWISE",
+      "defA": "similarly",
+      "defB": "besides"
+    },
+    {
+      "answer": "LIMITING",
+      "defA": "modification",
+      "defB": "confining"
+    },
+    {
+      "answer": "MAGAZINE",
+      "defA": "mag",
+      "defB": "cartridge"
+    },
+    {
+      "answer": "MAGNETIC",
+      "defA": "magnetized",
+      "defB": "charismatic"
+    },
+    {
+      "answer": "MAINTAIN",
+      "defA": "keep",
+      "defB": "conserve"
+    },
+    {
+      "answer": "MARRIAGE",
+      "defA": "matrimony",
+      "defB": "wedding"
+    },
+    {
+      "answer": "MATCHING",
+      "defA": "duplicate",
+      "defB": "coordinated"
+    },
+    {
+      "answer": "MATERIAL",
+      "defA": "stuff",
+      "defB": "fabric"
+    },
+    {
+      "answer": "MEASURED",
+      "defA": "mensural",
+      "defB": "metrical"
+    },
+    {
+      "answer": "MEDICINE",
+      "defA": "medication",
+      "defB": "music"
+    },
+    {
+      "answer": "MEDIEVAL",
+      "defA": "mediaeval",
+      "defB": "chivalric"
+    },
+    {
+      "answer": "MEMORIAL",
+      "defA": "commemoration",
+      "defB": "monument"
+    },
+    {
+      "answer": "MICHIGAN",
+      "defA": "mi",
+      "defB": "chicago"
+    },
+    {
+      "answer": "MINIMIZE",
+      "defA": "minimise",
+      "defB": "belittle"
+    },
+    {
+      "answer": "MODELING",
+      "defA": "mold",
+      "defB": "model"
+    },
+    {
+      "answer": "MODERATE",
+      "defA": "centrist",
+      "defB": "chair"
+    },
+    {
+      "answer": "MOUNTAIN",
+      "defA": "mount",
+      "defB": "batch"
+    },
+    {
+      "answer": "MOVEMENT",
+      "defA": "motion",
+      "defB": "front"
+    },
+    {
+      "answer": "NATIONAL",
+      "defA": "subject",
+      "defB": "home"
+    },
+    {
+      "answer": "NAVIGATE",
+      "defA": "voyage",
+      "defB": "pilot"
+    },
+    {
+      "answer": "NEGATIVE",
+      "defA": "veto",
+      "defB": "disconfirming"
+    },
+    {
+      "answer": "NICKNAME",
+      "defA": "moniker",
+      "defB": "dub"
+    },
+    {
+      "answer": "OBSERVER",
+      "defA": "perceiver",
+      "defB": "commentator"
+    },
+    {
+      "answer": "OCCASION",
+      "defA": "juncture",
+      "defB": "affair"
+    },
+    {
+      "answer": "OCCUPIED",
+      "defA": "tenanted",
+      "defB": "engaged"
+    },
+    {
+      "answer": "OFFERING",
+      "defA": "offer",
+      "defB": "oblation"
+    },
+    {
+      "answer": "OFFICIAL",
+      "defA": "functionary",
+      "defB": "prescribed"
+    },
+    {
+      "answer": "OPERATOR",
+      "defA": "manipulator",
+      "defB": "hustler"
+    },
+    {
+      "answer": "OPPONENT",
+      "defA": "opposition",
+      "defB": "adversary"
+    },
+    {
+      "answer": "OPPOSITE",
+      "defA": "antonym",
+      "defB": "reverse"
+    },
+    {
+      "answer": "ORIGINAL",
+      "defA": "master",
+      "defB": "archetype"
+    },
+    {
+      "answer": "OUTDOORS",
+      "defA": "out-of-doors",
+      "defB": "outside"
+    },
+    {
+      "answer": "OVERCOME",
+      "defA": "defeat",
+      "defB": "subdue"
+    },
+    {
+      "answer": "OVERHEAD",
+      "defA": "viewgraph",
+      "defB": "smash"
+    },
+    {
+      "answer": "OVERSEAS",
+      "defA": "abroad",
+      "defB": "oversea"
+    },
+    {
+      "answer": "PARALLEL",
+      "defA": "analogue",
+      "defB": "latitude"
+    },
+    {
+      "answer": "PASSPORT",
+      "defA": "pass",
+      "defB": "recommendation"
+    },
+    {
+      "answer": "PEACEFUL",
+      "defA": "peaceable",
+      "defB": "passive"
+    },
+    {
+      "answer": "PERIODIC",
+      "defA": "periodical",
+      "defB": "occasional"
+    },
+    {
+      "answer": "PETITION",
+      "defA": "request",
+      "defB": "prayer"
+    },
+    {
+      "answer": "PHARMACY",
+      "defA": "pharmaceutics",
+      "defB": "drugstore"
+    },
+    {
+      "answer": "PIPELINE",
+      "defA": "grapevine",
+      "defB": "line"
+    },
+    {
+      "answer": "PLATFORM",
+      "defA": "program",
+      "defB": "chopine"
+    },
+    {
+      "answer": "PLEASURE",
+      "defA": "pleasance",
+      "defB": "joy"
+    },
+    {
+      "answer": "PLUMBING",
+      "defA": "plumbery",
+      "defB": "bathymetry"
+    },
+    {
+      "answer": "POLISHED",
+      "defA": "refined",
+      "defB": "milled"
+    },
+    {
+      "answer": "POSITION",
+      "defA": "place",
+      "defB": "view"
+    },
+    {
+      "answer": "POSITIVE",
+      "defA": "convinced",
+      "defB": "plus"
+    },
+    {
+      "answer": "POWERFUL",
+      "defA": "knock-down",
+      "defB": "potent"
+    },
+    {
+      "answer": "PRACTICE",
+      "defA": "pattern",
+      "defB": "exercise"
+    },
+    {
+      "answer": "PRECIOUS",
+      "defA": "cherished",
+      "defB": "valued"
+    },
+    {
+      "answer": "PREGNANT",
+      "defA": "meaning",
+      "defB": "fraught"
+    },
+    {
+      "answer": "PRESENCE",
+      "defA": "front",
+      "defB": "bearing"
+    },
+    {
+      "answer": "PRESERVE",
+      "defA": "conserve",
+      "defB": "continue"
+    },
+    {
+      "answer": "PRESSING",
+      "defA": "press",
+      "defB": "urgent"
+    },
+    {
+      "answer": "PRESSURE",
+      "defA": "press",
+      "defB": "coerce"
+    },
+    {
+      "answer": "PREVIOUS",
+      "defA": "old",
+      "defB": "former"
+    },
+    {
+      "answer": "PROBABLY",
+      "defA": "likely",
+      "defB": "credibly"
+    },
+    {
+      "answer": "PROGRESS",
+      "defA": "advancement",
+      "defB": "progression"
+    },
+    {
+      "answer": "PROMPTLY",
+      "defA": "quickly",
+      "defB": "readily"
+    },
+    {
+      "answer": "PROPERLY",
+      "defA": "decently",
+      "defB": "precisely"
+    },
+    {
+      "answer": "PROPERTY",
+      "defA": "belongings",
+      "defB": "place"
+    },
+    {
+      "answer": "PROSPECT",
+      "defA": "chance",
+      "defB": "expectation"
+    },
+    {
+      "answer": "PROVINCE",
+      "defA": "state",
+      "defB": "responsibility"
+    },
+    {
+      "answer": "PURCHASE",
+      "defA": "leverage",
+      "defB": "buy"
+    },
+    {
+      "answer": "QUESTION",
+      "defA": "inquiry",
+      "defB": "head"
+    },
+    {
+      "answer": "RAILROAD",
+      "defA": "railway",
+      "defB": "dragoon"
+    },
+    {
+      "answer": "REACHING",
+      "defA": "reach",
+      "defB": "arrival"
+    },
+    {
+      "answer": "RECEIVER",
+      "defA": "liquidator",
+      "defB": "recipient"
+    },
+    {
+      "answer": "RECOVERY",
+      "defA": "convalescence",
+      "defB": "retrieval"
+    },
+    {
+      "answer": "REGISTER",
+      "defA": "registry",
+      "defB": "file"
+    },
+    {
+      "answer": "RELATION",
+      "defA": "intercourse",
+      "defB": "relative"
+    },
+    {
+      "answer": "RELATIVE",
+      "defA": "relation",
+      "defB": "congener"
+    },
+    {
+      "answer": "RELIABLE",
+      "defA": "dependable",
+      "defB": "authentic"
+    },
+    {
+      "answer": "REMEMBER",
+      "defA": "retrieve",
+      "defB": "commend"
+    },
+    {
+      "answer": "REQUIRED",
+      "defA": "needed",
+      "defB": "compulsory"
+    },
+    {
+      "answer": "RESEARCH",
+      "defA": "inquiry",
+      "defB": "search"
+    },
+    {
+      "answer": "RESIDENT",
+      "defA": "occupant",
+      "defB": "nonmigratory"
+    },
+    {
+      "answer": "RESOLVED",
+      "defA": "single-minded",
+      "defB": "solved"
+    },
+    {
+      "answer": "RESPONSE",
+      "defA": "reaction",
+      "defB": "answer"
+    },
+    {
+      "answer": "RESTRICT",
+      "defA": "curtail",
+      "defB": "control"
+    },
+    {
+      "answer": "RETRIEVE",
+      "defA": "recover",
+      "defB": "remember"
+    },
+    {
+      "answer": "REVIEWER",
+      "defA": "referee",
+      "defB": "commentator"
+    },
+    {
+      "answer": "REVISION",
+      "defA": "alteration",
+      "defB": "revisal"
+    },
+    {
+      "answer": "ROMANTIC",
+      "defA": "romanticist",
+      "defB": "amatory"
+    },
+    {
+      "answer": "SECURITY",
+      "defA": "protection",
+      "defB": "certificate"
+    },
+    {
+      "answer": "SENTENCE",
+      "defA": "conviction",
+      "defB": "time"
+    },
+    {
+      "answer": "SEPARATE",
+      "defA": "offprint",
+      "defB": "divide"
+    },
+    {
+      "answer": "SEQUENCE",
+      "defA": "succession",
+      "defB": "episode"
+    },
+    {
+      "answer": "SHIPMENT",
+      "defA": "cargo",
+      "defB": "dispatch"
+    },
+    {
+      "answer": "SLEEPING",
+      "defA": "quiescence",
+      "defB": "dormant"
+    },
+    {
+      "answer": "SLIGHTLY",
+      "defA": "somewhat",
+      "defB": "slenderly"
+    },
+    {
+      "answer": "SOLUTION",
+      "defA": "answer",
+      "defB": "root"
+    },
+    {
+      "answer": "SOMEWHAT",
+      "defA": "slightly",
+      "defB": "reasonably"
+    },
+    {
+      "answer": "SPORTING",
+      "defA": "clean",
+      "defB": "dissipated"
+    },
+    {
+      "answer": "STANDARD",
+      "defA": "criterion",
+      "defB": "banner"
+    },
+    {
+      "answer": "STEERING",
+      "defA": "guidance",
+      "defB": "steerage"
+    },
+    {
+      "answer": "STRAIGHT",
+      "defA": "heterosexual",
+      "defB": "straightaway"
+    },
+    {
+      "answer": "STRENGTH",
+      "defA": "posture",
+      "defB": "force"
+    },
+    {
+      "answer": "STRICTLY",
+      "defA": "purely",
+      "defB": "stringently"
+    },
+    {
+      "answer": "STRIKING",
+      "defA": "contact",
+      "defB": "hit"
+    },
+    {
+      "answer": "STRUGGLE",
+      "defA": "battle",
+      "defB": "fight"
+    },
+    {
+      "answer": "SUITABLE",
+      "defA": "suited",
+      "defB": "desirable"
+    },
+    {
+      "answer": "SUNSHINE",
+      "defA": "sunlight",
+      "defB": "temperateness"
+    },
+    {
+      "answer": "SUPERIOR",
+      "defA": "higher-up",
+      "defB": "victor"
+    },
+    {
+      "answer": "SUPPOSED",
+      "defA": "alleged",
+      "defB": "conjectural"
+    },
+    {
+      "answer": "SURPRISE",
+      "defA": "surprisal",
+      "defB": "storm"
+    },
+    {
+      "answer": "SURROUND",
+      "defA": "environment",
+      "defB": "environ"
+    },
+    {
+      "answer": "SURVIVAL",
+      "defA": "endurance",
+      "defB": "selection"
+    },
+    {
+      "answer": "SWIMMING",
+      "defA": "swim",
+      "defB": "liquid"
+    },
+    {
+      "answer": "TAXATION",
+      "defA": "tax",
+      "defB": "revenue"
+    },
+    {
+      "answer": "TEACHING",
+      "defA": "instruction",
+      "defB": "precept"
+    },
+    {
+      "answer": "TERMINAL",
+      "defA": "terminus",
+      "defB": "pole"
+    },
+    {
+      "answer": "TERRIBLE",
+      "defA": "awful",
+      "defB": "severe"
+    },
+    {
+      "answer": "TEXTBOOK",
+      "defA": "text",
+      "defB": "casebook"
+    },
+    {
+      "answer": "THINKING",
+      "defA": "thought",
+      "defB": "intelligent"
+    },
+    {
+      "answer": "TRAINING",
+      "defA": "preparation",
+      "defB": "education"
+    },
+    {
+      "answer": "TRANSFER",
+      "defA": "transportation",
+      "defB": "transferee"
+    },
+    {
+      "answer": "TRANSMIT",
+      "defA": "convey",
+      "defB": "air"
+    },
+    {
+      "answer": "TREASURE",
+      "defA": "gem",
+      "defB": "prize"
+    },
+    {
+      "answer": "TRIANGLE",
+      "defA": "trigon",
+      "defB": "triangulum"
+    },
+    {
+      "answer": "UNIVERSE",
+      "defA": "existence",
+      "defB": "population"
+    },
+    {
+      "answer": "VALIDITY",
+      "defA": "cogency",
+      "defB": "validness"
+    },
+    {
+      "answer": "VARIANCE",
+      "defA": "discrepancy",
+      "defB": "division"
+    },
+    {
+      "answer": "VERTICAL",
+      "defA": "upright",
+      "defB": "perpendicular"
+    },
+    {
+      "answer": "VIOLENCE",
+      "defA": "force",
+      "defB": "ferocity"
+    },
+    {
+      "answer": "WRAPPING",
+      "defA": "wrap",
+      "defB": "swathe"
+    }
+  ],
+  "9": [
+    {
+      "answer": "ACCESSORY",
+      "defA": "accoutrement",
+      "defB": "appurtenance"
+    },
+    {
+      "answer": "ADVANTAGE",
+      "defA": "vantage",
+      "defB": "reward"
+    },
+    {
+      "answer": "ADVENTURE",
+      "defA": "escapade",
+      "defB": "gamble"
+    },
+    {
+      "answer": "AGGREGATE",
+      "defA": "sum",
+      "defB": "congeries"
+    },
+    {
+      "answer": "AGREEMENT",
+      "defA": "understanding",
+      "defB": "correspondence"
+    },
+    {
+      "answer": "ALIGNMENT",
+      "defA": "alliance",
+      "defB": "conjunction"
+    },
+    {
+      "answer": "ALLOWANCE",
+      "defA": "adjustment",
+      "defB": "leeway"
+    },
+    {
+      "answer": "ALTERNATE",
+      "defA": "surrogate",
+      "defB": "jump"
+    },
+    {
+      "answer": "ANIMATION",
+      "defA": "life",
+      "defB": "vitality"
+    },
+    {
+      "answer": "APPOINTED",
+      "defA": "appointive",
+      "defB": "decreed"
+    },
+    {
+      "answer": "APPRAISAL",
+      "defA": "assessment",
+      "defB": "estimate"
+    },
+    {
+      "answer": "ASSISTANT",
+      "defA": "helper",
+      "defB": "adjunct"
+    },
+    {
+      "answer": "ASSOCIATE",
+      "defA": "companion",
+      "defB": "relate"
+    },
+    {
+      "answer": "ASSURANCE",
+      "defA": "self-assurance",
+      "defB": "pledge"
+    },
+    {
+      "answer": "ATTENDING",
+      "defA": "attention",
+      "defB": "attendance"
+    },
+    {
+      "answer": "ATTENTION",
+      "defA": "attending",
+      "defB": "care"
+    },
+    {
+      "answer": "ATTRIBUTE",
+      "defA": "property",
+      "defB": "impute"
+    },
+    {
+      "answer": "AUTHENTIC",
+      "defA": "reliable",
+      "defB": "unquestionable"
+    },
+    {
+      "answer": "AUTHORITY",
+      "defA": "authorization",
+      "defB": "assurance"
+    },
+    {
+      "answer": "AUTOMATIC",
+      "defA": "automatonlike",
+      "defB": "reflex"
+    },
+    {
+      "answer": "AVAILABLE",
+      "defA": "uncommitted",
+      "defB": "usable"
+    },
+    {
+      "answer": "AWARENESS",
+      "defA": "consciousness",
+      "defB": "sentience"
+    },
+    {
+      "answer": "BEGINNING",
+      "defA": "commencement",
+      "defB": "origin"
+    },
+    {
+      "answer": "BLACKJACK",
+      "defA": "cosh",
+      "defB": "twenty-one"
+    },
+    {
+      "answer": "BREAKDOWN",
+      "defA": "dislocation",
+      "defB": "crack-up"
+    },
+    {
+      "answer": "BREATHING",
+      "defA": "respiration",
+      "defB": "eupneic"
+    },
+    {
+      "answer": "BRILLIANT",
+      "defA": "superb",
+      "defB": "brainy"
+    },
+    {
+      "answer": "BROADCAST",
+      "defA": "program",
+      "defB": "air"
+    },
+    {
+      "answer": "CALCULATE",
+      "defA": "cipher",
+      "defB": "account"
+    },
+    {
+      "answer": "CANDIDATE",
+      "defA": "campaigner",
+      "defB": "prospect"
+    },
+    {
+      "answer": "CARTRIDGE",
+      "defA": "magazine",
+      "defB": "pickup"
+    },
+    {
+      "answer": "CELEBRATE",
+      "defA": "observe",
+      "defB": "fete"
+    },
+    {
+      "answer": "CERTIFIED",
+      "defA": "certifiable",
+      "defB": "qualified"
+    },
+    {
+      "answer": "CHAMPAGNE",
+      "defA": "bubbly",
+      "defB": "champagne-ardenne"
+    },
+    {
+      "answer": "CHARACTER",
+      "defA": "quality",
+      "defB": "fiber"
+    },
+    {
+      "answer": "CHOCOLATE",
+      "defA": "cocoa",
+      "defB": "coffee"
+    },
+    {
+      "answer": "CLASSICAL",
+      "defA": "classic",
+      "defB": "greco-roman"
+    },
+    {
+      "answer": "COALITION",
+      "defA": "alliance",
+      "defB": "fusion"
+    },
+    {
+      "answer": "COLLEAGUE",
+      "defA": "co-worker",
+      "defB": "confrere"
+    },
+    {
+      "answer": "COLLECTED",
+      "defA": "gathered",
+      "defB": "equanimous"
+    },
+    {
+      "answer": "COLLECTOR",
+      "defA": "aggregator",
+      "defB": "gatherer"
+    },
+    {
+      "answer": "COMBINING",
+      "defA": "combine",
+      "defB": "combination"
+    },
+    {
+      "answer": "COMMUNIST",
+      "defA": "commie",
+      "defB": "communistic"
+    },
+    {
+      "answer": "COMPANION",
+      "defA": "comrade",
+      "defB": "company"
+    },
+    {
+      "answer": "COMPLAINT",
+      "defA": "ailment",
+      "defB": "charge"
+    },
+    {
+      "answer": "CONCERNED",
+      "defA": "interested",
+      "defB": "implicated"
+    },
+    {
+      "answer": "CONDITION",
+      "defA": "status",
+      "defB": "precondition"
+    },
+    {
+      "answer": "CONFIDENT",
+      "defA": "convinced",
+      "defB": "surefooted"
+    },
+    {
+      "answer": "CONFUSION",
+      "defA": "confusedness",
+      "defB": "discombobulation"
+    },
+    {
+      "answer": "CONNECTED",
+      "defA": "affiliated",
+      "defB": "machine-accessible"
+    },
+    {
+      "answer": "CONSTRUCT",
+      "defA": "concept",
+      "defB": "build"
+    },
+    {
+      "answer": "CORPORATE",
+      "defA": "bodied",
+      "defB": "collective"
+    },
+    {
+      "answer": "DANGEROUS",
+      "defA": "unsafe",
+      "defB": "grave"
+    },
+    {
+      "answer": "DELICIOUS",
+      "defA": "delightful",
+      "defB": "delectable"
+    },
+    {
+      "answer": "DEPARTURE",
+      "defA": "going",
+      "defB": "deviation"
+    },
+    {
+      "answer": "DEPENDENT",
+      "defA": "dependant",
+      "defB": "subordinate"
+    },
+    {
+      "answer": "DESIGNING",
+      "defA": "design",
+      "defB": "scheming"
+    },
+    {
+      "answer": "DESPERATE",
+      "defA": "despairing",
+      "defB": "do-or-die"
+    },
+    {
+      "answer": "DETECTION",
+      "defA": "sensing",
+      "defB": "catching"
+    },
+    {
+      "answer": "DETERMINE",
+      "defA": "find",
+      "defB": "shape"
+    },
+    {
+      "answer": "DEVIATION",
+      "defA": "divergence",
+      "defB": "deviance"
+    },
+    {
+      "answer": "DIFFICULT",
+      "defA": "hard",
+      "defB": "unmanageable"
+    },
+    {
+      "answer": "DIMENSION",
+      "defA": "property",
+      "defB": "proportion"
+    },
+    {
+      "answer": "DIRECTION",
+      "defA": "way",
+      "defB": "guidance"
+    },
+    {
+      "answer": "DISCHARGE",
+      "defA": "venting",
+      "defB": "emission"
+    },
+    {
+      "answer": "DISTURBED",
+      "defA": "disquieted",
+      "defB": "maladjusted"
+    },
+    {
+      "answer": "DUPLICATE",
+      "defA": "extra",
+      "defB": "duplication"
+    },
+    {
+      "answer": "EDUCATION",
+      "defA": "instruction",
+      "defB": "training"
+    },
+    {
+      "answer": "EFFECTIVE",
+      "defA": "effectual",
+      "defB": "efficient"
+    },
+    {
+      "answer": "ELEVATION",
+      "defA": "lift",
+      "defB": "acme"
+    },
+    {
+      "answer": "ELIMINATE",
+      "defA": "extinguish",
+      "defB": "obviate"
+    },
+    {
+      "answer": "ENCOUNTER",
+      "defA": "brush",
+      "defB": "meeting"
+    },
+    {
+      "answer": "ESSENTIAL",
+      "defA": "necessity",
+      "defB": "indispensable"
+    },
+    {
+      "answer": "ESTABLISH",
+      "defA": "found",
+      "defB": "prove"
+    },
+    {
+      "answer": "EVOLUTION",
+      "defA": "development",
+      "defB": "phylogeny"
+    },
+    {
+      "answer": "EXCESSIVE",
+      "defA": "inordinate",
+      "defB": "extravagant"
+    },
+    {
+      "answer": "EXCLUSION",
+      "defA": "excommunication",
+      "defB": "exception"
+    },
+    {
+      "answer": "EXCLUSIVE",
+      "defA": "scoop",
+      "defB": "sole"
+    },
+    {
+      "answer": "EXECUTION",
+      "defA": "executing",
+      "defB": "performance"
+    },
+    {
+      "answer": "EXEMPTION",
+      "defA": "freedom",
+      "defB": "immunity"
+    },
+    {
+      "answer": "EXISTENCE",
+      "defA": "being",
+      "defB": "universe"
+    },
+    {
+      "answer": "EXPLOSION",
+      "defA": "detonation",
+      "defB": "burst"
+    },
+    {
+      "answer": "EXPRESSED",
+      "defA": "uttered",
+      "defB": "explicit"
+    },
+    {
+      "answer": "EXTENSION",
+      "defA": "propagation",
+      "defB": "reference"
+    },
+    {
+      "answer": "EXTENSIVE",
+      "defA": "extended",
+      "defB": "across-the-board"
+    },
+    {
+      "answer": "EXTREMELY",
+      "defA": "highly",
+      "defB": "exceedingly"
+    },
+    {
+      "answer": "FANTASTIC",
+      "defA": "antic",
+      "defB": "grand"
+    },
+    {
+      "answer": "FOLLOWING",
+      "defA": "followers",
+      "defB": "pursuit"
+    },
+    {
+      "answer": "FORMATION",
+      "defA": "shaping",
+      "defB": "constitution"
+    },
+    {
+      "answer": "FRAGRANCE",
+      "defA": "aroma",
+      "defB": "bouquet"
+    },
+    {
+      "answer": "FRAMEWORK",
+      "defA": "model",
+      "defB": "fabric"
+    },
+    {
+      "answer": "FRANCHISE",
+      "defA": "dealership",
+      "defB": "enfranchisement"
+    },
+    {
+      "answer": "GATHERING",
+      "defA": "assemblage",
+      "defB": "gather"
+    },
+    {
+      "answer": "GENERALLY",
+      "defA": "mostly",
+      "defB": "broadly"
+    },
+    {
+      "answer": "GRADUATED",
+      "defA": "calibrated",
+      "defB": "gradational"
+    },
+    {
+      "answer": "GUARANTEE",
+      "defA": "warrant",
+      "defB": "guaranty"
+    },
+    {
+      "answer": "HIGHLIGHT",
+      "defA": "highlighting",
+      "defB": "foreground"
+    },
+    {
+      "answer": "IDENTICAL",
+      "defA": "indistinguishable",
+      "defB": "selfsame"
+    },
+    {
+      "answer": "IMMEDIATE",
+      "defA": "contiguous",
+      "defB": "prompt"
+    },
+    {
+      "answer": "IMPORTANT",
+      "defA": "significant",
+      "defB": "crucial"
+    },
+    {
+      "answer": "INCENTIVE",
+      "defA": "inducement",
+      "defB": "bonus"
+    },
+    {
+      "answer": "INDUCTION",
+      "defA": "initiation",
+      "defB": "inductance"
+    },
+    {
+      "answer": "INFLUENCE",
+      "defA": "work",
+      "defB": "determine"
+    },
+    {
+      "answer": "INJECTION",
+      "defA": "injectant",
+      "defB": "shot"
+    },
+    {
+      "answer": "INSERTION",
+      "defA": "interpolation",
+      "defB": "introduction"
+    },
+    {
+      "answer": "INSTANTLY",
+      "defA": "immediately",
+      "defB": "instantaneously"
+    },
+    {
+      "answer": "INSTITUTE",
+      "defA": "establish",
+      "defB": "bring"
+    },
+    {
+      "answer": "INSURANCE",
+      "defA": "policy",
+      "defB": "indemnity"
+    },
+    {
+      "answer": "INTEGRATE",
+      "defA": "incorporate",
+      "defB": "desegregate"
+    },
+    {
+      "answer": "INTENSITY",
+      "defA": "strength",
+      "defB": "intensiveness"
+    },
+    {
+      "answer": "INTERVIEW",
+      "defA": "consultation",
+      "defB": "question"
+    },
+    {
+      "answer": "INTRODUCE",
+      "defA": "present",
+      "defB": "innovate"
+    },
+    {
+      "answer": "INVENTORY",
+      "defA": "stock",
+      "defB": "armory"
+    },
+    {
+      "answer": "INVISIBLE",
+      "defA": "unseeable",
+      "defB": "inconspicuous"
+    },
+    {
+      "answer": "MANDATORY",
+      "defA": "mandatary",
+      "defB": "mandate"
+    },
+    {
+      "answer": "MATERNITY",
+      "defA": "pregnancy",
+      "defB": "motherhood"
+    },
+    {
+      "answer": "MINIATURE",
+      "defA": "illumination",
+      "defB": "toy"
+    },
+    {
+      "answer": "NEWSPAPER",
+      "defA": "paper",
+      "defB": "newsprint"
+    },
+    {
+      "answer": "NONPROFIT",
+      "defA": "not-for-profit",
+      "defB": "non-profit-making"
+    },
+    {
+      "answer": "NORTHEAST",
+      "defA": "nor'-east",
+      "defB": "northeastern"
+    },
+    {
+      "answer": "NORTHWEST",
+      "defA": "nor'-west",
+      "defB": "northwestern"
+    },
+    {
+      "answer": "NUMERICAL",
+      "defA": "numeric",
+      "defB": "mathematical"
+    },
+    {
+      "answer": "OBJECTIVE",
+      "defA": "aim",
+      "defB": "nonsubjective"
+    },
+    {
+      "answer": "OFFENSIVE",
+      "defA": "offense",
+      "defB": "violative"
+    },
+    {
+      "answer": "OPERATION",
+      "defA": "surgery",
+      "defB": "procedure"
+    },
+    {
+      "answer": "ORDINANCE",
+      "defA": "regulation",
+      "defB": "ordination"
+    },
+    {
+      "answer": "PAPERBACK",
+      "defA": "softback",
+      "defB": "paperbacked"
+    },
+    {
+      "answer": "PARTITION",
+      "defA": "divider",
+      "defB": "division"
+    },
+    {
+      "answer": "PERMANENT",
+      "defA": "perm",
+      "defB": "lasting"
+    },
+    {
+      "answer": "PLACEMENT",
+      "defA": "arrangement",
+      "defB": "location"
+    },
+    {
+      "answer": "POLLUTION",
+      "defA": "befoulment",
+      "defB": "contamination"
+    },
+    {
+      "answer": "POTENTIAL",
+      "defA": "potentiality",
+      "defB": "voltage"
+    },
+    {
+      "answer": "PRACTICAL",
+      "defA": "hardheaded",
+      "defB": "virtual"
+    },
+    {
+      "answer": "PREFERRED",
+      "defA": "preferable",
+      "defB": "favored"
+    },
+    {
+      "answer": "PRESENTLY",
+      "defA": "soon",
+      "defB": "currently"
+    },
+    {
+      "answer": "PRESIDENT",
+      "defA": "chairman",
+      "defB": "prexy"
+    },
+    {
+      "answer": "PRINCIPAL",
+      "defA": "head",
+      "defB": "star"
+    },
+    {
+      "answer": "PRINCIPLE",
+      "defA": "rule",
+      "defB": "precept"
+    },
+    {
+      "answer": "PRIVILEGE",
+      "defA": "prerogative",
+      "defB": "favor"
+    },
+    {
+      "answer": "PROCEDURE",
+      "defA": "process",
+      "defB": "operation"
+    },
+    {
+      "answer": "PROMINENT",
+      "defA": "outstanding",
+      "defB": "big"
+    },
+    {
+      "answer": "PROMOTION",
+      "defA": "promo",
+      "defB": "furtherance"
+    },
+    {
+      "answer": "PROVISION",
+      "defA": "proviso",
+      "defB": "supply"
+    },
+    {
+      "answer": "QUALIFIED",
+      "defA": "certified",
+      "defB": "restricted"
+    },
+    {
+      "answer": "RADIATION",
+      "defA": "radioactivity",
+      "defB": "radiotherapy"
+    },
+    {
+      "answer": "RECEPTION",
+      "defA": "response",
+      "defB": "receipt"
+    },
+    {
+      "answer": "RECOMMEND",
+      "defA": "urge",
+      "defB": "commend"
+    },
+    {
+      "answer": "REDUCTION",
+      "defA": "decrease",
+      "defB": "reducing"
+    },
+    {
+      "answer": "REFERENCE",
+      "defA": "mention",
+      "defB": "character"
+    },
+    {
+      "answer": "REMAINDER",
+      "defA": "balance",
+      "defB": "difference"
+    },
+    {
+      "answer": "RENDERING",
+      "defA": "rendition",
+      "defB": "translation"
+    },
+    {
+      "answer": "REPRESENT",
+      "defA": "correspond",
+      "defB": "exemplify"
+    },
+    {
+      "answer": "REPRODUCE",
+      "defA": "procreate",
+      "defB": "regurgitate"
+    },
+    {
+      "answer": "RESIDENCE",
+      "defA": "abode",
+      "defB": "residency"
+    },
+    {
+      "answer": "RESISTANT",
+      "defA": "immune",
+      "defB": "tolerant"
+    },
+    {
+      "answer": "RETENTION",
+      "defA": "keeping",
+      "defB": "memory"
+    },
+    {
+      "answer": "RETURNING",
+      "defA": "reverting",
+      "defB": "reversive"
+    },
+    {
+      "answer": "SACRIFICE",
+      "defA": "forfeit",
+      "defB": "give"
+    },
+    {
+      "answer": "SATELLITE",
+      "defA": "orbiter",
+      "defB": "planet"
+    },
+    {
+      "answer": "SCREENING",
+      "defA": "showing",
+      "defB": "cover"
+    },
+    {
+      "answer": "SCULPTURE",
+      "defA": "carving",
+      "defB": "sculpt"
+    },
+    {
+      "answer": "SEARCHING",
+      "defA": "inquisitory",
+      "defB": "trenchant"
+    },
+    {
+      "answer": "SECRETARY",
+      "defA": "repository",
+      "defB": "escritoire"
+    },
+    {
+      "answer": "SELECTION",
+      "defA": "choice",
+      "defB": "survival"
+    },
+    {
+      "answer": "SENSITIVE",
+      "defA": "medium",
+      "defB": "sensible"
+    },
+    {
+      "answer": "SEPARATED",
+      "defA": "detached",
+      "defB": "spaced"
+    },
+    {
+      "answer": "SERIOUSLY",
+      "defA": "earnestly",
+      "defB": "badly"
+    },
+    {
+      "answer": "SITUATION",
+      "defA": "position",
+      "defB": "site"
+    },
+    {
+      "answer": "SOUTHEAST",
+      "defA": "sou'-east",
+      "defB": "southeasterly"
+    },
+    {
+      "answer": "SOUTHWEST",
+      "defA": "sou'-west",
+      "defB": "southwesterly"
+    },
+    {
+      "answer": "SPIRITUAL",
+      "defA": "religious",
+      "defB": "unearthly"
+    },
+    {
+      "answer": "SPOTLIGHT",
+      "defA": "limelight",
+      "defB": "spot"
+    },
+    {
+      "answer": "SPREADING",
+      "defA": "spread",
+      "defB": "dissemination"
+    },
+    {
+      "answer": "STABILITY",
+      "defA": "stableness",
+      "defB": "constancy"
+    },
+    {
+      "answer": "STATEMENT",
+      "defA": "argument",
+      "defB": "affirmation"
+    },
+    {
+      "answer": "SUBSCRIBE",
+      "defA": "sign",
+      "defB": "support"
+    },
+    {
+      "answer": "SUBSTANCE",
+      "defA": "kernel",
+      "defB": "meaning"
+    },
+    {
+      "answer": "SUFFERING",
+      "defA": "agony",
+      "defB": "woe"
+    },
+    {
+      "answer": "SYNDICATE",
+      "defA": "mob",
+      "defB": "consortium"
+    },
+    {
+      "answer": "SYNTHETIC",
+      "defA": "man-made",
+      "defB": "synthetical"
+    },
+    {
+      "answer": "TECHNICAL",
+      "defA": "proficient",
+      "defB": "technological"
+    },
+    {
+      "answer": "TELEPHONE",
+      "defA": "phone",
+      "defB": "telephony"
+    },
+    {
+      "answer": "TEMPORARY",
+      "defA": "temp",
+      "defB": "impermanent"
+    },
+    {
+      "answer": "TERRITORY",
+      "defA": "district",
+      "defB": "soil"
+    },
+    {
+      "answer": "THEREFORE",
+      "defA": "hence",
+      "defB": "consequently"
+    },
+    {
+      "answer": "THRESHOLD",
+      "defA": "limen",
+      "defB": "doorway"
+    },
+    {
+      "answer": "TOLERANCE",
+      "defA": "permissiveness",
+      "defB": "allowance"
+    },
+    {
+      "answer": "TRADEMARK",
+      "defA": "hallmark",
+      "defB": "brand"
+    },
+    {
+      "answer": "TRANSFORM",
+      "defA": "transmute",
+      "defB": "translate"
+    },
+    {
+      "answer": "TRANSLATE",
+      "defA": "interpret",
+      "defB": "transform"
+    },
+    {
+      "answer": "TRANSPORT",
+      "defA": "conveyance",
+      "defB": "transportation"
+    },
+    {
+      "answer": "TREATMENT",
+      "defA": "intervention",
+      "defB": "handling"
+    },
+    {
+      "answer": "UNDERTAKE",
+      "defA": "attempt",
+      "defB": "tackle"
+    },
+    {
+      "answer": "UNLIMITED",
+      "defA": "limitless",
+      "defB": "outright"
+    },
+    {
+      "answer": "VARIATION",
+      "defA": "fluctuation",
+      "defB": "variance"
+    },
+    {
+      "answer": "VIOLATION",
+      "defA": "misdemeanor",
+      "defB": "trespass"
+    },
+    {
+      "answer": "VOLUNTEER",
+      "defA": "voluntary",
+      "defB": "tennessean"
+    },
+    {
+      "answer": "WATERSHED",
+      "defA": "divide",
+      "defB": "basin"
+    }
+  ],
+  "10": [
+    {
+      "answer": "ABORIGINAL",
+      "defA": "native",
+      "defB": "primal"
+    },
+    {
+      "answer": "ABSORPTION",
+      "defA": "assimilation",
+      "defB": "concentration"
+    },
+    {
+      "answer": "ACCEPTANCE",
+      "defA": "credence",
+      "defB": "adoption"
+    },
+    {
+      "answer": "ACCOMPLISH",
+      "defA": "execute",
+      "defB": "achieve"
+    },
+    {
+      "answer": "ACCOUNTING",
+      "defA": "accountancy",
+      "defB": "account"
+    },
+    {
+      "answer": "ADAPTATION",
+      "defA": "version",
+      "defB": "adaption"
+    },
+    {
+      "answer": "ADJUSTMENT",
+      "defA": "accommodation",
+      "defB": "alteration"
+    },
+    {
+      "answer": "ADOLESCENT",
+      "defA": "stripling",
+      "defB": "jejune"
+    },
+    {
+      "answer": "AGGRESSIVE",
+      "defA": "fast-growing",
+      "defB": "belligerent"
+    },
+    {
+      "answer": "ANNOTATION",
+      "defA": "note",
+      "defB": "annotating"
+    },
+    {
+      "answer": "APPARENTLY",
+      "defA": "seemingly",
+      "defB": "obviously"
+    },
+    {
+      "answer": "APPEARANCE",
+      "defA": "appearing",
+      "defB": "show"
+    },
+    {
+      "answer": "APPRECIATE",
+      "defA": "prize",
+      "defB": "apprize"
+    },
+    {
+      "answer": "ARTIFICIAL",
+      "defA": "unreal",
+      "defB": "contrived"
+    },
+    {
+      "answer": "ASSESSMENT",
+      "defA": "appraisal",
+      "defB": "judgment"
+    },
+    {
+      "answer": "ASSIGNMENT",
+      "defA": "assigning",
+      "defB": "grant"
+    },
+    {
+      "answer": "ASSUMPTION",
+      "defA": "premise",
+      "defB": "supposition"
+    },
+    {
+      "answer": "ATMOSPHERE",
+      "defA": "ambiance",
+      "defB": "atm"
+    },
+    {
+      "answer": "ATTACHMENT",
+      "defA": "bond",
+      "defB": "adherence"
+    },
+    {
+      "answer": "ATTRACTION",
+      "defA": "attractiveness",
+      "defB": "attractor"
+    },
+    {
+      "answer": "BACKGROUND",
+      "defA": "ground",
+      "defB": "setting"
+    },
+    {
+      "answer": "BIOLOGICAL",
+      "defA": "biologic",
+      "defB": "natural"
+    },
+    {
+      "answer": "CAPABILITY",
+      "defA": "capableness",
+      "defB": "capacity"
+    },
+    {
+      "answer": "COLLECTION",
+      "defA": "aggregation",
+      "defB": "compendium"
+    },
+    {
+      "answer": "COMMISSION",
+      "defA": "committee",
+      "defB": "commissioning"
+    },
+    {
+      "answer": "COMMITMENT",
+      "defA": "committedness",
+      "defB": "allegiance"
+    },
+    {
+      "answer": "COMPARISON",
+      "defA": "comparing",
+      "defB": "compare"
+    },
+    {
+      "answer": "COMPLIANCE",
+      "defA": "conformity",
+      "defB": "complaisance"
+    },
+    {
+      "answer": "COMPRESSED",
+      "defA": "tight",
+      "defB": "flat"
+    },
+    {
+      "answer": "CONCLUSION",
+      "defA": "decision",
+      "defB": "finale"
+    },
+    {
+      "answer": "CONFIDENCE",
+      "defA": "assurance",
+      "defB": "trust"
+    },
+    {
+      "answer": "CONNECTION",
+      "defA": "link",
+      "defB": "connexion"
+    },
+    {
+      "answer": "CONSISTENT",
+      "defA": "reproducible",
+      "defB": "coherent"
+    },
+    {
+      "answer": "CONSPIRACY",
+      "defA": "confederacy",
+      "defB": "cabal"
+    },
+    {
+      "answer": "CONSTITUTE",
+      "defA": "represent",
+      "defB": "appoint"
+    },
+    {
+      "answer": "CONTRIBUTE",
+      "defA": "lend",
+      "defB": "give"
+    },
+    {
+      "answer": "CONTROLLER",
+      "defA": "accountant",
+      "defB": "restrainer"
+    },
+    {
+      "answer": "CONVENTION",
+      "defA": "normal",
+      "defB": "conventionality"
+    },
+    {
+      "answer": "CONVERSION",
+      "defA": "transition",
+      "defB": "rebirth"
+    },
+    {
+      "answer": "COORDINATE",
+      "defA": "co-ordinate",
+      "defB": "organize"
+    },
+    {
+      "answer": "CORRECTION",
+      "defA": "rectification",
+      "defB": "chastening"
+    },
+    {
+      "answer": "CORRUPTION",
+      "defA": "corruptness",
+      "defB": "putrescence"
+    },
+    {
+      "answer": "DEPRESSION",
+      "defA": "slump",
+      "defB": "low"
+    },
+    {
+      "answer": "DETERMINED",
+      "defA": "dictated",
+      "defB": "compulsive"
+    },
+    {
+      "answer": "DEVELOPING",
+      "defA": "development",
+      "defB": "underdeveloped"
+    },
+    {
+      "answer": "DIFFERENCE",
+      "defA": "deviation",
+      "defB": "dispute"
+    },
+    {
+      "answer": "DIFFICULTY",
+      "defA": "trouble",
+      "defB": "difficultness"
+    },
+    {
+      "answer": "DISCIPLINE",
+      "defA": "subject",
+      "defB": "correction"
+    },
+    {
+      "answer": "DISCRETION",
+      "defA": "discreetness",
+      "defB": "delicacy"
+    },
+    {
+      "answer": "DISCUSSION",
+      "defA": "treatment",
+      "defB": "give-and-take"
+    },
+    {
+      "answer": "DISTRIBUTE",
+      "defA": "administer",
+      "defB": "spread"
+    },
+    {
+      "answer": "ELEMENTARY",
+      "defA": "simple",
+      "defB": "elemental"
+    },
+    {
+      "answer": "EMPLOYMENT",
+      "defA": "employ",
+      "defB": "work"
+    },
+    {
+      "answer": "ENGAGEMENT",
+      "defA": "battle",
+      "defB": "date"
+    },
+    {
+      "answer": "ENTERPRISE",
+      "defA": "endeavor",
+      "defB": "enterprisingness"
+    },
+    {
+      "answer": "EQUIVALENT",
+      "defA": "eq",
+      "defB": "tantamount"
+    },
+    {
+      "answer": "EXCITEMENT",
+      "defA": "exhilaration",
+      "defB": "excitation"
+    },
+    {
+      "answer": "EXPERIENCE",
+      "defA": "see",
+      "defB": "know"
+    },
+    {
+      "answer": "EXPIRATION",
+      "defA": "termination",
+      "defB": "passing"
+    },
+    {
+      "answer": "EXPRESSION",
+      "defA": "look",
+      "defB": "manifestation"
+    },
+    {
+      "answer": "FACILITATE",
+      "defA": "ease",
+      "defB": "help"
+    },
+    {
+      "answer": "FELLOWSHIP",
+      "defA": "family",
+      "defB": "company"
+    },
+    {
+      "answer": "FOUNDATION",
+      "defA": "base",
+      "defB": "grounding"
+    },
+    {
+      "answer": "FUNCTIONAL",
+      "defA": "usable",
+      "defB": "running"
+    },
+    {
+      "answer": "GENERATION",
+      "defA": "coevals",
+      "defB": "genesis"
+    },
+    {
+      "answer": "GOVERNMENT",
+      "defA": "authorities",
+      "defB": "governing"
+    },
+    {
+      "answer": "GRADUATION",
+      "defA": "commencement",
+      "defB": "gradation"
+    },
+    {
+      "answer": "HARASSMENT",
+      "defA": "torment",
+      "defB": "molestation"
+    },
+    {
+      "answer": "HISTORICAL",
+      "defA": "historic",
+      "defB": "diachronic"
+    },
+    {
+      "answer": "HYPOTHESIS",
+      "defA": "possibility",
+      "defB": "guess"
+    },
+    {
+      "answer": "IMPOSSIBLE",
+      "defA": "inconceivable",
+      "defB": "unacceptable"
+    },
+    {
+      "answer": "IMPRESSION",
+      "defA": "feeling",
+      "defB": "effect"
+    },
+    {
+      "answer": "INCOMPLETE",
+      "defA": "uncomplete",
+      "defB": "uncompleted"
+    },
+    {
+      "answer": "INDICATION",
+      "defA": "indicant",
+      "defB": "denotation"
+    },
+    {
+      "answer": "INDIVIDUAL",
+      "defA": "person",
+      "defB": "single"
+    },
+    {
+      "answer": "INITIATIVE",
+      "defA": "enterprise",
+      "defB": "opening"
+    },
+    {
+      "answer": "INNOVATION",
+      "defA": "invention",
+      "defB": "initiation"
+    },
+    {
+      "answer": "INNOVATIVE",
+      "defA": "advanced",
+      "defB": "innovational"
+    },
+    {
+      "answer": "INSTRUMENT",
+      "defA": "tool",
+      "defB": "pawn"
+    },
+    {
+      "answer": "INSULATION",
+      "defA": "insularity",
+      "defB": "insulant"
+    },
+    {
+      "answer": "INTEGRATED",
+      "defA": "incorporate",
+      "defB": "structured"
+    },
+    {
+      "answer": "INVESTMENT",
+      "defA": "investing",
+      "defB": "investiture"
+    },
+    {
+      "answer": "LEADERSHIP",
+      "defA": "leading",
+      "defB": "leaders"
+    },
+    {
+      "answer": "LEGITIMATE",
+      "defA": "legalize",
+      "defB": "logical"
+    },
+    {
+      "answer": "LIMITATION",
+      "defA": "restriction",
+      "defB": "limit"
+    },
+    {
+      "answer": "MAINTAINED",
+      "defA": "well-kept",
+      "defB": "retained"
+    },
+    {
+      "answer": "MOTIVATION",
+      "defA": "motive",
+      "defB": "motivating"
+    },
+    {
+      "answer": "MOTORCYCLE",
+      "defA": "bike",
+      "defB": "motorbike"
+    },
+    {
+      "answer": "MYSTERIOUS",
+      "defA": "cryptic",
+      "defB": "mystic"
+    },
+    {
+      "answer": "NATIONWIDE",
+      "defA": "countrywide",
+      "defB": "nationally"
+    },
+    {
+      "answer": "NAVIGATION",
+      "defA": "pilotage",
+      "defB": "seafaring"
+    },
+    {
+      "answer": "OBLIGATION",
+      "defA": "duty",
+      "defB": "indebtedness"
+    },
+    {
+      "answer": "OCCASIONAL",
+      "defA": "episodic",
+      "defB": "casual"
+    },
+    {
+      "answer": "OCCUPATION",
+      "defA": "business",
+      "defB": "occupancy"
+    },
+    {
+      "answer": "OPPOSITION",
+      "defA": "resistance",
+      "defB": "oppositeness"
+    },
+    {
+      "answer": "PARTICULAR",
+      "defA": "specific",
+      "defB": "detail"
+    },
+    {
+      "answer": "PERCENTAGE",
+      "defA": "percent",
+      "defB": "share"
+    },
+    {
+      "answer": "PERCEPTION",
+      "defA": "percept",
+      "defB": "sensing"
+    },
+    {
+      "answer": "PERSISTENT",
+      "defA": "relentless",
+      "defB": "haunting"
+    },
+    {
+      "answer": "PHOTOGRAPH",
+      "defA": "photo",
+      "defB": "snap"
+    },
+    {
+      "answer": "POLYPHONIC",
+      "defA": "polyphonous",
+      "defB": "contrapuntal"
+    },
+    {
+      "answer": "POSSESSION",
+      "defA": "ownership",
+      "defB": "monomania"
+    },
+    {
+      "answer": "PREDICTION",
+      "defA": "anticipation",
+      "defB": "foretelling"
+    },
+    {
+      "answer": "PREFERENCE",
+      "defA": "penchant",
+      "defB": "druthers"
+    },
+    {
+      "answer": "PRESCRIBED",
+      "defA": "appointed",
+      "defB": "official"
+    },
+    {
+      "answer": "PRODUCTION",
+      "defA": "product",
+      "defB": "output"
+    },
+    {
+      "answer": "PRODUCTIVE",
+      "defA": "generative",
+      "defB": "fat"
+    },
+    {
+      "answer": "PROHIBITED",
+      "defA": "forbidden",
+      "defB": "banned"
+    },
+    {
+      "answer": "PROJECTION",
+      "defA": "project",
+      "defB": "protrusion"
+    },
+    {
+      "answer": "PROPORTION",
+      "defA": "dimension",
+      "defB": "symmetry"
+    },
+    {
+      "answer": "PROTECTION",
+      "defA": "security",
+      "defB": "shelter"
+    },
+    {
+      "answer": "QUALIFYING",
+      "defA": "modification",
+      "defB": "passing"
+    },
+    {
+      "answer": "REASONABLE",
+      "defA": "sensible",
+      "defB": "fair"
+    },
+    {
+      "answer": "REASONABLY",
+      "defA": "moderately",
+      "defB": "sanely"
+    },
+    {
+      "answer": "RECREATION",
+      "defA": "diversion",
+      "defB": "refreshment"
+    },
+    {
+      "answer": "REGARDLESS",
+      "defA": "careless",
+      "defB": "irrespective"
+    },
+    {
+      "answer": "REGRESSION",
+      "defA": "fixation",
+      "defB": "regress"
+    },
+    {
+      "answer": "REGULATION",
+      "defA": "ordinance",
+      "defB": "rule"
+    },
+    {
+      "answer": "RELAXATION",
+      "defA": "easiness",
+      "defB": "loosening"
+    },
+    {
+      "answer": "RELOCATION",
+      "defA": "resettlement",
+      "defB": "move"
+    },
+    {
+      "answer": "REMARKABLE",
+      "defA": "singular",
+      "defB": "noteworthy"
+    },
+    {
+      "answer": "REPOSITORY",
+      "defA": "depository",
+      "defB": "secretary"
+    },
+    {
+      "answer": "REPUTATION",
+      "defA": "repute",
+      "defB": "report"
+    },
+    {
+      "answer": "RESISTANCE",
+      "defA": "opposition",
+      "defB": "impedance"
+    },
+    {
+      "answer": "RESOLUTION",
+      "defA": "declaration",
+      "defB": "solving"
+    },
+    {
+      "answer": "RESPONDENT",
+      "defA": "responder",
+      "defB": "answering"
+    },
+    {
+      "answer": "REVELATION",
+      "defA": "disclosure",
+      "defB": "apocalypse"
+    },
+    {
+      "answer": "SEPARATION",
+      "defA": "breakup",
+      "defB": "interval"
+    },
+    {
+      "answer": "SETTLEMENT",
+      "defA": "colony",
+      "defB": "village"
+    },
+    {
+      "answer": "SIMULATION",
+      "defA": "model",
+      "defB": "pretense"
+    },
+    {
+      "answer": "STRENGTHEN",
+      "defA": "fortify",
+      "defB": "tone"
+    },
+    {
+      "answer": "SUBMISSION",
+      "defA": "entry",
+      "defB": "compliance"
+    },
+    {
+      "answer": "SUBSCRIBER",
+      "defA": "endorser",
+      "defB": "reader"
+    },
+    {
+      "answer": "SUBSIDIARY",
+      "defA": "subordinate",
+      "defB": "auxiliary"
+    },
+    {
+      "answer": "SUBSTITUTE",
+      "defA": "replacement",
+      "defB": "reserve"
+    },
+    {
+      "answer": "SUGGESTION",
+      "defA": "proposition",
+      "defB": "trace"
+    },
+    {
+      "answer": "SUPPLEMENT",
+      "defA": "addendum",
+      "defB": "supplementation"
+    },
+    {
+      "answer": "SUPPORTING",
+      "defA": "support",
+      "defB": "encouraging"
+    },
+    {
+      "answer": "SUSPENSION",
+      "defA": "pause",
+      "defB": "abeyance"
+    },
+    {
+      "answer": "THOROUGHLY",
+      "defA": "exhaustively",
+      "defB": "soundly"
+    },
+    {
+      "answer": "THROUGHOUT",
+      "defA": "end-to-end",
+      "defB": "passim"
+    },
+    {
+      "answer": "TRANSITION",
+      "defA": "passage",
+      "defB": "conversion"
+    },
+    {
+      "answer": "TRANSLATOR",
+      "defA": "transcriber",
+      "defB": "interpreter"
+    },
+    {
+      "answer": "TREMENDOUS",
+      "defA": "enormous",
+      "defB": "fantastic"
+    },
+    {
+      "answer": "UNDERLYING",
+      "defA": "inherent",
+      "defB": "fundamental"
+    },
+    {
+      "answer": "UNDERSTAND",
+      "defA": "realize",
+      "defB": "read"
+    },
+    {
+      "answer": "VALIDATION",
+      "defA": "proof",
+      "defB": "establishment"
+    },
+    {
+      "answer": "VISIBILITY",
+      "defA": "visibleness",
+      "defB": "profile"
+    },
+    {
+      "answer": "WATERPROOF",
+      "defA": "raincoat",
+      "defB": "rainproof"
+    },
+    {
+      "answer": "WITHDRAWAL",
+      "defA": "backdown",
+      "defB": "detachment"
+    }
+  ]
+}

@@ -1,17 +1,25 @@
 import { describe, expect, it } from 'vitest';
 import { homophoneDevice } from '../../src/devices/homophone.js';
+import homophonePool from '../../src/data/homophone-pool.json' with { type: 'json' };
 
 const indicatorBank = ['we hear', 'reportedly', 'aloud'];
 
-// BANNED/BAND/ring is a real entry in the precomputed homophone pool
-// (src/data/homophone-pool.json) — "ring" is a genuine WordNet synonym of
-// "band" (as in a wedding ring/band), and BAND is a genuine homophone of
-// BANNED per the CMU Pronouncing Dictionary.
+// BAND is a genuine homophone of BANNED per the CMU Pronouncing Dictionary,
+// registered in the precomputed pool (src/data/homophone-pool.json) with
+// some genuine WordNet synonym of "band" as fodder — read live from the
+// pool rather than hardcoded, since which synonym buildHomophonePairs.ts
+// picks first isn't guaranteed to stay the same across rebuilds (WordNet
+// sense ordering isn't a stable contract), only that a legal registered
+// pair exists at all.
+const bannedPair = (homophonePool as Record<string, { answer: string; phoneticSource: string; fodder: string }[]>)[
+  '6'
+].find((p) => p.answer === 'BANNED')!;
+
 describe('homophoneDevice.verifyMechanics', () => {
   it('passes a genuine registered homophone pair with a valid indicator', () => {
     const result = homophoneDevice.verifyMechanics(
       'BANNED',
-      { fodder: 'RING', phoneticSource: 'BAND', indicator: 'we hear', operation: '' },
+      { fodder: bannedPair.fodder, phoneticSource: bannedPair.phoneticSource, indicator: 'we hear', operation: '' },
       indicatorBank
     );
     expect(result.passed).toBe(true);
@@ -29,7 +37,7 @@ describe('homophoneDevice.verifyMechanics', () => {
   it('fails when the indicator is not in the bank', () => {
     const result = homophoneDevice.verifyMechanics(
       'BANNED',
-      { fodder: 'RING', phoneticSource: 'BAND', indicator: 'nonsense', operation: '' },
+      { fodder: bannedPair.fodder, phoneticSource: bannedPair.phoneticSource, indicator: 'nonsense', operation: '' },
       indicatorBank
     );
     expect(result.passed).toBe(false);

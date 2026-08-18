@@ -32,7 +32,7 @@ import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { dictionary } from 'cmu-pronouncing-dictionary';
 import { isDictionaryWord } from '../src/devices/dictionary.js';
-import { getSynonymSets } from '../src/definitions/wordnet.js';
+import { getSynonymSetsSync } from '../src/definitions/wordnetSync.js';
 import wordlistsByLength from '../src/data/wordlistsByLength.json' with { type: 'json' };
 
 const pools = wordlistsByLength as Record<string, string[]>;
@@ -93,7 +93,7 @@ function candidateSynonyms(synonymSets: string[][], exclude: Set<string>): strin
   return result;
 }
 
-async function buildHomophonePool(): Promise<Record<string, HomophonePair[]>> {
+function buildHomophonePool(): Record<string, HomophonePair[]> {
   const groups = buildSignatureGroups();
   const result: Record<string, HomophonePair[]> = {};
 
@@ -109,7 +109,7 @@ async function buildHomophonePool(): Promise<Record<string, HomophonePair[]>> {
       const candidates = spellings.filter((s) => s !== answer && isDictionaryWord(s));
 
       for (const candidate of candidates) {
-        const synonymSets = await getSynonymSets(candidate);
+        const synonymSets = getSynonymSetsSync(candidate);
         const exclude = new Set([answer, candidate]);
         const synonyms = candidateSynonyms(synonymSets, exclude);
         if (synonyms.length === 0) continue;
@@ -126,9 +126,9 @@ async function buildHomophonePool(): Promise<Record<string, HomophonePair[]>> {
   return result;
 }
 
-async function main() {
+function main() {
   console.log('Scanning CMU dictionary + WordNet for homophone pairs...');
-  const pool = await buildHomophonePool();
+  const pool = buildHomophonePool();
   for (const length of LENGTHS) {
     console.log(`  length ${length}: ${pool[length].length} pairs`);
   }

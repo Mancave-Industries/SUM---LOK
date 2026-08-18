@@ -18,7 +18,7 @@
 
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { getSynonymSets } from '../src/definitions/wordnet.js';
+import { getSynonymSetsSync } from '../src/definitions/wordnetSync.js';
 import wordlistsByLength from '../src/data/wordlistsByLength.json' with { type: 'json' };
 
 const pools = wordlistsByLength as Record<string, string[]>;
@@ -47,6 +47,17 @@ function normalize(word: string): string {
   return stripPosMarker(word.toLowerCase().replace(/_/g, ' ').trim());
 }
 
+// Every WordNet sense of a word always lists the word itself as one of its
+// own synonyms (that's how synsets work) — comparing two senses' full
+// synonym sets for overlap without excluding the answer would always find
+// one, since both sets trivially share the answer's own name. What
+// actually indicates two senses are "too closely related to read as
+// genuinely distinct meanings" is shared OTHER vocabulary, so the answer
+// itself is filtered out before the overlap check runs.
+function otherVocabulary(sense: string[], answerLower: string): Set<string> {
+  return new Set(sense.map(normalize).filter((w) => w && w !== answerLower));
+}
+
 // A displayable synonym from a sense: excludes the answer word itself and
 // any multi-word phrase (kept single-token, same simplicity tradeoff as
 // the homophone pool — a literal verbatim substring match is what both
@@ -62,20 +73,20 @@ function firstUsableSynonym(sense: string[], answerLower: string): string | null
   return null;
 }
 
-async function buildDoubleDefPool(): Promise<Record<string, DoubleDefPair[]>> {
+function buildDoubleDefPool(): Record<string, DoubleDefPair[]> {
   const result: Record<string, DoubleDefPair[]> = {};
 
   for (const length of LENGTHS) {
     const pairs: DoubleDefPair[] = [];
     for (const word of pools[length]) {
       const answerLower = word.toLowerCase();
-      const senses = await getSynonymSets(answerLower);
+      const senses = getSynonymSetsSync(answerLower);
       if (senses.length < 2) continue;
 
       outer: for (let i = 0; i < senses.length; i++) {
         for (let j = i + 1; j < senses.length; j++) {
-          const setI = new Set(senses[i].map(normalize));
-          const setJ = new Set(senses[j].map(normalize));
+          const setI = otherVocabulary(senses[i], answerLower);
+          const setJ = otherVocabulary(senses[j], answerLower);
           const overlaps = [...setI].some((s) => setJ.has(s));
           if (overlaps) continue; // too closely related to read as genuinely distinct meanings
 
@@ -93,9 +104,9 @@ async function buildDoubleDefPool(): Promise<Record<string, DoubleDefPair[]>> {
   return result;
 }
 
-async function main() {
+function main() {
   console.log('Scanning WordNet for double-definition pairs...');
-  const pool = await buildDoubleDefPool();
+  const pool = buildDoubleDefPool();
   for (const length of LENGTHS) {
     console.log(`  length ${length}: ${pool[length].length} pairs`);
   }

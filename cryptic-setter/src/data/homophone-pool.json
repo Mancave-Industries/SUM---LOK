@@ -3,12 +3,12 @@
     {
       "answer": "ANALOG",
       "phoneticSource": "ANALOGUE",
-      "fodder": "linear"
+      "fodder": "parallel"
     },
     {
       "answer": "BANNED",
       "phoneticSource": "BAND",
-      "fodder": "ring"
+      "fodder": "set"
     },
     {
       "answer": "BETTER",
@@ -43,17 +43,17 @@
     {
       "answer": "CANVAS",
       "phoneticSource": "CANVASS",
-      "fodder": "analyze"
+      "fodder": "poll"
     },
     {
       "answer": "CARMEN",
       "phoneticSource": "CARMINE",
-      "fodder": "red"
+      "fodder": "cardinal"
     },
     {
       "answer": "CAUGHT",
       "phoneticSource": "COT",
-      "fodder": "crib"
+      "fodder": "fingerstall"
     },
     {
       "answer": "CAUGHT",
@@ -63,27 +63,27 @@
     {
       "answer": "CENTER",
       "phoneticSource": "CENTRE",
-      "fodder": "concentrate"
+      "fodder": "middle"
     },
     {
       "answer": "CENTRE",
       "phoneticSource": "CENTER",
-      "fodder": "halfway"
+      "fodder": "middle"
     },
     {
       "answer": "CHEQUE",
       "phoneticSource": "CHECK",
-      "fodder": "crack"
+      "fodder": "assay"
     },
     {
       "answer": "COLOUR",
       "phoneticSource": "COLOR",
-      "fodder": "discolor"
+      "fodder": "coloring"
     },
     {
       "answer": "COURSE",
       "phoneticSource": "COARSE",
-      "fodder": "common"
+      "fodder": "harsh"
     },
     {
       "answer": "COURSE",
@@ -93,32 +93,32 @@
     {
       "answer": "DIALOG",
       "phoneticSource": "DIALOGUE",
-      "fodder": "negotiation"
+      "fodder": "duologue"
     },
     {
       "answer": "DIFFER",
       "phoneticSource": "DEFER",
-      "fodder": "submit"
+      "fodder": "postpone"
     },
     {
       "answer": "FAVOUR",
       "phoneticSource": "FAVOR",
-      "fodder": "privilege"
+      "fodder": "prefer"
     },
     {
       "answer": "FISHER",
       "phoneticSource": "FISSURE",
-      "fodder": "crack"
+      "fodder": "crevice"
     },
     {
       "answer": "FOURTH",
       "phoneticSource": "FORTH",
-      "fodder": "forward"
+      "fodder": "away"
     },
     {
       "answer": "GRANDE",
       "phoneticSource": "GRAND",
-      "fodder": "distinguished"
+      "fodder": "thousand"
     },
     {
       "answer": "GREECE",
@@ -128,17 +128,17 @@
     {
       "answer": "HARBOR",
       "phoneticSource": "HARBOUR",
-      "fodder": "hold"
+      "fodder": "seaport"
     },
     {
       "answer": "HIGHER",
       "phoneticSource": "HIRE",
-      "fodder": "lease"
+      "fodder": "engage"
     },
     {
       "answer": "HOLLOW",
       "phoneticSource": "HOLLO",
-      "fodder": "shout"
+      "fodder": "bellow"
     },
     {
       "answer": "HOSTEL",
@@ -148,17 +148,17 @@
     {
       "answer": "KNIGHT",
       "phoneticSource": "NIGHT",
-      "fodder": "nox"
+      "fodder": "nighttime"
     },
     {
       "answer": "LABOUR",
       "phoneticSource": "LABOR",
-      "fodder": "toil"
+      "fodder": "proletariat"
     },
     {
       "answer": "LESSON",
       "phoneticSource": "LESSEN",
-      "fodder": "subside"
+      "fodder": "decrease"
     },
     {
       "answer": "MAGNET",
@@ -178,7 +178,7 @@
     {
       "answer": "PASSED",
       "phoneticSource": "PAST",
-      "fodder": "by"
+      "fodder": "yesteryear"
     },
     {
       "answer": "PASTOR",
@@ -243,7 +243,7 @@
     {
       "answer": "THROWN",
       "phoneticSource": "THRONE",
-      "fodder": "enthrone"
+      "fodder": "toilet"
     },
     {
       "answer": "TIMBER",
@@ -253,7 +253,7 @@
     {
       "answer": "WAIVER",
       "phoneticSource": "WAVER",
-      "fodder": "quaver"
+      "fodder": "hesitation"
     },
     {
       "answer": "WEEKLY",
@@ -263,12 +263,12 @@
     {
       "answer": "WEIGHT",
       "phoneticSource": "WAIT",
-      "fodder": "waitress"
+      "fodder": "delay"
     },
     {
       "answer": "WRIGHT",
       "phoneticSource": "RIGHT",
-      "fodder": "correctly"
+      "fodder": "rightfield"
     },
     {
       "answer": "WRIGHT",
@@ -278,7 +278,7 @@
     {
       "answer": "WRIGHT",
       "phoneticSource": "WRITE",
-      "fodder": "spell"
+      "fodder": "compose"
     }
   ],
   "7": [
@@ -305,7 +305,7 @@
     {
       "answer": "BIZARRE",
       "phoneticSource": "BAZAAR",
-      "fodder": "fair"
+      "fodder": "bazar"
     },
     {
       "answer": "BIZARRE",
@@ -325,22 +325,22 @@
     {
       "answer": "COLORED",
       "phoneticSource": "COLOURED",
-      "fodder": "negro"
+      "fodder": "colorful"
     },
     {
       "answer": "COUNCIL",
       "phoneticSource": "COUNSEL",
-      "fodder": "rede"
+      "fodder": "advocate"
     },
     {
       "answer": "DEFENCE",
       "phoneticSource": "DEFENSE",
-      "fodder": "denial"
+      "fodder": "vindication"
     },
     {
       "answer": "DEFENSE",
       "phoneticSource": "DEFENCE",
-      "fodder": "denial"
+      "fodder": "refutation"
     },
     {
       "answer": "DISCUSS",
@@ -350,12 +350,12 @@
     {
       "answer": "EDITION",
       "phoneticSource": "ADDITION",
-      "fodder": "summation"
+      "fodder": "add-on"
     },
     {
       "answer": "ENQUIRY",
       "phoneticSource": "INQUIRY",
-      "fodder": "question"
+      "fodder": "research"
     },
     {
       "answer": "FORWARD",
@@ -365,17 +365,17 @@
     {
       "answer": "HARBOUR",
       "phoneticSource": "HARBOR",
-      "fodder": "shield"
+      "fodder": "seaport"
     },
     {
       "answer": "INQUIRY",
       "phoneticSource": "ENQUIRY",
-      "fodder": "research"
+      "fodder": "question"
     },
     {
       "answer": "INSIGHT",
       "phoneticSource": "INCITE",
-      "fodder": "prod"
+      "fodder": "motivate"
     },
     {
       "answer": "LABELED",
@@ -385,17 +385,17 @@
     {
       "answer": "LICENCE",
       "phoneticSource": "LICENSE",
-      "fodder": "certify"
+      "fodder": "permit"
     },
     {
       "answer": "LICENSE",
       "phoneticSource": "LICENCE",
-      "fodder": "certify"
+      "fodder": "permit"
     },
     {
       "answer": "MARTIAL",
       "phoneticSource": "MARSHAL",
-      "fodder": "mobilize"
+      "fodder": "marshall"
     },
     {
       "answer": "MARTIAL",
@@ -405,42 +405,42 @@
     {
       "answer": "MORNING",
       "phoneticSource": "MOURNING",
-      "fodder": "bereaved"
+      "fodder": "bereavement"
     },
     {
       "answer": "PROGRAM",
       "phoneticSource": "PROGRAMME",
-      "fodder": "plan"
+      "fodder": "curriculum"
     },
     {
       "answer": "PROPHET",
       "phoneticSource": "PROFIT",
-      "fodder": "gain"
+      "fodder": "net"
     },
     {
       "answer": "RAISING",
       "phoneticSource": "RAZING",
-      "fodder": "leveling"
+      "fodder": "wrecking"
     },
     {
       "answer": "REALIZE",
       "phoneticSource": "REALISE",
-      "fodder": "understand"
+      "fodder": "gain"
     },
     {
       "answer": "THEATER",
       "phoneticSource": "THEATRE",
-      "fodder": "field"
+      "fodder": "house"
     },
     {
       "answer": "THEATRE",
       "phoneticSource": "THEATER",
-      "fodder": "field"
+      "fodder": "house"
     },
     {
       "answer": "TRACKED",
       "phoneticSource": "TRACT",
-      "fodder": "pathway"
+      "fodder": "parcel"
     },
     {
       "answer": "TRUSTEE",
@@ -455,7 +455,7 @@
     {
       "answer": "WHETHER",
       "phoneticSource": "WEATHER",
-      "fodder": "upwind"
+      "fodder": "conditions"
     },
     {
       "answer": "WRAPPED",
@@ -472,7 +472,7 @@
     {
       "answer": "BEHAVIOR",
       "phoneticSource": "BEHAVIOUR",
-      "fodder": "conduct"
+      "fodder": "demeanor"
     },
     {
       "answer": "DIALOGUE",
@@ -482,17 +482,17 @@
     {
       "answer": "DISCRETE",
       "phoneticSource": "DISCREET",
-      "fodder": "circumspect"
+      "fodder": "discerning"
     },
     {
       "answer": "FAVORITE",
       "phoneticSource": "FAVOURITE",
-      "fodder": "favored"
+      "fodder": "front-runner"
     },
     {
       "answer": "JUDGMENT",
       "phoneticSource": "JUDGEMENT",
-      "fodder": "assessment"
+      "fodder": "opinion"
     },
     {
       "answer": "MARSHALL",
@@ -502,17 +502,17 @@
     {
       "answer": "MARSHALL",
       "phoneticSource": "MARTIAL",
-      "fodder": "warlike"
+      "fodder": "soldierly"
     },
     {
       "answer": "MODELING",
       "phoneticSource": "MODELLING",
-      "fodder": "model"
+      "fodder": "molding"
     },
     {
       "answer": "PREMIERE",
       "phoneticSource": "PREMIER",
-      "fodder": "prime"
+      "fodder": "pm"
     },
     {
       "answer": "REALIZED",
@@ -522,14 +522,14 @@
     {
       "answer": "STRAIGHT",
       "phoneticSource": "STRAIT",
-      "fodder": "pass"
+      "fodder": "sound"
     }
   ],
   "9": [
     {
       "answer": "BEHAVIOUR",
       "phoneticSource": "BEHAVIOR",
-      "fodder": "demeanor"
+      "fodder": "conduct"
     },
     {
       "answer": "CONNECTOR",
@@ -539,32 +539,32 @@
     {
       "answer": "FAVOURITE",
       "phoneticSource": "FAVORITE",
-      "fodder": "favored"
+      "fodder": "darling"
     },
     {
       "answer": "MODELLING",
       "phoneticSource": "MODELING",
-      "fodder": "model"
+      "fodder": "mold"
     },
     {
       "answer": "PRINCIPAL",
       "phoneticSource": "PRINCIPLE",
-      "fodder": "rationale"
+      "fodder": "rule"
     },
     {
       "answer": "PRINCIPLE",
       "phoneticSource": "PRINCIPAL",
-      "fodder": "chief"
+      "fodder": "head"
     },
     {
       "answer": "PROGRAMME",
       "phoneticSource": "PROGRAM",
-      "fodder": "curriculum"
+      "fodder": "plan"
     },
     {
       "answer": "RECOGNIZE",
       "phoneticSource": "RECOGNISE",
-      "fodder": "acknowledge"
+      "fodder": "accredit"
     },
     {
       "answer": "TRAVELING",
@@ -576,7 +576,7 @@
     {
       "answer": "CONNECTION",
       "phoneticSource": "CONNEXION",
-      "fodder": "joining"
+      "fodder": "link"
     },
     {
       "answer": "RECOGNISED",
