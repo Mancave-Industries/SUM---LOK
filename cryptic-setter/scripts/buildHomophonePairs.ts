@@ -73,6 +73,15 @@ function stripPosMarker(word: string): string {
   return word.replace(/\([a-z]+\)$/, '');
 }
 
+// A compound like "loudspeaker" for SPEAKER spells the excluded word out
+// verbatim inside the candidate — a direct giveaway (found in review of
+// the doubleDefinition pool, same underlying risk applies here: fodder
+// must not spell out phoneticSource or the answer itself as a substring,
+// not just avoid being identical to them).
+function containsOrIsContainedBy(word: string, other: string): boolean {
+  return word.includes(other) || other.includes(word);
+}
+
 // A synonym drawn from WordNet can be a multi-word phrase joined with
 // underscores ("take_heed") — kept as a display-ready phrase (spaces, not
 // underscores) but only single-word synonyms are used as fodder here, to
@@ -85,7 +94,8 @@ function candidateSynonyms(synonymSets: string[][], exclude: Set<string>): strin
     for (const synonym of set) {
       if (synonym.includes('_')) continue; // multi-word — skip for now
       const lower = stripPosMarker(synonym.toLowerCase());
-      if (!lower || exclude.has(lower) || seen.has(lower)) continue;
+      if (!lower || seen.has(lower)) continue;
+      if ([...exclude].some((word) => containsOrIsContainedBy(lower, word))) continue;
       seen.add(lower);
       result.push(lower);
     }

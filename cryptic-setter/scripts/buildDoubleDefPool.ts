@@ -91,6 +91,12 @@ function commonPrefixLength(a: string, b: string): number {
 // shared prefix or a small edit distance is a good enough proxy for that
 // without needing real morphological analysis.
 function tooSimilarToAnswer(word: string, answerLower: string): boolean {
+  // A compound like "loudspeaker" for SPEAKER spells the answer out
+  // verbatim inside the "different" definition — a direct giveaway, not
+  // just a similar-looking word, and neither the edit-distance nor the
+  // shared-prefix check below catches it (they only look for the answer
+  // near the START of the candidate).
+  if (word.includes(answerLower) || answerLower.includes(word)) return true;
   if (editDistance(word, answerLower) <= 2) return true;
   if (commonPrefixLength(word, answerLower) >= 4) return true;
   return false;

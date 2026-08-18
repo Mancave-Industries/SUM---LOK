@@ -78,7 +78,7 @@
     {
       "answer": "COLOUR",
       "phoneticSource": "COLOR",
-      "fodder": "coloring"
+      "fodder": "vividness"
     },
     {
       "answer": "COURSE",
@@ -148,7 +148,7 @@
     {
       "answer": "KNIGHT",
       "phoneticSource": "NIGHT",
-      "fodder": "nighttime"
+      "fodder": "dark"
     },
     {
       "answer": "LABOUR",
@@ -268,7 +268,7 @@
     {
       "answer": "WRIGHT",
       "phoneticSource": "RIGHT",
-      "fodder": "rightfield"
+      "fodder": "compensate"
     },
     {
       "answer": "WRIGHT",
@@ -395,12 +395,7 @@
     {
       "answer": "MARTIAL",
       "phoneticSource": "MARSHAL",
-      "fodder": "marshall"
-    },
-    {
-      "answer": "MARTIAL",
-      "phoneticSource": "MARSHALL",
-      "fodder": "marshal"
+      "fodder": "mobilize"
     },
     {
       "answer": "MORNING",
@@ -446,11 +441,6 @@
       "answer": "TRUSTEE",
       "phoneticSource": "TRUSTY",
       "fodder": "trustworthy"
-    },
-    {
-      "answer": "WAITING",
-      "phoneticSource": "WEIGHTING",
-      "fodder": "weight"
     },
     {
       "answer": "WHETHER",
@@ -565,11 +555,6 @@
       "answer": "RECOGNIZE",
       "phoneticSource": "RECOGNISE",
       "fodder": "accredit"
-    },
-    {
-      "answer": "TRAVELING",
-      "phoneticSource": "TRAVELLING",
-      "fodder": "travel"
     }
   ],
   "10": [
@@ -587,11 +572,6 @@
       "answer": "RECOGNIZED",
       "phoneticSource": "RECOGNISED",
       "fodder": "accepted"
-    },
-    {
-      "answer": "TRAVELLING",
-      "phoneticSource": "TRAVELING",
-      "fodder": "travel"
     }
   ]
 }
