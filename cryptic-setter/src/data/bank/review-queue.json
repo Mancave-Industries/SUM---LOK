@@ -9560,38 +9560,6 @@
     "createdAt": "2026-08-18T21:35:40.135Z"
   },
   {
-    "id": "0d4e5331-8d69-4128-8a4e-ab1b19b055dc",
-    "answer": "WEARING",
-    "enumeration": "(7)",
-    "device": "doubleDefinition",
-    "definition": "erosion",
-    "definitionPosition": "end",
-    "wordplay": {
-      "fodder": "EXHAUSTING",
-      "suggestedDefinition": "erosion",
-      "operation": "doubleDefinition(WEARING, defA=\"erosion\", defB=\"exhausting\")"
-    },
-    "surface": "Exhausting, this constant erosion (7)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"erosion\" and \"EXHAUSTING\" are registered as two distinct senses of \"WEARING\"",
-      "✓ enumeration \"(7)\" matches answer letter count (7)",
-      "--- using precomputed double-definition seed: \"erosion\" ---",
-      "--- surface attempt 1/5 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"erosion\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"erosion\"",
-      "✓ definition does not echo any wordplay word verbatim",
-      "✓ wordplay text does not repeat the definition phrase",
-      "✓ fodder \"EXHAUSTING\" is present verbatim in the wordplay text",
-      "✓ indicator \"undefined\" is present verbatim in the wordplay text",
-      "✓ fluency check passed: It's a grammatical inverted construction (adjective + noun phrase in apposition) common in natural speech, equivalent to 'This constant erosion is exhausting.'"
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-18T22:27:48.135Z"
-  },
-  {
     "id": "f3611499-f8a1-4bf1-acd7-056115e2f2dc",
     "answer": "HEATER",
     "enumeration": "(6)",
