@@ -1,0 +1,67 @@
+{
+  "id": "puzzle-035",
+  "tier": "standard",
+  "format": "3A2D",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 4,
+      "answer": "CLOSES",
+      "clue": "Callousness evenly spread among staff shuts down the office party (6)",
+      "device": "alternates",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 4,
+      "col": 0,
+      "answer": "RESISTANCE",
+      "clue": "Genealogists shuffled ancestries randomly, revealing opposition (10)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 6,
+      "direction": "across",
+      "row": 9,
+      "col": 1,
+      "answer": "MESSAGING",
+      "clue": "Mess, then aging skin, ruined her wedding photos, all thanks to endless texting (9)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 1,
+      "col": 0,
+      "answer": "EARRINGS",
+      "clue": "Some of dear ringsters' plunder turns out to be ear jewelry (8)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "down",
+      "row": 3,
+      "col": 6,
+      "answer": "LASTING",
+      "clue": "Slating upset the critic, but his grudge proved enduring (7)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 9,
+      "answer": "SURGEONS",
+      "clue": "Sons around town feel the urge to become operating doctors (8)",
+      "device": "container",
+      "bonus": true
+    }
+  ]
+}

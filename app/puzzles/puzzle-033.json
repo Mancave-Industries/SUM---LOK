@@ -1,0 +1,67 @@
+{
+  "id": "puzzle-033",
+  "tier": "standard",
+  "format": "3A2D",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "BOUNDARY",
+      "clue": "After the rebound, arytaenoid cartilage damage often shows some of the throat's true border (8)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 6,
+      "col": 4,
+      "answer": "PUPILS",
+      "clue": "Shaken by protest chants, Pipuls take to the streets as students (6)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 9,
+      "col": 3,
+      "answer": "ASSAULT",
+      "clue": "Anglers say the oquassa ultimately survives within a cold lake, but poachers still plan an attack (7)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "BATHROOMS",
+      "clue": "Builder schedules bath before rooms upstairs get new washrooms (9)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 4,
+      "answer": "DEVELOPERS",
+      "clue": "Software house president somehow develops ER staff into builders (10)",
+      "device": "container",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 3,
+      "col": 9,
+      "answer": "CONSIST",
+      "clue": "Chaotic tocsins during the siege could be composed (7)",
+      "device": "anagram",
+      "bonus": true
+    }
+  ]
+}
