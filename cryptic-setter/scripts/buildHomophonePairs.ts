@@ -63,6 +63,16 @@ function buildSignatureGroups(): Map<string, string[]> {
   return groups;
 }
 
+// WordNet tags some adjective lemmas with a trailing usage-position code —
+// "(a)" attributive-only, "(p)" predicate-only, "(ip)" immediately
+// postnominal — e.g. "martial(a)". That's a WordNet annotation, not part
+// of the actual word: left in place it leaks literal parentheses straight
+// into a generated clue's wordplay text. Always strip it before treating a
+// lemma as a usable fodder word.
+function stripPosMarker(word: string): string {
+  return word.replace(/\([a-z]+\)$/, '');
+}
+
 // A synonym drawn from WordNet can be a multi-word phrase joined with
 // underscores ("take_heed") — kept as a display-ready phrase (spaces, not
 // underscores) but only single-word synonyms are used as fodder here, to
@@ -74,8 +84,8 @@ function candidateSynonyms(synonymSets: string[][], exclude: Set<string>): strin
   for (const set of synonymSets) {
     for (const synonym of set) {
       if (synonym.includes('_')) continue; // multi-word — skip for now
-      const lower = synonym.toLowerCase();
-      if (exclude.has(lower) || seen.has(lower)) continue;
+      const lower = stripPosMarker(synonym.toLowerCase());
+      if (!lower || exclude.has(lower) || seen.has(lower)) continue;
       seen.add(lower);
       result.push(lower);
     }

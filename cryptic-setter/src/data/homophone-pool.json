@@ -68,7 +68,7 @@
     {
       "answer": "CENTRE",
       "phoneticSource": "CENTER",
-      "fodder": "center(a)"
+      "fodder": "halfway"
     },
     {
       "answer": "CHEQUE",
@@ -502,7 +502,7 @@
     {
       "answer": "MARSHALL",
       "phoneticSource": "MARTIAL",
-      "fodder": "martial(a)"
+      "fodder": "warlike"
     },
     {
       "answer": "MODELING",
@@ -512,7 +512,7 @@
     {
       "answer": "PREMIERE",
       "phoneticSource": "PREMIER",
-      "fodder": "premier(a)"
+      "fodder": "prime"
     },
     {
       "answer": "REALIZED",
@@ -554,7 +554,7 @@
     {
       "answer": "PRINCIPLE",
       "phoneticSource": "PRINCIPAL",
-      "fodder": "chief(a)"
+      "fodder": "chief"
     },
     {
       "answer": "PROGRAMME",

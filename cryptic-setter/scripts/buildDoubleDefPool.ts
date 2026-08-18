@@ -30,8 +30,21 @@ interface DoubleDefPair {
   defB: string;
 }
 
+// WordNet tags some adjective lemmas with a trailing usage-position code —
+// "(a)" attributive-only, "(p)" predicate-only, "(ip)" immediately
+// postnominal — e.g. "center(a)" for the attributive-only sense of
+// "center". That's a WordNet annotation, not part of the actual word: left
+// in place it either leaks literal parentheses into a clue's definition
+// text, or worse, turns the answer's own name plus a suffix into a
+// fake "different" definition (e.g. defA="center(a)" for answer CENTER —
+// caught below by re-checking against answerLower AFTER stripping, not
+// before).
+function stripPosMarker(word: string): string {
+  return word.replace(/\([a-z]+\)$/, '');
+}
+
 function normalize(word: string): string {
-  return word.toLowerCase().replace(/_/g, ' ').trim();
+  return stripPosMarker(word.toLowerCase().replace(/_/g, ' ').trim());
 }
 
 // A displayable synonym from a sense: excludes the answer word itself and
@@ -42,8 +55,8 @@ function normalize(word: string): string {
 function firstUsableSynonym(sense: string[], answerLower: string): string | null {
   for (const synonym of sense) {
     if (synonym.includes('_')) continue;
-    const lower = synonym.toLowerCase();
-    if (lower === answerLower) continue;
+    const lower = stripPosMarker(synonym.toLowerCase());
+    if (!lower || lower === answerLower) continue;
     return lower;
   }
   return null;
