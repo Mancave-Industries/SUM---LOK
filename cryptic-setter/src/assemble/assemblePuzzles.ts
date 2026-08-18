@@ -68,6 +68,15 @@ const DEVICE_ORDER: DeviceType[] = [
   'alternates',
 ];
 
+// Hidden-word clues are trivially the easiest device to construct for most
+// answers, so left unchecked they crowd out every other device within a
+// single puzzle, not just across the bank as a whole — a player can end up
+// solving 5 of 6 clues by just spotting where one word ends and the next
+// begins. Capped per puzzle (not just balanced across a whole batch) so no
+// single puzzle over-relies on it regardless of what the bank happens to
+// have on hand for these particular 6 words.
+const MAX_HIDDEN_PER_PUZZLE = 2;
+
 // Reversal/alternates can mechanically construct for well under 1% of
 // words (measured: 0.8%/0.5% at length 6) — real words whose reverse (or
 // every-other-letter) is ALSO a real word are just rare, and these
@@ -185,43 +194,80 @@ function loadBankAnswers(): Set<string> {
   return answers;
 }
 
-function loadBankClue(answer: string): Clue | null {
+// Scans every banked clue for this answer (not just the first match) and
+// prefers one whose device isn't in avoidDevices — this is what lets a
+// puzzle-capped word fall back to an already-banked alternate-device clue
+// for free, instead of either breaking the per-puzzle cap or re-generating
+// (and re-spending credit on) an alternate every single time it comes up.
+// Falls back to an avoided-device match rather than null if that's truly
+// the only clue on hand — the caller decides whether to accept it or try
+// generating a fresh one first.
+function loadBankClue(answer: string, avoidDevices: DeviceType[] = []): Clue | null {
+  let fallback: Clue | null = null;
   for (const file of ['clues.json', 'review-queue.json']) {
     const path = join(process.cwd(), 'src', 'data', 'bank', file);
     if (!existsSync(path)) continue;
     const list: Clue[] = JSON.parse(readFileSync(path, 'utf8'));
-    const match = list.find((c) => c.answer.toUpperCase() === answer.toUpperCase());
-    if (match) return match;
+    for (const clue of list) {
+      if (clue.answer.toUpperCase() !== answer.toUpperCase()) continue;
+      if (!avoidDevices.includes(clue.device as DeviceType)) return clue;
+      if (!fallback) fallback = clue;
+    }
   }
-  return null;
+  return fallback;
+}
+
+function recordDeviceUse(
+  device: string,
+  deviceUsage: Partial<Record<DeviceType, number>>,
+  puzzleDeviceUsage: Partial<Record<DeviceType, number>>
+): void {
+  deviceUsage[device as DeviceType] = (deviceUsage[device as DeviceType] ?? 0) + 1;
+  puzzleDeviceUsage[device as DeviceType] = (puzzleDeviceUsage[device as DeviceType] ?? 0) + 1;
 }
 
 async function getOrGenerateClue(
   answer: string,
-  deviceUsage: Partial<Record<DeviceType, number>>
+  deviceUsage: Partial<Record<DeviceType, number>>,
+  puzzleDeviceUsage: Partial<Record<DeviceType, number>>
 ): Promise<{ clue: string; device: string } | null> {
-  const existing = loadBankClue(answer);
-  if (existing) {
+  const hiddenCapped = (puzzleDeviceUsage.hidden ?? 0) >= MAX_HIDDEN_PER_PUZZLE;
+  const avoidDevices: DeviceType[] = hiddenCapped ? ['hidden'] : [];
+
+  const existing = loadBankClue(answer, avoidDevices);
+  if (existing && !(hiddenCapped && existing.device === 'hidden')) {
     console.log(`  ${answer}: reusing bank clue (${existing.device})`);
     // A cache hit still counts toward this batch's actual device
     // distribution — leaving it uncounted would let the balancer's view of
     // "usage so far" drift further from reality the more word-reuse kicks
     // in, exactly when it most needs to be accurate.
-    deviceUsage[existing.device] = (deviceUsage[existing.device] ?? 0) + 1;
+    recordDeviceUse(existing.device, deviceUsage, puzzleDeviceUsage);
     return { clue: existing.surface, device: existing.device };
   }
 
-  const constructible = DEVICE_ORDER.filter((d) => {
+  let constructible = DEVICE_ORDER.filter((d) => {
     const bank = indicatorBanks[d];
     return bank && getDevice(d).construct(answer, bank);
   });
+  if (hiddenCapped) constructible = constructible.filter((d) => d !== 'hidden');
+
   if (constructible.length === 0) {
+    // Hidden is capped for this puzzle and nothing else can construct for
+    // this word — using the capped-out bank clue anyway (if one exists) is
+    // better than permanently blacklisting a perfectly good word over a
+    // per-puzzle-only constraint; it's a rare soft-cap violation rather
+    // than a hard failure.
+    if (existing) {
+      console.log(`  ${answer}: reusing bank clue (${existing.device}) — hidden cap hit, no alternative device works`);
+      recordDeviceUse(existing.device, deviceUsage, puzzleDeviceUsage);
+      return { clue: existing.surface, device: existing.device };
+    }
     console.log(`  ${answer}: ✗ no device could construct this at all`);
     return null;
   }
   constructible.sort((a, b) => (deviceUsage[a] ?? 0) - (deviceUsage[b] ?? 0));
   const device = constructible[0];
-  deviceUsage[device] = (deviceUsage[device] ?? 0) + 1;
+  recordDeviceUse(device, deviceUsage, puzzleDeviceUsage);
 
   console.log(`  ${answer}: generating fresh (${device})...`);
   try {
@@ -297,8 +343,12 @@ async function assembleOne(
   );
 
   const clueFor: Record<string, { clue: string; device: string }> = {};
+  // Fresh per puzzle (unlike deviceUsage, which persists across the whole
+  // batch) — this is what the MAX_HIDDEN_PER_PUZZLE cap is measured
+  // against, so it has to reset for every new grid, not accumulate.
+  const puzzleDeviceUsage: Partial<Record<DeviceType, number>> = {};
   for (const answer of words) {
-    const result = await getOrGenerateClue(answer, deviceUsage);
+    const result = await getOrGenerateClue(answer, deviceUsage, puzzleDeviceUsage);
     if (!result) return { failedAnswer: answer }; // caller blacklists this word and retries
     clueFor[answer] = result;
   }
