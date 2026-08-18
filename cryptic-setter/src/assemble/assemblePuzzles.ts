@@ -3,7 +3,9 @@
 // interlocking grid, reuses an existing bank clue for each answer where
 // one exists, generates a fresh one (real LLM call, verified same as
 // everything else) where it doesn't, and writes app/puzzles/<id>.json +
-// updates the manifest. Run with: npx tsx src/assemble/assemblePuzzles.ts [count]
+// updates the manifest. Run with:
+//   npx tsx src/assemble/assemblePuzzles.ts [count] [standard|hard]
+// tier defaults to "standard" if omitted.
 
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -19,10 +21,15 @@ import alternatesIndicators from '../data/indicators/alternates.json' with { typ
 import charadeIndicators from '../data/indicators/charade.json' with { type: 'json' };
 import containerIndicators from '../data/indicators/container.json' with { type: 'json' };
 import deletionIndicatorData from '../data/indicators/deletion.json' with { type: 'json' };
+import homophoneIndicators from '../data/indicators/homophone.json' with { type: 'json' };
 import wordlistsByLength from '../data/wordlistsByLength.json' with { type: 'json' };
 import reversalPairs from '../data/reversal-pairs.json' with { type: 'json' };
 import alternatesPool from '../data/alternates-pool.json' with { type: 'json' };
+import homophonePool from '../data/homophone-pool.json' with { type: 'json' };
+import doubleDefPool from '../data/double-def-pool.json' with { type: 'json' };
 import type { Clue, DeviceType } from '../types.js';
+
+type Tier = 'standard' | 'hard';
 
 // Every grid used to be 8 letters, hardcoded, all 6 answers sharing that
 // one length. Now a puzzle's shape is picked from a fixed set of 10x10
@@ -48,6 +55,11 @@ const indicatorBanks: Partial<Record<DeviceType, string[]>> = {
   charade: charadeIndicators as string[],
   container: containerIndicators as string[],
   deletion: (deletionIndicatorData as Array<{ word: string }>).map((e) => e.word),
+  homophone: homophoneIndicators as string[],
+  // doubleDefinition uses no linking indicator at all (see devices/doubleDefinition.ts) —
+  // an empty-but-present array keeps it truthy for the `indicatorBanks[d]`
+  // constructibility check below without implying any real indicator bank.
+  doubleDefinition: [],
 };
 // Kept in sync with cli.ts's AUTO_DEVICE_ORDER: deletion is excluded here
 // too. For behead/curtail the fodder is only one letter longer than the
@@ -58,7 +70,20 @@ const indicatorBanks: Partial<Record<DeviceType, string[]>> = {
 // full rationale): their two-labelled-parts-plus-indicator wordplay is
 // structurally harder to fold into fluent English than hidden/anagram's
 // single flowing description, so they fail the fluency check more often.
-const DEVICE_HANDICAP: Partial<Record<DeviceType, number>> = { charade: 2, container: 2 };
+//
+// Hard tier reuses the exact same device set as its base, plus the two
+// tier-3 judgement devices — homophone and doubleDefinition are never
+// offered to a standard-tier puzzle at all, matching the user's intent
+// that multi-device/general-knowledge clues are what makes the hard tier
+// actually harder. Hard tier also handicaps hidden/anagram heavily (well
+// past charade/container's +2) — those two are the easiest devices to
+// construct for almost any word, so without a strong handicap they'd
+// crowd out the harder devices in every hard puzzle exactly the way
+// hidden alone had to be capped per-puzzle for the standard tier.
+const DEVICE_HANDICAP: Record<Tier, Partial<Record<DeviceType, number>>> = {
+  standard: { charade: 2, container: 2 },
+  hard: { charade: 2, container: 2, hidden: 6, anagram: 6 },
+};
 const DEVICE_ORDER: DeviceType[] = [
   'charade',
   'container',
@@ -67,6 +92,11 @@ const DEVICE_ORDER: DeviceType[] = [
   'reversal',
   'alternates',
 ];
+const HARD_DEVICE_ORDER: DeviceType[] = [...DEVICE_ORDER, 'homophone', 'doubleDefinition'];
+
+function deviceOrderFor(tier: Tier): DeviceType[] {
+  return tier === 'hard' ? HARD_DEVICE_ORDER : DEVICE_ORDER;
+}
 
 // Hidden-word clues are trivially the easiest device to construct for most
 // answers, so left unchecked they crowd out every other device within a
@@ -74,8 +104,19 @@ const DEVICE_ORDER: DeviceType[] = [
 // solving 5 of 6 clues by just spotting where one word ends and the next
 // begins. Capped per puzzle (not just balanced across a whole batch) so no
 // single puzzle over-relies on it regardless of what the bank happens to
-// have on hand for these particular 6 words.
-const MAX_HIDDEN_PER_PUZZLE = 2;
+// have on hand for these particular 6 words. Hard tier caps it even
+// tighter, on top of the handicap above, since a hard puzzle leaning on
+// the single easiest device defeats the entire point of the tier.
+const MAX_HIDDEN_PER_PUZZLE: Record<Tier, number> = { standard: 2, hard: 1 };
+
+// homophone/doubleDefinition clues always land in review-queue.json first
+// (they're tier 3 — see devices/index.ts) and need an explicit human
+// approval step (clueBank.ts's approveFromReviewQueue) before a real puzzle
+// can use them. Every other device's review-queue entries (a definition
+// that didn't clear WordNet) stay reusable as before — this restriction is
+// specifically about gating the two judgement devices, not review status
+// in general.
+const TIER3_GATED_DEVICES: DeviceType[] = ['homophone', 'doubleDefinition'];
 
 // Reversal/alternates can mechanically construct for well under 1% of
 // words (measured: 0.8%/0.5% at length 6) — real words whose reverse (or
@@ -97,22 +138,54 @@ const alternatesAnswersByLength: Record<string, string[]> = Object.fromEntries(
     Object.keys(byAnswer),
   ])
 );
+// homophone/doubleDefinition pools (scripts/buildHomophonePairs.ts,
+// buildDoubleDefPool.ts) are likely even thinner than reversal/alternates —
+// two independent rarity filters stacked (CMU-dict coverage + a WordNet
+// synonym, or two non-overlapping WordNet senses). Same seeding mechanism
+// as reversal/alternates is what actually gives them a real chance to
+// appear in a hard-tier puzzle at all.
+const homophoneAnswersByLength: Record<string, string[]> = Object.fromEntries(
+  Object.entries(homophonePool as Record<string, { answer: string }[]>).map(([len, pairs]) => [
+    len,
+    pairs.map((p) => p.answer),
+  ])
+);
+const doubleDefAnswersByLength: Record<string, string[]> = Object.fromEntries(
+  Object.entries(doubleDefPool as Record<string, { answer: string }[]>).map(([len, pairs]) => [
+    len,
+    pairs.map((p) => p.answer),
+  ])
+);
 const SEEDABLE_DEVICES = ['reversal', 'alternates'] as const;
-type SeedableDevice = (typeof SEEDABLE_DEVICES)[number];
+const HARD_SEEDABLE_DEVICES = ['reversal', 'alternates', 'homophone', 'doubleDefinition'] as const;
+type SeedableDevice = (typeof HARD_SEEDABLE_DEVICES)[number];
 
-function answerPoolFor(device: SeedableDevice): Record<string, string[]> {
-  return device === 'reversal' ? reversalAnswersByLength : alternatesAnswersByLength;
+function seedableDevicesFor(tier: Tier): readonly SeedableDevice[] {
+  return tier === 'hard' ? HARD_SEEDABLE_DEVICES : SEEDABLE_DEVICES;
 }
 
-// Whenever the batch's persistent device counter shows reversal or
-// alternates sitting at (or below) every other device's usage, worth
-// trying to seed one slot of the current template with a word only that
-// device can clue — this is what actually gives them a chance to appear,
-// instead of assembling a normal 6-word grid and discovering after the
-// fact that none of the 6 happen to support either device.
-function pickSeedTarget(deviceUsage: Partial<Record<DeviceType, number>>): SeedableDevice | null {
-  const minOverall = Math.min(...DEVICE_ORDER.map((d) => deviceUsage[d] ?? 0));
-  for (const device of SEEDABLE_DEVICES) {
+function answerPoolFor(device: SeedableDevice): Record<string, string[]> {
+  switch (device) {
+    case 'reversal':
+      return reversalAnswersByLength;
+    case 'alternates':
+      return alternatesAnswersByLength;
+    case 'homophone':
+      return homophoneAnswersByLength;
+    case 'doubleDefinition':
+      return doubleDefAnswersByLength;
+  }
+}
+
+// Whenever the batch's persistent device counter shows a seedable device
+// sitting at (or below) every other device's usage, worth trying to seed
+// one slot of the current template with a word only that device can clue —
+// this is what actually gives them a chance to appear, instead of
+// assembling a normal 6-word grid and discovering after the fact that none
+// of the 6 happen to support any of them.
+function pickSeedTarget(deviceUsage: Partial<Record<DeviceType, number>>, tier: Tier): SeedableDevice | null {
+  const minOverall = Math.min(...deviceOrderFor(tier).map((d) => deviceUsage[d] ?? 0));
+  for (const device of seedableDevicesFor(tier)) {
     if ((deviceUsage[device] ?? 0) === minOverall) return device;
   }
   return null;
@@ -157,21 +230,42 @@ function loadManifest(): { puzzles: string[] } {
 // manifest can have 10 entries while the highest actual id on disk is
 // puzzle-015. Starting from length+1 collides with and silently overwrites
 // an existing file. Scan the real filenames instead.
-function nextPuzzleNumber(): number {
+//
+// Hard-tier puzzles live in their own "puzzle-h-NNN" namespace, numbered
+// independently from standard "puzzle-NNN" — the anchored regex below
+// means the standard pattern never matches a hard-tier filename (the "h-"
+// isn't a digit) or vice versa.
+function idPrefixFor(tier: Tier): string {
+  return tier === 'hard' ? 'puzzle-h-' : 'puzzle-';
+}
+
+function nextPuzzleNumber(tier: Tier): number {
   if (!existsSync(PUZZLES_DIR)) return 1;
+  const pattern = new RegExp(`^${idPrefixFor(tier)}(\\d+)\\.json$`);
   let max = 0;
   for (const file of readdirSync(PUZZLES_DIR)) {
-    const match = file.match(/^puzzle-(\d+)\.json$/);
+    const match = file.match(pattern);
     if (match) max = Math.max(max, Number(match[1]));
   }
   return max + 1;
 }
 
+// Matches an actual puzzle file only (puzzle-NNN.json or puzzle-h-NNN.json)
+// — an allowlist rather than blacklisting manifest.json by name, so any
+// future non-puzzle file dropped into this directory (daily.json in Part 3
+// of the daily-tier plan, for instance) is automatically skipped too
+// without this function needing to change again.
+const PUZZLE_FILE_PATTERN = /^puzzle-(h-)?\d+\.json$/;
+
+// Shared across both tiers deliberately: an answer used in a standard
+// puzzle can never reappear in a hard one either, and vice versa — this is
+// what actually enforces that shared exclusion pool, without either tier
+// needing its own separate bookkeeping.
 function loadUsedAnswers(): Set<string> {
   const used = new Set<string>();
   if (!existsSync(PUZZLES_DIR)) return used;
   for (const file of readdirSync(PUZZLES_DIR)) {
-    if (!file.endsWith('.json') || file === 'manifest.json') continue;
+    if (!PUZZLE_FILE_PATTERN.test(file)) continue;
     const puzzle = JSON.parse(readFileSync(join(PUZZLES_DIR, file), 'utf8'));
     for (const entry of puzzle.entries ?? []) used.add(entry.answer.toUpperCase());
   }
@@ -189,7 +283,10 @@ function loadBankAnswers(): Set<string> {
     const path = join(process.cwd(), 'src', 'data', 'bank', file);
     if (!existsSync(path)) continue;
     const list: Clue[] = JSON.parse(readFileSync(path, 'utf8'));
-    for (const clue of list) answers.add(clue.answer.toUpperCase());
+    for (const clue of list) {
+      if (file === 'review-queue.json' && TIER3_GATED_DEVICES.includes(clue.device)) continue;
+      answers.add(clue.answer.toUpperCase());
+    }
   }
   return answers;
 }
@@ -210,6 +307,7 @@ function loadBankClue(answer: string, avoidDevices: DeviceType[] = []): Clue | n
     const list: Clue[] = JSON.parse(readFileSync(path, 'utf8'));
     for (const clue of list) {
       if (clue.answer.toUpperCase() !== answer.toUpperCase()) continue;
+      if (file === 'review-queue.json' && TIER3_GATED_DEVICES.includes(clue.device)) continue;
       if (!avoidDevices.includes(clue.device as DeviceType)) return clue;
       if (!fallback) fallback = clue;
     }
@@ -229,12 +327,21 @@ function recordDeviceUse(
 async function getOrGenerateClue(
   answer: string,
   deviceUsage: Partial<Record<DeviceType, number>>,
-  puzzleDeviceUsage: Partial<Record<DeviceType, number>>
+  puzzleDeviceUsage: Partial<Record<DeviceType, number>>,
+  tier: Tier
 ): Promise<{ clue: string; device: string } | null> {
-  const hiddenCapped = (puzzleDeviceUsage.hidden ?? 0) >= MAX_HIDDEN_PER_PUZZLE;
+  const deviceOrder = deviceOrderFor(tier);
+  const hiddenCapped = (puzzleDeviceUsage.hidden ?? 0) >= MAX_HIDDEN_PER_PUZZLE[tier];
   const avoidDevices: DeviceType[] = hiddenCapped ? ['hidden'] : [];
 
-  const existing = loadBankClue(answer, avoidDevices);
+  // A bank clue whose device isn't offered at this tier at all (a
+  // homophone/doubleDefinition clue reused for a standard puzzle, or vice
+  // versa — though the two devices are hard-only so that direction can't
+  // happen) is not a soft avoid-if-possible like the hidden cap below; it's
+  // a hard exclusion, so it's filtered out before even being considered as
+  // a fallback.
+  const rawExisting = loadBankClue(answer, avoidDevices);
+  const existing = rawExisting && deviceOrder.includes(rawExisting.device as DeviceType) ? rawExisting : null;
   if (existing && !(hiddenCapped && existing.device === 'hidden')) {
     console.log(`  ${answer}: reusing bank clue (${existing.device})`);
     // A cache hit still counts toward this batch's actual device
@@ -245,7 +352,7 @@ async function getOrGenerateClue(
     return { clue: existing.surface, device: existing.device };
   }
 
-  let constructible = DEVICE_ORDER.filter((d) => {
+  let constructible = deviceOrder.filter((d) => {
     const bank = indicatorBanks[d];
     return bank && getDevice(d).construct(answer, bank);
   });
@@ -292,9 +399,10 @@ type AssembleResult = { id: string } | { failedAnswer: string } | { noGridFound:
 async function assembleOne(
   puzzleNumber: number,
   exclude: Set<string>,
-  deviceUsage: Partial<Record<DeviceType, number>>
+  deviceUsage: Partial<Record<DeviceType, number>>,
+  tier: Tier
 ): Promise<AssembleResult> {
-  const id = `puzzle-${String(puzzleNumber).padStart(3, '0')}`;
+  const id = `${idPrefixFor(tier)}${String(puzzleNumber).padStart(3, '0')}`;
   // Defense in depth against a nextPuzzleNumber() regression: check before
   // any LLM calls happen, not after — never silently clobber an existing
   // puzzle file, and never waste real generation work discovering that.
@@ -304,15 +412,16 @@ async function assembleOne(
 
   const preferred = loadBankAnswers();
   const pools = wordlistsByLength as Record<string, string[]>;
-  const seedTarget = pickSeedTarget(deviceUsage);
+  const seedTarget = pickSeedTarget(deviceUsage, tier);
 
   let solution = null;
   let template: GridTemplate | null = null;
   for (const candidate of templateOrderFor(puzzleNumber)) {
-    // Try seeding a reversal/alternates word into this template first;
-    // fall back to a normal unrestricted fill of the SAME template before
-    // moving on to the next one, rather than sacrificing the whole
-    // template attempt just because seeding didn't pan out this time.
+    // Try seeding a reversal/alternates/homophone/doubleDefinition word
+    // into this template first; fall back to a normal unrestricted fill of
+    // the SAME template before moving on to the next one, rather than
+    // sacrificing the whole template attempt just because seeding didn't
+    // pan out this time.
     if (seedTarget) {
       const slotPools = buildSeedSlotPools(candidate, seedTarget, exclude);
       if (slotPools) {
@@ -348,7 +457,7 @@ async function assembleOne(
   // against, so it has to reset for every new grid, not accumulate.
   const puzzleDeviceUsage: Partial<Record<DeviceType, number>> = {};
   for (const answer of words) {
-    const result = await getOrGenerateClue(answer, deviceUsage, puzzleDeviceUsage);
+    const result = await getOrGenerateClue(answer, deviceUsage, puzzleDeviceUsage, tier);
     if (!result) return { failedAnswer: answer }; // caller blacklists this word and retries
     clueFor[answer] = result;
   }
@@ -377,9 +486,9 @@ async function assembleOne(
     };
   });
 
-  const puzzle = { id, format, entries };
+  const puzzle = { id, tier, format, entries };
   writeFileSync(join(PUZZLES_DIR, `${id}.json`), JSON.stringify(puzzle, null, 2) + '\n');
-  console.log(`Wrote ${id}.json (${format}, bonus=${entries.find((e) => e.bonus)?.answer})`);
+  console.log(`Wrote ${id}.json (${tier}, ${format}, bonus=${entries.find((e) => e.bonus)?.answer})`);
 
   for (const answer of words) exclude.add(answer.toUpperCase());
   return { id };
@@ -387,16 +496,22 @@ async function assembleOne(
 
 async function main() {
   const count = Number(process.argv[2] ?? '3');
+  const tierArg = process.argv[3] ?? 'standard';
+  if (tierArg !== 'standard' && tierArg !== 'hard') {
+    throw new Error(`Unknown tier "${tierArg}" — expected "standard" or "hard"`);
+  }
+  const tier: Tier = tierArg;
+
   const manifest = loadManifest();
   const exclude = loadUsedAnswers();
 
-  let nextNumber = nextPuzzleNumber();
+  let nextNumber = nextPuzzleNumber(tier);
   let built = 0;
   // Seeded once and mutated in place for the whole run — previously this
   // was reset fresh inside assembleOne() on every single puzzle, so it
   // never accumulated enough history to actually balance anything across a
   // multi-puzzle batch.
-  const deviceUsage: Partial<Record<DeviceType, number>> = { ...DEVICE_HANDICAP };
+  const deviceUsage: Partial<Record<DeviceType, number>> = { ...DEVICE_HANDICAP[tier] };
   // Each attempt that fails still grows the bank with whichever words in
   // it succeeded before the one that didn't — and solveHashGrid now biases
   // toward reusing those, so later attempts should complete much faster
@@ -420,7 +535,7 @@ async function main() {
     slotsAttempted++;
     let result: AssembleResult | null = null;
     for (let attempt = 0; attempt < maxAttemptsPerSlot; attempt++) {
-      result = await assembleOne(nextNumber, exclude, deviceUsage);
+      result = await assembleOne(nextNumber, exclude, deviceUsage, tier);
       if ('id' in result) break;
       if ('noGridFound' in result) break; // pool exhausted, no point retrying
       // A specific word failed generation — blacklist it so future grid
@@ -449,7 +564,7 @@ async function main() {
     built++;
   }
 
-  console.log(`\nManifest now has ${manifest.puzzles.length} puzzles (${built} built this run).`);
+  console.log(`\nManifest now has ${manifest.puzzles.length} puzzles (${built} ${tier} puzzle(s) built this run).`);
 }
 
 main().catch((err) => {

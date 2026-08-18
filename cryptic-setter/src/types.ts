@@ -27,6 +27,17 @@ export interface Wordplay {
   indicator?: string;
   fodder?: string; // Tier 1
   components?: string[]; // Tier 2 charade/container parts
+  // Tier 3 homophone: the word that actually sounds like the answer. Kept
+  // separate from `fodder` (the synonym of this word that's allowed to
+  // appear in the surface text) — phoneticSource itself must NOT appear in
+  // the rendered clue, since it would give the answer away directly.
+  phoneticSource?: string;
+  // Tier 3 doubleDefinition: the OTHER genuine definition of the answer,
+  // used as the clue's actual `definition` field. Deliberately not folded
+  // into `components`/`fodder` — those fields are scanned by
+  // verifyDefinitionDoesNotEchoWordplay for a literal echo against the
+  // definition text, and the definition is required to contain this seed.
+  suggestedDefinition?: string;
   operation: string; // machine-readable parse, e.g. "anagram(LISTEN, fodder=SILENT)"
 }
 

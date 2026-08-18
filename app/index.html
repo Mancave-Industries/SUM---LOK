@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>QUYPTICK — daily mini cryptic</title>
-  <link rel="stylesheet" href="style.css?v=5" />
+  <link rel="stylesheet" href="style.css?v=6" />
 </head>
 <body>
   <div class="menu-overlay" id="menu-overlay">
@@ -37,6 +37,8 @@
           <strong>Enter</strong> — correct letters turn green, right-letter-wrong-spot
           turns yellow, and letters not in the answer turn gray, same as Wordle.
           Solve all five visible clues to unlock a sixth bonus entry that closes off the grid.
+          You have <strong>5 wrong guesses</strong> shared across the whole puzzle — use them
+          all up before solving everything and the grid reveals as a loss.
         </p>
       </div>
 
@@ -69,6 +71,7 @@
       </div>
 
       <div class="badge" id="bonus-badge">✦ bonus unlocked</div>
+      <div class="attempts-indicator" id="attempts-indicator"></div>
 
       <div class="grid-area">
         <div id="grid" role="grid" aria-label="Crossword grid"></div>
@@ -83,6 +86,12 @@
         <div class="share-row" id="share-row"></div>
         <button class="share-btn" id="share-btn" type="button">Share result</button>
         <button class="next-puzzle-btn" id="next-puzzle-btn" type="button"></button>
+      </div>
+
+      <div class="fail-panel" id="fail-panel">
+        <h2>Out of attempts</h2>
+        <div class="fail-line" id="fail-line"></div>
+        <button class="next-puzzle-btn" id="fail-next-puzzle-btn" type="button"></button>
       </div>
     </div>
 
@@ -115,6 +124,6 @@
 
   <div class="toast" id="toast"></div>
 
-  <script src="app.js?v=5"></script>
+  <script src="app.js?v=6"></script>
 </body>
 </html>

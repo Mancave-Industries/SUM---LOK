@@ -1,0 +1,597 @@
+{
+  "6": [
+    {
+      "answer": "ANALOG",
+      "phoneticSource": "ANALOGUE",
+      "fodder": "linear"
+    },
+    {
+      "answer": "BANNED",
+      "phoneticSource": "BAND",
+      "fodder": "ring"
+    },
+    {
+      "answer": "BETTER",
+      "phoneticSource": "BETTOR",
+      "fodder": "wagerer"
+    },
+    {
+      "answer": "BLONDE",
+      "phoneticSource": "BLOND",
+      "fodder": "light-haired"
+    },
+    {
+      "answer": "BORDER",
+      "phoneticSource": "BOARDER",
+      "fodder": "lodger"
+    },
+    {
+      "answer": "BOUGHT",
+      "phoneticSource": "BAHT",
+      "fodder": "tical"
+    },
+    {
+      "answer": "BRIDAL",
+      "phoneticSource": "BRIDLE",
+      "fodder": "check"
+    },
+    {
+      "answer": "CANNON",
+      "phoneticSource": "CANON",
+      "fodder": "canyon"
+    },
+    {
+      "answer": "CANVAS",
+      "phoneticSource": "CANVASS",
+      "fodder": "analyze"
+    },
+    {
+      "answer": "CARMEN",
+      "phoneticSource": "CARMINE",
+      "fodder": "red"
+    },
+    {
+      "answer": "CAUGHT",
+      "phoneticSource": "COT",
+      "fodder": "crib"
+    },
+    {
+      "answer": "CAUGHT",
+      "phoneticSource": "KHAT",
+      "fodder": "kat"
+    },
+    {
+      "answer": "CENTER",
+      "phoneticSource": "CENTRE",
+      "fodder": "concentrate"
+    },
+    {
+      "answer": "CENTRE",
+      "phoneticSource": "CENTER",
+      "fodder": "center(a)"
+    },
+    {
+      "answer": "CHEQUE",
+      "phoneticSource": "CHECK",
+      "fodder": "crack"
+    },
+    {
+      "answer": "COLOUR",
+      "phoneticSource": "COLOR",
+      "fodder": "discolor"
+    },
+    {
+      "answer": "COURSE",
+      "phoneticSource": "COARSE",
+      "fodder": "common"
+    },
+    {
+      "answer": "COURSE",
+      "phoneticSource": "CORSE",
+      "fodder": "corsica"
+    },
+    {
+      "answer": "DIALOG",
+      "phoneticSource": "DIALOGUE",
+      "fodder": "negotiation"
+    },
+    {
+      "answer": "DIFFER",
+      "phoneticSource": "DEFER",
+      "fodder": "submit"
+    },
+    {
+      "answer": "FAVOUR",
+      "phoneticSource": "FAVOR",
+      "fodder": "privilege"
+    },
+    {
+      "answer": "FISHER",
+      "phoneticSource": "FISSURE",
+      "fodder": "crack"
+    },
+    {
+      "answer": "FOURTH",
+      "phoneticSource": "FORTH",
+      "fodder": "forward"
+    },
+    {
+      "answer": "GRANDE",
+      "phoneticSource": "GRAND",
+      "fodder": "distinguished"
+    },
+    {
+      "answer": "GREECE",
+      "phoneticSource": "GREASE",
+      "fodder": "dirt"
+    },
+    {
+      "answer": "HARBOR",
+      "phoneticSource": "HARBOUR",
+      "fodder": "hold"
+    },
+    {
+      "answer": "HIGHER",
+      "phoneticSource": "HIRE",
+      "fodder": "lease"
+    },
+    {
+      "answer": "HOLLOW",
+      "phoneticSource": "HOLLO",
+      "fodder": "shout"
+    },
+    {
+      "answer": "HOSTEL",
+      "phoneticSource": "HOSTILE",
+      "fodder": "uncongenial"
+    },
+    {
+      "answer": "KNIGHT",
+      "phoneticSource": "NIGHT",
+      "fodder": "nox"
+    },
+    {
+      "answer": "LABOUR",
+      "phoneticSource": "LABOR",
+      "fodder": "toil"
+    },
+    {
+      "answer": "LESSON",
+      "phoneticSource": "LESSEN",
+      "fodder": "subside"
+    },
+    {
+      "answer": "MAGNET",
+      "phoneticSource": "MAGNATE",
+      "fodder": "baron"
+    },
+    {
+      "answer": "MISSED",
+      "phoneticSource": "MIST",
+      "fodder": "obscure"
+    },
+    {
+      "answer": "PACKED",
+      "phoneticSource": "PACT",
+      "fodder": "treaty"
+    },
+    {
+      "answer": "PASSED",
+      "phoneticSource": "PAST",
+      "fodder": "by"
+    },
+    {
+      "answer": "PASTOR",
+      "phoneticSource": "PASTER",
+      "fodder": "sticker"
+    },
+    {
+      "answer": "PROFIT",
+      "phoneticSource": "PROPHET",
+      "fodder": "prophesier"
+    },
+    {
+      "answer": "RAISED",
+      "phoneticSource": "RAZED",
+      "fodder": "demolished"
+    },
+    {
+      "answer": "ROUTER",
+      "phoneticSource": "ROOTER",
+      "fodder": "fan"
+    },
+    {
+      "answer": "SELLER",
+      "phoneticSource": "CELLAR",
+      "fodder": "basement"
+    },
+    {
+      "answer": "SENSOR",
+      "phoneticSource": "CENSER",
+      "fodder": "thurible"
+    },
+    {
+      "answer": "SENSOR",
+      "phoneticSource": "CENSOR",
+      "fodder": "ban"
+    },
+    {
+      "answer": "SERIAL",
+      "phoneticSource": "CEREAL",
+      "fodder": "grain"
+    },
+    {
+      "answer": "SLIGHT",
+      "phoneticSource": "SLEIGHT",
+      "fodder": "dexterity"
+    },
+    {
+      "answer": "SOUGHT",
+      "phoneticSource": "SOT",
+      "fodder": "drunkard"
+    },
+    {
+      "answer": "STAYED",
+      "phoneticSource": "STAID",
+      "fodder": "sedate"
+    },
+    {
+      "answer": "TAUGHT",
+      "phoneticSource": "TAUT",
+      "fodder": "tight"
+    },
+    {
+      "answer": "THROWN",
+      "phoneticSource": "THRONE",
+      "fodder": "enthrone"
+    },
+    {
+      "answer": "TIMBER",
+      "phoneticSource": "TIMBRE",
+      "fodder": "quality"
+    },
+    {
+      "answer": "WAIVER",
+      "phoneticSource": "WAVER",
+      "fodder": "quaver"
+    },
+    {
+      "answer": "WEEKLY",
+      "phoneticSource": "WEAKLY",
+      "fodder": "decrepit"
+    },
+    {
+      "answer": "WEIGHT",
+      "phoneticSource": "WAIT",
+      "fodder": "waitress"
+    },
+    {
+      "answer": "WRIGHT",
+      "phoneticSource": "RIGHT",
+      "fodder": "correctly"
+    },
+    {
+      "answer": "WRIGHT",
+      "phoneticSource": "RITE",
+      "fodder": "ritual"
+    },
+    {
+      "answer": "WRIGHT",
+      "phoneticSource": "WRITE",
+      "fodder": "spell"
+    }
+  ],
+  "7": [
+    {
+      "answer": "ADAPTOR",
+      "phoneticSource": "ADAPTER",
+      "fodder": "arranger"
+    },
+    {
+      "answer": "ADVISOR",
+      "phoneticSource": "ADVISER",
+      "fodder": "consultant"
+    },
+    {
+      "answer": "ALLOWED",
+      "phoneticSource": "ALOUD",
+      "fodder": "loudly"
+    },
+    {
+      "answer": "BEARING",
+      "phoneticSource": "BARING",
+      "fodder": "denudation"
+    },
+    {
+      "answer": "BIZARRE",
+      "phoneticSource": "BAZAAR",
+      "fodder": "fair"
+    },
+    {
+      "answer": "BIZARRE",
+      "phoneticSource": "BAZAR",
+      "fodder": "bazaar"
+    },
+    {
+      "answer": "BOROUGH",
+      "phoneticSource": "BURROW",
+      "fodder": "tunnel"
+    },
+    {
+      "answer": "CEILING",
+      "phoneticSource": "SEALING",
+      "fodder": "waterproofing"
+    },
+    {
+      "answer": "COLORED",
+      "phoneticSource": "COLOURED",
+      "fodder": "negro"
+    },
+    {
+      "answer": "COUNCIL",
+      "phoneticSource": "COUNSEL",
+      "fodder": "rede"
+    },
+    {
+      "answer": "DEFENCE",
+      "phoneticSource": "DEFENSE",
+      "fodder": "denial"
+    },
+    {
+      "answer": "DEFENSE",
+      "phoneticSource": "DEFENCE",
+      "fodder": "denial"
+    },
+    {
+      "answer": "DISCUSS",
+      "phoneticSource": "DISCUS",
+      "fodder": "saucer"
+    },
+    {
+      "answer": "EDITION",
+      "phoneticSource": "ADDITION",
+      "fodder": "summation"
+    },
+    {
+      "answer": "ENQUIRY",
+      "phoneticSource": "INQUIRY",
+      "fodder": "question"
+    },
+    {
+      "answer": "FORWARD",
+      "phoneticSource": "FOREWORD",
+      "fodder": "preface"
+    },
+    {
+      "answer": "HARBOUR",
+      "phoneticSource": "HARBOR",
+      "fodder": "shield"
+    },
+    {
+      "answer": "INQUIRY",
+      "phoneticSource": "ENQUIRY",
+      "fodder": "research"
+    },
+    {
+      "answer": "INSIGHT",
+      "phoneticSource": "INCITE",
+      "fodder": "prod"
+    },
+    {
+      "answer": "LABELED",
+      "phoneticSource": "LABELLED",
+      "fodder": "tagged"
+    },
+    {
+      "answer": "LICENCE",
+      "phoneticSource": "LICENSE",
+      "fodder": "certify"
+    },
+    {
+      "answer": "LICENSE",
+      "phoneticSource": "LICENCE",
+      "fodder": "certify"
+    },
+    {
+      "answer": "MARTIAL",
+      "phoneticSource": "MARSHAL",
+      "fodder": "mobilize"
+    },
+    {
+      "answer": "MARTIAL",
+      "phoneticSource": "MARSHALL",
+      "fodder": "marshal"
+    },
+    {
+      "answer": "MORNING",
+      "phoneticSource": "MOURNING",
+      "fodder": "bereaved"
+    },
+    {
+      "answer": "PROGRAM",
+      "phoneticSource": "PROGRAMME",
+      "fodder": "plan"
+    },
+    {
+      "answer": "PROPHET",
+      "phoneticSource": "PROFIT",
+      "fodder": "gain"
+    },
+    {
+      "answer": "RAISING",
+      "phoneticSource": "RAZING",
+      "fodder": "leveling"
+    },
+    {
+      "answer": "REALIZE",
+      "phoneticSource": "REALISE",
+      "fodder": "understand"
+    },
+    {
+      "answer": "THEATER",
+      "phoneticSource": "THEATRE",
+      "fodder": "field"
+    },
+    {
+      "answer": "THEATRE",
+      "phoneticSource": "THEATER",
+      "fodder": "field"
+    },
+    {
+      "answer": "TRACKED",
+      "phoneticSource": "TRACT",
+      "fodder": "pathway"
+    },
+    {
+      "answer": "TRUSTEE",
+      "phoneticSource": "TRUSTY",
+      "fodder": "trustworthy"
+    },
+    {
+      "answer": "WAITING",
+      "phoneticSource": "WEIGHTING",
+      "fodder": "weight"
+    },
+    {
+      "answer": "WHETHER",
+      "phoneticSource": "WEATHER",
+      "fodder": "upwind"
+    },
+    {
+      "answer": "WRAPPED",
+      "phoneticSource": "RAPT",
+      "fodder": "ecstatic"
+    }
+  ],
+  "8": [
+    {
+      "answer": "ADDITION",
+      "phoneticSource": "EDITION",
+      "fodder": "version"
+    },
+    {
+      "answer": "BEHAVIOR",
+      "phoneticSource": "BEHAVIOUR",
+      "fodder": "conduct"
+    },
+    {
+      "answer": "DIALOGUE",
+      "phoneticSource": "DIALOG",
+      "fodder": "duologue"
+    },
+    {
+      "answer": "DISCRETE",
+      "phoneticSource": "DISCREET",
+      "fodder": "circumspect"
+    },
+    {
+      "answer": "FAVORITE",
+      "phoneticSource": "FAVOURITE",
+      "fodder": "favored"
+    },
+    {
+      "answer": "JUDGMENT",
+      "phoneticSource": "JUDGEMENT",
+      "fodder": "assessment"
+    },
+    {
+      "answer": "MARSHALL",
+      "phoneticSource": "MARSHAL",
+      "fodder": "mobilize"
+    },
+    {
+      "answer": "MARSHALL",
+      "phoneticSource": "MARTIAL",
+      "fodder": "martial(a)"
+    },
+    {
+      "answer": "MODELING",
+      "phoneticSource": "MODELLING",
+      "fodder": "model"
+    },
+    {
+      "answer": "PREMIERE",
+      "phoneticSource": "PREMIER",
+      "fodder": "premier(a)"
+    },
+    {
+      "answer": "REALIZED",
+      "phoneticSource": "REALISED",
+      "fodder": "accomplished"
+    },
+    {
+      "answer": "STRAIGHT",
+      "phoneticSource": "STRAIT",
+      "fodder": "pass"
+    }
+  ],
+  "9": [
+    {
+      "answer": "BEHAVIOUR",
+      "phoneticSource": "BEHAVIOR",
+      "fodder": "demeanor"
+    },
+    {
+      "answer": "CONNECTOR",
+      "phoneticSource": "CONNECTER",
+      "fodder": "connection"
+    },
+    {
+      "answer": "FAVOURITE",
+      "phoneticSource": "FAVORITE",
+      "fodder": "favored"
+    },
+    {
+      "answer": "MODELLING",
+      "phoneticSource": "MODELING",
+      "fodder": "model"
+    },
+    {
+      "answer": "PRINCIPAL",
+      "phoneticSource": "PRINCIPLE",
+      "fodder": "rationale"
+    },
+    {
+      "answer": "PRINCIPLE",
+      "phoneticSource": "PRINCIPAL",
+      "fodder": "chief(a)"
+    },
+    {
+      "answer": "PROGRAMME",
+      "phoneticSource": "PROGRAM",
+      "fodder": "curriculum"
+    },
+    {
+      "answer": "RECOGNIZE",
+      "phoneticSource": "RECOGNISE",
+      "fodder": "acknowledge"
+    },
+    {
+      "answer": "TRAVELING",
+      "phoneticSource": "TRAVELLING",
+      "fodder": "travel"
+    }
+  ],
+  "10": [
+    {
+      "answer": "CONNECTION",
+      "phoneticSource": "CONNEXION",
+      "fodder": "joining"
+    },
+    {
+      "answer": "RECOGNISED",
+      "phoneticSource": "RECOGNIZED",
+      "fodder": "accepted"
+    },
+    {
+      "answer": "RECOGNIZED",
+      "phoneticSource": "RECOGNISED",
+      "fodder": "accepted"
+    },
+    {
+      "answer": "TRAVELLING",
+      "phoneticSource": "TRAVELING",
+      "fodder": "travel"
+    }
+  ]
+}

@@ -82,6 +82,16 @@ export async function generateClue(options: GenerateClueOptions): Promise<Genera
   // used, but flagged reviewRequired rather than silently accepted.
   let definition = options.definition;
   let definitionReviewRequired = false;
+  if (!definition && construction.wordplay.suggestedDefinition) {
+    // doubleDefinition's pool (scripts/buildDoubleDefPool.ts) already ran
+    // this exact word through getSynonymSets and picked defA specifically
+    // because it's a genuine WordNet synonym of the answer — the same bar
+    // verifyDefinitionMeaning enforces for every other device. Re-proposing
+    // via the LLM here would just be discarding a definition that's
+    // already been verified, in favor of a fresh one that might not be.
+    definition = construction.wordplay.suggestedDefinition;
+    log.push(`--- using precomputed double-definition seed: "${definition}" ---`);
+  }
   if (!definition) {
     definition = await proposeDefinition(answer);
     log.push(`--- LLM-proposed definition: "${definition}" ---`);
