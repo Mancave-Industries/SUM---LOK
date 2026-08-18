@@ -46,6 +46,40 @@ if (existsSync('.env')) process.loadEnvFile('.env');
 
 const PUZZLES_DIR = join(process.cwd(), '..', 'app', 'puzzles');
 const MANIFEST_PATH = join(PUZZLES_DIR, 'manifest.json');
+const DAILY_PATH = join(PUZZLES_DIR, 'daily.json');
+
+interface DailyManifest {
+  days: Record<string, Partial<Record<Tier, string>>>;
+}
+
+function loadDaily(): DailyManifest {
+  if (!existsSync(DAILY_PATH)) return { days: {} };
+  return JSON.parse(readFileSync(DAILY_PATH, 'utf8'));
+}
+
+// Finds the earliest calendar day (starting from today, UTC) that doesn't
+// yet have an entry for this tier, and fills it — matching the append-only,
+// run-when-you-run-it model the rest of this script already uses for
+// manifest.json. Walking forward from today (rather than always appending
+// "whatever's after the last filled day") means a run that only builds one
+// tier still fills any earlier gap a standard-only or hard-only run before
+// it left behind, instead of never catching up.
+function nextDailySlot(daily: DailyManifest, tier: Tier): string {
+  const cursor = new Date();
+  for (let i = 0; i < 3650; i++) { // 10-year safety cap, never realistically hit
+    const key = cursor.toISOString().slice(0, 10);
+    if (!daily.days[key]?.[tier]) return key;
+    cursor.setUTCDate(cursor.getUTCDate() + 1);
+  }
+  throw new Error('Could not find an open daily slot within 10 years — something is very wrong');
+}
+
+function writeDailyEntry(tier: Tier, id: string): void {
+  const daily = loadDaily();
+  const key = nextDailySlot(daily, tier);
+  daily.days[key] = { ...daily.days[key], [tier]: id };
+  writeFileSync(DAILY_PATH, JSON.stringify(daily, null, 2) + '\n');
+}
 
 const indicatorBanks: Partial<Record<DeviceType, string[]>> = {
   anagram: anagramIndicators as string[],
@@ -560,6 +594,10 @@ async function main() {
     // Save after every successful puzzle, not just at the end — a crash or
     // interrupted run should never lose already-completed work.
     writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2) + '\n');
+    // manifest.json stays the full archive/back-play list (every puzzle
+    // ever built, either tier); daily.json is the separate date -> id
+    // mapping the app's daily mode actually reads.
+    writeDailyEntry(tier, result.id);
     nextNumber++;
     built++;
   }

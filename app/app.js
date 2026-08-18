@@ -159,6 +159,8 @@ function buildCellMap(entries) {
 }
 
 const PUZZLE_INDEX_KEY = 'quyptick-puzzle-index';
+const VIEW_MODE_KEY = 'quyptick-view-mode';
+const DAILY_TIER_KEY = 'quyptick-daily-tier';
 
 function currentPuzzleIndex(total) {
   const saved = parseInt(localStorage.getItem(PUZZLE_INDEX_KEY) || '0', 10);
@@ -166,10 +168,30 @@ function currentPuzzleIndex(total) {
   return Math.min(Math.max(saved, 0), total - 1);
 }
 
-// Puzzles are picked from the manifest list by position, not by matching
-// today's real date — there's no daily lock while this is still being
-// iterated on. goToPuzzle() below moves through the list and reloads.
-async function loadPuzzle() {
+// UTC calendar day, not the player's local day — avoids the daily puzzle
+// rolling over at a different real-world moment for every timezone.
+function todayKey() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function getViewMode() {
+  return localStorage.getItem(VIEW_MODE_KEY) === 'archive' ? 'archive' : 'daily';
+}
+function setViewMode(mode) {
+  localStorage.setItem(VIEW_MODE_KEY, mode);
+}
+
+function getDailyTierChoice() {
+  return localStorage.getItem(DAILY_TIER_KEY) === 'hard' ? 'hard' : 'standard';
+}
+function setDailyTierChoice(tier) {
+  localStorage.setItem(DAILY_TIER_KEY, tier);
+}
+
+// Existing position-indexed behavior, now the "archive / back-play" mode —
+// reached via the menu's Archive list or the prev/next arrows, once the
+// player has left today's daily puzzle behind.
+async function loadArchivePuzzle() {
   // Puzzle content changes on every content update but the URL never
   // does, so a plain fetch is exactly the case browsers (mobile Safari
   // especially) cache indefinitely — cache: 'no-store' forces a fresh
@@ -179,16 +201,86 @@ async function loadPuzzle() {
   const id = manifest.puzzles[index];
   const puzzle = await (await fetch(`puzzles/${id}.json`, { cache: 'no-store' })).json();
   puzzle._id = id;
+  puzzle._mode = 'archive';
   puzzle._index = index;
   puzzle._total = manifest.puzzles.length;
   puzzle._manifest = manifest.puzzles;
   return puzzle;
 }
 
+// Today's puzzle (or the most recent day actually published, if the daily
+// pipeline hasn't run yet for today) at whichever tier the player currently
+// has active. Returns null if daily.json doesn't exist yet or is empty —
+// the caller falls back to the archive rather than showing a dead screen.
+async function loadDailyPuzzle() {
+  const res = await fetch('puzzles/daily.json', { cache: 'no-store' });
+  if (!res.ok) return null;
+  const daily = await res.json();
+  const days = Object.keys(daily.days || {}).sort();
+  if (days.length === 0) return null;
+
+  const key = todayKey();
+  let usingKey = days.includes(key) ? key : null;
+  let usingFallback = false;
+  if (!usingKey) {
+    const past = days.filter((d) => d <= key);
+    usingKey = past.length ? past[past.length - 1] : days[days.length - 1];
+    usingFallback = true;
+  }
+
+  const dayEntry = daily.days[usingKey];
+  let tier = getDailyTierChoice();
+  const league = loadLeague();
+  if (tier === 'hard' && !league.hardUnlocked) tier = 'standard';
+  if (!dayEntry[tier]) tier = 'standard';
+  const id = dayEntry[tier];
+  if (!id) return null;
+
+  const puzzle = await (await fetch(`puzzles/${id}.json`, { cache: 'no-store' })).json();
+  const manifest = await (await fetch('puzzles/manifest.json', { cache: 'no-store' })).json();
+  puzzle._id = id;
+  puzzle._mode = 'daily';
+  puzzle._dailyKey = usingKey;
+  puzzle._tier = tier;
+  puzzle._usingFallback = usingFallback;
+  puzzle._hasHardToday = !!dayEntry.hard;
+  puzzle._manifest = manifest.puzzles;
+  puzzle._index = manifest.puzzles.indexOf(id);
+  puzzle._total = manifest.puzzles.length;
+  return puzzle;
+}
+
+async function loadPuzzle() {
+  if (getViewMode() === 'daily') {
+    const daily = await loadDailyPuzzle();
+    if (daily) return daily;
+    // No daily.json published yet — fall back to the archive instead of a
+    // blank screen. Doesn't change the stored view mode: once daily.json
+    // exists, the very next load goes straight back to today.
+  }
+  return loadArchivePuzzle();
+}
+
 function goToPuzzle(index) {
   const total = state.puzzle._total;
   const wrapped = ((index % total) + total) % total;
   localStorage.setItem(PUZZLE_INDEX_KEY, String(wrapped));
+  setViewMode('archive');
+  location.reload();
+}
+
+function backToToday() {
+  setViewMode('daily');
+  location.reload();
+}
+
+function switchDailyTier(tier) {
+  if (tier === 'hard' && !loadLeague().hardUnlocked) {
+    showToast('Build a 5-day streak to unlock Hard');
+    return;
+  }
+  setDailyTierChoice(tier);
+  setViewMode('daily');
   location.reload();
 }
 
@@ -220,6 +312,7 @@ function checkAllSolved() {
     state.finishTime = Date.now();
     showSolvedPanel();
     saveStreak();
+    updateLeagueOnSolve();
   }
 }
 
@@ -362,6 +455,7 @@ function triggerFail() {
   render();
   showFailPanel();
   saveProgress();
+  updateLeagueOnFail();
   setTimeout(() => {
     state.justFailedEntries = null;
     render();
@@ -792,6 +886,123 @@ function renderStreak() {
   document.getElementById('streak').textContent = streak.count ? `🔥 ${streak.count}` : '';
 }
 
+const LEAGUE_KEY = 'quyptick-league';
+const LEAGUE_DEFAULT = {
+  streak: 0,
+  lastCompletedDate: null,
+  hardUnlocked: false,
+  hardFailStreak: 0,
+  lastHardResultDate: null,
+};
+
+function loadLeague() {
+  const raw = localStorage.getItem(LEAGUE_KEY);
+  try {
+    return raw ? { ...LEAGUE_DEFAULT, ...JSON.parse(raw) } : { ...LEAGUE_DEFAULT };
+  } catch {
+    return { ...LEAGUE_DEFAULT };
+  }
+}
+
+function saveLeague(league) {
+  localStorage.setItem(LEAGUE_KEY, JSON.stringify(league));
+}
+
+function isNextCalendarDay(prevKey, key) {
+  const prev = Date.parse(`${prevKey}T00:00:00Z`);
+  const cur = Date.parse(`${key}T00:00:00Z`);
+  return cur - prev === 86400000;
+}
+
+// Solving a daily puzzle (either tier) advances the streak — consecutive
+// calendar days, any tier — and a 5-day streak unlocks the hard tier.
+// Archive play never touches league state: back-playing an old puzzle
+// isn't "today's" puzzle, so it can't be used to farm the streak.
+function updateLeagueOnSolve() {
+  if (state.puzzle._mode !== 'daily') return;
+  const league = loadLeague();
+  const key = state.puzzle._dailyKey;
+  if (league.lastCompletedDate === key) return; // already counted today
+
+  const isConsecutive = league.streak > 0 && league.lastCompletedDate && isNextCalendarDay(league.lastCompletedDate, key);
+  league.streak = isConsecutive ? league.streak + 1 : 1;
+  league.lastCompletedDate = key;
+
+  if (state.puzzle._tier === 'hard') {
+    league.hardFailStreak = 0;
+    league.lastHardResultDate = key;
+  }
+  if (league.streak >= 5 && !league.hardUnlocked) {
+    league.hardUnlocked = true;
+    league.hardFailStreak = 0;
+  }
+
+  saveLeague(league);
+  renderLeague();
+}
+
+// Failing a daily HARD puzzle costs the streak outright and counts toward
+// the 3-fail demotion — unlike Wordle, a broken streak here can also take
+// away access, not just the badge.
+function updateLeagueOnFail() {
+  if (state.puzzle._mode !== 'daily' || state.puzzle._tier !== 'hard') return;
+  const league = loadLeague();
+  const key = state.puzzle._dailyKey;
+  if (league.lastHardResultDate === key) return; // already counted today
+
+  league.hardFailStreak += 1;
+  league.streak = 0;
+  league.lastHardResultDate = key;
+  if (league.hardFailStreak >= 3) {
+    league.hardUnlocked = false;
+    league.hardFailStreak = 0;
+  }
+
+  saveLeague(league);
+  renderLeague();
+}
+
+function renderLeague() {
+  const el = document.getElementById('league');
+  if (!el) return;
+  const league = loadLeague();
+  if (league.hardUnlocked) {
+    el.textContent = `⚡ ${league.streak}`;
+  } else if (league.streak > 0) {
+    el.textContent = `🔥 ${league.streak}/5`;
+  } else {
+    el.textContent = '';
+  }
+  // The hard tab's lock state is league-driven too, and league state can
+  // change mid-session (a hard fail or a fresh 5-streak on the very puzzle
+  // being played) — refresh it here rather than only at page load.
+  renderModeChrome();
+}
+
+// Daily-vs-archive UI: tier tabs + "today"/catching-up status in daily
+// mode, the old prev/next arrows + a "back to today" banner in archive
+// mode. Called once at load and again whenever league state changes.
+function renderModeChrome() {
+  if (!state.puzzle) return;
+  const isDaily = state.puzzle._mode === 'daily';
+  document.getElementById('tier-tabs').classList.toggle('hidden', !isDaily);
+  document.getElementById('daily-status').classList.toggle('hidden', !isDaily);
+  document.getElementById('puzzle-nav').classList.toggle('hidden', isDaily);
+  document.getElementById('archive-banner').classList.toggle('hidden', isDaily);
+
+  if (!isDaily) return;
+  const league = loadLeague();
+  const standardTab = document.getElementById('tab-standard');
+  const hardTab = document.getElementById('tab-hard');
+  standardTab.classList.toggle('active', state.puzzle._tier === 'standard');
+  hardTab.classList.toggle('active', state.puzzle._tier === 'hard');
+  hardTab.classList.toggle('locked', !league.hardUnlocked);
+
+  document.getElementById('daily-status').textContent = state.puzzle._usingFallback
+    ? `catching up · ${state.puzzle._dailyKey}`
+    : 'today';
+}
+
 function setupTheme() {
   const stored = localStorage.getItem('quyptick-theme');
   if (stored) document.documentElement.setAttribute('data-theme', stored);
@@ -901,6 +1112,7 @@ async function main() {
   document.getElementById('date-label').textContent = `${puzzle._index + 1} / ${puzzle._total}`;
   document.getElementById('prev-puzzle').disabled = puzzle._total <= 1;
   document.getElementById('next-puzzle').disabled = puzzle._total <= 1;
+  renderLeague(); // also refreshes the tier-tabs/archive-banner chrome
 
   const firstUnsolved = nonBonusEntries().find((i) => !state.solved.has(i));
   state.activeEntry = firstUnsolved !== undefined ? firstUnsolved : bonusEntryIndex();
@@ -912,6 +1124,9 @@ async function main() {
   document.getElementById('prev-puzzle').addEventListener('click', () => goToPuzzle(puzzle._index - 1));
   document.getElementById('next-puzzle').addEventListener('click', () => goToPuzzle(puzzle._index + 1));
   document.getElementById('next-puzzle-btn').addEventListener('click', () => goToPuzzle(puzzle._index + 1));
+  document.getElementById('tab-standard').addEventListener('click', () => switchDailyTier('standard'));
+  document.getElementById('tab-hard').addEventListener('click', () => switchDailyTier('hard'));
+  document.getElementById('archive-back-btn').addEventListener('click', backToToday);
   render();
 
   if (puzzle.entries.every((_, i) => state.solved.has(i))) {
