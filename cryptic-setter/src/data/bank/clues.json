@@ -1712,5 +1712,37 @@
     "difficulty": 0,
     "reviewRequired": false,
     "createdAt": "2026-08-18T22:28:00.094Z"
+  },
+  {
+    "id": "41bf2fcc-fb2a-4432-8cdd-327b4dcfee7e",
+    "answer": "FUSION",
+    "enumeration": "(6)",
+    "device": "doubleDefinition",
+    "definition": "merger",
+    "definitionPosition": "end",
+    "wordplay": {
+      "fodder": "COALITION",
+      "suggestedDefinition": "merger",
+      "operation": "doubleDefinition(FUSION, defA=\"merger\", defB=\"coalition\")"
+    },
+    "surface": "Coalition could result in merger (6)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"merger\" and \"COALITION\" are registered as two distinct senses of \"FUSION\"",
+      "✓ enumeration \"(6)\" matches answer letter count (6)",
+      "--- using precomputed double-definition seed: \"merger\" ---",
+      "--- surface attempt 1/5 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"merger\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"merger\"",
+      "✓ definition does not echo any wordplay word verbatim",
+      "✓ wordplay text does not repeat the definition phrase",
+      "✓ fodder \"COALITION\" is present verbatim in the wordplay text",
+      "✓ indicator \"undefined\" is present verbatim in the wordplay text",
+      "✓ fluency check passed: It is a grammatically complete sentence with a subject (Coalition), a modal verb phrase (could result), and a prepositional complement (in merger), resembling a natural headline-style sentence.\""
+    ],
+    "difficulty": 0,
+    "reviewRequired": false,
+    "createdAt": "2026-08-18T22:28:04.109Z"
   }
 ]
