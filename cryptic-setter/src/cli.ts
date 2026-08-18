@@ -20,6 +20,7 @@ import initialsIndicators from './data/indicators/initials.json' with { type: 'j
 import charadeIndicators from './data/indicators/charade.json' with { type: 'json' };
 import containerIndicators from './data/indicators/container.json' with { type: 'json' };
 import deletionIndicators from './data/indicators/deletion.json' with { type: 'json' };
+import homophoneIndicators from './data/indicators/homophone.json' with { type: 'json' };
 import { generateClue } from './pipeline/generateClue.js';
 import { appendToBank, approveFromReviewQueue } from './bank/clueBank.js';
 import { getDevice } from './devices/index.js';
@@ -87,6 +88,12 @@ const indicatorBanks: Partial<Record<DeviceType, string[]>> = {
   charade: charadeIndicators as string[],
   container: containerIndicators as string[],
   deletion: (deletionIndicators as Array<{ word: string }>).map((entry) => entry.word),
+  homophone: homophoneIndicators as string[],
+  // doubleDefinition uses no linking indicator at all (see
+  // devices/doubleDefinition.ts) — an empty-but-present array keeps
+  // `indicatorBanks[device]` truthy for the --device validation check
+  // below without implying a real indicator bank.
+  doubleDefinition: [],
 };
 
 // Picks the LEAST-used device (so far this run) among whichever can

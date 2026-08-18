@@ -58,16 +58,56 @@ function otherVocabulary(sense: string[], answerLower: string): Set<string> {
   return new Set(sense.map(normalize).filter((w) => w && w !== answerLower));
 }
 
-// A displayable synonym from a sense: excludes the answer word itself and
-// any multi-word phrase (kept single-token, same simplicity tradeoff as
-// the homophone pool — a literal verbatim substring match is what both
-// generateClue.ts's fodder check and verifyDefinitionAtEnd's containment
-// check actually need).
+// Plain Levenshtein edit distance — used below to catch a candidate
+// "synonym" that's really just the answer with a spelling/inflection
+// tweak (oversea/overseas, centre/center), not a genuinely different word.
+function editDistance(a: string, b: string): number {
+  const dp: number[][] = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+  for (let j = 0; j <= b.length; j++) dp[0][j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      dp[i][j] =
+        a[i - 1] === b[j - 1]
+          ? dp[i - 1][j - 1]
+          : 1 + Math.min(dp[i - 1][j - 1], dp[i - 1][j], dp[i][j - 1]);
+    }
+  }
+  return dp[a.length][b.length];
+}
+
+function commonPrefixLength(a: string, b: string): number {
+  let i = 0;
+  while (i < a.length && i < b.length && a[i] === b[i]) i++;
+  return i;
+}
+
+// Rejects a candidate that's really just the answer's own root or a
+// spelling/inflection variant of it — real-world hits found in review:
+// "hungriness" as a definition of HUNGER (same root, not a separate
+// word), "oversea" as a definition of OVERSEAS (a spelling difference,
+// not a second meaning). Neither shares a literal substring with the
+// answer (so the plain `lower === answerLower` check above doesn't catch
+// them), but both are unmistakably "the same word" to a reader. A short
+// shared prefix or a small edit distance is a good enough proxy for that
+// without needing real morphological analysis.
+function tooSimilarToAnswer(word: string, answerLower: string): boolean {
+  if (editDistance(word, answerLower) <= 2) return true;
+  if (commonPrefixLength(word, answerLower) >= 4) return true;
+  return false;
+}
+
+// A displayable synonym from a sense: excludes the answer word itself
+// (and anything too close to being the same word — see
+// tooSimilarToAnswer) and any multi-word phrase (kept single-token, same
+// simplicity tradeoff as the homophone pool — a literal verbatim
+// substring match is what both generateClue.ts's fodder check and
+// verifyDefinitionAtEnd's containment check actually need).
 function firstUsableSynonym(sense: string[], answerLower: string): string | null {
   for (const synonym of sense) {
     if (synonym.includes('_')) continue;
     const lower = stripPosMarker(synonym.toLowerCase());
     if (!lower || lower === answerLower) continue;
+    if (tooSimilarToAnswer(lower, answerLower)) continue;
     return lower;
   }
   return null;

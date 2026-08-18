@@ -27,8 +27,8 @@
     },
     {
       "answer": "ACTION",
-      "defA": "activity",
-      "defB": "sue"
+      "defA": "sue",
+      "defB": "accomplish"
     },
     {
       "answer": "ACTIVE",
@@ -58,12 +58,12 @@
     {
       "answer": "AERIAL",
       "defA": "antenna",
-      "defB": "aeriform"
+      "defB": "airy"
     },
     {
       "answer": "AFFAIR",
       "defA": "matter",
-      "defB": "affaire"
+      "defB": "intimacy"
     },
     {
       "answer": "AFFECT",
@@ -74,11 +74,6 @@
       "answer": "AGENCY",
       "defA": "bureau",
       "defB": "representation"
-    },
-    {
-      "answer": "AGENDA",
-      "defA": "docket",
-      "defB": "agendum"
     },
     {
       "answer": "ALWAYS",
@@ -93,7 +88,7 @@
     {
       "answer": "ANCHOR",
       "defA": "mainstay",
-      "defB": "anchorman"
+      "defB": "ground"
     },
     {
       "answer": "ANIMAL",
@@ -113,17 +108,12 @@
     {
       "answer": "APPEAL",
       "defA": "entreaty",
-      "defB": "appealingness"
+      "defB": "charm"
     },
     {
       "answer": "ARCTIC",
       "defA": "galosh",
       "defB": "north-polar"
-    },
-    {
-      "answer": "AROUND",
-      "defA": "about",
-      "defB": "round"
     },
     {
       "answer": "ARREST",
@@ -202,7 +192,7 @@
     },
     {
       "answer": "BARELY",
-      "defA": "hardly",
+      "defA": "scarcely",
       "defB": "just"
     },
     {
@@ -218,17 +208,12 @@
     {
       "answer": "BASKET",
       "defA": "handbasket",
-      "defB": "basketful"
+      "defB": "hoop"
     },
     {
       "answer": "BATTLE",
       "defA": "conflict",
       "defB": "struggle"
-    },
-    {
-      "answer": "BEAUTY",
-      "defA": "smasher",
-      "defB": "beaut"
     },
     {
       "answer": "BEAVER",
@@ -252,12 +237,12 @@
     },
     {
       "answer": "BETTER",
-      "defA": "bettor",
+      "defA": "wagerer",
       "defB": "break"
     },
     {
       "answer": "BORDER",
-      "defA": "borderline",
+      "defA": "delimitation",
       "defB": "margin"
     },
     {
@@ -296,11 +281,6 @@
       "defB": "bosom"
     },
     {
-      "answer": "BREATH",
-      "defA": "breather",
-      "defB": "hint"
-    },
-    {
       "answer": "BRIDAL",
       "defA": "espousal",
       "defB": "nuptial"
@@ -308,7 +288,7 @@
     {
       "answer": "BRIDGE",
       "defA": "span",
-      "defB": "bridgework"
+      "defB": "nosepiece"
     },
     {
       "answer": "BRIGHT",
@@ -321,14 +301,9 @@
       "defB": "unkept"
     },
     {
-      "answer": "BRONZE",
-      "defA": "tan",
-      "defB": "bronzy"
-    },
-    {
       "answer": "BROWSE",
-      "defA": "browsing",
-      "defB": "shop"
+      "defA": "shop",
+      "defB": "crop"
     },
     {
       "answer": "BRUTAL",
@@ -378,7 +353,7 @@
     {
       "answer": "CANDLE",
       "defA": "taper",
-      "defB": "candela"
+      "defB": "cd"
     },
     {
       "answer": "CANNON",
@@ -397,8 +372,8 @@
     },
     {
       "answer": "CENTER",
-      "defA": "centre",
-      "defB": "centerfield"
+      "defA": "middle",
+      "defB": "snapper"
     },
     {
       "answer": "CHANCE",
@@ -413,7 +388,7 @@
     {
       "answer": "CHARGE",
       "defA": "complaint",
-      "defB": "care"
+      "defB": "tutelage"
     },
     {
       "answer": "CHOICE",
@@ -537,7 +512,7 @@
     },
     {
       "answer": "DEADLY",
-      "defA": "deathly",
+      "defA": "mortal",
       "defB": "lethal"
     },
     {
@@ -566,11 +541,6 @@
       "defB": "settle"
     },
     {
-      "answer": "DEEPLY",
-      "defA": "profoundly",
-      "defB": "deep"
-    },
-    {
       "answer": "DEFEAT",
       "defA": "licking",
       "defB": "frustration"
@@ -596,11 +566,6 @@
       "defB": "erase"
     },
     {
-      "answer": "DELUXE",
-      "defA": "gilded",
-      "defB": "luxe"
-    },
-    {
       "answer": "DEMAND",
       "defA": "requirement",
       "defB": "need"
@@ -616,14 +581,9 @@
       "defB": "surrogate"
     },
     {
-      "answer": "DESERT",
-      "defA": "abandon",
-      "defB": "defect"
-    },
-    {
       "answer": "DESIGN",
-      "defA": "designing",
-      "defB": "plan"
+      "defA": "plan",
+      "defB": "blueprint"
     },
     {
       "answer": "DESIRE",
@@ -681,11 +641,6 @@
       "defB": "impelled"
     },
     {
-      "answer": "EASILY",
-      "defA": "easy",
-      "defB": "well"
-    },
-    {
       "answer": "EFFECT",
       "defA": "consequence",
       "defB": "impression"
@@ -702,8 +657,8 @@
     },
     {
       "answer": "EMPLOY",
-      "defA": "employment",
-      "defB": "use"
+      "defA": "use",
+      "defB": "hire"
     },
     {
       "answer": "ENDING",
@@ -733,7 +688,7 @@
     {
       "answer": "ESCAPE",
       "defA": "flight",
-      "defB": "escapism"
+      "defB": "evasion"
     },
     {
       "answer": "ETHNIC",
@@ -753,7 +708,7 @@
     {
       "answer": "EXCESS",
       "defA": "surplus",
-      "defB": "excessiveness"
+      "defB": "inordinateness"
     },
     {
       "answer": "EXCUSE",
@@ -803,7 +758,7 @@
     {
       "answer": "FAIRLY",
       "defA": "reasonably",
-      "defB": "fair"
+      "defB": "evenhandedly"
     },
     {
       "answer": "FAMILY",
@@ -827,7 +782,7 @@
     },
     {
       "answer": "FILTER",
-      "defA": "filtrate",
+      "defA": "strain",
       "defB": "percolate"
     },
     {
@@ -837,18 +792,13 @@
     },
     {
       "answer": "FINGER",
-      "defA": "fingerbreadth",
+      "defA": "digit",
       "defB": "thumb"
     },
     {
       "answer": "FINISH",
       "defA": "coating",
       "defB": "finale"
-    },
-    {
-      "answer": "FISHER",
-      "defA": "fisherman",
-      "defB": "pekan"
     },
     {
       "answer": "FLEECE",
@@ -887,8 +837,8 @@
     },
     {
       "answer": "FORMAT",
-      "defA": "formatting",
-      "defB": "arrange"
+      "defA": "arrange",
+      "defB": "initialize"
     },
     {
       "answer": "FORMER",
@@ -907,8 +857,8 @@
     },
     {
       "answer": "FREEZE",
-      "defA": "freezing",
-      "defB": "frost"
+      "defA": "frost",
+      "defB": "halt"
     },
     {
       "answer": "FRIEND",
@@ -932,12 +882,12 @@
     },
     {
       "answer": "GATHER",
-      "defA": "gathering",
-      "defB": "garner"
+      "defA": "collect",
+      "defB": "meet"
     },
     {
       "answer": "GENEVA",
-      "defA": "geneve",
+      "defA": "genf",
       "defB": "hollands"
     },
     {
@@ -977,7 +927,7 @@
     },
     {
       "answer": "GOSPEL",
-      "defA": "gospels",
+      "defA": "evangel",
       "defB": "creed"
     },
     {
@@ -997,7 +947,7 @@
     },
     {
       "answer": "GROWTH",
-      "defA": "growing",
+      "defA": "maturation",
       "defB": "increase"
     },
     {
@@ -1016,19 +966,14 @@
       "defB": "befall"
     },
     {
-      "answer": "HARDLY",
-      "defA": "barely",
-      "defB": "hard"
-    },
-    {
       "answer": "HAZARD",
       "defA": "jeopardy",
       "defB": "luck"
     },
     {
       "answer": "HEADER",
-      "defA": "heading",
-      "defB": "lintel"
+      "defA": "lintel",
+      "defB": "coping"
     },
     {
       "answer": "HEATER",
@@ -1052,8 +997,8 @@
     },
     {
       "answer": "HOLLOW",
-      "defA": "holler",
-      "defB": "hole"
+      "defA": "hole",
+      "defB": "excavate"
     },
     {
       "answer": "HONEST",
@@ -1062,13 +1007,8 @@
     },
     {
       "answer": "HUNGER",
-      "defA": "hungriness",
-      "defB": "crave"
-    },
-    {
-      "answer": "HUNTER",
-      "defA": "huntsman",
-      "defB": "orion"
+      "defA": "thirst",
+      "defB": "starve"
     },
     {
       "answer": "HYBRID",
@@ -1082,8 +1022,8 @@
     },
     {
       "answer": "IMPORT",
-      "defA": "importation",
-      "defB": "importee"
+      "defA": "meaning",
+      "defB": "consequence"
     },
     {
       "answer": "IMPOSE",
@@ -1097,8 +1037,8 @@
     },
     {
       "answer": "INSERT",
-      "defA": "inset",
-      "defB": "cut-in"
+      "defA": "cut-in",
+      "defB": "infix"
     },
     {
       "answer": "INSIDE",
@@ -1162,8 +1102,8 @@
     },
     {
       "answer": "LAUNCH",
-      "defA": "launching",
-      "defB": "establish"
+      "defA": "establish",
+      "defB": "plunge"
     },
     {
       "answer": "LEGEND",
@@ -1197,8 +1137,8 @@
     },
     {
       "answer": "LIQUID",
-      "defA": "liquidness",
-      "defB": "swimming"
+      "defA": "swimming",
+      "defB": "melted"
     },
     {
       "answer": "LISTEN",
@@ -1217,18 +1157,13 @@
     },
     {
       "answer": "LOADED",
-      "defA": "laden",
+      "defA": "ladened",
       "defB": "affluent"
     },
     {
       "answer": "LOCATE",
       "defA": "situate",
       "defB": "place"
-    },
-    {
-      "answer": "LONELY",
-      "defA": "alone",
-      "defB": "lonesome"
     },
     {
       "answer": "LOUNGE",
@@ -1239,11 +1174,6 @@
       "answer": "LOVELY",
       "defA": "pin-up",
       "defB": "adorable"
-    },
-    {
-      "answer": "MAIDEN",
-      "defA": "maid",
-      "defB": "inaugural"
     },
     {
       "answer": "MAKING",
@@ -1267,8 +1197,8 @@
     },
     {
       "answer": "MARKET",
-      "defA": "marketplace",
-      "defB": "grocery"
+      "defA": "grocery",
+      "defB": "commercialize"
     },
     {
       "answer": "MASTER",
@@ -1282,13 +1212,8 @@
     },
     {
       "answer": "MATURE",
-      "defA": "maturate",
+      "defA": "grow",
       "defB": "ripen"
-    },
-    {
-      "answer": "MEDIAN",
-      "defA": "average",
-      "defB": "medial"
     },
     {
       "answer": "MEDIUM",
@@ -1371,11 +1296,6 @@
       "defB": "slay"
     },
     {
-      "answer": "MUSCLE",
-      "defA": "musculus",
-      "defB": "muscleman"
-    },
-    {
       "answer": "MUTUAL",
       "defA": "common",
       "defB": "reciprocal"
@@ -1391,14 +1311,9 @@
       "defB": "closely"
     },
     {
-      "answer": "NEURAL",
-      "defA": "nervous",
-      "defB": "neuronal"
-    },
-    {
       "answer": "NOTICE",
       "defA": "observation",
-      "defB": "notification"
+      "defB": "poster"
     },
     {
       "answer": "NOTION",
@@ -1426,11 +1341,6 @@
       "defB": "counterbalance"
     },
     {
-      "answer": "ORANGE",
-      "defA": "orangeness",
-      "defB": "orangish"
-    },
-    {
       "answer": "ORIGIN",
       "defA": "beginning",
       "defB": "descent"
@@ -1447,7 +1357,7 @@
     },
     {
       "answer": "PACKET",
-      "defA": "package",
+      "defA": "bundle",
       "defB": "mailboat"
     },
     {
@@ -1473,7 +1383,7 @@
     {
       "answer": "PEPPER",
       "defA": "capsicum",
-      "defB": "peppercorn"
+      "defB": "pelt"
     },
     {
       "answer": "PERIOD",
@@ -1492,8 +1402,8 @@
     },
     {
       "answer": "PICKUP",
-      "defA": "pick-me-up",
-      "defB": "getaway"
+      "defA": "getaway",
+      "defB": "cartridge"
     },
     {
       "answer": "PICNIC",
@@ -1512,8 +1422,8 @@
     },
     {
       "answer": "PLENTY",
-      "defA": "plentifulness",
-      "defB": "batch"
+      "defA": "batch",
+      "defB": "enough"
     },
     {
       "answer": "POCKET",
@@ -1536,14 +1446,9 @@
       "defB": "refinement"
     },
     {
-      "answer": "POSTER",
-      "defA": "posting",
-      "defB": "post-horse"
-    },
-    {
       "answer": "POTTER",
       "defA": "thrower",
-      "defB": "putter"
+      "defB": "tinker"
     },
     {
       "answer": "POWDER",
@@ -1567,13 +1472,13 @@
     },
     {
       "answer": "PROMPT",
-      "defA": "prompting",
-      "defB": "motivate"
+      "defA": "motivate",
+      "defB": "inspire"
     },
     {
       "answer": "PURPLE",
-      "defA": "purpleness",
-      "defB": "empurple"
+      "defA": "violet",
+      "defB": "empurpled"
     },
     {
       "answer": "PURSUE",
@@ -1582,7 +1487,7 @@
     },
     {
       "answer": "PUZZLE",
-      "defA": "puzzler",
+      "defA": "mystifier",
       "defB": "perplex"
     },
     {
@@ -1676,11 +1581,6 @@
       "defB": "attentiveness"
     },
     {
-      "answer": "REGIME",
-      "defA": "government",
-      "defB": "regimen"
-    },
-    {
       "answer": "REGION",
       "defA": "part",
       "defB": "area"
@@ -1726,19 +1626,14 @@
       "defB": "interpret"
     },
     {
-      "answer": "RENTAL",
-      "defA": "lease",
-      "defB": "renting"
-    },
-    {
       "answer": "REPAIR",
       "defA": "fix",
       "defB": "haunt"
     },
     {
       "answer": "REPEAT",
-      "defA": "repetition",
-      "defB": "reiterate"
+      "defA": "reiterate",
+      "defB": "duplicate"
     },
     {
       "answer": "REPORT",
@@ -1813,12 +1708,12 @@
     {
       "answer": "ROLLED",
       "defA": "involute",
-      "defB": "rolling"
+      "defB": "furled"
     },
     {
       "answer": "ROLLER",
-      "defA": "roll",
-      "defB": "curler"
+      "defA": "curler",
+      "defB": "tumbler"
     },
     {
       "answer": "ROTARY",
@@ -1851,11 +1746,6 @@
       "defB": "guard"
     },
     {
-      "answer": "SAMPLE",
-      "defA": "sampling",
-      "defB": "try"
-    },
-    {
       "answer": "SAVAGE",
       "defA": "barbarian",
       "defB": "beast"
@@ -1869,11 +1759,6 @@
       "answer": "SCHEME",
       "defA": "strategy",
       "defB": "dodge"
-    },
-    {
-      "answer": "SCHOOL",
-      "defA": "schoolhouse",
-      "defB": "schooling"
     },
     {
       "answer": "SCREEN",
@@ -1932,8 +1817,8 @@
     },
     {
       "answer": "SERIAL",
-      "defA": "series",
-      "defB": "consecutive"
+      "defA": "consecutive",
+      "defB": "nonparallel"
     },
     {
       "answer": "SERVER",
@@ -1942,8 +1827,8 @@
     },
     {
       "answer": "SETTLE",
-      "defA": "settee",
-      "defB": "decide"
+      "defA": "decide",
+      "defB": "determine"
     },
     {
       "answer": "SEVERE",
@@ -1976,11 +1861,6 @@
       "defB": "exhibitor"
     },
     {
-      "answer": "SIGNAL",
-      "defA": "signaling",
-      "defB": "bespeak"
-    },
-    {
       "answer": "SILENT",
       "defA": "soundless",
       "defB": "mum"
@@ -1992,8 +1872,8 @@
     },
     {
       "answer": "SIMPLE",
-      "defA": "simpleton",
-      "defB": "elementary"
+      "defA": "elementary",
+      "defB": "bare"
     },
     {
       "answer": "SIMPLY",
@@ -2002,8 +1882,8 @@
     },
     {
       "answer": "SINGLE",
-      "defA": "bingle",
-      "defB": "one"
+      "defA": "one",
+      "defB": "individual"
     },
     {
       "answer": "SLIGHT",
@@ -2012,18 +1892,13 @@
     },
     {
       "answer": "SLOWLY",
-      "defA": "slow",
+      "defA": "easy",
       "defB": "lento"
     },
     {
       "answer": "SMOOTH",
-      "defA": "smoothen",
+      "defA": "polish",
       "defB": "politic"
-    },
-    {
-      "answer": "SOCIAL",
-      "defA": "sociable",
-      "defB": "societal"
     },
     {
       "answer": "SOURCE",
@@ -2047,13 +1922,13 @@
     },
     {
       "answer": "SPREAD",
-      "defA": "spreading",
-      "defB": "gap"
+      "defA": "gap",
+      "defB": "ranch"
     },
     {
       "answer": "SPRING",
-      "defA": "springtime",
-      "defB": "fountain"
+      "defA": "fountain",
+      "defB": "give"
     },
     {
       "answer": "SQUARE",
@@ -2064,11 +1939,6 @@
       "answer": "SQUIRT",
       "defA": "pip-squeak",
       "defB": "jet"
-    },
-    {
-      "answer": "STABLE",
-      "defA": "stalls",
-      "defB": "static"
     },
     {
       "answer": "STATIC",
@@ -2084,11 +1954,6 @@
       "answer": "STEADY",
       "defA": "sweetheart",
       "defB": "calm"
-    },
-    {
-      "answer": "STEREO",
-      "defA": "stereophony",
-      "defB": "stereophonic"
     },
     {
       "answer": "STICKY",
@@ -2142,7 +2007,7 @@
     },
     {
       "answer": "STUPID",
-      "defA": "stupe",
+      "defA": "dullard",
       "defB": "dazed"
     },
     {
@@ -2178,7 +2043,7 @@
     {
       "answer": "SWITCH",
       "defA": "substitution",
-      "defB": "switching"
+      "defB": "shift"
     },
     {
       "answer": "SYSTEM",
@@ -2232,8 +2097,8 @@
     },
     {
       "answer": "TIMBER",
-      "defA": "lumber",
-      "defB": "forest"
+      "defA": "forest",
+      "defB": "quality"
     },
     {
       "answer": "TOILET",
@@ -2252,8 +2117,8 @@
     },
     {
       "answer": "TRAVEL",
-      "defA": "traveling",
-      "defB": "locomotion"
+      "defA": "locomotion",
+      "defB": "go"
     },
     {
       "answer": "TRIPLE",
@@ -2267,7 +2132,7 @@
     },
     {
       "answer": "TURTLE",
-      "defA": "turtleneck",
+      "defA": "polo-neck",
       "defB": "capsize"
     },
     {
@@ -2287,8 +2152,8 @@
     },
     {
       "answer": "VACUUM",
-      "defA": "vacuity",
-      "defB": "void"
+      "defA": "void",
+      "defB": "hoover"
     },
     {
       "answer": "VERIFY",
@@ -2306,14 +2171,9 @@
       "defB": "winner"
     },
     {
-      "answer": "VIRGIN",
-      "defA": "virgo",
-      "defB": "pure"
-    },
-    {
       "answer": "VIRTUE",
-      "defA": "virtuousness",
-      "defB": "merit"
+      "defA": "merit",
+      "defB": "chastity"
     },
     {
       "answer": "VISION",
@@ -2331,11 +2191,6 @@
       "defB": "zimmer"
     },
     {
-      "answer": "WEALTH",
-      "defA": "wealthiness",
-      "defB": "riches"
-    },
-    {
       "answer": "WEAPON",
       "defA": "arm",
       "defB": "artillery"
@@ -2347,8 +2202,8 @@
     },
     {
       "answer": "WEIGHT",
-      "defA": "weightiness",
-      "defB": "weighting"
+      "defA": "burden",
+      "defB": "slant"
     },
     {
       "answer": "WICKED",
@@ -2359,11 +2214,6 @@
       "answer": "WINNER",
       "defA": "victor",
       "defB": "achiever"
-    },
-    {
-      "answer": "WINTER",
-      "defA": "wintertime",
-      "defB": "overwinter"
     },
     {
       "answer": "WISDOM",
@@ -2377,7 +2227,7 @@
     },
     {
       "answer": "WONDER",
-      "defA": "wonderment",
+      "defA": "admiration",
       "defB": "marvel"
     },
     {
@@ -2392,8 +2242,8 @@
     },
     {
       "answer": "YELLOW",
-      "defA": "yellowness",
-      "defB": "yellowish"
+      "defA": "xanthous",
+      "defB": "chicken"
     }
   ],
   "7": [
@@ -2406,11 +2256,6 @@
       "answer": "ACQUIRE",
       "defA": "get",
       "defB": "assume"
-    },
-    {
-      "answer": "ADAPTER",
-      "defA": "arranger",
-      "defB": "adaptor"
     },
     {
       "answer": "ADDRESS",
@@ -2435,7 +2280,7 @@
     {
       "answer": "AMATEUR",
       "defA": "recreational",
-      "defB": "amateurish"
+      "defB": "inexpert"
     },
     {
       "answer": "AMAZING",
@@ -2450,7 +2295,7 @@
     {
       "answer": "ANTIQUE",
       "defA": "old-timer",
-      "defB": "antiquate"
+      "defB": "demode"
     },
     {
       "answer": "ARRANGE",
@@ -2460,12 +2305,12 @@
     {
       "answer": "ARRIVAL",
       "defA": "reaching",
-      "defB": "arriver"
+      "defB": "comer"
     },
     {
       "answer": "ASSAULT",
       "defA": "rape",
-      "defB": "assail"
+      "defB": "attack"
     },
     {
       "answer": "ATTEMPT",
@@ -2478,18 +2323,13 @@
       "defB": "appeal"
     },
     {
-      "answer": "AUCTION",
-      "defA": "vendue",
-      "defB": "auctioneer"
-    },
-    {
       "answer": "AVERAGE",
       "defA": "norm",
       "defB": "mean"
     },
     {
       "answer": "BACKING",
-      "defA": "backup",
+      "defA": "championship",
       "defB": "mount"
     },
     {
@@ -2504,7 +2344,7 @@
     },
     {
       "answer": "BEARING",
-      "defA": "heading",
+      "defA": "aim",
       "defB": "comportment"
     },
     {
@@ -2523,11 +2363,6 @@
       "defB": "profit"
     },
     {
-      "answer": "BETWEEN",
-      "defA": "betwixt",
-      "defB": "'tween"
-    },
-    {
       "answer": "BIDDING",
       "defA": "command",
       "defB": "summons"
@@ -2535,7 +2370,7 @@
     {
       "answer": "BILLION",
       "defA": "1000000000000",
-      "defB": "million"
+      "defB": "gazillion"
     },
     {
       "answer": "BINDING",
@@ -2549,8 +2384,8 @@
     },
     {
       "answer": "BLESSED",
-      "defA": "blest",
-      "defB": "blasted"
+      "defA": "blame",
+      "defB": "beatified"
     },
     {
       "answer": "BOOKING",
@@ -2570,7 +2405,7 @@
     {
       "answer": "BURNING",
       "defA": "combustion",
-      "defB": "burn"
+      "defB": "electrocution"
     },
     {
       "answer": "CABINET",
@@ -2613,13 +2448,8 @@
       "defB": "toon"
     },
     {
-      "answer": "CASTING",
-      "defA": "cast",
-      "defB": "molding"
-    },
-    {
       "answer": "CAUTION",
-      "defA": "cautiousness",
+      "defA": "carefulness",
       "defB": "caveat"
     },
     {
@@ -2655,12 +2485,7 @@
     {
       "answer": "CIRCUIT",
       "defA": "tour",
-      "defB": "circumference"
-    },
-    {
-      "answer": "CLEANUP",
-      "defA": "killing",
-      "defB": "cleaning"
+      "defB": "lap"
     },
     {
       "answer": "CLEARLY",
@@ -2668,13 +2493,8 @@
       "defB": "distinctly"
     },
     {
-      "answer": "CLIMATE",
-      "defA": "clime",
-      "defB": "mood"
-    },
-    {
       "answer": "CLOSELY",
-      "defA": "close",
+      "defA": "tight",
       "defB": "intimately"
     },
     {
@@ -2684,13 +2504,13 @@
     },
     {
       "answer": "CLOSURE",
-      "defA": "closing",
-      "defB": "cloture"
+      "defA": "settlement",
+      "defB": "blockage"
     },
     {
       "answer": "COATING",
-      "defA": "coat",
-      "defB": "finish"
+      "defA": "finish",
+      "defB": "application"
     },
     {
       "answer": "COLLECT",
@@ -2700,12 +2520,12 @@
     {
       "answer": "COMBINE",
       "defA": "trust",
-      "defB": "combining"
+      "defB": "unite"
     },
     {
       "answer": "COMFORT",
-      "defA": "comfortableness",
-      "defB": "consolation"
+      "defA": "consolation",
+      "defB": "ease"
     },
     {
       "answer": "COMMAND",
@@ -2715,12 +2535,7 @@
     {
       "answer": "COMMENT",
       "defA": "remark",
-      "defB": "commentary"
-    },
-    {
-      "answer": "COMMONS",
-      "defA": "park",
-      "defB": "commonalty"
+      "defB": "gossip"
     },
     {
       "answer": "COMPACT",
@@ -2729,23 +2544,13 @@
     },
     {
       "answer": "COMPANY",
-      "defA": "companionship",
+      "defA": "fellowship",
       "defB": "troupe"
     },
     {
       "answer": "COMPARE",
-      "defA": "comparison",
+      "defA": "equivalence",
       "defB": "liken"
-    },
-    {
-      "answer": "COMPILE",
-      "defA": "collect",
-      "defB": "compose"
-    },
-    {
-      "answer": "COMPLEX",
-      "defA": "composite",
-      "defB": "complicated"
     },
     {
       "answer": "CONCERN",
@@ -2794,23 +2599,18 @@
     },
     {
       "answer": "CONTENT",
-      "defA": "contents",
-      "defB": "message"
+      "defA": "message",
+      "defB": "capacity"
     },
     {
       "answer": "CONTEST",
       "defA": "competition",
-      "defB": "contend"
+      "defB": "repugn"
     },
     {
       "answer": "CONTROL",
       "defA": "dominance",
       "defB": "restraint"
-    },
-    {
-      "answer": "CONVERT",
-      "defA": "change",
-      "defB": "convince"
     },
     {
       "answer": "CORRECT",
@@ -2843,11 +2643,6 @@
       "defB": "all-important"
     },
     {
-      "answer": "CRYSTAL",
-      "defA": "crystallization",
-      "defB": "quartz"
-    },
-    {
       "answer": "CULTURE",
       "defA": "civilization",
       "defB": "acculturation"
@@ -2870,11 +2665,11 @@
     {
       "answer": "DECLINE",
       "defA": "diminution",
-      "defB": "declination"
+      "defB": "decay"
     },
     {
       "answer": "DEFENSE",
-      "defA": "defence",
+      "defA": "vindication",
       "defB": "dod"
     },
     {
@@ -2894,8 +2689,8 @@
     },
     {
       "answer": "DESTROY",
-      "defA": "destruct",
-      "defB": "ruin"
+      "defA": "ruin",
+      "defB": "demolish"
     },
     {
       "answer": "DEVELOP",
@@ -2923,19 +2718,9 @@
       "defB": "aloof"
     },
     {
-      "answer": "DIVERSE",
-      "defA": "divers",
-      "defB": "various"
-    },
-    {
       "answer": "DIVIDED",
       "defA": "dual-lane",
       "defB": "shared"
-    },
-    {
-      "answer": "DIVORCE",
-      "defA": "divorcement",
-      "defB": "disassociate"
     },
     {
       "answer": "DRAWING",
@@ -2948,24 +2733,14 @@
       "defB": "polished"
     },
     {
-      "answer": "DRIVING",
-      "defA": "drive",
-      "defB": "impulsive"
-    },
-    {
       "answer": "DURABLE",
       "defA": "lasting",
       "defB": "long-wearing"
     },
     {
-      "answer": "DYNAMIC",
-      "defA": "dynamical",
-      "defB": "active"
-    },
-    {
       "answer": "EARLIER",
-      "defA": "earliest",
-      "defB": "before"
+      "defA": "before",
+      "defB": "sooner"
     },
     {
       "answer": "ECLIPSE",
@@ -3053,11 +2828,6 @@
       "defB": "show"
     },
     {
-      "answer": "EXPLAIN",
-      "defA": "explicate",
-      "defB": "excuse"
-    },
-    {
       "answer": "EXPOSED",
       "defA": "open",
       "defB": "uncovered"
@@ -3065,17 +2835,12 @@
     {
       "answer": "EXPRESS",
       "defA": "limited",
-      "defB": "expressage"
+      "defB": "show"
     },
     {
       "answer": "EXTRACT",
       "defA": "infusion",
       "defB": "excerpt"
-    },
-    {
-      "answer": "EXTREME",
-      "defA": "extremum",
-      "defB": "utmost"
     },
     {
       "answer": "FACULTY",
@@ -3091,11 +2856,6 @@
       "answer": "FAILURE",
       "defA": "loser",
       "defB": "bankruptcy"
-    },
-    {
-      "answer": "FANTASY",
-      "defA": "phantasy",
-      "defB": "fantasize"
     },
     {
       "answer": "FARMING",
@@ -3133,11 +2893,6 @@
       "defB": "champion"
     },
     {
-      "answer": "FILLING",
-      "defA": "fill",
-      "defB": "woof"
-    },
-    {
       "answer": "FINALLY",
       "defA": "eventually",
       "defB": "ultimately"
@@ -3146,11 +2901,6 @@
       "answer": "FITTING",
       "defA": "adjustment",
       "defB": "appointment"
-    },
-    {
-      "answer": "FOLDING",
-      "defA": "fold",
-      "defB": "foldable"
     },
     {
       "answer": "FOREIGN",
@@ -3170,17 +2920,12 @@
     {
       "answer": "FORWARD",
       "defA": "advancing",
-      "defB": "forwards"
+      "defB": "frontward"
     },
     {
       "answer": "FOUNDER",
       "defA": "laminitis",
       "defB": "beginner"
-    },
-    {
-      "answer": "FREIGHT",
-      "defA": "cargo",
-      "defB": "freightage"
     },
     {
       "answer": "FUNDING",
@@ -3203,24 +2948,14 @@
       "defB": "drivel"
     },
     {
-      "answer": "GENETIC",
-      "defA": "familial",
-      "defB": "genic"
-    },
-    {
       "answer": "GENUINE",
       "defA": "echt",
       "defB": "true"
     },
     {
-      "answer": "GRAPHIC",
-      "defA": "graphical",
-      "defB": "lifelike"
-    },
-    {
       "answer": "GRAVITY",
-      "defA": "gravitation",
-      "defB": "graveness"
+      "defA": "sobriety",
+      "defB": "solemnity"
     },
     {
       "answer": "GROCERY",
@@ -3233,19 +2968,14 @@
       "defB": "yard"
     },
     {
-      "answer": "HARMONY",
-      "defA": "harmoniousness",
-      "defB": "concord"
-    },
-    {
       "answer": "HARVEST",
       "defA": "crop",
-      "defB": "harvesting"
+      "defB": "reap"
     },
     {
       "answer": "HEADING",
-      "defA": "header",
-      "defB": "bearing"
+      "defA": "aim",
+      "defB": "drift"
     },
     {
       "answer": "HEALTHY",
@@ -3256,16 +2986,6 @@
       "answer": "HEARING",
       "defA": "audience",
       "defB": "earshot"
-    },
-    {
-      "answer": "HEATING",
-      "defA": "warming",
-      "defB": "heat"
-    },
-    {
-      "answer": "HEAVILY",
-      "defA": "heavy",
-      "defB": "intemperately"
     },
     {
       "answer": "HOLDING",
@@ -3291,11 +3011,6 @@
       "answer": "IMAGINE",
       "defA": "ideate",
       "defB": "think"
-    },
-    {
-      "answer": "IMAGING",
-      "defA": "imagination",
-      "defB": "tomography"
     },
     {
       "answer": "INSIGHT",
@@ -3333,14 +3048,9 @@
       "defB": "daybook"
     },
     {
-      "answer": "JOURNEY",
-      "defA": "journeying",
-      "defB": "travel"
-    },
-    {
       "answer": "JUSTICE",
-      "defA": "justness",
-      "defB": "judge"
+      "defA": "judge",
+      "defB": "doj"
     },
     {
       "answer": "KEEPING",
@@ -3349,8 +3059,8 @@
     },
     {
       "answer": "KILLING",
-      "defA": "kill",
-      "defB": "cleanup"
+      "defA": "cleanup",
+      "defB": "sidesplitting"
     },
     {
       "answer": "KNOWING",
@@ -3364,8 +3074,8 @@
     },
     {
       "answer": "LEADING",
-      "defA": "lead",
-      "defB": "leadership"
+      "defA": "prima",
+      "defB": "preeminent"
     },
     {
       "answer": "LEARNED",
@@ -3384,7 +3094,7 @@
     },
     {
       "answer": "LIBERAL",
-      "defA": "liberalist",
+      "defA": "progressive",
       "defB": "broad"
     },
     {
@@ -3394,8 +3104,8 @@
     },
     {
       "answer": "LICENSE",
-      "defA": "licence",
-      "defB": "permission"
+      "defA": "permission",
+      "defB": "certify"
     },
     {
       "answer": "LICKING",
@@ -3413,24 +3123,9 @@
       "defB": "circumscribed"
     },
     {
-      "answer": "LISTING",
-      "defA": "list",
-      "defB": "itemization"
-    },
-    {
-      "answer": "LODGING",
-      "defA": "housing",
-      "defB": "lodgment"
-    },
-    {
       "answer": "LOGICAL",
       "defA": "legitimate",
       "defB": "coherent"
-    },
-    {
-      "answer": "LOOKING",
-      "defA": "look",
-      "defB": "sounding"
     },
     {
       "answer": "MADNESS",
@@ -3443,24 +3138,9 @@
       "defB": "coach"
     },
     {
-      "answer": "MANDATE",
-      "defA": "authorization",
-      "defB": "mandatory"
-    },
-    {
-      "answer": "MARKING",
-      "defA": "marker",
-      "defB": "grading"
-    },
-    {
       "answer": "MARTIAL",
       "defA": "soldierly",
       "defB": "warlike"
-    },
-    {
-      "answer": "MAXIMUM",
-      "defA": "utmost",
-      "defB": "maximal"
     },
     {
       "answer": "MEANING",
@@ -3490,7 +3170,7 @@
     {
       "answer": "MILLION",
       "defA": "1000000",
-      "defB": "billion"
+      "defB": "gazillion"
     },
     {
       "answer": "MISTAKE",
@@ -3514,7 +3194,7 @@
     },
     {
       "answer": "MORNING",
-      "defA": "morn",
+      "defA": "forenoon",
       "defB": "dawn"
     },
     {
@@ -3556,11 +3236,6 @@
       "answer": "OBSERVE",
       "defA": "detect",
       "defB": "note"
-    },
-    {
-      "answer": "OFFICER",
-      "defA": "officeholder",
-      "defB": "policeman"
     },
     {
       "answer": "OPENING",
@@ -3629,13 +3304,13 @@
     },
     {
       "answer": "PASSING",
-      "defA": "pass",
-      "defB": "loss"
+      "defA": "loss",
+      "defB": "overtaking"
     },
     {
       "answer": "PASSION",
-      "defA": "passionateness",
-      "defB": "heat"
+      "defA": "heat",
+      "defB": "rage"
     },
     {
       "answer": "PASSIVE",
@@ -3654,8 +3329,8 @@
     },
     {
       "answer": "PERFECT",
-      "defA": "perfective",
-      "defB": "hone"
+      "defA": "hone",
+      "defB": "arrant"
     },
     {
       "answer": "PERFUME",
@@ -3694,13 +3369,13 @@
     },
     {
       "answer": "POSTING",
-      "defA": "poster",
+      "defA": "placard",
       "defB": "mailing"
     },
     {
       "answer": "PREMIER",
       "defA": "pm",
-      "defB": "premiere"
+      "defB": "prime"
     },
     {
       "answer": "PREMIUM",
@@ -3744,8 +3419,8 @@
     },
     {
       "answer": "PROCESS",
-      "defA": "procedure",
-      "defB": "operation"
+      "defA": "operation",
+      "defB": "summons"
     },
     {
       "answer": "PRODUCE",
@@ -3755,7 +3430,7 @@
     {
       "answer": "PRODUCT",
       "defA": "merchandise",
-      "defB": "production"
+      "defB": "intersection"
     },
     {
       "answer": "PROFITS",
@@ -3770,7 +3445,7 @@
     {
       "answer": "PROJECT",
       "defA": "undertaking",
-      "defB": "projection"
+      "defB": "protrude"
     },
     {
       "answer": "PROMISE",
@@ -3786,11 +3461,6 @@
       "answer": "PROPOSE",
       "defA": "suggest",
       "defB": "project"
-    },
-    {
-      "answer": "PROTEST",
-      "defA": "protestation",
-      "defB": "objection"
     },
     {
       "answer": "PROVIDE",
@@ -3810,7 +3480,7 @@
     {
       "answer": "PURSUIT",
       "defA": "chase",
-      "defB": "pursuance"
+      "defB": "quest"
     },
     {
       "answer": "QUALIFY",
@@ -3848,19 +3518,9 @@
       "defB": "interpretation"
     },
     {
-      "answer": "REALITY",
-      "defA": "world",
-      "defB": "realness"
-    },
-    {
       "answer": "REBOUND",
       "defA": "recoil",
       "defB": "rally"
-    },
-    {
-      "answer": "RECEIPT",
-      "defA": "reception",
-      "defB": "acknowledge"
     },
     {
       "answer": "RECEIVE",
@@ -3934,7 +3594,7 @@
     },
     {
       "answer": "RESOLVE",
-      "defA": "resoluteness",
+      "defA": "firmness",
       "defB": "decide"
     },
     {
@@ -3960,7 +3620,7 @@
     {
       "answer": "REVENGE",
       "defA": "retaliation",
-      "defB": "avenge"
+      "defB": "retaliate"
     },
     {
       "answer": "REVENUE",
@@ -3970,7 +3630,7 @@
     {
       "answer": "REVERSE",
       "defA": "contrary",
-      "defB": "reversal"
+      "defB": "setback"
     },
     {
       "answer": "ROLLING",
@@ -3979,13 +3639,8 @@
     },
     {
       "answer": "ROMANCE",
-      "defA": "romanticism",
-      "defB": "woo"
-    },
-    {
-      "answer": "ROUGHLY",
-      "defA": "approximately",
-      "defB": "rough"
+      "defA": "woo",
+      "defB": "flirt"
     },
     {
       "answer": "ROUTINE",
@@ -4030,12 +3685,7 @@
     {
       "answer": "SERVICE",
       "defA": "avail",
-      "defB": "servicing"
-    },
-    {
-      "answer": "SERVING",
-      "defA": "helping",
-      "defB": "service"
+      "defB": "overhaul"
     },
     {
       "answer": "SETTING",
@@ -4046,11 +3696,6 @@
       "answer": "SEVENTH",
       "defA": "one-seventh",
       "defB": "7th"
-    },
-    {
-      "answer": "SHARING",
-      "defA": "communion",
-      "defB": "share-out"
     },
     {
       "answer": "SHORTLY",
@@ -4129,7 +3774,7 @@
     },
     {
       "answer": "STORAGE",
-      "defA": "storehouse",
+      "defA": "depot",
       "defB": "repositing"
     },
     {
@@ -4140,7 +3785,7 @@
     {
       "answer": "STRETCH",
       "defA": "reach",
-      "defB": "stretching"
+      "defB": "stint"
     },
     {
       "answer": "STUDENT",
@@ -4154,8 +3799,8 @@
     },
     {
       "answer": "SUBLIME",
-      "defA": "sublimate",
-      "defB": "empyreal"
+      "defA": "empyreal",
+      "defB": "reverend"
     },
     {
       "answer": "SUCCEED",
@@ -4250,7 +3895,7 @@
     {
       "answer": "TRANSIT",
       "defA": "theodolite",
-      "defB": "transportation"
+      "defB": "passage"
     },
     {
       "answer": "TRIBUTE",
@@ -4295,7 +3940,7 @@
     {
       "answer": "UTILITY",
       "defA": "usefulness",
-      "defB": "utility-grade"
+      "defB": "substitute"
     },
     {
       "answer": "VARIETY",
@@ -4343,11 +3988,6 @@
       "defB": "potential"
     },
     {
-      "answer": "WALKING",
-      "defA": "walk",
-      "defB": "walk-to"
-    },
-    {
       "answer": "WARMING",
       "defA": "heating",
       "defB": "thaw"
@@ -4365,7 +4005,7 @@
     {
       "answer": "WEARING",
       "defA": "erosion",
-      "defB": "wear"
+      "defB": "exhausting"
     },
     {
       "answer": "WEATHER",
@@ -4394,13 +4034,8 @@
     },
     {
       "answer": "WITNESS",
-      "defA": "witnesser",
+      "defA": "informant",
       "defB": "spectator"
-    },
-    {
-      "answer": "WORKING",
-      "defA": "workings",
-      "defB": "running"
     },
     {
       "answer": "WORRIED",
@@ -4426,18 +4061,8 @@
     },
     {
       "answer": "ABSTRACT",
-      "defA": "abstraction",
-      "defB": "outline"
-    },
-    {
-      "answer": "ACADEMIC",
-      "defA": "academician",
-      "defB": "donnish"
-    },
-    {
-      "answer": "ACTIVITY",
-      "defA": "action",
-      "defB": "activeness"
+      "defA": "outline",
+      "defB": "pilfer"
     },
     {
       "answer": "ADDITION",
@@ -4466,7 +4091,7 @@
     },
     {
       "answer": "ADVOCATE",
-      "defA": "advocator",
+      "defA": "proponent",
       "defB": "counsel"
     },
     {
@@ -4486,7 +4111,7 @@
     },
     {
       "answer": "ANNOYING",
-      "defA": "annoyance",
+      "defA": "irritation",
       "defB": "bothersome"
     },
     {
@@ -4497,7 +4122,7 @@
     {
       "answer": "APPROACH",
       "defA": "attack",
-      "defB": "approaching"
+      "defB": "coming"
     },
     {
       "answer": "APPROVAL",
@@ -4535,11 +4160,6 @@
       "defB": "air"
     },
     {
-      "answer": "BACHELOR",
-      "defA": "bachelor-at-arms",
-      "defB": "bach"
-    },
-    {
       "answer": "BEGINNER",
       "defA": "novice",
       "defB": "founder"
@@ -4570,18 +4190,13 @@
       "defB": "cause"
     },
     {
-      "answer": "CAPACITY",
-      "defA": "capability",
-      "defB": "content"
-    },
-    {
       "answer": "CARNIVAL",
       "defA": "circus",
       "defB": "fair"
     },
     {
       "answer": "CHAMPION",
-      "defA": "champ",
+      "defA": "title-holder",
       "defB": "fighter"
     },
     {
@@ -4606,7 +4221,7 @@
     },
     {
       "answer": "COMMERCE",
-      "defA": "commercialism",
+      "defA": "mercantilism",
       "defB": "doc"
     },
     {
@@ -4671,7 +4286,7 @@
     },
     {
       "answer": "COVERING",
-      "defA": "cover",
+      "defA": "screening",
       "defB": "application"
     },
     {
@@ -4701,18 +4316,13 @@
     },
     {
       "answer": "DARKNESS",
-      "defA": "dark",
+      "defA": "shadow",
       "defB": "duskiness"
-    },
-    {
-      "answer": "DECISION",
-      "defA": "determination",
-      "defB": "decisiveness"
     },
     {
       "answer": "DECREASE",
       "defA": "lessening",
-      "defB": "decrement"
+      "defB": "diminution"
     },
     {
       "answer": "DELIVERY",
@@ -4735,11 +4345,6 @@
       "defB": "demodulator"
     },
     {
-      "answer": "DIALOGUE",
-      "defA": "dialog",
-      "defB": "negotiation"
-    },
-    {
       "answer": "DIRECTLY",
       "defA": "straight",
       "defB": "immediately"
@@ -4752,7 +4357,7 @@
     {
       "answer": "DISAGREE",
       "defA": "differ",
-      "defB": "disaccord"
+      "defB": "discord"
     },
     {
       "answer": "DISCOUNT",
@@ -4767,17 +4372,12 @@
     {
       "answer": "DISORDER",
       "defA": "upset",
-      "defB": "disorderliness"
+      "defB": "perturb"
     },
     {
       "answer": "DISPATCH",
-      "defA": "despatch",
+      "defA": "communique",
       "defB": "discharge"
-    },
-    {
-      "answer": "DISPOSAL",
-      "defA": "administration",
-      "defB": "disposition"
     },
     {
       "answer": "DISTANCE",
@@ -4786,8 +4386,8 @@
     },
     {
       "answer": "DISTINCT",
-      "defA": "distinguishable",
-      "defB": "discrete"
+      "defA": "discrete",
+      "defB": "decided"
     },
     {
       "answer": "DISTRICT",
@@ -4807,7 +4407,7 @@
     {
       "answer": "DRINKING",
       "defA": "imbibing",
-      "defB": "drink"
+      "defB": "boozing"
     },
     {
       "answer": "DURATION",
@@ -4815,24 +4415,9 @@
       "defB": "length"
     },
     {
-      "answer": "EARLIEST",
-      "defA": "earlier",
-      "defB": "soonest"
-    },
-    {
       "answer": "EARNINGS",
       "defA": "net",
       "defB": "wage"
-    },
-    {
-      "answer": "ELECTRIC",
-      "defA": "electrical",
-      "defB": "galvanic"
-    },
-    {
-      "answer": "EMERGING",
-      "defA": "rising",
-      "defB": "emergent"
     },
     {
       "answer": "EMISSION",
@@ -4856,22 +4441,17 @@
     },
     {
       "answer": "ENTRANCE",
-      "defA": "entranceway",
-      "defB": "entering"
-    },
-    {
-      "answer": "EQUATION",
-      "defA": "equality",
-      "defB": "equating"
+      "defA": "entering",
+      "defB": "capture"
     },
     {
       "answer": "EQUIPPED",
-      "defA": "equipt",
-      "defB": "furnished"
+      "defA": "furnished",
+      "defB": "weaponed"
     },
     {
       "answer": "ESTIMATE",
-      "defA": "estimation",
+      "defA": "approximation",
       "defB": "gauge"
     },
     {
@@ -4896,7 +4476,7 @@
     },
     {
       "answer": "EXERCISE",
-      "defA": "exercising",
+      "defA": "workout",
       "defB": "use"
     },
     {
@@ -4915,11 +4495,6 @@
       "defB": "photograph"
     },
     {
-      "answer": "EXTENDED",
-      "defA": "drawn-out",
-      "defB": "extensive"
-    },
-    {
       "answer": "FABULOUS",
       "defA": "fab",
       "defB": "mythic"
@@ -4936,13 +4511,13 @@
     },
     {
       "answer": "FIGHTING",
-      "defA": "fight",
+      "defA": "combat",
       "defB": "active"
     },
     {
       "answer": "FLEXIBLE",
-      "defA": "flexile",
-      "defB": "elastic"
+      "defA": "elastic",
+      "defB": "whippy"
     },
     {
       "answer": "FLOATING",
@@ -4951,7 +4526,7 @@
     },
     {
       "answer": "FOCUSING",
-      "defA": "focus",
+      "defA": "direction",
       "defB": "focalization"
     },
     {
@@ -5001,7 +4576,7 @@
     },
     {
       "answer": "HUMANITY",
-      "defA": "humanness",
+      "defA": "manhood",
       "defB": "world"
     },
     {
@@ -5012,12 +4587,12 @@
     {
       "answer": "IDENTITY",
       "defA": "individuality",
-      "defB": "identicalness"
+      "defB": "indistinguishability"
     },
     {
       "answer": "INCREASE",
       "defA": "addition",
-      "defB": "increment"
+      "defB": "growth"
     },
     {
       "answer": "INDICATE",
@@ -5042,7 +4617,7 @@
     {
       "answer": "INNOCENT",
       "defA": "guiltless",
-      "defB": "innocuous"
+      "defB": "impeccant"
     },
     {
       "answer": "INSTANCE",
@@ -5105,11 +4680,6 @@
       "defB": "eruditeness"
     },
     {
-      "answer": "LIGHTING",
-      "defA": "light",
-      "defB": "ignition"
-    },
-    {
       "answer": "LIKEWISE",
       "defA": "similarly",
       "defB": "besides"
@@ -5123,11 +4693,6 @@
       "answer": "MAGAZINE",
       "defA": "mag",
       "defB": "cartridge"
-    },
-    {
-      "answer": "MAGNETIC",
-      "defA": "magnetized",
-      "defB": "charismatic"
     },
     {
       "answer": "MAINTAIN",
@@ -5155,13 +4720,8 @@
       "defB": "metrical"
     },
     {
-      "answer": "MEDICINE",
-      "defA": "medication",
-      "defB": "music"
-    },
-    {
       "answer": "MEDIEVAL",
-      "defA": "mediaeval",
+      "defA": "gothic",
       "defB": "chivalric"
     },
     {
@@ -5176,23 +4736,13 @@
     },
     {
       "answer": "MINIMIZE",
-      "defA": "minimise",
+      "defA": "understate",
       "defB": "belittle"
-    },
-    {
-      "answer": "MODELING",
-      "defA": "mold",
-      "defB": "model"
     },
     {
       "answer": "MODERATE",
       "defA": "centrist",
       "defB": "chair"
-    },
-    {
-      "answer": "MOUNTAIN",
-      "defA": "mount",
-      "defB": "batch"
     },
     {
       "answer": "MOVEMENT",
@@ -5235,11 +4785,6 @@
       "defB": "engaged"
     },
     {
-      "answer": "OFFERING",
-      "defA": "offer",
-      "defB": "oblation"
-    },
-    {
       "answer": "OFFICIAL",
       "defA": "functionary",
       "defB": "prescribed"
@@ -5248,11 +4793,6 @@
       "answer": "OPERATOR",
       "defA": "manipulator",
       "defB": "hustler"
-    },
-    {
-      "answer": "OPPONENT",
-      "defA": "opposition",
-      "defB": "adversary"
     },
     {
       "answer": "OPPOSITE",
@@ -5280,39 +4820,14 @@
       "defB": "smash"
     },
     {
-      "answer": "OVERSEAS",
-      "defA": "abroad",
-      "defB": "oversea"
-    },
-    {
       "answer": "PARALLEL",
       "defA": "analogue",
       "defB": "latitude"
     },
     {
-      "answer": "PASSPORT",
-      "defA": "pass",
-      "defB": "recommendation"
-    },
-    {
-      "answer": "PEACEFUL",
-      "defA": "peaceable",
-      "defB": "passive"
-    },
-    {
-      "answer": "PERIODIC",
-      "defA": "periodical",
-      "defB": "occasional"
-    },
-    {
       "answer": "PETITION",
       "defA": "request",
       "defB": "prayer"
-    },
-    {
-      "answer": "PHARMACY",
-      "defA": "pharmaceutics",
-      "defB": "drugstore"
     },
     {
       "answer": "PIPELINE",
@@ -5323,16 +4838,6 @@
       "answer": "PLATFORM",
       "defA": "program",
       "defB": "chopine"
-    },
-    {
-      "answer": "PLEASURE",
-      "defA": "pleasance",
-      "defB": "joy"
-    },
-    {
-      "answer": "PLUMBING",
-      "defA": "plumbery",
-      "defB": "bathymetry"
     },
     {
       "answer": "POLISHED",
@@ -5380,13 +4885,8 @@
       "defB": "continue"
     },
     {
-      "answer": "PRESSING",
-      "defA": "press",
-      "defB": "urgent"
-    },
-    {
       "answer": "PRESSURE",
-      "defA": "press",
+      "defA": "imperativeness",
       "defB": "coerce"
     },
     {
@@ -5402,7 +4902,7 @@
     {
       "answer": "PROGRESS",
       "defA": "advancement",
-      "defB": "progression"
+      "defB": "advance"
     },
     {
       "answer": "PROMPTLY",
@@ -5440,13 +4940,8 @@
       "defB": "head"
     },
     {
-      "answer": "RAILROAD",
-      "defA": "railway",
-      "defB": "dragoon"
-    },
-    {
       "answer": "REACHING",
-      "defA": "reach",
+      "defA": "stretch",
       "defB": "arrival"
     },
     {
@@ -5461,18 +4956,18 @@
     },
     {
       "answer": "REGISTER",
-      "defA": "registry",
-      "defB": "file"
+      "defA": "file",
+      "defB": "record"
     },
     {
       "answer": "RELATION",
       "defA": "intercourse",
-      "defB": "relative"
+      "defB": "telling"
     },
     {
       "answer": "RELATIVE",
-      "defA": "relation",
-      "defB": "congener"
+      "defA": "congener",
+      "defB": "comparative"
     },
     {
       "answer": "RELIABLE",
@@ -5492,17 +4987,12 @@
     {
       "answer": "RESEARCH",
       "defA": "inquiry",
-      "defB": "search"
+      "defB": "explore"
     },
     {
       "answer": "RESIDENT",
       "defA": "occupant",
       "defB": "nonmigratory"
-    },
-    {
-      "answer": "RESOLVED",
-      "defA": "single-minded",
-      "defB": "solved"
     },
     {
       "answer": "RESPONSE",
@@ -5527,12 +5017,12 @@
     {
       "answer": "REVISION",
       "defA": "alteration",
-      "defB": "revisal"
+      "defB": "rescript"
     },
     {
       "answer": "ROMANTIC",
-      "defA": "romanticist",
-      "defB": "amatory"
+      "defA": "amatory",
+      "defB": "quixotic"
     },
     {
       "answer": "SECURITY",
@@ -5590,14 +5080,9 @@
       "defB": "banner"
     },
     {
-      "answer": "STEERING",
-      "defA": "guidance",
-      "defB": "steerage"
-    },
-    {
       "answer": "STRAIGHT",
       "defA": "heterosexual",
-      "defB": "straightaway"
+      "defB": "consecutive"
     },
     {
       "answer": "STRENGTH",
@@ -5607,7 +5092,7 @@
     {
       "answer": "STRICTLY",
       "defA": "purely",
-      "defB": "stringently"
+      "defB": "rigorously"
     },
     {
       "answer": "STRIKING",
@@ -5618,11 +5103,6 @@
       "answer": "STRUGGLE",
       "defA": "battle",
       "defB": "fight"
-    },
-    {
-      "answer": "SUITABLE",
-      "defA": "suited",
-      "defB": "desirable"
     },
     {
       "answer": "SUNSHINE",
@@ -5640,11 +5120,6 @@
       "defB": "conjectural"
     },
     {
-      "answer": "SURPRISE",
-      "defA": "surprisal",
-      "defB": "storm"
-    },
-    {
       "answer": "SURROUND",
       "defA": "environment",
       "defB": "environ"
@@ -5656,8 +5131,8 @@
     },
     {
       "answer": "SWIMMING",
-      "defA": "swim",
-      "defB": "liquid"
+      "defA": "liquid",
+      "defB": "naiant"
     },
     {
       "answer": "TAXATION",
@@ -5671,7 +5146,7 @@
     },
     {
       "answer": "TERMINAL",
-      "defA": "terminus",
+      "defA": "depot",
       "defB": "pole"
     },
     {
@@ -5681,7 +5156,7 @@
     },
     {
       "answer": "TEXTBOOK",
-      "defA": "text",
+      "defA": "schoolbook",
       "defB": "casebook"
     },
     {
@@ -5696,8 +5171,8 @@
     },
     {
       "answer": "TRANSFER",
-      "defA": "transportation",
-      "defB": "transferee"
+      "defA": "conveyance",
+      "defB": "carry-over"
     },
     {
       "answer": "TRANSMIT",
@@ -5710,19 +5185,9 @@
       "defB": "prize"
     },
     {
-      "answer": "TRIANGLE",
-      "defA": "trigon",
-      "defB": "triangulum"
-    },
-    {
       "answer": "UNIVERSE",
       "defA": "existence",
       "defB": "population"
-    },
-    {
-      "answer": "VALIDITY",
-      "defA": "cogency",
-      "defB": "validness"
     },
     {
       "answer": "VARIANCE",
@@ -5738,11 +5203,6 @@
       "answer": "VIOLENCE",
       "defA": "force",
       "defB": "ferocity"
-    },
-    {
-      "answer": "WRAPPING",
-      "defA": "wrap",
-      "defB": "swathe"
     }
   ],
   "9": [
@@ -5750,11 +5210,6 @@
       "answer": "ACCESSORY",
       "defA": "accoutrement",
       "defB": "appurtenance"
-    },
-    {
-      "answer": "ADVANTAGE",
-      "defA": "vantage",
-      "defB": "reward"
     },
     {
       "answer": "ADVENTURE",
@@ -5792,11 +5247,6 @@
       "defB": "vitality"
     },
     {
-      "answer": "APPOINTED",
-      "defA": "appointive",
-      "defB": "decreed"
-    },
-    {
       "answer": "APPRAISAL",
       "defA": "assessment",
       "defB": "estimate"
@@ -5817,16 +5267,6 @@
       "defB": "pledge"
     },
     {
-      "answer": "ATTENDING",
-      "defA": "attention",
-      "defB": "attendance"
-    },
-    {
-      "answer": "ATTENTION",
-      "defA": "attending",
-      "defB": "care"
-    },
-    {
       "answer": "ATTRIBUTE",
       "defA": "property",
       "defB": "impute"
@@ -5838,12 +5278,12 @@
     },
     {
       "answer": "AUTHORITY",
-      "defA": "authorization",
+      "defA": "potency",
       "defB": "assurance"
     },
     {
       "answer": "AUTOMATIC",
-      "defA": "automatonlike",
+      "defA": "machinelike",
       "defB": "reflex"
     },
     {
@@ -5907,16 +5347,6 @@
       "defB": "fete"
     },
     {
-      "answer": "CERTIFIED",
-      "defA": "certifiable",
-      "defB": "qualified"
-    },
-    {
-      "answer": "CHAMPAGNE",
-      "defA": "bubbly",
-      "defB": "champagne-ardenne"
-    },
-    {
       "answer": "CHARACTER",
       "defA": "quality",
       "defB": "fiber"
@@ -5925,11 +5355,6 @@
       "answer": "CHOCOLATE",
       "defA": "cocoa",
       "defB": "coffee"
-    },
-    {
-      "answer": "CLASSICAL",
-      "defA": "classic",
-      "defB": "greco-roman"
     },
     {
       "answer": "COALITION",
@@ -5952,19 +5377,9 @@
       "defB": "gatherer"
     },
     {
-      "answer": "COMBINING",
-      "defA": "combine",
-      "defB": "combination"
-    },
-    {
-      "answer": "COMMUNIST",
-      "defA": "commie",
-      "defB": "communistic"
-    },
-    {
       "answer": "COMPANION",
       "defA": "comrade",
-      "defB": "company"
+      "defB": "accompany"
     },
     {
       "answer": "COMPLAINT",
@@ -5988,7 +5403,7 @@
     },
     {
       "answer": "CONFUSION",
-      "defA": "confusedness",
+      "defA": "muddiness",
       "defB": "discombobulation"
     },
     {
@@ -6012,29 +5427,19 @@
       "defB": "grave"
     },
     {
-      "answer": "DELICIOUS",
-      "defA": "delightful",
-      "defB": "delectable"
-    },
-    {
       "answer": "DEPARTURE",
       "defA": "going",
       "defB": "deviation"
     },
     {
       "answer": "DEPENDENT",
-      "defA": "dependant",
+      "defA": "qualified",
       "defB": "subordinate"
     },
     {
-      "answer": "DESIGNING",
-      "defA": "design",
-      "defB": "scheming"
-    },
-    {
       "answer": "DESPERATE",
-      "defA": "despairing",
-      "defB": "do-or-die"
+      "defA": "do-or-die",
+      "defB": "heroic"
     },
     {
       "answer": "DETECTION",
@@ -6049,7 +5454,7 @@
     {
       "answer": "DEVIATION",
       "defA": "divergence",
-      "defB": "deviance"
+      "defB": "diversion"
     },
     {
       "answer": "DIFFICULT",
@@ -6079,7 +5484,7 @@
     {
       "answer": "DUPLICATE",
       "defA": "extra",
-      "defB": "duplication"
+      "defB": "double"
     },
     {
       "answer": "EDUCATION",
@@ -6088,7 +5493,7 @@
     },
     {
       "answer": "EFFECTIVE",
-      "defA": "effectual",
+      "defA": "efficacious",
       "defB": "efficient"
     },
     {
@@ -6138,8 +5543,8 @@
     },
     {
       "answer": "EXECUTION",
-      "defA": "executing",
-      "defB": "performance"
+      "defA": "performance",
+      "defB": "murder"
     },
     {
       "answer": "EXEMPTION",
@@ -6167,11 +5572,6 @@
       "defB": "reference"
     },
     {
-      "answer": "EXTENSIVE",
-      "defA": "extended",
-      "defB": "across-the-board"
-    },
-    {
       "answer": "EXTREMELY",
       "defA": "highly",
       "defB": "exceedingly"
@@ -6183,8 +5583,8 @@
     },
     {
       "answer": "FOLLOWING",
-      "defA": "followers",
-      "defB": "pursuit"
+      "defA": "pursuit",
+      "defB": "undermentioned"
     },
     {
       "answer": "FORMATION",
@@ -6207,29 +5607,14 @@
       "defB": "enfranchisement"
     },
     {
-      "answer": "GATHERING",
-      "defA": "assemblage",
-      "defB": "gather"
-    },
-    {
       "answer": "GENERALLY",
       "defA": "mostly",
       "defB": "broadly"
     },
     {
-      "answer": "GRADUATED",
-      "defA": "calibrated",
-      "defB": "gradational"
-    },
-    {
       "answer": "GUARANTEE",
       "defA": "warrant",
-      "defB": "guaranty"
-    },
-    {
-      "answer": "HIGHLIGHT",
-      "defA": "highlighting",
-      "defB": "foreground"
+      "defB": "vouch"
     },
     {
       "answer": "IDENTICAL",
@@ -6254,17 +5639,12 @@
     {
       "answer": "INDUCTION",
       "defA": "initiation",
-      "defB": "inductance"
+      "defB": "generalization"
     },
     {
       "answer": "INFLUENCE",
       "defA": "work",
       "defB": "determine"
-    },
-    {
-      "answer": "INJECTION",
-      "defA": "injectant",
-      "defB": "shot"
     },
     {
       "answer": "INSERTION",
@@ -6274,7 +5654,7 @@
     {
       "answer": "INSTANTLY",
       "defA": "immediately",
-      "defB": "instantaneously"
+      "defB": "outright"
     },
     {
       "answer": "INSTITUTE",
@@ -6294,7 +5674,7 @@
     {
       "answer": "INTENSITY",
       "defA": "strength",
-      "defB": "intensiveness"
+      "defB": "volume"
     },
     {
       "answer": "INTERVIEW",
@@ -6317,11 +5697,6 @@
       "defB": "inconspicuous"
     },
     {
-      "answer": "MANDATORY",
-      "defA": "mandatary",
-      "defB": "mandate"
-    },
-    {
       "answer": "MATERNITY",
       "defA": "pregnancy",
       "defB": "motherhood"
@@ -6332,29 +5707,9 @@
       "defB": "toy"
     },
     {
-      "answer": "NEWSPAPER",
-      "defA": "paper",
-      "defB": "newsprint"
-    },
-    {
       "answer": "NONPROFIT",
       "defA": "not-for-profit",
       "defB": "non-profit-making"
-    },
-    {
-      "answer": "NORTHEAST",
-      "defA": "nor'-east",
-      "defB": "northeastern"
-    },
-    {
-      "answer": "NORTHWEST",
-      "defA": "nor'-west",
-      "defB": "northwestern"
-    },
-    {
-      "answer": "NUMERICAL",
-      "defA": "numeric",
-      "defB": "mathematical"
     },
     {
       "answer": "OBJECTIVE",
@@ -6363,8 +5718,8 @@
     },
     {
       "answer": "OFFENSIVE",
-      "defA": "offense",
-      "defB": "violative"
+      "defA": "violative",
+      "defB": "unsavory"
     },
     {
       "answer": "OPERATION",
@@ -6372,24 +5727,9 @@
       "defB": "procedure"
     },
     {
-      "answer": "ORDINANCE",
-      "defA": "regulation",
-      "defB": "ordination"
-    },
-    {
-      "answer": "PAPERBACK",
-      "defA": "softback",
-      "defB": "paperbacked"
-    },
-    {
       "answer": "PARTITION",
       "defA": "divider",
       "defB": "division"
-    },
-    {
-      "answer": "PERMANENT",
-      "defA": "perm",
-      "defB": "lasting"
     },
     {
       "answer": "PLACEMENT",
@@ -6403,18 +5743,13 @@
     },
     {
       "answer": "POTENTIAL",
-      "defA": "potentiality",
-      "defB": "voltage"
+      "defA": "voltage",
+      "defB": "possible"
     },
     {
       "answer": "PRACTICAL",
       "defA": "hardheaded",
       "defB": "virtual"
-    },
-    {
-      "answer": "PREFERRED",
-      "defA": "preferable",
-      "defB": "favored"
     },
     {
       "answer": "PRESENTLY",
@@ -6443,8 +5778,8 @@
     },
     {
       "answer": "PROCEDURE",
-      "defA": "process",
-      "defB": "operation"
+      "defA": "operation",
+      "defB": "routine"
     },
     {
       "answer": "PROMINENT",
@@ -6453,13 +5788,13 @@
     },
     {
       "answer": "PROMOTION",
-      "defA": "promo",
+      "defA": "publicity",
       "defB": "furtherance"
     },
     {
       "answer": "PROVISION",
-      "defA": "proviso",
-      "defB": "supply"
+      "defA": "supply",
+      "defB": "planning"
     },
     {
       "answer": "QUALIFIED",
@@ -6467,24 +5802,9 @@
       "defB": "restricted"
     },
     {
-      "answer": "RADIATION",
-      "defA": "radioactivity",
-      "defB": "radiotherapy"
-    },
-    {
-      "answer": "RECEPTION",
-      "defA": "response",
-      "defB": "receipt"
-    },
-    {
-      "answer": "RECOMMEND",
-      "defA": "urge",
-      "defB": "commend"
-    },
-    {
       "answer": "REDUCTION",
       "defA": "decrease",
-      "defB": "reducing"
+      "defB": "simplification"
     },
     {
       "answer": "REFERENCE",
@@ -6498,7 +5818,7 @@
     },
     {
       "answer": "RENDERING",
-      "defA": "rendition",
+      "defA": "interpretation",
       "defB": "translation"
     },
     {
@@ -6514,7 +5834,7 @@
     {
       "answer": "RESIDENCE",
       "defA": "abode",
-      "defB": "residency"
+      "defB": "abidance"
     },
     {
       "answer": "RESISTANT",
@@ -6549,7 +5869,7 @@
     {
       "answer": "SCULPTURE",
       "defA": "carving",
-      "defB": "sculpt"
+      "defB": "grave"
     },
     {
       "answer": "SEARCHING",
@@ -6569,7 +5889,7 @@
     {
       "answer": "SENSITIVE",
       "defA": "medium",
-      "defB": "sensible"
+      "defB": "sore"
     },
     {
       "answer": "SEPARATED",
@@ -6587,16 +5907,6 @@
       "defB": "site"
     },
     {
-      "answer": "SOUTHEAST",
-      "defA": "sou'-east",
-      "defB": "southeasterly"
-    },
-    {
-      "answer": "SOUTHWEST",
-      "defA": "sou'-west",
-      "defB": "southwesterly"
-    },
-    {
       "answer": "SPIRITUAL",
       "defA": "religious",
       "defB": "unearthly"
@@ -6604,17 +5914,7 @@
     {
       "answer": "SPOTLIGHT",
       "defA": "limelight",
-      "defB": "spot"
-    },
-    {
-      "answer": "SPREADING",
-      "defA": "spread",
-      "defB": "dissemination"
-    },
-    {
-      "answer": "STABILITY",
-      "defA": "stableness",
-      "defB": "constancy"
+      "defB": "foreground"
     },
     {
       "answer": "STATEMENT",
@@ -6644,22 +5944,17 @@
     {
       "answer": "SYNTHETIC",
       "defA": "man-made",
-      "defB": "synthetical"
+      "defB": "celluloid"
     },
     {
       "answer": "TECHNICAL",
       "defA": "proficient",
-      "defB": "technological"
-    },
-    {
-      "answer": "TELEPHONE",
-      "defA": "phone",
-      "defB": "telephony"
+      "defB": "expert"
     },
     {
       "answer": "TEMPORARY",
-      "defA": "temp",
-      "defB": "impermanent"
+      "defA": "impermanent",
+      "defB": "irregular"
     },
     {
       "answer": "TERRITORY",
@@ -6687,19 +5982,9 @@
       "defB": "brand"
     },
     {
-      "answer": "TRANSFORM",
-      "defA": "transmute",
-      "defB": "translate"
-    },
-    {
-      "answer": "TRANSLATE",
-      "defA": "interpret",
-      "defB": "transform"
-    },
-    {
       "answer": "TRANSPORT",
       "defA": "conveyance",
-      "defB": "transportation"
+      "defB": "shipping"
     },
     {
       "answer": "TREATMENT",
@@ -6719,7 +6004,7 @@
     {
       "answer": "VARIATION",
       "defA": "fluctuation",
-      "defB": "variance"
+      "defB": "version"
     },
     {
       "answer": "VIOLATION",
@@ -6728,8 +6013,8 @@
     },
     {
       "answer": "VOLUNTEER",
-      "defA": "voluntary",
-      "defB": "tennessean"
+      "defA": "tennessean",
+      "defB": "offer"
     },
     {
       "answer": "WATERSHED",
@@ -6759,14 +6044,9 @@
       "defB": "achieve"
     },
     {
-      "answer": "ACCOUNTING",
-      "defA": "accountancy",
-      "defB": "account"
-    },
-    {
       "answer": "ADAPTATION",
       "defA": "version",
-      "defB": "adaption"
+      "defB": "adjustment"
     },
     {
       "answer": "ADJUSTMENT",
@@ -6784,24 +6064,14 @@
       "defB": "belligerent"
     },
     {
-      "answer": "ANNOTATION",
-      "defA": "note",
-      "defB": "annotating"
-    },
-    {
       "answer": "APPARENTLY",
       "defA": "seemingly",
       "defB": "obviously"
     },
     {
-      "answer": "APPEARANCE",
-      "defA": "appearing",
-      "defB": "show"
-    },
-    {
       "answer": "APPRECIATE",
       "defA": "prize",
-      "defB": "apprize"
+      "defB": "revalue"
     },
     {
       "answer": "ARTIFICIAL",
@@ -6815,8 +6085,8 @@
     },
     {
       "answer": "ASSIGNMENT",
-      "defA": "assigning",
-      "defB": "grant"
+      "defA": "grant",
+      "defB": "appointment"
     },
     {
       "answer": "ASSUMPTION",
@@ -6834,24 +6104,9 @@
       "defB": "adherence"
     },
     {
-      "answer": "ATTRACTION",
-      "defA": "attractiveness",
-      "defB": "attractor"
-    },
-    {
       "answer": "BACKGROUND",
       "defA": "ground",
       "defB": "setting"
-    },
-    {
-      "answer": "BIOLOGICAL",
-      "defA": "biologic",
-      "defB": "natural"
-    },
-    {
-      "answer": "CAPABILITY",
-      "defA": "capableness",
-      "defB": "capacity"
     },
     {
       "answer": "COLLECTION",
@@ -6860,23 +6115,18 @@
     },
     {
       "answer": "COMMISSION",
-      "defA": "committee",
-      "defB": "commissioning"
+      "defA": "deputation",
+      "defB": "charge"
     },
     {
       "answer": "COMMITMENT",
-      "defA": "committedness",
-      "defB": "allegiance"
-    },
-    {
-      "answer": "COMPARISON",
-      "defA": "comparing",
-      "defB": "compare"
+      "defA": "allegiance",
+      "defB": "consignment"
     },
     {
       "answer": "COMPLIANCE",
       "defA": "conformity",
-      "defB": "complaisance"
+      "defB": "obligingness"
     },
     {
       "answer": "COMPRESSED",
@@ -6896,7 +6146,7 @@
     {
       "answer": "CONNECTION",
       "defA": "link",
-      "defB": "connexion"
+      "defB": "association"
     },
     {
       "answer": "CONSISTENT",
@@ -6924,19 +6174,14 @@
       "defB": "restrainer"
     },
     {
-      "answer": "CONVENTION",
-      "defA": "normal",
-      "defB": "conventionality"
-    },
-    {
       "answer": "CONVERSION",
       "defA": "transition",
       "defB": "rebirth"
     },
     {
       "answer": "COORDINATE",
-      "defA": "co-ordinate",
-      "defB": "organize"
+      "defA": "organize",
+      "defB": "align"
     },
     {
       "answer": "CORRECTION",
@@ -6945,8 +6190,8 @@
     },
     {
       "answer": "CORRUPTION",
-      "defA": "corruptness",
-      "defB": "putrescence"
+      "defA": "putrescence",
+      "defB": "degeneracy"
     },
     {
       "answer": "DEPRESSION",
@@ -6959,19 +6204,9 @@
       "defB": "compulsive"
     },
     {
-      "answer": "DEVELOPING",
-      "defA": "development",
-      "defB": "underdeveloped"
-    },
-    {
       "answer": "DIFFERENCE",
       "defA": "deviation",
       "defB": "dispute"
-    },
-    {
-      "answer": "DIFFICULTY",
-      "defA": "trouble",
-      "defB": "difficultness"
     },
     {
       "answer": "DISCIPLINE",
@@ -6980,7 +6215,7 @@
     },
     {
       "answer": "DISCRETION",
-      "defA": "discreetness",
+      "defA": "circumspection",
       "defB": "delicacy"
     },
     {
@@ -6996,12 +6231,12 @@
     {
       "answer": "ELEMENTARY",
       "defA": "simple",
-      "defB": "elemental"
+      "defB": "primary"
     },
     {
       "answer": "EMPLOYMENT",
-      "defA": "employ",
-      "defB": "work"
+      "defA": "work",
+      "defB": "engagement"
     },
     {
       "answer": "ENGAGEMENT",
@@ -7011,7 +6246,7 @@
     {
       "answer": "ENTERPRISE",
       "defA": "endeavor",
-      "defB": "enterprisingness"
+      "defB": "initiative"
     },
     {
       "answer": "EQUIVALENT",
@@ -7021,7 +6256,7 @@
     {
       "answer": "EXCITEMENT",
       "defA": "exhilaration",
-      "defB": "excitation"
+      "defB": "inflammation"
     },
     {
       "answer": "EXPERIENCE",
@@ -7061,27 +6296,17 @@
     {
       "answer": "GENERATION",
       "defA": "coevals",
-      "defB": "genesis"
+      "defB": "multiplication"
     },
     {
       "answer": "GOVERNMENT",
       "defA": "authorities",
-      "defB": "governing"
-    },
-    {
-      "answer": "GRADUATION",
-      "defA": "commencement",
-      "defB": "gradation"
+      "defB": "administration"
     },
     {
       "answer": "HARASSMENT",
       "defA": "torment",
       "defB": "molestation"
-    },
-    {
-      "answer": "HISTORICAL",
-      "defA": "historic",
-      "defB": "diachronic"
     },
     {
       "answer": "HYPOTHESIS",
@@ -7099,14 +6324,9 @@
       "defB": "effect"
     },
     {
-      "answer": "INCOMPLETE",
-      "defA": "uncomplete",
-      "defB": "uncompleted"
-    },
-    {
       "answer": "INDICATION",
-      "defA": "indicant",
-      "defB": "denotation"
+      "defA": "denotation",
+      "defB": "reading"
     },
     {
       "answer": "INDIVIDUAL",
@@ -7126,7 +6346,7 @@
     {
       "answer": "INNOVATIVE",
       "defA": "advanced",
-      "defB": "innovational"
+      "defB": "groundbreaking"
     },
     {
       "answer": "INSTRUMENT",
@@ -7134,24 +6354,9 @@
       "defB": "pawn"
     },
     {
-      "answer": "INSULATION",
-      "defA": "insularity",
-      "defB": "insulant"
-    },
-    {
       "answer": "INTEGRATED",
       "defA": "incorporate",
       "defB": "structured"
-    },
-    {
-      "answer": "INVESTMENT",
-      "defA": "investing",
-      "defB": "investiture"
-    },
-    {
-      "answer": "LEADERSHIP",
-      "defA": "leading",
-      "defB": "leaders"
     },
     {
       "answer": "LEGITIMATE",
@@ -7159,34 +6364,19 @@
       "defB": "logical"
     },
     {
-      "answer": "LIMITATION",
-      "defA": "restriction",
-      "defB": "limit"
-    },
-    {
       "answer": "MAINTAINED",
       "defA": "well-kept",
       "defB": "retained"
     },
     {
-      "answer": "MOTIVATION",
-      "defA": "motive",
-      "defB": "motivating"
-    },
-    {
       "answer": "MOTORCYCLE",
       "defA": "bike",
-      "defB": "motorbike"
+      "defB": "cycle"
     },
     {
       "answer": "MYSTERIOUS",
       "defA": "cryptic",
-      "defB": "mystic"
-    },
-    {
-      "answer": "NATIONWIDE",
-      "defA": "countrywide",
-      "defB": "nationally"
+      "defB": "occult"
     },
     {
       "answer": "NAVIGATION",
@@ -7204,14 +6394,9 @@
       "defB": "casual"
     },
     {
-      "answer": "OCCUPATION",
-      "defA": "business",
-      "defB": "occupancy"
-    },
-    {
       "answer": "OPPOSITION",
       "defA": "resistance",
-      "defB": "oppositeness"
+      "defB": "confrontation"
     },
     {
       "answer": "PARTICULAR",
@@ -7220,13 +6405,8 @@
     },
     {
       "answer": "PERCENTAGE",
-      "defA": "percent",
+      "defA": "pct",
       "defB": "share"
-    },
-    {
-      "answer": "PERCEPTION",
-      "defA": "percept",
-      "defB": "sensing"
     },
     {
       "answer": "PERSISTENT",
@@ -7235,13 +6415,8 @@
     },
     {
       "answer": "PHOTOGRAPH",
-      "defA": "photo",
+      "defA": "exposure",
       "defB": "snap"
-    },
-    {
-      "answer": "POLYPHONIC",
-      "defA": "polyphonous",
-      "defB": "contrapuntal"
     },
     {
       "answer": "POSSESSION",
@@ -7264,11 +6439,6 @@
       "defB": "official"
     },
     {
-      "answer": "PRODUCTION",
-      "defA": "product",
-      "defB": "output"
-    },
-    {
       "answer": "PRODUCTIVE",
       "defA": "generative",
       "defB": "fat"
@@ -7280,8 +6450,8 @@
     },
     {
       "answer": "PROJECTION",
-      "defA": "project",
-      "defB": "protrusion"
+      "defA": "protrusion",
+      "defB": "expulsion"
     },
     {
       "answer": "PROPORTION",
@@ -7321,7 +6491,7 @@
     {
       "answer": "REGRESSION",
       "defA": "fixation",
-      "defB": "regress"
+      "defB": "reversion"
     },
     {
       "answer": "REGULATION",
@@ -7345,13 +6515,8 @@
     },
     {
       "answer": "REPOSITORY",
-      "defA": "depository",
+      "defA": "deposit",
       "defB": "secretary"
-    },
-    {
-      "answer": "REPUTATION",
-      "defA": "repute",
-      "defB": "report"
     },
     {
       "answer": "RESISTANCE",
@@ -7365,7 +6530,7 @@
     },
     {
       "answer": "RESPONDENT",
-      "defA": "responder",
+      "defA": "answerer",
       "defB": "answering"
     },
     {
@@ -7421,12 +6586,12 @@
     {
       "answer": "SUPPLEMENT",
       "defA": "addendum",
-      "defB": "supplementation"
+      "defB": "accessory"
     },
     {
       "answer": "SUPPORTING",
-      "defA": "support",
-      "defB": "encouraging"
+      "defA": "encouraging",
+      "defB": "load-bearing"
     },
     {
       "answer": "SUSPENSION",
@@ -7449,11 +6614,6 @@
       "defB": "conversion"
     },
     {
-      "answer": "TRANSLATOR",
-      "defA": "transcriber",
-      "defB": "interpreter"
-    },
-    {
       "answer": "TREMENDOUS",
       "defA": "enormous",
       "defB": "fantastic"
@@ -7472,11 +6632,6 @@
       "answer": "VALIDATION",
       "defA": "proof",
       "defB": "establishment"
-    },
-    {
-      "answer": "VISIBILITY",
-      "defA": "visibleness",
-      "defB": "profile"
     },
     {
       "answer": "WATERPROOF",
