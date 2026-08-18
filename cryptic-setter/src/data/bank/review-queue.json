@@ -9478,38 +9478,6 @@
     "createdAt": "2026-08-18T21:33:52.685Z"
   },
   {
-    "id": "0994562f-05db-48af-a6de-5d34b4c008f1",
-    "answer": "OVERSEAS",
-    "enumeration": "(8)",
-    "device": "doubleDefinition",
-    "definition": "abroad",
-    "definitionPosition": "end",
-    "wordplay": {
-      "fodder": "OVERSEA",
-      "suggestedDefinition": "abroad",
-      "operation": "doubleDefinition(OVERSEAS, defA=\"abroad\", defB=\"oversea\")"
-    },
-    "surface": "Oversea currents once carried explorers abroad (8)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"abroad\" and \"OVERSEA\" are registered as two distinct senses of \"OVERSEAS\"",
-      "✓ enumeration \"(8)\" matches answer letter count (8)",
-      "--- using precomputed double-definition seed: \"abroad\" ---",
-      "--- surface attempt 1/5 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"abroad\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"abroad\"",
-      "✓ definition does not echo any wordplay word verbatim",
-      "✓ wordplay text does not repeat the definition phrase",
-      "✓ fodder \"OVERSEA\" is present verbatim in the wordplay text",
-      "✓ indicator \"undefined\" is present verbatim in the wordplay text",
-      "✓ fluency check passed: The sentence has a clear subject (Oversea currents), verb (carried), object (explorers), and adverb (abroad), forming a grammatically complete and natural sentence, aside from 'Oversea' being slightly nonstandard for 'Overseas' as an adjective, which is a minor lexical quirk rather than a grammatical error.\""
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-18T21:34:28.586Z"
-  },
-  {
     "id": "361c6337-d558-4903-b936-0ef75cd35115",
     "answer": "CHASSIS",
     "enumeration": "(7)",
