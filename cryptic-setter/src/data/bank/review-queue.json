@@ -9560,38 +9560,6 @@
     "createdAt": "2026-08-18T21:35:40.135Z"
   },
   {
-    "id": "913a6567-e19f-4fbb-a50b-7bd16ef5becc",
-    "answer": "PROTECTION",
-    "enumeration": "(10)",
-    "device": "doubleDefinition",
-    "definition": "security",
-    "definitionPosition": "end",
-    "wordplay": {
-      "fodder": "SHELTER",
-      "suggestedDefinition": "security",
-      "operation": "doubleDefinition(PROTECTION, defA=\"security\", defB=\"shelter\")"
-    },
-    "surface": "Shelter for refugees provides security (10)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"security\" and \"SHELTER\" are registered as two distinct senses of \"PROTECTION\"",
-      "✓ enumeration \"(10)\" matches answer letter count (10)",
-      "--- using precomputed double-definition seed: \"security\" ---",
-      "--- surface attempt 1/5 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"security\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"security\"",
-      "✓ definition does not echo any wordplay word verbatim",
-      "✓ wordplay text does not repeat the definition phrase",
-      "✓ fodder \"SHELTER\" is present verbatim in the wordplay text",
-      "✓ indicator \"undefined\" is present verbatim in the wordplay text",
-      "✓ fluency check passed: The sentence has a clear subject (\"Shelter for refugees\") and verb (\"provides\") with an object (\"security\"), making it grammatically complete and natural.\""
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-18T22:27:42.324Z"
-  },
-  {
     "id": "0d4e5331-8d69-4128-8a4e-ab1b19b055dc",
     "answer": "WEARING",
     "enumeration": "(7)",
