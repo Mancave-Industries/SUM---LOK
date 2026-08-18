@@ -9267,48 +9267,6 @@
     "createdAt": "2026-08-18T21:31:28.170Z"
   },
   {
-    "id": "05453496-cfc1-4c49-9e41-21eeac1e242f",
-    "answer": "HUNGER",
-    "enumeration": "(6)",
-    "device": "doubleDefinition",
-    "definition": "hungriness",
-    "definitionPosition": "end",
-    "wordplay": {
-      "fodder": "CRAVE",
-      "suggestedDefinition": "hungriness",
-      "operation": "doubleDefinition(HUNGER, defA=\"hungriness\", defB=\"crave\")"
-    },
-    "surface": "To crave attention is a sign of sheer hungriness (6)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"hungriness\" and \"CRAVE\" are registered as two distinct senses of \"HUNGER\"",
-      "✓ enumeration \"(6)\" matches answer letter count (6)",
-      "--- using precomputed double-definition seed: \"hungriness\" ---",
-      "--- surface attempt 1/5 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"hungriness\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"hungriness\"",
-      "✓ definition does not echo any wordplay word verbatim",
-      "✓ wordplay text does not repeat the definition phrase",
-      "✓ fodder \"CRAVE\" is present verbatim in the wordplay text",
-      "✓ indicator \"undefined\" is present verbatim in the wordplay text",
-      "✗ fluency check failed: The sentence lacks an explicit subject and a finite main verb; \"Crave\" has no subject, and \"showing sheer hungriness\" is just a participial phrase tacked on, not a proper independent clause.\"",
-      "✗ attempt 1 failed verification, discarding surface and retrying",
-      "--- surface attempt 2/5 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"hungriness\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"hungriness\"",
-      "✓ definition does not echo any wordplay word verbatim",
-      "✓ wordplay text does not repeat the definition phrase",
-      "✓ fodder \"CRAVE\" is present verbatim in the wordplay text",
-      "✓ indicator \"undefined\" is present verbatim in the wordplay text",
-      "✓ fluency check passed: The sentence has a clear infinitive subject (\"To crave attention\") and a complete predicate (\"is a sign of sheer hungriness\"), making it grammatically well-formed and fluent, even if slightly unusual in meaning."
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-18T21:31:39.026Z"
-  },
-  {
     "id": "72bacf34-6e20-45e6-b8ab-1a0e450a097e",
     "answer": "ITALIC",
     "enumeration": "(6)",
