@@ -9560,48 +9560,6 @@
     "createdAt": "2026-08-18T21:35:40.135Z"
   },
   {
-    "id": "3080d646-9a63-4a02-9565-f4eea134e4e0",
-    "answer": "ASSUME",
-    "enumeration": "(6)",
-    "device": "doubleDefinition",
-    "definition": "presume",
-    "definitionPosition": "end",
-    "wordplay": {
-      "fodder": "ADOPT",
-      "suggestedDefinition": "presume",
-      "operation": "doubleDefinition(ASSUME, defA=\"presume\", defB=\"adopt\")"
-    },
-    "surface": "To adopt an air of confidence is simply to presume (6)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"presume\" and \"ADOPT\" are registered as two distinct senses of \"ASSUME\"",
-      "✓ enumeration \"(6)\" matches answer letter count (6)",
-      "--- using precomputed double-definition seed: \"presume\" ---",
-      "--- surface attempt 1/5 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"presume\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"presume\"",
-      "✓ definition does not echo any wordplay word verbatim",
-      "✓ wordplay text does not repeat the definition phrase",
-      "✓ fodder \"ADOPT\" is present verbatim in the wordplay text",
-      "✓ indicator \"undefined\" is present verbatim in the wordplay text",
-      "✗ fluency check failed: \"Adopt a stance, presume\" is a run-on/fragment—two imperative verbs (\"adopt\" and \"presume\") are stapled together with a comma but \"presume\" has no object or clause to complete it, leaving it dangling and syntactically disconnected from the first clause.",
-      "✗ attempt 1 failed verification, discarding surface and retrying",
-      "--- surface attempt 2/5 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"presume\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"presume\"",
-      "✓ definition does not echo any wordplay word verbatim",
-      "✓ wordplay text does not repeat the definition phrase",
-      "✓ fodder \"ADOPT\" is present verbatim in the wordplay text",
-      "✓ indicator \"undefined\" is present verbatim in the wordplay text",
-      "✓ fluency check passed: It is a grammatically complete sentence with a clear infinitive subject ('To adopt an air of confidence') and a predicate ('is simply to presume')."
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-18T21:37:44.041Z"
-  },
-  {
     "id": "ffdce95d-5882-4fdc-b77f-14f51a21d8c1",
     "answer": "ASYLUM",
     "enumeration": "(6)",
