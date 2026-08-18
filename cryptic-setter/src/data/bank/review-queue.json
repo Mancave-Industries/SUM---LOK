@@ -9478,38 +9478,6 @@
     "createdAt": "2026-08-18T21:33:52.685Z"
   },
   {
-    "id": "15636237-d044-4254-9e83-932264f241c2",
-    "answer": "TELLING",
-    "enumeration": "(7)",
-    "device": "doubleDefinition",
-    "definition": "relation",
-    "definitionPosition": "end",
-    "wordplay": {
-      "fodder": "APPRISAL",
-      "suggestedDefinition": "relation",
-      "operation": "doubleDefinition(TELLING, defA=\"relation\", defB=\"apprisal\")"
-    },
-    "surface": "Apprisal indicates some family relation (7)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"relation\" and \"APPRISAL\" are registered as two distinct senses of \"TELLING\"",
-      "✓ enumeration \"(7)\" matches answer letter count (7)",
-      "--- using precomputed double-definition seed: \"relation\" ---",
-      "--- surface attempt 1/5 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"relation\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"relation\"",
-      "✓ definition does not echo any wordplay word verbatim",
-      "✓ wordplay text does not repeat the definition phrase",
-      "✓ fodder \"APPRISAL\" is present verbatim in the wordplay text",
-      "✓ indicator \"undefined\" is present verbatim in the wordplay text",
-      "✓ fluency check passed: It has a clear subject ('Apprisal'), verb ('indicates'), and object ('some family relation'), forming a grammatically complete sentence, though 'Apprisal' is an unusual/archaic word choice.\""
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-18T21:33:56.685Z"
-  },
-  {
     "id": "0994562f-05db-48af-a6de-5d34b4c008f1",
     "answer": "OVERSEAS",
     "enumeration": "(8)",
