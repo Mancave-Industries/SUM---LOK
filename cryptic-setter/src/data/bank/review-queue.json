@@ -9560,48 +9560,6 @@
     "createdAt": "2026-08-18T21:35:40.135Z"
   },
   {
-    "id": "f3611499-f8a1-4bf1-acd7-056115e2f2dc",
-    "answer": "HEATER",
-    "enumeration": "(6)",
-    "device": "doubleDefinition",
-    "definition": "warmer",
-    "definitionPosition": "end",
-    "wordplay": {
-      "fodder": "FASTBALL",
-      "suggestedDefinition": "warmer",
-      "operation": "doubleDefinition(HEATER, defA=\"warmer\", defB=\"fastball\")"
-    },
-    "surface": "Pitcher's fastball is a real warmer (6)",
-    "verified": true,
-    "verificationLog": [
-      "✓ \"warmer\" and \"FASTBALL\" are registered as two distinct senses of \"HEATER\"",
-      "✓ enumeration \"(6)\" matches answer letter count (6)",
-      "--- using precomputed double-definition seed: \"warmer\" ---",
-      "--- surface attempt 1/5 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"a warmer\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"warmer\"",
-      "✓ definition does not echo any wordplay word verbatim",
-      "✓ wordplay text does not repeat the definition phrase",
-      "✓ fodder \"FASTBALL\" is present verbatim in the wordplay text",
-      "✓ indicator \"undefined\" is present verbatim in the wordplay text",
-      "✗ fluency check failed: The sentence lacks a subject and verb; it's a sentence fragment consisting only of noun phrases joined by 'or', not a complete clause.\"",
-      "✗ attempt 1 failed verification, discarding surface and retrying",
-      "--- surface attempt 2/5 ---",
-      "✓ displayed surface reconstructs exactly from the two labelled parts",
-      "✓ definition (\"warmer\") sits at the end of the clue, per §2",
-      "✓ definition part contains the seeded definition \"warmer\"",
-      "✓ definition does not echo any wordplay word verbatim",
-      "✓ wordplay text does not repeat the definition phrase",
-      "✓ fodder \"FASTBALL\" is present verbatim in the wordplay text",
-      "✓ indicator \"undefined\" is present verbatim in the wordplay text",
-      "✓ fluency check passed: The sentence has a clear subject ('Pitcher's fastball') and predicate ('is a real warmer'), and is grammatically complete, though it uses 'pitcher's' without an article, which is a minor stylistic quirk rather than a grammatical error.\""
-    ],
-    "difficulty": 0,
-    "reviewRequired": true,
-    "createdAt": "2026-08-18T22:27:56.323Z"
-  },
-  {
     "id": "963b60e1-9a58-48ee-94a5-5be40f90c4c9",
     "answer": "MIXTURE",
     "enumeration": "(7)",
