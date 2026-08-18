@@ -1680,5 +1680,37 @@
     "difficulty": 0,
     "reviewRequired": false,
     "createdAt": "2026-08-18T22:27:48.135Z"
+  },
+  {
+    "id": "963b60e1-9a58-48ee-94a5-5be40f90c4c9",
+    "answer": "MIXTURE",
+    "enumeration": "(7)",
+    "device": "doubleDefinition",
+    "definition": "concoction",
+    "definitionPosition": "end",
+    "wordplay": {
+      "fodder": "ASSORTMENT",
+      "suggestedDefinition": "concoction",
+      "operation": "doubleDefinition(MIXTURE, defA=\"concoction\", defB=\"assortment\")"
+    },
+    "surface": "Odd assortment of ingredients makes a strange concoction (7)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"concoction\" and \"ASSORTMENT\" are registered as two distinct senses of \"MIXTURE\"",
+      "✓ enumeration \"(7)\" matches answer letter count (7)",
+      "--- using precomputed double-definition seed: \"concoction\" ---",
+      "--- surface attempt 1/5 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"concoction\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"concoction\"",
+      "✓ definition does not echo any wordplay word verbatim",
+      "✓ wordplay text does not repeat the definition phrase",
+      "✓ fodder \"ASSORTMENT\" is present verbatim in the wordplay text",
+      "✓ indicator \"undefined\" is present verbatim in the wordplay text",
+      "✓ fluency check passed: It's a grammatically complete sentence (subject 'Odd assortment of ingredients' plus verb 'makes' and object 'a strange concoction'), functioning like a headline-style statement.\""
+    ],
+    "difficulty": 0,
+    "reviewRequired": false,
+    "createdAt": "2026-08-18T22:28:00.094Z"
   }
 ]
