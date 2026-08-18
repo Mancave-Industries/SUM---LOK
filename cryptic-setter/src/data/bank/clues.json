@@ -1574,5 +1574,47 @@
     "difficulty": 0,
     "reviewRequired": false,
     "createdAt": "2026-08-18T21:38:05.532Z"
+  },
+  {
+    "id": "5ebce102-345e-440f-9648-1b943cd8a656",
+    "answer": "FACING",
+    "enumeration": "(6)",
+    "device": "doubleDefinition",
+    "definition": "veneer",
+    "definitionPosition": "end",
+    "wordplay": {
+      "fodder": "CLADDING",
+      "suggestedDefinition": "veneer",
+      "operation": "doubleDefinition(FACING, defA=\"veneer\", defB=\"cladding\")"
+    },
+    "surface": "Cladding could pass for veneer (6)",
+    "verified": true,
+    "verificationLog": [
+      "✓ \"veneer\" and \"CLADDING\" are registered as two distinct senses of \"FACING\"",
+      "✓ enumeration \"(6)\" matches answer letter count (6)",
+      "--- using precomputed double-definition seed: \"veneer\" ---",
+      "--- surface attempt 1/5 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"veneer\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"veneer\"",
+      "✓ definition does not echo any wordplay word verbatim",
+      "✓ wordplay text does not repeat the definition phrase",
+      "✓ fodder \"CLADDING\" is present verbatim in the wordplay text",
+      "✓ indicator \"undefined\" is present verbatim in the wordplay text",
+      "✗ fluency check failed: This is just a noun phrase with an appositive alternative (\"Cladding, or veneer\") and lacks a verb or predicate, so it is not a complete sentence.",
+      "✗ attempt 1 failed verification, discarding surface and retrying",
+      "--- surface attempt 2/5 ---",
+      "✓ displayed surface reconstructs exactly from the two labelled parts",
+      "✓ definition (\"veneer\") sits at the end of the clue, per §2",
+      "✓ definition part contains the seeded definition \"veneer\"",
+      "✓ definition does not echo any wordplay word verbatim",
+      "✓ wordplay text does not repeat the definition phrase",
+      "✓ fodder \"CLADDING\" is present verbatim in the wordplay text",
+      "✓ indicator \"undefined\" is present verbatim in the wordplay text",
+      "✓ fluency check passed: It is a grammatically complete sentence with a clear subject (\"Cladding\") and verb phrase (\"could pass for veneer\").\""
+    ],
+    "difficulty": 0,
+    "reviewRequired": false,
+    "createdAt": "2026-08-18T22:27:38.436Z"
   }
 ]
