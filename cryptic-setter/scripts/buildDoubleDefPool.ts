@@ -1,0 +1,164 @@
+#!/usr/bin/env node
+// One-time offline generator for the doubleDefinition device's pool. Run
+// with: npx tsx scripts/buildDoubleDefPool.ts
+// Re-run only if wordlistsByLength.json changes.
+//
+// A double-definition clue gives two genuinely distinct meanings of the
+// same answer word, back to back, with no wordplay indicator at all — e.g.
+// "Fair game for the carnival" for FAIR (fair=reasonable, fair=carnival).
+// Both halves have to be real: defA becomes the clue's actual `definition`
+// field (so it must be a genuine WordNet synonym of the answer, the same
+// convention verify/definition.ts already enforces for every other
+// device), and defB is the fodder shown in the wordplay half — a synonym
+// from a DIFFERENT, non-overlapping WordNet sense, so it isn't just a
+// restatement of defA.
+//
+// Answers are restricted to wordlistsByLength.json (the grid solver's own
+// pool), matching buildDevicePools.ts's precedent.
+
+import { writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { getSynonymSetsSync } from '../src/definitions/wordnetSync.js';
+import wordlistsByLength from '../src/data/wordlistsByLength.json' with { type: 'json' };
+
+const pools = wordlistsByLength as Record<string, string[]>;
+const LENGTHS = Object.keys(pools);
+
+interface DoubleDefPair {
+  answer: string;
+  defA: string;
+  defB: string;
+}
+
+// WordNet tags some adjective lemmas with a trailing usage-position code —
+// "(a)" attributive-only, "(p)" predicate-only, "(ip)" immediately
+// postnominal — e.g. "center(a)" for the attributive-only sense of
+// "center". That's a WordNet annotation, not part of the actual word: left
+// in place it either leaks literal parentheses into a clue's definition
+// text, or worse, turns the answer's own name plus a suffix into a
+// fake "different" definition (e.g. defA="center(a)" for answer CENTER —
+// caught below by re-checking against answerLower AFTER stripping, not
+// before).
+function stripPosMarker(word: string): string {
+  return word.replace(/\([a-z]+\)$/, '');
+}
+
+function normalize(word: string): string {
+  return stripPosMarker(word.toLowerCase().replace(/_/g, ' ').trim());
+}
+
+// Every WordNet sense of a word always lists the word itself as one of its
+// own synonyms (that's how synsets work) — comparing two senses' full
+// synonym sets for overlap without excluding the answer would always find
+// one, since both sets trivially share the answer's own name. What
+// actually indicates two senses are "too closely related to read as
+// genuinely distinct meanings" is shared OTHER vocabulary, so the answer
+// itself is filtered out before the overlap check runs.
+function otherVocabulary(sense: string[], answerLower: string): Set<string> {
+  return new Set(sense.map(normalize).filter((w) => w && w !== answerLower));
+}
+
+// Plain Levenshtein edit distance — used below to catch a candidate
+// "synonym" that's really just the answer with a spelling/inflection
+// tweak (oversea/overseas, centre/center), not a genuinely different word.
+function editDistance(a: string, b: string): number {
+  const dp: number[][] = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+  for (let j = 0; j <= b.length; j++) dp[0][j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      dp[i][j] =
+        a[i - 1] === b[j - 1]
+          ? dp[i - 1][j - 1]
+          : 1 + Math.min(dp[i - 1][j - 1], dp[i - 1][j], dp[i][j - 1]);
+    }
+  }
+  return dp[a.length][b.length];
+}
+
+function commonPrefixLength(a: string, b: string): number {
+  let i = 0;
+  while (i < a.length && i < b.length && a[i] === b[i]) i++;
+  return i;
+}
+
+// Rejects a candidate that's really just the answer's own root or a
+// spelling/inflection variant of it — real-world hits found in review:
+// "hungriness" as a definition of HUNGER (same root, not a separate
+// word), "oversea" as a definition of OVERSEAS (a spelling difference,
+// not a second meaning). Neither shares a literal substring with the
+// answer (so the plain `lower === answerLower` check above doesn't catch
+// them), but both are unmistakably "the same word" to a reader. A short
+// shared prefix or a small edit distance is a good enough proxy for that
+// without needing real morphological analysis.
+function tooSimilarToAnswer(word: string, answerLower: string): boolean {
+  // A compound like "loudspeaker" for SPEAKER spells the answer out
+  // verbatim inside the "different" definition — a direct giveaway, not
+  // just a similar-looking word, and neither the edit-distance nor the
+  // shared-prefix check below catches it (they only look for the answer
+  // near the START of the candidate).
+  if (word.includes(answerLower) || answerLower.includes(word)) return true;
+  if (editDistance(word, answerLower) <= 2) return true;
+  if (commonPrefixLength(word, answerLower) >= 4) return true;
+  return false;
+}
+
+// A displayable synonym from a sense: excludes the answer word itself
+// (and anything too close to being the same word — see
+// tooSimilarToAnswer) and any multi-word phrase (kept single-token, same
+// simplicity tradeoff as the homophone pool — a literal verbatim
+// substring match is what both generateClue.ts's fodder check and
+// verifyDefinitionAtEnd's containment check actually need).
+function firstUsableSynonym(sense: string[], answerLower: string): string | null {
+  for (const synonym of sense) {
+    if (synonym.includes('_')) continue;
+    const lower = stripPosMarker(synonym.toLowerCase());
+    if (!lower || lower === answerLower) continue;
+    if (tooSimilarToAnswer(lower, answerLower)) continue;
+    return lower;
+  }
+  return null;
+}
+
+function buildDoubleDefPool(): Record<string, DoubleDefPair[]> {
+  const result: Record<string, DoubleDefPair[]> = {};
+
+  for (const length of LENGTHS) {
+    const pairs: DoubleDefPair[] = [];
+    for (const word of pools[length]) {
+      const answerLower = word.toLowerCase();
+      const senses = getSynonymSetsSync(answerLower);
+      if (senses.length < 2) continue;
+
+      outer: for (let i = 0; i < senses.length; i++) {
+        for (let j = i + 1; j < senses.length; j++) {
+          const setI = otherVocabulary(senses[i], answerLower);
+          const setJ = otherVocabulary(senses[j], answerLower);
+          const overlaps = [...setI].some((s) => setJ.has(s));
+          if (overlaps) continue; // too closely related to read as genuinely distinct meanings
+
+          const defA = firstUsableSynonym(senses[i], answerLower);
+          const defB = firstUsableSynonym(senses[j], answerLower);
+          if (!defA || !defB || defA === defB) continue;
+
+          pairs.push({ answer: word.toUpperCase(), defA, defB });
+          break outer; // one pair per answer is enough
+        }
+      }
+    }
+    result[length] = pairs;
+  }
+  return result;
+}
+
+function main() {
+  console.log('Scanning WordNet for double-definition pairs...');
+  const pool = buildDoubleDefPool();
+  for (const length of LENGTHS) {
+    console.log(`  length ${length}: ${pool[length].length} pairs`);
+  }
+  const dataDir = join(process.cwd(), 'src', 'data');
+  writeFileSync(join(dataDir, 'double-def-pool.json'), JSON.stringify(pool, null, 2) + '\n');
+  console.log('\nDone. Spot-check src/data/double-def-pool.json before generating any clues from it — WordNet gloss/sense quality varies.');
+}
+
+main();

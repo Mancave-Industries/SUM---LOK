@@ -1,0 +1,24 @@
+{
+  "days": {
+    "2026-08-18": {
+      "standard": "puzzle-033",
+      "hard": "puzzle-h-001"
+    },
+    "2026-08-19": {
+      "standard": "puzzle-035",
+      "hard": "puzzle-h-002"
+    },
+    "2026-08-20": {
+      "standard": "puzzle-036",
+      "hard": "puzzle-h-003"
+    },
+    "2026-08-21": {
+      "standard": "puzzle-038",
+      "hard": "puzzle-h-004"
+    },
+    "2026-08-22": {
+      "standard": "puzzle-039",
+      "hard": "puzzle-h-005"
+    }
+  }
+}

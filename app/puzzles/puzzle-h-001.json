@@ -1,0 +1,67 @@
+{
+  "id": "puzzle-h-001",
+  "tier": "hard",
+  "format": "3A2D",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "LESBIANS",
+      "clue": "Confusing bassline at the club night thrills gay women (8)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 6,
+      "col": 4,
+      "answer": "TENNIS",
+      "clue": "Sailor's sinnet, retreating from the knot, resembles a racket sport (6)",
+      "device": "reversal",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 9,
+      "col": 3,
+      "answer": "DELIVER",
+      "clue": "Reviled reversed his position and agreed to bring forth the goods (7)",
+      "device": "reversal",
+      "bonus": false
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "LOGISTICS",
+      "clue": "Muddled by glossitic symptoms, the clinic overhauled its planning and organization (9)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 4,
+      "answer": "INTERSTATE",
+      "clue": "Gangsters inter their boss, then state their loyalty, all along the highway (10)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 3,
+      "col": 9,
+      "answer": "CLUSTER",
+      "clue": "Old cyclus terrorists held by border patrol formed a tight-knit group (7)",
+      "device": "hidden",
+      "bonus": true
+    }
+  ]
+}

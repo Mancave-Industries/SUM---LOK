@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>QUYPTICK — daily mini cryptic</title>
-  <link rel="stylesheet" href="style.css?v=5" />
+  <link rel="stylesheet" href="style.css?v=7" />
 </head>
 <body>
   <div class="menu-overlay" id="menu-overlay">
@@ -26,7 +26,7 @@
       </div>
 
       <div class="menu-section">
-        <div class="menu-heading">Jump to a puzzle</div>
+        <div class="menu-heading">Archive</div>
         <div class="menu-puzzle-list" id="menu-puzzle-list"></div>
       </div>
 
@@ -37,6 +37,8 @@
           <strong>Enter</strong> — correct letters turn green, right-letter-wrong-spot
           turns yellow, and letters not in the answer turn gray, same as Wordle.
           Solve all five visible clues to unlock a sixth bonus entry that closes off the grid.
+          You have <strong>5 wrong guesses</strong> shared across the whole puzzle — use them
+          all up before solving everything and the grid reveals as a loss.
         </p>
       </div>
 
@@ -57,18 +59,29 @@
         <button class="theme-toggle" id="menu-toggle" title="Menu" type="button">☰</button>
         <div class="logo">QUYP<em>TICK</em></div>
         <div class="topbar-meta">
+          <span class="league" id="league"></span>
           <span class="streak" id="streak"></span>
           <span id="format-tag"></span>
         </div>
       </div>
 
-      <div class="puzzle-nav">
+      <div class="tier-tabs" id="tier-tabs">
+        <button class="tier-tab" id="tab-standard" type="button">Standard</button>
+        <button class="tier-tab" id="tab-hard" type="button">Hard <span class="lock-icon">🔒</span></button>
+      </div>
+      <div class="daily-status" id="daily-status"></div>
+
+      <div class="puzzle-nav" id="puzzle-nav">
         <button class="theme-toggle" id="prev-puzzle" title="Previous puzzle" type="button">‹</button>
         <span id="date-label"></span>
         <button class="theme-toggle" id="next-puzzle" title="Next puzzle" type="button">›</button>
       </div>
+      <div class="archive-banner" id="archive-banner">
+        <button class="archive-back-btn" id="archive-back-btn" type="button">← Back to today</button>
+      </div>
 
       <div class="badge" id="bonus-badge">✦ bonus unlocked</div>
+      <div class="attempts-indicator" id="attempts-indicator"></div>
 
       <div class="grid-area">
         <div id="grid" role="grid" aria-label="Crossword grid"></div>
@@ -83,6 +96,12 @@
         <div class="share-row" id="share-row"></div>
         <button class="share-btn" id="share-btn" type="button">Share result</button>
         <button class="next-puzzle-btn" id="next-puzzle-btn" type="button"></button>
+      </div>
+
+      <div class="fail-panel" id="fail-panel">
+        <h2>Out of attempts</h2>
+        <div class="fail-line" id="fail-line"></div>
+        <button class="next-puzzle-btn" id="fail-next-puzzle-btn" type="button"></button>
       </div>
     </div>
 
@@ -115,6 +134,6 @@
 
   <div class="toast" id="toast"></div>
 
-  <script src="app.js?v=5"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>

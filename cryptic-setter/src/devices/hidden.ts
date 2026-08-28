@@ -21,6 +21,18 @@ function preferShort(words: string[], shortlistSize = 30): string {
   return pickRandom(shortlist).toUpperCase();
 }
 
+// A split where nearly the whole answer already sits inside one host word
+// (leaving the other host to supply just a letter or two) barely hides
+// anything — e.g. SEARCHES split as "SEARCH" + "ES" inside RESEARCH/espana
+// reads as almost-plaintext, since RESEARCH already visibly ends in a
+// near-complete run of the answer. Requiring each side to supply a real
+// share of the answer forces a genuine cross-boundary join instead of a
+// token letter or two tacked onto an already-obvious chunk.
+const MIN_SPLIT_SHARE = 0.3;
+function minSplitLength(answerLength: number): number {
+  return Math.max(2, Math.ceil(answerLength * MIN_SPLIT_SHARE));
+}
+
 // Scans every split point and ranks what it finds — both hosts common is
 // best, one host common is a fallback, neither common is discarded rather
 // than used, since that's how "METAPHYSIC IANTHINE"-style unreadable
@@ -33,10 +45,12 @@ function findHiddenHost(answer: string): { before: string; after: string } | nul
   const words = getAllWords();
   const bothCommon: { before: string; after: string }[] = [];
   const oneCommon: { before: string; after: string }[] = [];
+  const minSide = minSplitLength(target.length);
 
   for (let split = 1; split < target.length; split++) {
     const left = target.slice(0, split);
     const right = target.slice(split);
+    if (left.length < minSide || right.length < minSide) continue;
 
     const befores = words.filter(
       (w) => w.length > left.length && w.toUpperCase().endsWith(left)

@@ -1,0 +1,67 @@
+{
+  "id": "puzzle-036",
+  "tier": "standard",
+  "format": "2A3D",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 3,
+      "answer": "SMOKING",
+      "clue": "That gadget's odd name, hidden in gismo kingdom lore, describes an old robot toy using tobacco (7)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 3,
+      "col": 0,
+      "answer": "NETWORKS",
+      "clue": "Minister blames part of Cabinet workshop for leaking connected systems (8)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 6,
+      "direction": "across",
+      "row": 9,
+      "col": 3,
+      "answer": "GENRES",
+      "clue": "Greenbriers, at regular intervals, overrun the nursery's plant categories (6)",
+      "device": "alternates",
+      "bonus": true
+    },
+    {
+      "number": 4,
+      "direction": "down",
+      "row": 2,
+      "col": 0,
+      "answer": "ONLINE",
+      "clue": "Angler sets \"on\" next to \"line\" while describing being connected to the internet (6)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 4,
+      "answer": "MOTORCYCLE",
+      "clue": "Servicing the motor before cycle season, dad revealed our two-wheeled vehicle (10)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 0,
+      "col": 9,
+      "answer": "GENERATES",
+      "clue": "Scientist hides heart rate inside genes and produces surprising data (9)",
+      "device": "container",
+      "bonus": false
+    }
+  ]
+}

@@ -36,6 +36,8 @@
   --active-bg: #F4F4F5;
   --locked-text: #B7B7B7;
   --error: #D3455B;
+  --fail-bg: var(--error);
+  --fail-text: #FFFFFF;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -66,6 +68,8 @@
     --active-bg: #1F1F21;
     --locked-text: #565758;
     --error: #E86B85;
+    --fail-bg: var(--error);
+    --fail-text: #FFFFFF;
   }
 }
 
@@ -95,6 +99,8 @@
   --active-bg: #1F1F21;
   --locked-text: #565758;
   --error: #E86B85;
+  --fail-bg: var(--error);
+  --fail-text: #FFFFFF;
 }
 
 * { box-sizing: border-box; }
@@ -166,6 +172,7 @@ body {
   color: var(--text-dim);
 }
 .streak { font-weight: 600; color: var(--accent); }
+.league { font-weight: 600; color: var(--wordle-green); }
 .theme-toggle {
   background: none;
   border: 1px solid var(--ink-border);
@@ -191,6 +198,49 @@ body {
   color: var(--text-dim);
 }
 .puzzle-nav button:disabled { opacity: 0.35; cursor: default; }
+.hidden { display: none !important; }
+
+.tier-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 10px 18px 0;
+}
+.tier-tab {
+  flex: 1;
+  background: none;
+  border: 1px solid var(--ink-border);
+  color: var(--text-dim);
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.tier-tab.active { background: var(--active-fill); color: var(--wordle-tile-text); border-color: var(--active-fill); }
+.tier-tab.locked { color: var(--locked-text); cursor: not-allowed; }
+.tier-tab .lock-icon { font-size: 10px; opacity: 0.7; }
+.tier-tab:not(.locked) .lock-icon { display: none; }
+
+.daily-status {
+  text-align: center;
+  padding: 6px 18px 0;
+  font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.archive-banner { display: flex; justify-content: center; padding: 8px 18px 0; }
+.archive-back-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 4px 8px;
+}
 
 .badge {
   margin: 10px 18px 0;
@@ -210,6 +260,18 @@ body {
   font-weight: 700;
 }
 .badge.show { display: flex; }
+
+/* One dot per attempt in the shared 5-guess pool, filling in (fail color)
+   as they're used up — a constant, glanceable reminder that a wrong guess
+   costs something shared across the whole puzzle, not just this entry. */
+.attempts-indicator { display: none; justify-content: center; gap: 6px; margin: 8px 18px 0; }
+.attempts-indicator.show { display: flex; }
+.attempt-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--kbd-bg);
+  transition: background 0.2s ease;
+}
+.attempt-dot.used { background: var(--fail-bg); }
 
 .grid-area {
   padding: 14px 18px 6px;
@@ -254,6 +316,11 @@ body {
 .cell.bonus.solved { background: var(--bonus-bg); color: var(--bonus-text); }
 .cell.bonus.active-cell { background: var(--active-fill); color: var(--wordle-tile-text); }
 .cell.locked-hint { color: var(--locked-text); font-size: 12px; }
+/* A revealed-on-fail cell — the answer to an entry the player never
+   solved, shown once the shared attempt pool ran out. Distinct color from
+   .solved so a failed grid still reads at a glance as "these ones you
+   didn't get", not a second shade of success. */
+.cell.failed { background: var(--fail-bg); color: var(--fail-text); cursor: default; }
 
 /* Wordle-style per-letter reveal: on both a correct entry and a wrong
    guess's feedback, tiles flip and color one at a time, left to right,
@@ -301,6 +368,7 @@ body {
   color: var(--accent);
 }
 .cell.solved .num, .cell.reveal .num { color: var(--solved-text); opacity: 0.8; }
+.cell.failed .num { color: var(--fail-text); opacity: 0.8; }
 .cell.active-cell .num { color: var(--wordle-tile-text); opacity: 0.85; }
 
 /* Lives inside the fixed .kbd pane now (pinned above the keys, same as the
@@ -464,6 +532,17 @@ body {
   cursor: pointer;
 }
 .next-puzzle-btn:disabled { color: var(--text-dim); cursor: default; }
+
+.fail-panel { display: none; text-align: center; padding: 8px 20px 4px; }
+.fail-panel.show { display: block; }
+.fail-panel h2 {
+  font-family: Iowan Old Style, "Palatino Linotype", Georgia, ui-serif, serif;
+  font-size: 22px; margin: 4px 0 2px; color: var(--fail-bg);
+}
+.fail-line {
+  font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px; color: var(--text-dim); margin-bottom: 10px;
+}
 
 .toast {
   position: fixed;

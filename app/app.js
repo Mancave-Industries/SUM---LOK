@@ -22,6 +22,10 @@ const state = {
   submitting: false, // true during the flash window — input is paused
   justSolvedEntry: null, // entry index to flip-animate for one render, then cleared
   guessHistory: {}, // entryIndex -> [{ letters: 'ABCDEFGH', statuses: [...] }, ...], every submitted attempt
+  attemptsUsed: 0, // wrong full-submissions across the WHOLE puzzle, shared pool (not per-entry)
+  maxAttempts: 5,
+  failed: false, // true once attemptsUsed is exhausted without solving every entry — permanent for this puzzle
+  justFailedEntries: null, // Set of entry indices to flip-reveal for one render on fail, then cleared
 };
 
 const FEEDBACK_RANK = { gray: 0, yellow: 1, green: 2 };
@@ -122,6 +126,9 @@ function playWrong() { beep(170, 0.18, 'sawtooth', 0.09); }
 function playComplete() {
   [523, 659, 784, 1046].forEach((f, i) => beep(f, 0.16, 'sine', 0.14, i * 0.09));
 }
+function playFail() {
+  [392, 330, 262].forEach((f, i) => beep(f, 0.22, 'sine', 0.11, i * 0.14));
+}
 
 function entryCells(entry) {
   const cells = [];
@@ -152,6 +159,8 @@ function buildCellMap(entries) {
 }
 
 const PUZZLE_INDEX_KEY = 'quyptick-puzzle-index';
+const VIEW_MODE_KEY = 'quyptick-view-mode';
+const DAILY_TIER_KEY = 'quyptick-daily-tier';
 
 function currentPuzzleIndex(total) {
   const saved = parseInt(localStorage.getItem(PUZZLE_INDEX_KEY) || '0', 10);
@@ -159,10 +168,30 @@ function currentPuzzleIndex(total) {
   return Math.min(Math.max(saved, 0), total - 1);
 }
 
-// Puzzles are picked from the manifest list by position, not by matching
-// today's real date — there's no daily lock while this is still being
-// iterated on. goToPuzzle() below moves through the list and reloads.
-async function loadPuzzle() {
+// UTC calendar day, not the player's local day — avoids the daily puzzle
+// rolling over at a different real-world moment for every timezone.
+function todayKey() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function getViewMode() {
+  return localStorage.getItem(VIEW_MODE_KEY) === 'archive' ? 'archive' : 'daily';
+}
+function setViewMode(mode) {
+  localStorage.setItem(VIEW_MODE_KEY, mode);
+}
+
+function getDailyTierChoice() {
+  return localStorage.getItem(DAILY_TIER_KEY) === 'hard' ? 'hard' : 'standard';
+}
+function setDailyTierChoice(tier) {
+  localStorage.setItem(DAILY_TIER_KEY, tier);
+}
+
+// Existing position-indexed behavior, now the "archive / back-play" mode —
+// reached via the menu's Archive list or the prev/next arrows, once the
+// player has left today's daily puzzle behind.
+async function loadArchivePuzzle() {
   // Puzzle content changes on every content update but the URL never
   // does, so a plain fetch is exactly the case browsers (mobile Safari
   // especially) cache indefinitely — cache: 'no-store' forces a fresh
@@ -172,16 +201,86 @@ async function loadPuzzle() {
   const id = manifest.puzzles[index];
   const puzzle = await (await fetch(`puzzles/${id}.json`, { cache: 'no-store' })).json();
   puzzle._id = id;
+  puzzle._mode = 'archive';
   puzzle._index = index;
   puzzle._total = manifest.puzzles.length;
   puzzle._manifest = manifest.puzzles;
   return puzzle;
 }
 
+// Today's puzzle (or the most recent day actually published, if the daily
+// pipeline hasn't run yet for today) at whichever tier the player currently
+// has active. Returns null if daily.json doesn't exist yet or is empty —
+// the caller falls back to the archive rather than showing a dead screen.
+async function loadDailyPuzzle() {
+  const res = await fetch('puzzles/daily.json', { cache: 'no-store' });
+  if (!res.ok) return null;
+  const daily = await res.json();
+  const days = Object.keys(daily.days || {}).sort();
+  if (days.length === 0) return null;
+
+  const key = todayKey();
+  let usingKey = days.includes(key) ? key : null;
+  let usingFallback = false;
+  if (!usingKey) {
+    const past = days.filter((d) => d <= key);
+    usingKey = past.length ? past[past.length - 1] : days[days.length - 1];
+    usingFallback = true;
+  }
+
+  const dayEntry = daily.days[usingKey];
+  let tier = getDailyTierChoice();
+  const league = loadLeague();
+  if (tier === 'hard' && !league.hardUnlocked) tier = 'standard';
+  if (!dayEntry[tier]) tier = 'standard';
+  const id = dayEntry[tier];
+  if (!id) return null;
+
+  const puzzle = await (await fetch(`puzzles/${id}.json`, { cache: 'no-store' })).json();
+  const manifest = await (await fetch('puzzles/manifest.json', { cache: 'no-store' })).json();
+  puzzle._id = id;
+  puzzle._mode = 'daily';
+  puzzle._dailyKey = usingKey;
+  puzzle._tier = tier;
+  puzzle._usingFallback = usingFallback;
+  puzzle._hasHardToday = !!dayEntry.hard;
+  puzzle._manifest = manifest.puzzles;
+  puzzle._index = manifest.puzzles.indexOf(id);
+  puzzle._total = manifest.puzzles.length;
+  return puzzle;
+}
+
+async function loadPuzzle() {
+  if (getViewMode() === 'daily') {
+    const daily = await loadDailyPuzzle();
+    if (daily) return daily;
+    // No daily.json published yet — fall back to the archive instead of a
+    // blank screen. Doesn't change the stored view mode: once daily.json
+    // exists, the very next load goes straight back to today.
+  }
+  return loadArchivePuzzle();
+}
+
 function goToPuzzle(index) {
   const total = state.puzzle._total;
   const wrapped = ((index % total) + total) % total;
   localStorage.setItem(PUZZLE_INDEX_KEY, String(wrapped));
+  setViewMode('archive');
+  location.reload();
+}
+
+function backToToday() {
+  setViewMode('daily');
+  location.reload();
+}
+
+function switchDailyTier(tier) {
+  if (tier === 'hard' && !loadLeague().hardUnlocked) {
+    showToast('Build a 5-day streak to unlock Hard');
+    return;
+  }
+  setDailyTierChoice(tier);
+  setViewMode('daily');
   location.reload();
 }
 
@@ -213,6 +312,7 @@ function checkAllSolved() {
     state.finishTime = Date.now();
     showSolvedPanel();
     saveStreak();
+    updateLeagueOnSolve();
   }
 }
 
@@ -232,7 +332,7 @@ function setActiveEntry(idx) {
 // also what makes per-letter green/yellow/gray feedback meaningful (you
 // see it, then act on it, rather than it flashing past mid-keystroke).
 function typeLetter(letter) {
-  if (state.submitting) return;
+  if (state.submitting || state.failed) return;
   const entry = state.puzzle.entries[state.activeEntry];
   if (isEntrySolved(state.activeEntry)) return;
   const cells = entryCells(entry);
@@ -246,7 +346,7 @@ function typeLetter(letter) {
 }
 
 function backspace() {
-  if (state.submitting) return;
+  if (state.submitting || state.failed) return;
   const entry = state.puzzle.entries[state.activeEntry];
   if (isEntrySolved(state.activeEntry)) return;
   const cells = entryCells(entry);
@@ -263,7 +363,7 @@ function backspace() {
 }
 
 function submitEntry() {
-  if (state.submitting) return;
+  if (state.submitting || state.failed) return;
   const idx = state.activeEntry;
   if (isEntrySolved(idx)) return;
   const entry = state.puzzle.entries[idx];
@@ -304,7 +404,9 @@ function submitEntry() {
 
   // Wrong guess: show Wordle-style per-letter feedback, then clear the
   // cells this entry actually controls (not ones a solved crossing entry
-  // already locked in) so the player can try again.
+  // already locked in) so the player can try again — unless this was the
+  // last of the shared attempt pool, in which case the puzzle fails
+  // instead of clearing for a retry.
   const statuses = computeWordleFeedback(guess, entry.answer);
   updateLetterStatus(guess.split(''), statuses);
   recordGuess(idx, guess, statuses);
@@ -314,24 +416,59 @@ function submitEntry() {
   });
   state.feedback = { entryIndex: idx, cells: feedbackCells };
   state.submitting = true;
+  state.attemptsUsed += 1;
   playWrong();
   render();
   flashShake();
+  saveProgress();
 
   // Give the reveal cascade time to actually play out — a 10-letter word's
   // last tile doesn't even start flipping until (length-1) * REVEAL_STAGGER_MS
   // in — plus a beat afterward so the fully-revealed colors are actually
   // readable before the entry clears for another attempt.
   setTimeout(() => {
+    state.feedback = null;
+    state.submitting = false;
+    if (state.attemptsUsed >= state.maxAttempts) {
+      triggerFail();
+      return;
+    }
     for (const { r, c } of cells) {
       if (!isCellLocked(r, c)) delete state.letters[`${r},${c}`];
     }
-    state.feedback = null;
-    state.submitting = false;
     state.cursor = 0;
     render();
     saveProgress();
   }, cascadeDuration(cells.length) + 700);
+}
+
+// The whole puzzle's shared attempt pool (5, not per-entry) is exhausted
+// without every entry solved: reveal every unsolved entry's correct answer
+// (reusing the same staggered flip-reveal used for a correct guess, just
+// with the fail color) and lock all input for the rest of this puzzle.
+function triggerFail() {
+  state.failed = true;
+  const unsolved = state.puzzle.entries.map((_, i) => i).filter((i) => !state.solved.has(i));
+  state.justFailedEntries = new Set(unsolved);
+  const maxLen = Math.max(0, ...unsolved.map((i) => state.puzzle.entries[i].answer.length));
+  playFail();
+  render();
+  showFailPanel();
+  saveProgress();
+  updateLeagueOnFail();
+  setTimeout(() => {
+    state.justFailedEntries = null;
+    render();
+  }, cascadeDuration(maxLen) + 200);
+}
+
+// The correct letter at a cell, independent of whether it's been typed —
+// used only once a puzzle has failed, to reveal answers for entries the
+// player never solved. Crossing entries always agree on a shared cell's
+// letter, so any one of them is a valid source.
+function correctLetterAt(cellInfo) {
+  const { entryIndex, posInEntry } = cellInfo.entries[0];
+  return state.puzzle.entries[entryIndex].answer[posInEntry];
 }
 
 // A cell is "locked" once some OTHER, already-solved entry owns its
@@ -364,7 +501,24 @@ function render() {
   renderGuessHistory();
   renderClueList();
   renderKeyboard();
+  renderAttempts();
   syncKbdHeight();
+}
+
+// Small remaining-attempts indicator — one dot per attempt in the shared
+// pool, filled in as they're used up. Hidden once the puzzle is solved or
+// failed, same as the badge it sits next to has nothing more to say then.
+function renderAttempts() {
+  const el = document.getElementById('attempts-indicator');
+  if (!el) return;
+  const isDone = state.puzzle.entries.every((_, i) => state.solved.has(i));
+  el.classList.toggle('show', !isDone && !state.failed);
+  el.innerHTML = '';
+  for (let i = 0; i < state.maxAttempts; i++) {
+    const dot = document.createElement('span');
+    dot.className = 'attempt-dot' + (i < state.attemptsUsed ? ' used' : '');
+    el.appendChild(dot);
+  }
 }
 
 // The fixed keyboard pane now includes the active clue bar, whose height
@@ -412,10 +566,10 @@ function renderGrid() {
       div.classList.add('fillable');
       if (belongsToBonus) div.classList.add('bonus');
       const showingFeedback = state.feedback && key in state.feedback.cells;
-      if (activeCellKeys.has(key) && !isEntrySolved(state.activeEntry) && !showingFeedback) {
+      if (activeCellKeys.has(key) && !isEntrySolved(state.activeEntry) && !showingFeedback && !state.failed) {
         div.classList.add('active-entry');
       }
-      if (key === cursorKey && !isEntrySolved(state.activeEntry) && !showingFeedback) {
+      if (key === cursorKey && !isEntrySolved(state.activeEntry) && !showingFeedback && !state.failed) {
         div.classList.add('active-cell');
       }
       // A cell mid-reveal skips the flat .solved background — the .reveal
@@ -443,6 +597,24 @@ function renderGrid() {
         if (feedbackMatch) div.style.animationDelay = `${feedbackMatch.posInEntry * REVEAL_STAGGER_MS}ms`;
       }
 
+      // Same staggered-flip mechanism as a correct solve, but for revealing
+      // the answer to an entry the player never solved once the shared
+      // attempt pool runs out — a cell only needs this if no entry through
+      // it is already solved (a solved crossing entry already shows the
+      // right letter in green, no separate fail styling needed there).
+      const failedReveal = state.failed && !anySolved;
+      const justFailedMatch =
+        failedReveal && state.justFailedEntries
+          ? cellInfo.entries.find((e) => state.justFailedEntries.has(e.entryIndex))
+          : undefined;
+      if (failedReveal && !justFailedMatch) div.classList.add('failed');
+      if (justFailedMatch) {
+        div.classList.add('reveal');
+        div.style.setProperty('--reveal-bg', 'var(--fail-bg)');
+        div.style.setProperty('--reveal-text', 'var(--fail-text)');
+        div.style.animationDelay = `${justFailedMatch.posInEntry * REVEAL_STAGGER_MS}ms`;
+      }
+
       if (cellInfo.number) {
         const num = document.createElement('span');
         num.className = 'num';
@@ -450,8 +622,8 @@ function renderGrid() {
         div.appendChild(num);
       }
 
-      const letter = state.letters[key];
-      const bonusHiddenCell = belongsToBonus && !state.bonusUnlocked && !belongsToSolvedNonBonus;
+      const letter = failedReveal ? correctLetterAt(cellInfo) : state.letters[key];
+      const bonusHiddenCell = belongsToBonus && !state.bonusUnlocked && !belongsToSolvedNonBonus && !state.failed;
       if (bonusHiddenCell) {
         div.classList.add('locked-hint');
         div.append(document.createTextNode(letter ? letter : '•'));
@@ -523,7 +695,12 @@ function renderClueList() {
   const addEntry = (idx) => {
     const entry = state.puzzle.entries[idx];
     const li = document.createElement('li');
-    const isLocked = entry.bonus && !state.bonusUnlocked;
+    // Once the puzzle has failed, every answer is already revealed on the
+    // grid itself (see renderGrid's failedReveal) — hiding the bonus
+    // clue's text behind the lock message at that point serves no purpose,
+    // it would just be withholding the one piece of the failed puzzle the
+    // player could still actually read.
+    const isLocked = entry.bonus && !state.bonusUnlocked && !state.failed;
     if (idx === state.activeEntry && !isLocked) li.classList.add('active');
     if (state.solved.has(idx)) li.classList.add('solved');
     if (isLocked) li.classList.add('locked');
@@ -594,6 +771,19 @@ function showSolvedPanel() {
   nextBtn.disabled = state.puzzle._total <= 1;
 }
 
+function showFailPanel() {
+  document.getElementById('fail-panel').classList.add('show');
+  document.getElementById('keyboard').style.display = 'none';
+  syncKbdHeight();
+  const solvedCount = state.puzzle.entries.filter((_, i) => state.solved.has(i)).length;
+  document.getElementById('fail-line').textContent =
+    `${solvedCount} of ${state.puzzle.entries.length} solved · out of attempts`;
+
+  const nextBtn = document.getElementById('fail-next-puzzle-btn');
+  nextBtn.textContent = state.puzzle._total > 1 ? 'Next puzzle →' : 'No more puzzles yet';
+  nextBtn.disabled = state.puzzle._total <= 1;
+}
+
 function shareResult() {
   const bonusEntry = state.puzzle.entries[bonusEntryIndex()];
   const squares = state.puzzle.entries.map((e) => (e.bonus ? '🟨' : '🟩')).join('');
@@ -631,6 +821,8 @@ function saveProgress() {
       startTime: state.startTime,
       letterStatus: state.letterStatus,
       guessHistory: state.guessHistory,
+      attemptsUsed: state.attemptsUsed,
+      failed: state.failed,
     })
   );
 }
@@ -657,6 +849,8 @@ function loadProgress() {
     state.startTime = saved.startTime || Date.now();
     state.letterStatus = saved.letterStatus || {};
     state.guessHistory = saved.guessHistory || {};
+    state.attemptsUsed = saved.attemptsUsed || 0;
+    state.failed = !!saved.failed;
   } catch {
     state.startTime = Date.now();
   }
@@ -690,6 +884,123 @@ function renderStreak() {
     /* ignore corrupt streak data */
   }
   document.getElementById('streak').textContent = streak.count ? `🔥 ${streak.count}` : '';
+}
+
+const LEAGUE_KEY = 'quyptick-league';
+const LEAGUE_DEFAULT = {
+  streak: 0,
+  lastCompletedDate: null,
+  hardUnlocked: false,
+  hardFailStreak: 0,
+  lastHardResultDate: null,
+};
+
+function loadLeague() {
+  const raw = localStorage.getItem(LEAGUE_KEY);
+  try {
+    return raw ? { ...LEAGUE_DEFAULT, ...JSON.parse(raw) } : { ...LEAGUE_DEFAULT };
+  } catch {
+    return { ...LEAGUE_DEFAULT };
+  }
+}
+
+function saveLeague(league) {
+  localStorage.setItem(LEAGUE_KEY, JSON.stringify(league));
+}
+
+function isNextCalendarDay(prevKey, key) {
+  const prev = Date.parse(`${prevKey}T00:00:00Z`);
+  const cur = Date.parse(`${key}T00:00:00Z`);
+  return cur - prev === 86400000;
+}
+
+// Solving a daily puzzle (either tier) advances the streak — consecutive
+// calendar days, any tier — and a 5-day streak unlocks the hard tier.
+// Archive play never touches league state: back-playing an old puzzle
+// isn't "today's" puzzle, so it can't be used to farm the streak.
+function updateLeagueOnSolve() {
+  if (state.puzzle._mode !== 'daily') return;
+  const league = loadLeague();
+  const key = state.puzzle._dailyKey;
+  if (league.lastCompletedDate === key) return; // already counted today
+
+  const isConsecutive = league.streak > 0 && league.lastCompletedDate && isNextCalendarDay(league.lastCompletedDate, key);
+  league.streak = isConsecutive ? league.streak + 1 : 1;
+  league.lastCompletedDate = key;
+
+  if (state.puzzle._tier === 'hard') {
+    league.hardFailStreak = 0;
+    league.lastHardResultDate = key;
+  }
+  if (league.streak >= 5 && !league.hardUnlocked) {
+    league.hardUnlocked = true;
+    league.hardFailStreak = 0;
+  }
+
+  saveLeague(league);
+  renderLeague();
+}
+
+// Failing a daily HARD puzzle costs the streak outright and counts toward
+// the 3-fail demotion — unlike Wordle, a broken streak here can also take
+// away access, not just the badge.
+function updateLeagueOnFail() {
+  if (state.puzzle._mode !== 'daily' || state.puzzle._tier !== 'hard') return;
+  const league = loadLeague();
+  const key = state.puzzle._dailyKey;
+  if (league.lastHardResultDate === key) return; // already counted today
+
+  league.hardFailStreak += 1;
+  league.streak = 0;
+  league.lastHardResultDate = key;
+  if (league.hardFailStreak >= 3) {
+    league.hardUnlocked = false;
+    league.hardFailStreak = 0;
+  }
+
+  saveLeague(league);
+  renderLeague();
+}
+
+function renderLeague() {
+  const el = document.getElementById('league');
+  if (!el) return;
+  const league = loadLeague();
+  if (league.hardUnlocked) {
+    el.textContent = `⚡ ${league.streak}`;
+  } else if (league.streak > 0) {
+    el.textContent = `🔥 ${league.streak}/5`;
+  } else {
+    el.textContent = '';
+  }
+  // The hard tab's lock state is league-driven too, and league state can
+  // change mid-session (a hard fail or a fresh 5-streak on the very puzzle
+  // being played) — refresh it here rather than only at page load.
+  renderModeChrome();
+}
+
+// Daily-vs-archive UI: tier tabs + "today"/catching-up status in daily
+// mode, the old prev/next arrows + a "back to today" banner in archive
+// mode. Called once at load and again whenever league state changes.
+function renderModeChrome() {
+  if (!state.puzzle) return;
+  const isDaily = state.puzzle._mode === 'daily';
+  document.getElementById('tier-tabs').classList.toggle('hidden', !isDaily);
+  document.getElementById('daily-status').classList.toggle('hidden', !isDaily);
+  document.getElementById('puzzle-nav').classList.toggle('hidden', isDaily);
+  document.getElementById('archive-banner').classList.toggle('hidden', isDaily);
+
+  if (!isDaily) return;
+  const league = loadLeague();
+  const standardTab = document.getElementById('tab-standard');
+  const hardTab = document.getElementById('tab-hard');
+  standardTab.classList.toggle('active', state.puzzle._tier === 'standard');
+  hardTab.classList.toggle('active', state.puzzle._tier === 'hard');
+  hardTab.classList.toggle('locked', !league.hardUnlocked);
+
+  document.getElementById('daily-status').textContent = state.puzzle._usingFallback
+    ? `catching up · ${state.puzzle._dailyKey}`
+    : 'today';
 }
 
 function setupTheme() {
@@ -779,6 +1090,9 @@ function setupInput() {
     else if (key.length === 1) typeLetter(key);
   });
   document.getElementById('share-btn').addEventListener('click', shareResult);
+  document
+    .getElementById('fail-next-puzzle-btn')
+    .addEventListener('click', () => goToPuzzle(state.puzzle._index + 1));
 }
 
 async function main() {
@@ -798,6 +1112,7 @@ async function main() {
   document.getElementById('date-label').textContent = `${puzzle._index + 1} / ${puzzle._total}`;
   document.getElementById('prev-puzzle').disabled = puzzle._total <= 1;
   document.getElementById('next-puzzle').disabled = puzzle._total <= 1;
+  renderLeague(); // also refreshes the tier-tabs/archive-banner chrome
 
   const firstUnsolved = nonBonusEntries().find((i) => !state.solved.has(i));
   state.activeEntry = firstUnsolved !== undefined ? firstUnsolved : bonusEntryIndex();
@@ -809,11 +1124,18 @@ async function main() {
   document.getElementById('prev-puzzle').addEventListener('click', () => goToPuzzle(puzzle._index - 1));
   document.getElementById('next-puzzle').addEventListener('click', () => goToPuzzle(puzzle._index + 1));
   document.getElementById('next-puzzle-btn').addEventListener('click', () => goToPuzzle(puzzle._index + 1));
+  document.getElementById('tab-standard').addEventListener('click', () => switchDailyTier('standard'));
+  document.getElementById('tab-hard').addEventListener('click', () => switchDailyTier('hard'));
+  document.getElementById('archive-back-btn').addEventListener('click', backToToday);
   render();
 
   if (puzzle.entries.every((_, i) => state.solved.has(i))) {
     state.finishTime = Date.now();
     showSolvedPanel();
+  } else if (state.failed) {
+    // Reloading a failed puzzle — the reveal already rendered flat (no
+    // justFailedEntries survives a reload), just restore the panel and lock.
+    showFailPanel();
   }
 }
 

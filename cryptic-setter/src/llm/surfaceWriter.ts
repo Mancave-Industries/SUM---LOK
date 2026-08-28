@@ -108,6 +108,23 @@ function describeWordplayRequirement(request: SurfaceRequest): string {
   const { answer, device, wordplay } = request;
   const indicator = wordplay.indicator;
 
+  // homophone and doubleDefinition both set wordplay.fodder too, but need
+  // their own instructions rather than the generic fodder branch below —
+  // checked first, ahead of the generic `wordplay.fodder` case.
+  if (device === 'homophone' && wordplay.fodder) {
+    const fodder = toDisplayCase(wordplay.fodder);
+    return `Wordplay fodder: "${fodder}"
+
+The fodder "${fodder}" and the indicator "${indicator}" must both appear in the wordplay part, close to verbatim (minor grammatical inflection like plural or tense is fine). "${fodder}" is a synonym standing in for another word that actually sounds like "${answer}" when spoken aloud — the indicator "${indicator}" signals that sound-alike relationship (e.g. "we hear", "reportedly"). Do NOT use any word that sounds like "${answer}" itself anywhere in the clue — only "${fodder}" (its synonym) should appear.`;
+  }
+
+  if (device === 'doubleDefinition' && wordplay.fodder) {
+    const fodder = toDisplayCase(wordplay.fodder);
+    return `Wordplay fodder: "${fodder}"
+
+The fodder "${fodder}" must appear in the wordplay part, close to verbatim (minor grammatical inflection like plural or tense is fine). This is a double-definition clue: "${fodder}" is a second, genuinely distinct meaning of "${answer}" (different from the definition already given above), so no separate wordplay indicator is needed or wanted — the two definitions simply sit back to back as one natural phrase or sentence.`;
+  }
+
   if (wordplay.fodder) {
     const fodder = toDisplayCase(wordplay.fodder);
     return `Wordplay fodder: "${fodder}"

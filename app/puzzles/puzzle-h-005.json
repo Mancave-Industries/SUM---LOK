@@ -1,0 +1,67 @@
+{
+  "id": "puzzle-h-005",
+  "tier": "hard",
+  "format": "3A2D",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "DEPOSITS",
+      "clue": "Broken topsides could hide a sailor's bank savings (8)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 6,
+      "col": 4,
+      "answer": "ITALIC",
+      "clue": "Capital ice buried in the glacier gives us slanted type (6)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 9,
+      "col": 3,
+      "answer": "TROUBLE",
+      "clue": "Boulter, playing awry all match, is nothing but difficulty (7)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "DEVELOPER",
+      "clue": "Scrambled \"redevelop\" plans could only have come from a software programmer (9)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 4,
+      "answer": "SUPERVISOR",
+      "clue": "Lab reworked proviruses, alarming the overseer (10)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 3,
+      "col": 9,
+      "answer": "SUICIDE",
+      "clue": "Felo-de-se was an old legal term for self-destruction (7)",
+      "device": "doubleDefinition",
+      "bonus": true
+    }
+  ]
+}

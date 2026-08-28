@@ -80,3 +80,18 @@ export function approveFromReviewQueue(id: string): Clue | null {
 
   return approved;
 }
+
+// A human rejecting a queued clue: removed permanently, never reaches the
+// live bank. The already-assembled puzzle(s) using this clue's surface
+// text are untouched — rejection only stops it from being reused from the
+// bank for a future puzzle, same asymmetry approveFromReviewQueue has with
+// clues that are already live.
+export function rejectFromReviewQueue(id: string): Clue | null {
+  const queue = readReviewQueue();
+  const index = queue.findIndex((clue) => clue.id === id);
+  if (index === -1) return null;
+
+  const [clue] = queue.splice(index, 1);
+  writeClues(REVIEW_QUEUE_PATH, queue);
+  return clue;
+}

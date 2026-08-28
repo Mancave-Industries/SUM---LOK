@@ -1,0 +1,67 @@
+{
+  "id": "puzzle-h-002",
+  "tier": "hard",
+  "format": "2A3D",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "KINGDOM",
+      "clue": "King then dominates a whole realm (7)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 6,
+      "col": 0,
+      "answer": "NEWSPAPERS",
+      "clue": "News then papers over every scandal, according to the dailies (10)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 9,
+      "col": 1,
+      "answer": "ECONOMIES",
+      "clue": "Monoecies out of order gave botanists unexpected savings (9)",
+      "device": "anagram",
+      "bonus": true
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "KITCHEN",
+      "clue": "Shaken sauce will thicken in the cooking room (7)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 5,
+      "answer": "OVERSEAS",
+      "clue": "Oversea currents once carried explorers abroad (8)",
+      "device": "doubleDefinition",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 3,
+      "col": 9,
+      "answer": "CHASSIS",
+      "clue": "Documentary crew filmed part of viscachas sisters' burrow to describe the vehicle frame (7)",
+      "device": "hidden",
+      "bonus": false
+    }
+  ]
+}
