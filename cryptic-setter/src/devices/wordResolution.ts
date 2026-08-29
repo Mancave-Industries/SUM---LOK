@@ -54,3 +54,17 @@ export function isTrivialInflectionOfAnswer(component: string, answer: string): 
   if (c === a) return true;
   return TRIVIAL_SUFFIXES.some((suffix) => c + suffix === a || a + suffix === c);
 }
+
+// A plain `text.includes(word)` treats "dom" as present inside "dominates"
+// — real bug found in production: a charade clue for KINGDOM ("King then
+// dominates a whole realm") let the LLM bury the DOM part inside an
+// ordinary word instead of writing it as its own token, which reads as
+// solvable by pattern-matching rather than working out the wordplay (the
+// exact complaint that got the hidden-word device's balance rule added
+// earlier). Word-boundary matching is what verifySurface for charade and
+// container should have been doing from the start.
+export function findWholeWordIndex(text: string, word: string): number {
+  const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const match = new RegExp(`\\b${escaped}\\b`, 'i').exec(text);
+  return match ? match.index : -1;
+}

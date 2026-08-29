@@ -96,4 +96,20 @@ describe('charadeDevice.verifySurface', () => {
     const result = charadeDevice.verifySurface!('CARPET', wordplay, 'the dog trotted by');
     expect(result.passed).toBe(false);
   });
+
+  // Real bug found in production: a KINGDOM clue ("King then dominates a
+  // whole realm") let the DOM part be satisfied by "dominates" — a plain
+  // substring match, not a real occurrence of the word "dom" on its own.
+  // That's solvable by pattern-matching the visible letters rather than
+  // working out the wordplay, the exact thing hidden.ts's balance rule
+  // was already added to prevent for a different device.
+  it('fails when a part only appears buried inside a longer word', () => {
+    const kingdomWordplay = { components: ['king', 'dom'], indicator: 'then', operation: '' };
+    const result = charadeDevice.verifySurface!(
+      'KINGDOM',
+      kingdomWordplay,
+      'King then dominates a whole realm'
+    );
+    expect(result.passed).toBe(false);
+  });
 });

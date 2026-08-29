@@ -69,4 +69,13 @@ describe('containerDevice.verifySurface', () => {
     const result = containerDevice.verifySurface!('BEARD', wordplay, 'a bead holding a crown motif');
     expect(result.passed).toBe(false);
   });
+
+  // Same bug class found in charade.ts's verifySurface: a plain substring
+  // match lets "king" be satisfied by "kingdom" even though "king" never
+  // actually appears as its own word — solvable by spotting the visible
+  // letters, not by working out the wordplay.
+  it('fails when a part only appears buried inside a longer word', () => {
+    const result = containerDevice.verifySurface!('BEARD', wordplay, 'a bead holding a kingdom motif');
+    expect(result.passed).toBe(false);
+  });
 });
