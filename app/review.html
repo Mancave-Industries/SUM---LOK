@@ -191,7 +191,10 @@ function renderList() {
 
     const meta = document.createElement('div');
     meta.className = 'meta';
+    // Same number the printed sheet uses, so a verdict can be reported
+    // from either surface and mean the same clue.
     meta.innerHTML =
+      `<span class="tag">${c.n}</span>` +
       `<span class="answer">${c.answer}</span>` +
       `<span class="tag">${c.device}</span>` +
       (c.blocking ? '<span class="tag blocking">blocking</span>' : '');

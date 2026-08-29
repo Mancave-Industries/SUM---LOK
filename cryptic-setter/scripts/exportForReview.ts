@@ -50,15 +50,23 @@ function explainWordplay(clue: Clue): string {
 
 function main() {
   const queue = readReviewQueue();
-  const rows = queue.map((clue) => ({
-    id: clue.id,
-    answer: clue.answer,
-    device: clue.device,
-    surface: clue.surface,
-    definition: clue.definition,
-    wordplay: explainWordplay(clue),
-    blocking: BLOCKING_DEVICES.includes(clue.device),
-  }));
+  // Grouped by device, then alphabetical, then numbered 1..n — the order
+  // the printable sheet renders in. The number is assigned here rather
+  // than derived at render time so the paper sheet, the on-screen page
+  // and applyVerdicts.ts all agree on what "number 47" refers to: a
+  // reviewer marking a printout can just report the numbers back.
+  const rows = queue
+    .map((clue) => ({
+      id: clue.id,
+      answer: clue.answer,
+      device: clue.device,
+      surface: clue.surface,
+      definition: clue.definition,
+      wordplay: explainWordplay(clue),
+      blocking: BLOCKING_DEVICES.includes(clue.device),
+    }))
+    .sort((a, b) => a.device.localeCompare(b.device) || a.answer.localeCompare(b.answer))
+    .map((row, i) => ({ n: i + 1, ...row }));
 
   const out = join(process.cwd(), '..', 'app', 'review-data.json');
   writeFileSync(out, JSON.stringify({ generatedAt: new Date().toISOString(), clues: rows }, null, 2) + '\n');
