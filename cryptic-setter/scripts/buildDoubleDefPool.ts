@@ -19,6 +19,7 @@
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { getSynonymSetsSync } from '../src/definitions/wordnetSync.js';
+import { preferCommon } from '../src/devices/commonWords.js';
 import wordlistsByLength from '../src/data/wordlistsByLength.json' with { type: 'json' };
 
 const pools = wordlistsByLength as Record<string, string[]>;
@@ -108,15 +109,27 @@ function tooSimilarToAnswer(word: string, answerLower: string): boolean {
 // simplicity tradeoff as the homophone pool — a literal verbatim
 // substring match is what both generateClue.ts's fodder check and
 // verifyDefinitionAtEnd's containment check actually need).
-function firstUsableSynonym(sense: string[], answerLower: string): string | null {
+//
+// Picks the most RECOGNIZABLE usable synonym, not merely the first one
+// WordNet happens to list. Real bug this fixes, found in human review: the
+// TELLING sense is ["telling", "apprisal", "notification"] and taking the
+// first match produced "apprisal" — obscure enough to get the clue
+// rejected — when "notification" was sitting right there in the same
+// synset. Same preferCommon bias hidden/charade/container already apply
+// to their own candidate lists; falling back to the full list when
+// nothing is common means this never empties a valid candidate set, it
+// only picks better when it can.
+function bestUsableSynonym(sense: string[], answerLower: string): string | null {
+  const usable: string[] = [];
   for (const synonym of sense) {
     if (synonym.includes('_')) continue;
     const lower = stripPosMarker(synonym.toLowerCase());
     if (!lower || lower === answerLower) continue;
     if (tooSimilarToAnswer(lower, answerLower)) continue;
-    return lower;
+    usable.push(lower);
   }
-  return null;
+  if (usable.length === 0) return null;
+  return preferCommon(usable)[0];
 }
 
 function buildDoubleDefPool(): Record<string, DoubleDefPair[]> {
@@ -136,8 +149,8 @@ function buildDoubleDefPool(): Record<string, DoubleDefPair[]> {
           const overlaps = [...setI].some((s) => setJ.has(s));
           if (overlaps) continue; // too closely related to read as genuinely distinct meanings
 
-          const defA = firstUsableSynonym(senses[i], answerLower);
-          const defB = firstUsableSynonym(senses[j], answerLower);
+          const defA = bestUsableSynonym(senses[i], answerLower);
+          const defB = bestUsableSynonym(senses[j], answerLower);
           if (!defA || !defB || defA === defB) continue;
 
           pairs.push({ answer: word.toUpperCase(), defA, defB });
