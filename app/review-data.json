@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-29T23:58:51.542Z",
+  "generatedAt": "2026-08-30T08:33:50.023Z",
   "clues": [
     {
       "n": 1,
@@ -9,7 +9,8 @@
       "surface": "Callousness evenly spread among staff shuts down the office party (6)",
       "definition": "shuts",
       "wordplay": "alternate letters of \"callousness\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
       "n": 2,
@@ -19,7 +20,8 @@
       "surface": "Greenbriers, at regular intervals, overrun the nursery's plant categories (6)",
       "definition": "categories",
       "wordplay": "alternate letters of \"greenbriers\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
       "n": 3,
@@ -29,7 +31,8 @@
       "surface": "Garlandless regularly describes flowerless brides who still earn top Marks (6)",
       "definition": "Marks",
       "wordplay": "alternate letters of \"garlandless\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
       "n": 4,
@@ -39,7 +42,8 @@
       "surface": "Boosting propionates on alternate days, the coach's system racks up scores (6)",
       "definition": "Scores",
       "wordplay": "alternate letters of \"propionates\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
       "n": 5,
@@ -49,7 +53,8 @@
       "surface": "Abandoned by every other one, succourless orphans still ran up the tallies (6)",
       "definition": "tallies",
       "wordplay": "alternate letters of \"succourless\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
       "n": 6,
@@ -59,7 +64,8 @@
       "surface": "Saturnalian orgies, taken evenly, might produce a breed variety (6)",
       "definition": "breed variety",
       "wordplay": "alternate letters of \"saturnalian\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
       "n": 7,
@@ -69,7 +75,8 @@
       "surface": "Student's logarithm, awry throughout the exam, ruined the step-by-step procedure (9)",
       "definition": "step-by-step procedure",
       "wordplay": "anagram of \"logarithm\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
       "n": 8,
@@ -79,7 +86,8 @@
       "surface": "Damaged medusas washed ashore, presumed dead by marine biologists (7)",
       "definition": "Presumed",
       "wordplay": "anagram of \"medusas\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
       "n": 9,
@@ -89,7 +97,8 @@
       "surface": "Confused cautions from investors point to bidding sales (8)",
       "definition": "Bidding sales",
       "wordplay": "anagram of \"cautions\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
       "n": 10,
@@ -99,7 +108,8 @@
       "surface": "Upset bogglers turn out to be online diarists (8)",
       "definition": "Online diarists",
       "wordplay": "anagram of \"bogglers\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
       "n": 11,
@@ -109,7 +119,8 @@
       "surface": "Wild conias bloom each spring outside the gambling house (6)",
       "definition": "gambling house",
       "wordplay": "anagram of \"conias\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
       "n": 12,
@@ -119,7 +130,8 @@
       "surface": "Doctors found the odd causal link between diet and mood surprisingly informal (6)",
       "definition": "informal",
       "wordplay": "anagram of \"causal\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
       "n": 13,
@@ -129,1787 +141,2978 @@
       "surface": "Chaotic tocsins during the siege could be composed (7)",
       "definition": "be composed",
       "wordplay": "anagram of \"tocsins\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
       "n": 14,
+      "id": "a6002b0a-a07e-4196-be4d-d60418e8344b",
+      "answer": "DANGEROUS",
+      "device": "anagram",
+      "surface": "Distorted noseguard makes tackling unsafe (9)",
+      "definition": "unsafe",
+      "wordplay": "anagram of \"noseguard\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 15,
       "id": "9ba01bb1-b55a-4ea9-bdf0-65281c08b586",
       "answer": "DEALING",
       "device": "anagram",
       "surface": "Leading mixed teams control the trading (7)",
       "definition": "trading",
       "wordplay": "anagram of \"leading\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 15,
+      "n": 16,
+      "id": "d1237193-83ba-4881-8f6a-90829f5d4269",
+      "answer": "DECLARE",
+      "device": "anagram",
+      "surface": "Reformed after being cleared, the smuggler seemed keen to announce his innocence to reporters (7)",
+      "definition": "announce",
+      "wordplay": "anagram of \"cleared\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 17,
       "id": "a96ab069-912f-4480-8871-9a5041241a33",
       "answer": "DEPOSITS",
       "device": "anagram",
       "surface": "Broken topsides could hide a sailor's bank savings (8)",
       "definition": "bank savings",
       "wordplay": "anagram of \"topsides\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 16,
+      "n": 18,
       "id": "3cbf4840-2dfe-4f09-b009-1e6c7b762e5f",
       "answer": "DESPERATE",
       "device": "anagram",
       "surface": "Rearranged, departees seemed frantic with need (9)",
       "definition": "frantic with need",
       "wordplay": "anagram of \"departees\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 17,
+      "n": 19,
       "id": "6c415582-3571-4850-9fc1-f29ec248d627",
       "answer": "DETAILS",
       "device": "anagram",
       "surface": "Novel dilates on pupil's particulars (7)",
       "definition": "Particulars",
       "wordplay": "anagram of \"dilates\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 18,
+      "n": 20,
       "id": "c8ed6881-e97f-4e69-81e1-d7866d7e5129",
       "answer": "DEVELOPER",
       "device": "anagram",
       "surface": "Scrambled \"redevelop\" plans could only have come from a software programmer (9)",
       "definition": "software programmer",
       "wordplay": "anagram of \"redevelop\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 19,
+      "n": 21,
       "id": "3e3b0588-22b0-4754-bf7c-0b9b9406b77d",
       "answer": "DISCRETE",
       "device": "anagram",
       "surface": "Shaken by scandal, discreet staff are kept separate (8)",
       "definition": "separate",
       "wordplay": "anagram of \"discreet\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 20,
+      "n": 22,
       "id": "bee66112-154b-427d-a82a-093120e58965",
       "answer": "DISEASES",
       "device": "anagram",
       "surface": "Disordered seasides bring illnesses (8)",
       "definition": "Illnesses",
       "wordplay": "anagram of \"seasides\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 21,
+      "n": 23,
       "id": "d8d5db1f-a038-438b-b5f2-edd9ba29a0be",
       "answer": "DOMESTIC",
       "device": "anagram",
       "surface": "Demotics randomly appear across every household (8)",
       "definition": "household",
       "wordplay": "anagram of \"demotics\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 22,
+      "n": 24,
       "id": "18511afa-2381-4d74-9445-ed6fa851990c",
       "answer": "ECONOMIES",
       "device": "anagram",
       "surface": "Monoecies out of order gave botanists unexpected savings (9)",
       "definition": "savings",
       "wordplay": "anagram of \"monoecies\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 23,
+      "n": 25,
       "id": "b6a95eac-30b8-4a86-aa92-830f6d9cef07",
       "answer": "EDITED",
       "device": "anagram",
       "surface": "Teddie's twisted account of the scandal was revised (6)",
       "definition": "Revised",
       "wordplay": "anagram of \"teddie\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 24,
+      "n": 26,
       "id": "13eb57ef-8aa0-4aea-8103-941f38ab158d",
       "answer": "EDITORS",
       "device": "anagram",
       "surface": "Storied mixed accounts finally need copy revisers (7)",
       "definition": "Copy revisers",
       "wordplay": "anagram of \"storied\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 25,
+      "n": 27,
       "id": "3d8eaa8d-38b5-4bdd-9e17-299904b918ca",
       "answer": "ELEMENT",
       "device": "anagram",
       "surface": "Damaged telemen could only broadcast a basic substance (7)",
       "definition": "basic substance",
       "wordplay": "anagram of \"telemen\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 26,
+      "n": 28,
       "id": "82c07a4b-dd1b-44e9-8535-ad085c3e8333",
       "answer": "ENGLISH",
       "device": "anagram",
       "surface": "Wild shingle washes ashore forming the language of Britain (7)",
       "definition": "Language of Britain",
       "wordplay": "anagram of \"shingle\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 27,
+      "n": 29,
       "id": "65e14159-2931-4242-9119-f76651e843a1",
       "answer": "ENORMOUS",
       "device": "anagram",
       "surface": "Shaken by nemorous woodland spirits, the ancient forest seemed huge (8)",
       "definition": "huge",
       "wordplay": "anagram of \"nemorous\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 28,
+      "n": 30,
       "id": "5b2256e0-2ab5-4928-975f-b159a1aa629a",
       "answer": "EXPIRES",
       "device": "anagram",
       "surface": "Chaotic prexies' term runs out (7)",
       "definition": "runs out",
       "wordplay": "anagram of \"prexies\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 29,
+      "n": 31,
       "id": "0a30b3b3-b2ce-401b-8069-240955b2e731",
       "answer": "GADGETS",
       "device": "anagram",
       "surface": "Hunters find that stagged trophies, when mixed up in the lodge, are actually clever new devices (7)",
       "definition": "Devices",
       "wordplay": "anagram of \"stagged\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 30,
+      "n": 32,
       "id": "8247547a-275f-49d9-830b-4536858a7a6a",
       "answer": "GENERATION",
       "device": "anagram",
       "surface": "Crazy renegation splits the age group (10)",
       "definition": "age group",
       "wordplay": "anagram of \"renegation\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 31,
+      "n": 33,
       "id": "46a01408-8904-4592-9ee5-e5735130c67e",
       "answer": "GRANDE",
       "device": "anagram",
       "surface": "Chaotic danger creates something large (6)",
       "definition": "large",
       "wordplay": "anagram of \"danger\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 32,
+      "n": 34,
       "id": "183e25bb-082e-4ea1-991d-90df63eba231",
       "answer": "INCREASE",
       "device": "anagram",
       "surface": "Cinereas twisted into ash have room to grow larger (8)",
       "definition": "grow larger",
       "wordplay": "anagram of \"cinereas\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 33,
+      "n": 35,
       "id": "06ec991e-6b52-4b4f-a697-762ce2c5eb71",
       "answer": "INDIRECT",
       "device": "anagram",
       "surface": "Odd behavior by the indicter suggests a roundabout (8)",
       "definition": "roundabout",
       "wordplay": "anagram of \"indicter\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 34,
+      "n": 36,
       "id": "b84ae7ef-be40-4fa7-8083-8e7694c849a2",
       "answer": "INTEGRAL",
       "device": "anagram",
       "surface": "Relating unstable data to management is essential (8)",
       "definition": "essential",
       "wordplay": "anagram of \"relating\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 35,
+      "n": 37,
       "id": "1709ba12-c811-4312-8064-5524f53e3578",
       "answer": "INTENDED",
       "device": "anagram",
       "surface": "Indented awry, the design was planned (8)",
       "definition": "planned",
       "wordplay": "anagram of \"indented\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 36,
+      "n": 38,
       "id": "43ba4b50-25a3-48f4-927d-c2996e2a83fb",
       "answer": "KITCHEN",
       "device": "anagram",
       "surface": "Shaken sauce will thicken in the cooking room (7)",
       "definition": "Cooking room",
       "wordplay": "anagram of \"thicken\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 37,
+      "n": 39,
       "id": "7ff4c2a5-f1c2-41d6-ab9f-dd76db30f269",
       "answer": "LASTING",
       "device": "anagram",
       "surface": "Slating upset the critic, but his grudge proved enduring (7)",
       "definition": "enduring",
       "wordplay": "anagram of \"slating\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 38,
+      "n": 40,
       "id": "09c220dc-3471-4b3b-9595-93c913fc8f6d",
       "answer": "LATITUDE",
       "device": "anagram",
       "surface": "Wrecked altitude readings gave the pilot freedom of action (8)",
       "definition": "freedom of action",
       "wordplay": "anagram of \"altitude\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 39,
+      "n": 41,
       "id": "8ab1d702-a1ec-4683-97e2-0fc5ea7cd3c8",
       "answer": "LEATHER",
       "device": "anagram",
       "surface": "Fly's wild haltere produces tanned hide (7)",
       "definition": "tanned hide",
       "wordplay": "anagram of \"haltere\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 40,
+      "n": 42,
       "id": "6f254272-4992-4f39-905f-f4d1d1813e93",
       "answer": "LEAVES",
       "device": "anagram",
       "surface": "Upset, Veales quietly departs (6)",
       "definition": "departs",
       "wordplay": "anagram of \"veales\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 41,
+      "n": 43,
       "id": "465a5e2d-5298-44a8-bb96-b9fc178f5655",
       "answer": "LESBIANS",
       "device": "anagram",
       "surface": "Confusing bassline at the club night thrills gay women (8)",
       "definition": "Gay women",
       "wordplay": "anagram of \"bassline\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 42,
+      "n": 44,
       "id": "42787e4f-8924-4b20-ba4d-3d12575f1e10",
       "answer": "LICENSED",
       "device": "anagram",
       "surface": "Silenced and mixed up, the informants were nonetheless authorized (8)",
       "definition": "Authorized",
       "wordplay": "anagram of \"silenced\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 43,
+      "n": 45,
       "id": "30bc9b63-8ef8-4a46-a0e6-85509c5b7c2c",
       "answer": "LICENSES",
       "device": "anagram",
       "surface": "Enclises mixed up by a careless poet are actually permits (8)",
       "definition": "Permits",
       "wordplay": "anagram of \"enclises\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 44,
+      "n": 46,
       "id": "91bb8722-347a-43c6-912d-0ff9326513f9",
       "answer": "LOGISTICS",
       "device": "anagram",
       "surface": "Muddled by glossitic symptoms, the clinic overhauled its planning and organization (9)",
       "definition": "planning and organization",
       "wordplay": "anagram of \"glossitic\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 45,
+      "n": 47,
       "id": "bf9751a7-19ca-4710-afbe-8999c88bfd5a",
       "answer": "NAVIGATE",
       "device": "anagram",
       "surface": "Twisted vaginate flower parts help bees steer a course (8)",
       "definition": "steer a course",
       "wordplay": "anagram of \"vaginate\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 46,
+      "n": 48,
       "id": "907571a3-f364-4d5f-b368-49cc9993d80d",
       "answer": "NECESSITY",
       "device": "anagram",
       "surface": "Shaken cysteines in the lab reaction reveal an essential requirement (9)",
       "definition": "Essential requirement",
       "wordplay": "anagram of \"cysteines\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 47,
+      "n": 49,
       "id": "5e64d5ca-22dd-4d6b-8e52-a2969fd29efe",
       "answer": "NUMERIC",
       "device": "anagram",
       "surface": "Her wrecked minceur regime is expressed in numbers (7)",
       "definition": "expressed in numbers",
       "wordplay": "anagram of \"minceur\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 48,
+      "n": 50,
       "id": "e911ab44-0f42-422b-abe8-5be819797c4a",
       "answer": "PEDIATRIC",
       "device": "anagram",
       "surface": "Once reformed, a patricide could still specialize in something child-related (medical) (9)",
       "definition": "child-related (medical)",
       "wordplay": "anagram of \"patricide\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 49,
+      "n": 51,
+      "id": "61359941-4335-435a-b50f-f5175d747106",
+      "answer": "PRECISE",
+      "device": "anagram",
+      "surface": "Distorted recipes need to be exact (7)",
+      "definition": "Exact",
+      "wordplay": "anagram of \"recipes\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 52,
       "id": "523c4132-238d-4869-afea-5e699f58cc7c",
       "answer": "PROCEDURE",
       "device": "anagram",
       "surface": "Shaken, animals reproduce by an odd method (9)",
       "definition": "method",
       "wordplay": "anagram of \"reproduce\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 50,
+      "n": 53,
       "id": "dddc4571-09b9-4393-9dce-996407da13ad",
       "answer": "PUPILS",
       "device": "anagram",
       "surface": "Shaken by protest chants, Pipuls take to the streets as students (6)",
       "definition": "Students",
       "wordplay": "anagram of \"pipuls\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 51,
+      "n": 54,
       "id": "2ca4e05f-4e06-44cb-bc30-d045e75e41ff",
       "answer": "READINGS",
       "device": "anagram",
       "surface": "Confusing deraigns produced by court clerks give meter measurements (8)",
       "definition": "Meter measurements",
       "wordplay": "anagram of \"deraigns\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 52,
+      "n": 55,
       "id": "06592bc1-2fc3-4e34-996b-a95265b62de9",
       "answer": "REASONS",
       "device": "anagram",
       "surface": "Confusing senoras at the dance gave the alcalde grounds for complaint (7)",
       "definition": "grounds",
       "wordplay": "anagram of \"senoras\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 53,
+      "n": 56,
       "id": "4f5003e5-ae48-4a46-a095-fbbe42208bb8",
       "answer": "RECORDER",
       "device": "anagram",
       "surface": "Curious how they rerecord tunes on this flute-like instrument (8)",
       "definition": "flute-like instrument",
       "wordplay": "anagram of \"rerecord\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 54,
+      "n": 57,
+      "id": "90b8f130-2904-4bb0-9a41-6601a5b4b261",
+      "answer": "RESISTANCE",
+      "device": "anagram",
+      "surface": "Genealogists shuffled ancestries randomly, revealing opposition (10)",
+      "definition": "opposition",
+      "wordplay": "anagram of \"ancestries\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 58,
       "id": "12e47696-3099-453e-9b7c-1da86c4cd6ec",
       "answer": "SAILING",
       "device": "anagram",
       "surface": "Reformed nilgais, oddly enough, take to boating (7)",
       "definition": "boating",
       "wordplay": "anagram of \"nilgais\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 55,
+      "n": 59,
       "id": "5931619e-3d57-44a6-a3a4-54aaceffe49c",
       "answer": "SECTOR",
       "device": "anagram",
       "surface": "Unstable scoter flies into a coastal zone (6)",
       "definition": "zone",
       "wordplay": "anagram of \"scoter\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 56,
+      "n": 60,
       "id": "1c8d69f9-0034-4b04-8dd5-0c8779e94506",
       "answer": "SECURITIES",
       "device": "anagram",
       "surface": "After being broken, \"securitise\" would oddly describe stocks and bonds (10)",
       "definition": "stocks and bonds",
       "wordplay": "anagram of \"securitise\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 57,
+      "n": 61,
       "id": "62c08ec0-1b4c-4fd8-8718-2ee7471e3bbf",
       "answer": "SEEING",
       "device": "anagram",
       "surface": "Muddled genies produce mirages worth viewing (6)",
       "definition": "Viewing",
       "wordplay": "anagram of \"genies\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 58,
+      "n": 62,
       "id": "ab5cb5a6-99db-4ce4-b970-c7e8bd3dbd24",
       "answer": "SENATORS",
       "device": "anagram",
       "surface": "Mixed assentors turned out to be legislators (8)",
       "definition": "Legislators",
       "wordplay": "anagram of \"assentor\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 59,
+      "n": 63,
       "id": "06ae5ecb-4e5a-4076-a168-3a1f5498a37b",
       "answer": "SEPARATE",
       "device": "anagram",
       "surface": "Asperate skin, adapted by cream, becomes distinct (8)",
       "definition": "distinct",
       "wordplay": "anagram of \"asperate\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 60,
+      "n": 64,
       "id": "5377b59e-0674-4945-b4f2-a4bc2a8ba289",
       "answer": "SEPARATION",
       "device": "anagram",
       "surface": "Twisted anatropies in the garden signal division apart (10)",
       "definition": "division apart",
       "wordplay": "anagram of \"anatropies\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 61,
+      "n": 65,
       "id": "ce9896af-a4ea-4407-a9fa-abd38d324717",
       "answer": "SHARON",
       "device": "anagram",
       "surface": "Shoran, scrambled by storms, could not detect the Israeli PM (Ariel) (6)",
       "definition": "Israeli PM (Ariel)",
       "wordplay": "anagram of \"shoran\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 62,
+      "n": 66,
       "id": "04adc02e-1676-4897-8461-72cc463a0c0b",
       "answer": "SOCCER",
       "device": "anagram",
       "surface": "Escroc, shaken by exposure, gave up football (6)",
       "definition": "Football",
       "wordplay": "anagram of \"escroc\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 63,
+      "n": 67,
       "id": "7f592dc3-0b70-4473-89dc-cf7056d95b5a",
       "answer": "SOCIAL",
       "device": "anagram",
       "surface": "Scolia mixed up their swarms, being remarkably gregarious (6)",
       "definition": "gregarious",
       "wordplay": "anagram of \"scolia\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 64,
+      "n": 68,
+      "id": "ff5409b5-5a03-459e-9a2f-a13f1e081c15",
+      "answer": "STADIUM",
+      "device": "anagram",
+      "surface": "Confused dumaist storms out of arena (7)",
+      "definition": "Arena",
+      "wordplay": "anagram of \"dumaist\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 69,
       "id": "f1f7ac7d-412f-4753-b2dc-176f34c57bfb",
       "answer": "STATEMENTS",
       "device": "anagram",
       "surface": "Confusing testaments produced official declarations (10)",
       "definition": "declarations",
       "wordplay": "anagram of \"testaments\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 65,
+      "n": 70,
       "id": "68ac560a-7905-4106-af09-7361a7201399",
       "answer": "STATUTES",
       "device": "anagram",
       "surface": "Astutest advisers, mixed up on policy, still end up drafting laws (8)",
       "definition": "Laws",
       "wordplay": "anagram of \"astutest\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 66,
+      "n": 71,
       "id": "823a3caa-3b5a-4f66-bf62-93cc51a4bab3",
       "answer": "STREAMING",
       "device": "anagram",
       "surface": "Disordered mastering leaves the river flowing continuously (9)",
       "definition": "flowing continuously",
       "wordplay": "anagram of \"mastering\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 67,
+      "n": 72,
       "id": "2293fa77-05a9-47d0-8482-d421f825d61b",
       "answer": "STREETS",
       "device": "anagram",
       "surface": "Curious tailors' setters wander the roads (7)",
       "definition": "roads",
       "wordplay": "anagram of \"setters\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 68,
+      "n": 73,
       "id": "68a739d0-bfa3-42cb-b8c1-868c1a196592",
       "answer": "STRIKING",
       "device": "anagram",
       "surface": "Confused skirting on the model is noticeable (8)",
       "definition": "noticeable",
       "wordplay": "anagram of \"skirting\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 69,
+      "n": 74,
       "id": "537706f4-d108-4288-b7c9-ca13803dff27",
       "answer": "STUNNING",
       "device": "anagram",
       "surface": "Muddled tunnings ruined the piano recital but produced something gorgeous (8)",
       "definition": "gorgeous",
       "wordplay": "anagram of \"tunnings\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 70,
+      "n": 75,
       "id": "fc49092a-d184-433e-9957-7ab3004f60bd",
       "answer": "SUPERVISOR",
       "device": "anagram",
       "surface": "Lab reworked proviruses, alarming the overseer (10)",
       "definition": "Overseer",
       "wordplay": "anagram of \"proviruses\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 71,
+      "n": 76,
       "id": "043483d0-b5a8-43da-bd3b-0cd7fb6d7893",
       "answer": "SUPPLIER",
       "device": "anagram",
       "surface": "Ancient trader's scrambled periplus reveals a vendor (8)",
       "definition": "Vendor",
       "wordplay": "anagram of \"periplus\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 72,
+      "n": 77,
       "id": "1554060b-4cb0-4dc3-8c3b-b4bc776e5b1f",
       "answer": "TERMINAL",
       "device": "anagram",
       "surface": "Strange tramline layout leads to the airport gate (8)",
       "definition": "airport gate",
       "wordplay": "anagram of \"tramline\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 73,
+      "n": 78,
       "id": "25f6d629-c8ef-4b58-a2a8-e2b56efb46aa",
       "answer": "THEORIES",
       "device": "anagram",
       "surface": "Meteorologist's isothere, randomly wrong again, spawns wild hypotheses (8)",
       "definition": "Hypotheses",
       "wordplay": "anagram of \"isothere\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 74,
+      "n": 79,
+      "id": "10da6b8c-6ceb-442e-a5a8-993c8bf5f068",
+      "answer": "THOUSAND",
+      "device": "anagram",
+      "surface": "Handouts randomly seized at the food bank still amount to a grand (8)",
+      "definition": "grand",
+      "wordplay": "anagram of \"handouts\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 80,
       "id": "6d4f2982-2ab0-43ac-9707-0040d354ce0f",
       "answer": "TOLERANCE",
       "device": "anagram",
       "surface": "Odd coeternal gods must show acceptance of differences (9)",
       "definition": "acceptance of differences",
       "wordplay": "anagram of \"coeternal\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 75,
+      "n": 81,
       "id": "b27252d1-dc99-45da-878d-4ad3a7dbd17a",
       "answer": "TOMATOES",
       "device": "anagram",
       "surface": "Confused ostomate ordered red salad fruits (8)",
       "definition": "Red salad fruits",
       "wordplay": "anagram of \"ostomate\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 76,
+      "n": 82,
       "id": "e4a6fa21-7d9e-4277-8015-adb65c9c30ea",
       "answer": "TOMORROW",
       "device": "anagram",
       "surface": "Scrambled moorwort makes a fine soup for the next day (8)",
       "definition": "the next day",
       "wordplay": "anagram of \"moorwort\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 77,
+      "n": 83,
+      "id": "cdc16507-a174-4745-92ba-79910cf38f84",
+      "answer": "TRIBUNAL",
+      "device": "anagram",
+      "surface": "Wild turbinal condition forms the basis of a case before the court (8)",
+      "definition": "court",
+      "wordplay": "anagram of \"turbinal\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 84,
+      "id": "fd06c618-927c-4f1d-8113-bcad101dd2c7",
+      "answer": "TROUBLE",
+      "device": "anagram",
+      "surface": "Boulter, playing awry all match, is nothing but difficulty (7)",
+      "definition": "difficulty",
+      "wordplay": "anagram of \"boulter\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 85,
       "id": "3b87bc1f-fd68-4fef-90ff-fa88b02f7d36",
       "answer": "TSUNAMI",
       "device": "anagram",
       "surface": "Manitus, awry after the storm, sparked reports of a tidal wave (7)",
       "definition": "Tidal wave",
       "wordplay": "anagram of \"manitus\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 78,
+      "n": 86,
       "id": "fb787cda-f127-4d7a-bebc-f563cff35d1f",
       "answer": "VISITORS",
       "device": "anagram",
       "surface": "Scrambled ivorists welcomed the guests (8)",
       "definition": "Guests",
       "wordplay": "anagram of \"ivorists\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 79,
+      "n": 87,
       "id": "1b1329c6-15ac-4e10-8009-cc0ffec06916",
       "answer": "WEDDINGS",
       "device": "anagram",
       "surface": "Reworked, swindged goods turn out to be marriage ceremonies (8)",
       "definition": "Marriage ceremonies",
       "wordplay": "anagram of \"swindged\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 80,
+      "n": 88,
       "id": "1f52e75c-fdb0-4d0a-9826-2e8891fceea6",
       "answer": "AVERAGE",
       "device": "charade",
       "surface": "Toasting with ave followed by rage at the barman just about sums up a typical wedding speech (7)",
       "definition": "typical",
       "wordplay": "\"ave\" then \"rage\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 81,
+      "n": 89,
       "id": "13d18cfc-3ca2-4b93-92a7-a0c222a8f045",
       "answer": "BACKGROUND",
       "device": "charade",
       "surface": "Retreat back before ground troops advance: that's personal history (10)",
       "definition": "personal history",
       "wordplay": "\"back\" then \"ground\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 82,
+      "n": 90,
       "id": "4846e71f-f77d-4488-b86c-e31d244bb342",
       "answer": "BATHROOMS",
       "device": "charade",
       "surface": "Builder schedules bath before rooms upstairs get new washrooms (9)",
       "definition": "Washrooms",
       "wordplay": "\"bath\" then \"rooms\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 83,
+      "n": 91,
       "id": "3ae9ef3e-0ad7-4cb4-aef1-32dd6238d263",
       "answer": "BROCHURES",
       "device": "charade",
       "surface": "Pamphlets from the agency include a brochure followed by south coast timetables (9)",
       "definition": "Pamphlets",
       "wordplay": "\"brochure\" then \"south\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 84,
+      "n": 92,
       "id": "932782ed-4e0b-4406-a76a-0fbe5f97578a",
       "answer": "DEVELOPS",
       "device": "charade",
       "surface": "City plans develop next to south beach, and business simply grows (8)",
       "definition": "grows",
       "wordplay": "\"develop\" then \"south\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 85,
+      "n": 93,
       "id": "74bde872-b1ec-4be2-8de2-6fec8cd30ab4",
       "answer": "ELEVEN",
       "device": "charade",
       "surface": "Chicago's El next to Even Park was packed for the soccer team (6)",
       "definition": "soccer team",
       "wordplay": "\"el\" then \"even\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 86,
+      "n": 94,
       "id": "2dd75f69-549d-45aa-8e4c-0d684cd06558",
       "answer": "EVERYTHING",
       "device": "charade",
       "surface": "Every party guest waited, then thing after thing went wrong, ruining the whole lot (10)",
       "definition": "the whole lot",
       "wordplay": "\"every\" then \"thing\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 87,
+      "n": 95,
       "id": "e78646fb-f4b6-4b61-9cb0-1bf97154d1d5",
       "answer": "GIRLFRIEND",
       "device": "charade",
       "surface": "Every girl before her had a friend she called sweetheart (10)",
       "definition": "Sweetheart",
       "wordplay": "\"girl\" then \"friend\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 88,
+      "n": 96,
       "id": "71bb808c-1ef1-406a-a080-a1290ff6a30a",
       "answer": "INTERFACE",
       "device": "charade",
       "surface": "Inter the old king, then face his heirs at the connection point (9)",
       "definition": "connection point",
       "wordplay": "\"inter\" then \"face\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 89,
+      "n": 97,
       "id": "a1d60d78-86e4-4b06-986f-facef379ccc3",
       "answer": "INTERSTATE",
       "device": "charade",
       "surface": "Gangsters inter their boss, then state their loyalty, all along the highway (10)",
       "definition": "highway",
       "wordplay": "\"inter\" then \"state\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 90,
+      "n": 98,
       "id": "68f5bab1-b586-4bab-9c61-f5ee2e779b86",
       "answer": "ISLANDS",
       "device": "charade",
       "surface": "He is beside lands he inherited, landmasses surrounded by water (7)",
       "definition": "landmasses surrounded by water",
       "wordplay": "\"is\" then \"lands\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 91,
+      "n": 99,
       "id": "3dbc401d-8545-4c60-bfb7-13ae5e17b139",
       "answer": "MARSHALL",
       "device": "charade",
       "surface": "Mars next to Hall is where you'd find the federal officer (8)",
       "definition": "federal officer",
       "wordplay": "\"mars\" then \"hall\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 92,
+      "n": 100,
       "id": "ae95f7a1-b482-486f-ae0d-120ac7468797",
       "answer": "MESSAGING",
       "device": "charade",
       "surface": "Mess, then aging skin, ruined her wedding photos, all thanks to endless texting (9)",
       "definition": "texting",
       "wordplay": "\"mess\" then \"aging\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 93,
+      "n": 101,
       "id": "1bb2344c-5596-4163-a2ae-76b0b57183f9",
       "answer": "MOTORCYCLE",
       "device": "charade",
       "surface": "Servicing the motor before cycle season, dad revealed our two-wheeled vehicle (10)",
       "definition": "two-wheeled vehicle",
       "wordplay": "\"motor\" then \"cycle\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 94,
+      "n": 102,
       "id": "296fe43c-a9dc-4b52-875a-784e4b31859a",
       "answer": "NEWSPAPER",
       "device": "charade",
       "surface": "Broadcaster keeps news beside paper for a daily gazette (9)",
       "definition": "daily gazette",
       "wordplay": "\"news\" then \"paper\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 95,
+      "n": 103,
       "id": "489d7a9f-90fa-48cb-9909-e4c0f83e44ee",
       "answer": "NEWSPAPERS",
       "device": "charade",
       "surface": "News then papers over every scandal, according to the dailies (10)",
       "definition": "Dailies",
       "wordplay": "\"news\" then \"papers\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 96,
+      "n": 104,
       "id": "c632fbd0-a9b9-4419-aaa4-27f7e1b98d87",
       "answer": "ONLINE",
       "device": "charade",
       "surface": "Angler sets \"on\" next to \"line\" while describing being connected to the internet (6)",
       "definition": "connected to the internet",
       "wordplay": "\"on\" then \"line\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 97,
+      "n": 105,
       "id": "e71dc16e-7be1-449f-a16b-918ac5252c0c",
       "answer": "PROSPECTS",
       "device": "charade",
       "surface": "Miner's prospect beside south camp reveals promising future outlooks (9)",
       "definition": "future outlooks",
       "wordplay": "\"prospect\" then \"south\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 98,
+      "n": 106,
+      "id": "1dc32248-90da-4cd3-b1ba-80ed7adcd2a4",
+      "answer": "REASONABLE",
+      "device": "charade",
+      "surface": "Reason followed by able leadership makes for a sensible outcome (10)",
+      "definition": "sensible",
+      "wordplay": "\"reason\" then \"able\" spells the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 107,
       "id": "0bbf0bae-e00c-4546-9dd5-ef86f9f98ccf",
       "answer": "SOLDIERS",
       "device": "charade",
       "surface": "A soldier next to south camp trains troops (8)",
       "definition": "troops",
       "wordplay": "\"soldier\" then \"south\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 99,
+      "n": 108,
       "id": "53d1e1c8-c83c-4e5f-9bb7-67e5054f5006",
       "answer": "STUDENTS",
       "device": "charade",
       "surface": "Student beside south dorm entrance greets new pupils (8)",
       "definition": "Pupils",
       "wordplay": "\"student\" then \"south\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 100,
+      "n": 109,
       "id": "c1e4a176-72e1-48b0-9213-fcced43b213f",
       "answer": "TEXTBOOK",
       "device": "charade",
       "surface": "Send a text then book the course manual (8)",
       "definition": "course manual",
       "wordplay": "\"text\" then \"book\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 101,
+      "n": 110,
       "id": "80a0069e-2485-4615-b001-7bc98fefb33b",
       "answer": "THUMBNAIL",
       "device": "charade",
       "surface": "Small preview image shows a hitchhiker's thumb beside nail polish on the same hand (9)",
       "definition": "small preview image",
       "wordplay": "\"thumb\" then \"nail\" spells the answer",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 102,
+      "n": 111,
       "id": "c4066eb8-b226-48d4-a0fe-5f6b4653e787",
       "answer": "AGAINST",
       "device": "container",
       "surface": "Gains inside at the casino soon reversed, leaving the gambler opposed to the house (7)",
       "definition": "opposed to",
       "wordplay": "\"gains\" goes inside \"at\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 103,
+      "n": 112,
       "id": "eb9f395d-5644-42e2-9f65-b81e68cf581c",
       "answer": "DEVELOPERS",
       "device": "container",
       "surface": "Software house president somehow develops ER staff into builders (10)",
       "definition": "Builders",
       "wordplay": "\"er\" goes inside \"develops\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 104,
+      "n": 113,
       "id": "6811b41a-1a33-429d-96eb-9922a4feb8f9",
       "answer": "ENDANGERED",
       "device": "container",
       "surface": "Marriage ended in anger, leaving the children at risk (10)",
       "definition": "at risk",
       "wordplay": "\"anger\" goes inside \"ended\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 105,
+      "n": 114,
       "id": "4b761558-ddd6-46f9-892b-aa85907bfefd",
       "answer": "EXCERPT",
       "device": "container",
       "surface": "Except for track runs in training, all we get is a passage quoted (7)",
       "definition": "passage quoted",
       "wordplay": "\"runs\" goes inside \"except\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 106,
+      "n": 115,
       "id": "452d033c-41d6-4063-8c7d-546938c6f5e1",
       "answer": "GENERATES",
       "device": "container",
       "surface": "Scientist hides heart rate inside genes and produces surprising data (9)",
       "definition": "produces",
       "wordplay": "\"rate\" goes inside \"genes\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 107,
+      "n": 116,
       "id": "8d10c9e2-5ea0-4c58-b2be-e55e644608aa",
       "answer": "GUIDELINES",
       "device": "container",
       "surface": "Fishing guides enclosing a line for tourists are really just rules of thumb (10)",
       "definition": "Rules of thumb",
       "wordplay": "\"line\" goes inside \"guides\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 108,
+      "n": 117,
       "id": "5f39ab0f-e5f2-44eb-a812-a65d5bf142a5",
       "answer": "MARINA",
       "device": "container",
       "surface": "Maria, holding north, finally found the boat harbor (6)",
       "definition": "boat harbor",
       "wordplay": "\"north\" goes inside \"maria\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 109,
+      "n": 118,
+      "id": "433cb596-f376-4177-a6a2-61349fdc603e",
+      "answer": "RELIGION",
+      "device": "container",
+      "surface": "Li, enclosing a region torn by conflict, still clings to faith (8)",
+      "definition": "Faith",
+      "wordplay": "\"li\" goes inside \"region\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 119,
       "id": "fe63eb7c-a294-4ab8-aca8-13c31d02e6ef",
       "answer": "SEARCHED",
       "device": "container",
       "surface": "Every seed enclosing an arch of vines was looked through (8)",
       "definition": "Looked through",
       "wordplay": "\"arch\" goes inside \"seed\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 110,
+      "n": 120,
       "id": "5dbb9555-2fb3-4dfb-b317-1bcb4562cc77",
       "answer": "SURGEONS",
       "device": "container",
       "surface": "Sons around town feel the urge to become operating doctors (8)",
       "definition": "Operating doctors",
       "wordplay": "\"urge\" goes inside \"sons\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 111,
+      "n": 121,
+      "id": "5c4dc5eb-a9e1-45f4-ae99-9833472b5b9c",
+      "answer": "ADJUST",
+      "device": "doubleDefinition",
+      "surface": "Align, then set the table properly (6)",
+      "definition": "set",
+      "wordplay": "two meanings: \"set\" + \"align\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 122,
+      "id": "efbb569f-bc57-4ac2-ba82-fb7a944050e1",
+      "answer": "APPROVAL",
+      "device": "doubleDefinition",
+      "surface": "Commendation from the boss ultimately amounts to a blessing (8)",
+      "definition": "blessing",
+      "wordplay": "two meanings: \"blessing\" + \"commendation\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 123,
+      "id": "3080d646-9a63-4a02-9565-f4eea134e4e0",
+      "answer": "ASSUME",
+      "device": "doubleDefinition",
+      "surface": "To adopt an air of confidence is simply to presume (6)",
+      "definition": "presume",
+      "wordplay": "two meanings: \"presume\" + \"adopt\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 124,
+      "id": "ffdce95d-5882-4fdc-b77f-14f51a21d8c1",
+      "answer": "ASYLUM",
+      "device": "doubleDefinition",
+      "surface": "Institution, in the end, means refuge (6)",
+      "definition": "refuge",
+      "wordplay": "two meanings: \"refuge\" + \"institution\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 125,
+      "id": "e71d0c9a-e520-48c8-8e4e-65c46c53f939",
+      "answer": "AUDIENCE",
+      "device": "doubleDefinition",
+      "surface": "A consultation with the judge could result in a hearing (8)",
+      "definition": "hearing",
+      "wordplay": "two meanings: \"hearing\" + \"consultation\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 126,
+      "id": "06f78fbf-53ac-4738-9b69-31c2c662ac75",
+      "answer": "CIRCLE",
+      "device": "doubleDefinition",
+      "surface": "One lap could be a select set (6)",
+      "definition": "set",
+      "wordplay": "two meanings: \"set\" + \"lap\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 127,
+      "id": "53887d3d-ca67-47aa-a869-942aa4d88e9b",
+      "answer": "COLONY",
+      "device": "doubleDefinition",
+      "surface": "A dependency could be a settlement (6)",
+      "definition": "settlement",
+      "wordplay": "two meanings: \"settlement\" + \"dependency\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 128,
+      "id": "b9d2e9dc-25f4-46fa-a828-dfd0496433b7",
+      "answer": "CONSULT",
+      "device": "doubleDefinition",
+      "surface": "Confer with an expert, or refer to one (7)",
+      "definition": "refer",
+      "wordplay": "two meanings: \"refer\" + \"confer\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 129,
+      "id": "de706826-13f0-48b9-ba5a-5429d434c856",
+      "answer": "CUSTODY",
+      "device": "doubleDefinition",
+      "surface": "Changing hands often means detention (7)",
+      "definition": "detention",
+      "wordplay": "two meanings: \"detention\" + \"hands\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 130,
+      "id": "c73fee2e-7c1c-41c8-bff5-b9090fa361d3",
+      "answer": "EXCLUSIVE",
+      "device": "doubleDefinition",
+      "surface": "Sole rights secured, the paper had a scoop (9)",
+      "definition": "scoop",
+      "wordplay": "two meanings: \"scoop\" + \"sole\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 131,
+      "id": "be85cfaa-2d4b-4630-9e30-da3f000deb2c",
+      "answer": "EXPAND",
+      "device": "doubleDefinition",
+      "surface": "Inflate prices, and business could boom (6)",
+      "definition": "boom",
+      "wordplay": "two meanings: \"boom\" + \"inflate\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 132,
+      "id": "5ebce102-345e-440f-9648-1b943cd8a656",
+      "answer": "FACING",
+      "device": "doubleDefinition",
+      "surface": "Cladding could pass for veneer (6)",
+      "definition": "veneer",
+      "wordplay": "two meanings: \"veneer\" + \"cladding\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 133,
+      "id": "41bf2fcc-fb2a-4432-8cdd-327b4dcfee7e",
+      "answer": "FUSION",
+      "device": "doubleDefinition",
+      "surface": "Coalition could result in merger (6)",
+      "definition": "merger",
+      "wordplay": "two meanings: \"merger\" + \"coalition\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 134,
+      "id": "b7073b14-f2ae-4ec7-8789-0e2b530382e4",
+      "answer": "GROCERY",
+      "device": "doubleDefinition",
+      "surface": "Foodstuff makes for a decent market (7)",
+      "definition": "market",
+      "wordplay": "two meanings: \"market\" + \"foodstuff\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 135,
+      "id": "732d36ce-4864-400e-ac7e-c86dc715e18d",
+      "answer": "IDENTITY",
+      "device": "doubleDefinition",
+      "surface": "Indistinguishability shows a real sense of individuality (8)",
+      "definition": "individuality",
+      "wordplay": "two meanings: \"individuality\" + \"indistinguishability\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 136,
+      "id": "2d4acfc2-a458-4cb4-8a1f-9f5ccc7f7674",
+      "answer": "IMPORTANT",
+      "device": "doubleDefinition",
+      "surface": "Crucial decisions always seem significant (9)",
+      "definition": "significant",
+      "wordplay": "two meanings: \"significant\" + \"crucial\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 137,
+      "id": "6df54918-8732-4b58-bca0-67dedfc18303",
+      "answer": "INFLUENCE",
+      "device": "doubleDefinition",
+      "surface": "Determine how the clay will work (9)",
+      "definition": "work",
+      "wordplay": "two meanings: \"work\" + \"determine\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 138,
+      "id": "70658f55-1593-45cc-b655-25c8b36b9af7",
+      "answer": "INTEGRATED",
+      "device": "doubleDefinition",
+      "surface": "Well structured, the merger would incorporate all divisions (10)",
+      "definition": "incorporate",
+      "wordplay": "two meanings: \"incorporate\" + \"structured\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 139,
+      "id": "5dfaf3ef-5558-4f21-8472-94bee95d4474",
+      "answer": "LISTEN",
+      "device": "doubleDefinition",
+      "surface": "Heed warnings, or simply hear them out (6)",
+      "definition": "hear",
+      "wordplay": "two meanings: \"hear\" + \"heed\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 140,
+      "id": "b522d783-02d9-4fed-ae6b-d03736ef36f9",
+      "answer": "MARINE",
+      "device": "doubleDefinition",
+      "surface": "Nautical type could be a leatherneck (6)",
+      "definition": "leatherneck",
+      "wordplay": "two meanings: \"leatherneck\" + \"nautical\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 141,
+      "id": "963b60e1-9a58-48ee-94a5-5be40f90c4c9",
+      "answer": "MIXTURE",
+      "device": "doubleDefinition",
+      "surface": "Odd assortment of ingredients makes a strange concoction (7)",
+      "definition": "concoction",
+      "wordplay": "two meanings: \"concoction\" + \"assortment\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 142,
+      "id": "ae2ba23c-c71f-49c4-8a6e-f8622d0bf5fb",
+      "answer": "OPERATE",
+      "device": "doubleDefinition",
+      "surface": "Control a factory, or run it (7)",
+      "definition": "run",
+      "wordplay": "two meanings: \"run\" + \"control\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 143,
+      "id": "b5fa26f8-392b-43bc-802b-b67090a9e07a",
+      "answer": "PAYING",
+      "device": "doubleDefinition",
+      "surface": "Compensable injury claims can prove remarkably gainful (6)",
+      "definition": "gainful",
+      "wordplay": "two meanings: \"gainful\" + \"compensable\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 144,
+      "id": "5d3edeac-d93f-4e39-86cf-70373c85f656",
+      "answer": "PREMIER",
+      "device": "doubleDefinition",
+      "surface": "Prime time slot goes to the PM (7)",
+      "definition": "pm",
+      "wordplay": "two meanings: \"pm\" + \"prime\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 145,
+      "id": "9fa90086-4484-448a-939f-0fb012019f5d",
+      "answer": "PRESENT",
+      "device": "doubleDefinition",
+      "surface": "This game show is broadcast nowadays (7)",
+      "definition": "nowadays",
+      "wordplay": "two meanings: \"nowadays\" + \"show\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 146,
+      "id": "d24037fc-763d-47e4-b815-c502223efa56",
+      "answer": "PROHIBITED",
+      "device": "doubleDefinition",
+      "surface": "Banned substances are strictly forbidden (10)",
+      "definition": "forbidden",
+      "wordplay": "two meanings: \"forbidden\" + \"banned\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 147,
+      "id": "913a6567-e19f-4fbb-a50b-7bd16ef5becc",
+      "answer": "PROTECTION",
+      "device": "doubleDefinition",
+      "surface": "Shelter for refugees provides security (10)",
+      "definition": "security",
+      "wordplay": "two meanings: \"security\" + \"shelter\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 148,
+      "id": "3fec0bed-28ae-4b2f-989f-82530f36c5d3",
+      "answer": "PURPOSE",
+      "device": "doubleDefinition",
+      "surface": "Function in the building's design reveals true intent (7)",
+      "definition": "intent",
+      "wordplay": "two meanings: \"intent\" + \"function\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 149,
+      "id": "32d027fa-47c5-4567-b3b3-10f5569d73b9",
+      "answer": "RATHER",
+      "device": "doubleDefinition",
+      "surface": "Kinda fancy going first, instead (6)",
+      "definition": "instead",
+      "wordplay": "two meanings: \"instead\" + \"kinda\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 150,
+      "id": "233e6357-db4d-4611-8b99-3149c62fb91f",
+      "answer": "REDUCTION",
+      "device": "doubleDefinition",
+      "surface": "Simplification could bring about a price decrease (9)",
+      "definition": "decrease",
+      "wordplay": "two meanings: \"decrease\" + \"simplification\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 151,
+      "id": "7264eb1d-e438-473e-8f5a-e06d9e89fc2c",
+      "answer": "REMEDY",
+      "device": "doubleDefinition",
+      "surface": "Curative treatment ultimately amounts to redress (6)",
+      "definition": "redress",
+      "wordplay": "two meanings: \"redress\" + \"curative\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 152,
+      "id": "766c92ed-666c-47b6-9887-50d01fc8510e",
+      "answer": "REQUEST",
+      "device": "doubleDefinition",
+      "surface": "Asking for a favor, essentially, is a petition (7)",
+      "definition": "petition",
+      "wordplay": "two meanings: \"petition\" + \"asking\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 153,
+      "id": "bf5a0688-d215-42d3-878d-b5070708855f",
+      "answer": "REVENUE",
+      "device": "doubleDefinition",
+      "surface": "Taxation could produce gross figures (7)",
+      "definition": "gross",
+      "wordplay": "two meanings: \"gross\" + \"taxation\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 154,
+      "id": "b60321c1-9706-43eb-b8c9-c5d11927cb22",
+      "answer": "SILVER",
+      "device": "doubleDefinition",
+      "surface": "Flatware, for one, could be Ag (6)",
+      "definition": "ag",
+      "wordplay": "two meanings: \"ag\" + \"flatware\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 155,
+      "id": "7bfaf6f7-948a-4e44-9949-3c3b1f052e64",
+      "answer": "SITUATION",
+      "device": "doubleDefinition",
+      "surface": "Site could describe a job's position (9)",
+      "definition": "position",
+      "wordplay": "two meanings: \"position\" + \"site\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 156,
+      "id": "b74ae16b-1c0c-4e5f-a457-477debdd8247",
+      "answer": "SOLUTION",
+      "device": "doubleDefinition",
+      "surface": "Root cause of chemist's mixture could be the answer (8)",
+      "definition": "answer",
+      "wordplay": "two meanings: \"answer\" + \"root\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 157,
+      "id": "1a760682-d5b8-4ee9-b2d3-4ab32db9b7c3",
+      "answer": "STATIC",
+      "device": "doubleDefinition",
+      "surface": "Inactive radio still gives off atmospherics (6)",
+      "definition": "atmospherics",
+      "wordplay": "two meanings: \"atmospherics\" + \"inactive\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 158,
+      "id": "b6710b87-46b3-4b1c-ab81-0e5b80e1f8b3",
+      "answer": "SUGGEST",
+      "device": "doubleDefinition",
+      "surface": "Drop a hint to propose (7)",
+      "definition": "propose",
+      "wordplay": "two meanings: \"propose\" + \"hint\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 159,
+      "id": "005c78cc-ac2c-4775-981c-0c18c431ab0d",
+      "answer": "SYNDICATE",
+      "device": "doubleDefinition",
+      "surface": "Business consortium could really just be a mob (9)",
+      "definition": "mob",
+      "wordplay": "two meanings: \"mob\" + \"consortium\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 160,
+      "id": "437573ac-ab1f-4729-9b18-d061e0f7d98f",
+      "answer": "THUNDER",
+      "device": "doubleDefinition",
+      "surface": "A hard smack could really boom (7)",
+      "definition": "boom",
+      "wordplay": "two meanings: \"boom\" + \"smack\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 161,
+      "id": "a3eb84c4-8703-459f-9bcc-3a30599863fc",
+      "answer": "TREMENDOUS",
+      "device": "doubleDefinition",
+      "surface": "That fantastic new roller coaster is enormous (10)",
+      "definition": "enormous",
+      "wordplay": "two meanings: \"enormous\" + \"fantastic\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 162,
+      "id": "a82c0205-656d-431d-841a-c44e4e49bdd0",
+      "answer": "UNDERLYING",
+      "device": "doubleDefinition",
+      "surface": "Fundamental truth is often inherent (10)",
+      "definition": "inherent",
+      "wordplay": "two meanings: \"inherent\" + \"fundamental\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 163,
+      "id": "0d4e5331-8d69-4128-8a4e-ab1b19b055dc",
+      "answer": "WEARING",
+      "device": "doubleDefinition",
+      "surface": "Exhausting, this constant erosion (7)",
+      "definition": "erosion",
+      "wordplay": "two meanings: \"erosion\" + \"exhausting\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 164,
+      "id": "ca1df368-7231-458b-8d84-82f09ec5c9b7",
+      "answer": "WILLING",
+      "device": "doubleDefinition",
+      "surface": "Uncoerced describes a signature made purely of volition (7)",
+      "definition": "volition",
+      "wordplay": "two meanings: \"volition\" + \"uncoerced\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 165,
       "id": "76ec8efb-4d84-4f0b-b9da-d609fb4f1f8c",
       "answer": "ACADEMIC",
       "device": "hidden",
       "surface": "Behind the crumbling facade mice hide, some of them living among old journals, all rather scholarly (8)",
       "definition": "scholarly",
       "wordplay": "answer spans the join of \"facade\" + \"mice\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 112,
+      "n": 166,
       "id": "7137c513-fbe9-4ef2-9c89-6eb5af0b2d4b",
       "answer": "ACCEPTING",
       "device": "hidden",
       "surface": "Cook won't reaccept ingredients held within, seeming oddly receptive (9)",
       "definition": "receptive",
       "wordplay": "answer spans the join of \"reaccept\" + \"ingredients\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 113,
+      "n": 167,
       "id": "c31ba450-54a3-4ba5-94f9-444a64b57b37",
       "answer": "ACCESSING",
       "device": "hidden",
       "surface": "Retrieving old files means checking every multiaccess ingredients log held within, no matter how tedious. (9)",
       "definition": "retrieving",
       "wordplay": "answer spans the join of \"multiaccess\" + \"ingredients\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 114,
+      "n": 168,
       "id": "135be68b-1a05-4ba2-8457-2354470709f9",
       "answer": "ACCIDENT",
       "device": "hidden",
       "surface": "Slack limbs found in flaccid entries suggest unforeseen mishap (8)",
       "definition": "unforeseen mishap",
       "wordplay": "answer spans the join of \"flaccid\" + \"entries\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 115,
+      "n": 169,
       "id": "60054649-2e88-4284-a209-152e4ad2eebf",
       "answer": "ALASKA",
       "device": "hidden",
       "surface": "Good balas karma, hidden in gemstone folklore, brings luck to a US Arctic state (6)",
       "definition": "US Arctic state",
       "wordplay": "answer spans the join of \"balas\" + \"karma\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 116,
+      "n": 170,
+      "id": "2a79708b-ee36-432e-84e4-f106bf64e86b",
+      "answer": "ANNOYING",
+      "device": "hidden",
+      "surface": "Kitchen tannoy ingredients partly explain why the recipe is so irritating (8)",
+      "definition": "irritating",
+      "wordplay": "answer spans the join of \"tannoy\" + \"ingredients\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 171,
+      "id": "018b0352-7b8f-4c07-8da7-ddd98b373979",
+      "answer": "ANSWER",
+      "device": "hidden",
+      "surface": "Locals in New Orleans were partly evacuated before his reply (6)",
+      "definition": "reply",
+      "wordplay": "answer spans the join of \"orleans\" + \"were\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 172,
       "id": "3bc00bfc-c073-40de-8677-e6673beed487",
       "answer": "ANTIQUES",
       "device": "hidden",
       "surface": "Yogi's Shanti quest within revealed old collectibles (8)",
       "definition": "old collectibles",
       "wordplay": "answer spans the join of \"shanti\" + \"quest\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 117,
+      "n": 173,
       "id": "7e147531-ed84-4af4-bc48-97ab3eca7433",
       "answer": "ANYTHING",
       "device": "hidden",
       "surface": "Insurance company things concealed in the small print could mean whatever you like (8)",
       "definition": "whatever you like",
       "wordplay": "answer spans the join of \"company\" + \"things\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 118,
+      "n": 174,
       "id": "70b3ca85-5f0f-40e0-b742-27276040313b",
       "answer": "ARABIC",
       "device": "hidden",
       "surface": "Rented gear housed by para bicycle club spells out a Middle Eastern language (6)",
       "definition": "Middle Eastern language",
       "wordplay": "answer spans the join of \"para\" + \"bicycle\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 119,
+      "n": 175,
+      "id": "502bf77f-365a-4ff3-b9e3-1e35e23e97e0",
+      "answer": "ASSAULT",
+      "device": "hidden",
+      "surface": "Anglers say the oquassa ultimately survives within a cold lake, but poachers still plan an attack (7)",
+      "definition": "attack",
+      "wordplay": "answer spans the join of \"oquassa\" + \"ultimately\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 176,
+      "id": "299aa7a7-1ba0-478e-a0e2-e30402a98215",
+      "answer": "ASSURE",
+      "device": "hidden",
+      "surface": "Bonus features found in extras surely warrant a guarantee (6)",
+      "definition": "guarantee",
+      "wordplay": "answer spans the join of \"extras\" + \"surely\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 177,
       "id": "4b5104aa-2293-4ea9-bc86-905d0d5301ab",
       "answer": "BASELINE",
       "device": "hidden",
       "surface": "Auditors found leaked passwords within database lines, tracing every breach back to its starting point (8)",
       "definition": "starting point",
       "wordplay": "answer spans the join of \"database\" + \"lines\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 120,
+      "n": 178,
       "id": "9d43976e-2164-4997-923c-549f1fb8630e",
       "answer": "BOOKMARKS",
       "device": "hidden",
       "surface": "Held within an eBook, marksman lore reveals saved web addresses (9)",
       "definition": "saved web addresses",
       "wordplay": "answer spans the join of \"ebook\" + \"marksman\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 121,
+      "n": 179,
       "id": "d9f6c6e8-6365-4d2e-8075-d0ba11da41b0",
       "answer": "BOOKSTORE",
       "device": "hidden",
       "surface": "Chef's cookbook stores partly ruined recipes, according to the shop selling books (9)",
       "definition": "shop selling books",
       "wordplay": "answer spans the join of \"cookbook\" + \"stores\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 122,
+      "n": 180,
       "id": "fd7ecba0-73a5-495e-a81f-40ba1914a891",
       "answer": "BOUNDARY",
       "device": "hidden",
       "surface": "After the rebound, arytaenoid cartilage damage often shows some of the throat's true border (8)",
       "definition": "border",
       "wordplay": "answer spans the join of \"rebound\" + \"arytaenoid\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 123,
+      "n": 181,
       "id": "0d8b866f-ab92-4ccf-966f-bea0e8d79c4a",
       "answer": "BROADBAND",
       "device": "hidden",
       "surface": "Musicians working abroad, bands buried in touring schedules, still crave high-speed internet (9)",
       "definition": "high-speed internet",
       "wordplay": "answer spans the join of \"abroad\" + \"bands\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 124,
+      "n": 182,
       "id": "49124e76-f2c6-4483-aa69-db79f2444cbd",
       "answer": "CASTLE",
       "device": "hidden",
       "surface": "Within her podcast, learners find tips on the fortified palace (6)",
       "definition": "fortified palace",
       "wordplay": "answer spans the join of \"podcast\" + \"learn\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 125,
+      "n": 183,
       "id": "6672327e-7dcc-4c53-b1da-f30aac2f2fad",
       "answer": "CHAPEL",
       "device": "hidden",
       "surface": "Every inch apelike, Grandpa's portrait hangs buried in dust above the small church (6)",
       "definition": "small church",
       "wordplay": "answer spans the join of \"inch\" + \"apelike\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 126,
+      "n": 184,
       "id": "10ab6eac-9c4e-4f2f-a1a1-52d548fb27ac",
       "answer": "CHARLOTTE",
       "device": "hidden",
       "surface": "Every wounded feldschar lottery ticket, hidden in his knapsack, names a North Carolina city (9)",
       "definition": "North Carolina city",
       "wordplay": "answer spans the join of \"feldschar\" + \"lottery\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 127,
+      "n": 185,
       "id": "85719a07-2fb0-4951-8859-9a7be32b8bd4",
       "answer": "CHARMING",
       "device": "hidden",
       "surface": "Grandma's old spell to becharm ingredients partly explains why her cooking seems delightful (8)",
       "definition": "Delightful",
       "wordplay": "answer spans the join of \"becharm\" + \"ingredients\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 128,
+      "n": 186,
       "id": "361c6337-d558-4903-b936-0ef75cd35115",
       "answer": "CHASSIS",
       "device": "hidden",
       "surface": "Documentary crew filmed part of viscachas sisters' burrow to describe the vehicle frame (7)",
       "definition": "vehicle frame",
       "wordplay": "answer spans the join of \"viscachas\" + \"sisters\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 129,
+      "n": 187,
       "id": "1e100aaa-ee4f-48fe-9719-f34ab673f8c0",
       "answer": "CLUSTER",
       "device": "hidden",
       "surface": "Old cyclus terrorists held by border patrol formed a tight-knit group (7)",
       "definition": "group",
       "wordplay": "answer spans the join of \"cyclus\" + \"terrorists\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 130,
+      "n": 188,
       "id": "779e3340-ba02-4648-bc03-8f63baac6800",
       "answer": "COLLECTING",
       "device": "hidden",
       "surface": "I recollect ingredients as part of this gathering together (10)",
       "definition": "gathering together",
       "wordplay": "answer spans the join of \"recollect\" + \"ingredients\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 131,
+      "n": 189,
       "id": "5cf8b076-a6b8-4b7f-86f1-c795036bee33",
       "answer": "COUNSELING",
       "device": "hidden",
       "surface": "Grandma's tendency to miscounsel ingredients included in family recipes finally pushed us toward therapy (10)",
       "definition": "therapy",
       "wordplay": "answer spans the join of \"miscounsel\" + \"ingredients\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 132,
+      "n": 190,
       "id": "dbe37c33-b30f-4479-b359-e513b75944c9",
       "answer": "DIAGRAM",
       "device": "hidden",
       "surface": "Every academic's bias in social media grammar is included in this chart (7)",
       "definition": "chart",
       "wordplay": "answer spans the join of \"media\" + \"grammar\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 133,
+      "n": 191,
       "id": "a6c9f30f-fe85-4258-8570-5014c41c8ed4",
       "answer": "DISAGREE",
       "device": "hidden",
       "surface": "Traders within bidis agreements often differ in opinion (8)",
       "definition": "Differ in opinion",
       "wordplay": "answer spans the join of \"bidis\" + \"agreements\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 134,
+      "n": 192,
       "id": "ee91cbb5-078a-4b78-9aed-53d794a4836e",
       "answer": "DISPLAYING",
       "device": "hidden",
       "surface": "Chef will redisplay ingredients partly, showing off the new menu (10)",
       "definition": "showing",
       "wordplay": "answer spans the join of \"redisplay\" + \"ingredients\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 135,
+      "n": 193,
       "id": "44ac9d95-dc10-461c-8ed8-93754ed4f256",
       "answer": "DRAINAGE",
       "device": "hidden",
       "surface": "Some of Appledrain agents built a rustic water removal system (8)",
       "definition": "water removal system",
       "wordplay": "answer spans the join of \"appledrain\" + \"agents\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 136,
+      "n": 194,
       "id": "a10167e6-f643-42ff-a138-683695db667d",
       "answer": "DURING",
       "device": "hidden",
       "surface": "Fake bundu ringtone held by tribal chief plays on and on, throughout the course of a bush ambush (6)",
       "definition": "throughout the course of",
       "wordplay": "answer spans the join of \"bundu\" + \"ringtone\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 137,
+      "n": 195,
       "id": "dc0b00d8-eafe-4824-98d6-5e9bedd8685a",
       "answer": "EARRINGS",
       "device": "hidden",
       "surface": "Some of dear ringsters' plunder turns out to be ear jewelry (8)",
       "definition": "Ear jewelry",
       "wordplay": "answer spans the join of \"dear\" + \"ringsters\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 138,
+      "n": 196,
+      "id": "078091c8-e747-4603-9482-57e358509366",
+      "answer": "ENTIRELY",
+      "device": "hidden",
+      "surface": "Some of the cognoscenti relying on hype tend to lose all perspective, completely (8)",
+      "definition": "completely",
+      "wordplay": "answer spans the join of \"cognoscenti\" + \"relying\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 197,
+      "id": "a57b9b95-5ad7-4093-ae89-753f4720b78a",
+      "answer": "EQUIPPED",
+      "device": "hidden",
+      "surface": "Hospitals plan to reequip pediatric units within their budgets, staying fully furnished (8)",
+      "definition": "Furnished",
+      "wordplay": "answer spans the join of \"reequip\" + \"pediatric\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 198,
+      "id": "c4727d04-c8cc-48b1-ba0c-f84a3b21e6c4",
+      "answer": "ESCAPE",
+      "device": "hidden",
+      "surface": "Held within her binoculars, one goat sees capering fish as the herd's chance to get away (6)",
+      "definition": "get away",
+      "wordplay": "answer spans the join of \"sees\" + \"capering\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 199,
       "id": "2e9ab71a-b2a6-42b8-8cfd-5b4224a5d347",
       "answer": "EXCITEMENT",
       "device": "hidden",
       "surface": "Coach's plan to overexcite mental patients partly explains the thrill (10)",
       "definition": "Thrill",
       "wordplay": "answer spans the join of \"overexcite\" + \"mental\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 139,
+      "n": 200,
       "id": "0323bf50-e72f-48bd-ae31-4f7beb9f64fc",
       "answer": "GENERATE",
       "device": "hidden",
       "surface": "Vintage plasmagene rates buried in a museum archive still produce surprises (8)",
       "definition": "produce",
       "wordplay": "answer spans the join of \"plasmagene\" + \"rates\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 140,
+      "n": 201,
+      "id": "6d63d265-4d5a-4e9d-95cd-301886185c2e",
+      "answer": "GRATEFUL",
+      "device": "hidden",
+      "surface": "Firms plan to integrate fully, housed by regulators, leaving investors thankful (8)",
+      "definition": "Thankful",
+      "wordplay": "answer spans the join of \"integrate\" + \"fully\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 202,
       "id": "14fe4c30-1a77-4167-8c73-fa000fafe6f4",
       "answer": "GREATEST",
       "device": "hidden",
       "surface": "Greedy heirs, dreaming of overgreat estates concealed in a will, are best of all (8)",
       "definition": "Best of all",
       "wordplay": "answer spans the join of \"overgreat\" + \"estates\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 141,
+      "n": 203,
       "id": "d3a781f3-7271-4372-9984-1c3b9c796848",
       "answer": "HOUSEHOLD",
       "device": "hidden",
       "surface": "Old warehouse holdings, examined partly, are recorded for tax purposes by the family living together (9)",
       "definition": "family living together",
       "wordplay": "answer spans the join of \"warehouse\" + \"holdings\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 142,
+      "n": 204,
       "id": "66ef14ff-266c-4315-acd4-e464d8dbb16e",
       "answer": "INCIDENT",
       "device": "hidden",
       "surface": "Forger's zinc identity partly explains this odd event (8)",
       "definition": "event",
       "wordplay": "answer spans the join of \"zinc\" + \"identity\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 143,
+      "n": 205,
+      "id": "9dca01bd-abe3-4794-bcd7-94f331cbaf9b",
+      "answer": "INDICATE",
+      "device": "hidden",
+      "surface": "Bhindi catering within the festival menu will show off regional cuisine (8)",
+      "definition": "show",
+      "wordplay": "answer spans the join of \"bhindi\" + \"catering\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 206,
+      "id": "b3dfa5e5-1fbe-4336-960d-bc098357bb13",
+      "answer": "INSTANCE",
+      "device": "hidden",
+      "surface": "Grudges against ancestresses, concealed in family lore for generations, offer a good example (8)",
+      "definition": "example",
+      "wordplay": "answer spans the join of \"against\" + \"ancestresses\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 207,
       "id": "2985899a-b54a-4dee-96e5-19c7cc82b625",
       "answer": "INTENSE",
       "device": "hidden",
       "surface": "Splatter paint ensemble partly captures a mood that's extreme (7)",
       "definition": "extreme",
       "wordplay": "answer spans the join of \"paint\" + \"ensemble\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 144,
+      "n": 208,
       "id": "ceecf6bc-6ad7-4043-9c4f-cf61dd5352aa",
       "answer": "INTERACT",
       "device": "hidden",
       "surface": "A laser pointer actor found in cheap sci-fi flicks can engage with others (8)",
       "definition": "engage with others",
       "wordplay": "answer spans the join of \"pointer\" + \"actor\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 145,
+      "n": 209,
       "id": "72bacf34-6e20-45e6-b8ab-1a0e450a097e",
       "answer": "ITALIC",
       "device": "hidden",
       "surface": "Capital ice buried in the glacier gives us slanted type (6)",
       "definition": "slanted type",
       "wordplay": "answer spans the join of \"capital\" + \"ice\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 146,
+      "n": 210,
       "id": "07fa4545-654c-4ee3-b9ed-a1fea3edc7bf",
       "answer": "KINASE",
       "device": "hidden",
       "surface": "Traditional remedy found in old kinakina serum makes for a phosphorylating enzyme (6)",
       "definition": "Phosphorylating enzyme",
       "wordplay": "answer spans the join of \"kinakina\" + \"serum\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 147,
+      "n": 211,
       "id": "35260f7b-965d-42eb-8f2a-59b7b0782674",
       "answer": "KINGDOM",
       "device": "hidden",
       "surface": "Banking domains hidden in offshore data reveal a monarch's realm (7)",
       "definition": "Monarch's realm",
       "wordplay": "answer spans the join of \"banking\" + \"domains\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 148,
+      "n": 212,
+      "id": "637ec54c-97f6-409b-971c-5b3ce88ce5fb",
+      "answer": "KINGDOM",
+      "device": "hidden",
+      "surface": "Chef's cooking domains within his restaurant chain make quite a realm (7)",
+      "definition": "realm",
+      "wordplay": "answer spans the join of \"cooking\" + \"domains\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 213,
       "id": "b803b33d-c52d-4e96-bcb6-ef40541c156a",
       "answer": "LEADER",
       "device": "hidden",
       "surface": "Chief florist admires purple bougainvillea derby corsages found in a wedding parade. (6)",
       "definition": "chief",
       "wordplay": "answer spans the join of \"bougainvillea\" + \"derby\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 149,
+      "n": 214,
       "id": "8e51c3f4-723d-4f47-a63a-07daf6012a0a",
       "answer": "LEAGUE",
       "device": "hidden",
       "surface": "Monks translated their talea guestbook, partly restored, to honor an old alliance (6)",
       "definition": "alliance",
       "wordplay": "answer spans the join of \"talea\" + \"guestbook\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 150,
+      "n": 215,
       "id": "9e7d049c-ffca-478e-a1a3-864a31a04564",
       "answer": "LESSON",
       "device": "hidden",
       "surface": "Protest anthems buried in peoples' songs deliver history's class (6)",
       "definition": "class",
       "wordplay": "answer spans the join of \"peoples\" + \"songs\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 151,
+      "n": 216,
       "id": "9c703861-aa1d-4e12-b938-cfae93dab9cd",
       "answer": "LISTEN",
       "device": "hidden",
       "surface": "New playlist enables partly deaf fans to pay attention (6)",
       "definition": "Pay attention",
       "wordplay": "answer spans the join of \"playlist\" + \"enable\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 152,
+      "n": 217,
       "id": "cbbcf89a-9cfe-4776-a4cf-9198174b2aba",
       "answer": "LOADED",
       "device": "hidden",
       "surface": "Rich alumni will reload educated minds housed by this scholarship fund. (6)",
       "definition": "Rich",
       "wordplay": "answer spans the join of \"reload\" + \"educated\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 153,
+      "n": 218,
       "id": "14f95a37-e49c-4553-9eda-a8aadc5dd150",
       "answer": "LOSING",
       "device": "hidden",
       "surface": "A hello singer within the choir loft is not winning any awards this year (6)",
       "definition": "not winning",
       "wordplay": "answer spans the join of \"hello\" + \"singer\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 154,
+      "n": 219,
       "id": "27867a72-e809-468e-b9eb-68df88e25677",
       "answer": "MARKETING",
       "device": "hidden",
       "surface": "Analysts note fresh trends found in Euromarket ingredients labelling amount to pure promotion (9)",
       "definition": "Promotion",
       "wordplay": "answer spans the join of \"euromarket\" + \"ingredients\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 155,
+      "n": 220,
       "id": "4f678871-6b3a-4c2a-aab6-e5cdbe925e04",
       "answer": "MEDICAID",
       "device": "hidden",
       "surface": "Concealed in every premedic aids test kit is US health aid for the poor (8)",
       "definition": "US health aid for the poor",
       "wordplay": "answer spans the join of \"premedic\" + \"aids\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 156,
+      "n": 221,
       "id": "2956799e-9317-4b7c-b272-f3f7b326b50f",
       "answer": "MICROPHONE",
       "device": "hidden",
       "surface": "Miniature spy gear like ultramicro phones concealed in agents' luggage is really just a sound input device. (10)",
       "definition": "sound input device",
       "wordplay": "answer spans the join of \"ultramicro\" + \"phones\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 157,
+      "n": 222,
+      "id": "4e7d7aa8-1095-491e-a130-262458d019b0",
+      "answer": "MOTORCYCLE",
+      "device": "hidden",
+      "surface": "Odd data on cardiomotor cycles buried in the cardiologist's report describe a motorbike (10)",
+      "definition": "motorbike",
+      "wordplay": "answer spans the join of \"cardiomotor\" + \"cycles\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 223,
       "id": "07385901-91da-41ea-ba82-2bd9d99f4449",
       "answer": "NETWORKS",
       "device": "hidden",
       "surface": "Minister blames part of Cabinet workshop for leaking connected systems (8)",
       "definition": "connected systems",
       "wordplay": "answer spans the join of \"cabinet\" + \"workshop\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 158,
+      "n": 224,
       "id": "c60a044d-38a8-4b39-9a36-088414fb6a85",
       "answer": "NEWSLETTER",
       "device": "hidden",
       "surface": "Editor's nonnews letters housed by staff amount to a poor bulletin (10)",
       "definition": "bulletin",
       "wordplay": "answer spans the join of \"nonnews\" + \"letters\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 159,
+      "n": 225,
       "id": "46fcc9e7-b954-45ae-8005-9a68a0278433",
       "answer": "NICKNAME",
       "device": "hidden",
       "surface": "Old dornick names buried in surveyor's rock catalogue reveal a pet name (8)",
       "definition": "pet name",
       "wordplay": "answer spans the join of \"dornick\" + \"names\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 160,
+      "n": 226,
       "id": "db3e05c7-1bc0-4f09-92b3-d64d07c54f47",
       "answer": "NITROGEN",
       "device": "hidden",
       "surface": "Chemist's dinitro genius within the plant produced air's main gas (8)",
       "definition": "Air's main gas",
       "wordplay": "answer spans the join of \"dinitro\" + \"genius\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 161,
+      "n": 227,
       "id": "28af9814-e5ae-4617-b292-7866a52a664a",
       "answer": "OPERATOR",
       "device": "hidden",
       "surface": "Critics say the diva's tuneless popera torture, held within that overhyped album, needs a switchboard worker (8)",
       "definition": "switchboard worker",
       "wordplay": "answer spans the join of \"popera\" + \"torture\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 162,
+      "n": 228,
       "id": "7121548e-a2f8-4c5d-8ccd-7b6ff588d08a",
       "answer": "PEDIATRIC",
       "device": "hidden",
       "surface": "Grandpa's encyclopedia trick, buried in his old memoir, describes courses that are child-related (medical) (9)",
       "definition": "child-related (medical)",
       "wordplay": "answer spans the join of \"encyclopedia\" + \"trick\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 163,
+      "n": 229,
       "id": "b6c060dc-8378-4bb4-a88c-938d1da11554",
       "answer": "RANKED",
       "device": "hidden",
       "surface": "His frank educated guesswork was concealed in a tone we finally rated (6)",
       "definition": "Rated",
       "wordplay": "answer spans the join of \"frank\" + \"educated\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 164,
+      "n": 230,
       "id": "c02d8aba-59c1-4645-bbb3-bee59da61ca6",
       "answer": "READING",
       "device": "hidden",
       "surface": "Widespread ingredients buried in soup point to a hasty perusal (7)",
       "definition": "Perusal",
       "wordplay": "answer spans the join of \"widespread\" + \"ingredients\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 165,
+      "n": 231,
       "id": "3551f27a-276f-4578-8d07-e862f36c57ce",
       "answer": "REGISTER",
       "device": "hidden",
       "surface": "Old choregi sterling coins, held within a museum vault, enroll new collectors every year (8)",
       "definition": "Enroll",
       "wordplay": "answer spans the join of \"choregi\" + \"sterling\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 166,
+      "n": 232,
       "id": "8836572e-dbbc-45cd-bffa-2fd8d87dc705",
       "answer": "RETAILER",
       "device": "hidden",
       "surface": "Pilot's secret aileron fault is held by shopkeeper (8)",
       "definition": "shopkeeper",
       "wordplay": "answer spans the join of \"secret\" + \"aileron\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 167,
+      "n": 233,
       "id": "3ff22a4c-f735-4b7b-a1ff-564c27e062c4",
       "answer": "SAILING",
       "device": "hidden",
       "surface": "New topsail ingredients, concealed in the ship's hold, were perfect for boating (7)",
       "definition": "boating",
       "wordplay": "answer spans the join of \"topsail\" + \"ingredients\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 168,
+      "n": 234,
       "id": "85740280-1f53-4faf-9920-1006776fde20",
       "answer": "SCREENSHOT",
       "device": "hidden",
       "surface": "Old widescreen shots held by the museum yield a fine screen capture (10)",
       "definition": "screen capture",
       "wordplay": "answer spans the join of \"widescreen\" + \"shots\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 169,
+      "n": 235,
+      "id": "63e96327-4452-4f5b-88f8-c5a8a4be852f",
+      "answer": "SELLER",
+      "device": "hidden",
+      "surface": "Buried in secret plans to outsell era-defining rivals, our firm found a genuine vendor (6)",
+      "definition": "Vendor",
+      "wordplay": "answer spans the join of \"outsell\" + \"era\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 236,
       "id": "c98795a4-9657-47d4-8a92-3613f05a9343",
       "answer": "SEMESTER",
       "device": "hidden",
       "surface": "An antique teleseme sterling within Grandma's cabinet defines the school term (8)",
       "definition": "school term",
       "wordplay": "answer spans the join of \"teleseme\" + \"sterling\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 170,
+      "n": 237,
       "id": "d7d6dec9-b8d8-4ee2-b639-8b1f256b6c43",
       "answer": "SERVICES",
       "device": "hidden",
       "surface": "Grandpa's browser vicesimal history, buried in old tech logs, actually tracks utilities (8)",
       "definition": "utilities",
       "wordplay": "answer spans the join of \"browser\" + \"vicesimal\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 171,
+      "n": 238,
       "id": "3579a467-93f8-4c48-90e8-d9048105ead4",
       "answer": "SLEEPING",
       "device": "hidden",
       "surface": "Antisleep ingredients, hidden in the label, keep truckers from being dormant (8)",
       "definition": "dormant",
       "wordplay": "answer spans the join of \"antisleep\" + \"ingredients\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 172,
+      "n": 239,
       "id": "c4806763-0f8c-44a4-910c-b7ce09c30e4f",
       "answer": "SMOKING",
       "device": "hidden",
       "surface": "That gadget's odd name, hidden in gismo kingdom lore, describes an old robot toy using tobacco (7)",
       "definition": "using tobacco",
       "wordplay": "answer spans the join of \"gismo\" + \"kingdom\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 173,
+      "n": 240,
       "id": "ed85a971-9309-4eef-b1f4-37878274dee7",
       "answer": "SOFTWARE",
       "device": "hidden",
       "surface": "Hidden in \"unsoft warehouse renovation\" plans, surveyors found blueprints for computer programs (8)",
       "definition": "Computer programs",
       "wordplay": "answer spans the join of \"unsoft\" + \"warehouse\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 174,
+      "n": 241,
       "id": "56c2d3f5-fa6f-453b-8b7f-cb3fd4f66ec2",
       "answer": "SOMEBODY",
       "device": "hidden",
       "surface": "Awesome bodyworkers included in the spa's staff roster can heal a person (8)",
       "definition": "a person",
       "wordplay": "answer spans the join of \"awesome\" + \"bodyworkers\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 175,
+      "n": 242,
       "id": "0a0135ed-65e0-4a5d-9072-56c5f35e2a29",
       "answer": "SPEAKING",
       "device": "hidden",
       "surface": "Geeks review leetspeak ingredients partly for a course on talking (8)",
       "definition": "talking",
       "wordplay": "answer spans the join of \"leetspeak\" + \"ingredients\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 176,
+      "n": 243,
+      "id": "4514d8f0-6006-427d-b3d2-52ed539c3ce2",
+      "answer": "STATIC",
+      "device": "hidden",
+      "surface": "Some of the Costa tickets remain unchanging (6)",
+      "definition": "unchanging",
+      "wordplay": "answer spans the join of \"costa\" + \"tickets\"",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 244,
       "id": "803dcdf2-97cb-455b-9f66-1411701a203d",
       "answer": "STEERING",
       "device": "hidden",
       "surface": "Trustee rings concealed in scandal reveal the ship's guiding direction (8)",
       "definition": "Guiding direction",
       "wordplay": "answer spans the join of \"trustee\" + \"rings\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 177,
+      "n": 245,
       "id": "ad85d193-6535-4b09-b1f4-747e71ca8d55",
       "answer": "STICKERS",
       "device": "hidden",
       "surface": "Some of geologists' characteristic kersantites are found to be adhesive labels (8)",
       "definition": "Adhesive labels",
       "wordplay": "answer spans the join of \"characteristic\" + \"kersantites\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 178,
+      "n": 246,
       "id": "382c93a1-72d2-4006-8c39-f742a19e218f",
       "answer": "STICKY",
       "device": "hidden",
       "surface": "Held within a less realistic Kyle subplot, the show's romance still feels adhesive (6)",
       "definition": "Adhesive",
       "wordplay": "answer spans the join of \"realistic\" + \"kyle\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 179,
+      "n": 247,
       "id": "7c681cd9-a505-4d44-8fae-4406793a54b3",
       "answer": "STUDYING",
       "device": "hidden",
       "surface": "Trying to outstudy ingredients within a rival's recipe is really just hitting the books (8)",
       "definition": "hitting the books",
       "wordplay": "answer spans the join of \"outstudy\" + \"ingredients\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 180,
+      "n": 248,
       "id": "d88bb9ff-60f3-4850-b8b4-ed0d534ed3e8",
       "answer": "SUGGESTING",
       "device": "hidden",
       "surface": "Software glitches aside, autosuggest ingredients within a search bar are merely hinting at what you meant to type (10)",
       "definition": "hinting at",
       "wordplay": "answer spans the join of \"autosuggest\" + \"ingredients\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 181,
+      "n": 249,
       "id": "c61ee4a1-bfb8-407f-a212-a3b6d4cb9280",
       "answer": "TELECOM",
       "device": "hidden",
       "surface": "Every startup name buried in Hotel eCommerce plans conceals a phone company (7)",
       "definition": "phone company",
       "wordplay": "answer spans the join of \"hotel\" + \"ecommerce\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 182,
+      "n": 250,
       "id": "67eb2fc6-3c00-4071-9eb8-d0e4d905b327",
       "answer": "THINKING",
       "device": "hidden",
       "surface": "Ancient tombs within kings' quarters reveal reasoning (8)",
       "definition": "Reasoning",
       "wordplay": "answer spans the join of \"within\" + \"kings\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 183,
+      "n": 251,
       "id": "bd86ce07-136d-4613-96a3-92e362e5ca87",
       "answer": "TIMELINE",
       "device": "hidden",
       "surface": "Coastguard's log, held within maritime lined notebooks, gives a schedule of events (8)",
       "definition": "schedule of events",
       "wordplay": "answer spans the join of \"maritime\" + \"lined\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 184,
+      "n": 252,
       "id": "83a26a85-fb77-422e-80e5-3245fc31b8d9",
       "answer": "TOWNSHIP",
       "device": "hidden",
       "surface": "Reporter finds downtown shipment hidden in customs papers, exposing a municipal district (8)",
       "definition": "municipal district",
       "wordplay": "answer spans the join of \"downtown\" + \"shipment\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 185,
+      "n": 253,
       "id": "109b15ef-938d-4b24-8390-6ee8437e3927",
       "answer": "TRAINING",
       "device": "hidden",
       "surface": "Chef will strain ingredients partly for the coaching (8)",
       "definition": "coaching",
       "wordplay": "answer spans the join of \"strain\" + \"ingredients\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 186,
+      "n": 254,
       "id": "b6b98448-4913-4857-aebf-7d4b04cd37b4",
       "answer": "TRIANGLE",
       "device": "hidden",
       "surface": "Buried in campestrian glen art, hunters still recognize a three-sided figure (8)",
       "definition": "three-sided figure",
       "wordplay": "answer spans the join of \"campestrian\" + \"glen\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 187,
+      "n": 255,
       "id": "1740b4ac-3160-41cc-a622-a93c1d7a5c81",
       "answer": "ULTIMATE",
       "device": "hidden",
       "surface": "This multiculti material, buried in college archives, offers a hint of the final trend (8)",
       "definition": "final",
       "wordplay": "answer spans the join of \"multiculti\" + \"material\"",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 188,
+      "n": 256,
+      "id": "da3c90fb-787c-4c36-8195-8cb7874c4b5f",
+      "answer": "ADAPTOR",
+      "device": "homophone",
+      "surface": "Wedding arranger, reportedly, is a connecting device (7)",
+      "definition": "connecting device",
+      "wordplay": "\"arranger\" is a synonym of \"adapter\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 257,
+      "id": "29d7a2e4-a53e-4beb-b835-01d3d012330b",
+      "answer": "ANALOG",
+      "device": "homophone",
+      "surface": "Parallel lines, we hear, form the counterpart (6)",
+      "definition": "Counterpart",
+      "wordplay": "\"parallel\" is a synonym of \"analogue\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 258,
+      "id": "c550b845-71e9-41db-8abc-5c4e3eb412cf",
+      "answer": "BANNED",
+      "device": "homophone",
+      "surface": "Prohibited from playing, the tennis set audibly grumbled. (6)",
+      "definition": "Prohibited",
+      "wordplay": "\"set\" is a synonym of \"band\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 259,
+      "id": "7245e1df-bde1-4255-afa2-cd3b4c62c3bc",
+      "answer": "BETTER",
+      "device": "homophone",
+      "surface": "Wagerer, out loud, sounds superior (6)",
+      "definition": "superior",
+      "wordplay": "\"wagerer\" is a synonym of \"bettor\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 260,
+      "id": "9e8be44e-8c1f-4a0d-a862-1b8b665f75d1",
+      "answer": "COLORED",
+      "device": "homophone",
+      "surface": "Colorful language on air apparently gets tinted (7)",
+      "definition": "tinted",
+      "wordplay": "\"colorful\" is a synonym of \"coloured\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 261,
+      "id": "00102a84-d127-49db-ab24-d7b045bac6aa",
+      "answer": "COURSE",
+      "device": "homophone",
+      "surface": "Harsh words on the radio can chart a path (6)",
+      "definition": "Path",
+      "wordplay": "\"harsh\" is a synonym of \"coarse\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 262,
+      "id": "441a2bc4-d77d-4ea5-88c0-8c8f24f8ace4",
+      "answer": "EDITION",
+      "device": "homophone",
+      "surface": "Every add-on, to the ear, sounds like a new version (7)",
+      "definition": "version",
+      "wordplay": "\"add-on\" is a synonym of \"addition\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 263,
+      "id": "8921f8ee-97f1-4465-bed1-49f4b6c2563a",
+      "answer": "FAVORITE",
+      "device": "homophone",
+      "surface": "Spoken like a true front-runner, according to the preferred one (8)",
+      "definition": "preferred one",
+      "wordplay": "\"front-runner\" is a synonym of \"favourite\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 264,
+      "id": "5ad199dd-83ee-4422-b8c9-1854008c8034",
+      "answer": "FAVOUR",
+      "device": "homophone",
+      "surface": "Voters said they prefer, out loud, the winning candidate's kind gesture (6)",
+      "definition": "kind gesture",
+      "wordplay": "\"prefer\" is a synonym of \"favor\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 265,
+      "id": "09ae810a-26ab-435b-8d98-fe3801d74522",
+      "answer": "GREECE",
+      "device": "homophone",
+      "surface": "Dirt reportedly covers Aegean nation (6)",
+      "definition": "Aegean nation",
+      "wordplay": "\"dirt\" is a synonym of \"grease\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 266,
+      "id": "c0726a56-e7bb-415d-9237-d791b410e104",
+      "answer": "HARBOR",
+      "device": "homophone",
+      "surface": "Seaport, we hear, offered the refugees shelter (6)",
+      "definition": "shelter",
+      "wordplay": "\"seaport\" is a synonym of \"harbour\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 267,
+      "id": "87cc25dd-a48a-44c6-95ab-b7d90f15a7cf",
+      "answer": "HOLLOW",
+      "device": "homophone",
+      "surface": "A bull's bellow out loud reveals the log to be empty inside (6)",
+      "definition": "empty inside",
+      "wordplay": "\"bellow\" is a synonym of \"hollo\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 268,
+      "id": "3ff2b722-c183-4553-a9ef-bdeb458466a2",
+      "answer": "JUDGMENT",
+      "device": "homophone",
+      "surface": "Opinion aired aloud in court finally delivers the verdict (8)",
+      "definition": "verdict",
+      "wordplay": "\"opinion\" is a synonym of \"judgement\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 269,
+      "id": "11736f5b-20a4-4d1d-aea8-0e86476d82f1",
+      "answer": "LABOUR",
+      "device": "homophone",
+      "surface": "Proletariat, to the ear, seems doomed to toil (6)",
+      "definition": "toil",
+      "wordplay": "\"proletariat\" is a synonym of \"labor\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 270,
+      "id": "783ff8e9-40c9-451c-81ae-b6a4275c7ff3",
+      "answer": "LESSON",
+      "device": "homophone",
+      "surface": "Decrease in conversation gives a valuable class (6)",
+      "definition": "class",
+      "wordplay": "\"decrease\" is a synonym of \"lessen\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 271,
+      "id": "4a74d040-561c-494d-8e50-390f17c80d0f",
+      "answer": "MORNING",
+      "device": "homophone",
+      "surface": "Bereavement, aloud, is followed by dawn (7)",
+      "definition": "dawn",
+      "wordplay": "\"bereavement\" is a synonym of \"mourning\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 272,
+      "id": "241b9a90-f269-4bf3-9ff1-463ad3885231",
+      "answer": "PASSED",
+      "device": "homophone",
+      "surface": "Yesteryear, out loud, is how old-timers say it went by (6)",
+      "definition": "went by",
+      "wordplay": "\"yesteryear\" is a synonym of \"past\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 273,
+      "id": "46c56cfa-4762-455c-b147-bbcd3087098f",
+      "answer": "PRINCIPAL",
+      "device": "homophone",
+      "surface": "Reading the rule aloud, students meet the head of school (9)",
+      "definition": "head of school",
+      "wordplay": "\"rule\" is a synonym of \"principle\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 274,
+      "id": "aa71041e-1c1d-4886-b709-917ff81740e0",
+      "answer": "PROGRAMME",
+      "device": "homophone",
+      "surface": "Their plan, they say, is a schedule of events (9)",
+      "definition": "schedule of events",
+      "wordplay": "\"plan\" is a synonym of \"program\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 275,
+      "id": "f89bb3fd-f966-43e9-817f-c7e0e38f75e4",
+      "answer": "SENSOR",
+      "device": "homophone",
+      "surface": "Ban, they say out loud, is what protesters want in a detector (6)",
+      "definition": "detector",
+      "wordplay": "\"ban\" is a synonym of \"censor\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 276,
+      "id": "18e43d5f-1503-45d8-85d2-14fa1241dbb5",
+      "answer": "SLIGHT",
+      "device": "homophone",
+      "surface": "Dexterity, audibly, masked an insult (6)",
+      "definition": "insult",
+      "wordplay": "\"dexterity\" is a synonym of \"sleight\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 277,
+      "id": "b351e79e-bc30-4be2-b6bb-fa19cc25f345",
+      "answer": "WRIGHT",
+      "device": "homophone",
+      "surface": "Songwriters compose on air for a talented craftsman (6)",
+      "definition": "craftsman",
+      "wordplay": "\"compose\" is a synonym of \"write\", which sounds like the answer",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 278,
+      "id": "627d93ec-dcc5-444a-98f4-fab5e0bb78df",
+      "answer": "ANIMAL",
+      "device": "reversal",
+      "surface": "Under the microscope, a lamina brought back odd symmetry, like some creature (6)",
+      "definition": "creature",
+      "wordplay": "\"lamina\" reversed",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 279,
       "id": "9e4f755a-825f-4c09-b423-a6c41c5eabaf",
       "answer": "DELIVER",
       "device": "reversal",
       "surface": "Reviled reversed his position and agreed to bring forth the goods (7)",
       "definition": "bring forth",
       "wordplay": "\"reviled\" reversed",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 189,
+      "n": 280,
       "id": "3a3b122d-5745-47ae-bb3f-6266dfc2fe80",
       "answer": "REWARD",
       "device": "reversal",
       "surface": "Carpenter finally brought back the stuck drawer for a prize (6)",
       "definition": "Prize",
       "wordplay": "\"drawer\" reversed",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 190,
+      "n": 281,
+      "id": "d613bfe4-9bda-4ac8-b8bd-4f82b231d2d9",
+      "answer": "SECRET",
+      "device": "reversal",
+      "surface": "Reflected terces spell out something hidden (6)",
+      "definition": "Hidden",
+      "wordplay": "\"terces\" reversed",
+      "blocking": false,
+      "status": "approved"
+    },
+    {
+      "n": 282,
       "id": "be7df870-cd1d-46c9-b7ba-bb1afc5af907",
       "answer": "SPORTS",
       "device": "reversal",
       "surface": "Old strops going west finally give way to what a barber wears proudly (6)",
       "definition": "wears proudly",
       "wordplay": "\"strops\" reversed",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     },
     {
-      "n": 191,
+      "n": 283,
       "id": "5c8f1dfd-571c-46ad-a825-ca9c4a1ddc29",
       "answer": "TENNIS",
       "device": "reversal",
       "surface": "Sailor's sinnet, retreating from the knot, resembles a racket sport (6)",
       "definition": "racket sport",
       "wordplay": "\"sinnet\" reversed",
-      "blocking": false
+      "blocking": false,
+      "status": "queued"
     }
   ]
 }

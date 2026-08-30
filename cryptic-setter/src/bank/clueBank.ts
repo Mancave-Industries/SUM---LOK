@@ -95,3 +95,19 @@ export function rejectFromReviewQueue(id: string): Clue | null {
   writeClues(REVIEW_QUEUE_PATH, queue);
   return clue;
 }
+
+// A human rejecting a clue that was already approved — a second-pass
+// quality review catching something the first pass let through. Pulls it
+// back out of the live bank so it's never reused. Puzzles already built
+// with it keep their text (their clue strings are copied into the puzzle
+// file at assembly time, not referenced) until those puzzles are
+// regenerated, so this stops future harm rather than rewriting history.
+export function removeFromBank(id: string): Clue | null {
+  const bank = readBank();
+  const index = bank.findIndex((clue) => clue.id === id);
+  if (index === -1) return null;
+
+  const [clue] = bank.splice(index, 1);
+  writeClues(BANK_PATH, bank);
+  return clue;
+}

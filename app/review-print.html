@@ -64,6 +64,15 @@
     }
     .clue { color: #222; }
     .note { font-size: 9pt; color: #666; margin-top: 1px; }
+    /* Marks a clue already approved and in use, so a reviewer knows a tick
+       here pulls something out of live rotation rather than just declining
+       a candidate. Prints as an outline so it survives greyscale. */
+    .live {
+      font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 7.5pt; letter-spacing: 0.06em; text-transform: uppercase;
+      border: 1px solid #999; color: #555; border-radius: 3px;
+      padding: 0 3px; margin-left: 5px; white-space: nowrap;
+    }
 
     @media print {
       .toolbar, .how { display: none; }
@@ -83,7 +92,8 @@
     <div class="how">
       <strong>How to use:</strong> tick the box next to any clue you'd <em>reject</em> — leave the rest blank.
       Then report the numbers back (e.g. “fail 12, 45, 60”) and they'll be applied to the bank in one pass.
-      Clues are grouped by type and numbered continuously.
+      Clues are grouped by type and numbered continuously. Ones marked <span class="live">in use</span>
+      are already live in puzzles — ticking one pulls it out of rotation for future puzzles.
     </div>
 
     <div class="toolbar">
@@ -116,11 +126,12 @@ function render() {
       const note = showNotes
         ? '<div class="note">' + c.definition + ' — ' + c.wordplay + '</div>'
         : '';
+      const live = c.status === 'approved' ? '<span class="live">in use</span>' : '';
       row.innerHTML =
         '<div class="num">' + c.n + '</div>' +
         '<div class="box"></div>' +
         '<div><span class="answer">' + c.answer + '</span> — ' +
-        '<span class="clue">' + c.surface + '</span>' + note + '</div>';
+        '<span class="clue">' + c.surface + '</span>' + live + note + '</div>';
       content.appendChild(row);
     }
   }

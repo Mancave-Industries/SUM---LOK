@@ -15,12 +15,17 @@
 
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { approveFromReviewQueue, rejectFromReviewQueue } from '../src/bank/clueBank.js';
+import { approveFromReviewQueue, readBank, rejectFromReviewQueue, removeFromBank } from '../src/bank/clueBank.js';
+
+function existsInBank(id: string): boolean {
+  return readBank().some((clue) => clue.id === id);
+}
 
 interface ReviewRow {
   n: number;
   id: string;
   answer: string;
+  status: 'queued' | 'approved';
 }
 
 // The numbered export the print sheet was rendered from — the only thing
@@ -85,27 +90,35 @@ if (args[0] === '--reject') {
 
 let approved = 0;
 let rejected = 0;
+let unchanged = 0;
 const missing: string[] = [];
 
 for (const id of approve) {
+  // Approving something already in the live bank is a no-op, not an error
+  // — the sheet covers approved clues too, and leaving one unticked means
+  // "still fine", which is exactly the state it is already in.
   const result = approveFromReviewQueue(id);
   if (result) {
     approved++;
     console.log(`✓ ${result.answer} — "${result.surface}"`);
+  } else if (existsInBank(id)) {
+    unchanged++;
   } else missing.push(id);
 }
 for (const id of reject) {
-  const result = rejectFromReviewQueue(id);
+  // Route by where the clue actually lives: pending ones leave the queue,
+  // already-approved ones get pulled back out of the live bank.
+  const result = rejectFromReviewQueue(id) ?? removeFromBank(id);
   if (result) {
     rejected++;
     console.log(`✗ ${result.answer} — "${result.surface}"`);
   } else missing.push(id);
 }
 
-console.log(`\n${approved} approved into the live bank, ${rejected} rejected.`);
+console.log(`\n${approved} newly approved, ${rejected} rejected, ${unchanged} already-approved left as they were.`);
 if (missing.length) {
   // Almost always means the verdict batch was produced against an older
   // export and those clues have since been judged — worth naming rather
   // than silently ignoring.
-  console.log(`${missing.length} id(s) were not in the review queue (already judged, or a stale export).`);
+  console.log(`${missing.length} id(s) were found in neither the queue nor the bank (stale export?).`);
 }
