@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Assembles new 3A2Dle puzzles from the clue bank: solves a valid 6-word
+// Assembles new QUYPTICK puzzles from the clue bank: solves a valid 6-word
 // interlocking grid, reuses an existing bank clue for each answer where
 // one exists, generates a fresh one (real LLM call, verified same as
 // everything else) where it doesn't, and writes app/puzzles/<id>.json +
@@ -143,23 +143,36 @@ function deviceOrderFor(tier: Tier): DeviceType[] {
 // Capped per puzzle rather than per batch so no single puzzle over-relies
 // on one device regardless of what the bank happens to hold for these
 // particular 6 words. Only the over-available devices need an entry —
-// anything absent is uncapped, since its own scarcity already limits it
+// (superseded below by a universal default cap)
 // and capping it further would just cause needless generation failures.
 // Hard tier caps hidden tighter still, on top of its handicap, since a
 // hard puzzle leaning on the single easiest device defeats the point.
-const DEVICE_CAPS: Record<Tier, Partial<Record<DeviceType, number>>> = {
-  standard: { hidden: 2, anagram: 2 },
-  hard: { hidden: 1, anagram: 2, doubleDefinition: 2 },
+// Applies to every device, not just the over-available ones: with 6 clues
+// to a puzzle, a universal cap of 2 is what guarantees at least 3 distinct
+// devices in every single puzzle rather than merely making that likely.
+// Capping only the common devices left the rare ones free to fill a whole
+// grid on the odd occasion they all happened to construct.
+const DEFAULT_DEVICE_CAP = 2;
+
+// Hard tier holds hidden to a single appearance, on top of its handicap —
+// a hard puzzle leaning on the easiest device defeats the point of the
+// tier.
+const DEVICE_CAP_OVERRIDES: Record<Tier, Partial<Record<DeviceType, number>>> = {
+  standard: {},
+  hard: { hidden: 1 },
 };
+
+function capFor(device: DeviceType, tier: Tier): number {
+  return DEVICE_CAP_OVERRIDES[tier][device] ?? DEFAULT_DEVICE_CAP;
+}
 
 // Every device that has already hit its per-puzzle cap for this puzzle.
 function cappedDevices(
   puzzleDeviceUsage: Partial<Record<DeviceType, number>>,
   tier: Tier
 ): DeviceType[] {
-  const caps = DEVICE_CAPS[tier];
-  return (Object.keys(caps) as DeviceType[]).filter(
-    (device) => (puzzleDeviceUsage[device] ?? 0) >= caps[device]!
+  return (Object.keys(puzzleDeviceUsage) as DeviceType[]).filter(
+    (device) => (puzzleDeviceUsage[device] ?? 0) >= capFor(device, tier)
   );
 }
 
@@ -515,11 +528,12 @@ async function assembleOne(
     clueFor[answer] = result;
   }
 
-  // Alternate 3A2D / 2A3D by puzzle number, matching the format the whole
-  // concept is named after: 3-across day withholds a down clue as bonus,
-  // 2-across day withholds an across clue instead.
-  const format = puzzleNumber % 2 === 1 ? '3A2D' : '2A3D';
-  const bonusIsDown = format === '3A2D';
+  // Alternate whether the withheld bonus entry is a down or an across clue,
+  // by puzzle number, so consecutive puzzles don't always hide the same
+  // direction. This used to be surfaced to players as a "3A2D"/"2A3D"
+  // format label, but the shorthand meant nothing to anyone actually
+  // playing — it's kept purely as internal variety now.
+  const bonusIsDown = puzzleNumber % 2 === 1;
 
   // Bonus eligibility follows the slot id, not any row/col math — 'A3'/'D3'
   // are the third across/down slot in every template, matching the
@@ -539,9 +553,9 @@ async function assembleOne(
     };
   });
 
-  const puzzle = { id, tier, format, entries };
+  const puzzle = { id, tier, entries };
   writeFileSync(join(PUZZLES_DIR, `${id}.json`), JSON.stringify(puzzle, null, 2) + '\n');
-  console.log(`Wrote ${id}.json (${tier}, ${format}, bonus=${entries.find((e) => e.bonus)?.answer})`);
+  console.log(`Wrote ${id}.json (${tier}, bonus=${entries.find((e) => e.bonus)?.answer})`);
 
   for (const answer of words) exclude.add(answer.toUpperCase());
   return { id };
