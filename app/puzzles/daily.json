@@ -19,6 +19,12 @@
     "2026-08-22": {
       "standard": "puzzle-039",
       "hard": "puzzle-h-005"
+    },
+    "2026-08-31": {
+      "standard": "puzzle-042"
+    },
+    "2026-09-01": {
+      "standard": "puzzle-043"
     }
   }
 }
