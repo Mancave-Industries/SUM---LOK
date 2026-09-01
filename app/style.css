@@ -608,6 +608,23 @@ body {
   color: var(--text-dim);
   margin-bottom: 8px;
 }
+/* Sits in the menu rather than on the puzzle itself, so it never competes
+   with the grid for attention. Full-width because it is the only control in
+   its section — the pill shape matches .next-puzzle-btn. */
+.coffee-btn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid var(--ink-border);
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 11px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+}
+.coffee-btn:hover { border-color: var(--accent); }
+
 .menu-text { font-size: 13px; line-height: 1.55; color: var(--text-dim); margin: 0; }
 .menu-text a { color: var(--accent); }
 .menu-text strong { color: var(--text); }
