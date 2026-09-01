@@ -25,6 +25,48 @@
     },
     "2026-09-01": {
       "standard": "puzzle-043"
+    },
+    "2026-09-02": {
+      "standard": "puzzle-045"
+    },
+    "2026-09-03": {
+      "standard": "puzzle-048"
+    },
+    "2026-09-04": {
+      "standard": "puzzle-049"
+    },
+    "2026-09-05": {
+      "standard": "puzzle-050"
+    },
+    "2026-09-06": {
+      "standard": "puzzle-051"
+    },
+    "2026-09-07": {
+      "standard": "puzzle-052"
+    },
+    "2026-09-08": {
+      "standard": "puzzle-053"
+    },
+    "2026-09-09": {
+      "standard": "puzzle-055"
+    },
+    "2026-09-10": {
+      "standard": "puzzle-057"
+    },
+    "2026-09-11": {
+      "standard": "puzzle-058"
+    },
+    "2026-09-12": {
+      "standard": "puzzle-060"
+    },
+    "2026-09-13": {
+      "standard": "puzzle-063"
+    },
+    "2026-09-14": {
+      "standard": "puzzle-065"
+    },
+    "2026-09-15": {
+      "standard": "puzzle-067"
     }
   }
 }

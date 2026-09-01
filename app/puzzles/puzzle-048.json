@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-048",
+  "tier": "standard",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 3,
+      "answer": "ASSUMED",
+      "clue": "Damaged medusas washed ashore, presumed dead by marine biologists (7)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 3,
+      "col": 0,
+      "answer": "TRIBUNAL",
+      "clue": "Wild turbinal condition forms the basis of a case before the court (8)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 6,
+      "direction": "across",
+      "row": 9,
+      "col": 3,
+      "answer": "ASSIGN",
+      "clue": "To allocate parking spaces, put \"as\" next to \"sign\" on the office notice board (6)",
+      "device": "charade",
+      "bonus": true
+    },
+    {
+      "number": 4,
+      "direction": "down",
+      "row": 2,
+      "col": 0,
+      "answer": "STICKY",
+      "clue": "Held within a less realistic Kyle subplot, the show's romance still feels adhesive (6)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 4,
+      "answer": "SECURITIES",
+      "clue": "After being broken, \"securitise\" would oddly describe stocks and bonds (10)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 0,
+      "col": 9,
+      "answer": "DEFENDANT",
+      "clue": "Told to defend then ant-proof the picnic, we became the accused party (9)",
+      "device": "charade",
+      "bonus": false
+    }
+  ]
+}

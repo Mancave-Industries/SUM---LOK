@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-060",
+  "tier": "standard",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 3,
+      "answer": "ASSURED",
+      "clue": "Wild rudases could seem confident (7)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 3,
+      "col": 0,
+      "answer": "CIRCUITS",
+      "clue": "It gets lost in a circus, causing chaos in electrical networks (8)",
+      "device": "container",
+      "bonus": false
+    },
+    {
+      "number": 6,
+      "direction": "across",
+      "row": 9,
+      "col": 3,
+      "answer": "ELEVEN",
+      "clue": "Chicago's El next to Even Park was packed for the soccer team (6)",
+      "device": "charade",
+      "bonus": true
+    },
+    {
+      "number": 4,
+      "direction": "down",
+      "row": 2,
+      "col": 0,
+      "answer": "SCENES",
+      "clue": "Priest's unstable censes produce dramatic episodes (6)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 4,
+      "answer": "STRUCTURAL",
+      "clue": "Craftsmen construct urali pots, part of a heritage relating to framework (10)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 0,
+      "col": 9,
+      "answer": "DIRECTORS",
+      "clue": "Bribery seemed indirect: orsellic acid, buried in the lab reports, funded film bosses (9)",
+      "device": "hidden",
+      "bonus": false
+    }
+  ]
+}

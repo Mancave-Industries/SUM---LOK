@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-049",
+  "tier": "standard",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "STRUGGLE",
+      "clue": "Unstable gurglets spilling everywhere, the plumbers fight hard (8)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 6,
+      "col": 4,
+      "answer": "IMPOSE",
+      "clue": "Yoga trim poses included in the new class are meant to force upon beginners some discipline (6)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 9,
+      "col": 3,
+      "answer": "ADVERSE",
+      "clue": "With ad next to verse, the poem's layout seems unfavorable (7)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "SYNDICATE",
+      "clue": "Reworked asyndetic prose reveals a media consortium (9)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 4,
+      "answer": "GIRLFRIEND",
+      "clue": "Every girl before her had a friend she called sweetheart (10)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 3,
+      "col": 9,
+      "answer": "OFFENSE",
+      "clue": "Crime scene photo shows a toff ensemble held by the tailor's dummy. (7)",
+      "device": "hidden",
+      "bonus": true
+    }
+  ]
+}

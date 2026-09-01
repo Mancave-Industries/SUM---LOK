@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-050",
+  "tier": "standard",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "DIAGRAM",
+      "clue": "Every academic's bias in social media grammar is included in this chart (7)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 6,
+      "col": 0,
+      "answer": "EVERYTHING",
+      "clue": "Every party guest waited, then thing after thing went wrong, ruining the whole lot (10)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 9,
+      "col": 1,
+      "answer": "SUMMARIES",
+      "clue": "Told to summarise odd findings, editor produces recaps (9)",
+      "device": "anagram",
+      "bonus": true
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "DECLARE",
+      "clue": "Reformed after being cleared, the smuggler seemed keen to announce his innocence to reporters (7)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 5,
+      "answer": "ADEQUATE",
+      "clue": "Free trade quaternaries partly explain what's good enough (8)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 3,
+      "col": 9,
+      "answer": "GADGETS",
+      "clue": "Hunters find that stagged trophies, when mixed up in the lodge, are actually clever new devices (7)",
+      "device": "anagram",
+      "bonus": false
+    }
+  ]
+}

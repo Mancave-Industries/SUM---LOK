@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-051",
+  "tier": "standard",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 4,
+      "answer": "COURSE",
+      "clue": "Wild source could carve out a woodland path (6)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 4,
+      "col": 0,
+      "answer": "COLLECTING",
+      "clue": "I recollect ingredients as part of this gathering together (10)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 6,
+      "direction": "across",
+      "row": 9,
+      "col": 1,
+      "answer": "PEDIATRIC",
+      "clue": "Once reformed, a patricide could still specialize in something child-related (medical) (9)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 1,
+      "col": 0,
+      "answer": "DISCRETE",
+      "clue": "Data concealed in minidisc retention remains separate (8)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "down",
+      "row": 3,
+      "col": 6,
+      "answer": "ATTRACT",
+      "clue": "Developer bought land at tract before rezoning it to draw in new residents (7)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 9,
+      "answer": "ENGAGING",
+      "clue": "Charming , this photo of Eng beside aging cricketers from the old tour. (8)",
+      "device": "charade",
+      "bonus": true
+    }
+  ]
+}

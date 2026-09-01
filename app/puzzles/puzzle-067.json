@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-067",
+  "tier": "standard",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 4,
+      "answer": "SECRET",
+      "clue": "Reflected terces spell out something hidden (6)",
+      "device": "reversal",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 4,
+      "col": 0,
+      "answer": "DIRECTIONS",
+      "clue": "Discretion out of order gives judges fresh instructions (10)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 6,
+      "direction": "across",
+      "row": 9,
+      "col": 1,
+      "answer": "ENGINEERS",
+      "clue": "Er, engines within old locomotives fascinate technicians (9)",
+      "device": "container",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 1,
+      "col": 0,
+      "answer": "HARDWARE",
+      "clue": "Selling hard followed by ware sounds like haggling for computer equipment (8)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "down",
+      "row": 3,
+      "col": 6,
+      "answer": "BIZARRE",
+      "clue": "After the coup, a chaotic brazier fire left the palace looking strange (7)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 9,
+      "answer": "TREASURE",
+      "clue": "Rare eggs of primitive gastrea surely found in an ancient reef are things museums cherish (8)",
+      "device": "hidden",
+      "bonus": true
+    }
+  ]
+}
