@@ -1,71 +1,144 @@
 {
   "days": {
-    "2026-08-18": {
-      "standard": "puzzle-033",
-      "hard": "puzzle-h-001"
-    },
-    "2026-08-19": {
-      "standard": "puzzle-035",
-      "hard": "puzzle-h-002"
-    },
-    "2026-08-20": {
-      "standard": "puzzle-036",
-      "hard": "puzzle-h-003"
-    },
-    "2026-08-21": {
-      "standard": "puzzle-038",
-      "hard": "puzzle-h-004"
-    },
-    "2026-08-22": {
-      "standard": "puzzle-039",
-      "hard": "puzzle-h-005"
-    },
-    "2026-08-31": {
-      "standard": "puzzle-042"
-    },
     "2026-09-01": {
-      "standard": "puzzle-043"
+      "standard": "puzzle-002"
     },
     "2026-09-02": {
-      "standard": "puzzle-045"
+      "standard": "puzzle-005"
     },
     "2026-09-03": {
-      "standard": "puzzle-048"
+      "standard": "puzzle-006"
     },
     "2026-09-04": {
-      "standard": "puzzle-049"
+      "standard": "puzzle-007"
     },
     "2026-09-05": {
-      "standard": "puzzle-050"
+      "standard": "puzzle-009"
     },
     "2026-09-06": {
-      "standard": "puzzle-051"
+      "standard": "puzzle-010"
     },
     "2026-09-07": {
-      "standard": "puzzle-052"
+      "standard": "puzzle-011"
     },
     "2026-09-08": {
-      "standard": "puzzle-053"
+      "hard": "puzzle-h-001"
     },
     "2026-09-09": {
-      "standard": "puzzle-055"
+      "standard": "puzzle-013"
     },
     "2026-09-10": {
-      "standard": "puzzle-057"
+      "standard": "puzzle-014"
     },
     "2026-09-11": {
-      "standard": "puzzle-058"
+      "standard": "puzzle-015"
     },
     "2026-09-12": {
-      "standard": "puzzle-060"
+      "standard": "puzzle-016"
     },
     "2026-09-13": {
-      "standard": "puzzle-063"
+      "standard": "puzzle-017"
     },
     "2026-09-14": {
-      "standard": "puzzle-065"
+      "standard": "puzzle-023"
     },
     "2026-09-15": {
+      "standard": "puzzle-025"
+    },
+    "2026-09-16": {
+      "hard": "puzzle-h-002"
+    },
+    "2026-09-17": {
+      "standard": "puzzle-026"
+    },
+    "2026-09-18": {
+      "standard": "puzzle-027"
+    },
+    "2026-09-19": {
+      "standard": "puzzle-028"
+    },
+    "2026-09-20": {
+      "standard": "puzzle-029"
+    },
+    "2026-09-21": {
+      "standard": "puzzle-030"
+    },
+    "2026-09-22": {
+      "standard": "puzzle-031"
+    },
+    "2026-09-23": {
+      "standard": "puzzle-032"
+    },
+    "2026-09-24": {
+      "hard": "puzzle-h-003"
+    },
+    "2026-09-25": {
+      "standard": "puzzle-033"
+    },
+    "2026-09-26": {
+      "standard": "puzzle-035"
+    },
+    "2026-09-27": {
+      "standard": "puzzle-036"
+    },
+    "2026-09-28": {
+      "standard": "puzzle-038"
+    },
+    "2026-09-29": {
+      "standard": "puzzle-039"
+    },
+    "2026-09-30": {
+      "standard": "puzzle-042"
+    },
+    "2026-10-01": {
+      "standard": "puzzle-043"
+    },
+    "2026-10-02": {
+      "hard": "puzzle-h-004"
+    },
+    "2026-10-03": {
+      "standard": "puzzle-045"
+    },
+    "2026-10-04": {
+      "standard": "puzzle-048"
+    },
+    "2026-10-05": {
+      "standard": "puzzle-049"
+    },
+    "2026-10-06": {
+      "standard": "puzzle-050"
+    },
+    "2026-10-07": {
+      "standard": "puzzle-051"
+    },
+    "2026-10-08": {
+      "standard": "puzzle-052"
+    },
+    "2026-10-09": {
+      "standard": "puzzle-053"
+    },
+    "2026-10-10": {
+      "hard": "puzzle-h-005"
+    },
+    "2026-10-11": {
+      "standard": "puzzle-055"
+    },
+    "2026-10-12": {
+      "standard": "puzzle-057"
+    },
+    "2026-10-13": {
+      "standard": "puzzle-058"
+    },
+    "2026-10-14": {
+      "standard": "puzzle-060"
+    },
+    "2026-10-15": {
+      "standard": "puzzle-063"
+    },
+    "2026-10-16": {
+      "standard": "puzzle-065"
+    },
+    "2026-10-17": {
       "standard": "puzzle-067"
     }
   }
