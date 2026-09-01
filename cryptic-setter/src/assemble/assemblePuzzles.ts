@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Assembles new 3A2Dle puzzles from the clue bank: solves a valid 6-word
+// Assembles new QUYPTICK puzzles from the clue bank: solves a valid 6-word
 // interlocking grid, reuses an existing bank clue for each answer where
 // one exists, generates a fresh one (real LLM call, verified same as
 // everything else) where it doesn't, and writes app/puzzles/<id>.json +
@@ -132,16 +132,49 @@ function deviceOrderFor(tier: Tier): DeviceType[] {
   return tier === 'hard' ? HARD_DEVICE_ORDER : DEVICE_ORDER;
 }
 
-// Hidden-word clues are trivially the easiest device to construct for most
-// answers, so left unchecked they crowd out every other device within a
-// single puzzle, not just across the bank as a whole — a player can end up
-// solving 5 of 6 clues by just spotting where one word ends and the next
-// begins. Capped per puzzle (not just balanced across a whole batch) so no
-// single puzzle over-relies on it regardless of what the bank happens to
-// have on hand for these particular 6 words. Hard tier caps it even
-// tighter, on top of the handicap above, since a hard puzzle leaning on
-// the single easiest device defeats the entire point of the tier.
-const MAX_HIDDEN_PER_PUZZLE: Record<Tier, number> = { standard: 2, hard: 1 };
+// Per-puzzle device caps. Measured constructibility across the solver's
+// own word pool is wildly uneven — hidden works for ~87% of words and
+// anagram ~49%, while charade/container manage ~18%/~15% and the rest are
+// rarer still. Left uncapped, those top two simply fill most of a puzzle
+// by default (they're always available, so the least-used-device tiebreak
+// keeps landing on them), which is exactly the "every clue is a hidden
+// word" complaint that prompted the original hidden cap.
+//
+// Capped per puzzle rather than per batch so no single puzzle over-relies
+// on one device regardless of what the bank happens to hold for these
+// particular 6 words. Only the over-available devices need an entry —
+// (superseded below by a universal default cap)
+// and capping it further would just cause needless generation failures.
+// Hard tier caps hidden tighter still, on top of its handicap, since a
+// hard puzzle leaning on the single easiest device defeats the point.
+// Applies to every device, not just the over-available ones: with 6 clues
+// to a puzzle, a universal cap of 2 is what guarantees at least 3 distinct
+// devices in every single puzzle rather than merely making that likely.
+// Capping only the common devices left the rare ones free to fill a whole
+// grid on the odd occasion they all happened to construct.
+const DEFAULT_DEVICE_CAP = 2;
+
+// Hard tier holds hidden to a single appearance, on top of its handicap —
+// a hard puzzle leaning on the easiest device defeats the point of the
+// tier.
+const DEVICE_CAP_OVERRIDES: Record<Tier, Partial<Record<DeviceType, number>>> = {
+  standard: {},
+  hard: { hidden: 1 },
+};
+
+function capFor(device: DeviceType, tier: Tier): number {
+  return DEVICE_CAP_OVERRIDES[tier][device] ?? DEFAULT_DEVICE_CAP;
+}
+
+// Every device that has already hit its per-puzzle cap for this puzzle.
+function cappedDevices(
+  puzzleDeviceUsage: Partial<Record<DeviceType, number>>,
+  tier: Tier
+): DeviceType[] {
+  return (Object.keys(puzzleDeviceUsage) as DeviceType[]).filter(
+    (device) => (puzzleDeviceUsage[device] ?? 0) >= capFor(device, tier)
+  );
+}
 
 // homophone/doubleDefinition clues always land in review-queue.json first
 // (they're tier 3 — see devices/index.ts) and need an explicit human
@@ -365,18 +398,17 @@ async function getOrGenerateClue(
   tier: Tier
 ): Promise<{ clue: string; device: string } | null> {
   const deviceOrder = deviceOrderFor(tier);
-  const hiddenCapped = (puzzleDeviceUsage.hidden ?? 0) >= MAX_HIDDEN_PER_PUZZLE[tier];
-  const avoidDevices: DeviceType[] = hiddenCapped ? ['hidden'] : [];
+  const avoidDevices = cappedDevices(puzzleDeviceUsage, tier);
 
   // A bank clue whose device isn't offered at this tier at all (a
   // homophone/doubleDefinition clue reused for a standard puzzle, or vice
   // versa — though the two devices are hard-only so that direction can't
-  // happen) is not a soft avoid-if-possible like the hidden cap below; it's
+  // happen) is not a soft avoid-if-possible like the caps below; it's
   // a hard exclusion, so it's filtered out before even being considered as
   // a fallback.
   const rawExisting = loadBankClue(answer, avoidDevices);
   const existing = rawExisting && deviceOrder.includes(rawExisting.device as DeviceType) ? rawExisting : null;
-  if (existing && !(hiddenCapped && existing.device === 'hidden')) {
+  if (existing && !avoidDevices.includes(existing.device as DeviceType)) {
     console.log(`  ${answer}: reusing bank clue (${existing.device})`);
     // A cache hit still counts toward this batch's actual device
     // distribution — leaving it uncounted would let the balancer's view of
@@ -390,16 +422,16 @@ async function getOrGenerateClue(
     const bank = indicatorBanks[d];
     return bank && getDevice(d).construct(answer, bank);
   });
-  if (hiddenCapped) constructible = constructible.filter((d) => d !== 'hidden');
+  constructible = constructible.filter((d) => !avoidDevices.includes(d));
 
   if (constructible.length === 0) {
-    // Hidden is capped for this puzzle and nothing else can construct for
-    // this word — using the capped-out bank clue anyway (if one exists) is
-    // better than permanently blacklisting a perfectly good word over a
+    // Every device that could clue this word is capped out for this puzzle
+    // — using a capped bank clue anyway (if one exists) is better than
+    // permanently blacklisting a perfectly good word over a
     // per-puzzle-only constraint; it's a rare soft-cap violation rather
     // than a hard failure.
     if (existing) {
-      console.log(`  ${answer}: reusing bank clue (${existing.device}) — hidden cap hit, no alternative device works`);
+      console.log(`  ${answer}: reusing bank clue (${existing.device}) — cap hit, no alternative device works`);
       recordDeviceUse(existing.device, deviceUsage, puzzleDeviceUsage);
       return { clue: existing.surface, device: existing.device };
     }
@@ -487,7 +519,7 @@ async function assembleOne(
 
   const clueFor: Record<string, { clue: string; device: string }> = {};
   // Fresh per puzzle (unlike deviceUsage, which persists across the whole
-  // batch) — this is what the MAX_HIDDEN_PER_PUZZLE cap is measured
+  // batch) — this is what the DEVICE_CAPS limits are measured
   // against, so it has to reset for every new grid, not accumulate.
   const puzzleDeviceUsage: Partial<Record<DeviceType, number>> = {};
   for (const answer of words) {
@@ -496,11 +528,12 @@ async function assembleOne(
     clueFor[answer] = result;
   }
 
-  // Alternate 3A2D / 2A3D by puzzle number, matching the format the whole
-  // concept is named after: 3-across day withholds a down clue as bonus,
-  // 2-across day withholds an across clue instead.
-  const format = puzzleNumber % 2 === 1 ? '3A2D' : '2A3D';
-  const bonusIsDown = format === '3A2D';
+  // Alternate whether the withheld bonus entry is a down or an across clue,
+  // by puzzle number, so consecutive puzzles don't always hide the same
+  // direction. This used to be surfaced to players as a "3A2D"/"2A3D"
+  // format label, but the shorthand meant nothing to anyone actually
+  // playing — it's kept purely as internal variety now.
+  const bonusIsDown = puzzleNumber % 2 === 1;
 
   // Bonus eligibility follows the slot id, not any row/col math — 'A3'/'D3'
   // are the third across/down slot in every template, matching the
@@ -520,9 +553,9 @@ async function assembleOne(
     };
   });
 
-  const puzzle = { id, tier, format, entries };
+  const puzzle = { id, tier, entries };
   writeFileSync(join(PUZZLES_DIR, `${id}.json`), JSON.stringify(puzzle, null, 2) + '\n');
-  console.log(`Wrote ${id}.json (${tier}, ${format}, bonus=${entries.find((e) => e.bonus)?.answer})`);
+  console.log(`Wrote ${id}.json (${tier}, bonus=${entries.find((e) => e.bonus)?.answer})`);
 
   for (const answer of words) exclude.add(answer.toUpperCase());
   return { id };

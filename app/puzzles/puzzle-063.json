@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-063",
+  "tier": "standard",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 4,
+      "answer": "PICKUP",
+      "clue": "My pick next to your up-and-coming star could deliver a small truck (6)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 4,
+      "col": 0,
+      "answer": "EVALUATION",
+      "clue": "Buyer's assessment weighs energy then valuation before signing the deal (10)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 6,
+      "direction": "across",
+      "row": 9,
+      "col": 1,
+      "answer": "HANDHELDS",
+      "clue": "Hands held in prayer suggest portable devices (9)",
+      "device": "container",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 1,
+      "col": 0,
+      "answer": "INTERACT",
+      "clue": "A laser pointer actor found in cheap sci-fi flicks can engage with others (8)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "down",
+      "row": 3,
+      "col": 6,
+      "answer": "STRANGE",
+      "clue": "Confusing garnets are set aside as odd (7)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 9,
+      "answer": "PARENTAL",
+      "clue": "Reworked paternal instincts are, in the end, simply motherly or fatherly (8)",
+      "device": "anagram",
+      "bonus": true
+    }
+  ]
+}

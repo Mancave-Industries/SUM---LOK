@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-055",
+  "tier": "standard",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 4,
+      "answer": "AGENDA",
+      "clue": "This vulture mag, endangered partly by falling readership, sets the meeting schedule (6)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 4,
+      "col": 0,
+      "answer": "ACCOUNTING",
+      "clue": "Held by tobacco untinged with menthol, this rustic pipe smoke smells of old-fashioned bookkeeping (10)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 6,
+      "direction": "across",
+      "row": 9,
+      "col": 1,
+      "answer": "TELEPHONY",
+      "clue": "Adapted polythene packaging finally gave us voice communication by wire (9)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 1,
+      "col": 0,
+      "answer": "TOMATOES",
+      "clue": "Confused ostomate ordered red salad fruits (8)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "down",
+      "row": 3,
+      "col": 6,
+      "answer": "STYLISH",
+      "clue": "Hylists disordered the librarian's shelving, though the result still looked fashionable (7)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 9,
+      "answer": "ASSIGNED",
+      "clue": "As then signed by both parties, the duties were finally allotted (8)",
+      "device": "charade",
+      "bonus": true
+    }
+  ]
+}

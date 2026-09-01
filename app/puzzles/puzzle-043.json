@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-043",
+  "tier": "standard",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 4,
+      "answer": "RATHER",
+      "clue": "A rat followed by her kitten scurried into the pantry, preferably unnoticed (6)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 4,
+      "col": 0,
+      "answer": "COUNSELING",
+      "clue": "Grandma's tendency to miscounsel ingredients included in family recipes finally pushed us toward therapy (10)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 6,
+      "direction": "across",
+      "row": 9,
+      "col": 1,
+      "answer": "ACCEPTING",
+      "clue": "Cook won't reaccept ingredients held within, seeming oddly receptive (9)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 1,
+      "col": 0,
+      "answer": "DISCOUNT",
+      "clue": "Dis followed by count gets you a price reduction (8)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "down",
+      "row": 3,
+      "col": 6,
+      "answer": "ELEMENT",
+      "clue": "Damaged telemen could only broadcast a basic substance (7)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 9,
+      "answer": "RELIGION",
+      "clue": "Li, enclosing a region torn by conflict, still clings to faith (8)",
+      "device": "container",
+      "bonus": true
+    }
+  ]
+}

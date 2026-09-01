@@ -4,7 +4,12 @@
 // parts must appear in the surface in the same order they concatenate in.
 
 import type { DeviceModule, VerificationResult, Wordplay } from '../types.js';
-import { findDisplayCandidates, isTrivialInflectionOfAnswer, resolveDisplayWord } from './wordResolution.js';
+import {
+  findDisplayCandidates,
+  findWholeWordIndex,
+  isTrivialInflectionOfAnswer,
+  resolveDisplayWord,
+} from './wordResolution.js';
 import { pickRandom } from './random.js';
 import { isCommonWord, preferCommon } from './commonWords.js';
 
@@ -119,9 +124,8 @@ export const charadeDevice: DeviceModule = {
       return { passed: false, log: ['✗ charade requires two components to check ordering'] };
     }
 
-    const lower = wordplayText.toLowerCase();
-    const idx1 = lower.indexOf(display1.toLowerCase());
-    const idx2 = lower.indexOf(display2.toLowerCase());
+    const idx1 = findWholeWordIndex(wordplayText, display1);
+    const idx2 = findWholeWordIndex(wordplayText, display2);
 
     if (idx1 === -1 || idx2 === -1) {
       return {

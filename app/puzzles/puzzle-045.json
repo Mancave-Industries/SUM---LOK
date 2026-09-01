@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-045",
+  "tier": "standard",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "RECORDER",
+      "clue": "Curious how they rerecord tunes on this flute-like instrument (8)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 6,
+      "col": 4,
+      "answer": "ARABIC",
+      "clue": "Rented gear housed by para bicycle club spells out a Middle Eastern language (6)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 9,
+      "col": 3,
+      "answer": "DETAILS",
+      "clue": "Novel dilates on pupil's particulars (7)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "RECYCLING",
+      "clue": "Reprocessing waste means putting re before cycling in my weekly diary entries (9)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 4,
+      "answer": "REASONABLE",
+      "clue": "Reason followed by able leadership makes for a sensible outcome (10)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 3,
+      "col": 9,
+      "answer": "BEACHES",
+      "clue": "His old gallabea chess pieces, held within an antique trunk, once bordered sandy shores (7)",
+      "device": "hidden",
+      "bonus": true
+    }
+  ]
+}

@@ -32,6 +32,7 @@ import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { dictionary } from 'cmu-pronouncing-dictionary';
 import { isDictionaryWord } from '../src/devices/dictionary.js';
+import { preferCommon } from '../src/devices/commonWords.js';
 import { getSynonymSetsSync } from '../src/definitions/wordnetSync.js';
 import wordlistsByLength from '../src/data/wordlistsByLength.json' with { type: 'json' };
 
@@ -87,6 +88,13 @@ function containsOrIsContainedBy(word: string, other: string): boolean {
 // underscores) but only single-word synonyms are used as fodder here, to
 // keep the surface-writer prompt and verifySurface check simple (a literal
 // verbatim substring match, same as every other fodder-based device).
+//
+// Returned most-recognizable-first (preferCommon), since construct() takes
+// the first entry as the fodder actually shown to the solver — WordNet's
+// own synset ordering is arbitrary and regularly puts an obscure lemma
+// ahead of an everyday one (see the TELLING apprisal/notification case
+// documented in buildDoubleDefPool.ts). Falls back to the full list when
+// none are common, so this only ever improves the pick.
 function candidateSynonyms(synonymSets: string[][], exclude: Set<string>): string[] {
   const seen = new Set<string>();
   const result: string[] = [];
@@ -100,7 +108,7 @@ function candidateSynonyms(synonymSets: string[][], exclude: Set<string>): strin
       result.push(lower);
     }
   }
-  return result;
+  return preferCommon(result);
 }
 
 function buildHomophonePool(): Record<string, HomophonePair[]> {

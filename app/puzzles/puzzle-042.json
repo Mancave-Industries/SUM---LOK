@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-042",
+  "tier": "standard",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 0,
+      "answer": "STARTED",
+      "clue": "With a star beside Ted, the biopic's shoot finally began (7)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 4,
+      "direction": "across",
+      "row": 6,
+      "col": 0,
+      "answer": "GUIDELINES",
+      "clue": "Fishing guides enclosing a line for tourists are really just rules of thumb (10)",
+      "device": "container",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 9,
+      "col": 1,
+      "answer": "CHARLOTTE",
+      "clue": "Every wounded feldschar lottery ticket, hidden in his knapsack, names a North Carolina city (9)",
+      "device": "hidden",
+      "bonus": true
+    },
+    {
+      "number": 1,
+      "direction": "down",
+      "row": 0,
+      "col": 0,
+      "answer": "SAILING",
+      "clue": "Reformed nilgais, oddly enough, take to boating (7)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 5,
+      "answer": "ENTIRELY",
+      "clue": "Some of the cognoscenti relying on hype tend to lose all perspective, completely (8)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 3,
+      "col": 9,
+      "answer": "EPISODE",
+      "clue": "Verses poesied, mixed up by the drunken bard, sparked quite an incident (7)",
+      "device": "anagram",
+      "bonus": false
+    }
+  ]
+}

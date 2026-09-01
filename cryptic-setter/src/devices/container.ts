@@ -6,7 +6,12 @@
 // that meaning instead.
 
 import type { DeviceModule, VerificationResult, Wordplay } from '../types.js';
-import { findDisplayCandidates, isTrivialInflectionOfAnswer, resolveDisplayWord } from './wordResolution.js';
+import {
+  findDisplayCandidates,
+  findWholeWordIndex,
+  isTrivialInflectionOfAnswer,
+  resolveDisplayWord,
+} from './wordResolution.js';
 import { pickRandom } from './random.js';
 import { isCommonWord, preferCommon } from './commonWords.js';
 
@@ -133,9 +138,8 @@ export const containerDevice: DeviceModule = {
       return { passed: false, log: ['✗ container requires two components to check presence'] };
     }
 
-    const lower = wordplayText.toLowerCase();
-    const outerPresent = lower.includes(outerDisplay.toLowerCase());
-    const innerPresent = lower.includes(innerDisplay.toLowerCase());
+    const outerPresent = findWholeWordIndex(wordplayText, outerDisplay) !== -1;
+    const innerPresent = findWholeWordIndex(wordplayText, innerDisplay) !== -1;
 
     if (!outerPresent || !innerPresent) {
       return {

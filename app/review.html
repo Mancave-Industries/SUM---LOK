@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QUYPTICK — clue review</title>
+  <style>
+    /* Same token set as the game's style.css, so the review tool reads as
+       part of the same project rather than a bolted-on admin page. */
+    :root {
+      --page-bg: #FFFFFF; --paper: #FFFFFF; --paper-border: #D3D6DA;
+      --text: #1A1A1B; --text-dim: #787C7E; --accent: #46474A; --accent-strong: #1A1A1B;
+      --pass: #6AAA64; --fail: #D3455B; --tile-text: #FFFFFF;
+      --chip-bg: #F4F4F5; --active-fill: #54565A;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --page-bg: #121213; --paper: #1B1B1C; --paper-border: #3A3A3C;
+        --text: #D7DADC; --text-dim: #818384; --accent: #A6A6AA; --accent-strong: #FFFFFF;
+        --pass: #538D4E; --fail: #E86B85; --tile-text: #FFFFFF;
+        --chip-bg: #26262A; --active-fill: #54565A;
+      }
+    }
+    :root[data-theme="dark"] {
+      --page-bg: #121213; --paper: #1B1B1C; --paper-border: #3A3A3C;
+      --text: #D7DADC; --text-dim: #818384; --accent: #A6A6AA; --accent-strong: #FFFFFF;
+      --pass: #538D4E; --fail: #E86B85; --tile-text: #FFFFFF;
+      --chip-bg: #26262A; --active-fill: #54565A;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--page-bg); color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding-bottom: 96px;
+    }
+    .wrap { max-width: 640px; margin: 0 auto; padding: 0 16px; }
+    header { border-bottom: 1px solid var(--paper-border); padding: 18px 0 14px; margin-bottom: 4px; }
+    .logo { font-family: Iowan Old Style, "Palatino Linotype", Georgia, ui-serif, serif; font-size: 20px; font-weight: 700; }
+    .logo em { font-style: normal; color: var(--accent); }
+    .sub { font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+
+    .filters { display: flex; gap: 6px; flex-wrap: wrap; padding: 12px 0; }
+    .filter {
+      background: var(--chip-bg); border: 1px solid var(--paper-border); color: var(--text-dim);
+      border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 700;
+      font-family: inherit; cursor: pointer;
+    }
+    .filter.on { background: var(--active-fill); color: var(--tile-text); border-color: var(--active-fill); }
+
+    .progress { font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; color: var(--text-dim); padding-bottom: 10px; }
+    .bar { height: 4px; background: var(--chip-bg); border-radius: 999px; overflow: hidden; margin-top: 6px; }
+    .bar span { display: block; height: 100%; background: var(--pass); width: 0; transition: width 0.2s ease; }
+
+    .clue {
+      background: var(--paper); border: 1px solid var(--paper-border);
+      border-radius: 10px; padding: 14px; margin-bottom: 10px;
+    }
+    .clue.judged-pass { border-color: var(--pass); }
+    .clue.judged-fail { border-color: var(--fail); opacity: 0.55; }
+    .meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+    .answer { font-family: Iowan Old Style, "Palatino Linotype", Georgia, ui-serif, serif; font-weight: 700; font-size: 15px; letter-spacing: 0.04em; }
+    .tag {
+      font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace; font-size: 10px;
+      letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-dim);
+      background: var(--chip-bg); border-radius: 4px; padding: 2px 6px;
+    }
+    .tag.blocking { color: var(--tile-text); background: var(--fail); }
+    .surface { font-size: 15px; line-height: 1.45; margin-bottom: 8px; }
+    .why { font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; color: var(--text-dim); line-height: 1.5; }
+    .why b { color: var(--accent); font-weight: 700; }
+    /* Hidden until asked for — seeing the mechanism first would bias the
+       "is this clue fair?" judgement the reviewer is here to make. */
+    .why[hidden] { display: none; }
+    .reveal-btn { background: none; border: none; color: var(--accent); font-family: inherit; font-size: 12px; font-weight: 700; cursor: pointer; padding: 4px 0; text-decoration: underline; }
+
+    .verdict { display: flex; gap: 8px; margin-top: 10px; }
+    .verdict button {
+      flex: 1; border: 1px solid var(--paper-border); background: none; color: var(--text);
+      border-radius: 8px; padding: 11px; font-size: 14px; font-weight: 700;
+      font-family: inherit; cursor: pointer;
+    }
+    .verdict button.pass.on { background: var(--pass); border-color: var(--pass); color: var(--tile-text); }
+    .verdict button.fail.on { background: var(--fail); border-color: var(--fail); color: var(--tile-text); }
+
+    .footer {
+      position: fixed; bottom: 0; left: 0; right: 0; background: var(--paper);
+      border-top: 1px solid var(--paper-border); padding: 12px 16px;
+    }
+    .footer .wrap { display: flex; gap: 8px; align-items: center; padding: 0; }
+    .footer button {
+      background: var(--active-fill); color: var(--tile-text); border: none; border-radius: 999px;
+      padding: 12px 20px; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer; flex: 1;
+    }
+    .footer button.ghost { background: none; color: var(--accent); border: 1px solid var(--paper-border); flex: 0 0 auto; }
+    .footer button:disabled { opacity: 0.4; cursor: default; }
+    #out {
+      width: 100%; margin-top: 10px; font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 11px; padding: 8px; border-radius: 8px; border: 1px solid var(--paper-border);
+      background: var(--page-bg); color: var(--text); resize: vertical;
+    }
+    #out[hidden] { display: none; }
+    .empty { text-align: center; color: var(--text-dim); padding: 40px 0; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">QUYP<em>TICK</em> · clue review</div>
+      <div class="sub" id="sub">loading…</div>
+    </header>
+
+    <div class="filters" id="filters"></div>
+    <div class="progress" id="progress"></div>
+
+    <div id="list"></div>
+  </div>
+
+  <div class="footer">
+    <div class="wrap">
+      <button class="ghost" id="clear" type="button">Reset</button>
+      <button id="copy" type="button" disabled>Copy verdicts</button>
+    </div>
+    <div class="wrap"><textarea id="out" rows="4" hidden readonly></textarea></div>
+  </div>
+
+<script>
+const STORE = 'quyptick-review-verdicts';
+let clues = [];
+let verdicts = {};
+// Set once the data loads: start on whatever is actually worth a
+// reviewer's attention. Blocking clues gate puzzle assembly so they come
+// first when any exist, but defaulting to them unconditionally opens the
+// page on an empty list whenever the tier-3 queue happens to be clear.
+let filter = 'undecided';
+
+function load() {
+  try { verdicts = JSON.parse(localStorage.getItem(STORE) || '{}'); } catch { verdicts = {}; }
+}
+function save() {
+  try { localStorage.setItem(STORE, JSON.stringify(verdicts)); } catch { /* private mode — verdicts stay in memory only */ }
+}
+
+function visible() {
+  if (filter === 'all') return clues;
+  if (filter === 'blocking') return clues.filter(c => c.blocking);
+  if (filter === 'undecided') return clues.filter(c => !verdicts[c.id]);
+  return clues.filter(c => c.device === filter);
+}
+
+function renderFilters() {
+  const devices = [...new Set(clues.map(c => c.device))].sort();
+  const opts = [
+    ['blocking', 'Blocking (' + clues.filter(c => c.blocking).length + ')'],
+    ['undecided', 'Undecided'],
+    ['all', 'All (' + clues.length + ')'],
+    ...devices.map(d => [d, d + ' (' + clues.filter(c => c.device === d).length + ')'])
+  ];
+  const el = document.getElementById('filters');
+  el.innerHTML = '';
+  for (const [key, label] of opts) {
+    const b = document.createElement('button');
+    b.className = 'filter' + (filter === key ? ' on' : '');
+    b.type = 'button';
+    b.textContent = label;
+    b.onclick = () => { filter = key; render(); };
+    el.appendChild(b);
+  }
+}
+
+function renderProgress() {
+  const done = Object.keys(verdicts).length;
+  const pass = Object.values(verdicts).filter(v => v === 'pass').length;
+  document.getElementById('progress').innerHTML =
+    `${done} of ${clues.length} judged · ${pass} pass · ${done - pass} fail` +
+    `<div class="bar"><span style="width:${clues.length ? (done / clues.length) * 100 : 0}%"></span></div>`;
+  document.getElementById('copy').disabled = done === 0;
+}
+
+function renderList() {
+  const list = document.getElementById('list');
+  list.innerHTML = '';
+  const rows = visible();
+  if (rows.length === 0) {
+    list.innerHTML = '<div class="empty">Nothing here — try another filter.</div>';
+    return;
+  }
+  for (const c of rows) {
+    const v = verdicts[c.id];
+    const card = document.createElement('div');
+    card.className = 'clue' + (v ? ' judged-' + v : '');
+
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    // Same number the printed sheet uses, so a verdict can be reported
+    // from either surface and mean the same clue.
+    meta.innerHTML =
+      `<span class="tag">${c.n}</span>` +
+      `<span class="answer">${c.answer}</span>` +
+      `<span class="tag">${c.device}</span>` +
+      (c.blocking ? '<span class="tag blocking">blocking</span>' : '');
+    card.appendChild(meta);
+
+    const surface = document.createElement('div');
+    surface.className = 'surface';
+    surface.textContent = c.surface;
+    card.appendChild(surface);
+
+    const why = document.createElement('div');
+    why.className = 'why';
+    why.hidden = true;
+    why.innerHTML = `<b>definition:</b> ${c.definition}<br><b>wordplay:</b> ${c.wordplay}`;
+
+    const revealBtn = document.createElement('button');
+    revealBtn.className = 'reveal-btn';
+    revealBtn.type = 'button';
+    revealBtn.textContent = 'show how it works';
+    revealBtn.onclick = () => {
+      why.hidden = !why.hidden;
+      revealBtn.textContent = why.hidden ? 'show how it works' : 'hide';
+    };
+    card.appendChild(revealBtn);
+    card.appendChild(why);
+
+    const verdict = document.createElement('div');
+    verdict.className = 'verdict';
+    const buttons = {};
+    for (const choice of ['pass', 'fail']) {
+      const b = document.createElement('button');
+      b.className = choice + (v === choice ? ' on' : '');
+      b.type = 'button';
+      b.textContent = choice === 'pass' ? 'Pass' : 'Fail';
+      b.onclick = () => {
+        if (verdicts[c.id] === choice) delete verdicts[c.id];
+        else verdicts[c.id] = choice;
+        save();
+        // Update this card in place rather than re-rendering the list.
+        // A full re-render would yank the card out from under the reviewer
+        // the moment they judge it (it no longer matches the "undecided"
+        // filter), making the page jump and hiding the choice just made.
+        const now = verdicts[c.id];
+        card.className = 'clue' + (now ? ' judged-' + now : '');
+        buttons.pass.className = 'pass' + (now === 'pass' ? ' on' : '');
+        buttons.fail.className = 'fail' + (now === 'fail' ? ' on' : '');
+        renderProgress();
+        renderFilters();
+      };
+      buttons[choice] = b;
+      verdict.appendChild(b);
+    }
+    card.appendChild(verdict);
+    list.appendChild(card);
+  }
+}
+
+function render() { renderFilters(); renderProgress(); renderList(); }
+
+document.getElementById('copy').onclick = () => {
+  const payload = JSON.stringify({
+    approve: Object.keys(verdicts).filter(id => verdicts[id] === 'pass'),
+    reject: Object.keys(verdicts).filter(id => verdicts[id] === 'fail'),
+  });
+  const out = document.getElementById('out');
+  out.hidden = false;
+  out.value = payload;
+  out.select();
+  // Clipboard API needs a secure context and can be refused; the textarea
+  // is shown either way so the verdicts are always copyable by hand.
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(payload).then(
+      () => { document.getElementById('copy').textContent = 'Copied ✓'; },
+      () => { document.getElementById('copy').textContent = 'Select & copy below'; }
+    );
+  }
+};
+
+document.getElementById('clear').onclick = () => {
+  if (!confirm('Clear all verdicts recorded so far?')) return;
+  verdicts = {};
+  save();
+  render();
+};
+
+fetch('review-data.json', { cache: 'no-store' })
+  .then(r => r.json())
+  .then(data => {
+    clues = data.clues || [];
+    load();
+    const blocking = clues.filter(c => c.blocking).length;
+    if (blocking > 0) filter = 'blocking';
+    document.getElementById('sub').textContent =
+      `${clues.length} pending · ${blocking} blocking puzzle assembly · rest already usable`;
+    render();
+  })
+  .catch(() => {
+    document.getElementById('sub').textContent = 'could not load review-data.json';
+    document.getElementById('list').innerHTML =
+      '<div class="empty">No review data found. Run: npx tsx scripts/exportForReview.ts</div>';
+  });
+</script>
+</body>
+</html>

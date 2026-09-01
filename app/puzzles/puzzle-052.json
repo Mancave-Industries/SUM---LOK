@@ -1,0 +1,66 @@
+{
+  "id": "puzzle-052",
+  "tier": "standard",
+  "entries": [
+    {
+      "number": 1,
+      "direction": "across",
+      "row": 0,
+      "col": 3,
+      "answer": "ACCUSED",
+      "clue": "Strange succade recipe upsets the defendant (7)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 5,
+      "direction": "across",
+      "row": 3,
+      "col": 0,
+      "answer": "TRAINING",
+      "clue": "Chef will strain ingredients partly for the coaching (8)",
+      "device": "hidden",
+      "bonus": false
+    },
+    {
+      "number": 6,
+      "direction": "across",
+      "row": 9,
+      "col": 3,
+      "answer": "UNLESS",
+      "clue": "Critics put un before less in every review, except if the sequel disappoints (6)",
+      "device": "charade",
+      "bonus": true
+    },
+    {
+      "number": 4,
+      "direction": "down",
+      "row": 2,
+      "col": 0,
+      "answer": "ATOMIC",
+      "clue": "Curious matico plant hybrid could power a nuclear reactor (6)",
+      "device": "anagram",
+      "bonus": false
+    },
+    {
+      "number": 2,
+      "direction": "down",
+      "row": 0,
+      "col": 4,
+      "answer": "CONNECTION",
+      "clue": "Wires that connect, followed by ion channels opening in the membrane, establish a link (10)",
+      "device": "charade",
+      "bonus": false
+    },
+    {
+      "number": 3,
+      "direction": "down",
+      "row": 0,
+      "col": 9,
+      "answer": "DISTRICTS",
+      "clue": "Strict in Dis, hell's rulers govern the regions (9)",
+      "device": "container",
+      "bonus": false
+    }
+  ]
+}

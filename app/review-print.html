@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QUYPTICK — clue review sheet</title>
+  <style>
+    /* Deliberately committed to a light, paper-like rendering in both
+       themes: this page exists to be printed, and a dark-mode variant
+       would either waste toner or print as an unreadable inversion. */
+    @page { margin: 14mm 12mm; }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: #FFFFFF; color: #111111;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 11pt; line-height: 1.4;
+    }
+    .sheet { max-width: 190mm; margin: 0 auto; padding: 16px; }
+
+    header { border-bottom: 2px solid #111; padding-bottom: 8px; margin-bottom: 6px; }
+    h1 {
+      font-family: Iowan Old Style, "Palatino Linotype", Georgia, ui-serif, serif;
+      font-size: 17pt; margin: 0; font-weight: 700;
+    }
+    h1 em { font-style: normal; color: #555; }
+    .meta { font-size: 9pt; color: #555; margin-top: 3px; font-variant-numeric: tabular-nums; }
+    .how {
+      font-size: 9.5pt; color: #333; background: #F4F4F4; border-left: 3px solid #999;
+      padding: 7px 10px; margin: 10px 0 14px;
+    }
+
+    .toolbar { margin: 10px 0 16px; display: flex; gap: 8px; }
+    .toolbar button {
+      background: #111; color: #fff; border: none; border-radius: 999px;
+      padding: 9px 18px; font-size: 11pt; font-weight: 700; font-family: inherit; cursor: pointer;
+    }
+    .toolbar button.ghost { background: none; color: #111; border: 1px solid #BBB; }
+
+    h2 {
+      font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 9.5pt; letter-spacing: 0.1em; text-transform: uppercase;
+      margin: 16px 0 5px; padding-bottom: 3px; border-bottom: 1px solid #CCC; color: #333;
+      /* Never leave a section heading stranded at the foot of a page. */
+      break-after: avoid; page-break-after: avoid;
+    }
+    h2 .count { color: #888; font-weight: 400; letter-spacing: 0; }
+
+    .row {
+      display: grid; grid-template-columns: 26px 16px 1fr; gap: 8px;
+      padding: 5px 0; border-bottom: 1px solid #EEE; align-items: start;
+      /* A clue split across a page break is unreadable on paper. */
+      break-inside: avoid; page-break-inside: avoid;
+    }
+    .num {
+      font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 9pt; color: #777; text-align: right; padding-top: 2px;
+      font-variant-numeric: tabular-nums;
+    }
+    .box { width: 13px; height: 13px; border: 1.5px solid #333; border-radius: 2px; margin-top: 3px; }
+    .answer {
+      font-family: Iowan Old Style, "Palatino Linotype", Georgia, ui-serif, serif;
+      font-weight: 700; letter-spacing: 0.05em;
+    }
+    .clue { color: #222; }
+    .note { font-size: 9pt; color: #666; margin-top: 1px; }
+    /* Marks a clue already approved and in use, so a reviewer knows a tick
+       here pulls something out of live rotation rather than just declining
+       a candidate. Prints as an outline so it survives greyscale. */
+    .live {
+      font-family: "SF Mono", "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 7.5pt; letter-spacing: 0.06em; text-transform: uppercase;
+      border: 1px solid #999; color: #555; border-radius: 3px;
+      padding: 0 3px; margin-left: 5px; white-space: nowrap;
+    }
+
+    @media print {
+      .toolbar, .how { display: none; }
+      .sheet { max-width: none; padding: 0; }
+      body { font-size: 10pt; }
+      a[href]:after { content: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <header>
+      <h1>QUYP<em>TICK</em> — clue review sheet</h1>
+      <div class="meta" id="meta">loading…</div>
+    </header>
+
+    <div class="how">
+      <strong>How to use:</strong> tick the box next to any clue you'd <em>reject</em> — leave the rest blank.
+      Then report the numbers back (e.g. “fail 12, 45, 60”) and they'll be applied to the bank in one pass.
+      Clues are grouped by type and numbered continuously. Ones marked <span class="live">in use</span>
+      are already live in puzzles — ticking one pulls it out of rotation for future puzzles.
+    </div>
+
+    <div class="toolbar">
+      <button type="button" onclick="window.print()">Print / Save as PDF</button>
+      <button type="button" class="ghost" id="toggle-notes">Show wordplay</button>
+    </div>
+
+    <div id="content"></div>
+  </div>
+
+<script>
+let showNotes = false;
+let data = null;
+
+function render() {
+  const groups = {};
+  for (const c of data.clues) (groups[c.device] ||= []).push(c);
+
+  const content = document.getElementById('content');
+  content.innerHTML = '';
+  for (const device of Object.keys(groups).sort()) {
+    const rows = groups[device];
+    const h = document.createElement('h2');
+    h.innerHTML = device + ' <span class="count">· ' + rows.length + '</span>';
+    content.appendChild(h);
+
+    for (const c of rows) {
+      const row = document.createElement('div');
+      row.className = 'row';
+      const note = showNotes
+        ? '<div class="note">' + c.definition + ' — ' + c.wordplay + '</div>'
+        : '';
+      const live = c.status === 'approved' ? '<span class="live">in use</span>' : '';
+      row.innerHTML =
+        '<div class="num">' + c.n + '</div>' +
+        '<div class="box"></div>' +
+        '<div><span class="answer">' + c.answer + '</span> — ' +
+        '<span class="clue">' + c.surface + '</span>' + live + note + '</div>';
+      content.appendChild(row);
+    }
+  }
+}
+
+document.getElementById('toggle-notes').onclick = (e) => {
+  showNotes = !showNotes;
+  e.target.textContent = showNotes ? 'Hide wordplay' : 'Show wordplay';
+  render();
+};
+
+fetch('review-data.json', { cache: 'no-store' })
+  .then(r => r.json())
+  .then(d => {
+    data = d;
+    const date = new Date(d.generatedAt).toISOString().slice(0, 10);
+    document.getElementById('meta').textContent =
+      d.clues.length + ' clues awaiting review · generated ' + date;
+    render();
+  })
+  .catch(() => {
+    document.getElementById('meta').textContent = 'could not load review-data.json';
+    document.getElementById('content').innerHTML =
+      '<p>Run: <code>npx tsx scripts/exportForReview.ts</code></p>';
+  });
+</script>
+</body>
+</html>

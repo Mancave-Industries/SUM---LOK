@@ -1108,7 +1108,6 @@ async function main() {
 
   loadProgress();
 
-  document.getElementById('format-tag').textContent = puzzle.format || '';
   document.getElementById('date-label').textContent = `${puzzle._index + 1} / ${puzzle._total}`;
   document.getElementById('prev-puzzle').disabled = puzzle._total <= 1;
   document.getElementById('next-puzzle').disabled = puzzle._total <= 1;
