@@ -15,6 +15,7 @@ import {
   verifyDefinitionDoesNotEchoWordplay,
   verifyWordplayDoesNotRepeatDefinition,
   verifyEnumeration,
+  verifySurfaceEconomy,
 } from '../verify/structural.js';
 import { verifyDefinitionMeaning } from '../verify/definition.js';
 
@@ -153,6 +154,19 @@ export async function generateClue(options: GenerateClueOptions): Promise<Genera
     const repeatCheck = verifyWordplayDoesNotRepeatDefinition(parts.wordplayText, definition);
     log.push(...repeatCheck.log);
 
+    // Economy: no word in the clue may be doing nothing. Runs on the whole
+    // surface rather than either half, since padding turns up in both — a
+    // definition part swollen past the seeded definition ("show off regional
+    // cuisine" for "show") is the same fault as a wordplay part carrying a
+    // scene that never pays off.
+    const economyCheck = verifySurfaceEconomy(fullSurface, {
+      answer,
+      device: deviceType,
+      seedDefinition: definition,
+      wordplay: construction.wordplay,
+    });
+    log.push(...economyCheck.log);
+
     // Fodder-based devices need the literal fodder string checked here.
     // Components-based devices (hidden, initials, charade, container) skip
     // this — their surface fairness is a structural property checked by
@@ -192,6 +206,7 @@ export async function generateClue(options: GenerateClueOptions): Promise<Genera
       structuralCheck.passed &&
       echoCheck.passed &&
       repeatCheck.passed &&
+      economyCheck.passed &&
       fodderPresent &&
       indicatorPresent &&
       surfaceCheckPassed;

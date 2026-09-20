@@ -174,36 +174,45 @@ Device: ${device}
 ${describeWordplayRequirement(request)}
 ${describeFeedback(request.previousFailures)}
 
-THE ONE THING THAT SEPARATES A GOOD CLUE FROM A BAD ONE:
-A bad surface just narrates the mechanism — it names the parts and glues them
-with the indicator and nothing else, so a reader can see the puzzle's
-skeleton through the sentence. A good surface reads as an entirely ordinary
-piece of English — a headline, an overheard remark, a plausible fact — about
-some OTHER scene, and the wordplay only becomes visible once you already
-know the answer. The words doing the wordplay's job should also be doing a
-different, ordinary job in that surface sentence.
+ECONOMY — THE RULE THAT MATTERS MOST:
+Every single word must be doing a job. A clue contains four kinds of word and
+NOTHING ELSE:
+  1. the definition
+  2. the fodder / component words listed above
+  3. the indicator listed above
+  4. a few link words to make it grammatical (a, the, of, in, for, with,
+     is, gets, gives, makes, leaves, brings, and the like)
 
-  BAD  (mechanism showing through): "mud before slide down the slope" for MUDSLIDE
-       — this is just "part1 [indicator] part2" with a few connective words
-       stapled on; there's no scene, nothing a reader would picture.
-  BAD  (mechanism showing through): "put er inside excise, hesitantly" for EXERCISE
-       — same problem: it reads as a description of the puzzle's own
-       construction, not a sentence about anything.
-  GOOD: "Endless workout leaves fitness fanatics up and down the block" —
-       an ordinary sentence about a real scene (a neighborhood, a jogger),
-       where the wordplay words are doing double duty as normal vocabulary
-       in that scene, not standing there labelled as puzzle parts.
-  GOOD: "Queen finally accepts rejected earring for royal jewelry box" —
-       reads as an actual event; the wordplay only reveals itself in
-       hindsight.
+Any word outside those four is filler and the clue will be rejected. Do not
+add scenery, professions, places, objects, adverbs or explanatory clauses to
+make the sentence feel more like a story. A solver has to read every word and
+work out which ones matter; a word that turns out to matter to nothing is
+wasted effort and a worse clue.
 
-Before answering, picture a real scene, headline, or remark that has nothing
-to do with the answer's meaning, and fold the required words into it as
-ordinary vocabulary doing ordinary grammatical work — not appositives listing
-"X, then Y" with no narrative behind them. Favor natural clauses over bare
-juxtaposition. It's fine (expected, even) for the clue to be witty, odd, or
-a little surreal, as long as it parses as one real sentence a person could
-plausibly write or say.
+  BAD (padded): "Anglers say the oquassa ultimately survives within a cold
+      lake, but poachers still plan an attack" for ASSAULT — "anglers",
+      "survives", "cold lake", "poachers", "plan" do nothing at all. Eight
+      dead words.
+  GOOD: "Oquassa ultimately conceals an attack" — same mechanism, nothing
+      wasted.
+
+  BAD (padded): "Toasting with ave followed by rage at the barman just about
+      sums up a typical wedding speech" for AVERAGE.
+  GOOD: "Ave followed by rage is typical" — same mechanism, nothing wasted.
+
+  GOOD: "Disordered seasides bring illnesses" (DISEASES)
+  GOOD: "Dis followed by count gets you a price reduction" (DISCOUNT)
+  GOOD: "A dependency could be a settlement" (COLONY)
+
+Misdirection does NOT come from adding a scene around the wordplay. It comes
+from the required words themselves reading innocently — "seasides" looks like
+a noun in a sentence about the coast right up until you notice it's an
+anagram. Get your deception from word choice and double meaning, never from
+extra words.
+
+Aim for the shortest sentence that does the job. Most good clues are four to
+eight words. If you can delete a word and the mechanism still works, it
+should not have been there.
 
 HOW TO ANSWER:
 Write "sentence" first, as ONE real sentence — a single subject and verb
@@ -220,6 +229,8 @@ are the definition? That's "definitionText" — copy it verbatim from
 
 Rules:
 - The clue reads as a single natural, misleading English sentence (or short phrase) with no hint that it's a puzzle.
+- Every word is definition, fodder, indicator, or a link word. No filler. This is checked mechanically and is the most common reason a clue is rejected.
+- The definition part is the seeded definition "${definition}" and little else — do not pad it out with extra describing words.
 - The definition must sit at the very start or the very end of the sentence — never in the middle.
 - Do not use the answer "${answer}" itself anywhere in the clue.
 - Call write_surface with "sentence", "definitionText" (a verbatim excerpt of it), and "order".`;
